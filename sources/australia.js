@@ -153,8 +153,7 @@ module.exports = [
 {
     id: 'waite',
     download: 'http://data.sa.gov.au/storage/f/2014-06-23T06%3A12%3A22.180Z/waitetreeid-2014-app-joined-19062014.zip',
-    format: 'zip',
-    'filename': 'WaiteTreeID_2014_App_Joined_19062014.shp',
+    format: 'shp',
     short: 'Waite Arboretum',
     long: 'Waite Arboretum (Adelaide)',
     country: 'Australia',
@@ -184,8 +183,7 @@ module.exports = [
 {
     id: 'launceston',
     download: 'http://lcc.launceston.opendata.arcgis.com/datasets/63b09a3688804a17b0edc4b3b072a0d7_1.zip',
-    format: 'zip',
-    'filename': 'Trees.shp',
+    format: 'shp',
     short: 'Launceston',
     long: 'City of Launceston',
     country: 'Australia',
@@ -299,8 +297,7 @@ module.exports = [
 {
     id: 'perth',
     download: 'https://opendata.arcgis.com/datasets/c5ce51d9789a4e9a8510acb8c8f3ecf4_0.zip',
-    format: 'zip',
-    'filename': 'PKS_AST_TREESMASTER_PV.shp',
+    format: 'shp',
     short: 'Perth',
     long: 'City of Perth',
     country: 'Australia',
@@ -381,8 +378,7 @@ module.exports = [
 {
     id: 'shepparton',
     download: 'https://data.gov.au/dataset/e794491f-2eb7-4035-8b0c-f7248c28feda/resource/a1148573-68b9-4bd8-bda4-f08030d38c9d/download/greatersheppartoncitycouncilstreetandparktrees.zip',
-    format: 'zip',
-    'filename': 'Greater_Shepparton_City_Council_Street_and_Park_Trees.shp',
+    format: 'shp',
     short: 'Shepparton',
     long: 'City of Shepparton',
     country: 'Australia',
@@ -553,7 +549,6 @@ module.exports = [
     long: '',
     download: 'https://opendata.arcgis.com/datasets/910774507d6a42248a50f9922054a0a0_0.zip',
     info:'http://hub.arcgis.com/datasets/unley::trees/data',
-    format: 'zip',
     crosswalk: {
         // are these multitrees?
         genus: 'dom_genus_',

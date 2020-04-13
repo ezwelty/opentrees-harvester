@@ -114,7 +114,6 @@ const sources = [
     //     // long: '',
     //     download: 'http://geohub-loudoungis.opendata.arcgis.com/datasets/21ece36a6fbd447b95b9446f752552a4_0.zip',
     //     info:'https://catalog.data.gov/dataset/loudoun-trees-9b144',
-    //     format: 'zip',
     //     crosswalk: {
     //         ref: 'TR_LOUD_ID',
     //     }
@@ -149,7 +148,6 @@ const sources = [
             'https://opendata.arcgis.com/datasets/077787e2299541bc8d2c2dbf8d7dc4e4_18.zip?outSR=%7B%22latestWkid%22%3A2193%2C%22wkid%22%3A2193%7D',
         info:
             'http://data-pncc.opendata.arcgis.com/datasets/077787e2299541bc8d2c2dbf8d7dc4e4_18/data',
-        format: 'zip',
         crosswalk: {
             scientific: 'botanical_',
             common: 'species',
@@ -164,7 +162,8 @@ const sources = [
         download:
             'https://data.bs.ch/explore/dataset/100052/download/?format=shp&timezone=Australia/Sydney&lang=en',
         info: 'https://data.bs.ch/explore/dataset/100052/information/',
-        format: 'zip',
+        format: 'shp',
+        compression: 'zip',
         crosswalk: {
             scientific: x => String(x.art).replace(/ \(.*/, ''),
             common: x => (String(x.art).match(/\((.*)\)/) || ['', ''])[1],
@@ -183,7 +182,6 @@ const sources = [
             'https://opendata.arcgis.com/datasets/f256d2d837554edab8b53bb6af90bc8d_19.zip',
         info:
             'https://hub.arcgis.com/datasets/f256d2d837554edab8b53bb6af90bc8d_19?geometry=10.516%2C59.709%2C10.873%2C59.884',
-        format: 'zip',
         crosswalk: {
             updated: 'last_edi_1',
             scientific: 'BotNavn',
@@ -258,7 +256,7 @@ const sources = [
         country: 'Italy',
         download: 'http://dati.comune.bologna.it/download/file/fid/3989',
         info: 'http://dati.comune.bologna.it/node/207',
-        format: 'zip',
+        compression: 'zip',
         crosswalk: {
             scientific: 'decodifi_4',
             circumference: 'decodifi_2', //??

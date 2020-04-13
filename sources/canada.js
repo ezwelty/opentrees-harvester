@@ -40,8 +40,7 @@ module.exports = [
         info: 'https://www.longueuil.quebec/fr/donnees-ouvertes/arbres',
         download:
             'https://www.longueuil.quebec/sites/longueuil/files/donnees_ouvertes/arbres.zip',
-        format: 'zip',
-        filename: 'Arbres.shp',
+        format: 'shp',
         short: 'Longueuil',
         long: 'Ville de Longueuil',
         country: 'Canada',
@@ -142,7 +141,6 @@ module.exports = [
             'http://data.waterloo.ca/datasets/2447415303e74bb9acdf0f43c2236b72_0',
         download:
             'https://opendata.arcgis.com/datasets/2447415303e74bb9acdf0f43c2236b72_0.zip',
-        format: 'zip',
         short: 'Waterloo',
         crosswalk: {
             common: 'COM_NAME',
@@ -150,8 +148,7 @@ module.exports = [
             location: 'TREE_TYPE',
             dbh: 'DBH_CM',
             ref: 'OBJECTID',
-        },
-        // filename:
+        }
     },
 
     {
@@ -216,8 +213,7 @@ module.exports = [
         download:
             'https://ckan0.cf.opendata.inter.prod-toronto.ca/download_resource/c1229af1-8ab6-4c71-b131-8be12da59c8e',
         info: 'https://open.toronto.ca/dataset/street-tree-data/',
-        format: 'zip',
-        filename: 'TMMS_Open_Data_WGS84.shp',
+        format: 'shp',
         gdalOptions: '-skipfailures',
         crosswalk: {
             dbh: 'DBH_TRUNK',
@@ -232,9 +228,7 @@ module.exports = [
             'https://opendata.arcgis.com/datasets/202d0f1a7f234e449761af8af14436d6_0.zip',
         info:
             'http://geodados.cm-lisboa.pt/datasets/arvoredo?geometry=-9.312%2C38.745%2C-9.148%2C38.768',
-        format: 'zip',
-        filename: 'Arvoredo.shp',
-
+        format: 'shp',
         crosswalk: {
             scientific: 'ESPECIE_VA',
             location: 'LOCAL',
@@ -270,7 +264,7 @@ module.exports = [
         download:
             'https://ckanprodstorage.blob.core.windows.net/opendata/Tree/SHP_ZIP/shp.Tree.zip',
         info: 'http://open.regina.ca/dataset/city-of-regina-tree-inventory',
-        format: 'zip',
+        format: 'shp',
         gdal_options: '-skipfailures',
         crosswalk: {
             common: 'Species',
@@ -288,7 +282,7 @@ module.exports = [
         download:
             'http://geoweb.dnv.org/Products/Data/SHP/EnvStreetTree_shp.zip',
         info: 'http://geoweb.dnv.org/data/index.php',
-        format: 'zip',
+        format: 'shp',
         crosswalk: {
             common: 'COMMONNAME',
             genus: 'GENUS',
@@ -308,8 +302,7 @@ module.exports = [
         download:
             'http://wroms.whiterockcity.ca/opendata/GIS/Data/Spatial/Parks/SHP/Tree.zip',
         info: 'http://data.whiterockcity.ca/dataset/tree',
-        format: 'zip',
-        filename: 'Open_data/GIS/Data/Spatial/Parks/SHP/Tree.shp',
+        format: 'shp',
         crosswalk: {
             scientific: 'SpeciesNam',
             ref: 'Tree_ID',
@@ -325,7 +318,6 @@ module.exports = [
             'https://opendata.arcgis.com/datasets/39d13a47b8f94cce82a9b4c86efc8ee7_114.zip?outSR=26911',
         info:
             'http://opendata.kelowna.ca/datasets/39d13a47b8f94cce82a9b4c86efc8ee7/data?geometry=-119.693%2C49.577%2C-119.178%2C49.887',
-        format: 'zip',
         crosswalk: {
             genus: 'GENUS',
             species: 'species',
@@ -343,7 +335,6 @@ module.exports = [
         download:
             'https://opendata.arcgis.com/datasets/4357fb7835fe49b39197a9440b2e868b_0.zip',
         info: 'http://hub.arcgis.com/datasets/welland::welland-trees',
-        format: 'zip',
         crosswalk: {
             description: 'Genus',
             dbh: 'DiamDBH',
@@ -359,7 +350,6 @@ module.exports = [
         download:
             'https://opendata.arcgis.com/datasets/c5d5ff5351a54fdb8d3934abbb5cda9a_8.zip',
         info: 'http://hub.arcgis.com/datasets/TownofAjax::town-trees',
-        format: 'zip',
         delFunc: x => x.STATUS === 'REMOVED', /// TODO implement
         crosswalk: {
             dbh: 'DBH',
@@ -376,7 +366,6 @@ module.exports = [
         download:
             'https://opendata.arcgis.com/datasets/054e46bee4594eb787d574266c832430_3.zip',
         info: 'http://hub.arcgis.com/datasets/CityofPG::trees',
-        format: 'zip',
         crosswalk: {
             planted: 'TreePlantD',
             common: 'CommonName',
@@ -399,7 +388,6 @@ module.exports = [
         download:
             'https://opendata.arcgis.com/datasets/66e3b95688394391a433fd29873aff20_10.zip',
         info: 'http://hub.arcgis.com/datasets/ExploreOakville::trees',
-        format: 'zip',
         crosswalk: {
             scientific: x => String(x.SPECIES).split(' - ')[1],
             common: x => String(x.SPECIES).split(' - ')[0],
@@ -417,7 +405,6 @@ module.exports = [
         download:
             'https://opendata.arcgis.com/datasets/36e90771770542baaa89afddce69195a_15.zip',
         info: 'http://hub.arcgis.com/datasets/VicMap::tree-species',
-        format: 'zip',
         crosswalk: {
             scientific: 'Species',
             dbh: 'DiameterAt',
@@ -435,7 +422,6 @@ module.exports = [
         download:
             'https://opendata.arcgis.com/datasets/e14c04be6c6c4692b70147edb937088c_25.zip',
         info: 'http://hub.arcgis.com/datasets/kamloops::trees',
-        format: 'zip',
         crosswalk: {
             // EDITBLEFRUITTREEFLAG!
             common: 'SPECIES', //mapl,amur
@@ -452,7 +438,6 @@ module.exports = [
         download:
             'https://opendata.arcgis.com/datasets/72e47f7c7b194047936ebb0ce3c4d32e_0.zip',
         info: 'http://hub.arcgis.com/datasets/Chestermere::tree-points',
-        format: 'zip',
         crosswalk: {
             common: 'Species',
             scientific: 'Species_Sc', // null?
@@ -469,7 +454,6 @@ module.exports = [
         download:
             'https://opendata.arcgis.com/datasets/eb043d306e4b4652a10b4b7b51f718ab_102.zip',
         info: 'http://hub.arcgis.com/datasets/newwestcity::trees-west',
-        format: 'zip',
         crosswalk: {
             scientific: 'Scientific',
             common: 'Common_Nam',
@@ -484,7 +468,6 @@ module.exports = [
         download:
             'https://opendata.arcgis.com/datasets/341e47f1d4cd4b4aa14a8804b992cc7e_101.zip',
         info: 'http://hub.arcgis.com/datasets/newwestcity::trees-east',
-        format: 'zip',
         crosswalk: {
             scientific: 'Scientific',
             common: 'Common_Nam',
@@ -500,7 +483,6 @@ module.exports = [
         download:
             'https://opendata.arcgis.com/datasets/290505c676d64cf09989eca1320aedd3_5.zip',
         info: 'http://hub.arcgis.com/datasets/mapleridge::street-tree',
-        format: 'zip',
         crosswalk: {
             species: 'Type',
             common: 'CommonName',
@@ -517,7 +499,6 @@ module.exports = [
         download:
             'https://opendata.arcgis.com/datasets/16123463ba3d48859a83f4883a414a45_7.zip',
         info: 'http://hub.arcgis.com/datasets/barrie::tree-location',
-        format: 'zip',
         crosswalk: {
             ref: 'ASSETID',
             location: 'TREETYPE',
@@ -531,7 +512,6 @@ module.exports = [
     //     long: '',
     //     download: 'https://opendata.arcgis.com/datasets/1971f19fc28c489b908eab199a5d2e72_85.zip?geometry=%7B%22xmin%22%3A-122.733%2C%22ymin%22%3A49.075%2C%22xmax%22%3A-122.406%2C%22ymax%22%3A49.114%2C%22type%22%3A%22extent%22%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D',
     //     info:'http://hub.arcgis.com/datasets/esric-yourville::parks-trees?geometry=-122.733%2C49.075%2C-122.406%2C49.114',
-    //     format: 'zip',
     //     crosswalk: {
     //     }
     // },
@@ -543,7 +523,6 @@ module.exports = [
         download:
             'https://opendata.arcgis.com/datasets/ae1c4b5613334d8a823359565fafb911_12.zip',
         info: 'http://hub.arcgis.com/datasets/victoriaville::tree',
-        format: 'zip',
         crosswalk: {
             // angle??
             // TYPE, SIZE, ANGLE, LANGUAGE,...what do we do with any of this??

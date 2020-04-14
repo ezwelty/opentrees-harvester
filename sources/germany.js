@@ -73,7 +73,6 @@ module.exports = [
         country: 'Germany',
         short: 'Berlin',
         download: 'https://opendata.arcgis.com/datasets/05c3f9d7dea6422b86e30967811bddd7_0.zip',
-        info: '',
         compression: 'zip',
         crosswalk: {
             scientific: 'Art_Bot',
@@ -81,7 +80,7 @@ module.exports = [
             // Gattung, //
             planted: 'Pflanzjahr',
             height: 'BaumHoehe',
-            location: 'Kategorie', // maybe others Staummfg...
+            location: 'Kategorie' // maybe others Staummfg...
         },
         centre: {lon: 13.43, lat: 52.485}
     },

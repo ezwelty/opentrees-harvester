@@ -137,7 +137,6 @@ module.exports = [
         download: 'https://www.data.gouv.fr/fr/datasets/r/c6000378-1f3c-4c0c-8f62-9a5b72dc7a85',
         compression: 'zip',
         format: 'shp', // hmmm
-        info: '',
         short: 'Saint Quentinois',
         long: 'Agglomération du Saint Quentinois',
         crosswalk: {
@@ -156,7 +155,6 @@ module.exports = [
         download: 'https://www.data.gouv.fr/fr/datasets/r/3aa28eaa-9ee4-49ff-bb73-74c21d14268d',
         compression: 'zip',
         format: 'shp',
-        info: '',
         short: 'Metz',
         crosswalk: {
             dbh: 'diametre',
@@ -170,22 +168,19 @@ module.exports = [
         download: 'https://www.data.gouv.fr/fr/datasets/r/c631e78d-4d15-44eb-a40d-cd593f0e1bed',
         compression: 'zip',
         format: 'shp',
-        info: '',
         short: 'Seine-Saint-Denis',
         crosswalk: {
             height: 'hauteur',
             scientific: 'essence',
             maturity: 'stade_dvlp',
             dbh: x => `Circumference: ${x.circonfere}`
-        },
-        // long: 'Agglomération du Saint Quentinois'
+        }
     },
     {
         id: 'versailles',
         country: 'France',
         download: 'https://www.data.gouv.fr/fr/datasets/r/4b9d9fe4-f8da-4db1-8057-9e83b2abf5d2',
         format: 'geojson',
-        info: '',
         short: 'Versailles',
         crosswalk: {
             scientiifc: 'ESPECE', // watch out for 'VIDE' TODO
@@ -198,7 +193,6 @@ module.exports = [
         download: 'https://www.data.gouv.fr/fr/datasets/r/dbdc2068-ee22-474d-8a42-261554482a4f',
         compression: 'zip',
         format: 'shp',
-        info: '',
         short: 'Nevers',
         long: 'Ville de Nevers',
         crosswalk: {

@@ -150,7 +150,7 @@ module.exports = [
     crosswalk: {
         id: 'TreeID',
         scientific: x => String(x.qSpecies).split(' :: ')[0],
-        common:  x => String(x.qSpecies).split(' :: ')[1],
+        common: x => String(x.qSpecies).split(' :: ')[1],
         description: 'qSiteInfo',
         dbh: x => Number(x.DBH) * 2.54, // assuming
         planted: 'PlantDate',

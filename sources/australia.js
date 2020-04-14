@@ -46,7 +46,7 @@ module.exports = [
     short: 'Colac-Otways',
     long: 'Colac-Otways Shire',
     country: 'Australia',
-    crosswalk:  {
+    crosswalk: {
         ref: 'tree_id',
         genus: 'genus_desc',
         species: 'spec_desc',

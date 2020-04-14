@@ -78,7 +78,7 @@ module.exports = [
         download: 'https://ckan.dataplatform.nl/dataset/dd3873f6-b2d0-42e8-94c7-f7b47dcb71f0/resource/7ac8ba4a-586e-43f2-b12e-014079c83f00/download/bomen-csv.zip',
         info: 'https://data.overheid.nl/dataset/bomen-csv',
         format: 'csv',
-        zip: true,
+        compression: 'zip',
         geometry: {x: 'LONG', y: 'LAT'},
         crosswalk: {
             ref: 'BOOMNUMMER',

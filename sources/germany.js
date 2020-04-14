@@ -288,7 +288,7 @@ module.exports = [
         download: 'http://www.stadtplan.troisdorf.de/opengeodata/opendata/data/Troisdorf_Baumkataster_180926.zip',
         info: 'http://www.stadtplan.troisdorf.de/opengeodata/opendata/open_data_baumkataster.html',
         format: 'csv',
-        zip: true,
+        compression: 'zip',
         coordsFunc: (props) => [Number(props['X-Koordinate'].replace(',','.')), Number(props['Y-Koordinate'].replace(',','.'))],
         crosswalk: {
             height: 'Baumhoehe',

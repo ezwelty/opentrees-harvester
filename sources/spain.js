@@ -83,7 +83,7 @@ module.exports = [
         long: '',
         download: 'https://datosabiertos.ayto-arganda.es/dataset/bc20e1e3-0c6c-4f0e-817b-c95f052e3783/resource/411fb473-7620-4060-be7a-5f2bebc090b4/download/argandainventario2015.zip',
         info: 'https://datos.gob.es/es/catalogo/l01280148-inventario-arboles-casco-urbano-20151',
-        zip: true,
+        compression: 'zip',
         format: 'kml', // ew
         crosswalk: {
             description: 'Description', // seriously? HTML table. this cannot end well.

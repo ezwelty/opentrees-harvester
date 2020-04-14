@@ -10,7 +10,7 @@ module.exports = [
     crosswalk: {
       ref: 'localId',
       scientific: x => String(x.text).split(' - ')[0],
-      common: x => String(x.text).split(' - ')[1],
+      common: x => String(x.text).split(' - ')[1]
     }
   }
 ].map(s => ({...s, country: 'Luxembourg'}))

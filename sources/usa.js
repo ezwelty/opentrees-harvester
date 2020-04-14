@@ -43,8 +43,8 @@ module.exports = [
         dbh: x => Math.round(x.DBH * 2.54 * 10) / 10, // assume inches
         note: 'Notes',
         //Size, Edible, Species_De, DBH, Species (two letters), Planted_By, Plant_Date, Collected_, NEighborho, Address, Functional, Notes, Site_Size,Site_Devel, Wires, Site_Width,Site_Type,
-        // { 'type': 'Feature', 'properties': { 'OBJECTID': 1, 'Date_Inven': '2010-08-21T00:00:00.000Z', 'Species': 'CO', 'DBH': 1.0, 'Condition': 'Good', 'Site_Type': null, 'Site_Width': 9.0, 'Wires': 'High voltage', 'Site_devel': 'Improved', 'Site_Size': 'Medium', 'Notes': null, 'Address': '5234 NE 35TH PL', 'Neighborho': 'CONCORDIA', 'Collected_': 'volunteer', 'Planted_By': null, 'Plant_Date': null, 'Scientific': 'Cornus spp.', 'Family': 'Cornaceae', 'Genus': 'Cornus', 'Common': 'dogwood', 'Functional': 'BD', 'Size': 'S', 'Edible': 'no', 'Species_De': null }, 'geometry': { 'type': 'Point', 'coordinates': [ -122.627555010562858, 45.561116824606664 ] } },
-    },
+        // { 'type': 'Feature', 'properties': { 'OBJECTID': 1, 'Date_Inven': '2010-08-21T00:00:00.000Z', 'Species': 'CO', 'DBH': 1.0, 'Condition': 'Good', 'Site_Type': null, 'Site_Width': 9.0, 'Wires': 'High voltage', 'Site_devel': 'Improved', 'Site_Size': 'Medium', 'Notes': null, 'Address': '5234 NE 35TH PL', 'Neighborho': 'CONCORDIA', 'Collected_': 'volunteer', 'Planted_By': null, 'Plant_Date': null, 'Scientific': 'Cornus spp.', 'Family': 'Cornaceae', 'Genus': 'Cornus', 'Common': 'dogwood', 'Functional': 'BD', 'Size': 'S', 'Edible': 'no', 'Species_De': null }, 'geometry': { 'type': 'Point', 'coordinates': [ -122.627555010562858, 45.561116824606664 ] } }
+    }
 },
 {
     id: 'pdx-park',
@@ -66,7 +66,7 @@ module.exports = [
         description: 'Species_fa',
         // lots more
     },
-    primary: 'pdx-street',
+    primary: 'pdx-street'
 },
 {
     id: 'nyc',
@@ -83,7 +83,7 @@ module.exports = [
         common: 'spc_common',
         health: 'health',
         // sooo many other fields.
-    },
+    }
 },
 // TODO there is a lat lon buiried in "Property Address" field
 {
@@ -97,7 +97,7 @@ module.exports = [
         scientific: 'Species',
         dbh: x => Number(x['Diameter in Inches']) * INCHES
     },
-    centre: {lon: -71.43, lat: 41.83},
+    centre: {lon: -71.43, lat: 41.83}
 },
 {
     id: 'washington-dc',
@@ -119,7 +119,7 @@ module.exports = [
         note: 'TREE_NOTES',
         health: 'CONDITION',
         // maybe ref: 'FACILITYID'
-    },
+    }
 },
 {
     id: 'buffalo-ny',
@@ -132,8 +132,8 @@ module.exports = [
         scientific: 'Botanical Name',
         common: 'Common Name',
         dbh: x => Number(x.DBH) * 2.54, // assuming
-        id: 'Site ID',
-    },
+        id: 'Site ID'
+    }
 },
 {
     id: 'san_francisco',
@@ -152,7 +152,7 @@ module.exports = [
         planted: 'PlantDate',
         // also qLegalStatus (private/DPW), qCaretaker, PlantType
     },
-    centre: {lon: -122.435, lat: 37.77},
+    centre: {lon: -122.435, lat: 37.77}
 },
 {
     id: 'philadelphia',
@@ -176,9 +176,9 @@ module.exports = [
         scientific: 'SPECIES_BO',
         common: 'SPECIES_CO',
         dbh: 'DIAMETER',
-        location: 'LOCATION_NAME',
+        location: 'LOCATION_NAME'
     },
-    centre: {lon: -104.9454, lat: 39.7273},
+    centre: {lon: -104.9454, lat: 39.7273}
 },
 {
     id: 'boulder',
@@ -196,7 +196,7 @@ module.exports = [
         dbh: x => 'DBHINT' * 2.54,
         location: 'LOCTYPE',
         // also interesting attributes on deciduous, broadlaved etc.
-    },
+    }
 },
 {
     id: 'cambridge',
@@ -213,7 +213,7 @@ module.exports = [
         planted: 'PlantDate',
         health: x => String(x.TreeCondit).replace(/ \(.*/, '') // strings like "Good (EW 2013)"
     },
-    short: 'Cambridge',
+    short: 'Cambridge'
 },
 {
     id: 'berkeley',
@@ -227,9 +227,9 @@ module.exports = [
         height: x => Number(x.HEIGHT_FT) / FEET,
         dbh: x => Number(x.DBH_IN) * INCHES,
         health: 'CONDITION', // numeric...
-        note: 'note',
+        note: 'note'
     },
-    short: 'Berkeley',
+    short: 'Berkeley'
 },
 {
     id: 'pittsburgh',
@@ -244,7 +244,7 @@ module.exports = [
         ref: 'id',
         scientific: 'scientific_name',
         height: 'height',
-        health: 'condition',
+        health: 'condition'
     }
 },
 {
@@ -262,7 +262,7 @@ module.exports = [
         health: 'CONDITION1',
         maturity: 'LIFE_STAGE',
         common: 'SP_CODE',
-        description: 'STR_NAME',
+        description: 'STR_NAME'
     }
 },
 {
@@ -279,7 +279,7 @@ module.exports = [
         dbh: x => x.DBH * INCHES,
         height: x => x.HEIGHT / FEET,
         health: 'CONDITION',
-        location: 'LAND_TYPE',
+        location: 'LAND_TYPE'
     }
 },
 {
@@ -310,7 +310,7 @@ module.exports = [
     crosswalk: {
         updated: 'editdate',
         common: 'name',
-        description: 'description',
+        description: 'description'
     }
 },
 {
@@ -368,9 +368,9 @@ module.exports = [
         dbh: x => Number(x.DiameterBreastHeight) * INCHES,
         height: x => Number(x.Height) / FEET,
         location: 'LocationType',
-        health: 'Condition',
+        health: 'Condition'
     },
-    centre: {lon: -122.03987, lat: 37.31706},
+    centre: {lon: -122.03987, lat: 37.31706}
 },
 {
     id: 'oxnard',
@@ -385,7 +385,7 @@ module.exports = [
         scientific: 'BOTANICALN',
         common: 'COMMONNAME',
         dbh: x => Number(x.DBH) * INCHES,
-        height: x => Number(x.HEIGHT) / FEET,
+        height: x => Number(x.HEIGHT) / FEET
     }
 },
 {
@@ -434,7 +434,7 @@ module.exports = [
         crown: feet('CROWN_RADI'),
         health: 'RATING', // out of 10?
         note: 'COMMENT',
-        ref: 'TREE_ID',
+        ref: 'TREE_ID'
     }
 },
 {
@@ -453,7 +453,7 @@ module.exports = [
         spread: 'WIDTH',
         height: 'HEIGHT',
         health: 'COND',
-        note: 'NOTES',
+        note: 'NOTES'
     }
 },
 {
@@ -520,7 +520,7 @@ module.exports = [
         dbh: inches('TR_DIA'),
         health: 'CONDITION',
         // lots of others
-        updated: 'INPUT_DATE',
+        updated: 'INPUT_DATE'
     }
 },
 {
@@ -541,7 +541,7 @@ module.exports = [
         dbh: inches('Diameter'),
         health: 'Condition', // /100,
         Note: 'SpecialComments',
-        updated: 'last_edited_date',
+        updated: 'last_edited_date'
     }
 },
 {
@@ -557,7 +557,7 @@ module.exports = [
         note: 'Notes',
         // TreeSize?
     },
-    centre: {lon: -72.49307, lat: 42.3818},
+    centre: {lon: -72.49307, lat: 42.3818}
 },
 {
     id: 'colorado_springs',
@@ -567,7 +567,7 @@ module.exports = [
     info: 'http://hub.arcgis.com/datasets/coloradosprings::trees/data?geometry=-106.259%2C38.699%2C-103.338%2C39.073',
     crosswalk: {
         common: 'Common_Name',
-        dbh: inches('DBH'),
+        dbh: inches('DBH')
     }
 },
 {
@@ -602,7 +602,7 @@ module.exports = [
         scientific: 'SciName',
         height: 'Height', // 11-20
         dbh: inches('Diameter'),
-        spread: 'Spread',
+        spread: 'Spread'
     }
 },
 {
@@ -618,7 +618,7 @@ module.exports = [
         height: 'HEIGHT',
         // FICTITIOUS?
     },
-    centre: {lon: -117.86, lat: 33.83},
+    centre: {lon: -117.86, lat: 33.83}
 },
 {
     id: 'charlottesville_nc',
@@ -651,7 +651,7 @@ module.exports = [
         genus: 'Genus',
         species: 'Species_1',
         common: 'CommonName',
-        health: 'Condition_1',
+        health: 'Condition_1'
     }
 },
 {
@@ -671,7 +671,7 @@ module.exports = [
         variety: 'CULTIVAR',
         dbh: inches('DBH'),
         health: 'CONDITION',
-        updated: 'LASTMODDATE',
+        updated: 'LASTMODDATE'
     }
 },
 {
@@ -685,7 +685,7 @@ module.exports = [
         common: 'Tree_Type',
         health: 'Health',
         note: 'Comments',
-        ref: 'OBJECTID',
+        ref: 'OBJECTID'
     }
 },
 {
@@ -701,7 +701,7 @@ module.exports = [
         //class: deciduous
         location: 'TREE_TYPE',
         health: 'CONDITION',
-        scientific: 'SCIENTIFIC',
+        scientific: 'SCIENTIFIC'
     }
 },
 {
@@ -780,7 +780,7 @@ module.exports = [
         health: 'Condition',
         updated: 'last_edited_date',
         common: 'Common_Name',
-        ref: 'FacilityID',
+        ref: 'FacilityID'
     }
 },
 {
@@ -798,7 +798,7 @@ module.exports = [
         health: 'COND',
         updated: 'INSPECT_DT',
         note: 'NOTES',
-        family: 'FAMILY',
+        family: 'FAMILY'
     }
 },
 {
@@ -814,7 +814,7 @@ module.exports = [
         common: 'COMMONNAME',
         dbh: 'DBH', //07-12
         height: 'HEIGHT', // 15-30
-        updated: 'EditDate',
+        updated: 'EditDate'
     }
 },
 {
@@ -824,7 +824,7 @@ module.exports = [
     short: 'UC Santa Barbara',
     long: 'University of California, Santa Barbara',
     download: 'https://opendata.arcgis.com/datasets/c6eb1b782f674be082f9eb764314dda5_0.csv',
-    info: 'http://hub.arcgis.com/datasets/ucsb::treekeeper-012116',
+    info: 'http://hub.arcgis.com/datasets/ucsb::treekeeper-012116'
 },
 {
     id: 'sarasota_fl',
@@ -840,7 +840,7 @@ module.exports = [
         health: 'Condition',
         owner: 'Ownership',
         note: 'Notes',
-        updated: 'last_edited_date',
+        updated: 'last_edited_date'
     }
 },
 {
@@ -870,7 +870,7 @@ module.exports = [
     crosswalk: {
         note: 'NOTES',
         common: 'NAME_COMN',
-        ref: 'UNT_ID',
+        ref: 'UNT_ID'
     }
 },
 {
@@ -888,7 +888,7 @@ module.exports = [
         dbh: 'DBH_RANGE', //19-24 also EXACTDBH
         height: feet('HEIGHT_RAN'), // 30-45
         health: 'CONDITION',
-        updated: 'LAST_EDITED_DATE',
+        updated: 'LAST_EDITED_DATE'
     }
 },
 {
@@ -902,7 +902,7 @@ module.exports = [
         ref: 'TK_ID',
         common: 'COMMON',dbh: inches('DBH'),
         health: 'CONDITION',
-        updated: 'INSPECT_DT',
+        updated: 'INSPECT_DT'
     }
 },
 {
@@ -918,7 +918,7 @@ module.exports = [
         scientific: 'BOTANICAL',
         dbh: 'DBH', // many blanks...?
         health: 'COND',
-        note: 'NOTES',
+        note: 'NOTES'
     }
 },
 {
@@ -928,7 +928,7 @@ module.exports = [
     short: 'UC Davis',
     long: 'University of California Davis',
     info: 'http://hub.arcgis.com/datasets/ucda::uc-davis-tree-database',
-    format: 'https://opendata.arcgis.com/datasets/07939ef894984a95b58098315f80c046_0.zip',
+    format: 'https://opendata.arcgis.com/datasets/07939ef894984a95b58098315f80c046_0.zip'
 },
 {
     id: 'hudson_river_park',
@@ -943,7 +943,7 @@ module.exports = [
         height: feet('Height'),
         dbh: inches('DBH'),
         structure: 'Structural_Value',
-        ref: 'HRPT_Numbering_1',
+        ref: 'HRPT_Numbering_1'
     }
 },
 {
@@ -961,7 +961,7 @@ module.exports = [
         health: 'CONDITION',
         updated: 'last_edited_date',
         heaght: 'HEIGHT', //11-20
-        note: 'COMMENTS',
+        note: 'COMMENTS'
     }
 },
 {
@@ -999,7 +999,7 @@ module.exports = [
         health: x=> String(x.CONDITION).split(' ')[0],
         note: 'NOTES',
         updated: 'EditDate',
-        owner: 'OWNEDBY',
+        owner: 'OWNEDBY'
     }
 },
 {
@@ -1018,7 +1018,7 @@ module.exports = [
         health: x=> String(x.CONDITION).split(' ')[0],
         note: 'NOTES',
         updated: 'EditDate',
-        owner: 'OWNEDBY',
+        owner: 'OWNEDBY'
     },
     primary: 'san_jose_ca1'
 },
@@ -1038,7 +1038,7 @@ module.exports = [
         health: x=> String(x.CONDITION).split(' ')[0],
         note: 'NOTES',
         updated: 'EditDate',
-        owner: 'OWNEDBY',
+        owner: 'OWNEDBY'
     },
     primary: 'san_jose_ca1'
 },
@@ -1051,7 +1051,7 @@ module.exports = [
     download: 'http://geohub-loudoungis.opendata.arcgis.com/datasets/21ece36a6fbd447b95b9446f752552a4_0.zip',
     info: 'https://catalog.data.gov/dataset/loudoun-trees-9b144',
     crosswalk: {
-        ref: 'TR_LOUD_ID',
+        ref: 'TR_LOUD_ID'
     }
 }
 ].map(s => { s.country = 'USA'; return s; });

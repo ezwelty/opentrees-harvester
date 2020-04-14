@@ -9,7 +9,7 @@ module.exports = [
       ref: 'Arbol_id',
       planted: x => x.Fecha_plantado !== '0000-00-00' ? x.Fecha_plantado : null,
       common: 'Especie', // mostly in Spanish,
-      updated: 'Fecha_registro',
+      updated: 'Fecha_registro'
     },
     centre: {lon: -100.3071, lat: 25.6801}
   }

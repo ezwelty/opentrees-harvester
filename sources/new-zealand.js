@@ -7,7 +7,7 @@ module.exports = [
     info: 'http://data-pncc.opendata.arcgis.com/datasets/077787e2299541bc8d2c2dbf8d7dc4e4_18/data',
     crosswalk: {
       scientific: 'botanical_',
-      common: 'species',
+      common: 'species'
     }
   }
 ].map(s => ({...s, country: 'New Zealand'}))

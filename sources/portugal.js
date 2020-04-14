@@ -16,7 +16,7 @@ module.exports = [
     format: 'shp',
     crosswalk: {
       scientific: 'ESPECIE_VA',
-      location: 'LOCAL',
+      location: 'LOCAL'
     },
     short: 'Lisbon'
   }

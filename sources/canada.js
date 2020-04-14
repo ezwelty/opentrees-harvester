@@ -28,10 +28,10 @@ module.exports = [
             common: 'NOM_FRANCAIS',
             dbh: 'DIAMETRE',
             planted: 'DATE_PLANTE',
-            location: 'NOM_TOPOGRAPHIE',
+            location: 'NOM_TOPOGRAPHIE'
         },
         short: 'Quebec City',
-        country: 'Canada',
+        country: 'Canada'
     },
     {
         id: 'longueuil', // Canada
@@ -44,8 +44,8 @@ module.exports = [
         crosswalk: {
             scientific: x => String(x.Espece).split(' - ')[0],
             common: x => String(x.Espece).split(' - ')[1],
-            dbh: 'DiamTronc',
-        },
+            dbh: 'DiamTronc'
+        }
     },
     {
         id: 'calgary',
@@ -67,8 +67,8 @@ module.exports = [
                 else return 'Poor';
                 // I have no idea
             },
-            ref: 'WAM_ID',
-        },
+            ref: 'WAM_ID'
+        }
     },
     {
         id: 'edmonton',
@@ -94,8 +94,8 @@ module.exports = [
             // },
             planted: 'PLANTED_DATE',
             location: 'LOCATION_TYPE',
-            ref: 'id',
-        },
+            ref: 'id'
+        }
     },
     {
         id: 'ottawa',
@@ -104,10 +104,10 @@ module.exports = [
         format: 'csv',
         crosswalk: {
             scientific: 'SPECIES',
-            ref: 'SAP_ID',
+            ref: 'SAP_ID'
         },
         short: 'Ottawa',
-        country: 'Canada',
+        country: 'Canada'
     },
     {
         id: 'moncton',
@@ -120,11 +120,11 @@ module.exports = [
             common: 'BOTNAME',
             dbh: 'DIAM',
             height: 'HT',
-            updated: 'edited_date',
+            updated: 'edited_date'
         },
         short: 'Moncton',
         country: 'Canada',
-        centre: {lon: -64.81577, lat: 46.10613},
+        centre: {lon: -64.81577, lat: 46.10613}
     },
     {
         id: 'waterloo',
@@ -137,7 +137,7 @@ module.exports = [
             scientific: 'LATIN_NAME',
             location: 'TREE_TYPE',
             dbh: 'DBH_CM',
-            ref: 'OBJECTID',
+            ref: 'OBJECTID'
         }
     },
     {
@@ -151,8 +151,8 @@ module.exports = [
             ref: 'tree_id',
             scientific: 'botanical',
             common: 'common',
-            dbh: 'dbh',
-        },
+            dbh: 'dbh'
+        }
     },
     {
         id: 'vancouver',
@@ -168,8 +168,8 @@ module.exports = [
             common: 'common_name',
             height: 'height_range_id', // this is in feet? urgh
             dbh: Number('diameter') * 2.54, // seriouosly, inches
-            planted: 'date_planted',
-        },
+            planted: 'date_planted'
+        }
     },
     {
         // TODO https://data.surrey.ca/dataset/important-trees
@@ -188,8 +188,8 @@ module.exports = [
             variety: 'TREE_VARIETY',
             ule: 'YRS_LIFE_EXPECTANCY',
             // health: 'CONDITION', // blank
-            // updated: 'CONDITIONDATE',
-        },
+            // updated: 'CONDITIONDATE'
+        }
     },
     {
         id: 'toronto',
@@ -202,8 +202,8 @@ module.exports = [
         crosswalk: {
             dbh: 'DBH_TRUNK',
             common: 'COMMON_NAM',
-            scientific: 'BOTANICAL_',
-        },
+            scientific: 'BOTANICAL_'
+        }
     },
     {
         // probably duplicated by Edmonton anyway?
@@ -220,9 +220,9 @@ module.exports = [
                 .map(Number),
         crosswalk: {
             ref: 'TreeSiteID',
-            common: 'Name',
+            common: 'Name'
         },
-        centre: {lon: -113.54, lat: 53.477},
+        centre: {lon: -113.54, lat: 53.477}
     },
     {
         id: 'regina',
@@ -238,8 +238,8 @@ module.exports = [
             owner: 'Ownership',
             planted: 'Year_Plant',
             dbh: 'Diameter',
-            value: 'Tree_Value',
-        },
+            value: 'Tree_Value'
+        }
     },
     {
         id: 'north_vancouver',
@@ -257,8 +257,8 @@ module.exports = [
             height: 'HEIGHT_M',
             health: 'CONDITION', // see also CONDITION_ which has text
             ref: 'TAGNUMBER',
-            location: 'AM_TYPE_RE',
-        },
+            location: 'AM_TYPE_RE'
+        }
     },
     {
         id: 'white_rock',
@@ -272,7 +272,7 @@ module.exports = [
             scientific: 'SpeciesNam',
             ref: 'Tree_ID',
             // look at Removed
-        },
+        }
     },
     {
         id: 'kelowna',
@@ -286,9 +286,9 @@ module.exports = [
             species: 'species',
             common: 'species_co',
             dbh: 'DBH',
-            ref: 'SITE_ID',
+            ref: 'SITE_ID'
         },
-        centre: {lon: -119.46786, lat: 49.89029},
+        centre: {lon: -119.46786, lat: 49.89029}
     },
     {
         id: 'welland',
@@ -301,8 +301,8 @@ module.exports = [
             description: 'Genus',
             dbh: 'DiamDBH',
             planted: 'DatePlant',
-            location: 'PlantArea',
-        },
+            location: 'PlantArea'
+        }
     },
     {
         id: 'ajax',
@@ -316,8 +316,8 @@ module.exports = [
             dbh: 'DBH',
             common: 'TYPE',
             updated: 'LAST_EDI_1',
-            note: 'COMMENTS',
-        },
+            note: 'COMMENTS'
+        }
     },
     {
         id: 'prince_george',
@@ -337,8 +337,8 @@ module.exports = [
             dbh: 'DBH',
             crown: 'TreeCrownA',
             health: 'ConditionD',
-            location: 'TreeClassi',
-        },
+            location: 'TreeClassi'
+        }
     },
     {
         id: 'oakville',
@@ -352,8 +352,8 @@ module.exports = [
             common: x => String(x.SPECIES).split(' - ')[0],
             dbh: 'DBH',
             height: 'HEIGHT',
-            crown: 'CROWN_WIDT',
-        },
+            crown: 'CROWN_WIDT'
+        }
     },
     {
         // see also http://hub.arcgis.com/datasets/VicMap::surveyed-trees
@@ -369,8 +369,8 @@ module.exports = [
             height: 'Height',
             age: 'PlantingDa',
             planted: 'YearPlante',
-            updated: 'InventoryD',
-        },
+            updated: 'InventoryD'
+        }
     },
     {
         id: 'kamloops',
@@ -384,8 +384,8 @@ module.exports = [
             common: 'SPECIES', //mapl,amur
             spread: 'SPREAD',
             planted: 'PLANTEDYEA',
-            ref: 'FACILITYID',
-        },
+            ref: 'FACILITYID'
+        }
     },
     {
         id: 'chestermere',
@@ -399,8 +399,8 @@ module.exports = [
             scientific: 'Species_Sc', // null?
             planted: 'Date_Plant',
             height: 'Height__me',
-            health: 'Condition',
-        },
+            health: 'Condition'
+        }
     },
     {
         id: 'new_west_west',
@@ -412,8 +412,8 @@ module.exports = [
         crosswalk: {
             scientific: 'Scientific',
             common: 'Common_Nam',
-            variety: 'Cultivar',
-        },
+            variety: 'Cultivar'
+        }
     },
     {
         id: 'new_west_east',
@@ -425,9 +425,9 @@ module.exports = [
         crosswalk: {
             scientific: 'Scientific',
             common: 'Common_Nam',
-            variety: 'Cultivar',
+            variety: 'Cultivar'
         },
-        primary: 'new_west_west',
+        primary: 'new_west_west'
     },
     {
         id: 'maple_ridge',
@@ -443,7 +443,7 @@ module.exports = [
             genus: 'Genus',
             species: 'Species',
             // stuff about refunds?
-        },
+        }
     },
     {
         id: 'barrie',
@@ -453,8 +453,8 @@ module.exports = [
         info: 'http://hub.arcgis.com/datasets/barrie::tree-location',
         crosswalk: {
             ref: 'ASSETID',
-            location: 'TREETYPE',
-        },
+            location: 'TREETYPE'
+        }
     },
     {
         // something wrong with this one, it never generates
@@ -465,7 +465,7 @@ module.exports = [
         long: 'Township of Langley',
         download: 'https://opendata.arcgis.com/datasets/1971f19fc28c489b908eab199a5d2e72_85.geojson',
         // info: 'http://data-tol.opendata.arcgis.com/datasets/trees',
-        info: 'https://hub.arcgis.com/datasets/1971f19fc28c489b908eab199a5d2e72_85',
+        info: 'https://hub.arcgis.com/datasets/1971f19fc28c489b908eab199a5d2e72_85'
     },
     {
         id: 'victoriaville',
@@ -477,7 +477,7 @@ module.exports = [
         crosswalk: {
             // angle??
             // TYPE, SIZE, ANGLE, LANGUAGE,...what do we do with any of this??
-        },
+        }
     },
     {
         id: 'lethbridge_ca',
@@ -492,9 +492,9 @@ module.exports = [
             spread: 'spread',
             trunks: 'trunks',
             planted: 'planted',
-            ref: 'AssetID',
+            ref: 'AssetID'
         },
-        licenseUrl: 'https://www.lethbridge.ca/Pages/OpenDataLicense.aspx',
+        licenseUrl: 'https://www.lethbridge.ca/Pages/OpenDataLicense.aspx'
     },
     {
         id: 'kitchener_ca',
@@ -509,7 +509,7 @@ module.exports = [
             planted: 'YEAR_PLANT',
             updated: 'UPDATE_DAT',
             dbh: 'DBH',
-            note: 'NOTES',
+            note: 'NOTES'
         },
         licenseUrl: '', // https://open-kitchenergis.opendata.arcgis.com/datasets/e42a9601b87a4417b3d3d15a0f596f64_0 // no exact url
     },
@@ -524,9 +524,9 @@ module.exports = [
             planted: 'INSTDATE',
             common: 'CBOTDESC',
             // scientific code: BOTNAME
-            updated: 'MODDTTM',
+            updated: 'MODDTTM'
         },
-        licenseUrl: 'http://www5.mississauga.ca/research_catalogue/CityofMississauga_TermsofUse.pdf',
+        licenseUrl: 'http://www5.mississauga.ca/research_catalogue/CityofMississauga_TermsofUse.pdf'
     },
     {
         id: 'st_catharines_ca',
@@ -539,9 +539,9 @@ module.exports = [
             scientific: 'BOTANICAL',
             common: 'COMMON',
             dbh: 'DBH',
-            trunks: 'STEMS',
+            trunks: 'STEMS'
         },
-        license: '',
+        license: ''
     },
     {
         id: 'york_ca',
@@ -556,9 +556,9 @@ module.exports = [
             planted: 'YEARPLANTE',
             dbh: 'CURRENTDBH',
             height: 'TREEHEIGHT',
-            owner: 'OWNERSHIP',
+            owner: 'OWNERSHIP'
         },
-        license: '',
+        license: ''
     },
     {
         id: 'repentigny_ca',
@@ -575,10 +575,10 @@ module.exports = [
             health: 'ETAT',
             owner: 'PROPRIETE',
             planted: 'DATE_PLANT',
-            updated: 'DATE_RELEV',
+            updated: 'DATE_RELEV'
         },
         language: 'fr',
-        license: 'CC-BY-4.0',
+        license: 'CC-BY-4.0'
     },
 ].map(s => {
     s.country = 'Canada';

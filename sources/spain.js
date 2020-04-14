@@ -8,8 +8,8 @@ module.exports = [
         info: 'https://datos.santiagodecompostela.gal/catalogo/gl/dataset/arboredo',
         format: 'zip',
         crosswalk: {
-            location: 'tipolexia',
-        },
+            location: 'tipolexia'
+        }
     },
     {
         id: 'barcelona',
@@ -30,7 +30,7 @@ module.exports = [
                 ] || x.ALCADA),
             // dbh: 'MIDA_ESCOCELL', // this is the size of the tree pit
             // ALCADA (reach): PETITA (small), MITJANA (average), GRAN (big)
-        },
+        }
     },
     {
         id: 'valencia_es',
@@ -45,7 +45,7 @@ module.exports = [
             //grupo?
         },
         license: 'CC-BY-4.0',
-        centre: {lon: -0.38564, lat: 39.46454},
+        centre: {lon: -0.38564, lat: 39.46454}
     },
     {
         id: 'sevilla_es',
@@ -60,7 +60,7 @@ module.exports = [
             maturity: 'Observ',
             // aux_arbol?
         },
-        license: '',
+        license: ''
     },
     {
         id: 'manlleu_es',
@@ -71,9 +71,9 @@ module.exports = [
         crosswalk: {
             common: 'NCOMU',
             scientiic: 'NCIENTIFIC',
-            note: 'OBSERVACIO',
+            note: 'OBSERVACIO'
         },
-        license: '',
+        license: ''
     },
     {
         // ugh, very messed up. Even most of the coordinates are bad, like "[-3,44509490754315]"
@@ -88,7 +88,7 @@ module.exports = [
         crosswalk: {
             description: 'Description', // seriously? HTML table. this cannot end well.
         },
-        license: '',
+        license: ''
     },
     {
         id: 'torrent_es',
@@ -97,9 +97,9 @@ module.exports = [
         download: 'http://datosabiertos.torrent.es/dataset/b372b8dd-07fb-4973-a2af-cb9a7c8de9bb/resource/dbae0e9d-c48b-4185-8a51-2599b093fdba/download/ODMAArbolAislado.csv',
         info: 'https://datos.gob.es/es/catalogo/l01462444-arbres-de-torrent-arboles-de-torrent',
         crosswalk: {
-            scientific: 'ESPECIE',
+            scientific: 'ESPECIE'
         },
-        license: '',
+        license: ''
     },
     {
         id: 'arganda_es',
@@ -119,7 +119,7 @@ module.exports = [
             health: 'ESTADO',
             // others...
         },
-        license: '',
+        license: ''
     },
     {
         id: 'caceres_es',
@@ -137,8 +137,8 @@ module.exports = [
                 String(x.dbpedia_owl_family)
                     .replace(/.*\//, '')
                     .replace(/_/g, ' '),
-            height: 'om_altura',
+            height: 'om_altura'
         },
-        license: '',
+        license: ''
     },
 ].map(x => ({ ...x, country: 'Spain' }));

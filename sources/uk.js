@@ -14,8 +14,8 @@ module.exports = [
             health: 'CONDITION',
             dbh: 'DIAMETERinCENTIMETRES',
             spread: 'SPREADRADIUSinMETRES',
-            height: 'TREEHEIGHTinMETRES',
-        },
+            height: 'TREEHEIGHTinMETRES'
+        }
     },
     {
         id: 'london',
@@ -31,7 +31,7 @@ module.exports = [
             common: 'common_name',
             description: 'display_name',
             //gla_id,borough,species_name,common_name,display_name,load_date,easting,northing,longitude,latitude
-        },
+        }
     },
     {
         id: 'birmingham',
@@ -43,9 +43,9 @@ module.exports = [
             scientific: 'species',
             maturity: 'age',
             height: 'height',
-            location: 'site_name',
+            location: 'site_name'
         },
-        centre: {lon: -1.8673, lat: 52.47},
+        centre: {lon: -1.8673, lat: 52.47}
     },
     {
         id: 'bristol',
@@ -59,9 +59,9 @@ module.exports = [
             common: 'common_name',
             scientific: 'latin_name',
             common: 'full_common_name',
-            crown: x => x['crown_width'],
+            crown: x => x['crown_width']
         },
-        short: 'Bristol',
+        short: 'Bristol'
     },
     {
         id: 'edinburgh',
@@ -77,8 +77,8 @@ module.exports = [
             height: 'Height',
             spread: 'Spread',
             maturity: 'AgeGroup',
-            bh: 'DiameterAt',
-        },
+            bh: 'DiameterAt'
+        }
     },
     {
         id: 'dundee',
@@ -94,8 +94,8 @@ module.exports = [
             circumference: 'GIRTH',
             maturity: 'AGE_CLASS',
             scientific: 'SCIENTIFIC_NAME',
-            common: 'POPULAR_NAME',
-        },
+            common: 'POPULAR_NAME'
+        }
     },
     {
         id: 'york',
@@ -108,8 +108,8 @@ module.exports = [
         crosswalk: {
             ref: 'TREEID',
             scientific: 'BOTANICAL',
-            common: 'SPECIES',
-        },
+            common: 'SPECIES'
+        }
     },
     {
         id: 'york-private',
@@ -122,9 +122,9 @@ module.exports = [
         crosswalk: {
             owner: 'OWNER',
             common: 'SPECIES',
-            scientific: 'BOTANICAL',
+            scientific: 'BOTANICAL'
         },
-        primary: 'york',
+        primary: 'york'
     },
     {
         id: 'craigynos_uk',
@@ -134,10 +134,10 @@ module.exports = [
         info: 'https://data.gov.uk/dataset/35853f97-5cb9-4779-89aa-87fd4d657595/craig-y-nos-tree-survey',
         format: 'gml',
         crosswalk: {
-            updated: 'survey_date',
+            updated: 'survey_date'
         },
         license: '',
-        centre: {lon: -3.684357, lat: 51.826852},
+        centre: {lon: -3.684357, lat: 51.826852}
     },
     {
         // these seem to be included in london already, in better quality.
@@ -156,6 +156,6 @@ module.exports = [
             maturity: 'Maturity',
             health: 'Physiological Condition',
             id: 'Identifier'
-        },
+        }
     },
 ];

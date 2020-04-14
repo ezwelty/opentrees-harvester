@@ -9,7 +9,7 @@ module.exports = [
         crosswalk: {
             scientific: 'LATBOOMSOO',
             dbh: 'STAMOMTREK',
-            ref: 'ANTW_ID',
+            ref: 'ANTW_ID'
         }
     },
     {
@@ -20,7 +20,7 @@ module.exports = [
         info: 'https://www.odwb.be/explore/dataset/arbustum/information/',
         crosswalk: {
         },
-        license: '',
+        license: ''
     },
     {
         id: 'roosendaal_be',
@@ -30,7 +30,7 @@ module.exports = [
         info: 'https://opendata.roosendaal.nl/datasets/gbi-boom-public',
         crosswalk: {
         },
-        license: '',
+        license: ''
     },
     {
         id: 'gent_be',
@@ -41,6 +41,6 @@ module.exports = [
         srs: {epsg: 3857},
         crosswalk: {
         },
-        license: 'https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html',
+        license: 'https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html'
     },
 ].map(s => ({...s, country: 'Belgium' }));

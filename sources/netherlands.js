@@ -13,7 +13,7 @@ module.exports = [
             location: 'Boomtype',
             height: 'Boomhoogte',
             planted: 'Plantjaar',
-            owner: 'Eigenaar',
+            owner: 'Eigenaar'
         }
     },
     {
@@ -30,7 +30,7 @@ module.exports = [
             location: 'Boomtype',
             height: 'Boomhoogte',
             planted: 'Plantjaar',
-            owner: 'Eigenaar',
+            owner: 'Eigenaar'
         },
         primary: 'amsterdam1'
     },
@@ -48,7 +48,7 @@ module.exports = [
             location: 'Boomtype',
             height: 'Boomhoogte',
             planted: 'Plantjaar',
-            owner: 'Eigenaar',
+            owner: 'Eigenaar'
         },
         primary: 'amsterdam1'
     },
@@ -66,7 +66,7 @@ module.exports = [
             location: 'Boomtype',
             height: 'Boomhoogte',
             planted: 'Plantjaar',
-            owner: 'Eigenaar',
+            owner: 'Eigenaar'
         },
         primary: 'amsterdam1'
     },
@@ -88,7 +88,7 @@ module.exports = [
             age: 'LEEFTIJD',
             owner: 'EIGENAAR'
         },
-        centre: {lon: 4.2777, lat: 52.0642},
+        centre: {lon: 4.2777, lat: 52.0642}
     },
     {
         id: 'hilversum',
@@ -121,7 +121,7 @@ module.exports = [
             common: 'nederlandse_boomnaam',
             planted: 'plantjaar',
             dbh: 'diameter_in_cm',
-            height: 'boomhoogte',
+            height: 'boomhoogte'
         }
     },
     {
@@ -138,7 +138,7 @@ module.exports = [
             planted: 'PLANTJAAR',
             height: 'HOOGTE',
             dbh: 'DIAMETER',
-            health: 'VITALITEIT',
+            health: 'VITALITEIT'
         }
     },
     {
@@ -160,7 +160,7 @@ module.exports = [
             scientific: 'BOOMSOORT',
             planted: 'PLANTJAAR',
             ule: 'LEVENSVERW',
-            owner: 'BEHEERDER',
+            owner: 'BEHEERDER'
         }
     },
     {
@@ -177,10 +177,10 @@ module.exports = [
             height: 'HOOGTE',
             dbh: 'DIAMETER',
             installed: 'AANLEGJAAR', //"introduction year"
-            owner: 'EIGENDOM',
+            owner: 'EIGENDOM'
         },
         license: 'CC0-1.0',
-        centre: {lon: 4.670, lat: 51.806},
+        centre: {lon: 4.670, lat: 51.806}
     },
     {
         id: 'lelystad_nl',
@@ -196,7 +196,7 @@ module.exports = [
             updated: 'INSPECTIEDATUM'
         },
         license: 'CC-BY-4.0',
-        centre: {lon: 5.478, lat: 52.509},
+        centre: {lon: 5.478, lat: 52.509}
     },
     {
         id: 'sliedrecht_nl',
@@ -208,11 +208,11 @@ module.exports = [
             installed: 'Aanlegjaar',
             common: 'Naam_NL',
             ref: 'Objectcode',
-            scientific: 'Boomsort',
+            scientific: 'Boomsort'
         },
         license: 'CC0-1.0',
         centre: {lon: 4.773, lat: 51.82},
-        srs: {epsg: 28992},
+        srs: {epsg: 28992}
     },
     {
         id: 'assen_nl',
@@ -248,7 +248,7 @@ module.exports = [
             //...others
         },
         license: 'CC-BY-4.0',
-        centre: {lon: 5.914, lat: 51.984},
+        centre: {lon: 5.914, lat: 51.984}
     },
     {
         id: 'delft_nl',
@@ -261,9 +261,9 @@ module.exports = [
             ref: 'ID_VELD',
             scientific: 'BOOMSOORT_',
             height: 'BOOMHOOGTE',
-            health: 'CONDITIE_K',
+            health: 'CONDITIE_K'
         },
-        license: 'CC0-1.0',
+        license: 'CC0-1.0'
     },
     {
         id: 'groningen_nl',
@@ -274,11 +274,11 @@ module.exports = [
         crosswalk: {
             common: 'NEDNAAM',
             scientific: 'LATNAAM',
-            owner: 'OMSCHRIJVP',
+            owner: 'OMSCHRIJVP'
         },
         srs: {epsg: 28992},
         license: 'CC0-1.0',
-        centre: {lon: 6.58358, lat: 53.2212},
+        centre: {lon: 6.58358, lat: 53.2212}
     },
     {
         id: 'alblasserdam_nl',
@@ -288,10 +288,10 @@ module.exports = [
         info: 'https://data.overheid.nl/dataset/bomen-alblasserdam',
         crosswalk: {
             scientific: 'Boomsoort',
-            common: 'Boomsoort Nederlands',
+            common: 'Boomsoort Nederlands'
         },
         srs: {epsg: 28992},
-        license: 'CC0-1.0',
+        license: 'CC0-1.0'
     },
     {
         id: 'zvartewaterland_nl',
@@ -302,9 +302,9 @@ module.exports = [
         crosswalk: {
             common: 'NEDBOOMSOORT',
             scientific: 'LATBOOMSOORT',
-            installed: 'AANLEGJAAR',
+            installed: 'AANLEGJAAR'
         },
-        license: 'CC-BY-4.0',
+        license: 'CC-BY-4.0'
     },
     {
         // broken
@@ -316,7 +316,7 @@ module.exports = [
         format: 'zip',
         crosswalk: {
         },
-        license: 'CC0-1.0',
+        license: 'CC0-1.0'
     },
     {
         id: 'barendrecht_nl',
@@ -331,10 +331,10 @@ module.exports = [
             scientific: 'LATBOOMSOORT',
             dbh: 'DIAMETER',
             installed: 'AANLEGJAAR',
-            updated: 'INSPECTIEDATUM',
+            updated: 'INSPECTIEDATUM'
         },
         license: 'CC0-1.0',
-        srs: {epsg: 28992},
+        srs: {epsg: 28992}
     },
     {
         id: 'zaanstad_nl',
@@ -343,9 +343,9 @@ module.exports = [
         download: 'https://ckan.dataplatform.nl/dataset/fde68bfe-9e7b-4db6-9924-485166029eaf/resource/96c805d4-fd3c-41ce-8e35-c98b30513819/download/znstdor15o-bor_vegetatie.csv',
         info: 'https://data.overheid.nl/dataset/znstdor15o',
         crosswalk: {
-            scientific: 'soortnaam_bomen',
+            scientific: 'soortnaam_bomen'
         },
-        license: 'CC0-1.0',
+        license: 'CC0-1.0'
     },
     {
         id: 'nijmegen_nl',
@@ -358,10 +358,10 @@ module.exports = [
             ref: 'ID',
             planted: 'PLANTJAAR',
             scientific: 'BOOMSOORT',
-            updated: 'DATUM_BIJGEWERKT',
+            updated: 'DATUM_BIJGEWERKT'
         },
         license: 'CC0-1.0',
-        srs: {epsg: 28992},
+        srs: {epsg: 28992}
     },
     {
         id: 'haarlem_nl',
@@ -375,9 +375,9 @@ module.exports = [
             scientific: 'name',
             age: 'leeftijd',
             crown: 'kroondiameter',
-            owner: 'beheerder',
+            owner: 'beheerder'
         },
-        license: '',
+        license: ''
     },
     {
         id: 'utrecht',

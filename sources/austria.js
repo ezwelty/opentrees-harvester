@@ -11,7 +11,7 @@ module.exports = [{
         dbh: x => x.STAMMUNGFANG / 3.14159 * 2,
         height: 'BAUMHOEHE',
         scientific: 'GATTUNG_ART',
-        crown: 'KRONENDURCHMESSER',
+        crown: 'KRONENDURCHMESSER'
     },
     license: 'CC-BY-4.0'
 },
@@ -30,7 +30,7 @@ module.exports = [{
         common: 'NameDeutsch',
         height: 'Hoehe',
         crown: 'Schirmdurchmesser',
-        dbh: 'Stammumfang',
+        dbh: 'Stammumfang'
     },
     license: 'CC-BY-4.0'
 },

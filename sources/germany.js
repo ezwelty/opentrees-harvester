@@ -30,7 +30,7 @@ module.exports = [
             scientific: 'Baumart_wi',
             common: 'Baumart_de',
             planted: 'Pflanzjahr',
-            ref: 'STANDORTNR',
+            ref: 'STANDORTNR'
         }
     },
     {
@@ -65,10 +65,10 @@ module.exports = [
             age: 'AlterSchätzung',
             genus: 'Gattung',
             species: 'Art',
-            common: 'DeutscherN',
+            common: 'DeutscherN'
 
         },
-        centre: {lon: 6.9796, lat: 50.9356},
+        centre: {lon: 6.9796, lat: 50.9356}
     },
     {
         id: 'berlin',
@@ -86,7 +86,7 @@ module.exports = [
             height: 'BaumHoehe',
             location: 'Kategorie', // maybe others Staummfg...
         },
-        centre: {lon: 13.43, lat: 52.485},
+        centre: {lon: 13.43, lat: 52.485}
     },
     {
         id: 'frankfurt',
@@ -101,7 +101,7 @@ module.exports = [
             common: x => String(x.Gattung_Ar).split(', ')[1],
             ref: 'Baumnummer',
             planted: 'Pflanzjahr',
-            crown: 'Kronendurc',
+            crown: 'Kronendurc'
 
         }
     },
@@ -121,7 +121,7 @@ module.exports = [
             crown: 'kronendurc', //kronendmza??
             circumference: 'stammumfan',
             // stand-bear??
-            owner: 'zustaendig',
+            owner: 'zustaendig'
 
 
         }
@@ -140,7 +140,7 @@ module.exports = [
             height: 'hoehe',
             crown: 'kronendurchmesser',
             dbh: 'stammdurchmesser',
-            location: 'allebaum',
+            location: 'allebaum'
         }
     },
     {
@@ -155,7 +155,7 @@ module.exports = [
             ref: 'BaumNummer',
             scientific: x => String(x.BaumArt).split(', ')[0],
             common: x => String(x.BaumArt).split(', ')[1],
-            planted: 'PflanzDatu',
+            planted: 'PflanzDatu'
         }
     },
     {
@@ -172,7 +172,7 @@ module.exports = [
             common: x => String(x.GA_LANG).split(', ')[1],
             crown: 'KR_DURCHM',
             dbh: 'ST_UMFANG',
-            height: 'BAUMHOEHE',
+            height: 'BAUMHOEHE'
         }
     },
     {
@@ -234,10 +234,10 @@ module.exports = [
         info: 'https://transparenz.karlsruhe.de/dataset/fachplane-baumkataster/resource/9cd1989f-9720-4621-b171-3c4e56352598',
         crosswalk: {
             common: 'ARTDEUT',
-            scientific: 'ARTLAT',
+            scientific: 'ARTLAT'
 
         },
-        license: '',
+        license: ''
     },
     {
         id: 'gelsenkirchen_de',
@@ -255,7 +255,7 @@ module.exports = [
             ref: 'BAUMID',
             // common:
         },
-        license: 'https://www.govdata.de/dl-de/by-2-0',
+        license: 'https://www.govdata.de/dl-de/by-2-0'
     },
     {
         // Broken link
@@ -267,7 +267,7 @@ module.exports = [
         info: 'https://www.offenesdatenportal.de/dataset/baumstandorte-der-stadt-krefeld',
         crosswalk: {
         },
-        license: 'https://www.govdata.de/dl-de/zero-2-0',
+        license: 'https://www.govdata.de/dl-de/zero-2-0'
     },
     {
         // can't download for some reason
@@ -279,7 +279,7 @@ module.exports = [
         info: 'https://www.offenesdatenportal.de/dataset/baume-und-straucher-in-bebauten-ortslagen',
         crosswalk: {
         },
-        license: 'https://www.govdata.de/dl-de/zero-2-0',
+        license: 'https://www.govdata.de/dl-de/zero-2-0'
     },
     {
         id: 'troisdorf_de',
@@ -295,9 +295,9 @@ module.exports = [
             scientific: x => x.Baumart.split(', ')[0],
             common: x => x.Baumart.split(', ')[1],
             crown: 'Kronendurchmesser',
-            dbh: 'Stammumfang',
+            dbh: 'Stammumfang'
         },
-        license: 'https://www.govdata.de/dl-de/by-2-0',
+        license: 'https://www.govdata.de/dl-de/by-2-0'
     },
     {
         id: 'jena_de',
@@ -310,10 +310,10 @@ module.exports = [
             ref: 'baumnummer',
             scientific: 'ga_lang',
             dbh: 'st_umfang',
-            health: 'vitalitaet',
+            health: 'vitalitaet'
 
         },
         srs: {epsg: 3044},
-        license: 'https://www.govdata.de/dl-de/by-2-0',
+        license: 'https://www.govdata.de/dl-de/by-2-0'
     },
 ].map(s => {s.country = 'Germany'; return s; });

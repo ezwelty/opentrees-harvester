@@ -36,7 +36,7 @@ module.exports = [
         scientific: 'species',
         common: 'name',
         location: x => ({ 'STREET TREE': 'street', 'PARK TREE': 'park' }[x.tree_type] || '')
-    },
+    }
 },
 {
     id: 'colac_otways',
@@ -57,7 +57,7 @@ module.exports = [
         dbh: 'diam_breas',
         // planted: CASE WHEN length(year_plant::varchar) = 4 THEN to_date(year_plant::varchar, 'YYYY') END AS planted,
         maturity: 'life_stage'
-    },
+    }
 },
 {
     // BAD 404
@@ -75,7 +75,7 @@ module.exports = [
         genus: () => undefined, // contains same as species, this way it gets generated properly.
         scientific: 'species'
         // aohplaque, maintenance, description
-    },
+    }
 },
 {
     id: 'manningham',
@@ -90,7 +90,7 @@ module.exports = [
         scientific: 'species',
         height: 'height',
         dbh: 'dbh'
-    },
+    }
 },
 {
     id: 'geelong',
@@ -103,7 +103,7 @@ module.exports = [
         ...identity, // requires Node 10
         scientific: x => x.genus + ' ' + (x.species || '').toLowerCase(),
         // TODO captured is a date
-    },
+    }
 },
 {
     id: 'melbourne',
@@ -123,7 +123,7 @@ module.exports = [
         maturity: 'Age Description',
         ule_min: 'Useful Life Expectency',
         location: 'Located In'
-    },
+    }
 },
 {
     id: 'adelaide',
@@ -145,7 +145,7 @@ module.exports = [
         maturity: 'Age (Inspection)',
         scientific: 'Species Name (Inspection)',
         common: 'Common Name (Inspection)'
-    },
+    }
 },
 {
     id: 'waite',
@@ -159,7 +159,7 @@ module.exports = [
         scientific: 'scientific',
         common: 'commonname',
         //planted: CASE WHEN length(yearplant::varchar) = 4 THEN to_date(yearplant::varchar, 'YYYY') END AS planted
-    },
+    }
 },
 {
     id: 'burnside',
@@ -174,7 +174,7 @@ module.exports = [
         height: 'TreeHeight',
         scientific: 'BotanicalN',
         dbh: 'Circumfere' // TODO reconcile
-    },
+    }
 },
 {
     id: 'launceston',
@@ -194,7 +194,7 @@ module.exports = [
         crown: 'horizontal',
         // health: 'vitality', // used to be present?
         captured: 'auditdate' // TODO date
-    },
+    }
 },
 {
     id: 'hobsons_bay',
@@ -209,7 +209,7 @@ module.exports = [
         dbh: 'DBH',
         tree_type: 'Type'
     },
-    centre: {lon: 144.833, lat: -37.85},
+    centre: {lon: 144.833, lat: -37.85}
 },
 {
     id: 'glenelg',
@@ -219,7 +219,7 @@ module.exports = [
     short: 'Glenelg',
     long: 'Glenelg Shire',
     country: 'Australia',
-    crosswalk: identity,
+    crosswalk: identity
 },
 {
     pending: true,
@@ -255,7 +255,7 @@ module.exports = [
         height: 'height',
         crown: 'crown',
         maturity: 'maturity' // more like age
-    },
+    }
 },
 {
     id: 'prospect1',
@@ -272,7 +272,7 @@ module.exports = [
         health: 'Tree Health',
         structure: 'Tree Structure',
         height: 'Tree Height'
-    },
+    }
 },
 {
     id: 'prospect2',
@@ -285,7 +285,7 @@ module.exports = [
     crosswalk: {
         common: 'Species Name', // sigh
     },
-    primary: 'prospect1',
+    primary: 'prospect1'
 },
 {
     id: 'perth',
@@ -300,7 +300,7 @@ module.exports = [
         family: 'FAMILY',
         height: 'TREE_HEIGH',
         plant: 'DATE_PLANT',
-        ref: 'TREE_ID',
+        ref: 'TREE_ID'
     }
     // crosswalk: {
     //     ref: 'tree_id',
@@ -365,7 +365,7 @@ module.exports = [
         variety: x => x.cultivar !== 'Not Specified' ? x.cultivar : '',
         // house, st_name, st_type, st_suffix, suburb
     },
-    centre: {lon: 144.298, lat: -36.755},
+    centre: {lon: 144.298, lat: -36.755}
 },
 {
     id: 'shepparton',
@@ -401,7 +401,7 @@ module.exports = [
         // ule: 'useful_lif',
         ule: 'useful_life_expectancy',
         structure: 'structure'
-    },
+    }
 },
 {
     id: 'port_phillip',
@@ -413,7 +413,7 @@ module.exports = [
     crosswalk: {
         ...identity,
         scientific: 'species'
-    },
+    }
 },
 {
     id: 'boroondara',
@@ -432,7 +432,7 @@ module.exports = [
         location: 'locality',
         dbh: x => x.girth + ' girth'
         // suburb, groupid, qty, girth, age, position, risktotree, hazardtopu, streetnr
-    },
+    }
 },
 {
     id: 'yarra',
@@ -445,7 +445,7 @@ module.exports = [
     crosswalk: {
         ...identity,
         species: s => (s.species || '').replace(/^[A-Z]\. /, '')
-    },
+    }
 },
 {
     id: 'glen_eira',
@@ -460,8 +460,8 @@ module.exports = [
         scientific: 'botanical',
         height: 'height',
         crown: 'spread',
-        location: 'locationty',
-    },
+        location: 'locationty'
+    }
 },
 {
     // TODO create a VRT file. no header.
@@ -478,7 +478,7 @@ module.exports = [
         common: 'field_3',
         //address: field_4
     },
-    centre: {lon: 146.86, lat: -36.125},
+    centre: {lon: 146.86, lat: -36.125}
 },
 {
     id: 'hobart',
@@ -486,7 +486,7 @@ module.exports = [
     format: 'geojson',
     short: 'Hobart',
     long: 'City of Hobart',
-    country: 'Australia',
+    country: 'Australia'
 },
 {
     id: 'sherwood_arboretum', //brisbane
@@ -512,8 +512,8 @@ module.exports = [
         // 'Height': '7'
         // 'Crown_width': 3
         // 'DBH': 100
-        // 'Species_Profile': 'Acacia concurrens commonly known as Black wattle or Curracabah is a tall shrub endemic to eastern Australia growing to a height of up to 10m. The botanic name concurrens describes the converging primary veins on the phyllodes (modified leaf stems which function as leaf). Bright yellow rod-shaped flowers are seen from late winter to early spring.',
-    },
+        // 'Species_Profile': 'Acacia concurrens commonly known as Black wattle or Curracabah is a tall shrub endemic to eastern Australia growing to a height of up to 10m. The botanic name concurrens describes the converging primary veins on the phyllodes (modified leaf stems which function as leaf). Bright yellow rod-shaped flowers are seen from late winter to early spring.'
+    }
 },
 {
     id: 'sydney',
@@ -526,8 +526,8 @@ module.exports = [
     centre: {lon: 151.2, lat: -33.892},
     country: 'Australia',
     crosswalk: {
-        scientific: 'species',
-    },
+        scientific: 'species'
+    }
 },
 {
     id: 'unley',
@@ -543,7 +543,7 @@ module.exports = [
         health: 'health',
         structure: 'structure',
         maturity: 'age',
-        ule: 'unel___repl',
+        ule: 'unel___repl'
     }
 },
 ].map(s => {

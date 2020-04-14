@@ -13,7 +13,7 @@ module.exports = [
             variety: 'varieteoucultivar',
             dbh: x => (Number(x['circonferenceencm']) / 3.14159) * 2,
             maturity: 'stadedeveloppement', // A, J, JA, M. Maybe 'Jeune, jeune adulte, adulte, mûr/mature'?
-        },
+        }
     },
     {
         id: 'lyon',
@@ -30,10 +30,10 @@ module.exports = [
             location: 'localisati',
             planted: 'anneeplant',
             ref: 'identifian',
-            common: 'essencefra',
+            common: 'essencefra'
         },
         short: 'Lyon',
-        country: 'France',
+        country: 'France'
     },
     {
         id: 'bordeaux',
@@ -53,7 +53,7 @@ module.exports = [
             // age_tranche_basse
         },
         short: 'Bordeaux',
-        country: 'France',
+        country: 'France'
     },
     {
         id: 'nice',
@@ -61,10 +61,10 @@ module.exports = [
         info: 'https://trouver.datasud.fr/dataset/sync149f50a-cartographie-des-arbres-communaux',
         format: 'geojson',
         crosswalk: {
-            ref: 'idENT',
+            ref: 'idENT'
         },
         short: 'Nice',
-        country: 'France',
+        country: 'France'
     },
     {
         id: 'grenoble',
@@ -78,10 +78,10 @@ module.exports = [
             variety: 'VARIETE',
             maturity: 'STADEDEDEVELOPPEMENT',
             description: 'REMARQUES',
-            planted: 'ANNEDEPLANTATION',
+            planted: 'ANNEDEPLANTATION'
         },
         short: 'Grenoble',
-        country: 'France',
+        country: 'France'
     },
     {
         id: 'montpellier',
@@ -97,10 +97,10 @@ module.exports = [
             planted: 'plantation',
             updated: 'releva',
             crown: 'couronnem',
-            height: 'hauteurm',
+            height: 'hauteurm'
         },
         short: 'Montpellier',
-        country: 'France',
+        country: 'France'
     },
 
     {
@@ -115,8 +115,8 @@ module.exports = [
             scientific: 'genespvar',
             height: 'hauteur',
             planted: 'an_plant',
-            ref: 'id_plant',
-        },
+            ref: 'id_plant'
+        }
     },
     {
         id: 'agen',
@@ -127,9 +127,9 @@ module.exports = [
         crosswalk: {
             ref: 'id_ponctue',
             common: 'espece_arb',
-            scientific: 'nom_latin',
+            scientific: 'nom_latin'
         },
-        short: 'Agen',
+        short: 'Agen'
     },
     {
         id: 'saint_quentinois',
@@ -147,8 +147,8 @@ module.exports = [
             maturity: 'fk_stadede',
             dbh: 'tronc_diam',
             height: 'haut_tot',
-            ref: 'id_arbre',
-        },
+            ref: 'id_arbre'
+        }
     },
     {
         id: 'metz',
@@ -161,8 +161,8 @@ module.exports = [
         crosswalk: {
             dbh: 'diametre',
             scientific: 'nom_espece', // a species code
-            note: 'observatio',
-        },
+            note: 'observatio'
+        }
     },
     {
         id: 'seine_saint_denis',
@@ -176,9 +176,9 @@ module.exports = [
             height: 'hauteur',
             scientific: 'essence',
             maturity: 'stade_dvlp',
-            dbh: x => `Circumference: ${x.circonfere}`,
+            dbh: x => `Circumference: ${x.circonfere}`
         },
-        // long: 'Agglomération du Saint Quentinois',
+        // long: 'Agglomération du Saint Quentinois'
     },
     {
         id: 'versailles',
@@ -189,8 +189,8 @@ module.exports = [
         short: 'Versailles',
         crosswalk: {
             scientiifc: 'ESPECE', // watch out for 'VIDE' TODO
-            common: 'FRANCAIS',
-        },
+            common: 'FRANCAIS'
+        }
     },
     {
         id: 'nevers',
@@ -202,8 +202,8 @@ module.exports = [
         short: 'Nevers',
         long: 'Ville de Nevers',
         crosswalk: {
-            scientific: 'espece',
-        },
+            scientific: 'espece'
+        }
     },
     {
         // TODO fix bad geometry
@@ -219,7 +219,7 @@ module.exports = [
         crosswalk: {
             ref: 'id',
             common: 'patrimoine', // the horror..."44 PIN PARASOL,15 CHENE LIEGE,45 MICOCOULIER"
-        },
+        }
     },
     {
         id: 'orleans',
@@ -234,8 +234,8 @@ module.exports = [
             genus: x => String(x.genre).replace(/ \?/, ''),
             species: x => String(x.species).replace(/ \?/, ''),
             variety: 'variete',
-            planted: 'date_plant',
-        },
+            planted: 'date_plant'
+        }
     },
     {
         id: 'saint_egreve',
@@ -249,8 +249,8 @@ module.exports = [
             genus: 'genre',
             species: 'espece',
             planted: 'anne_plan',
-            common: 'essence',
-        },
+            common: 'essence'
+        }
     },
     {
         id: 'bayonne',
@@ -270,7 +270,7 @@ module.exports = [
             scientific: 'gev', // genus espece variete?
             circumference: 'circonf',
             age: 'agechrono', // also agephysio??
-        },
+        }
     },
     {
         id: 'issy',
@@ -288,7 +288,7 @@ module.exports = [
             maturity: 'classe_age',
             health: 'statut_emp',
             updated: 'date_maj', // mise-a-jour
-        },
+        }
     },
     {
         id: 'rennes1',
@@ -303,8 +303,8 @@ module.exports = [
             species: 'espece',
             planted: 'date_plant',
             variety: 'variete',
-            circumference: 'circonfere',
-        },
+            circumference: 'circonfere'
+        }
     },
     {
         id: 'rennes2',
@@ -323,8 +323,8 @@ module.exports = [
             species: 'espece',
             variety: 'variete',
             circumference: 'circonfere',
-            height: 'hauteur',
-        },
+            height: 'hauteur'
+        }
     },
     {
         id: 'mulhouse',
@@ -338,8 +338,8 @@ module.exports = [
             scientific: 'libelle_es',
             planted: 'date_plant',
             common: 'com_nom',
-            ref: 'obj_ident',
-        },
+            ref: 'obj_ident'
+        }
     },
     {
         id: 'divonne_les_bains_fr',
@@ -358,7 +358,7 @@ module.exports = [
             circumerence: 'classe_cir',
             // cepee?
         },
-        license: '',
+        license: ''
     },
     {
         id: 'bretagne_fr',
@@ -372,10 +372,10 @@ module.exports = [
             height: 'hauteur',
             dbh: 'diametre',
             health: 'etat_genera',
-            note: 'remarque',
+            note: 'remarque'
         },
         license: '',
-        centre: {lon: 6.14941, lat: 46.35697},
+        centre: {lon: 6.14941, lat: 46.35697}
     },
     {
         id: 'guingamp_fr',
@@ -386,9 +386,9 @@ module.exports = [
         crosswalk: {
             genus: 'Genre',
             species: 'Espce',
-            variety: 'VArit',
+            variety: 'VArit'
         },
-        license: '',
+        license: ''
     },
     {
         id: 'paris_sud_fr',
@@ -404,9 +404,9 @@ module.exports = [
             age: 'classe_age',
             health: 'vigeur_cr', // or etat_sanit?
             updated: 'anne_expe', // ?
-            ref: 'identifian',
+            ref: 'identifian'
         },
-        license: '',
+        license: ''
     },
 ].map(s => {
     s.country = 'France';

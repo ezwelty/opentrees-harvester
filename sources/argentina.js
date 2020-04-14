@@ -30,7 +30,7 @@ module.exports = [
         scientific: 'nombre_cientifico',
         // ancho_acera?
         dbh: 'diametro_altura_pecho',
-        height: 'altura_arbol',
+        height: 'altura_arbol'
     },
     primary: 'buenos_aires'
   }

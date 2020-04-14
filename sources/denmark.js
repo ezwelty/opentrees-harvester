@@ -14,7 +14,7 @@ module.exports = [
         health: 'sundhed',
         // TODO sooo many other fields
     },
-    short: 'Copenhagen',
+    short: 'Copenhagen'
   },
   {
     // eww, this is not GeoJSON, and doesn't actually contain data.

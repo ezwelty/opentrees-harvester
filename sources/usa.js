@@ -110,7 +110,7 @@ module.exports = [
     country: 'USA',
     centre: [-77, 38.92],
     crosswalk: {
-        dbh: x => x.DBH * 2.54, 
+        dbh: x => x.DBH * 2.54,
         common: 'COMMON.NAME',
         scientific: 'SCI_NM',
         planted: 'DATE_PLANT',
@@ -136,29 +136,9 @@ module.exports = [
         scientific: 'Botanical Name',
         common: 'Common Name',
         dbh: x => Number(x.DBH) * 2.54, // assuming
-        id: 'Site ID',   
+        id: 'Site ID',
     },
 },
-// {
-    // these seem to be included in london already, in better quality.
-//     id: 'camden-uk',
-//     download: 'https://opendata.camden.gov.uk/api/views/csqp-kdss/rows.csv?accessType=DOWNLOAD',
-//     format: 'csv',
-//     short: 'Camden',
-//     long: 'Camden Council, UK'
-        // crosswalk: {
-        //     scientific: 'Scientific Name',
-        //     common: 'Common Name',
-        //     height: 'Height in Metres',
-        //     spread: 'Spread in Metres',
-        //     dbh: 'Diameter In Centimetres At Breast Height',
-        //     maturity: 'Maturity',
-        //     health: 'Physiological Condition',
-        //     id: 'Identifier'
-
-        // },
-
-// },
 {
     id: 'san_francisco',
     // download: 'https://data.sfgov.org/api/geospatial/tkzw-k3nq?method=export&format=GeoJSON',
@@ -177,10 +157,10 @@ module.exports = [
 
 
         // also qLegalStatus (private/DPW), qCaretaker, PlantType
-    }, 
+    },
     centre: [-122.435, 37.77],
 
-}, 
+},
 {
     id: 'philadelphia',
     download: 'http://data.phl.opendata.arcgis.com/datasets/957f032f9c874327a1ad800abd887d17_0.csv',
@@ -191,7 +171,7 @@ module.exports = [
     crosswalk: {
            // Species, Status, DBH fields but they are all blank. bleh.
     }
-}, 
+},
 {
     id: 'denver',
     download: 'https://data.colorado.gov/api/views/wz8h-dap6/rows.csv?accessType=DOWNLOAD',
@@ -207,8 +187,8 @@ module.exports = [
 
     },
     centre: [-104.9454,39.7273],
-    
-}, 
+
+},
 {
     id: 'boulder',
     country: 'USA',
@@ -483,7 +463,7 @@ module.exports = [
         health: 'RATING', // out of 10?
         note: 'COMMENT',
         ref: 'TREE_ID',
-        
+
     }
 },
 {
@@ -808,19 +788,15 @@ module.exports = [
 
     }
 },
-/*
 // broken
 // alternative, also broken: http://opendata.minneapolismn.gov/datasets/tree-inventory/data
 {
-    id:'minneapolis_mn',
+    pending: true,
+    id: 'minneapolis_mn',
     short: 'Minneapolis',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/5c607cf94314467f87e285526b72e4d6_0.csv',
-    info:'http://hub.arcgis.com/datasets/cityoflakes::tree-inventory',
-    format: '',
-    crosswalk: {
-    }
-},*/
+    info: 'http://hub.arcgis.com/datasets/cityoflakes::tree-inventory'
+},
 {
     id:'pacific_grove_ca',
     short: 'Pacific Grove',
@@ -893,16 +869,14 @@ module.exports = [
     }
 },
 // broken - generating
-// {
-//     id:'ucsb',
-// //     short: 'UC Santa Barbara',
-//     long: 'University of California, Santa Barbara',
-//     download: 'https://opendata.arcgis.com/datasets/c6eb1b782f674be082f9eb764314dda5_0.csv',
-//     info:'http://hub.arcgis.com/datasets/ucsb::treekeeper-012116',
-//     format: '',
-//     crosswalk: {
-//     }
-// },
+{
+    pending: true,
+    id:'ucsb',
+    short: 'UC Santa Barbara',
+    long: 'University of California, Santa Barbara',
+    download: 'https://opendata.arcgis.com/datasets/c6eb1b782f674be082f9eb764314dda5_0.csv',
+    info:'http://hub.arcgis.com/datasets/ucsb::treekeeper-012116',
+},
 {
     id:'sarasota_fl',
     short: 'Sarasota',
@@ -934,7 +908,7 @@ module.exports = [
         dbh: inches('DBH'),
         health: 'COND',
         note: 'NOTES',
-        updated: 'DATE', // EDITTIME? 
+        updated: 'DATE', // EDITTIME?
 
 
     }
@@ -983,7 +957,7 @@ module.exports = [
         common: 'COMMON',dbh: inches('DBH'),
         health: 'CONDITION',
         updated: 'INSPECT_DT',
-        
+
     }
 },
 {
@@ -1003,16 +977,14 @@ module.exports = [
     }
 },
 // not downloading
-// {
-//     id:'uc_davis',
-// //     short: 'UC Davis',
-//     long: 'University of California Davis',
-//     download: '',
-//     info:'http://hub.arcgis.com/datasets/ucda::uc-davis-tree-database',
-//     format: 'https://opendata.arcgis.com/datasets/07939ef894984a95b58098315f80c046_0.zip',
-//     crosswalk: {
-//     }
-// },
+{
+    pending: true,
+    id:'uc_davis',
+    short: 'UC Davis',
+    long: 'University of California Davis',
+    info:'http://hub.arcgis.com/datasets/ucda::uc-davis-tree-database',
+    format: 'https://opendata.arcgis.com/datasets/07939ef894984a95b58098315f80c046_0.zip',
+},
 {
     id:'hudson_river_park',
     short: 'Hudson River Park',
@@ -1128,33 +1100,16 @@ module.exports = [
     },
     primary: 'san_jose_ca1'
 },
-// maybe https://opendata.arcgis.com/datasets/a31898f9fff4417ab6f784c9b4fe5f43_27.csv
-
-// OSU: http://hub.arcgis.com/datasets/2b4fc9ac4cdc43b7bba6f2b1e0d6f75f_29
-
-
-// oh yeah, this guy:
-// http://hub.arcgis.com/datasets/usfs::raw-urban-street-tree-inventory-data-for-49-california-cities
-
-
+// these are probably generated from lidar or satellite and don't contain any actual information about each tree
+{
+    pending: true,
+    id: 'loudoun',
+    country: 'USA',
+    short: 'Loudoun',
+    download: 'http://geohub-loudoungis.opendata.arcgis.com/datasets/21ece36a6fbd447b95b9446f752552a4_0.zip',
+    info:'https://catalog.data.gov/dataset/loudoun-trees-9b144',
+    crosswalk: {
+        ref: 'TR_LOUD_ID',
+    }
+}
 ].map(s => { s.country = 'USA'; return s; });
-
-// Sigh, every point has the exact same geometry.
-// {
-    
-//     id: 'oakland',
-//     download: 'https://data.oaklandnet.com/api/views/4jcx-enxf/rows.csv?accessType=DOWNLOAD',
-//     format: 'csv',
-//     short: 'Oakland',
-//     crosswalk: {
-//         scientific: 'SPECIES',
-//         ref: 'OBJECTID'
-
-//     }
-// },
- 
- 
-/*
-https://pg-cloud.com/hawaii/
-- can't really use this in this form
-*/

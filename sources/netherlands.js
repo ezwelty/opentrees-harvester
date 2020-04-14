@@ -90,7 +90,7 @@ module.exports = [
             scientific: 'BOOMSOORT_WETENSCHAPPELIJ',
             dbh: 'STAMDIAMETERKLASSE',
             maturity:'LEEFTIJDSKLASSE',
-            age: 'LEEFTIJD', 
+            age: 'LEEFTIJD',
             owner: 'EIGENAAR'
         },
         centre: [4.2777,52.0642],
@@ -190,7 +190,7 @@ module.exports = [
         },
         license: 'CC0-1.0',
         centre: [4.670, 51.806],
-    }, 
+    },
     {
         id:'lelystad_nl',
         short: 'Lelystad',
@@ -304,7 +304,7 @@ module.exports = [
         crosswalk: {
             scientific: 'Boomsoort',
             common: 'Boomsoort Nederlands',
-            
+
         },
         srs: 'EPSG:28992',
 
@@ -400,4 +400,20 @@ module.exports = [
         },
         license: '',
     },
+    {
+        id:'utrecht',
+        country: 'Netherlands',
+        short: 'Utrecht',
+        long: '',
+        download: 'https://ckan.dataplatform.nl/datastore/dump/2d6893b4-d56d-4865-b6cc-0bda42e547f5?bom=True',
+        info: 'https://ckan.dataplatform.nl/dataset/bomenkaart/resource/2d6893b4-d56d-4865-b6cc-0bda42e547f5',
+        format: 'csv',
+        crosswalk: {
+            scientific: 'Naam_Wet',
+            common: 'Naam_NL',
+            planted: 'Plantjaar',
+            ref: 'Boomnr',
+            owner: 'Eigenaar'
+        }
+    }
 ].map(x => ({ ...x, country: 'Netherlands' }));

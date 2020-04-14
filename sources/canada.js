@@ -222,21 +222,6 @@ module.exports = [
         },
     },
     {
-        id: 'lisbon',
-        country: 'Portugal',
-        download:
-            'https://opendata.arcgis.com/datasets/202d0f1a7f234e449761af8af14436d6_0.zip',
-        info:
-            'http://geodados.cm-lisboa.pt/datasets/arvoredo?geometry=-9.312%2C38.745%2C-9.148%2C38.768',
-        format: 'shp',
-        crosswalk: {
-            scientific: 'ESPECIE_VA',
-            location: 'LOCAL',
-        },
-        short: 'Lisbon',
-        country: 'Portugal',
-    },
-    {
         // probably duplicated by Edmonton anyway?
         id: 'strathcona',
         country: 'Canada',
@@ -505,16 +490,16 @@ module.exports = [
         },
     },
     // something wrong with this one, it never generates
-    // {
-    //     id:'langley',
-    //     country: '',
-    //     short: 'Langley',
-    //     long: '',
-    //     download: 'https://opendata.arcgis.com/datasets/1971f19fc28c489b908eab199a5d2e72_85.zip?geometry=%7B%22xmin%22%3A-122.733%2C%22ymin%22%3A49.075%2C%22xmax%22%3A-122.406%2C%22ymax%22%3A49.114%2C%22type%22%3A%22extent%22%2C%22spatialReference%22%3A%7B%22wkid%22%3A4326%7D%7D',
-    //     info:'http://hub.arcgis.com/datasets/esric-yourville::parks-trees?geometry=-122.733%2C49.075%2C-122.406%2C49.114',
-    //     crosswalk: {
-    //     }
-    // },
+    {
+        pending: true,
+        id: 'langley',
+        country: 'Canada',
+        short: 'Langley',
+        long: 'Township of Langley',
+        download: 'https://opendata.arcgis.com/datasets/1971f19fc28c489b908eab199a5d2e72_85.geojson',
+        // info: 'http://data-tol.opendata.arcgis.com/datasets/trees',
+        info: 'https://hub.arcgis.com/datasets/1971f19fc28c489b908eab199a5d2e72_85',
+    },
     {
         id: 'victoriaville',
         country: '',
@@ -639,8 +624,6 @@ module.exports = [
         license: 'CC-BY-4.0',
     },
 
-    //  https://niagarafalls.ca/services/open/data/2869-trees-inventory-public.od
-    // argh no actual URL to download from
 ].map(s => {
     s.country = 'Canada';
     return s;

@@ -20,23 +20,6 @@ module.exports = [
         }
     },
     {
-        id:'utrecht',
-        country: 'Netherlands',
-        short: 'Utrecht',
-        long: '',
-        download: 'https://ckan.dataplatform.nl/datastore/dump/2d6893b4-d56d-4865-b6cc-0bda42e547f5?bom=True',
-        info:'https://ckan.dataplatform.nl/dataset/bomenkaart/resource/2d6893b4-d56d-4865-b6cc-0bda42e547f5',
-        format: 'csv',
-        crosswalk: {
-            scientific: 'Naam_Wet',
-            common: 'Naam_NL',
-            planted: 'Plantjaar',
-            ref: 'Boomnr',
-            owner: 'Eigenaar',
-            
-        }
-    },
-    {
         id:'leipzig',
         country: 'Germany',
         short: 'Leipzig',
@@ -51,7 +34,6 @@ module.exports = [
             ref: 'STANDORTNR',
         }
     },
-
     {
         id:'bonn',
         country: 'Germany',
@@ -84,7 +66,7 @@ module.exports = [
             age: 'AlterSchätzung',
             genus: 'Gattung',
             species: 'Art',
-            common: 'DeutscherN',            
+            common: 'DeutscherN',
 
         },
         centre: [6.9796, 50.9356],
@@ -101,9 +83,9 @@ module.exports = [
             scientific: 'Art_Bot',
             common: 'Art_Dtsch',
             // Gattung, //
-            planted: 'Pflanzjahr', 
+            planted: 'Pflanzjahr',
             height: 'BaumHoehe',
-            location: 'Kategorie', // maybe others Staummfg... 
+            location: 'Kategorie', // maybe others Staummfg...
         },
         centre: [13.43, 52.485],
     },
@@ -159,7 +141,7 @@ module.exports = [
             height: 'hoehe',
             crown: 'kronendurchmesser',
             dbh: 'stammdurchmesser',
-            location: 'allebaum',       
+            location: 'allebaum',
         }
     },
     {
@@ -272,7 +254,7 @@ module.exports = [
             crown: 'KRONENDURCHMESSER',
             height: 'HOEHE',
             ref: 'BAUMID',
-            // common: 
+            // common:
         },
         license: 'https://www.govdata.de/dl-de/by-2-0',
     },

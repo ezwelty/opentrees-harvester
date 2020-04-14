@@ -154,4 +154,25 @@ module.exports = [
         license: '',
         centre: [-3.684357, 51.826852],
     },
+    {
+        // these seem to be included in london already, in better quality.
+        pending: true,
+        id: 'camden-uk',
+        download: 'https://opendata.camden.gov.uk/api/views/csqp-kdss/rows.csv?accessType=DOWNLOAD',
+        format: 'csv',
+        short: 'Camden',
+        long: 'Camden Council, UK',
+        crosswalk: {
+            scientific: 'Scientific Name',
+            common: 'Common Name',
+            height: 'Height in Metres',
+            spread: 'Spread in Metres',
+            dbh: 'Diameter In Centimetres At Breast Height',
+            maturity: 'Maturity',
+            health: 'Physiological Condition',
+            id: 'Identifier'
+
+        },
+
+    },
 ];

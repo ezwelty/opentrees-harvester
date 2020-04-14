@@ -453,10 +453,3 @@ module.exports = [
     s.country = 'France';
     return s;
 });
-
-/*
-maybe todos:
-
-Nancy: http://opendata.grandnancy.eu/jeux-de-donnees/detail-dune-fiche-de-donnees/?tx_icsoddatastore_pi1%5Bkeywords%5D=arbre&tx_icsoddatastore_pi1%5Buid%5D=66&tx_icsoddatastore_pi1%5BreturnID%5D=447
-- contains more than just trees
-*/

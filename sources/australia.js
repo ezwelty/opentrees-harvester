@@ -58,7 +58,7 @@ module.exports = [
         dbh: 'diam_breas',
         // planted: CASE WHEN length(year_plant::varchar) = 4 THEN to_date(year_plant::varchar, 'YYYY') END AS planted,
         maturity: 'life_stage'
-    }, 
+    },
 },
 {
     // BAD 404
@@ -88,8 +88,8 @@ module.exports = [
     crosswalk: {
         captured: 'date1',  // TODO YYYY-MM-DD
         ref: 'tree_no', // hansen_id?
-        scientific: 'species', 
-        height: 'height', 
+        scientific: 'species',
+        height: 'height',
         dbh: 'dbh'
     },
 
@@ -106,7 +106,7 @@ module.exports = [
         scientific: x => x.genus + ' ' + (x.species || '').toLowerCase(),
         // TODO captured is a date
 
-    },     
+    },
 },
 {
     id: 'melbourne',
@@ -162,7 +162,7 @@ module.exports = [
         scientific: 'scientific',
         common: 'commonname',
         //planted: CASE WHEN length(yearplant::varchar) = 4 THEN to_date(yearplant::varchar, 'YYYY') END AS planted
-    },  
+    },
 },
 {
     id: 'burnside',
@@ -198,7 +198,7 @@ module.exports = [
         crown: 'horizontal',
         // health: 'vitality', // used to be present?
         captured: 'auditdate' // TODO date
-    }, 
+    },
 },
 {
     id: 'hobsons_bay',
@@ -226,11 +226,11 @@ module.exports = [
     country: 'Australia',
     crosswalk: identity,
 },
-/*
 {
+    pending: true,
     id: 'ryde',
     // multiple files is not supported atm
-    download: [ 
+    download: [
         'http://data.nsw.gov.au/data/dataset/f7cd2071-642e-4cac-9d28-d7ddf5635c39/resource/47843888-f9b6-4ae3-ba80-9318ff60a120/download/Public-Trees-2013.dbf',
         'http://data.nsw.gov.au/data/dataset/f7cd2071-642e-4cac-9d28-d7ddf5635c39/resource/1372b28f-4201-46ab-9099-be0458a317bb/download/Public-Trees-2013.prj',
         'http://data.nsw.gov.au/data/dataset/f7cd2071-642e-4cac-9d28-d7ddf5635c39/resource/00e339ad-e411-48b2-8cfa-ed3dfa8209ca/download/Public-Trees-2013.shp',
@@ -244,9 +244,7 @@ module.exports = [
     crosswalk: {
         height: 'Height' // sad, that's all there is.
     }
-
 },
-*/
 {
     id: 'southern_grampians',
     download: 'http://data.gov.au/geoserver/southern-grampians-street-and-park-trees/wfs?request=GetFeature&typeName=ckan_4a2843f5_8c01_438b_95f3_01ef0a518441&outputFormat=json',
@@ -279,7 +277,7 @@ module.exports = [
         health: 'Tree Health',
         structure: 'Tree Structure',
         height: 'Tree Height'
-    }, 
+    },
 },
 {
     id: 'prospect2',
@@ -454,7 +452,7 @@ module.exports = [
         ...identity,
         species: s => (s.species || '').replace(/^[A-Z]\. /, '')
 
-    },  
+    },
 
 },
 {
@@ -523,10 +521,10 @@ module.exports = [
         // 'Height': '7'
         // 'Crown_width': 3
         // 'DBH': 100
-        // 'Species_Profile': 'Acacia concurrens commonly known as Black wattle or Curracabah is a tall shrub endemic to eastern Australia growing to a height of up to 10m. The botanic name concurrens describes the converging primary veins on the phyllodes (modified leaf stems which function as leaf). Bright yellow rod-shaped flowers are seen from late winter to early spring.', 
+        // 'Species_Profile': 'Acacia concurrens commonly known as Black wattle or Curracabah is a tall shrub endemic to eastern Australia growing to a height of up to 10m. The botanic name concurrens describes the converging primary veins on the phyllodes (modified leaf stems which function as leaf). Bright yellow rod-shaped flowers are seen from late winter to early spring.',
 
 
-    }, 
+    },
 },
 {
     id: 'sydney',
@@ -560,7 +558,7 @@ module.exports = [
 
     }
 },
-].map(s => { 
+].map(s => {
     s.country = 'Australia';
     return s;
 });

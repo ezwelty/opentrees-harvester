@@ -496,6 +496,7 @@ module.exports = [
         licenseUrl: 'https://www.lethbridge.ca/Pages/OpenDataLicense.aspx'
     },
     {
+        // No exact license url
         id: 'kitchener_ca',
         short: 'Kitchener',
         long: '',
@@ -509,8 +510,7 @@ module.exports = [
             updated: 'UPDATE_DAT',
             dbh: 'DBH',
             note: 'NOTES'
-        },
-        licenseUrl: '', // https://open-kitchenergis.opendata.arcgis.com/datasets/e42a9601b87a4417b3d3d15a0f596f64_0 // no exact url
+        }
     },
     {
         id: 'mississauga_ca',

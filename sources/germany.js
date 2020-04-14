@@ -316,4 +316,4 @@ module.exports = [
         srs: {epsg: 3044},
         license: 'https://www.govdata.de/dl-de/by-2-0'
     },
-].map(s => {s.country = 'Germany'; return s; });
+].map(s => ({...s, country: 'Germany'}))

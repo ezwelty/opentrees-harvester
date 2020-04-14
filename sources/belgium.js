@@ -42,5 +42,5 @@ module.exports = [
         crosswalk: {
         },
         license: 'https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html'
-    },
-].map(s => ({...s, country: 'Belgium' }));
+    }
+].map(s => ({...s, country: 'Belgium'}))

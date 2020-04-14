@@ -395,4 +395,4 @@ module.exports = [
             owner: 'Eigenaar'
         }
     }
-].map(x => ({ ...x, country: 'Netherlands' }));
+].map(s => ({...s, country: 'Netherlands'}))

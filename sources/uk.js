@@ -1,7 +1,7 @@
 module.exports = [
     {
         id: 'belfast',
-        country: 'UK',
+        country: 'United Kingdom',
         download: 'https://www.belfastcity.gov.uk/nmsruntime/saveasdialog.aspx?lID=14543&sID=2430',
         info: 'https://www.belfastcity.gov.uk/council/Openandlinkeddata/opendatasets.aspx',
         format: 'csv',
@@ -23,7 +23,7 @@ module.exports = [
         format: 'csv',
         short: 'London',
         long: 'Greater London Authority',
-        country: 'UK',
+        country: 'United Kingdom',
         centre: {lon: -0.1051, lat: 51.5164},
         crosswalk: {
             ref: 'gla_id',
@@ -38,7 +38,7 @@ module.exports = [
         download: 'https://cc-p-birmingham.ckan.io/dataset/e9c314fc-fb6d-4189-a19c-7eec962733a8/resource/4bfd9191-a520-42fb-9ebf-8fefaededf6c/download/trees-dec2016.csv',
         format: 'csv',
         short: 'Birmingham',
-        country: 'UK',
+        country: 'United Kingdom',
         crosswalk: {
             scientific: 'species',
             maturity: 'age',
@@ -49,7 +49,7 @@ module.exports = [
     },
     {
         id: 'bristol',
-        country: 'UK',
+        country: 'United Kingdom',
         download: 'https://opendata.bristol.gov.uk/explore/dataset/trees/download/?format=geojson&timezone=Australia/Sydney&lang=en',
         info: 'https://opendata.bristol.gov.uk/explore/dataset/trees/export/',
         format: 'geojson',
@@ -65,7 +65,7 @@ module.exports = [
     },
     {
         id: 'edinburgh',
-        country: 'UK',
+        country: 'United Kingdom',
         short: 'Edinburgh',
         long: '',
         download: 'https://data.edinburghcouncilmaps.info/datasets/4dfc8f18a40346009b9fc32cbee34039_39.zip',
@@ -82,7 +82,7 @@ module.exports = [
     },
     {
         id: 'dundee',
-        country: 'UK',
+        country: 'United Kingdom',
         short: 'Dundee',
         long: 'Dundee City Council',
         download: 'https://data.dundeecity.gov.uk/datastore/dump/e54ef90a-76e5-415e-a272-5e489d9f5c67',
@@ -99,7 +99,7 @@ module.exports = [
     },
     {
         id: 'york',
-        country: 'UK',
+        country: 'United Kingdom',
         short: 'York',
         long: 'City of York Council',
         download: 'https://opendata.arcgis.com/datasets/30f38f358843467daa2d93074a03b8d5_3.csv',
@@ -113,7 +113,7 @@ module.exports = [
     },
     {
         id: 'york-private',
-        country: 'UK',
+        country: 'United Kingdom',
         short: 'York',
         long: '',
         download: 'https://opendata.arcgis.com/datasets/a602aca10afb49659720b435d3f54023_18.csv',
@@ -146,7 +146,7 @@ module.exports = [
         download: 'https://opendata.camden.gov.uk/api/views/csqp-kdss/rows.csv?accessType=DOWNLOAD',
         format: 'csv',
         short: 'Camden',
-        long: 'Camden Council, UK',
+        long: 'Camden Council',
         crosswalk: {
             scientific: 'Scientific Name',
             common: 'Common Name',
@@ -158,4 +158,4 @@ module.exports = [
             id: 'Identifier'
         }
     },
-];
+].map(s => ({...s, country: 'United Kingdom'}))

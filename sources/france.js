@@ -407,8 +407,5 @@ module.exports = [
             ref: 'identifian'
         },
         license: ''
-    },
-].map(s => {
-    s.country = 'France';
-    return s;
-});
+    }
+].map(s => ({...s, country: 'France'}))

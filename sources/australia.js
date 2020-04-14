@@ -546,7 +546,4 @@ module.exports = [
         ule: 'unel___repl'
     }
 },
-].map(s => {
-    s.country = 'Australia';
-    return s;
-});
+].map(s => ({...s, country: 'Australia'}))

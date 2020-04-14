@@ -580,7 +580,4 @@ module.exports = [
         language: 'fr',
         license: 'CC-BY-4.0'
     },
-].map(s => {
-    s.country = 'Canada';
-    return s;
-});
+].map(s => ({...s, country: 'Canada'}))

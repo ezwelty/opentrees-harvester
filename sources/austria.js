@@ -33,5 +33,5 @@ module.exports = [{
         dbh: 'Stammumfang'
     },
     license: 'CC-BY-4.0'
-},
-].map(s => ({...s, country: 'Austria' }));
+}
+].map(s => ({...s, country: 'Austria'}))

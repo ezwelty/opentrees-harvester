@@ -409,7 +409,6 @@ module.exports = [
     long: '',
     download: 'https://opendata.arcgis.com/datasets/1dbb32bf07ca421db4f01dac6beb812d_85.csv',
     info: 'http://hub.arcgis.com/datasets/AuroraCo::trees-city',
-    format: '',
     crosswalk: {
         ref: 'TREE_ID_NO',
         common: 'SPECIES',
@@ -443,7 +442,6 @@ module.exports = [
     long: '',
     download: 'https://opendata.arcgis.com/datasets/23364bb40f2640ff841ba4a8680b6421_0.csv',
     info: 'http://hub.arcgis.com/datasets/lasvegas::trees',
-    format: '',
     crosswalk: {
         location: 'LOC_TYPE',
         scientific: 'BOTANICAL',
@@ -462,7 +460,6 @@ module.exports = [
     long: 'City of Mountain View',
     download: 'https://opendata.arcgis.com/datasets/72667718eb9b427d95b6eb55e25c36a7_0.csv',
     info: 'http://hub.arcgis.com/datasets/MountainView::trees',
-    format: '',
     crosswalk: {
         scientific: 'SPECIES',
         common: 'NAME',
@@ -626,7 +623,6 @@ module.exports = [
     long: '',
     download: 'https://opendata.arcgis.com/datasets/e7c856379492408e9543a25d684b8311_79.csv',
     info: 'http://hub.arcgis.com/datasets/charlottesville::tree-inventory-point',
-    format: '',
     delFunc: x => x.Removal_Date,
     crosswalk: {
         planted: 'Install_Date',
@@ -644,7 +640,6 @@ module.exports = [
     long: 'West Chester Borough',
     download: 'https://opendata.arcgis.com/datasets/7fdf2b5d2b674e99b33e8d77d052e30c_0.csv',
     info: 'http://hub.arcgis.com/datasets/WCUPAGIS::borotrees-1?geometry=-87.273%2C38.460%2C-63.905%2C41.408',
-    format: '',
     crosswalk: {
         dbh: inches('DBH'),
         ref: 'ID_1',
@@ -660,7 +655,6 @@ module.exports = [
     long: '',
     download: 'https://opendata.arcgis.com/datasets/3e3e00d6224b43ee9acc514244fffdb9_0.csv',
     info: 'http://hub.arcgis.com/datasets/CityOfDurango::city-trees',
-    format: '',
     crosswalk: {
         planted: 'DATEID', //?
         ref: 'ID',
@@ -680,7 +674,6 @@ module.exports = [
     long: 'Washington County',
     download: 'https://opendata.arcgis.com/datasets/ae14fc063c1e44a995e750805b1c864b_0.csv',
     info: 'http://hub.arcgis.com/datasets/WCMN::tree-inventory',
-    format: '',
     crosswalk: {
         common: 'Tree_Type',
         health: 'Health',
@@ -694,7 +687,6 @@ module.exports = [
     long: '',
     download: 'https://opendata.arcgis.com/datasets/137785bc78da47b4a2159f9c76218d55_0.csv',
     info: 'http://hub.arcgis.com/datasets/Westerville::comm-parks-rec-trees/data?geometry=-83.315%2C40.085%2C-82.585%2C40.177',
-    format: '',
     crosswalk: {
         dbh: inches('DBH'),
         common: 'COMMON_NAME',
@@ -710,7 +702,6 @@ module.exports = [
     long: '',
     download: 'https://opendata.arcgis.com/datasets/8372c7d0f5a24764bd10f62f0b2f1b65_0.csv',
     info: 'http://hub.arcgis.com/datasets/STAUG::trees?geometry=-93.005%2C28.223%2C-69.637%2C31.556',
-    format: '',
     crosswalk: {
         updated: 'INSPECT_DT',
         note: 'NOTES',
@@ -724,7 +715,6 @@ module.exports = [
     long: '',
     download: 'https://opendata.arcgis.com/datasets/c95f89a4db39414a89f5c29bcb6fb48d_6.csv',
     info: 'http://hub.arcgis.com/datasets/westonfl::trees',
-    format: '',
     crosswalk: {
         common: 'NAME',
         genus: 'GENUS',
@@ -754,7 +744,6 @@ module.exports = [
     long: '',
     download: 'https://opendata.arcgis.com/datasets/87bcc6e824214422be859b3251350829_3.csv',
     info: 'http://hub.arcgis.com/datasets/CityPacificGrove::trees',
-    format: '',
     crosswalk: {
         common: 'Type',
         scientific: 'BOTANICAL',
@@ -771,7 +760,6 @@ module.exports = [
     long: 'City of Bozeman',
     download: 'https://opendata.arcgis.com/datasets/ba0dea7927184014a8b84e64af5c7684_0.csv',
     info: 'http://hub.arcgis.com/datasets/bozeman::trees',
-    format: '',
     crosswalk: {
         genus: 'Genus',
         species: 'Species',
@@ -789,7 +777,6 @@ module.exports = [
     long: '',
     download: 'https://opendata.arcgis.com/datasets/979bbeefffea408e8f1cb7a397196c64_22.csv',
     info: 'http://hub.arcgis.com/datasets/cityofchampaign::city-owned-trees',
-    format: '',
     crosswalk: {
         ref: 'ID',
         scientific: 'SPP',
@@ -807,7 +794,6 @@ module.exports = [
     long: '',
     download: 'https://opendata.arcgis.com/datasets/8efcbe9c80ed42a29e6ad5483bd01c32_0.csv',
     info: 'http://hub.arcgis.com/datasets/placentia::city-trees',
-    format: '',
     crosswalk: {
         ref: 'INVENTORYI',
         scientific: 'BOTANICALN',
@@ -832,7 +818,6 @@ module.exports = [
     long: '',
     download: 'https://opendata.arcgis.com/datasets/4deeb30f44bc4b60847cf43aed1a4670_0.csv',
     info: 'http://hub.arcgis.com/datasets/sarasota::tree-inventory',
-    format: '',
     crosswalk: {
         scientific: 'Species', // often common names like "Laurel Oak',
         dbh: inches('DBH_1_99_'),
@@ -849,7 +834,6 @@ module.exports = [
     long: '',
     download: 'https://opendata.arcgis.com/datasets/febee55e7dac43298952af77c8f8d809_0.csv',
     info: 'http://hub.arcgis.com/datasets/umich::nichols-arboretum-inventory-survey',
-    format: '',
     crosswalk: {
         common: 'COMMON',
         scientific: 'BOTANICAL',
@@ -866,7 +850,6 @@ module.exports = [
     long: 'University of North Texas',
     download: 'https://opendata.arcgis.com/datasets/ee33bf4535cd47bbb1c5661d2333d834_0.csv',
     info: 'http://hub.arcgis.com/datasets/untgis::tree',
-    format: '',
     crosswalk: {
         note: 'NOTES',
         common: 'NAME_COMN',
@@ -879,7 +862,6 @@ module.exports = [
     long: 'City of Escondido',
     download: 'https://opendata.arcgis.com/datasets/ac9caf3c7a9847b78100cc8860ddf51a_0.csv',
     info: 'http://hub.arcgis.com/datasets/CityofEscondido::tree-inventory?geometry=-122.895%2C32.313%2C-111.211%2C33.923',
-    format: '',
     crosswalk: {
         ref: 'TREEID',
         // FICTITIOUS ??
@@ -897,7 +879,6 @@ module.exports = [
     long: 'City of Wylie',
     download: 'https://opendata.arcgis.com/datasets/82060fffb84045fdafbe2a56c989b353_0.csv',
     info: 'http://hub.arcgis.com/datasets/WylieTX::treesurvey',
-    format: '',
     crosswalk: {
         ref: 'TK_ID',
         common: 'COMMON',dbh: inches('DBH'),
@@ -911,7 +892,6 @@ module.exports = [
     long: '',
     download: 'https://opendata.arcgis.com/datasets/91bffc476216422481b511a48796a327_0.csv',
     info: 'http://hub.arcgis.com/datasets/AuburnME::treeinventory?geometry=-81.930%2C42.701%2C-58.562%2C45.462',
-    format: '',
     crosswalk: {
         ref: 'ID',
         common: 'COMMON',
@@ -936,7 +916,6 @@ module.exports = [
     long: 'Hudson River Park Trust',
     download: 'https://opendata.arcgis.com/datasets/51b5e5da030f4331af48cb052f2d2d5e_1.csv',
     info: 'http://hub.arcgis.com/datasets/SustainableMSU::tree',
-    format: '',
     crosswalk: {
         scientific: 'Species_Latin_Name',
         common: 'Species_Common_Name',
@@ -952,7 +931,6 @@ module.exports = [
     long: '',
     download: 'https://opendata.arcgis.com/datasets/e988fe06668e44ea996a53c4365531b9_0.csv',
     info: 'http://hub.arcgis.com/datasets/CapeGIS::tree-inventory',
-    format: '',
     crosswalk: {
         common: 'SPECIES',
         dbh: 'DBH', // 0-6"
@@ -970,7 +948,6 @@ module.exports = [
     long: '',
     download: 'https://opendata.arcgis.com/datasets/51d4726531cd4ef99bfa24b99ae3ba24_0.csv',
     info: 'http://hub.arcgis.com/datasets/naperville::right-of-way-tree-inventory',
-    format: '',
     crosswalk: {
         common: 'ROWTREE_TYPE',
         ref: 'FACILITYID',
@@ -989,7 +966,6 @@ module.exports = [
     long: 'San Jose Medians and Backups',
     download: 'https://opendata.arcgis.com/datasets/0b0ad30145394b1588ff09ef1a7c9225_1.csv',
     info: 'http://hub.arcgis.com/datasets/csjdotgis::trees-medians-and-backups',
-    format: '',
     crosswalk: {
         scientific: 'NAMESCIENTIFIC',
         age: 'TREEAGE',
@@ -1008,7 +984,6 @@ module.exports = [
     long: 'San Jose Special Districts',
     download: 'https://opendata.arcgis.com/datasets/0b0ad30145394b1588ff09ef1a7c9225_0.csv',
     info: 'http://hub.arcgis.com/datasets/csjdotgis::trees-special-districts',
-    format: '',
     crosswalk: {
         scientific: 'NAMESCIENTIFIC',
         age: 'TREEAGE',
@@ -1028,7 +1003,6 @@ module.exports = [
     long: 'San Jose General Fund',
     download: 'https://opendata.arcgis.com/datasets/0b0ad30145394b1588ff09ef1a7c9225_2.csv',
     info: 'http://hub.arcgis.com/datasets/csjdotgis::trees-general-fund-street',
-    format: '',
     crosswalk: {
         scientific: 'NAMESCIENTIFIC',
         age: 'TREEAGE',

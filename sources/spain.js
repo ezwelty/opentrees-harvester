@@ -42,7 +42,7 @@ module.exports = [
             common: 'castellano',
             //grupo?
         },
-        license: 'CC-BY-4.0',
+        license: {id: 'CC-BY-4.0'},
         centre: {lon: -0.38564, lat: 39.46454}
     },
     {

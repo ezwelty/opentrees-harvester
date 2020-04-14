@@ -239,7 +239,10 @@ module.exports = [
             ref: 'BAUMID',
             // common:
         },
-        license: 'https://www.govdata.de/dl-de/by-2-0'
+        license: {
+          name: 'Datenlizenz Deutschland – Namensnennung – Version 2.0',
+          url: 'https://www.govdata.de/dl-de/by-2-0'
+        }
     },
     {
         // Broken link
@@ -249,7 +252,10 @@ module.exports = [
         long: 'Stadt Krefeld',
         download: 'http://geoportal-niederrhein.de/files/opendatagis/Stadt_Krefeld/Aktueller_Baumbestand.geojson',
         info: 'https://www.offenesdatenportal.de/dataset/baumstandorte-der-stadt-krefeld',
-        license: 'https://www.govdata.de/dl-de/zero-2-0'
+        license: {
+          name: 'Datenlizenz Deutschland – Zero – Version 2.0',
+          url: 'https://www.govdata.de/dl-de/zero-2-0'
+        }
     },
     {
         // can't download for some reason
@@ -259,7 +265,10 @@ module.exports = [
         long: 'Stadt Mörs',
         download: 'https://www.offenesdatenportal.de/dataset/cc69db13-f6b9-4319-9ee6-3f385dc7d944/resource/6c36f4a2-560e-4689-93cc-6af845247c38/download/baumstrauch.json',
         info: 'https://www.offenesdatenportal.de/dataset/baume-und-straucher-in-bebauten-ortslagen',
-        license: 'https://www.govdata.de/dl-de/zero-2-0'
+        license: {
+          name: 'Datenlizenz Deutschland – Zero – Version 2.0',
+          url: 'https://www.govdata.de/dl-de/zero-2-0'
+        }
     },
     {
         id: 'troisdorf_de',
@@ -277,7 +286,10 @@ module.exports = [
             crown: 'Kronendurchmesser',
             dbh: 'Stammumfang'
         },
-        license: 'https://www.govdata.de/dl-de/by-2-0'
+        license: {
+          name: 'Datenlizenz Deutschland – Namensnennung – Version 2.0',
+          url: 'https://www.govdata.de/dl-de/by-2-0'
+        }
     },
     {
         id: 'jena_de',
@@ -293,6 +305,9 @@ module.exports = [
 
         },
         srs: {epsg: 3044},
-        license: 'https://www.govdata.de/dl-de/by-2-0'
+        license: {
+          name: 'Datenlizenz Deutschland – Namensnennung – Version 2.0',
+          url: 'https://www.govdata.de/dl-de/by-2-0'
+        }
     },
 ].map(s => ({...s, country: 'Germany'}))

@@ -13,8 +13,7 @@ module.exports = [
       ref: 'NUM_PT',
       // CL_H? height? health?
     },
-    license: 'CC-BY-3.0 IT',
-    licenseUrl: 'http://dati.comune.bologna.it/node/165'
+    license: {id: 'CC-BY-3.0'}
   },
   {
     id: 'villa_manin_it',

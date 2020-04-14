@@ -173,7 +173,7 @@ module.exports = [
             installed: 'AANLEGJAAR', //"introduction year"
             owner: 'EIGENDOM'
         },
-        license: 'CC0-1.0',
+        license: {id: 'CC0-1.0'},
         centre: {lon: 4.670, lat: 51.806}
     },
     {
@@ -188,7 +188,7 @@ module.exports = [
             health: 'CONDITIE',
             updated: 'INSPECTIEDATUM'
         },
-        license: 'CC-BY-4.0',
+        license: {id: 'CC-BY-4.0'},
         centre: {lon: 5.478, lat: 52.509}
     },
     {
@@ -202,7 +202,7 @@ module.exports = [
             ref: 'Objectcode',
             scientific: 'Boomsort'
         },
-        license: 'CC0-1.0',
+        license: {id: 'CC0-1.0'},
         centre: {lon: 4.773, lat: 51.82},
         srs: {epsg: 28992}
     },
@@ -221,7 +221,7 @@ module.exports = [
             owner: 'EIGENAARSTYPE',
             // lots of others...
         },
-        license: 'CC-BY-4.0',
+        license: {id: 'CC-BY-4.0'},
         centre: {lon: 6.5475, lat: 52.991}
     },
     {
@@ -237,7 +237,7 @@ module.exports = [
             owner: 'EIGENAAR',
             //...others
         },
-        license: 'CC-BY-4.0',
+        license: {id: 'CC-BY-4.0'},
         centre: {lon: 5.914, lat: 51.984}
     },
     {
@@ -252,7 +252,7 @@ module.exports = [
             height: 'BOOMHOOGTE',
             health: 'CONDITIE_K'
         },
-        license: 'CC0-1.0'
+        license: {id: 'CC0-1.0'}
     },
     {
         id: 'groningen_nl',
@@ -265,7 +265,7 @@ module.exports = [
             owner: 'OMSCHRIJVP'
         },
         srs: {epsg: 28992},
-        license: 'CC0-1.0',
+        license: {id: 'CC0-1.0'},
         centre: {lon: 6.58358, lat: 53.2212}
     },
     {
@@ -278,7 +278,7 @@ module.exports = [
             common: 'Boomsoort Nederlands'
         },
         srs: {epsg: 28992},
-        license: 'CC0-1.0'
+        license: {id: 'CC0-1.0'}
     },
     {
         id: 'zvartewaterland_nl',
@@ -290,7 +290,7 @@ module.exports = [
             scientific: 'LATBOOMSOORT',
             installed: 'AANLEGJAAR'
         },
-        license: 'CC-BY-4.0'
+        license: {id: 'CC-BY-4.0'}
     },
     {
         // broken
@@ -300,7 +300,7 @@ module.exports = [
         download: 'https://geodatastore.pdok.nl/id/dataset/3251be7c-b01f-4503-8858-0958c004e6de',
         info: 'https://data.overheid.nl/dataset/waardevolle-bomen-gemeente-lingewaard',
         compression: 'zip',
-        license: 'CC0-1.0'
+        license: {id: 'CC0-1.0'}
     },
     {
         id: 'barendrecht_nl',
@@ -316,7 +316,7 @@ module.exports = [
             installed: 'AANLEGJAAR',
             updated: 'INSPECTIEDATUM'
         },
-        license: 'CC0-1.0',
+        license: {id: 'CC0-1.0'},
         srs: {epsg: 28992}
     },
     {
@@ -327,7 +327,7 @@ module.exports = [
         crosswalk: {
             scientific: 'soortnaam_bomen'
         },
-        license: 'CC0-1.0'
+        license: {id: 'CC0-1.0'}
     },
     {
         id: 'nijmegen_nl',
@@ -341,7 +341,7 @@ module.exports = [
             scientific: 'BOOMSOORT',
             updated: 'DATUM_BIJGEWERKT'
         },
-        license: 'CC0-1.0',
+        license: {id: 'CC0-1.0'},
         srs: {epsg: 28992}
     },
     {

@@ -477,7 +477,10 @@ module.exports = [
             planted: 'planted',
             ref: 'AssetID'
         },
-        licenseUrl: 'https://www.lethbridge.ca/Pages/OpenDataLicense.aspx'
+        license: {
+          name: 'City of Lethbridge​ - Open Data License',
+          url: 'https://www.lethbridge.ca/Pages/OpenDataLicense.aspx'
+        }
     },
     {
         // No exact license url
@@ -507,7 +510,10 @@ module.exports = [
             // scientific code: BOTNAME
             updated: 'MODDTTM'
         },
-        licenseUrl: 'http://www5.mississauga.ca/research_catalogue/CityofMississauga_TermsofUse.pdf'
+        license: {
+          name: 'City of Mississauga - Terms of Use',
+          url: 'http://www5.mississauga.ca/research_catalogue/CityofMississauga_TermsofUse.pdf'
+        }
     },
     {
         id: 'st_catharines_ca',
@@ -554,6 +560,6 @@ module.exports = [
             updated: 'DATE_RELEV'
         },
         language: 'fr',
-        license: 'CC-BY-4.0'
+        license: {id: 'CC-BY-4.0'}
     },
 ].map(s => ({...s, country: 'Canada'}))

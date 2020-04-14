@@ -134,7 +134,7 @@ module.exports = [
     format: 'vrt',
     'filename': 'adelaide.vrt',
     gdal_options: '-skipfailures',
-    // srs: 'EPSG:28354',
+    // srs: {epsg: 28354},
     short: 'Adelaide',
     long: 'City of Adelaide',
     centre: [138.59979, -34.91802],

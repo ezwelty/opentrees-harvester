@@ -122,7 +122,7 @@ module.exports = [
             'https://opendata.arcgis.com/datasets/60d5b564e732444b81a650c7c4aa548a_0.csv?outSR=%7B%22latestWkid%22%3A2953%2C%22wkid%22%3A2036%7D',
         format: 'csv',
         country: 'Canada',
-        srs: 'EPSG:2953',
+        srs: {epsg: 2953},
         crosswalk: {
             common: 'BOTNAME',
             dbh: 'DIAM',
@@ -575,7 +575,7 @@ module.exports = [
         download:
             'https://niagaraopendata.ca/dataset/06257b18-da24-424e-a609-48d6f3d4f018/resource/c549fce9-f032-48f9-9c0a-2adc9d1e0a40/download/trees.csv',
         info: 'https://niagaraopendata.ca/dataset/st-catharines-trees',
-        srs: 'EPSG:26917',
+        srs: {epsg: 26917},
         crosswalk: {
             scientific: 'BOTANICAL',
             common: 'COMMON',

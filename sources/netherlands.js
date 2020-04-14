@@ -221,7 +221,7 @@ module.exports = [
         },
         license: 'CC0-1.0',
         centre: [4.773, 51.82],
-        srs: 'EPSG:28992',
+        srs: {epsg: 28992},
     },
     {
         id:'assen_nl',
@@ -290,7 +290,7 @@ module.exports = [
             owner: 'OMSCHRIJVP',
 
         },
-        srs: 'EPSG:28992',
+        srs: {epsg: 28992},
         license: 'CC0-1.0',
         centre: [6.58358, 53.2212],
     },
@@ -305,7 +305,7 @@ module.exports = [
             common: 'Boomsoort Nederlands',
 
         },
-        srs: 'EPSG:28992',
+        srs: {epsg: 28992},
 
         license: 'CC0-1.0',
     },
@@ -352,7 +352,7 @@ module.exports = [
 
         },
         license: 'CC0-1.0',
-        srs: 'EPSG:28992',
+        srs: {epsg: 28992},
     },
     {
         id:'zaanstad_nl',
@@ -380,7 +380,7 @@ module.exports = [
 
         },
         license: 'CC0-1.0',
-        srs: 'EPSG:28992',
+        srs: {epsg: 28992},
     },
     {
         id:'haarlem_nl',

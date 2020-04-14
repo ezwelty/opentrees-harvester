@@ -24,6 +24,6 @@ module.exports = [
     download: 'https://www.ogd.stadt-zuerich.ch/geodaten/download/Baumkataster?format=10008',
     info: 'https://data.stadt-zuerich.ch/dataset/geo_baumkataster',
     format: 'csv',
-    srs: 'EPSG:2056'
+    srs: {epsg: 2056}
   }
 ].map(s => ({...s, country: 'Switzerland'}))

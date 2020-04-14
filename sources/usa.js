@@ -381,8 +381,7 @@ module.exports = [
     download: 'https://opendata.arcgis.com/datasets/caa50a924b7d4b5ba8e8a4cbfd0d7f13_29.csv',
     info:'http://hub.arcgis.com/datasets/Cupertino::trees',
     format: 'csv',
-    latitudeField: 'LONG', // sigh, really, yes.
-    longitudeField: 'LAT',
+    geometry: {x: 'LONG', y: 'LAT'},
     crosswalk: {
         ref: 'AssetID',
         updated: 'UpdateDate',

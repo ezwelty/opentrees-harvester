@@ -20,8 +20,7 @@ module.exports = [
         format: 'csv',
         short: 'Barcelona',
         long: 'City of Barcelona',
-        latitudeField: 'LATITUD_WGS84',
-        longitudeField: 'LONGITUD_WGS84',
+        geometry: {x: 'LONGITUD_WGS84', y: 'LATITUD_WGS84'},
         country: 'Spain',
         crosswalk: {
             common: 'NOM_CASTELLA', // there's also NOM_CATALA.

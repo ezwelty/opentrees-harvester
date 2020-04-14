@@ -83,8 +83,7 @@ module.exports = [
         info:'https://data.overheid.nl/dataset/bomen-csv',
         format: 'csv',
         zip: true,
-        latitudeField:'LAT',
-        longitudeField:'LONG',
+        geometry: {x: 'LONG', y: 'LAT'},
         crosswalk: {
             ref: 'BOOMNUMMER',
             scientific: 'BOOMSOORT_WETENSCHAPPELIJ',

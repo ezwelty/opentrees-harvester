@@ -1,6 +1,6 @@
 module.exports = [
-  // TODO: Support individual shapefile download
   {
+    // TODO: Support individual shapefile download
     pending: true,
     id: 'thessaloniki_gr',
     short: 'Thessaloniki',

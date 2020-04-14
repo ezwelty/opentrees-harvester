@@ -15,8 +15,8 @@ module.exports = [
       // STANDJAHR?
     }
   },
-  // requires email registration then subsequent download, blergh
   {
+    // requires email registration then subsequent download, blergh
     pending: true,
     id: 'zurich',
     country: 'Switzerland',

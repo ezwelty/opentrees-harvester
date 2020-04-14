@@ -787,9 +787,9 @@ module.exports = [
 
     }
 },
-// broken
-// alternative, also broken: http://opendata.minneapolismn.gov/datasets/tree-inventory/data
 {
+    // broken
+    // alternative, also broken: http://opendata.minneapolismn.gov/datasets/tree-inventory/data
     pending: true,
     id: 'minneapolis_mn',
     short: 'Minneapolis',
@@ -867,8 +867,8 @@ module.exports = [
 
     }
 },
-// broken - generating
 {
+    // broken - generating
     pending: true,
     id: 'ucsb',
     short: 'UC Santa Barbara',
@@ -975,8 +975,8 @@ module.exports = [
         note: 'NOTES',
     }
 },
-// not downloading
 {
+    // not downloading
     pending: true,
     id: 'uc_davis',
     short: 'UC Davis',
@@ -1099,8 +1099,8 @@ module.exports = [
     },
     primary: 'san_jose_ca1'
 },
-// these are probably generated from lidar or satellite and don't contain any actual information about each tree
 {
+    // these are probably generated from lidar or satellite and don't contain any actual information about each tree
     pending: true,
     id: 'loudoun',
     country: 'USA',

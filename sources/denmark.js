@@ -16,8 +16,8 @@ module.exports = [
     },
     short: 'Copenhagen',
   },
-  // eww, this is not GeoJSON, and doesn't actually contain data.
   {
+    // eww, this is not GeoJSON, and doesn't actually contain data.
     pending: true,
     id: 'ballerup',
     country: 'Denmark',
@@ -27,9 +27,9 @@ module.exports = [
     info: 'https://www.opendata.dk/ballerup-kommune/fritvoksende-trae',
     format: 'geojson'
   },
-  // This is not geojson. TODO: construct a GeoJSON endpoint from the WFS one:
-  // http://kortservice.vejle.dk/gis/services/OPENDATA/Vejle/MapServer/WFSServer?request=GetCapabilities&service=WFS
   {
+    // This is not geojson. TODO: construct a GeoJSON endpoint from the WFS one:
+    // http://kortservice.vejle.dk/gis/services/OPENDATA/Vejle/MapServer/WFSServer?request=GetCapabilities&service=WFS
     pending: true,
     id: 'vejle',
     country: 'Denmark',

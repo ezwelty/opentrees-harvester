@@ -84,8 +84,8 @@ module.exports = [
     },
 
 
-    // ugh, very messed up. Even most of the coordinates are bad, like "[-3,44509490754315]"
     {
+        // ugh, very messed up. Even most of the coordinates are bad, like "[-3,44509490754315]"
         pending: true,
         id: 'madrid_es',
         short: 'Madrid',

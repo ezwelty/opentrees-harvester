@@ -59,8 +59,7 @@ module.exports = [
             // Perimetro?
             maturity: 'Observ',
             // aux_arbol?
-        },
-        license: ''
+        }
     },
     {
         id: 'manlleu_es',
@@ -72,8 +71,7 @@ module.exports = [
             common: 'NCOMU',
             scientiic: 'NCIENTIFIC',
             note: 'OBSERVACIO'
-        },
-        license: ''
+        }
     },
     {
         // ugh, very messed up. Even most of the coordinates are bad, like "[-3,44509490754315]"
@@ -87,8 +85,7 @@ module.exports = [
         format: 'kml', // ew
         crosswalk: {
             description: 'Description', // seriously? HTML table. this cannot end well.
-        },
-        license: ''
+        }
     },
     {
         id: 'torrent_es',
@@ -98,8 +95,7 @@ module.exports = [
         info: 'https://datos.gob.es/es/catalogo/l01462444-arbres-de-torrent-arboles-de-torrent',
         crosswalk: {
             scientific: 'ESPECIE'
-        },
-        license: ''
+        }
     },
     {
         id: 'arganda_es',
@@ -118,8 +114,7 @@ module.exports = [
             age: 'EDAD',
             health: 'ESTADO',
             // others...
-        },
-        license: ''
+        }
     },
     {
         id: 'caceres_es',
@@ -138,7 +133,6 @@ module.exports = [
                     .replace(/.*\//, '')
                     .replace(/_/g, ' '),
             height: 'om_altura'
-        },
-        license: ''
+        }
     },
 ].map(s => ({...s, country: 'Portugal'}))

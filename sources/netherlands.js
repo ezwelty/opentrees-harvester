@@ -376,8 +376,7 @@ module.exports = [
             age: 'leeftijd',
             crown: 'kroondiameter',
             owner: 'beheerder'
-        },
-        license: ''
+        }
     },
     {
         id: 'utrecht',

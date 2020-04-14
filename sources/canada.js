@@ -540,8 +540,7 @@ module.exports = [
             common: 'COMMON',
             dbh: 'DBH',
             trunks: 'STEMS'
-        },
-        license: ''
+        }
     },
     {
         id: 'york_ca',
@@ -557,8 +556,7 @@ module.exports = [
             dbh: 'CURRENTDBH',
             height: 'TREEHEIGHT',
             owner: 'OWNERSHIP'
-        },
-        license: ''
+        }
     },
     {
         id: 'repentigny_ca',

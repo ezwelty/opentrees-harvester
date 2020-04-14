@@ -357,8 +357,7 @@ module.exports = [
             height: 'classe_hau',
             circumerence: 'classe_cir',
             // cepee?
-        },
-        license: ''
+        }
     },
     {
         id: 'bretagne_fr',
@@ -374,7 +373,6 @@ module.exports = [
             health: 'etat_genera',
             note: 'remarque'
         },
-        license: '',
         centre: {lon: 6.14941, lat: 46.35697}
     },
     {
@@ -387,8 +385,7 @@ module.exports = [
             genus: 'Genre',
             species: 'Espce',
             variety: 'VArit'
-        },
-        license: ''
+        }
     },
     {
         id: 'paris_sud_fr',
@@ -405,7 +402,6 @@ module.exports = [
             health: 'vigeur_cr', // or etat_sanit?
             updated: 'anne_expe', // ?
             ref: 'identifian'
-        },
-        license: ''
+        }
     }
 ].map(s => ({...s, country: 'France'}))

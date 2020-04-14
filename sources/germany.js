@@ -236,8 +236,7 @@ module.exports = [
             common: 'ARTDEUT',
             scientific: 'ARTLAT'
 
-        },
-        license: ''
+        }
     },
     {
         id: 'gelsenkirchen_de',

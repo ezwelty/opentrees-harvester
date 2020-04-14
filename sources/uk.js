@@ -136,7 +136,6 @@ module.exports = [
         crosswalk: {
             updated: 'survey_date'
         },
-        license: '',
         centre: {lon: -3.684357, lat: 51.826852}
     },
     {

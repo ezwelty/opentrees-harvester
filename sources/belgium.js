@@ -19,8 +19,7 @@ module.exports = [
         download: 'https://www.odwb.be/explore/dataset/arbustum/download/?format=shp',
         info: 'https://www.odwb.be/explore/dataset/arbustum/information/',
         crosswalk: {
-        },
-        license: ''
+        }
     },
     {
         id: 'roosendaal_be',
@@ -29,8 +28,7 @@ module.exports = [
         download: 'https://opendata.arcgis.com/datasets/f97b4a30ac914a73aa7552a96f0ae82d_0.zip',
         info: 'https://opendata.roosendaal.nl/datasets/gbi-boom-public',
         crosswalk: {
-        },
-        license: ''
+        }
     },
     {
         id: 'gent_be',

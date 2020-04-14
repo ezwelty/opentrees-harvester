@@ -18,8 +18,8 @@ const identity = {
     ule: 'ule',
     ule_min: 'ule_min',
     ule_max: 'ule_max'
-
 }
+
 module.exports = [
     {
     id: 'corangamite',
@@ -37,7 +37,6 @@ module.exports = [
         common: 'name',
         location: x => ({ 'STREET TREE': 'street', 'PARK TREE': 'park' }[x.tree_type] || '')
     },
-
 },
 {
     id: 'colac_otways',
@@ -92,7 +91,6 @@ module.exports = [
         height: 'height',
         dbh: 'dbh'
     },
-
 },
 {
     id: 'geelong',
@@ -105,7 +103,6 @@ module.exports = [
         ...identity, // requires Node 10
         scientific: x => x.genus + ' ' + (x.species || '').toLowerCase(),
         // TODO captured is a date
-
     },
 },
 {
@@ -178,7 +175,6 @@ module.exports = [
         scientific: 'BotanicalN',
         dbh: 'Circumfere' // TODO reconcile
     },
-
 },
 {
     id: 'launceston',
@@ -330,7 +326,6 @@ module.exports = [
         structure: 'Structure',
         maturity: 'Age_Class',
         //ule_ Life_Expec
-
     },
     */
 },
@@ -450,9 +445,7 @@ module.exports = [
     crosswalk: {
         ...identity,
         species: s => (s.species || '').replace(/^[A-Z]\. /, '')
-
     },
-
 },
 {
     id: 'glen_eira',
@@ -468,7 +461,6 @@ module.exports = [
         height: 'height',
         crown: 'spread',
         location: 'locationty',
-
     },
 },
 {
@@ -521,8 +513,6 @@ module.exports = [
         // 'Crown_width': 3
         // 'DBH': 100
         // 'Species_Profile': 'Acacia concurrens commonly known as Black wattle or Curracabah is a tall shrub endemic to eastern Australia growing to a height of up to 10m. The botanic name concurrens describes the converging primary veins on the phyllodes (modified leaf stems which function as leaf). Bright yellow rod-shaped flowers are seen from late winter to early spring.',
-
-
     },
 },
 {
@@ -554,7 +544,6 @@ module.exports = [
         structure: 'structure',
         maturity: 'age',
         ule: 'unel___repl',
-
     }
 },
 ].map(s => {

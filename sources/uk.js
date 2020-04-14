@@ -25,7 +25,6 @@ module.exports = [
         long: 'Greater London Authority',
         country: 'UK',
         centre: {lon: -0.1051, lat: 51.5164},
-
         crosswalk: {
             ref: 'gla_id',
             scientific: 'species_name',
@@ -157,8 +156,6 @@ module.exports = [
             maturity: 'Maturity',
             health: 'Physiological Condition',
             id: 'Identifier'
-
         },
-
     },
 ];

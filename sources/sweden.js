@@ -1,6 +1,4 @@
 module.exports = [
-
-  
   {
     id: 'umea',
     country: 'Sweden',

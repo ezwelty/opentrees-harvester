@@ -83,7 +83,6 @@ module.exports = [
         common: 'spc_common',
         health: 'health',
         // sooo many other fields.
-
     },
 },
 // TODO there is a lat lon buiried in "Property Address" field
@@ -120,11 +119,8 @@ module.exports = [
         note: 'TREE_NOTES',
         health: 'CONDITION',
         // maybe ref: 'FACILITYID'
-
-
     },
 },
-
 {
     id: 'buffalo-ny',
     download: 'https://data.buffalony.gov/api/views/n4ni-uuec/rows.csv?accessType=DOWNLOAD',
@@ -154,12 +150,9 @@ module.exports = [
         description: 'qSiteInfo',
         dbh: x => Number(x.DBH) * 2.54, // assuming
         planted: 'PlantDate',
-
-
         // also qLegalStatus (private/DPW), qCaretaker, PlantType
     },
     centre: {lon: -122.435, lat: 37.77},
-
 },
 {
     id: 'philadelphia',
@@ -184,10 +177,8 @@ module.exports = [
         common: 'SPECIES_CO',
         dbh: 'DIAMETER',
         location: 'LOCATION_NAME',
-
     },
     centre: {lon: -104.9454, lat: 39.7273},
-
 },
 {
     id: 'boulder',
@@ -205,9 +196,7 @@ module.exports = [
         dbh: x => 'DBHINT' * 2.54,
         location: 'LOCTYPE',
         // also interesting attributes on deciduous, broadlaved etc.
-
     },
-
 },
 {
     id: 'cambridge',
@@ -225,8 +214,6 @@ module.exports = [
         health: x => String(x.TreeCondit).replace(/ \(.*/, '') // strings like "Good (EW 2013)"
     },
     short: 'Cambridge',
-
-
 },
 {
     id: 'berkeley',
@@ -241,10 +228,8 @@ module.exports = [
         dbh: x => Number(x.DBH_IN) * INCHES,
         health: 'CONDITION', // numeric...
         note: 'note',
-
     },
     short: 'Berkeley',
-
 },
 {
     id: 'pittsburgh',
@@ -261,7 +246,6 @@ module.exports = [
         height: 'height',
         health: 'condition',
     }
-
 },
 {
     id: 'colombus',
@@ -280,9 +264,7 @@ module.exports = [
         common: 'SP_CODE',
         description: 'STR_NAME',
     }
-
 },
-
 {
     id: 'austin',
     country: 'USA',
@@ -298,8 +280,6 @@ module.exports = [
         height: x => x.HEIGHT / FEET,
         health: 'CONDITION',
         location: 'LAND_TYPE',
-
-
     }
 },
 {
@@ -319,7 +299,6 @@ module.exports = [
         updated: 'SurveyDate'
     }
 },
-
 {
     id: 'cary',
     country: 'USA',
@@ -332,7 +311,6 @@ module.exports = [
         updated: 'editdate',
         common: 'name',
         description: 'description',
-
     }
 },
 {
@@ -391,8 +369,6 @@ module.exports = [
         height: x => Number(x.Height) / FEET,
         location: 'LocationType',
         health: 'Condition',
-
-
     },
     centre: {lon: -122.03987, lat: 37.31706},
 },
@@ -410,8 +386,6 @@ module.exports = [
         common: 'COMMONNAME',
         dbh: x => Number(x.DBH) * INCHES,
         height: x => Number(x.HEIGHT) / FEET,
-
-
     }
 },
 {
@@ -443,7 +417,6 @@ module.exports = [
         health: 'CONDITION', // what, there is "CONDITION_RATING_NUMERIC" which has "Good" twhereas condition is "Fair"...
         updated: 'ACTIVITY_DATE',
         // genus: 'GENUS', // "Pine" is not a genus...
-
     }
 },
 {
@@ -462,7 +435,6 @@ module.exports = [
         health: 'RATING', // out of 10?
         note: 'COMMENT',
         ref: 'TREE_ID',
-
     }
 },
 {
@@ -482,7 +454,6 @@ module.exports = [
         height: 'HEIGHT',
         health: 'COND',
         note: 'NOTES',
-
     }
 },
 {
@@ -503,8 +474,6 @@ module.exports = [
         health: 'CONDITION',
         updated: 'LASTUPDATE',
         // TROUPGROUP: deciduous/evergreen
-
-
     }
 },
 {
@@ -537,8 +506,6 @@ module.exports = [
         structure: 'TRUNKSTRCT', // also BRANCHSTRCT
         note: 'COMMENTS',
         updated: 'last_edited_date'
-
-
     }
 },
 {
@@ -554,8 +521,6 @@ module.exports = [
         health: 'CONDITION',
         // lots of others
         updated: 'INPUT_DATE',
-
-
     }
 },
 {
@@ -603,7 +568,6 @@ module.exports = [
     crosswalk: {
         common: 'Common_Name',
         dbh: inches('DBH'),
-
     }
 },
 {
@@ -624,8 +588,6 @@ module.exports = [
         height: feet('height'),
         health: 'trcond',
         updated: 'last_edited_date'
-
-
     }
 },
 {
@@ -641,8 +603,6 @@ module.exports = [
         height: 'Height', // 11-20
         dbh: inches('Diameter'),
         spread: 'Spread',
-
-
     }
 },
 {
@@ -657,8 +617,6 @@ module.exports = [
         dbh: 'DBH', //13-18
         height: 'HEIGHT',
         // FICTITIOUS?
-
-
     },
     centre: {lon: -117.86, lat: 33.83},
 },
@@ -677,9 +635,7 @@ module.exports = [
         genus: 'Genus',
         species: 'Species',
         updated: 'last_edited_date',
-
         //Removal_Date?
-
     }
 },
 {
@@ -696,7 +652,6 @@ module.exports = [
         species: 'Species_1',
         common: 'CommonName',
         health: 'Condition_1',
-
     }
 },
 {
@@ -747,7 +702,6 @@ module.exports = [
         location: 'TREE_TYPE',
         health: 'CONDITION',
         scientific: 'SCIENTIFIC',
-
     }
 },
 {
@@ -783,8 +737,6 @@ module.exports = [
         updated: 'LASTUPDATE',
         scientific: 'BOTNAME',
         family: 'FAMILY'
-
-
     }
 },
 {
@@ -810,7 +762,6 @@ module.exports = [
         dbh: inches('DBH'),
         condition: x => String(x.CONDITION).split(' - ')[0],
         comment: 'NOTES',
-
         // DATE_1 - 2015-ish. planted? updated?
     }
 },
@@ -864,7 +815,6 @@ module.exports = [
         dbh: 'DBH', //07-12
         height: 'HEIGHT', // 15-30
         updated: 'EditDate',
-
     }
 },
 {
@@ -908,8 +858,6 @@ module.exports = [
         health: 'COND',
         note: 'NOTES',
         updated: 'DATE', // EDITTIME?
-
-
     }
 },
 {
@@ -941,7 +889,6 @@ module.exports = [
         height: feet('HEIGHT_RAN'), // 30-45
         health: 'CONDITION',
         updated: 'LAST_EDITED_DATE',
-
     }
 },
 {
@@ -956,7 +903,6 @@ module.exports = [
         common: 'COMMON',dbh: inches('DBH'),
         health: 'CONDITION',
         updated: 'INSPECT_DT',
-
     }
 },
 {
@@ -998,7 +944,6 @@ module.exports = [
         dbh: inches('DBH'),
         structure: 'Structural_Value',
         ref: 'HRPT_Numbering_1',
-
     }
 },
 {
@@ -1055,7 +1000,6 @@ module.exports = [
         note: 'NOTES',
         updated: 'EditDate',
         owner: 'OWNEDBY',
-
     }
 },
 {
@@ -1077,7 +1021,6 @@ module.exports = [
         owner: 'OWNEDBY',
     },
     primary: 'san_jose_ca1'
-
 },
 {
     id: 'san_jose_ca3',

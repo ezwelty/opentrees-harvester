@@ -10,7 +10,6 @@ module.exports = [
             scientific: 'LATBOOMSOO',
             dbh: 'STAMOMTREK',
             ref: 'ANTW_ID',
-
         }
     },
     {

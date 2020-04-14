@@ -13,10 +13,8 @@ module.exports = [{
         scientific: 'GATTUNG_ART',
         crown: 'KRONENDURCHMESSER',
     },
-    license: 'CC-BY-4.0' 
-
+    license: 'CC-BY-4.0'
 },
-
 {
     id: 'linz',
     country: 'Austria',
@@ -34,6 +32,6 @@ module.exports = [{
         crown: 'Schirmdurchmesser',
         dbh: 'Stammumfang',
     },
-    license: 'CC-BY-4.0' 
+    license: 'CC-BY-4.0'
 },
 ].map(s => ({...s, country: 'Austria' }));

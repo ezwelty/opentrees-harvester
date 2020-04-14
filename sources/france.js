@@ -83,7 +83,6 @@ module.exports = [
         short: 'Grenoble',
         country: 'France',
     },
-
     {
         id: 'montpellier',
         country: 'France',

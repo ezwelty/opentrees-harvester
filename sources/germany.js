@@ -16,7 +16,6 @@ module.exports = [
             scientific: 'art_botan',
             common: 'art_deut',
             // baumart? Laubbaum
-
         }
     },
     {

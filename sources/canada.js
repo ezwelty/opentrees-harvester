@@ -120,7 +120,6 @@ module.exports = [
             common: 'BOTNAME',
             dbh: 'DIAM',
             height: 'HT',
-
             updated: 'edited_date',
         },
         short: 'Moncton',
@@ -141,7 +140,6 @@ module.exports = [
             ref: 'OBJECTID',
         }
     },
-
     {
         id: 'winnipeg',
         country: 'Canada',
@@ -176,7 +174,6 @@ module.exports = [
     {
         // TODO https://data.surrey.ca/dataset/important-trees
         // TODO https://data.surrey.ca/dataset/park-screen-trees
-
         id: 'surrey',
         short: 'Surrey',
         long: 'City of Surrey',
@@ -583,7 +580,6 @@ module.exports = [
         language: 'fr',
         license: 'CC-BY-4.0',
     },
-
 ].map(s => {
     s.country = 'Canada';
     return s;

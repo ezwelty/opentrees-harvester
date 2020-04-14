@@ -14,8 +14,6 @@ module.exports = [
             height: 'Boomhoogte',
             planted: 'Plantjaar',
             owner: 'Eigenaar',
-
-
         }
     },
     {
@@ -36,7 +34,6 @@ module.exports = [
         },
         primary: 'amsterdam1'
     },
-
     {
         id: 'amsterdam3',
         country: 'Netherlands',
@@ -55,7 +52,6 @@ module.exports = [
         },
         primary: 'amsterdam1'
     },
-
     {
         id: 'amsterdam4',
         country: 'Netherlands',
@@ -126,7 +122,6 @@ module.exports = [
             planted: 'plantjaar',
             dbh: 'diameter_in_cm',
             height: 'boomhoogte',
-
         }
     },
     {
@@ -166,7 +161,6 @@ module.exports = [
             planted: 'PLANTJAAR',
             ule: 'LEVENSVERW',
             owner: 'BEHEERDER',
-
         }
     },
     {
@@ -184,8 +178,6 @@ module.exports = [
             dbh: 'DIAMETER',
             installed: 'AANLEGJAAR', //"introduction year"
             owner: 'EIGENDOM',
-
-
         },
         license: 'CC0-1.0',
         centre: {lon: 4.670, lat: 51.806},
@@ -217,7 +209,6 @@ module.exports = [
             common: 'Naam_NL',
             ref: 'Objectcode',
             scientific: 'Boomsort',
-
         },
         license: 'CC0-1.0',
         centre: {lon: 4.773, lat: 51.82},
@@ -238,8 +229,6 @@ module.exports = [
             health: 'CONDITIE',
             owner: 'EIGENAARSTYPE',
             // lots of others...
-
-
         },
         license: 'CC-BY-4.0',
         centre: {lon: 6.5475, lat: 52.991}
@@ -257,7 +246,6 @@ module.exports = [
             planted: 'PLANTJAAR',
             owner: 'EIGENAAR',
             //...others
-
         },
         license: 'CC-BY-4.0',
         centre: {lon: 5.914, lat: 51.984},
@@ -274,7 +262,6 @@ module.exports = [
             scientific: 'BOOMSOORT_',
             height: 'BOOMHOOGTE',
             health: 'CONDITIE_K',
-
         },
         license: 'CC0-1.0',
     },
@@ -288,7 +275,6 @@ module.exports = [
             common: 'NEDNAAM',
             scientific: 'LATNAAM',
             owner: 'OMSCHRIJVP',
-
         },
         srs: {epsg: 28992},
         license: 'CC0-1.0',
@@ -303,10 +289,8 @@ module.exports = [
         crosswalk: {
             scientific: 'Boomsoort',
             common: 'Boomsoort Nederlands',
-
         },
         srs: {epsg: 28992},
-
         license: 'CC0-1.0',
     },
     {
@@ -319,11 +303,9 @@ module.exports = [
             common: 'NEDBOOMSOORT',
             scientific: 'LATBOOMSOORT',
             installed: 'AANLEGJAAR',
-
         },
         license: 'CC-BY-4.0',
     },
-
     {
         // broken
         pending: true,
@@ -350,7 +332,6 @@ module.exports = [
             dbh: 'DIAMETER',
             installed: 'AANLEGJAAR',
             updated: 'INSPECTIEDATUM',
-
         },
         license: 'CC0-1.0',
         srs: {epsg: 28992},
@@ -378,7 +359,6 @@ module.exports = [
             planted: 'PLANTJAAR',
             scientific: 'BOOMSOORT',
             updated: 'DATUM_BIJGEWERKT',
-
         },
         license: 'CC0-1.0',
         srs: {epsg: 28992},
@@ -396,7 +376,6 @@ module.exports = [
             age: 'leeftijd',
             crown: 'kroondiameter',
             owner: 'beheerder',
-
         },
         license: '',
     },

@@ -17,10 +17,9 @@ module.exports = [
 {
     id: 'madison',
     download: 'https://opendata.arcgis.com/datasets/b700541a20e446839b18d62426c266a3_0.zip',
-    format: 'zip',
     short: 'Madison',
     country: 'United States',
-    filename: 'Street_Trees.shp',
+    format: 'shp',
     crosswalk: {
         common: 'SPECIES',
         dbh: x => Number(x.DIAMETER) * INCHES
@@ -29,8 +28,7 @@ module.exports = [
 {
     id: 'pdx-street',
     download: 'https://opendata.arcgis.com/datasets/eb67a0ad684d4bb6afda51dc065d1664_25.zip',
-    format: 'zip',
-    filename: 'Street_Trees.shp',
+    format: 'shp',
     short: 'Portland',
     long: 'Portland, Oregon',
     country: 'United States',
@@ -49,8 +47,8 @@ module.exports = [
 {
     id: 'pdx-park',
     download: 'https://opendata.arcgis.com/datasets/83a7e3f6a1d94db09f24849ee90f4be2_220.zip?outSR=%7B%22latestWkid%22%3A3857%2C%22wkid%22%3A102100%7D&session=undefined',
-    format: 'zip',
-    filename: 'Parks_Tree_Inventory.shp',
+    compression: 'zip',
+    format: 'shp',
     short: 'Portland, Oregon',
     long: 'Portland, Oregon',
     country: 'United States',
@@ -102,8 +100,8 @@ module.exports = [
 {
     id: 'washington-dc',
     download: 'https://opendata.arcgis.com/datasets/f6c3c04113944f23a7993f2e603abaf2_23.zip',
-    format: 'zip',
-    filename: 'Urban_Forestry_Street_Trees.shp',
+    compression: 'zip',
+    format: 'shp',
     short: 'Washington DC',
     long: 'Washington DC',
     country: 'United States',
@@ -185,10 +183,10 @@ module.exports = [
     country: 'United States',
     download: 'https://opendata.arcgis.com/datasets/dbbae8bdb0a44d17934243b88e85ef2b_0.zip',
     info: 'https://data-boulder.opendata.arcgis.com/datasets/dbbae8bdb0a44d17934243b88e85ef2b_0',
-    format: 'zip',
+    compression: 'zip',
     short: 'Boulder',
     long: 'City of Boulder, Colorado',
-    filename: 'Tree_Inventory.shp',
+    format: 'shp',
     crosswalk: {
         scientific: 'LATINNAME',
         common: 'COMMONNAME',
@@ -252,8 +250,8 @@ module.exports = [
     country: 'United States',
     download: 'https://opendata.arcgis.com/datasets/674e4a358e8042f69a734f229a93823c_1.zip?outSR=%7B%22wkt%22%3A%22PROJCS%5B%5C%22Ohio%203402%2C%20Southern%20Zone%20(1983%2C%20US%20Survey%20feet)%5C%22%2CGEOGCS%5B%5C%22NAD%2083%20(Continental%20US)%5C%22%2CDATUM%5B%5C%22NAD%2083%20(Continental%20US)%5C%22%2CSPHEROID%5B%5C%22GRS%2080%5C%22%2C6378137.0%2C298.257222101%5D%5D%2CPRIMEM%5B%5C%22Greenwich%5C%22%2C0.0%5D%2CUNIT%5B%5C%22Degree%5C%22%2C0.0174532925199433%5D%5D%2CPROJECTION%5B%5C%22Lambert_Conformal_Conic%5C%22%5D%2CPARAMETER%5B%5C%22False_Easting%5C%22%2C1968500.0%5D%2CPARAMETER%5B%5C%22Central_Meridian%5C%22%2C-82.5%5D%2CPARAMETER%5B%5C%22Standard_Parallel_1%5C%22%2C38.7333333333%5D%2CPARAMETER%5B%5C%22Standard_Parallel_2%5C%22%2C40.0333333333%5D%2CPARAMETER%5B%5C%22Latitude_Of_Origin%5C%22%2C38.0%5D%2CUNIT%5B%5C%22U.S.%20Foot%5C%22%2C0.3048006096012%5D%5D%22%7D',
     info: 'http://opendata.columbus.gov/datasets/public-owned-trees',
-    format: 'zip',
-    filename: 'Public_Owned_Trees.shp',
+    compression: 'zip',
+    format: 'shp',
     short: 'Colombus',
     crosswalk: {
         ref: 'OBJECTID',
@@ -287,8 +285,8 @@ module.exports = [
     short: 'Cornell University',
     download: 'https://cugir-data.s3.amazonaws.com/00/80/25/cugir-008025.zip',
     info: 'https://cugir.library.cornell.edu/catalog/cugir-008025',
-    format: 'zip',
-    filename: 'cugir-008025/CornellTree2009.shp',
+    compression: 'zip',
+    format: 'shp',
     crosswalk: {
         scientific: 'Botanic',
         common: 'Common',
@@ -316,7 +314,7 @@ module.exports = [
     short: 'Rochester',
     download: 'https://opendata.arcgis.com/datasets/4c209944e2984b4a908a14b0cbe48075_0.zip',
     info: 'http://hub.arcgis.com/datasets/RochesterNY::trees-open-data',
-    format: 'zip',
+    compression: 'zip',
     crosswalk: {
         description: 'TREE_NAME',
         health: 'COND',
@@ -331,7 +329,7 @@ module.exports = [
     short: 'Seattle',
     download: 'https://opendata.arcgis.com/datasets/0b8c124ace214943ab0379623937eccb_6.zip',
     info: 'http://hub.arcgis.com/datasets/SeattleCityGIS::trees',
-    format: 'zip',
+    compression: 'zip',
     crosswalk: {
         ref: 'UNITID',
         health: 'CONDITION',

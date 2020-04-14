@@ -69,7 +69,6 @@ module.exports = [
         short: 'Edinburgh',
         download: 'https://data.edinburghcouncilmaps.info/datasets/4dfc8f18a40346009b9fc32cbee34039_39.zip',
         info: 'https://data.edinburghcouncilmaps.info/datasets/4dfc8f18a40346009b9fc32cbee34039_39',
-        format: 'zip',
         crosswalk: {
             scientific: 'LatinName',
             common: 'CommonName',

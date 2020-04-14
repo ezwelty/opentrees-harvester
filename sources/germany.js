@@ -6,7 +6,7 @@ module.exports = [
         long: 'Halle (Saale)',
         download: 'https://www.halle.de/pushOD.aspx?FileName=f2087a53-2c10-f7c5-4dba-9ad5112a90cb_shp.zip',
         info: 'https://www.halle.de/de/Verwaltung/Online-Angebote/Offene-Verwaltungsdaten/Mit-Kartenbezug/index.aspx?ID=f2087a53-2c10-f7c5-4dba-9ad5112a90cb',
-        format: 'zip',
+        compression: 'zip',
         crosswalk: {
             planted: 'pflanzjahr',
             crown: 'krone_m',
@@ -24,7 +24,7 @@ module.exports = [
         short: 'Leipzig',
         download: 'https://opendata.arcgis.com/datasets/918dfaa87b754c4384ddcf869cfd6dc6_0.zip',
         info: 'https://hub.arcgis.com/datasets/esri-de-content::stra%C3%9Fenbaumkataster-leipzig',
-        format: 'zip',
+        compression: 'zip',
         crosswalk: {
             scientific: 'Baumart_wi',
             common: 'Baumart_de',
@@ -38,7 +38,7 @@ module.exports = [
         short: 'Bonn',
         download: 'https://opendata.arcgis.com/datasets/f8f130c1dd4e4ea9b5fe1f2385673cab_0.zip',
         info: 'http://opendata.gis.ms.gov/datasets/esri-de-content::baumkataster-bonn',
-        format: 'zip',
+        compression: 'zip',
         crosswalk: {
             ref: 'baum_id',
             scientific: 'lateinisch',
@@ -74,7 +74,7 @@ module.exports = [
         short: 'Berlin',
         download: 'https://opendata.arcgis.com/datasets/05c3f9d7dea6422b86e30967811bddd7_0.zip',
         info: '',
-        format: 'zip',
+        compression: 'zip',
         crosswalk: {
             scientific: 'Art_Bot',
             common: 'Art_Dtsch',
@@ -92,7 +92,7 @@ module.exports = [
         long: 'Frankfurt am Main',
         download: 'https://opendata.arcgis.com/datasets/8c50110f190e43599baf50701aaff13a_0.zip',
         info: 'https://hub.arcgis.com/datasets/esri-de-content::baumkataster-frankfurt-am-main',
-        format: 'zip',
+        compression: 'zip',
         crosswalk: {
             scientific: x => String(x.Gattung_Ar).split(', ')[0],
             common: x => String(x.Gattung_Ar).split(', ')[1],
@@ -108,7 +108,7 @@ module.exports = [
         short: 'Hamburg Hafen',
         download: 'https://opendata.arcgis.com/datasets/35950460a3744fa4b088570b2df55718_0.zip',
         info: 'https://hub.arcgis.com/datasets/esri-de-content::stra%C3%9Fenbaumkataster-hamburg-hafen',
-        format: 'zip',
+        compression: 'zip',
         crosswalk: {
             scientific: 'art_latein',
             common: 'art_deutsc',
@@ -118,8 +118,6 @@ module.exports = [
             circumference: 'stammumfan',
             // stand-bear??
             owner: 'zustaendig'
-
-
         }
     },
     {
@@ -145,7 +143,7 @@ module.exports = [
         short: 'Chemnitz',
         download: 'https://opendata.arcgis.com/datasets/70330324e2364b209f7511ca20581f83_0.zip?outSR=%7B%22latestWkid%22%3A3857%2C%22wkid%22%3A102100%7D',
         info: 'http://portal-chemnitz.opendata.arcgis.com/datasets/baeume?geometry=12.910%2C50.819%2C12.914%2C50.822',
-        format: 'zip',
+        compression: 'zip',
         crosswalk: {
             ref: 'BaumNummer',
             scientific: x => String(x.BaumArt).split(', ')[0],
@@ -187,8 +185,7 @@ module.exports = [
             dbh: 'Stammdurchm_(aktuell)',
             health: 'Vitalitaetsstatus_(aktuell)', // needs processing?
             planted: 'Pflanzjahr_geschaetzt',
-            updated: 'Standortermittlung_am', // "location determination"
-
+            updated: 'Standortermittlung_am' // "location determination"
         },
         centre: {lon: 10, lat: 48.4}
     },
@@ -198,8 +195,8 @@ module.exports = [
         short: 'Hamburg',
         download: 'http://daten-hamburg.de/umwelt_klima/strassenbaumkataster/Strassenbaumkataster_HH_2019-06-19.zip',
         // info:'',
-        format: 'zip',
-        filename: 'Strassenbaumkataster_HH_2019-06-19.gml',
+        compression: 'zip',
+        format: 'gml',
         crosswalk: {
             ref: 'baumid',
             scientific: 'art_latein',
@@ -207,7 +204,6 @@ module.exports = [
             planted: 'pflanzjahr',
             // kronendurchmesser
             dbh: 'stammumfang', // TODO verify
-            //
         }
         /*
         TODO investigate

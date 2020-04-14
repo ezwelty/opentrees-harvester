@@ -20,8 +20,8 @@ module.exports = [
         // download: 'https://transcode.geo.data.gouv.fr/services/5e2a1e77fa4268bc255379c2/feature-types/ms:abr_arbres_alignement.abrarbre?format=GeoJSON&projection=WGS84',
         download: 'https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre.shp?srsname=EPSG:4326',
         // format: 'geojson',
-        format: 'zip',
-        filename: 'abr_arbres_alignement.abrarbre.shp',
+        compression: 'zip',
+        format: 'shp',
         crosswalk: {
             scientific: 'essence',
             variety: 'variete',
@@ -88,8 +88,8 @@ module.exports = [
         country: 'France',
         download: 'https://data.montpellier3m.fr/sites/default/files/ressources/MMM_MTP_ArbresAlign.zip',
         info: 'https://data.montpellier3m.fr/dataset/arbres-dalignement-de-montpellier',
-        format: 'zip',
-        filename: 'MMM_MTP_ArbresAlign.shp',
+        compression: 'zip',
+        format: 'shp',
         crosswalk: {
             ref: 'idarbre',
             scientific: 'nom_latin',
@@ -108,8 +108,8 @@ module.exports = [
         country: 'France',
         info: 'https://www.data.gouv.fr/fr/datasets/arbres-2/',
         download: 'https://www.data.gouv.fr/fr/datasets/r/a10c7776-afa5-4b8a-8050-081788818b55',
-        format: 'zip',
-        filename: 'arbres-v2.shp',
+        compression: 'zip',
+        format: 'shp',
         short: 'Grand Paris Seine Ouest',
         crosswalk: {
             scientific: 'genespvar',
@@ -122,8 +122,8 @@ module.exports = [
         id: 'agen',
         country: 'France',
         download: 'https://www.data.gouv.fr/fr/datasets/r/fededc1c-6e42-4a6d-9469-849fd956fbfe',
-        format: 'zip',
-        filename: 'Arbres.shp',
+        compression: 'zip',
+        format: 'shp',
         crosswalk: {
             ref: 'id_ponctue',
             common: 'espece_arb',
@@ -135,8 +135,8 @@ module.exports = [
         id: 'saint_quentinois',
         country: 'France',
         download: 'https://www.data.gouv.fr/fr/datasets/r/c6000378-1f3c-4c0c-8f62-9a5b72dc7a85',
-        format: 'zip',
-        filename: 'ARBRES.shp', // hmmm
+        compression: 'zip',
+        format: 'shp', // hmmm
         info: '',
         short: 'Saint Quentinois',
         long: 'Agglomération du Saint Quentinois',
@@ -154,8 +154,8 @@ module.exports = [
         id: 'metz',
         country: 'France',
         download: 'https://www.data.gouv.fr/fr/datasets/r/3aa28eaa-9ee4-49ff-bb73-74c21d14268d',
-        format: 'zip',
-        filename: 'vrd_esv_arb.shp',
+        compression: 'zip',
+        format: 'shp',
         info: '',
         short: 'Metz',
         crosswalk: {
@@ -168,8 +168,8 @@ module.exports = [
         id: 'seine_saint_denis',
         country: 'France',
         download: 'https://www.data.gouv.fr/fr/datasets/r/c631e78d-4d15-44eb-a40d-cd593f0e1bed',
-        format: 'zip',
-        filename: 'fr-dpt93-1646.shp',
+        compression: 'zip',
+        format: 'shp',
         info: '',
         short: 'Seine-Saint-Denis',
         crosswalk: {
@@ -196,8 +196,8 @@ module.exports = [
         id: 'nevers',
         country: 'France',
         download: 'https://www.data.gouv.fr/fr/datasets/r/dbdc2068-ee22-474d-8a42-261554482a4f',
-        format: 'zip',
-        filename: 'ARBRE_ALIGNEMENT.shp',
+        compression: 'zip',
+        format: 'shp',
         info: '',
         short: 'Nevers',
         long: 'Ville de Nevers',
@@ -213,7 +213,7 @@ module.exports = [
         long: 'Toulouse Métropole',
         download: 'https://www.data.gouv.fr/fr/datasets/r/b5b275e5-ef20-43c4-ad3f-5604c67a75a3',
         info: 'https://www.data.gouv.fr/fr/datasets/arbres-dalignement-toulouse/',
-        format: 'zip',
+        compression: 'zip',
         centre: {lon: 1.44, lat: 43.6},
         // dear god, linestring geometries...
         crosswalk: {
@@ -228,7 +228,7 @@ module.exports = [
         long: "Ville d'Orléans",
         download: 'https://www.data.gouv.fr/fr/datasets/r/804b8b61-9f8f-4a0d-8524-35ea5d6e265f',
         info: 'https://www.data.gouv.fr/fr/datasets/arbres-ville-dorleans/',
-        format: 'zip',
+        compression: 'zip',
         crosswalk: {
             ref: 'id_arbre',
             genus: x => String(x.genre).replace(/ \?/, ''),
@@ -244,7 +244,7 @@ module.exports = [
         long: 'Ville de Saint-Egrève',
         download: 'https://www.data.gouv.fr/fr/datasets/r/2bda9508-27e5-4de6-aba3-fdb0d9059a22',
         info: 'https://www.data.gouv.fr/fr/datasets/les-arbres-de-saint-egreve/',
-        format: 'zip',
+        compression: 'zip',
         crosswalk: {
             genus: 'genre',
             species: 'espece',
@@ -259,7 +259,7 @@ module.exports = [
         long: 'Ville de Bayonne',
         download: 'https://www.data.gouv.fr/fr/datasets/r/e99bddd1-384b-4954-9f4f-483bb0fcaef0',
         info: 'https://www.data.gouv.fr/fr/datasets/arbres-dalignement-bayonne/',
-        format: 'zip',
+        compression: 'zip',
         crosswalk: {
             genus: 'genre',
             species: 'espece',
@@ -279,7 +279,7 @@ module.exports = [
         long: "Ville d'Issy-les-Moulineaux",
         download: 'https://www.data.gouv.fr/fr/datasets/r/578636b3-e9ca-4aa7-b298-e69fd0f3acc9',
         info: 'https://www.data.gouv.fr/fr/datasets/r/578636b3-e9ca-4aa7-b298-e69fd0f3acc9',
-        format: 'zip',
+        compression: 'zip',
         crosswalk: {
             scientific: 'essence_sci',
             common: 'essence_com',
@@ -297,7 +297,7 @@ module.exports = [
         long: 'Rennes Métropole',
         download: 'https://www.data.gouv.fr/fr/datasets/r/85d25eb0-b34e-4559-884d-ac052e62c620',
         info: 'https://www.data.gouv.fr/fr/datasets/arbres-dornement-des-espaces-verts-de-la-ville-de-rennes-1/',
-        format: 'zip',
+        compression: 'zip',
         crosswalk: {
             genus: 'genre',
             species: 'espece',
@@ -313,7 +313,7 @@ module.exports = [
         long: 'Rennes Métropole',
         download: 'https://www.data.gouv.fr/fr/datasets/r/c9cf6518-267c-4aa4-bdbe-d1602f78b07f',
         info: 'https://www.data.gouv.fr/fr/datasets/arbres-dalignement-en-accompagnement-de-voirie-sur-la-ville-de-rennes-1/',
-        format: 'zip',
+        compression: 'zip',
         primary: 'rennes1',
         crosswalk: {
             ref: 'numero',
@@ -333,7 +333,7 @@ module.exports = [
         long: 'Mulhouse Alsace Agglomération',
         download: 'https://www.data.gouv.fr/fr/datasets/r/3c47ef6b-10ea-4723-81b9-a3c0b99e9550',
         info: 'https://www.data.gouv.fr/fr/datasets/caracteristiques-des-arbres-dalignements-geres-par-la-ville-de-mulhouse/',
-        format: 'zip',
+        compression: 'zip',
         crosswalk: {
             scientific: 'libelle_es',
             planted: 'date_plant',

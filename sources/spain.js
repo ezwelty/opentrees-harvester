@@ -6,7 +6,6 @@ module.exports = [
         long: 'Concello de Santiago de Compostela',
         download: 'https://datos.santiagodecompostela.gal/catalogo/dataset/60b1928e-32a9-442a-8f69-0215ba0862a4/resource/fab2344b-3c5c-466b-9e63-2e05e11fd9ce/download/arboredo_points.zip',
         info: 'https://datos.santiagodecompostela.gal/catalogo/gl/dataset/arboredo',
-        format: 'zip',
         crosswalk: {
             location: 'tipolexia'
         }

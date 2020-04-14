@@ -379,11 +379,11 @@ module.exports = [
 {
     id: 'wyndham',
     // what about https://data.gov.au/dataset/ds-dga-87307c7b-b92c-48f1-841a-b5794dfb5322/details?q=trees ?
+    // download: 'https://data.gov.au/dataset/0254dee0-5b26-484f-a5ae-5ca3cab46601/resource/4ab38849-d1de-4444-aeca-08719138d24f/download/trees.zip',
+    // gdal_options: '-s_srs unzip/OpenData_TI_Trees_LatestInspection.prj',
+    // format: 'shp',
     download: 'https://data.gov.au/dataset/0254dee0-5b26-484f-a5ae-5ca3cab46601/resource/fb06e7c8-d037-489b-a963-b747271f2e54/download/trees.json',
-    'download_old2': 'https://data.gov.au/dataset/0254dee0-5b26-484f-a5ae-5ca3cab46601/resource/4ab38849-d1de-4444-aeca-08719138d24f/download/trees.zip',
-    gdal_options: '-s_srs unzip/OpenData_TI_Trees_LatestInspection.prj',
-    format: 'zip',
-    'filename': 'OpenData_TI_Trees_LatestInspection.shp',
+    format: 'geojson',
     short: 'Wyndham',
     long: 'City of Wyndham',
     country: 'Australia',

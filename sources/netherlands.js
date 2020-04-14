@@ -299,7 +299,7 @@ module.exports = [
         short: 'Lingewaard',
         download: 'https://geodatastore.pdok.nl/id/dataset/3251be7c-b01f-4503-8858-0958c004e6de',
         info: 'https://data.overheid.nl/dataset/waardevolle-bomen-gemeente-lingewaard',
-        format: 'zip',
+        compression: 'zip',
         license: 'CC0-1.0'
     },
     {

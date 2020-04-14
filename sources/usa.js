@@ -98,7 +98,7 @@ module.exports = [
         scientific: 'Species',
         dbh: x => Number(x['Diameter in Inches']) * INCHES
     },
-    centre: [-71.43, 41.83],
+    centre: {lon: -71.43, lat: 41.83},
 },
 {
     id: 'washington-dc',
@@ -108,7 +108,7 @@ module.exports = [
     short: 'Washington DC',
     long: 'Washington DC',
     country: 'USA',
-    centre: [-77, 38.92],
+    centre: {lon: -77, lat: 38.92},
     crosswalk: {
         dbh: x => x.DBH * 2.54,
         common: 'COMMON.NAME',
@@ -158,7 +158,7 @@ module.exports = [
 
         // also qLegalStatus (private/DPW), qCaretaker, PlantType
     },
-    centre: [-122.435, 37.77],
+    centre: {lon: -122.435, lat: 37.77},
 
 },
 {
@@ -186,7 +186,7 @@ module.exports = [
         location: 'LOCATION_NAME',
 
     },
-    centre: [-104.9454,39.7273],
+    centre: {lon: -104.9454, lat: 39.7273},
 
 },
 {
@@ -252,7 +252,7 @@ module.exports = [
     download: 'https://data.wprdc.org/dataset/9ce31f01-1dfa-4a14-9969-a5c5507a4b40/resource/d876927a-d3da-44d1-82e1-24310cdb7baf/download/trees_img.geojson',
     info: 'https://data.wprdc.org/dataset/city-trees',
     format: 'geojson',
-    centre: [-80,40.436],
+    centre: {lon: -80, lat: 40.436},
     short: 'Pittsburgh',
     crosswalk: {
         common: 'common_name',
@@ -394,7 +394,7 @@ module.exports = [
 
 
     },
-    centre: [-122.03987,37.31706],
+    centre: {lon: -122.03987, lat: 37.31706},
 },
 {
     id:'oxnard',
@@ -592,7 +592,7 @@ module.exports = [
         note: 'Notes',
         // TreeSize?
     },
-    centre: [-72.49307,42.3818],
+    centre: {lon: -72.49307, lat: 42.3818},
 },
 {
     id:'colorado_springs',
@@ -660,7 +660,7 @@ module.exports = [
 
 
     },
-    centre: [-117.86, 33.83],
+    centre: {lon: -117.86, lat: 33.83},
 },
 {
     id:'charlottesville_nc',

@@ -234,7 +234,7 @@ module.exports = [
         info:
             'https://www.data.gouv.fr/fr/datasets/arbres-dalignement-toulouse/',
         format: 'zip',
-        centre: [1.44, 43.6],
+        centre: {lon: 1.44, lat: 43.6},
         // dear god, linestring geometries...
         crosswalk: {
             ref: 'id',
@@ -412,7 +412,7 @@ module.exports = [
             note: 'remarque',
         },
         license: '',
-        centre: [6.14941, 46.35697],
+        centre: {lon: 6.14941, lat: 46.35697},
     },
     {
         id: 'guingamp_fr',

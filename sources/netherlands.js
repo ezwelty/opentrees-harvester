@@ -92,7 +92,7 @@ module.exports = [
             age: 'LEEFTIJD',
             owner: 'EIGENAAR'
         },
-        centre: [4.2777,52.0642],
+        centre: {lon: 4.2777, lat: 52.0642},
     },
     {
         id:'hilversum',
@@ -188,7 +188,7 @@ module.exports = [
 
         },
         license: 'CC0-1.0',
-        centre: [4.670, 51.806],
+        centre: {lon: 4.670, lat: 51.806},
     },
     {
         id:'lelystad_nl',
@@ -204,7 +204,7 @@ module.exports = [
             updated: 'INSPECTIEDATUM'
         },
         license: 'CC-BY-4.0',
-        centre: [5.478, 52.509],
+        centre: {lon: 5.478, lat: 52.509},
     },
     {
         id:'sliedrecht_nl',
@@ -220,7 +220,7 @@ module.exports = [
 
         },
         license: 'CC0-1.0',
-        centre: [4.773, 51.82],
+        centre: {lon: 4.773, lat: 51.82},
         srs: {epsg: 28992},
     },
     {
@@ -242,7 +242,7 @@ module.exports = [
 
         },
         license: 'CC-BY-4.0',
-        centre: [6.5475, 52.991]
+        centre: {lon: 6.5475, lat: 52.991}
     },
     {
         id:'arnhem_nl',
@@ -260,7 +260,7 @@ module.exports = [
 
         },
         license: 'CC-BY-4.0',
-        centre: [5.914, 51.984],
+        centre: {lon: 5.914, lat: 51.984},
     },
     {
         id:'delft_nl',
@@ -292,7 +292,7 @@ module.exports = [
         },
         srs: {epsg: 28992},
         license: 'CC0-1.0',
-        centre: [6.58358, 53.2212],
+        centre: {lon: 6.58358, lat: 53.2212},
     },
     {
         id:'alblasserdam_nl',

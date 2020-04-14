@@ -27,7 +27,7 @@ module.exports = [
         short: 'London',
         long: 'Greater London Authority',
         country: 'UK',
-        centre: [-0.1051, 51.5164],
+        centre: {lon: -0.1051, lat: 51.5164},
 
         crosswalk: {
             ref: 'gla_id',
@@ -50,7 +50,7 @@ module.exports = [
             height: 'height',
             location: 'site_name',
         },
-        centre: [-1.8673, 52.47],
+        centre: {lon: -1.8673, lat: 52.47},
     },
     {
         id: 'bristol',
@@ -152,7 +152,7 @@ module.exports = [
             updated: 'survey_date',
         },
         license: '',
-        centre: [-3.684357, 51.826852],
+        centre: {lon: -3.684357, lat: 51.826852},
     },
     {
         // these seem to be included in london already, in better quality.

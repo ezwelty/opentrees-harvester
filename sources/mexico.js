@@ -11,6 +11,6 @@ module.exports = [
       common: 'Especie', // mostly in Spanish,
       updated: 'Fecha_registro',
     },
-    centre: [-100.3071, 25.6801]
+    centre: {lon: -100.3071, lat: 25.6801}
   }
 ].map(s => ({...s, country: 'Mexico'}))

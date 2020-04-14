@@ -48,7 +48,7 @@ module.exports = [
             //grupo?
         },
         license: 'CC-BY-4.0',
-        centre: [-0.38564, 39.46454],
+        centre: {lon: -0.38564, lat: 39.46454},
     },
     {
         id: 'sevilla_es',

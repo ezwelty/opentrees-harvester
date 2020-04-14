@@ -137,7 +137,7 @@ module.exports = [
     // srs: {epsg: 28354},
     short: 'Adelaide',
     long: 'City of Adelaide',
-    centre: [138.59979, -34.91802],
+    centre: {lon: 138.59979, lat: -34.91802},
     country: 'Australia',
     crosswalk: {
         ref: 'Asset Id (identifier)',
@@ -213,7 +213,7 @@ module.exports = [
         dbh: 'DBH',
         tree_type: 'Type'
     },
-    centre: [144.833, -37.85],
+    centre: {lon: 144.833, lat: -37.85},
 },
 {
     id: 'glenelg',
@@ -268,7 +268,7 @@ module.exports = [
     short: 'Prospect',
     long: 'City of Prospect',
     country: 'Australia',
-    centre: [138.6,-34.88],
+    centre: {lon: 138.6, lat: -34.88},
     crosswalk: {
         species: 'Tree Species',
         maturity: 'Tree Age',
@@ -285,7 +285,7 @@ module.exports = [
     short: 'Prospect',
     long: 'City of Prospect',
     country: 'Australia',
-    centre: [138.6,-34.88],
+    centre: {lon: 138.6, lat: -34.88},
     crosswalk: {
         common: 'Species Name', // sigh
     },
@@ -370,7 +370,7 @@ module.exports = [
         variety: x => x.cultivar !== 'Not Specified' ? x.cultivar : '',
         // house, st_name, st_type, st_suffix, suburb
     },
-    centre: [144.298,-36.755],
+    centre: {lon: 144.298, lat: -36.755},
 },
 {
     id: 'shepparton',
@@ -486,7 +486,7 @@ module.exports = [
         common: 'field_3',
         //address: field_4
     },
-    centre: [146.86, -36.125],
+    centre: {lon: 146.86, lat: -36.125},
 },
 {
     id: 'hobart',
@@ -533,7 +533,7 @@ module.exports = [
     filename: 'sydney.vrt',
     short: 'Sydney',
     long: 'City of Sydney',
-    centre: [151.2, -33.892],
+    centre: {lon: 151.2, lat: -33.892},
     country: 'Australia',
     crosswalk: {
         scientific: 'species',

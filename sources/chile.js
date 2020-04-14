@@ -8,7 +8,7 @@ module.exports = [
       common: 'name',
       // leaf_cycle, leaf_type
     },
-    centre: [-70.877, -29.859]
+    centre: {lon: -70.877, lat: -29.859}
   },
   {
     pending: true,

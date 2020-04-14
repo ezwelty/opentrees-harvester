@@ -69,7 +69,7 @@ module.exports = [
             common: 'DeutscherN',
 
         },
-        centre: [6.9796, 50.9356],
+        centre: {lon: 6.9796, lat: 50.9356},
     },
     {
         id:'berlin',
@@ -87,7 +87,7 @@ module.exports = [
             height: 'BaumHoehe',
             location: 'Kategorie', // maybe others Staummfg...
         },
-        centre: [13.43, 52.485],
+        centre: {lon: 13.43, lat: 52.485},
     },
     {
         id:'frankfurt',
@@ -198,7 +198,7 @@ module.exports = [
             updated: 'Standortermittlung_am', // "location determination"
 
         },
-        centre: [10,48.4]
+        centre: {lon: 10, lat: 48.4}
     },
     {
         id:'hamburg',

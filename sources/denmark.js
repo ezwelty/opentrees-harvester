@@ -19,7 +19,7 @@ module.exports = [
   // eww, this is not GeoJSON, and doesn't actually contain data.
   {
     pending: true,
-    id:'ballerup',
+    id: 'ballerup',
     country: 'Denmark',
     short: 'Ballerup',
     long: 'Ballerup Kommune',

@@ -256,9 +256,9 @@ module.exports = [
         scientific: 'species',
         common: 'common',
         location: 'location',
-        height:'height',
+        height: 'height',
         crown: 'crown',
-        maturity:'maturity' // more like age
+        maturity: 'maturity' // more like age
     },
 },
 {
@@ -387,7 +387,7 @@ module.exports = [
     download: 'https://data.gov.au/dataset/0254dee0-5b26-484f-a5ae-5ca3cab46601/resource/fb06e7c8-d037-489b-a963-b747271f2e54/download/trees.json',
     'download_old2': 'https://data.gov.au/dataset/0254dee0-5b26-484f-a5ae-5ca3cab46601/resource/4ab38849-d1de-4444-aeca-08719138d24f/download/trees.zip',
     gdal_options: '-s_srs unzip/OpenData_TI_Trees_LatestInspection.prj',
-    format:'zip',
+    format: 'zip',
     'filename': 'OpenData_TI_Trees_LatestInspection.shp',
     short: 'Wyndham',
     long: 'City of Wyndham',
@@ -442,7 +442,7 @@ module.exports = [
 {
     id: 'yarra',
     download: 'https://data.gov.au/data/dataset/f3c88ce7-504b-4ef7-907f-686037f7420c/resource/6e4186b0-3e00-48f9-a09c-cb60d1d0d49f/download/yarra-street-and-park-trees.geojson',
-    format:'geojson',
+    format: 'geojson',
     // significant? https://data.gov.au/dataset/ds-dga-4b950f69-8816-45a7-8788-951d788287bd/details?q=trees,
     short: 'Yarra',
     long: 'City of Yarra',
@@ -482,7 +482,7 @@ module.exports = [
     country: 'Australia',
     crosswalk: {
         ref: 'field_1',
-        scientific:'field_2',
+        scientific: 'field_2',
         common: 'field_3',
         //address: field_4
     },
@@ -540,12 +540,12 @@ module.exports = [
     },
 },
 {
-    id:'unley',
+    id: 'unley',
     country: 'Australia',
     short: 'Unley',
     long: '',
     download: 'https://opendata.arcgis.com/datasets/910774507d6a42248a50f9922054a0a0_0.zip',
-    info:'http://hub.arcgis.com/datasets/unley::trees/data',
+    info: 'http://hub.arcgis.com/datasets/unley::trees/data',
     crosswalk: {
         // are these multitrees?
         genus: 'dom_genus_',

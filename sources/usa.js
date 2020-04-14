@@ -922,13 +922,13 @@ module.exports = [
     }
 },
 {
-    // not downloading
     pending: true,
     id: 'uc_davis',
     short: 'UC Davis',
     long: 'University of California Davis',
     info: 'http://hub.arcgis.com/datasets/ucda::uc-davis-tree-database',
-    format: 'https://opendata.arcgis.com/datasets/07939ef894984a95b58098315f80c046_0.zip'
+    download: 'https://opendata.arcgis.com/datasets/07939ef894984a95b58098315f80c046_0.zip',
+    format: 'shp'
 },
 {
     id: 'hudson_river_park',

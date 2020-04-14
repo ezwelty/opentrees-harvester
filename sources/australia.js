@@ -188,7 +188,7 @@ module.exports = [
         common: 'name',
         scientific: 'genusspeci',
         maturity: 'age',
-        // planted: '', case when planteddat = '0' then NULL else planteddat::date end,
+        // planted: case when planteddat = '0' then NULL else planteddat::date end,
         dbh: 'diametr_c',
         height: 'height_m',
         crown: 'horizontal',
@@ -533,7 +533,6 @@ module.exports = [
     id: 'unley',
     country: 'Australia',
     short: 'Unley',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/910774507d6a42248a50f9922054a0a0_0.zip',
     info: 'http://hub.arcgis.com/datasets/unley::trees/data',
     crosswalk: {

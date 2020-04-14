@@ -22,7 +22,6 @@ module.exports = [
         id: 'leipzig',
         country: 'Germany',
         short: 'Leipzig',
-        long: '',
         download: 'https://opendata.arcgis.com/datasets/918dfaa87b754c4384ddcf869cfd6dc6_0.zip',
         info: 'https://hub.arcgis.com/datasets/esri-de-content::stra%C3%9Fenbaumkataster-leipzig',
         format: 'zip',
@@ -37,7 +36,6 @@ module.exports = [
         id: 'bonn',
         country: 'Germany',
         short: 'Bonn',
-        long: '',
         download: 'https://opendata.arcgis.com/datasets/f8f130c1dd4e4ea9b5fe1f2385673cab_0.zip',
         info: 'http://opendata.gis.ms.gov/datasets/esri-de-content::baumkataster-bonn',
         format: 'zip',
@@ -74,7 +72,6 @@ module.exports = [
         id: 'berlin',
         country: 'Germany',
         short: 'Berlin',
-        long: '',
         download: 'https://opendata.arcgis.com/datasets/05c3f9d7dea6422b86e30967811bddd7_0.zip',
         info: '',
         format: 'zip',
@@ -109,7 +106,6 @@ module.exports = [
         id: 'hamburg_hafen',
         country: 'Germany',
         short: 'Hamburg Hafen',
-        long: '',
         download: 'https://opendata.arcgis.com/datasets/35950460a3744fa4b088570b2df55718_0.zip',
         info: 'https://hub.arcgis.com/datasets/esri-de-content::stra%C3%9Fenbaumkataster-hamburg-hafen',
         format: 'zip',
@@ -147,7 +143,6 @@ module.exports = [
         id: 'chemnitz',
         country: 'Germany',
         short: 'Chemnitz',
-        long: '',
         download: 'https://opendata.arcgis.com/datasets/70330324e2364b209f7511ca20581f83_0.zip?outSR=%7B%22latestWkid%22%3A3857%2C%22wkid%22%3A102100%7D',
         info: 'http://portal-chemnitz.opendata.arcgis.com/datasets/baeume?geometry=12.910%2C50.819%2C12.914%2C50.822',
         format: 'zip',
@@ -162,7 +157,6 @@ module.exports = [
         id: 'wesel',
         country: 'Germany',
         short: 'Wesel',
-        long: '',
         download: 'http://data.geoportal-wesel.de/OPENDATA/Baumkataster/Baumkataster.geojson',
         info: 'https://open.nrw/dataset/baumkataster-odp',
         format: 'geojson',
@@ -178,7 +172,6 @@ module.exports = [
     {
         id: 'ulm',
         short: 'Ulm',
-        long: '',
         download: 'http://daten.ulm.de/sites/default/files/20180921_Baeume_1.xlsx',
         info: 'http://www.daten.ulm.de/datenkatalog/metadaten/baumbestand-stadt-ulm-testdatensatz',
         format: 'xlsx',
@@ -203,7 +196,6 @@ module.exports = [
         id: 'hamburg',
         country: 'Germany',
         short: 'Hamburg',
-        // long: '',
         download: 'http://daten-hamburg.de/umwelt_klima/strassenbaumkataster/Strassenbaumkataster_HH_2019-06-19.zip',
         // info:'',
         format: 'zip',
@@ -228,7 +220,6 @@ module.exports = [
     {
         id: 'karlsruhe_de',
         short: 'Karlsruhe',
-        long: '',
         // are more fields possibly by altering this URL?
         download: 'https://geoportal.karlsruhe.de/server/rest/services/Fachplaene/Baumkataster/MapServer/1/query?where=ARTDEUT+IS+NOT+NULL&outFields=ARTDEUT%2CARTLAT&returnGeometry=true&f=geojson',
         info: 'https://transparenz.karlsruhe.de/dataset/fachplane-baumkataster/resource/9cd1989f-9720-4621-b171-3c4e56352598',
@@ -241,7 +232,6 @@ module.exports = [
     {
         id: 'gelsenkirchen_de',
         short: 'Gelsenkirchen',
-        long: '',
         download: 'https://opendata.gelsenkirchen.de/sites/default/files/baumkataster_ge.csv',
         info: 'https://opendata.gelsenkirchen.de/dataset/baumkataster-gelsenkirchen',
         srs: {epsg: 3044},
@@ -264,8 +254,6 @@ module.exports = [
         long: 'Stadt Krefeld',
         download: 'http://geoportal-niederrhein.de/files/opendatagis/Stadt_Krefeld/Aktueller_Baumbestand.geojson',
         info: 'https://www.offenesdatenportal.de/dataset/baumstandorte-der-stadt-krefeld',
-        crosswalk: {
-        },
         license: 'https://www.govdata.de/dl-de/zero-2-0'
     },
     {
@@ -276,8 +264,6 @@ module.exports = [
         long: 'Stadt Mörs',
         download: 'https://www.offenesdatenportal.de/dataset/cc69db13-f6b9-4319-9ee6-3f385dc7d944/resource/6c36f4a2-560e-4689-93cc-6af845247c38/download/baumstrauch.json',
         info: 'https://www.offenesdatenportal.de/dataset/baume-und-straucher-in-bebauten-ortslagen',
-        crosswalk: {
-        },
         license: 'https://www.govdata.de/dl-de/zero-2-0'
     },
     {
@@ -301,7 +287,6 @@ module.exports = [
     {
         id: 'jena_de',
         short: 'Jena',
-        long: '',
         download: 'https://opendata.jena.de/dataset/acd67e0c-b597-48c7-b251-1b565c49de90/resource/3ff727bb-8db4-4b47-9c53-7084d15f73d6/download/baumkataster.csv',
         info: 'https://opendata.jena.de/dataset/baumkataster',
         crosswalk: {

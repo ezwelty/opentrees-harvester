@@ -344,7 +344,6 @@ module.exports = [
     {
         id: 'divonne_les_bains_fr',
         short: 'Divonne-les-Bains',
-        long: '',
         // ugh, probably requires manual regeneration of link
         download: 'https://telecarto.datara.gouv.fr/DOWNLOAD/Telechargement_1584570708_1630.zip',
         info: 'https://www.datara.gouv.fr/geonetwork/srv/fre/catalog.search#/metadata/b18070b7-4349-4fd5-8e56-1dc48c3eb03a',
@@ -390,7 +389,6 @@ module.exports = [
     {
         id: 'paris_sud_fr',
         short: 'Grand Paris Sud', // Seine - Essonne - Sénart
-        long: '',
         download: 'https://data.grandparissud.fr/explore/dataset/patrimoine-arbore/download/?format=shp&timezone=Australia/Sydney&lang=fr',
         info: 'https://data.grandparissud.fr/explore/dataset/patrimoine-arbore/export/',
         crosswalk: {

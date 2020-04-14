@@ -35,7 +35,6 @@ module.exports = [
     {
         id: 'valencia_es',
         short: 'Valencia',
-        long: '',
         download: 'http://mapas.valencia.es/lanzadera/opendata/arboles/JSON',
         info: 'https://github.com/stevage/OpenTrees/issues/29',
         format: 'geojson',
@@ -50,7 +49,6 @@ module.exports = [
     {
         id: 'sevilla_es',
         short: 'Sevilla',
-        long: '',
         download: 'https://sevilla-idesevilla.opendata.arcgis.com/datasets/f3393590cea54e3da883f30a27e8a1fd_0.zip',
         info: 'https://sevilla-idesevilla.opendata.arcgis.com/datasets/f3393590cea54e3da883f30a27e8a1fd_0',
         crosswalk: {
@@ -64,7 +62,6 @@ module.exports = [
     {
         id: 'manlleu_es',
         short: 'Manlleu',
-        long: '',
         download: 'https://opendata.arcgis.com/datasets/7255e3ea9235496fbd5f6ee244f21015_0.zip?outSR=%7B%22latestWkid%22%3A25831%2C%22wkid%22%3A25831%7D',
         info: 'https://dadesobertes-situam.opendata.arcgis.com/datasets/arbrat-del-nucli-urb%C3%A0',
         crosswalk: {
@@ -78,7 +75,6 @@ module.exports = [
         pending: true,
         id: 'madrid_es',
         short: 'Madrid',
-        long: '',
         download: 'https://datosabiertos.ayto-arganda.es/dataset/bc20e1e3-0c6c-4f0e-817b-c95f052e3783/resource/411fb473-7620-4060-be7a-5f2bebc090b4/download/argandainventario2015.zip',
         info: 'https://datos.gob.es/es/catalogo/l01280148-inventario-arboles-casco-urbano-20151',
         compression: 'zip',
@@ -90,7 +86,6 @@ module.exports = [
     {
         id: 'torrent_es',
         short: 'Torrent',
-        long: '',
         download: 'http://datosabiertos.torrent.es/dataset/b372b8dd-07fb-4973-a2af-cb9a7c8de9bb/resource/dbae0e9d-c48b-4185-8a51-2599b093fdba/download/ODMAArbolAislado.csv',
         info: 'https://datos.gob.es/es/catalogo/l01462444-arbres-de-torrent-arboles-de-torrent',
         crosswalk: {

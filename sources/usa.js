@@ -269,7 +269,6 @@ module.exports = [
     id: 'austin',
     country: 'United States',
     short: 'Austin',
-    long: '',
     download: 'https://data.austintexas.gov/api/views/7aq7-a66u/rows.csv?accessType=DOWNLOAD',
     info: 'https://catalog.data.gov/dataset/downtown-tree-inventory-2013',
     format: 'csv',
@@ -286,7 +285,6 @@ module.exports = [
     id: 'cornell',
     country: 'United States',
     short: 'Cornell University',
-    // long: '',
     download: 'https://cugir-data.s3.amazonaws.com/00/80/25/cugir-008025.zip',
     info: 'https://cugir.library.cornell.edu/catalog/cugir-008025',
     format: 'zip',
@@ -303,7 +301,6 @@ module.exports = [
     id: 'cary',
     country: 'United States',
     short: 'Cary',
-    long: '',
     download: 'https://data.townofcary.org/api/v2/catalog/datasets/cary-trees/exports/csv',
     info: 'https://catalog.data.gov/dataset/cary-trees',
     format: 'csv',
@@ -317,7 +314,6 @@ module.exports = [
     id: 'rochester',
     country: 'United States',
     short: 'Rochester',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/4c209944e2984b4a908a14b0cbe48075_0.zip',
     info: 'http://hub.arcgis.com/datasets/RochesterNY::trees-open-data',
     format: 'zip',
@@ -333,7 +329,6 @@ module.exports = [
     id: 'seattle',
     country: 'United States',
     short: 'Seattle',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/0b8c124ace214943ab0379623937eccb_6.zip',
     info: 'http://hub.arcgis.com/datasets/SeattleCityGIS::trees',
     format: 'zip',
@@ -355,7 +350,6 @@ module.exports = [
     id: 'cupertino',
     country: 'United States',
     short: 'Cupertino',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/caa50a924b7d4b5ba8e8a4cbfd0d7f13_29.csv',
     info: 'http://hub.arcgis.com/datasets/Cupertino::trees',
     format: 'csv',
@@ -406,7 +400,6 @@ module.exports = [
     id: 'aurora',
     country: 'United States',
     short: 'Aurora',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/1dbb32bf07ca421db4f01dac6beb812d_85.csv',
     info: 'http://hub.arcgis.com/datasets/AuroraCo::trees-city',
     crosswalk: {
@@ -421,7 +414,6 @@ module.exports = [
 {
     id: 'bakersfield',
     short: 'Bakersfield',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/b7a17f7ecb564be4b26ced85016ed1da_0.csv',
     info: 'http://hub.arcgis.com/datasets/cob::city-trees?geometry=-129.468%2C33.767%2C-108.539%2C36.903',
     crosswalk: {
@@ -439,7 +431,6 @@ module.exports = [
 {
     id: 'las_vegas',
     short: 'Las Vegas',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/23364bb40f2640ff841ba4a8680b6421_0.csv',
     info: 'http://hub.arcgis.com/datasets/lasvegas::trees',
     crosswalk: {
@@ -489,7 +480,6 @@ module.exports = [
 {
     id: 'richardson',
     short: 'Richardson',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/cd10a9e85354488dbdb697ce97ccb064_0.csv',
     info: 'http://hub.arcgis.com/datasets/richardson::trees',
     crosswalk: {
@@ -523,7 +513,6 @@ module.exports = [
 {
     id: 'sioux_falls',
     short: 'Sioux Falls',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/c880d62ae5fb4652b1f8e6cbca244107_10.csv',
     info: 'http://hub.arcgis.com/datasets/cityofsfgis::trees',
     crosswalk: {
@@ -544,7 +533,6 @@ module.exports = [
 {
     id: 'amherst',
     short: 'Amherst',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/b4a74ab24f114f22b438a19e589f6f76_0.zip',
     info: 'http://hub.arcgis.com/datasets/AmherstMA::street-trees',
     crosswalk: {
@@ -559,7 +547,6 @@ module.exports = [
 {
     id: 'colorado_springs',
     short: 'Colorado Springs',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/91758518026d4b1089f2180602399d73_0.csv',
     info: 'http://hub.arcgis.com/datasets/coloradosprings::trees/data?geometry=-106.259%2C38.699%2C-103.338%2C39.073',
     crosswalk: {
@@ -605,7 +592,6 @@ module.exports = [
 {
     id: 'anaheim_ca',
     short: 'Anaheim',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/0f96c6cf73904424bc9ce14197990201_41.csv',
     info: 'https://data-anaheim.opendata.arcgis.com/datasets/city-trees',
     crosswalk: {
@@ -620,7 +606,6 @@ module.exports = [
 {
     id: 'charlottesville_nc',
     short: 'Charlottesville',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/e7c856379492408e9543a25d684b8311_79.csv',
     info: 'http://hub.arcgis.com/datasets/charlottesville::tree-inventory-point',
     delFunc: x => x.Removal_Date,
@@ -652,7 +637,6 @@ module.exports = [
 {
     id: 'durango_co',
     short: 'Durango',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/3e3e00d6224b43ee9acc514244fffdb9_0.csv',
     info: 'http://hub.arcgis.com/datasets/CityOfDurango::city-trees',
     crosswalk: {
@@ -684,7 +668,6 @@ module.exports = [
 {
     id: 'westerville_oh',
     short: 'Westerville',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/137785bc78da47b4a2159f9c76218d55_0.csv',
     info: 'http://hub.arcgis.com/datasets/Westerville::comm-parks-rec-trees/data?geometry=-83.315%2C40.085%2C-82.585%2C40.177',
     crosswalk: {
@@ -699,7 +682,6 @@ module.exports = [
 {
     id: 'st_augustine_fl',
     short: 'St Augustine',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/8372c7d0f5a24764bd10f62f0b2f1b65_0.csv',
     info: 'http://hub.arcgis.com/datasets/STAUG::trees?geometry=-93.005%2C28.223%2C-69.637%2C31.556',
     crosswalk: {
@@ -712,7 +694,6 @@ module.exports = [
 {
     id: 'weston_fl',
     short: 'Weston',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/c95f89a4db39414a89f5c29bcb6fb48d_6.csv',
     info: 'http://hub.arcgis.com/datasets/westonfl::trees',
     crosswalk: {
@@ -741,7 +722,6 @@ module.exports = [
 {
     id: 'pacific_grove_ca',
     short: 'Pacific Grove',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/87bcc6e824214422be859b3251350829_3.csv',
     info: 'http://hub.arcgis.com/datasets/CityPacificGrove::trees',
     crosswalk: {
@@ -774,7 +754,6 @@ module.exports = [
 {
     id: 'champaign_il',
     short: 'Champaign',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/979bbeefffea408e8f1cb7a397196c64_22.csv',
     info: 'http://hub.arcgis.com/datasets/cityofchampaign::city-owned-trees',
     crosswalk: {
@@ -791,7 +770,6 @@ module.exports = [
 {
     id: 'placentia_ca',
     short: 'Placentia',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/8efcbe9c80ed42a29e6ad5483bd01c32_0.csv',
     info: 'http://hub.arcgis.com/datasets/placentia::city-trees',
     crosswalk: {
@@ -815,7 +793,6 @@ module.exports = [
 {
     id: 'sarasota_fl',
     short: 'Sarasota',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/4deeb30f44bc4b60847cf43aed1a4670_0.csv',
     info: 'http://hub.arcgis.com/datasets/sarasota::tree-inventory',
     crosswalk: {
@@ -831,7 +808,6 @@ module.exports = [
 {
     id: 'nichols_arboretum',
     short: 'Nichols Arboretum',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/febee55e7dac43298952af77c8f8d809_0.csv',
     info: 'http://hub.arcgis.com/datasets/umich::nichols-arboretum-inventory-survey',
     crosswalk: {
@@ -889,7 +865,6 @@ module.exports = [
 {
     id: 'auburn_me',
     short: 'Auburn',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/91bffc476216422481b511a48796a327_0.csv',
     info: 'http://hub.arcgis.com/datasets/AuburnME::treeinventory?geometry=-81.930%2C42.701%2C-58.562%2C45.462',
     crosswalk: {
@@ -928,7 +903,6 @@ module.exports = [
 {
     id: 'cape_coral_fl',
     short: 'Cape Coral',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/e988fe06668e44ea996a53c4365531b9_0.csv',
     info: 'http://hub.arcgis.com/datasets/CapeGIS::tree-inventory',
     crosswalk: {
@@ -945,7 +919,6 @@ module.exports = [
 {
     id: 'naperville_il',
     short: 'Naperville',
-    long: '',
     download: 'https://opendata.arcgis.com/datasets/51d4726531cd4ef99bfa24b99ae3ba24_0.csv',
     info: 'http://hub.arcgis.com/datasets/naperville::right-of-way-tree-inventory',
     crosswalk: {

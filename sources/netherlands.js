@@ -323,18 +323,19 @@ module.exports = [
         },
         license: 'CC-BY-4.0',
     },
-    // broken
-    // {
-    //     id:'lingewaard_nl',
-    //     short: 'Lingewaard',
-    //     long: '',
-    //     download: 'https://geodatastore.pdok.nl/id/dataset/3251be7c-b01f-4503-8858-0958c004e6de',
-    //     info:'https://data.overheid.nl/dataset/waardevolle-bomen-gemeente-lingewaard',
-    //     format:'zip',
-    //     crosswalk: {
-    //     },
-    //     license: 'CC0-1.0',
-    // },
+
+    {
+        // broken
+        pending: true,
+        id:'lingewaard_nl',
+        short: 'Lingewaard',
+        download: 'https://geodatastore.pdok.nl/id/dataset/3251be7c-b01f-4503-8858-0958c004e6de',
+        info:'https://data.overheid.nl/dataset/waardevolle-bomen-gemeente-lingewaard',
+        format:'zip',
+        crosswalk: {
+        },
+        license: 'CC0-1.0',
+    },
     {
         id:'barendrecht_nl',
         short: 'Barendrecht',

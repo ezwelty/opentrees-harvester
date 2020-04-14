@@ -258,28 +258,30 @@ module.exports = [
         },
         license: 'https://www.govdata.de/dl-de/by-2-0',
     },
-    // {
-    //     id:'krefeld_de',
-    //     short: 'Krefeld',
-    //     long: 'Stadt Krefeld',
-    //     download: 'http://geoportal-niederrhein.de/files/opendatagis/Stadt_Krefeld/Aktueller_Baumbestand.geojson',
-    //     info:'https://www.offenesdatenportal.de/dataset/baumstandorte-der-stadt-krefeld',
-    //     crosswalk: {
-    //     },
-    //     license: 'https://www.govdata.de/dl-de/zero-2-0',
-    // },
-
-    // can't download for some reason
-    // {
-    //     id:'moers_de',
-    //     short: 'Mörs',
-    //     long: 'Stadt Mörs',
-    //     download: 'https://www.offenesdatenportal.de/dataset/cc69db13-f6b9-4319-9ee6-3f385dc7d944/resource/6c36f4a2-560e-4689-93cc-6af845247c38/download/baumstrauch.json',
-    //     info:'https://www.offenesdatenportal.de/dataset/baume-und-straucher-in-bebauten-ortslagen',
-    //     crosswalk: {
-    //     },
-    //     license: 'https://www.govdata.de/dl-de/zero-2-0',
-    // },
+    {
+        // Broken link
+        pending: true,
+        id:'krefeld_de',
+        short: 'Krefeld',
+        long: 'Stadt Krefeld',
+        download: 'http://geoportal-niederrhein.de/files/opendatagis/Stadt_Krefeld/Aktueller_Baumbestand.geojson',
+        info:'https://www.offenesdatenportal.de/dataset/baumstandorte-der-stadt-krefeld',
+        crosswalk: {
+        },
+        license: 'https://www.govdata.de/dl-de/zero-2-0',
+    },
+    {
+        // can't download for some reason
+        pending: true,
+        id:'moers_de',
+        short: 'Mörs',
+        long: 'Stadt Mörs',
+        download: 'https://www.offenesdatenportal.de/dataset/cc69db13-f6b9-4319-9ee6-3f385dc7d944/resource/6c36f4a2-560e-4689-93cc-6af845247c38/download/baumstrauch.json',
+        info:'https://www.offenesdatenportal.de/dataset/baume-und-straucher-in-bebauten-ortslagen',
+        crosswalk: {
+        },
+        license: 'https://www.govdata.de/dl-de/zero-2-0',
+    },
     {
         id:'troisdorf_de',
         short: 'Troisdorf',

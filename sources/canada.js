@@ -16,7 +16,7 @@ module.exports = [
         },
         short: 'Montreal',
         country: 'Canada',
-        centre: {lon: $1, lat: $2},
+        centre: {lon: -73.56, lat: 45.56}
         // more csvs here - do they overlap?
     },
     {
@@ -132,7 +132,7 @@ module.exports = [
         },
         short: 'Moncton',
         country: 'Canada',
-        centre: {lon: $1, lat: $2},
+        centre: {lon: -64.81577, lat: 46.10613},
     },
     {
         id: 'waterloo',
@@ -239,7 +239,7 @@ module.exports = [
             ref: 'TreeSiteID',
             common: 'Name',
         },
-        centre: {lon: $1, lat: $2},
+        centre: {lon: -113.54, lat: 53.477},
     },
     {
         id: 'regina',
@@ -310,7 +310,7 @@ module.exports = [
             dbh: 'DBH',
             ref: 'SITE_ID',
         },
-        centre: {lon: $1, lat: $2},
+        centre: {lon: -119.46786, lat: 49.89029},
     },
     {
         id: 'welland',

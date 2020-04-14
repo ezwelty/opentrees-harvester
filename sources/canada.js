@@ -469,7 +469,6 @@ module.exports = [
     },
     {
         id: 'victoriaville',
-        country: '',
         short: 'Victoriaville',
         long: '',
         download: 'https://opendata.arcgis.com/datasets/ae1c4b5613334d8a823359565fafb911_12.zip',

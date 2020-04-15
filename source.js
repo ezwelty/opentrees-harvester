@@ -381,7 +381,7 @@ class Source {
     */
    get_download_path() {
      const format = this.props.compression ? this.props.compression : this.props.format
-     return path.join(this.dir, INPUT_NAME, `${INPUT_NAME}.${this.props.format}`)
+     return path.join(this.dir, INPUT_NAME, `${INPUT_NAME}.${format}`)
    }
 
    /**
@@ -417,7 +417,7 @@ class Source {
     * @param {boolean} rm - Whether to remove pack file after unpacking
     */
    get(rm = true) {
-     this.download().then(this.unpack(rm))
+     this.download().then(() => source.unpack())
    }
 
    /**
@@ -577,15 +577,16 @@ class Source {
     * @return {gdal.FieldDefn[]} Output field definitions
     */
    get_field_definitions() {
+     var fields
      if (this.props.crosswalk) {
-         // NOTE: Input fields are removed
-         const fields = Object.keys(this.props.crosswalk).map(
-           key => new gdal.FieldDefn(key, CROSSWALK_FIELDS[key].type))
+       // NOTE: Input fields are removed
+       fields = Object.keys(this.props.crosswalk).map(
+         key => new gdal.FieldDefn(key, CROSSWALK_FIELDS[key].type))
      } else {
        // NOTE: Uses first layer
        // TODO: Pass pre-loaded layer
        const input = gdal.open(this.find_input_path())
-       const fields = input.layers.get(0).fields.map(field => field)
+       fields = input.layers.get(0).fields.map(field => field)
        input.close()
      }
      return fields
@@ -597,12 +598,12 @@ class Source {
     * @return {object} Output feature fields with crosswalk applied.
     */
    map_fields(fields) {
-     var output_fields = {}
-     for (key in this.props.crosswalk) {
-         new_fields[key] = (typeof crosswalk[key] === 'function') ?
-           crosswalk[key](fields) : fields[crosswalk[key]];
-     };
-     return output_fields
+     var new_fields = {}
+     for (const key in this.props.crosswalk) {
+       new_fields[key] = (typeof this.props.crosswalk[key] === 'function') ?
+         this.props.crosswalk[key](fields) : fields[this.props.crosswalk[key]]
+     }
+     return new_fields
    }
 
    /**
@@ -612,7 +613,7 @@ class Source {
     * @return {string} Path to output file.
     */
    process(format, name = OUTPUT_NAME) {
-     const output_path = path.join(dir, `${name}.${format}`)
+     const output_path = path.join(this.dir, `${name}.${format}`)
      if (fs.existsSync(output_path)) {
        return
      }
@@ -629,16 +630,17 @@ class Source {
      }
      const fields = this.get_field_definitions()
      // Prepare output
+     var output
      if (format === 'csv') {
        // GEOMETRY=AS_WKT writes WKT geometry to 'WKT' field
        // GEOMETRY=AS_XY, CREATE_CSVT=YES, OGR_WKT_PRECISION=6 not supported
        // TODO: Write VRT (if needed)
-       const output = gdal.drivers.get('CSV').create(
+       output = gdal.drivers.get('CSV').create(
          output_path, 0, 0, 0, gdal.GDT_Byte, ['GEOMETRY=AS_WKT'])
      } else {
        const driver = GDAL_DRIVERS[format]
        if (driver) {
-         const output = gdal.drivers.get(driver).create(output_path)
+         output = gdal.drivers.get(driver).create(output_path)
        } else {
          this.error(`Unsupported output format: ${format}`)
        }
@@ -648,17 +650,19 @@ class Source {
      const input_srs = this.get_srs()
      // Determine if a coordinate transformation is needed
      // TODO: Make and test transform, check whether points are unchanged?
+     var transform
      if (input_srs.isSame(DEFAULT_SRS) ||
        (input_srs.isSameGeogCS(DEFAULT_SRS) &&
        (input_srs.isProjected() == DEFAULT_SRS.isProjected()))) {
-       const transform = null
+       transform = null
      } else {
-       const transform = new gdal.CoordinateTransformation(input_srs, DEFAULT_SRS)
+       transform = new gdal.CoordinateTransformation(input_srs, DEFAULT_SRS)
      }
      // Populate output
-     input.layers.get(0).features.forEach(function(input_feature) {
+     for (var i = 0; i < input.layers.get(0).features.count(); i++) {
+       const input_feature = input.layers.get(0).features.get(i)
        const input_fields = input_feature.fields.toObject()
-       if (this.skip_function && this.skip_function(input_fields)) {
+       if (this.props.skip_function && this.props.skip_function(input_fields)) {
           continue
        }
        const output_feature = new gdal.Feature(output_layer)
@@ -678,7 +682,7 @@ class Source {
        }
        // TODO: flush?
        output_layer.features.add(output_feature)
-     })
+     }
      // Write
      output.close()
      input.close()

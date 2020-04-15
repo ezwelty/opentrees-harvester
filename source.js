@@ -154,7 +154,7 @@ async function download_file(url, file) {
  * @param {string} format Compression or archive file format
  */
 function unpack_file(file, dir, format = 'zip') {
-  fs.mkdirSync(dir, {recursive: true});
+  fs.mkdirSync(dir, {recursive: true})
   switch (format) {
     case 'zip':
       fs.createReadStream(file).pipe(unzipper.Extract({path: dir}))
@@ -380,8 +380,8 @@ class Source {
     * @return {string} File path
     */
    get_download_path() {
-     format = this.props.compression ? this.props.compression : this.props.format
-     return path.join(this.dir, `${INPUT_NAME}.${this.props.format}`)
+     const format = this.props.compression ? this.props.compression : this.props.format
+     return path.join(this.dir, INPUT_NAME, `${INPUT_NAME}.${this.props.format}`)
    }
 
    /**
@@ -390,10 +390,10 @@ class Source {
     * @return {string} File path (if found) or undefined
     */
    find_input_path(error = true) {
-     input_path = null
+     var input_path = null
      if (this.props.compression) {
-       pattern = path.join(this.dir, INPUT_NAME, `**/*.${this.props.format}`)
-       files = glob.sync(pattern)
+       const pattern = path.join(this.dir, INPUT_NAME, `**/*.${this.props.format}`)
+       const files = glob.sync(pattern)
        if (files.length <= 1) {
          input_path = files[0]
        } else {
@@ -425,7 +425,7 @@ class Source {
     * @return {Promise} Promise that resolves once file is downloaded.
     */
    download() {
-     if (this.props.download && (this.overwrite || !this.props.find_input())) {
+     if (this.props.download && (this.overwrite || !this.find_input_path())) {
        this.log(`Downloading ${this.props.download}`)
        return download_file(this.props.download, this.get_download_path())
      } else {
@@ -439,7 +439,7 @@ class Source {
     */
    unpack(rm = true) {
      if (this.props.compression && (this.overwrite || !this.find_input_path(false))) {
-       unpack_path = this.get_download_path()
+       const unpack_path = this.get_download_path()
        this.log(`Unpacking ${unpack_path}`)
        unpack_file(unpack_path, path.join(this.dir, INPUT_NAME), this.props.compression)
        if (rm) {
@@ -456,7 +456,7 @@ class Source {
     * @return {gdal.SpatialReference} Input SRS
     */
    get_srs() {
-     srs = this.props.srs
+     var srs = this.props.srs
      if (srs) {
        if (srs.epsg) {
          srs = gdal.SpatialReference.fromEPSG(srs.epsg)
@@ -469,7 +469,7 @@ class Source {
      if (!srs) {
        // NOTE: Uses first layer
        // TODO: Pass pre-loaded layer
-       input = gdal.open(this.find_input_path())
+       const input = gdal.open(this.find_input_path())
        srs = input.layers.get(0).srs
        input.close()
      }
@@ -489,15 +489,15 @@ class Source {
     * @return {object} Name of field(s) with WKT geometry (wkt) or x and y coordinates (x, y).
     */
    get_geometry() {
-     geom = this.props.geometry
+     var geom = this.props.geometry
      if (!geom) {
        // Read field names from file
        // NOTE: Uses first layer
-       input = gdal.open(this.find_input_path())
-       names = input.layers.get(0).fields.getNames()
+       const input = gdal.open(this.find_input_path())
+       const names = input.layers.get(0).fields.getNames()
        input.close()
        // Guess wkt field
-       matches = names.filter(x => WKT_FIELDS.includes(x.toLowerCase()))
+       const matches = names.filter(x => WKT_FIELDS.includes(x.toLowerCase()))
        if (matches.length) {
          geom = matches[0]
          if (matches.length > 1) {
@@ -507,8 +507,8 @@ class Source {
      }
      if (!geom) {
        // Guess x, y fields
-       x_matches = names.filter(x => X_FIELDS.includes(x.toLowerCase()))
-       y_matches = names.filter(y => Y_FIELDS.includes(y.toLowerCase()))
+       const x_matches = names.filter(x => X_FIELDS.includes(x.toLowerCase()))
+       const y_matches = names.filter(y => Y_FIELDS.includes(y.toLowerCase()))
        if (x_matches.length && y_matches.length) {
          geom = {x: x_matches[0], y: y_matches[0]}
          if (x_matches.length > 1) {
@@ -537,12 +537,12 @@ class Source {
     * @return {string} Path to VRT file.
     */
    write_vrt() {
-     srs = this.props.srs
+     var srs = this.props.srs
      if (!srs) {
        srs = DEFAULT_SRS_STRING
        this.warn(`Using default SRS: (${srs})`)
      }
-     geom = this.get_geometry()
+     const geom = this.get_geometry()
      // Build <GeometryField> arguments
      if (geom.wkt) {
        geomfield = `encoding="WKT" field="${geom.wkt}"`
@@ -552,8 +552,8 @@ class Source {
        this.error(`Invalid geometry properties: ${Object.keys(geom).join(', ')}`)
      }
      // Build VRT
-     parts = path.parse(input_path)
-     vrt =
+     const parts = path.parse(input_path)
+     const vrt =
      `<OGRVRTDataSource>
        <OGRVRTLayer name="${parts.name}">
            <SrcDataSource relativeToVRT="1">${parts.base}</SrcDataSource>
@@ -563,7 +563,7 @@ class Source {
        </OGRVRTLayer>
      </OGRVRTDataSource>`
      // NOTE: Always overwrites
-     vrt_path = path.join(parts.dir, `${parts.base}.vrt`)
+     const vrt_path = path.join(parts.dir, `${parts.base}.vrt`)
      fs.writeFileSync(vrt_path, vrt)
      return vrt_path
    }
@@ -579,13 +579,13 @@ class Source {
    get_field_definitions() {
      if (this.props.crosswalk) {
          // NOTE: Input fields are removed
-         fields = Object.keys(this.props.crosswalk).map(
+         const fields = Object.keys(this.props.crosswalk).map(
            key => new gdal.FieldDefn(key, CROSSWALK_FIELDS[key].type))
      } else {
        // NOTE: Uses first layer
        // TODO: Pass pre-loaded layer
-       input = gdal.open(this.find_input_path())
-       fields = input.layers.get(0).fields.map(field => field)
+       const input = gdal.open(this.find_input_path())
+       const fields = input.layers.get(0).fields.map(field => field)
        input.close()
      }
      return fields
@@ -597,7 +597,7 @@ class Source {
     * @return {object} Output feature fields with crosswalk applied.
     */
    map_fields(fields) {
-     output_fields = {}
+     var output_fields = {}
      for (key in this.props.crosswalk) {
          new_fields[key] = (typeof crosswalk[key] === 'function') ?
            crosswalk[key](fields) : fields[crosswalk[key]];
@@ -612,58 +612,58 @@ class Source {
     * @return {string} Path to output file.
     */
    process(format, name = OUTPUT_NAME) {
-     output_path = path.join(dir, `${name}.${format}`)
+     const output_path = path.join(dir, `${name}.${format}`)
      if (fs.existsSync(output_path)) {
        return
      }
-     input_path = this.find_input_path()
+     var input_path = this.find_input_path()
      this.log(`Processing ${input_path}`)
      // Write VRT file for datasets without explicit geometries
      if (['csv'].includes(this.format)) {
        input_path = this.write_vrt()
      }
      // Read input
-     input = gdal.open(input_path)
+     const input = gdal.open(input_path)
      if (input.layers.count() > 1) {
        this.warn(`Using first of ${input.layers.count()} layers`)
      }
-     fields = this.get_field_definitions()
+     const fields = this.get_field_definitions()
      // Prepare output
      if (format === 'csv') {
        // GEOMETRY=AS_WKT writes WKT geometry to 'WKT' field
        // GEOMETRY=AS_XY, CREATE_CSVT=YES, OGR_WKT_PRECISION=6 not supported
        // TODO: Write VRT (if needed)
-       output = gdal.drivers.get('CSV').create(
+       const output = gdal.drivers.get('CSV').create(
          output_path, 0, 0, 0, gdal.GDT_Byte, ['GEOMETRY=AS_WKT'])
      } else {
-       driver = GDAL_DRIVERS[format]
+       const driver = GDAL_DRIVERS[format]
        if (driver) {
-         output = gdal.drivers.get(driver).create(output_path)
+         const output = gdal.drivers.get(driver).create(output_path)
        } else {
          this.error(`Unsupported output format: ${format}`)
        }
      }
-     output_layer = output.layers.create(name, DEFAULT_SRS, gdal.wkbPoint)
+     const output_layer = output.layers.create(name, DEFAULT_SRS, gdal.wkbPoint)
      output_layer.fields.add(fields)
-     input_srs = this.get_srs()
+     const input_srs = this.get_srs()
      // Determine if a coordinate transformation is needed
      // TODO: Make and test transform, check whether points are unchanged?
      if (input_srs.isSame(DEFAULT_SRS) ||
        (input_srs.isSameGeogCS(DEFAULT_SRS) &&
        (input_srs.isProjected() == DEFAULT_SRS.isProjected()))) {
-       transform = null
+       const transform = null
      } else {
-       transform = new gdal.CoordinateTransformation(input_srs, DEFAULT_SRS)
+       const transform = new gdal.CoordinateTransformation(input_srs, DEFAULT_SRS)
      }
      // Populate output
      input.layers.get(0).features.forEach(function(input_feature) {
-       input_fields = input_feature.fields.toObject()
+       const input_fields = input_feature.fields.toObject()
        if (this.skip_function && this.skip_function(input_fields)) {
           continue
        }
-       output_feature = new gdal.Feature(output_layer)
+       const output_feature = new gdal.Feature(output_layer)
        if (this.props.crosswalk) {
-         output_fields = this.map_fields(input_fields)
+         const output_fields = this.map_fields(input_fields)
          output_feature.fields.set(Object.values(output_fields))
          if (!transform) {
            output_feature.setGeometry(input_feature.getGeometry())
@@ -672,7 +672,7 @@ class Source {
          output_feature.setFrom(input_feature)
        }
        if (transform) {
-         point = input_feature.getGeometry()
+         const point = input_feature.getGeometry()
          point.transform(transform)
          output_feature.setGeometry(point)
        }

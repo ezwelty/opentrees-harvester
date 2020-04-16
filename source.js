@@ -1,22 +1,24 @@
 const fs = require('fs')
-const download = require('download')
 const path = require('path')
 const colors = require('colors')
 const glob = require('glob')
 const unzipper = require('unzipper')
 const gdal = require('gdal-next')
+const {DownloaderHelper} = require('node-downloader-helper')
 
-const WKT_FIELDS = [
-  'geom', 'the_geom', 'wkb_geometry', 'shape', 'geo_shape', 'geometrie'
-]
-const X_FIELDS = [
-  'longitude', 'long', 'lon', 'lng', 'x', 'x_long', 'x_koordina',
-  'x-koordinate', 'coord long', 'x_coord', 'coordenada x'
-]
-const Y_FIELDS = [
-  'latitude', 'lat', 'y', 'y_lat', 'y_koordina', 'y-koordinate', 'coord lat',
-  'y_coord', 'coordenada y'
-]
+const GEOMETRY_FIELDS = {
+  GEOM: [
+    'geom', 'the_geom', 'wkb_geometry', 'shape', 'geo_shape', 'geometrie'
+  ],
+  X: [
+    'longitude', 'long', 'lon', 'lng', 'x', 'x_long', 'x_koordina',
+    'x-koordinate', 'coord long', 'x_coord', 'coordenada x'
+  ],
+  Y: [
+    'latitude', 'lat', 'y', 'y_lat', 'y_koordina', 'y-koordinate',
+    'coord lat', 'y_coord', 'coordenada y'
+  ]
+}
 const DEFAULT_SRS_STRING = 'EPSG:4326'
 const DEFAULT_SRS = gdal.SpatialReference.fromUserInput(DEFAULT_SRS_STRING)
 const GDAL_DRIVERS = {
@@ -493,7 +495,7 @@ class Source {
        names = input.layers.get(0).fields.getNames()
        input.close()
        // Guess wkt field
-       const matches = names.filter(x => WKT_FIELDS.includes(x.toLowerCase()))
+       const matches = names.filter(x => GEOMETRY_FIELDS.WKT.includes(x.toLowerCase()))
        if (matches.length) {
          geom = matches[0]
          if (matches.length > 1) {
@@ -503,8 +505,8 @@ class Source {
      }
      if (!geom) {
        // Guess x, y fields
-       const x_matches = names.filter(x => X_FIELDS.includes(x.toLowerCase()))
-       const y_matches = names.filter(y => Y_FIELDS.includes(y.toLowerCase()))
+       const x_matches = names.filter(x => GEOMETRY_FIELDS.X.includes(x.toLowerCase()))
+       const y_matches = names.filter(y => GEOMETRY_FIELDS.Y.includes(y.toLowerCase()))
        if (x_matches.length && y_matches.length) {
          geom = {x: x_matches[0], y: y_matches[0]}
          if (x_matches.length > 1) {

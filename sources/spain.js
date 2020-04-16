@@ -97,7 +97,7 @@ module.exports = [
         long: 'Ayuntamiento de Arganda del Rey',
         download: 'https://datosabiertos.ayto-arganda.es/dataset/bc20e1e3-0c6c-4f0e-817b-c95f052e3783/resource/f41cfeb0-6d98-48c1-b8be-fa50c3b958aa/download/arbolado.csv',
         info: 'https://datos.gob.es/es/catalogo/l01280148-inventario-arboles-casco-urbano-20151',
-        srs: {epsg: 28992},
+        srs: 'EPSG:28992',
         delFunc: x => x.ESTADO === 'ALCORQUE VACIO', // empty land
         crosswalk: {
             ref: 'REFERENCIA',

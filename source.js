@@ -18,7 +18,7 @@ const Y_FIELDS = [
   'y_coord', 'coordenada y'
 ]
 const DEFAULT_SRS_STRING = 'EPSG:4326'
-const DEFAULT_SRS = gdal.SpatialReference.fromEPSG(4326)
+const DEFAULT_SRS = gdal.SpatialReference.fromUserInput(DEFAULT_SRS_STRING)
 const GDAL_DRIVERS = {
   csv: 'CSV',
   geojson: 'GeoJSONSeq',
@@ -192,9 +192,8 @@ class Source {
    * @property {string} license.url - Page with full text of license text (e.g. https://creativecommons.org/licenses/by/4.0)
    * @property {string} format - Data file format (e.g. "geojson", "csv", "shp")
    * @property {string} compression - Compression or archive file format (e.g. "zip", "tar")
-   * @property {object} srs - Spatial reference system
-   * @property {number} srs.epsg - EPSG code (takes precedence)
-   * @property {string} srs.proj4 - Proj4 string
+   * @property {string} srs - Spatial reference system in any format supported by OGRSpatialReference.SetFromUserInput().
+   *   See https://gdal.org/api/ogrspatialref.html?highlight=setfromuserinput#_CPPv4N19OGRSpatialReference16SetFromUserInputEPKc
    * @property {object} geometry - Geometry field (for non-spatial data like CSV).
    * @property {string} geometry.wkt - Name of field with WKT geometry (takes precedence)
    * @property {string} geometry.x - Name of field with x coordinate (longitude, easting)
@@ -269,9 +268,10 @@ class Source {
      }
      // srs
      if (props.srs) {
-       if (!(typeof(props.srs) === 'object' &&
-       (typeof(props.srs.epsg) === 'number' || typeof(props.srs.proj4) === 'string'))) {
-         errors.push(`Invalid srs: ${JSON.stringify(props.srs)}`)
+       try {
+         gdal.SpatialReference.fromUserInput(props.srs)
+       } catch (err) {
+         errors.push(`Invalid srs: ${props.srs}`)
        }
      }
      if (error) {
@@ -451,20 +451,15 @@ class Source {
    /**
     * Get input spatial reference system (SRS).
     *
-    * Either the provided SRS, the SRS of the input, or the default SRS.
+    * Either the provided SRS (passed to gdal.SpatialReference.fromUserInput),
+    * the SRS of the input, or the default SRS.
     *
     * @return {gdal.SpatialReference} Input SRS
     */
    get_srs() {
-     var srs = this.props.srs
-     if (srs) {
-       if (srs.epsg) {
-         srs = gdal.SpatialReference.fromEPSG(srs.epsg)
-       } else if (srs.proj4) {
-         srs = gdal.SpatialReference.fromProj4(srs.proj4)
-       } else {
-         this.error(`Unsupported srs properties: [${Object.keys(srs).join(', ')}]`)
-       }
+     var srs
+     if (this.props.srs) {
+       srs = gdal.SpatialReference.fromUserInput(this.props.srs)
      }
      if (!srs) {
        // NOTE: Uses first layer
@@ -490,11 +485,12 @@ class Source {
     */
    get_geometry() {
      var geom = this.props.geometry
+     var names
      if (!geom) {
        // Read field names from file
        // NOTE: Uses first layer
        const input = gdal.open(this.find_input_path())
-       const names = input.layers.get(0).fields.getNames()
+       names = input.layers.get(0).fields.getNames()
        input.close()
        // Guess wkt field
        const matches = names.filter(x => WKT_FIELDS.includes(x.toLowerCase()))
@@ -543,6 +539,7 @@ class Source {
        this.warn(`Using default SRS: (${srs})`)
      }
      const geom = this.get_geometry()
+     var geomfield
      // Build <GeometryField> arguments
      if (geom.wkt) {
        geomfield = `encoding="WKT" field="${geom.wkt}"`
@@ -552,6 +549,7 @@ class Source {
        this.error(`Invalid geometry properties: ${Object.keys(geom).join(', ')}`)
      }
      // Build VRT
+     const input_path = this.find_input_path(true)
      const parts = path.parse(input_path)
      const vrt =
      `<OGRVRTDataSource>
@@ -588,6 +586,11 @@ class Source {
        const input = gdal.open(this.find_input_path())
        fields = input.layers.get(0).fields.map(field => field)
        input.close()
+       if (this.props.geometry) {
+         // Drop any geometry fields
+         const geometry_fields = Object.values(this.props.geometry)
+         fields = fields.filter(field => !geometry_fields.includes(field.name))
+       }
      }
      return fields
    }
@@ -614,13 +617,13 @@ class Source {
     */
    process(format, name = OUTPUT_NAME) {
      const output_path = path.join(this.dir, `${name}.${format}`)
-     if (fs.existsSync(output_path)) {
+     if (!this.overwrite && fs.existsSync(output_path)) {
        return
      }
      var input_path = this.find_input_path()
      this.log(`Processing ${input_path}`)
      // Write VRT file for datasets without explicit geometries
-     if (['csv'].includes(this.format)) {
+     if (['csv'].includes(this.props.format)) {
        input_path = this.write_vrt()
      }
      // Read input
@@ -659,8 +662,8 @@ class Source {
        transform = new gdal.CoordinateTransformation(input_srs, DEFAULT_SRS)
      }
      // Populate output
-     for (var i = 0; i < input.layers.get(0).features.count(); i++) {
-       const input_feature = input.layers.get(0).features.get(i)
+     var input_feature = input.layers.get(0).features.first()
+     while (input_feature) {
        const input_fields = input_feature.fields.toObject()
        if (this.props.skip_function && this.props.skip_function(input_fields)) {
           continue
@@ -682,6 +685,7 @@ class Source {
        }
        // TODO: flush?
        output_layer.features.add(output_feature)
+       input_feature = input.layers.get(0).features.next()
      }
      // Write
      output.close()

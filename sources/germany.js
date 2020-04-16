@@ -54,7 +54,7 @@ module.exports = [
         download: 'https://offenedaten-koeln.de/sites/default/files/Bestand_Einzelbaeume_Koeln_0.csv',
         info: 'https://offenedaten-koeln.de/dataset/baumkataster-koeln',
         format: 'csv',
-        srs: {epsg: 3044},
+        srs: 'EPSG:3044',
         crosswalk: {
             ref: 'Baum-Nr.',
             // STAMMVON, STAMMBIS,
@@ -167,13 +167,14 @@ module.exports = [
         }
     },
     {
+        // NOTE: Sample dataset only
         id: 'ulm',
         short: 'Ulm',
         download: 'http://daten.ulm.de/sites/default/files/20180921_Baeume_1.xlsx',
         info: 'http://www.daten.ulm.de/datenkatalog/metadaten/baumbestand-stadt-ulm-testdatensatz',
         format: 'xlsx',
-        filename: 'ulm.vrt',
-        srs: {epsg: 31467}, // or 2166, 31467, 3396...
+        srs: 'EPSG:31467', // or 2166, 31467, 3396...
+        geometry: {x: 'Koordinaten_X_Y', y: 'Koordinate_Y'},
         gdal_options: '-skipfailures',
         crosswalk: {
             scientific: 'Baumart_botanisch',
@@ -229,7 +230,7 @@ module.exports = [
         short: 'Gelsenkirchen',
         download: 'https://opendata.gelsenkirchen.de/sites/default/files/baumkataster_ge.csv',
         info: 'https://opendata.gelsenkirchen.de/dataset/baumkataster-gelsenkirchen',
-        srs: {epsg: 3044},
+        srs: 'EPSG:3044',
         crosswalk: {
             scientific: 'BAUMART',
             // SORTE?
@@ -304,7 +305,7 @@ module.exports = [
             health: 'vitalitaet'
 
         },
-        srs: {epsg: 3044},
+        srs: 'EPSG:3044',
         license: {
           name: 'Datenlizenz Deutschland – Namensnennung – Version 2.0',
           url: 'https://www.govdata.de/dl-de/by-2-0'

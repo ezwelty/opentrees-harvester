@@ -204,7 +204,7 @@ module.exports = [
         },
         license: {id: 'CC0-1.0'},
         centre: {lon: 4.773, lat: 51.82},
-        srs: {epsg: 28992}
+        srs: 'EPSG:28992'
     },
     {
         id: 'assen_nl',
@@ -264,7 +264,7 @@ module.exports = [
             scientific: 'LATNAAM',
             owner: 'OMSCHRIJVP'
         },
-        srs: {epsg: 28992},
+        srs: 'EPSG:28992',
         license: {id: 'CC0-1.0'},
         centre: {lon: 6.58358, lat: 53.2212}
     },
@@ -277,7 +277,7 @@ module.exports = [
             scientific: 'Boomsoort',
             common: 'Boomsoort Nederlands'
         },
-        srs: {epsg: 28992},
+        srs: 'EPSG:28992',
         license: {id: 'CC0-1.0'}
     },
     {
@@ -317,7 +317,7 @@ module.exports = [
             updated: 'INSPECTIEDATUM'
         },
         license: {id: 'CC0-1.0'},
-        srs: {epsg: 28992}
+        srs: 'EPSG:28992'
     },
     {
         id: 'zaanstad_nl',
@@ -342,7 +342,7 @@ module.exports = [
             updated: 'DATUM_BIJGEWERKT'
         },
         license: {id: 'CC0-1.0'},
-        srs: {epsg: 28992}
+        srs: 'EPSG:28992'
     },
     {
         id: 'haarlem_nl',

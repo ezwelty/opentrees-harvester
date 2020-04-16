@@ -30,7 +30,7 @@ module.exports = [
         long: 'Stad Gent',
         download: 'https://datatank.stad.gent/4/milieuennatuur/bomeninventaris.json',
         info: 'https://datatank.stad.gent/4/milieuennatuur/bomeninventaris',
-        srs: {epsg: 3857},
+        srs: 'EPSG:3857',
         license: {
           name: 'Modellicentie Gratis Hergebruik - v1.0',
           url: 'https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html'

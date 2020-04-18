@@ -4,31 +4,12 @@ const colors = require('colors')
 const glob = require('glob')
 const unzipper = require('unzipper')
 const gdal = require('gdal-next')
-const {DownloaderHelper} = require('node-downloader-helper')
+const download = require('download')
+const helpers = require('./helpers')
 
-const GEOMETRY_FIELDS = {
-  GEOM: [
-    'geom', 'the_geom', 'wkb_geometry', 'shape', 'geo_shape', 'geometrie'
-  ],
-  X: [
-    'longitude', 'long', 'lon', 'lng', 'x', 'x_long', 'x_koordina',
-    'x-koordinate', 'coord long', 'x_coord', 'coordenada x'
-  ],
-  Y: [
-    'latitude', 'lat', 'y', 'y_lat', 'y_koordina', 'y-koordinate',
-    'coord lat', 'y_coord', 'coordenada y'
-  ]
-}
 const DEFAULT_SRS_STRING = 'EPSG:4326'
 const DEFAULT_SRS = gdal.SpatialReference.fromUserInput(DEFAULT_SRS_STRING)
-const GDAL_DRIVERS = {
-  csv: 'CSV',
-  geojson: 'GeoJSONSeq',
-  shp: 'ESRI Shapefile',
-  sqlite: 'SQLite'
-}
 const INPUT_NAME = 'input'
-const OUTPUT_NAME = 'output'
 const CROSSWALK_FIELDS = {
   // Identification
   ref: {
@@ -110,12 +91,18 @@ const CROSSWALK_FIELDS = {
   // Time
   planted: {
     description: 'Date of planting (or ideally, start from seed)',
-    type: gdal.OFTDate
+    type: gdal.OFTString,
+    constraints: {
+      pattern: /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/
+    }
   },
   // TODO: Distinguish between different kinds of updates
   updated: {
     description: 'Date that data was last updated',
-    type: gdal.OFTDate
+    type: gdal.OFTString,
+    constraints: {
+      pattern: /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/
+    }
   },
   // TODO: Convert to absolute years
   ule: {
@@ -145,7 +132,7 @@ const CROSSWALK_FIELDS = {
  * @param {string} file Local path to write
  */
 async function download_file(url, file) {
-  fs.mkdirSync(path.dirname(file), {recursive: true});
+  fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, await download(url));
 }
 
@@ -156,10 +143,10 @@ async function download_file(url, file) {
  * @param {string} format Compression or archive file format
  */
 function unpack_file(file, dir, format = 'zip') {
-  fs.mkdirSync(dir, {recursive: true})
+  fs.mkdirSync(dir, { recursive: true })
   switch (format) {
     case 'zip':
-      fs.createReadStream(file).pipe(unzipper.Extract({path: dir}))
+      fs.createReadStream(file).pipe(unzipper.Extract({ path: dir }))
       break
     default:
       throw `Format ${format} not supported`
@@ -207,493 +194,482 @@ class Source {
    *   Feature is excluded from output if function returns true.
    */
 
-   /**
-    * Create a dataset.
-    * @param {DatasetProperties} props - Dataset properties
-    * @param {string} dir - Working directory
-    * @param {boolean} overwrite - Whether to overwrite existing files
-    * @param {boolean} exit - Whether to throw (exit on) or print errors
-    */
-   constructor(props, dir, overwrite = false, exit = false) {
-     this.props = props
-     this.dir = dir
-     this.overwrite = overwrite
-     this.exit = exit
-     // Apply defaults
-     // NOTE: Alternatively, call get_* in methods
-     this.props.compression = this.get_compression()
-     this.props.format = this.get_format()
-   }
+  /**
+   * Create a dataset.
+   * @param {DatasetProperties} props - Dataset properties
+   * @param {string} dir - Working directory
+   * @param {boolean} overwrite - Whether to overwrite existing files
+   * @param {boolean} exit - Whether to throw (exit on) or print errors
+   */
+  constructor(props, dir, overwrite = false, exit = false) {
+    this.props = props
+    this.dir = dir
+    this.overwrite = overwrite
+    this.exit = exit
+    // Apply defaults
+    // NOTE: Alternatively, call get_* in methods
+    this.props.compression = this.get_compression()
+    this.props.format = this.get_format()
+  }
 
-   /**
-    * Validate source properties.
-    * @param {boolean} error - Whether to raise errors
-    * @return {string[]} Errors
-    */
-   validate(error = false) {
-     var errors = []
-     const props = this.props
-     // Required fields
-     if (!props.id || typeof(props.id) !== 'string') {
-       errors.push(`Invalid id: ${props.id}`)
-     }
-     if (!props.download || typeof(props.download) !== 'string') {
-       errors.push(`Invalid download: ${props.download}`)
-     }
-     // format
-     if (props.format && !['csv', 'geojson', 'shp'].includes(props.format)) {
-       errors.push(`Invalid format: ${props.format}`)
-     }
-     // compression
-     if (props.compression && !['zip'].includes(props.compression)) {
-       errors.push(`Invalid compression: ${props.compression}`)
-     }
-     // crosswalk
-     if (props.crosswalk) {
-       Object.keys(props.crosswalk).forEach(key => {
-         if (!Object.keys(CROSSWALK_FIELDS).includes(key)) {
-           errors.push(`Unsupported crosswalk property: ${key}`)
-         }
-         const value = props.crosswalk[key]
-         if (!['string', 'function'].includes(typeof(value))) {
-           errors.push(`Invalid type for crosswalk.${key}: ${typeof(value)}`)
-         }
-       })
-     }
-     // geometry
-     if (props.geometry) {
-       if (!(typeof(props.geometry) === 'object' &&
-       (typeof(props.geometry.wkt) === 'string' ||
-       (typeof(props.geometry.x) === 'string' && typeof(props.geometry.y) === 'string')))) {
-         errors.push(`Invalid geometry: ${JSON.stringify(props.geometry)}`)
-       }
-     }
-     // srs
-     if (props.srs) {
-       try {
-         gdal.SpatialReference.fromUserInput(props.srs)
-       } catch (err) {
-         errors.push(`Invalid srs: ${props.srs}`)
-       }
-     }
-     if (error) {
-       errors.forEach(msg => this.error(msg))
-     } else {
-       return errors
-     }
-   }
-
-   /**
-    * Print message to console.
-    * @param {string} msg - Message
-    */
-    log(msg) {
-      const tag = colors.cyan(`[${this.props.id}]`)
-      console.log(`${tag} ${msg}`)
+  /**
+   * Validate source properties.
+   * @param {boolean} error - Whether to raise errors
+   * @return {string[]} Errors
+   */
+  validate(error = false) {
+    var errors = []
+    const props = this.props
+    // Required fields
+    if (!props.id || typeof (props.id) !== 'string') {
+      errors.push(`Invalid id: ${props.id}`)
     }
-
-   /**
-    * Print warning to console.
-    * @param {string} msg - Message
-    */
-    warn(msg) {
-      const tag = colors.yellow(`[${this.props.id}]`)
-      console.log(`${tag} ${msg}`)
+    if (!props.download || typeof (props.download) !== 'string') {
+      errors.push(`Invalid download: ${props.download}`)
     }
-
-   /**
-    * Throw or print error to console.
-    * @param {string} msg - Message
-    * @param {boolean} exit - Whether to throw or print the error
-    */
-    error(msg, exit = this.exit) {
-      const tag = colors.red(`[${this.props.id}]`)
-      if (exit) {
-        throw new Error(`${tag} ${msg}`)
-      } else {
-        console.error(`${tag} ${msg}`)
+    // format
+    if (props.format && !['csv', 'geojson', 'shp'].includes(props.format)) {
+      errors.push(`Invalid format: ${props.format}`)
+    }
+    // compression
+    if (props.compression && !['zip'].includes(props.compression)) {
+      errors.push(`Invalid compression: ${props.compression}`)
+    }
+    // crosswalk
+    if (props.crosswalk) {
+      Object.keys(props.crosswalk).forEach(key => {
+        if (!Object.keys(CROSSWALK_FIELDS).includes(key)) {
+          errors.push(`Unsupported crosswalk property: ${key}`)
+        }
+        const value = props.crosswalk[key]
+        if (!['string', 'function'].includes(typeof (value))) {
+          errors.push(`Invalid type for crosswalk.${key}: ${typeof (value)}`)
+        }
+      })
+    }
+    // geometry
+    if (props.geometry) {
+      if (!(typeof (props.geometry) === 'object' &&
+        (typeof (props.geometry.wkt) === 'string' ||
+          (typeof (props.geometry.x) === 'string' && typeof (props.geometry.y) === 'string')))) {
+        errors.push(`Invalid geometry: ${JSON.stringify(props.geometry)}`)
       }
     }
-
-    /**
-     * Get format of remote file (unpacked).
-     *
-     * Either the provided format or guessed from the download url (file
-     * extension, parameters) if these give a unique solution.
-     *
-     * @return {string} Compression format
-     */
-    get_format() {
-      var format = this.props.format
-      if (!format) {
-        if (this.props.compression) {
-          const format = 'shp'
-          this.warn(`Assuming format ${format} for compression ${this.props.compression}`)
-          return format
-        }
-        if (this.props.download) {
-          const url = this.props.download.toLowerCase()
-          const matches = [
-            // file extension
-            url.match(/\.([^\.\/\?\#]+)(?:$|\?|\#)/),
-            // parameters
-            url.match(/[\?\&\#](?:f|format|outputformat)=([^\&\s\#]+)/)]
-          const formats = matches.filter(x => x != null && !['zip'].includes(x)).
-            map(x => x[1]).
-            filter((v, i, x) => x.indexOf(v) === i)
-          if (formats.length == 1) {
-            format = formats[0]
-          }
-          if (formats.length != 1) {
-            // TODO: Move compression formats to constant
-            this.error(`Failed to determine format from url: ${this.props.download}`)
-          }
-          if (format === 'json') {
-            format = 'geojson'
-          }
-        }
+    // srs
+    if (props.srs) {
+      try {
+        gdal.SpatialReference.fromUserInput(props.srs)
+      } catch (err) {
+        errors.push(`Invalid srs: ${props.srs}`)
       }
-      return format
     }
+    if (error) {
+      errors.forEach(msg => this.error(msg))
+    } else {
+      return errors
+    }
+  }
 
-    /**
-     * Get compression format of remote file.
-     *
-     * Either the provided compression format or the file extension of the
-     * download url, if it is a recognized compression format.
-     *
-     * @return {string} Compression format
-     */
-    get_compression() {
-      var compression = this.props.compression
-      if (!compression) {
+  /**
+   * Print message to console.
+   * @param {string} msg - Message
+   */
+  log(msg) {
+    const tag = colors.cyan(`[${this.props.id}]`)
+    console.log(`${tag} ${msg}`)
+  }
+
+  /**
+   * Print warning to console.
+   * @param {string} msg - Message
+   */
+  warn(msg) {
+    const tag = colors.yellow(`[${this.props.id}]`)
+    console.log(`${tag} ${msg}`)
+  }
+
+  /**
+   * Throw or print error to console.
+   * @param {string} msg - Message
+   * @param {boolean} exit - Whether to throw or print the error
+   */
+  error(msg, exit = this.exit) {
+    const tag = colors.red(`[${this.props.id}]`)
+    if (exit) {
+      throw new Error(`${tag} ${msg}`)
+    } else {
+      console.error(`${tag} ${msg}`)
+    }
+  }
+
+  /**
+   * Get format of remote file (unpacked).
+   *
+   * Either the provided format or guessed from the download url (file
+   * extension, parameters) if these give a unique solution.
+   *
+   * @return {string} Compression format
+   */
+  get_format() {
+    var format = this.props.format
+    if (!format) {
+      if (this.props.compression) {
+        const format = 'shp'
+        this.warn(`Assuming format ${format} for compression ${this.props.compression}`)
+        return format
+      }
+      if (this.props.download) {
         const url = this.props.download.toLowerCase()
-        const matches = url.match(/\.([^\.\/\?\#]+)(?:$|\?|\#)/)
-        if (matches && matches.length && matches[1] === 'zip') {
+        const matches = [
+          // file extension
+          url.match(/\.([^\.\/\?\#]+)(?:$|\?|\#)/),
+          // parameters
+          url.match(/[\?\&\#](?:f|format|outputformat)=([^\&\s\#]+)/)]
+        const formats = matches.filter(x => x != null && !['zip'].includes(x)).
+          map(x => x[1]).
+          filter((v, i, x) => x.indexOf(v) === i)
+        if (formats.length == 1) {
+          format = formats[0]
+        }
+        if (formats.length != 1) {
           // TODO: Move compression formats to constant
-          compression = matches[1]
+          this.error(`Failed to determine format from url: ${this.props.download}`)
+        }
+        if (format === 'json') {
+          format = 'geojson'
         }
       }
-      return compression
     }
+    return format
+  }
 
-   /**
-    * Get local path for remote file.
-    * @return {string} File path
-    */
-   get_download_path() {
-     const format = this.props.compression ? this.props.compression : this.props.format
-     return path.join(this.dir, INPUT_NAME, `${INPUT_NAME}.${format}`)
-   }
+  /**
+   * Get compression format of remote file.
+   *
+   * Either the provided compression format or the file extension of the
+   * download url, if it is a recognized compression format.
+   *
+   * @return {string} Compression format
+   */
+  get_compression() {
+    var compression = this.props.compression
+    if (!compression) {
+      const url = this.props.download.toLowerCase()
+      const matches = url.match(/\.([^\.\/\?\#]+)(?:$|\?|\#)/)
+      if (matches && matches.length && matches[1] === 'zip') {
+        // TODO: Move compression formats to constant
+        compression = matches[1]
+      }
+    }
+    return compression
+  }
 
-   /**
-    * Find path of input file.
-    * @param {boolean} error - Whether to raise error if no input found
-    * @return {string} File path (if found) or undefined
-    */
-   find_input_path(error = true) {
-     var input_path = null
-     if (this.props.compression) {
-       const pattern = path.join(this.dir, INPUT_NAME, `**/*.${this.props.format}`)
-       const files = glob.sync(pattern)
-       if (files.length <= 1) {
-         input_path = files[0]
-       } else {
-         this.error(`${pattern} matches ${files.length} files`);
-       }
-     } else {
-       input_path = this.get_download_path()
-       if (!fs.existsSync(input_path)) {
-         input_path = null
-       }
-     }
-     if (!input_path && error) {
-       this.error(`No input found`)
-     } else {
-       return input_path
-     }
-   }
+  /**
+   * Get local path for remote file.
+   * @return {string} File path
+   */
+  get_download_path() {
+    const format = this.props.compression ? this.props.compression : this.props.format
+    return path.join(this.dir, INPUT_NAME, `${INPUT_NAME}.${format}`)
+  }
 
-   /**
-    * Download and unpack file.
-    * @param {boolean} rm - Whether to remove pack file after unpacking
-    */
-   get(rm = true) {
-     this.download().then(() => source.unpack())
-   }
+  /**
+   * Find path of input file.
+   * @param {boolean} error - Whether to raise error if no input found
+   * @return {string} File path (if found) or undefined
+   */
+  find_input_path(error = true) {
+    var input_path = null
+    if (this.props.compression) {
+      const pattern = path.join(this.dir, INPUT_NAME, `**/*.${this.props.format}`)
+      const files = glob.sync(pattern)
+      if (files.length <= 1) {
+        input_path = files[0]
+      } else {
+        this.error(`${pattern} matches ${files.length} files`);
+      }
+    } else {
+      input_path = this.get_download_path()
+      if (!fs.existsSync(input_path)) {
+        input_path = null
+      }
+    }
+    if (!input_path && error) {
+      this.error(`No input found`)
+    } else {
+      return input_path
+    }
+  }
 
-   /**
-    * Download remote file.
-    * @return {Promise} Promise that resolves once file is downloaded.
-    */
-   download() {
-     if (this.props.download && (this.overwrite || !this.find_input_path())) {
-       this.log(`Downloading ${this.props.download}`)
-       return download_file(this.props.download, this.get_download_path())
-     } else {
-       return Promise.resolve()
-     }
-   }
+  /**
+   * Get input spatial reference system (SRS) as a string.
+   *
+   * Either the provided SRS, the SRS of the layer (as proj4 string),
+   * or the default SRS.
+   *
+   * @param {gdal.Layer} layer - Feature layer
+   * @return {string} Input SRS
+   */
+  get_srs_string(layer) {
+    var srs = this.props.srs
+    if (!srs && layer && layer.srs) {
+      srs = layer.srs.toProj4()
+    }
+    if (!srs) {
+      srs = DEFAULT_SRS_STRING
+      this.warn(`Assuming default SRS: ${srs}`)
+    }
+    return srs
+  }
 
-   /**
-    * Unpack file.
-    * @param {boolean} rm - Whether to remove pack file after unpacking
-    */
-   unpack(rm = true) {
-     if (this.props.compression && (this.overwrite || !this.find_input_path(false))) {
-       const unpack_path = this.get_download_path()
-       this.log(`Unpacking ${unpack_path}`)
-       unpack_file(unpack_path, path.join(this.dir, INPUT_NAME), this.props.compression)
-       if (rm) {
-        fs.unlinkSync(unpack_path)
-       }
-     }
-   }
+  /**
+   * Get input spatial reference system (SRS).
+   *
+   * Either the provided SRS (passed to gdal.SpatialReference.fromUserInput),
+   * the SRS of the layer, or the default SRS.
+   * 
+   * @param {gdal.Layer} layer - Feature layer
+   * @return {gdal.SpatialReference} Input SRS
+   */
+  get_srs(layer) {
+    const srs = this.get_srs_string(layer)
+    return gdal.SpatialReference.fromUserInput(srs)
+  }
 
-   /**
-    * Get input spatial reference system (SRS).
-    *
-    * Either the provided SRS (passed to gdal.SpatialReference.fromUserInput),
-    * the SRS of the input, or the default SRS.
-    *
-    * @return {gdal.SpatialReference} Input SRS
-    */
-   get_srs() {
-     var srs
-     if (this.props.srs) {
-       srs = gdal.SpatialReference.fromUserInput(this.props.srs)
-     }
-     if (!srs) {
-       // NOTE: Uses first layer
-       // TODO: Pass pre-loaded layer
-       const input = gdal.open(this.find_input_path())
-       srs = input.layers.get(0).srs
-       input.close()
-     }
-     if (!srs) {
-       // Apply default
-       srs = DEFAULT_SRS
-       this.warn(`Using default SRS: ${DEFAULT_SRS_STRING}`)
-     }
-     return srs
-   }
+  /**
+   * Get input geometry definition.
+   * 
+   * Either the provided geometry or guessed from layer field names.
+   * 
+   * @param {gdal.Layer} layer - Feature layer
+   * @return {object} Layer geometry
+   */
+  get_geometry(layer) {
+    var geometry = this.props.geometry
+    if (!geometry && layer) {
+      matches = helpers.guess_geometry_fields(layer)
+      if (matches.wkt.length) {
+        if (matches.wkt.length > 1) {
+          this.warn(`Using first of many WKT fields: ${matches.wkt.join(', ')}`)
+        }
+        geometry = { wkt: matches.wkt[0] }
+      } else if (matches.x.length && matches.y.length) {
+        if (matches.x.length > 1) {
+          this.warn(`Using first of many X fields: ${matches.x.join(', ')}`)
+        }
+        if (matches.y.length > 1) {
+          this.warn(`Using first of many Y fields: ${matches.y.join(', ')}`)
+        }
+        geometry = { x: matches.x[0], y: matches.y[0] }
+      } else {
+        this.error(`Failed to guess geometry fields: ${util.inspect(matches)}`)
+      }
+    }
+    return geometry
+  }
 
-   /**
-    * Get input geometry.
-    *
-    * Either the provided geometry or the geometry guessed from input field names.
-    *
-    * @return {object} Name of field(s) with WKT geometry (wkt) or x and y coordinates (x, y).
-    */
-   get_geometry() {
-     var geom = this.props.geometry
-     var names
-     if (!geom) {
-       // Read field names from file
-       // NOTE: Uses first layer
-       const input = gdal.open(this.find_input_path())
-       names = input.layers.get(0).fields.getNames()
-       input.close()
-       // Guess wkt field
-       const matches = names.filter(x => GEOMETRY_FIELDS.WKT.includes(x.toLowerCase()))
-       if (matches.length) {
-         geom = matches[0]
-         if (matches.length > 1) {
-           this.warn(`Using first matching WKT field: ${matches.join(', ')}`)
-         }
-       }
-     }
-     if (!geom) {
-       // Guess x, y fields
-       const x_matches = names.filter(x => GEOMETRY_FIELDS.X.includes(x.toLowerCase()))
-       const y_matches = names.filter(y => GEOMETRY_FIELDS.Y.includes(y.toLowerCase()))
-       if (x_matches.length && y_matches.length) {
-         geom = {x: x_matches[0], y: y_matches[0]}
-         if (x_matches.length > 1) {
-           this.warn(`Using first matching X field: ${x_matches.join(', ')}`)
-         }
-         if (y_matches.length > 1) {
-           this.warn(`Using first matching Y field: ${y_matches.join(', ')}`)
-         }
-       }
-     }
-     if (!geom) {
-       this.error(`Failed to guess geometry fields`)
-     }
-     return geom
-   }
-
-   /**
-    * Write VRT (OGR Virtual Format) for input file.
-    *
-    * Applies only to tabular data with feature geometry in fields.
-    * If not provided, attempts to guess the geometry field(s).
-    * Writes to the same path as the input file, but with the added file extension 'vrt'.
-    *
-    * See https://gdal.org/drivers/vector/vrt.html
-    *
-    * @return {string} Path to VRT file.
-    */
-   write_vrt() {
-     var srs = this.props.srs
-     if (!srs) {
-       srs = DEFAULT_SRS_STRING
-       this.warn(`Using default SRS: (${srs})`)
-     }
-     const geom = this.get_geometry()
-     var geomfield
-     // Build <GeometryField> arguments
-     if (geom.wkt) {
-       geomfield = `encoding="WKT" field="${geom.wkt}"`
-     } else if (geom.x && geom.y) {
-       geomfield = `encoding="PointFromColumns" x="${geom.x}" y="${geom.y}"`
-     } else {
-       this.error(`Invalid geometry properties: ${Object.keys(geom).join(', ')}`)
-     }
-     // Build VRT
-     const input_path = this.find_input_path(true)
-     const parts = path.parse(input_path)
-     const vrt =
-     `<OGRVRTDataSource>
-       <OGRVRTLayer name="${parts.name}">
-           <SrcDataSource relativeToVRT="1">${parts.base}</SrcDataSource>
+  /**
+  * Write VRT (OGR Virtual Format) for feature layer.
+  *
+  * Relevant only for tabular data with feature geometry in fields.
+  * Writes the file to the path of the layer with '.vrt' added.
+  *
+  * See https://gdal.org/drivers/vector/vrt.html
+  *
+  * @param {gdal.Layer} layer - Feature layer
+  * @return {string} Path to VRT file.
+  */
+  write_vrt(layer) {
+    const srs = this.get_srs_string(layer)
+    const geometry = this.get_geometry(layer)
+    // Build <GeometryField> attributes
+    var attributes
+    if (geometry.wkt && typeof geometry.wkt === 'string') {
+      attributes = `encoding="WKT" field="${geometry.wkt}"`
+    } else if (
+      geometry.x && typeof geometry.x === 'string' &&
+      geometry.y && typeof geometry.y === 'string') {
+      attributes = `encoding="PointFromColumns" x="${geometry.x}" y="${geometry.y}"`
+    } else {
+      this.error(`Invalid geometry: ${util.inspect(geometry)}`)
+    }
+    // Build VRT
+    var layer_path = layer.ds.description
+    const basename = path.parse(layer_path).base
+    const vrt =
+      `<OGRVRTDataSource>
+       <OGRVRTLayer name="${layer.name}">
+           <SrcDataSource relativeToVRT="1">${basename}</SrcDataSource>
            <GeometryType>wkbPoint</GeometryType>
-           <LayerSRS>${srs}</LayerSRS>
-           <GeometryField ${geomfield} reportSrcColumn="FALSE"/>
+           <LayerSRS>${options.srs}</LayerSRS>
+           <GeometryField ${attributes} reportSrcColumn="FALSE"/>
        </OGRVRTLayer>
      </OGRVRTDataSource>`
-     // NOTE: Always overwrites
-     const vrt_path = path.join(parts.dir, `${parts.base}.vrt`)
-     fs.writeFileSync(vrt_path, vrt)
-     return vrt_path
-   }
+    // Write VRT
+    const vrt_path = `${layer_path}.vrt`
+    fs.writeFileSync(vrt_path, vrt)
+    return vrt_path
+  }
 
-   /**
-    * Get output field definitions.
-    *
-    * Output fields are either the result of the crosswalk (if provided) or
-    * the same as the input fields.
-    *
-    * @return {gdal.FieldDefn[]} Output field definitions
-    */
-   get_field_definitions() {
-     var fields
-     if (this.props.crosswalk) {
-       // NOTE: Input fields are removed
-       fields = Object.keys(this.props.crosswalk).map(
-         key => new gdal.FieldDefn(key, CROSSWALK_FIELDS[key].type))
-     } else {
-       // NOTE: Uses first layer
-       // TODO: Pass pre-loaded layer
-       const input = gdal.open(this.find_input_path())
-       fields = input.layers.get(0).fields.map(field => field)
-       input.close()
-       if (this.props.geometry) {
-         // Drop any geometry fields
-         const geometry_fields = Object.values(this.props.geometry)
-         fields = fields.filter(field => !geometry_fields.includes(field.name))
-       }
-     }
-     return fields
-   }
+  /**
+   * Download and unpack file.
+   * @param {boolean} rm - Whether to remove pack file after unpacking
+   */
+  get(rm = true) {
+    this.download().then(() => source.unpack())
+  }
 
-   /**
-    * Map feature fields to output schema.
-    * @param {object} fields - Input feature fields.
-    * @return {object} Output feature fields with crosswalk applied.
-    */
-   map_fields(fields) {
-     var new_fields = {}
-     for (const key in this.props.crosswalk) {
-       new_fields[key] = (typeof this.props.crosswalk[key] === 'function') ?
-         this.props.crosswalk[key](fields) : fields[this.props.crosswalk[key]]
-     }
-     return new_fields
-   }
+  /**
+   * Download remote file.
+   * @return {Promise} Promise that resolves once file is downloaded.
+   */
+  download() {
+    if (this.props.download && (this.overwrite || !this.find_input_path())) {
+      this.log(`Downloading ${this.props.download}`)
+      return download_file(this.props.download, this.get_download_path())
+    } else {
+      return Promise.resolve()
+    }
+  }
 
-   /**
-    * Process input file and write to output.
-    * @param {string} format - Output format (e.g. "csv", "geojson").
-    * @param {string} name - Output basename
-    * @return {string} Path to output file.
-    */
-   process(format, name = OUTPUT_NAME) {
-     const output_path = path.join(this.dir, `${name}.${format}`)
-     if (!this.overwrite && fs.existsSync(output_path)) {
-       return
-     }
-     var input_path = this.find_input_path()
-     this.log(`Processing ${input_path}`)
-     // Write VRT file for datasets without explicit geometries
-     if (['csv'].includes(this.props.format)) {
-       input_path = this.write_vrt()
-     }
-     // Read input
-     const input = gdal.open(input_path)
-     if (input.layers.count() > 1) {
-       this.warn(`Using first of ${input.layers.count()} layers`)
-     }
-     const fields = this.get_field_definitions()
-     // Prepare output
-     var output
-     if (format === 'csv') {
-       // GEOMETRY=AS_WKT writes WKT geometry to 'WKT' field
-       // GEOMETRY=AS_XY, CREATE_CSVT=YES, OGR_WKT_PRECISION=6 not supported
-       // TODO: Write VRT (if needed)
-       output = gdal.drivers.get('CSV').create(
-         output_path, 0, 0, 0, gdal.GDT_Byte, ['GEOMETRY=AS_WKT'])
-     } else {
-       const driver = GDAL_DRIVERS[format]
-       if (driver) {
-         output = gdal.drivers.get(driver).create(output_path)
-       } else {
-         this.error(`Unsupported output format: ${format}`)
-       }
-     }
-     const output_layer = output.layers.create(name, DEFAULT_SRS, gdal.wkbPoint)
-     output_layer.fields.add(fields)
-     const input_srs = this.get_srs()
-     // Determine if a coordinate transformation is needed
-     // TODO: Make and test transform, check whether points are unchanged?
-     var transform
-     if (input_srs.isSame(DEFAULT_SRS) ||
-       (input_srs.isSameGeogCS(DEFAULT_SRS) &&
-       (input_srs.isProjected() == DEFAULT_SRS.isProjected()))) {
-       transform = null
-     } else {
-       transform = new gdal.CoordinateTransformation(input_srs, DEFAULT_SRS)
-     }
-     // Populate output
-     var input_feature = input.layers.get(0).features.first()
-     while (input_feature) {
-       const input_fields = input_feature.fields.toObject()
-       if (this.props.skip_function && this.props.skip_function(input_fields)) {
-          continue
-       }
-       const output_feature = new gdal.Feature(output_layer)
-       if (this.props.crosswalk) {
-         const output_fields = this.map_fields(input_fields)
-         output_feature.fields.set(Object.values(output_fields))
-         if (!transform) {
-           output_feature.setGeometry(input_feature.getGeometry())
-         }
-       } else {
-         output_feature.setFrom(input_feature)
-       }
-       if (transform) {
-         const point = input_feature.getGeometry()
-         point.transform(transform)
-         output_feature.setGeometry(point)
-       }
-       // TODO: flush?
-       output_layer.features.add(output_feature)
-       input_feature = input.layers.get(0).features.next()
-     }
-     // Write
-     output.close()
-     input.close()
-     return output_path
-   }
- }
+  /**
+   * Unpack file.
+   * @param {boolean} rm - Whether to remove pack file after unpacking
+   */
+  unpack(rm = true) {
+    if (this.props.compression && (this.overwrite || !this.find_input_path(false))) {
+      const unpack_path = this.get_download_path()
+      this.log(`Unpacking ${unpack_path}`)
+      unpack_file(unpack_path, path.join(this.dir, INPUT_NAME), this.props.compression)
+      if (rm) {
+        fs.unlinkSync(unpack_path)
+      }
+    }
+  }
+
+  /**
+   * Process input file and write to output.
+   * 
+   * @param {string} file - Output file path
+   * @param {string} format - Name of GDAL driver (e.g. "csv", "geojson")
+   * @param {boolean} centroids - Whether to reduce non-point geometries to
+   *  centroids
+   */
+  process(file, format = 'csv', centroids = true) {
+    if (!this.overwrite && fs.existsSync(file)) {
+      return
+    }
+    var input_path = this.find_input_path()
+    // Read input
+    this.log(`Processing ${input_path}`)
+    var input = gdal.open(input_path)
+    if (input.layers.count() > 1) {
+      this.warn(`Using first of ${input.layers.count()} layers`)
+    }
+    var input_layer = input.layers.get(0)
+    if (!input_layer.features.count()) {
+      this.warn(`Skipping: Layer has no features`)
+      return
+    }
+    if (input_layer.wkbType == gdal.wkbNone) {
+      // Write (and then read) VRT file with geometry definition
+      this.log(`Writing VRT file`)
+      this.write_vrt(input_layer)
+      input = gdal.open(input_path)
+      input_layer = input.layers.get(0)
+    }
+    // Prepare input schema
+    var input_schema = input_layer.fields.map(field => field)
+    /**
+     * NOTE: Confusing gdal bindings handling of date/time fields
+     * - Fields detected as date/time are read as objects, not strings
+     * - Cannot yet set date/time field from date/time object, only strings
+     * (see https://github.com/naturalatlas/node-gdal/issues/144)
+     * HACK:
+     * - Set output date/time fields as string
+     * - Convert input date/time fields to string
+     */
+    var string_crosswalk = {}
+    input_schema = input_schema.map(field => {
+      const formatter = helpers.gdal_string_formatters[field.type]
+      if (formatter) {
+        string_crosswalk[field.name] = x => formatter(x[field.name])
+        field.type = gdal.OFTString
+      }
+      return field
+    })
+    // Prepare output schema
+    var output_schema = input_schema
+    if (this.props.crosswalk) {
+      for (const key in this.props.crosswalk) {
+        output_schema[key] = new gdal.FieldDefn(key, CROSSWALK_FIELDS[key].type)
+      }
+    }
+    // Prepare output
+    const driver = gdal.drivers.get(format)
+    if (!driver) {
+      this.error(`Unsupported output format: ${format}`)
+    }
+    var output
+    if (driver.description === 'CSV') {
+      // GEOMETRY=AS_WKT writes WKT geometry to 'WKT' field
+      // GEOMETRY=AS_XY, CREATE_CSVT=YES, OGR_WKT_PRECISION=6 not supported
+      // TODO: Write VRT (if needed)
+      output = driver.create(
+        file, 0, 0, 0, gdal.GDT_Byte, ['GEOMETRY=AS_WKT'])
+    } else {
+      output = driver.create(file)
+    }
+    const output_layer = output.layers.create(input_layer.name, DEFAULT_SRS,
+      centroids ? gdal.wkbPoint : input_layer.geomType)
+    output_layer.fields.add(output_schema)
+    // Determine if a coordinate transformation is needed
+    // TODO: Make and test transform, check whether points are unchanged?
+    const input_srs = this.get_srs(input_layer)
+    var transform
+    if (input_srs.isSame(DEFAULT_SRS) ||
+      (input_srs.isSameGeogCS(DEFAULT_SRS) &&
+        (input_srs.isProjected() == DEFAULT_SRS.isProjected()))) {
+      transform = null
+    } else {
+      transform = new gdal.CoordinateTransformation(input_srs, DEFAULT_SRS)
+    }
+    // Populate output
+    var input_feature = input_layer.features.first()
+    while (input_feature) {
+      // Fields
+      const input_fields = input_feature.fields.toObject()
+      if (this.props.skip_function && this.props.skip_function(input_fields)) {
+        continue
+      }
+      const output_feature = new gdal.Feature(output_layer)
+      var output_fields = helpers.map_object(
+        input_fields, string_crosswalk, false)
+      if (this.props.crosswalk) {
+        output_fields = helpers.map_object(
+          output_fields, this.props.crosswalk, false)
+      }
+      output_feature.fields.set(Object.values(output_fields))
+      // Geometry
+      var input_geometry = input_feature.getGeometry()
+      if (input_geometry) {
+        if (centroids && input_geometry.wkbType != gdal.wkbPoint) {
+          input_geometry = input_geometry.centroid()
+        }
+        if (transform) {
+          input_geometry.transform(transform)
+        }
+        output_feature.setGeometry(input_geometry)
+      }
+      // TODO: flush after each n features
+      output_layer.features.add(output_feature)
+      input_feature = input.layers.get(0).features.next()
+    }
+    // Write
+    output.close()
+    input.close()
+    return file
+  }
+}
 
 module.exports = Source

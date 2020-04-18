@@ -167,7 +167,7 @@ module.exports = [
       variety: 'cultivar_name',
       common: 'common_name',
       height: 'height_range_id', // this is in feet? urgh
-      dbh: Number('diameter') * 2.54, // seriouosly, inches
+      dbh: x => Number(x.diameter) * 2.54, // seriouosly, inches
       planted: 'date_planted'
     }
   },

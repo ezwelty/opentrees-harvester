@@ -131,7 +131,7 @@ module.exports = [
       scientific: 'Botanical Name',
       common: 'Common Name',
       dbh: x => Number(x.DBH) * 2.54, // assuming
-      id: 'Site ID'
+      ref: 'Site ID'
     }
   },
   {
@@ -143,7 +143,7 @@ module.exports = [
     long: 'City of San Francisco',
     country: 'United States',
     crosswalk: {
-      id: 'TreeID',
+      ref: 'TreeID',
       scientific: x => String(x.qSpecies).split(' :: ')[0],
       common: x => String(x.qSpecies).split(' :: ')[1],
       description: 'qSiteInfo',

@@ -373,6 +373,7 @@ module.exports = [
     short: 'Guingamp',
     long: 'Ville de Guingamp',
     download: 'https://datarmor.cotesdarmor.fr:443/dataserver/cg22/data/Arbres_Guingamp?&$format=csv',
+    format: 'csv', // non-standard download url parameter '$format'
     info: 'https://datarmor.cotesdarmor.fr/data-presentation-ux/#/cg22/datasets/Arbres_Guingamp/views/grid?primary-bg-color=@046D8B&primary-font-color=@fff',
     crosswalk: {
       genus: 'Genre',

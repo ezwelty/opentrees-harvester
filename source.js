@@ -278,7 +278,8 @@ class Source {
       errors.push(`Invalid download: ${props.download}`)
     }
     // format
-    if (props.format && !['csv', 'geojson', 'shp'].includes(props.format)) {
+    if (props.format &&
+      !['csv', 'geojson', 'shp', 'kml', 'gml'].includes(props.format)) {
       errors.push(`Invalid format: ${props.format}`)
     }
     // compression

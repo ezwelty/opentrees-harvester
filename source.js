@@ -21,6 +21,10 @@ const CROSSWALK_FIELDS = {
     description: 'Scientific name (e.g. "Malus pumila")',
     type: gdal.OFTString
   },
+  family: {
+    description: 'Family (e.g. "Rosaceae")',
+    type: gdal.OFTString
+  },
   genus: {
     description: 'Genus (e.g. "Malus")',
     type: gdal.OFTString
@@ -29,8 +33,9 @@ const CROSSWALK_FIELDS = {
     description: 'Species (e.g. "pumila")',
     type: gdal.OFTString
   },
-  subspecies: {
-    description: 'Subspecies, variety, form, etc. (e.g. "asiatica")',
+  // TODO: Better distinguish between subspecies epithets and cultivar
+  variety: {
+    description: 'Subspecies, variety, form, cultivar, etc. (e.g. "asiatica")',
     type: gdal.OFTString
   },
   cultivar: {
@@ -39,6 +44,10 @@ const CROSSWALK_FIELDS = {
   },
   common: {
     description: 'Common name (e.g. "Apple")',
+    type: gdal.OFTString
+  },
+  description: {
+    description: 'Any other name information not covered by other fields',
     type: gdal.OFTString
   },
   // Dimensions
@@ -56,6 +65,26 @@ const CROSSWALK_FIELDS = {
     description: 'Diameter of crown',
     unit: 'meter',
     type: gdal.OFTReal
+  },
+  // TODO: May be the same as crown
+  spread: {
+    description: 'Crown spread',
+    unit: 'meter',
+    type: gdal.OFTReal
+  },
+  // TODO: Clarify whether circumference of trunk or crown, convert to diameter
+  circumference: {
+    description: 'Circumference',
+    type: gdal.OFTReal
+  },
+  // TODO: Clarify whether diameter of trunk or crown
+  diameter: {
+    description: 'Diameter',
+    type: gdal.OFTReal
+  },
+  trunks: {
+    description: 'Number of trunks',
+    type: gdal.OFTInteger
   },
   // Condition
   health: {
@@ -104,6 +133,16 @@ const CROSSWALK_FIELDS = {
       pattern: /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/
     }
   },
+  // TODO: Only used by sources in Netherlands. Meaning unclear.
+  installed: {
+    description: 'Year installed',
+    type: gdal.OFTInteger
+  },
+  age: {
+    description: 'Age',
+    unit: 'year',
+    type: gdal.OFTInteger
+  },
   // TODO: Convert to absolute years
   ule: {
     description: 'Useful life expectancy',
@@ -120,9 +159,20 @@ const CROSSWALK_FIELDS = {
     unit: 'year',
     type: gdal.OFTInteger
   },
-  description: {
-    description: 'Any other information not covered by other fields',
+  // Other
+  // TODO: Merge with description?
+  note: {
+    description: 'Notes',
     type: gdal.OFTString
+  },
+  owner: {
+    description: 'Name of owner or ownership description',
+    type: gdal.OFTString
+  },
+  // NOTE: Only Canada.regina
+  value: {
+    description: 'Monetary value',
+    type: gdal.OFTReal
   }
 }
 
@@ -602,7 +652,8 @@ class Source {
     var output_schema = input_schema
     if (this.props.crosswalk) {
       for (const key in this.props.crosswalk) {
-        output_schema[key] = new gdal.FieldDefn(key, CROSSWALK_FIELDS[key].type)
+        // NOTE: Output as string to preserve malformed values
+        output_schema[key] = gdal.OFTString
       }
     }
     // Prepare output

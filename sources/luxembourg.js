@@ -13,4 +13,4 @@ module.exports = [
       common: x => String(x.text).split(' - ')[1]
     }
   }
-].map(s => ({...s, country: 'Luxembourg'}))
+].map(s => ({ ...s, country: 'Luxembourg' }))

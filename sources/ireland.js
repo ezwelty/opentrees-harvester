@@ -8,14 +8,14 @@ module.exports = [
     info: 'https://data.smartdublin.ie/dataset/tableview/ebf9151e-fd30-442e-93cb-fa88c2affc93',
     format: 'csv',
     crosswalk: {
-        ref: x => Math.round(x.TREE_ID),
-        scientific: 'Species_Desc',
-        common: 'Common_Name',
-        maturity: 'Age_Desc',
-        height: 'Height',
-        spread: 'Spread',
-        dbh: x => (x['Actual_Trunk'] || '').replace('cm', ''),
-        health: 'Condition'
+      ref: x => Math.round(x.TREE_ID),
+      scientific: 'Species_Desc',
+      common: 'Common_Name',
+      maturity: 'Age_Desc',
+      height: 'Height',
+      spread: 'Spread',
+      dbh: x => (x['Actual_Trunk'] || '').replace('cm', ''),
+      health: 'Condition'
     }
   }
-].map(s => ({...s, country: 'Ireland'}))
+].map(s => ({ ...s, country: 'Ireland' }))

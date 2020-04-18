@@ -20,4 +20,4 @@ module.exports = [
     },
     short: 'Lisbon'
   }
-].map(s => ({...s, country: 'Portugal'}))
+].map(s => ({ ...s, country: 'Portugal' }))

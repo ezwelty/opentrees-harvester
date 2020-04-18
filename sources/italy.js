@@ -13,7 +13,7 @@ module.exports = [
       ref: 'NUM_PT',
       // CL_H? height? health?
     },
-    license: {id: 'CC-BY-3.0'}
+    license: { id: 'CC-BY-3.0' }
   },
   {
     id: 'villa_manin_it',
@@ -30,4 +30,4 @@ module.exports = [
       // lots more fields with very weird names like 'SFRC|SFR', 'PIP|PI'
     }
   }
-].map(s => ({...s, country: 'Italy'}))
+].map(s => ({ ...s, country: 'Italy' }))

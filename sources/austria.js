@@ -1,4 +1,5 @@
-module.exports = [{
+module.exports = [
+  {
     id: 'vienna',
     country: 'Austria',
     // downloads soooo slowly
@@ -7,15 +8,15 @@ module.exports = [{
     format: 'csv',
     short: 'Vienna',
     crosswalk: {
-        ref: 'BAUM_ID',
-        dbh: x => x.STAMMUNGFANG / 3.14159 * 2,
-        height: 'BAUMHOEHE',
-        scientific: 'GATTUNG_ART',
-        crown: 'KRONENDURCHMESSER'
+      ref: 'BAUM_ID',
+      dbh: x => x.STAMMUNGFANG / 3.14159 * 2,
+      height: 'BAUMHOEHE',
+      scientific: 'GATTUNG_ART',
+      crown: 'KRONENDURCHMESSER'
     },
-    license: {id: 'CC-BY-4.0'}
-},
-{
+    license: { id: 'CC-BY-4.0' }
+  },
+  {
     id: 'linz',
     country: 'Austria',
     short: 'Linz',
@@ -24,14 +25,14 @@ module.exports = [{
     info: 'https://www.data.gv.at/katalog/dataset/baumkataster',
     format: 'csv',
     crosswalk: {
-        ref: 'BaumNr',
-        genus: 'Gattung',
-        species: x => x.Art !== '0' ? x.Art : undefined,
-        common: 'NameDeutsch',
-        height: 'Hoehe',
-        crown: 'Schirmdurchmesser',
-        dbh: 'Stammumfang'
+      ref: 'BaumNr',
+      genus: 'Gattung',
+      species: x => x.Art !== '0' ? x.Art : undefined,
+      common: 'NameDeutsch',
+      height: 'Hoehe',
+      crown: 'Schirmdurchmesser',
+      dbh: 'Stammumfang'
     },
-    license: {id: 'CC-BY-4.0'}
-}
-].map(s => ({...s, country: 'Austria'}))
+    license: { id: 'CC-BY-4.0' }
+  }
+].map(s => ({ ...s, country: 'Austria' }))

@@ -26,12 +26,12 @@ module.exports = [
     info: 'https://data.buenosaires.gob.ar/dataset/arbolado-publico-lineal',
     format: 'geojson',
     crosswalk: {
-        ref: 'nro_registro',
-        scientific: 'nombre_cientifico',
-        // ancho_acera?
-        dbh: 'diametro_altura_pecho',
-        height: 'altura_arbol'
+      ref: 'nro_registro',
+      scientific: 'nombre_cientifico',
+      // ancho_acera?
+      dbh: 'diametro_altura_pecho',
+      height: 'altura_arbol'
     },
     primary: 'buenos_aires'
   }
-].map(s => ({...s, country: 'Argentina'}))
+].map(s => ({ ...s, country: 'Argentina' }))

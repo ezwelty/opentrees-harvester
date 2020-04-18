@@ -26,4 +26,4 @@ module.exports = [
     format: 'csv',
     srs: 'EPSG:2056'
   }
-].map(s => ({...s, country: 'Switzerland'}))
+].map(s => ({ ...s, country: 'Switzerland' }))

@@ -12,4 +12,4 @@ module.exports = [
       // lots of others...
     }
   }
-].map(s => ({...s, country: 'Norway'}))
+].map(s => ({ ...s, country: 'Norway' }))

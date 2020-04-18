@@ -10,4 +10,4 @@ module.exports = [
       common: 'species'
     }
   }
-].map(s => ({...s, country: 'New Zealand'}))
+].map(s => ({ ...s, country: 'New Zealand' }))

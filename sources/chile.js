@@ -8,7 +8,7 @@ module.exports = [
       common: 'name',
       // leaf_cycle, leaf_type
     },
-    centre: {lon: -70.877, lat: -29.859}
+    centre: { lon: -70.877, lat: -29.859 }
   },
   {
     pending: true,
@@ -21,4 +21,4 @@ module.exports = [
     format: 'csv',
     srs: 'EPSG:32719', // guessed by WhatTheProj
   },
-].map(s => ({...s, country: 'Chile'}))
+].map(s => ({ ...s, country: 'Chile' }))

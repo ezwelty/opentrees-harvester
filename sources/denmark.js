@@ -6,13 +6,13 @@ module.exports = [
     info: 'https://www.opendata.dk/city-of-copenhagen/trae_basis',
     format: 'csv',
     crosswalk: {
-        scientific: 'traeart',
-        common: 'dansk_navn',
-        // Slaegstnavn "family name" has values like Lind
-        planted: 'planteaar',
-        // Stammeofma "tribal embrace(?)" - crown?,
-        health: 'sundhed',
-        // TODO sooo many other fields
+      scientific: 'traeart',
+      common: 'dansk_navn',
+      // Slaegstnavn "family name" has values like Lind
+      planted: 'planteaar',
+      // Stammeofma "tribal embrace(?)" - crown?,
+      health: 'sundhed',
+      // TODO sooo many other fields
     },
     short: 'Copenhagen'
   },
@@ -39,4 +39,4 @@ module.exports = [
     info: 'https://www.opendata.dk/city-of-vejle/parkdrift-parkpleje-punktdata',
     format: 'geojson'
   }
-].map(s => ({...s, country: 'Denmark'}))
+].map(s => ({ ...s, country: 'Denmark' }))

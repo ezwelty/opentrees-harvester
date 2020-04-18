@@ -25,7 +25,7 @@ module.exports = [
     id: 'corangamite',
     download: 'https://data.gov.au/geoserver/corangamite-shire-trees/wfs?request=GetFeature&typeName=ckan_d9677ebb_f3db_45f3_88eb_04089debb9e0&outputFormat=json',
     format: 'geojson',
-    gdal_options: '-s_srs EPSG:4326',
+    srs: 'EPSG:4326',
     short: 'Corangamite',
     long: 'Corangamite Shire',
     country: 'Australia',

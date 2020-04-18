@@ -65,7 +65,7 @@ module.exports = [
     info: 'https://dadesobertes-situam.opendata.arcgis.com/datasets/arbrat-del-nucli-urb%C3%A0',
     crosswalk: {
       common: 'NCOMU',
-      scientiic: 'NCIENTIFIC',
+      scientific: 'NCIENTIFIC',
       note: 'OBSERVACIO'
     }
   },

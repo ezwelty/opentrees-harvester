@@ -80,12 +80,13 @@ module.exports = [
   {
     id: 'manningham',
     download: 'https://data.gov.au/geoserver/manningham-streettrees/wfs?request=GetFeature&typeName=ckan_1aef5123_24ff_4084_a0f1_a52ca71e9e99&outputFormat=json',
+    info: 'https://data.gov.au/data/dataset/1aef5123-24ff-4084-a0f1-a52ca71e9e99',
     format: 'geojson',
     short: 'Manningham',
     long: 'City of Manningham',
     country: 'Australia',
     crosswalk: {
-      captured: 'date1',  // TODO YYYY-MM-DD
+      updated: 'date1',  // TODO YYYY-MM-DD
       ref: 'tree_no', // hansen_id?
       scientific: 'species',
       height: 'height',
@@ -194,7 +195,7 @@ module.exports = [
       height: 'height_m',
       crown: 'horizontal',
       // health: 'vitality', // used to be present?
-      captured: 'auditdate' // TODO date
+      updated: 'auditdate' // TODO date
     }
   },
   {
@@ -208,7 +209,7 @@ module.exports = [
       genus: 'Genus',
       species: 'Species',
       dbh: 'DBH',
-      tree_type: 'Type'
+      location: 'Type' // 'Street Tree', 'Park Tree', ...
     },
     centre: { lon: 144.833, lat: -37.85 }
   },
@@ -305,7 +306,7 @@ module.exports = [
       common: 'COMMON_NAM',
       family: 'FAMILY',
       height: 'TREE_HEIGH',
-      plant: 'DATE_PLANT',
+      planted: 'DATE_PLANT',
       ref: 'TREE_ID'
     }
     // crosswalk: {

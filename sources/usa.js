@@ -341,7 +341,7 @@ module.exports = [
       common: 'COMMON_NAM',
       height: x => x.TREEHEIGHT / FEET,
       dbh: x => x.DIAM * INCHES,
-      condition: x => ['Very poor', 'Poor', 'Fair', 'Good', 'Excellent'][x.CONDITIO_3 - 1],
+      health: x => ['Very poor', 'Poor', 'Fair', 'Good', 'Excellent'][x.CONDITIO_3 - 1],
       // lots more https://www.seattle.gov/Documents/Departments/SDOT/GIS/Trees_OD.pdf
     }
   },
@@ -521,11 +521,11 @@ module.exports = [
       scientific: 'Species',
       family: 'Family',
       //TreeType: Deciduous
-      Spread: 'Spread',
+      spread: 'Spread',
       height: feet('Height'),
       dbh: inches('Diameter'),
       health: 'Condition', // /100,
-      Note: 'SpecialComments',
+      note: 'SpecialComments',
       updated: 'last_edited_date'
     }
   },
@@ -728,8 +728,8 @@ module.exports = [
       scientific: 'BOTANICAL',
       variety: 'CULTIVAR',
       dbh: inches('DBH'),
-      condition: x => String(x.CONDITION).split(' - ')[0],
-      comment: 'NOTES',
+      health: x => String(x.CONDITION).split(' - ')[0],
+      note: 'NOTES',
       // DATE_1 - 2015-ish. planted? updated?
     }
   },
@@ -911,7 +911,7 @@ module.exports = [
       location: 'SITE',
       health: 'CONDITION',
       updated: 'last_edited_date',
-      heaght: 'HEIGHT', //11-20
+      height: 'HEIGHT', //11-20
       note: 'COMMENTS'
     }
   },

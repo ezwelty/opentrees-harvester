@@ -10,7 +10,7 @@ module.exports = [
       scientific: 'tradart_vet',
       common: 'tradart_sve',
       location: 'gatu_eller',
-      date: 'planterings'
+      planted: 'planterings'
     }
   },
   {

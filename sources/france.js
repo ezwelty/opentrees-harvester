@@ -183,7 +183,7 @@ module.exports = [
     format: 'geojson',
     short: 'Versailles',
     crosswalk: {
-      scientiifc: 'ESPECE', // watch out for 'VIDE' TODO
+      scientific: 'ESPECE', // watch out for 'VIDE' TODO
       common: 'FRANCAIS'
     }
   },
@@ -348,7 +348,7 @@ module.exports = [
       genus: x => x.genre.replace('spp.', ''),
       species: 'espece',
       height: 'classe_hau',
-      circumerence: 'classe_cir',
+      circumference: 'classe_cir',
       // cepee?
     }
   },

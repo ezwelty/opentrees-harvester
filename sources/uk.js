@@ -75,7 +75,7 @@ module.exports = [
       height: 'Height',
       spread: 'Spread',
       maturity: 'AgeGroup',
-      bh: 'DiameterAt'
+      dbh: 'DiameterAt'
     }
   },
   {
@@ -151,7 +151,7 @@ module.exports = [
       dbh: 'Diameter In Centimetres At Breast Height',
       maturity: 'Maturity',
       health: 'Physiological Condition',
-      id: 'Identifier'
+      ref: 'Identifier'
     }
   },
 ].map(s => ({ ...s, country: 'United Kingdom' }))

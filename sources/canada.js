@@ -7,7 +7,7 @@ module.exports = [
     crosswalk: {
       scientific: 'Essence_latin',
       common: 'ESSENCE_ANG',
-      dhb: 'DHP', // diametre hauteur poitrine
+      dbh: 'DHP', // diametre hauteur poitrine
       updated: 'Date_releve',
       planted: 'Date_plantation',
       ref: 'EMP_NO',

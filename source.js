@@ -650,13 +650,17 @@ class Source {
       return field
     })
     // Prepare output schema
-    var output_schema = input_schema
+    var output_schema = []
     if (this.props.crosswalk) {
       for (const key in this.props.crosswalk) {
         // NOTE: Output as string to preserve malformed values
-        output_schema[key] = gdal.OFTString
+        output_schema.push(new gdal.FieldDefn(key, gdal.OFTString))
       }
     }
+    input_schema.forEach(field => {
+      field.name = `_${field.name}`
+      output_schema.push(field)
+    })
     // Prepare output
     const driver = gdal.drivers.get(format)
     if (!driver) {
@@ -688,7 +692,10 @@ class Source {
     }
     // Populate output
     var input_feature = input_layer.features.first()
-    while (input_feature) {
+    for (
+      var input_feature = input_layer.features.first();
+      input_feature;
+      input_feature = input_layer.features.next()) {
       // Fields
       const input_fields = input_feature.fields.toObject()
       if (this.props.skip_function && this.props.skip_function(input_fields)) {
@@ -701,21 +708,23 @@ class Source {
         output_fields = helpers.map_object(
           output_fields, this.props.crosswalk, false)
       }
-      output_feature.fields.set(Object.values(output_fields))
+      // NOTE: Set with object slow but does not require knowing field order
+      output_feature.fields.set(output_fields)
       // Geometry
       var input_geometry = input_feature.getGeometry()
       if (input_geometry) {
         if (centroids && input_geometry.wkbType != gdal.wkbPoint) {
           input_geometry = input_geometry.centroid()
         }
-        if (transform) {
-          input_geometry.transform(transform)
+        if (isFinite(input_geometry.x) && isFinite(input_geometry.y)) {
+          if (transform) {
+            input_geometry.transform(transform)
+          }
         }
         output_feature.setGeometry(input_geometry)
       }
       // TODO: flush after each n features
       output_layer.features.add(output_feature)
-      input_feature = input.layers.get(0).features.next()
     }
     // Write
     output.close()

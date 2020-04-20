@@ -459,13 +459,22 @@ class Source {
    * Either the provided SRS, the SRS of the layer (as proj4 string),
    * or the default SRS.
    *
-   * @param {gdal.Layer} layer - Feature layer
+   * @param {gdal.Layer} [layer] - Feature layer
    * @return {string} Input SRS
    */
   get_srs_string(layer) {
     var srs = this.props.srs
-    if (!srs && layer && layer.srs) {
-      srs = layer.srs.toProj4()
+    if (!srs) {
+      if (!layer) {
+        const input = gdal.open(this.find_input_path(true))
+        srs = input.layers.get(0).srs
+        input.close()
+      } else {
+        srs = layer.srs
+      }
+      if (srs) {
+        srs = srs.toProj4()
+      }
     }
     if (!srs) {
       srs = this.default_srs

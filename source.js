@@ -608,6 +608,8 @@ class Source {
    * @param {object} options
    * @param {boolean} [options.centroids=false] - Whether to reduce non-point
    *  geometries to centroids
+   * @param {boolean} [options.keep_invalid=false] - Whether to keep features
+   *  with empty or invalid geometries
    * @param {boolean} [options.keep_fields=false] - Whether to keep original
    *  feature fields
    * @param {boolean} [options.keep_geometry_fields=false] - Whether to keep
@@ -620,6 +622,7 @@ class Source {
     options = {
       ...{
         centroids: false,
+        keep_invalid: false,
         keep_fields: false,
         keep_geometry_fields: false,
         prefix: '_'
@@ -736,16 +739,22 @@ class Source {
         if (options.centroids && input_geometry.wkbType != gdal.wkbPoint) {
           input_geometry = input_geometry.centroid()
         }
-        if (transform) {
-          if (isFinite(input_geometry.x) && isFinite(input_geometry.y)) {
-            try {
-              input_geometry.transform(transform)
-            } catch (err) {
-              this.warn(`Invalid geometry at ${input_feature.fid}`)
-            }
+        if (input_geometry.isValid() &&
+          isFinite(input_geometry.x) && isFinite(input_geometry.y)) {
+          try {
+            input_geometry.transform(transform)
+          } catch (error) {
+            this.warn(`Invalid geometry at ${input_feature.fid}: ${input_geometry.x}, ${input_geometry.y} (x, y)`)
+            if (!options.keep_invalid) continue
           }
+        } else {
+          this.warn(`Invalid geometry at ${input_feature.fid}: ${input_geometry.x}, ${input_geometry.y} (x, y)`)
+          if (!options.keep_invalid) continue
         }
         output_feature.setGeometry(input_geometry)
+      } else {
+        this.warn(`Empty geometry at ${input_feature.fid}`)
+        if (!options.keep_invalid) continue
       }
       // TODO: flush after each n features
       output_layer.features.add(output_feature)

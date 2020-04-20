@@ -12,7 +12,6 @@ const gdal = require('gdal-next')
  * @return {string} ISO 8601 date
  */
 function gdal_date_to_string(obj) {
-  if (!obj) return
   const year = obj.year.toString().padStart(4, '0')
   const month = obj.month.toString().padStart(2, '0')
   const day = obj.day.toString().padStart(2, '0')
@@ -29,7 +28,6 @@ function gdal_date_to_string(obj) {
  * @return {string} ISO 8601 time
  */
 function gdal_time_to_string(obj) {
-  if (!obj) return
   const hour = obj.hour ? obj.hour.toString().padStart(2, '0') : '00'
   const minute = obj.minute ? obj.minute.toString().padStart(2, '0') : '00'
   const second = obj.second ? obj.second.toString().padStart(2, '0') : '00'
@@ -46,7 +44,6 @@ function gdal_time_to_string(obj) {
  * @return {string} ISO 8601 timezone
  */
 function gdal_timezone_to_string(obj) {
-  if (!obj) return
   // TZFlag: 0=unknown, 1=localtime(ambiguous), 100=GMT, 104=GMT+1, 80=GMT-5, etc
   // See https://gdal.org/development/rfc/rfc56_millisecond_precision.html
   const delta = obj.timezone > 1 ? (obj.timezone - 100) * 15 : null // minutes
@@ -282,7 +279,6 @@ function get_srs_transform(source, target) {
     return new gdal.CoordinateTransformation(source, target)
   }
 }
-
 
 module.exports = {
   gdal_date_to_string,

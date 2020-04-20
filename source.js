@@ -603,10 +603,12 @@ class Source {
    * 
    * @param {string} file - Output file path
    * @param {string} format - Name of GDAL driver (e.g. "csv", "geojson")
-   * @param {boolean} centroids - Whether to reduce non-point geometries to
-   *  centroids
+   * @param {object} options
+   * @param {boolean} [options.centroids=false] - Whether to reduce non-point
+   *  geometries to centroids
    */
-  process(file, format = 'csv', centroids = true) {
+  process(file, format = 'csv', options = {}) {
+    options = { ...options, ...{ centroids: false } }
     if (!this.overwrite && fs.existsSync(file)) {
       return
     }

@@ -12,6 +12,7 @@ const gdal = require('gdal-next')
  * @return {string} ISO 8601 date
  */
 function gdal_date_to_string(obj) {
+  if (!obj) return
   const year = obj.year.toString().padStart(4, '0')
   const month = obj.month.toString().padStart(2, '0')
   const day = obj.day.toString().padStart(2, '0')
@@ -28,6 +29,7 @@ function gdal_date_to_string(obj) {
  * @return {string} ISO 8601 time
  */
 function gdal_time_to_string(obj) {
+  if (!obj) return
   const hour = obj.hour ? obj.hour.toString().padStart(2, '0') : '00'
   const minute = obj.minute ? obj.minute.toString().padStart(2, '0') : '00'
   const second = obj.second ? obj.second.toString().padStart(2, '0') : '00'
@@ -44,6 +46,7 @@ function gdal_time_to_string(obj) {
  * @return {string} ISO 8601 timezone
  */
 function gdal_timezone_to_string(obj) {
+  if (!obj) return
   // TZFlag: 0=unknown, 1=localtime(ambiguous), 100=GMT, 104=GMT+1, 80=GMT-5, etc
   // See https://gdal.org/development/rfc/rfc56_millisecond_precision.html
   const delta = obj.timezone > 1 ? (obj.timezone - 100) * 15 : null // minutes
@@ -62,6 +65,7 @@ function gdal_timezone_to_string(obj) {
  * @return {string} ISO 8601 datetime
  */
 function gdal_datetime_to_string(obj) {
+  if (!obj) return
   const date = gdal_date_to_string(obj)
   const time = gdal_time_to_string(obj)
   const timezone = gdal_timezone_to_string(obj)
@@ -81,14 +85,14 @@ function gdal_datetime_to_string(obj) {
  */
 function map_object(obj, crosswalk, keep = false, prefix = '_') {
   var new_obj = {}
-  for (const key in crosswalk) {
-    new_obj[key] = (typeof crosswalk[key] === 'function') ?
-      crosswalk[key](obj) : obj[crosswalk[key]]
-  }
   if (keep) {
     for (const key in obj) {
       new_obj[`${prefix}${key}`] = obj[key]
     }
+  }
+  for (const key in crosswalk) {
+    new_obj[key] = (typeof crosswalk[key] === 'function') ?
+      crosswalk[key](obj) : obj[crosswalk[key]]
   }
   return new_obj
 }
@@ -253,6 +257,33 @@ function unpack_file(file, dir, format = 'zip') {
   }
 }
 
+/**
+ * Get the transformation between two spatial reference systems (SRS).
+ * 
+ * @param {string|gdal.SpatialReference} source - Source SRS
+ * @param {string|gdal.SpatialReference} target - Target SRS
+ * @return {gdal.CoordinateTransformation|undefined} Coordinate transformation,
+ *  or undefined if the two SRS are equal.
+ */
+function get_srs_transform(source, target) {
+  if (typeof source === 'string') {
+    source = gdal.SpatialReference.fromUserInput(source)
+  }
+  if (typeof target === 'string') {
+    target = gdal.SpatialReference.fromUserInput(target)
+  }
+  // NOTE: Only sure way to test for equality is to test the transformation
+  const same = source.isSame(target) ||
+    source.toProj4() === target.toProj4() ||
+    (source.isSameGeogCS(target) && (source.isProjected() == target.isProjected()))
+  if (same) {
+    return
+  } else {
+    return new gdal.CoordinateTransformation(source, target)
+  }
+}
+
+
 module.exports = {
   gdal_date_to_string,
   gdal_time_to_string,
@@ -267,5 +298,6 @@ module.exports = {
   write_vrt,
   gdal_patterns,
   download_file,
-  unpack_file
+  unpack_file,
+  get_srs_transform
 }

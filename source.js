@@ -705,7 +705,7 @@ class Source {
     input_schema = input_schema.map(field => {
       const formatter = helpers.gdal_string_formatters[field.type]
       if (formatter) {
-        string_crosswalk[field.name] = x => formatter(x[field.name])
+        string_crosswalk[field.name] = eval(`x => helpers.${formatter.name}(x['${field.name}'])`)
         field.type = gdal.OFTString
       }
       return field
@@ -748,17 +748,8 @@ class Source {
     const output_layer = output.layers.create(input_layer.name, options.srs,
       output_type)
     output_layer.fields.add(output_schema)
-    // Determine if a coordinate transformation is needed
-    // TODO: Make and test transform, check whether points are unchanged?
     const input_srs = this.get_srs()
-    var transform
-    if (input_srs.isSame(options.srs) ||
-      (input_srs.isSameGeogCS(options.srs) &&
-        (input_srs.isProjected() == options.srs.isProjected()))) {
-      transform = null
-    } else {
-      transform = new gdal.CoordinateTransformation(input_srs, options.srs)
-    }
+    const transform = helpers.get_srs_transform(input_srs, options.srs)
     // Populate output
     var input_feature = input_layer.features.first()
     for (

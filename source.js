@@ -252,6 +252,8 @@ class Source {
     // NOTE: Alternatively, call get_* in methods
     this.props.compression = this.get_compression()
     this.props.format = this.get_format()
+    // Cache
+    this.__dataset = null
   }
 
   /**
@@ -466,12 +468,9 @@ class Source {
     var srs = this.props.srs
     if (!srs) {
       if (!layer) {
-        const input = gdal.open(this.find_input_path(true))
-        srs = input.layers.get(0).srs
-        input.close()
-      } else {
-        srs = layer.srs
+        layer = this.open().layers.get(0)
       }
+      srs = layer.srs
       if (srs) {
         srs = srs.toProj4()
       }
@@ -489,7 +488,7 @@ class Source {
    * Either the provided SRS (passed to gdal.SpatialReference.fromUserInput),
    * the SRS of the layer, or the default SRS.
    * 
-   * @param {gdal.Layer} layer - Feature layer
+   * @param {gdal.Layer} [layer] - Feature layer
    * @return {gdal.SpatialReference} Input SRS
    */
   get_srs(layer) {
@@ -502,13 +501,24 @@ class Source {
    * 
    * Either the provided geometry or guessed from layer field names.
    * 
-   * @param {gdal.Layer} layer - Feature layer
-   * @return {object} Layer geometry
+   * @param {gdal.Layer} [layer] - Feature layer
+   * @return {object} Geometry definition, empty object if failed, or undefined
+   *  if input already has geometry defined.
    */
   get_geometry(layer) {
     var geometry = this.props.geometry
-    if (!geometry && layer) {
-      const matches = helpers.guess_geometry_fields(layer)
+    if (!geometry) {
+      geometry = {}
+      var matches
+      if (!layer) {
+        layer = this.open().layers.get(0)
+      }
+      if (layer.geomType != gdal.wkbNone) {
+        return
+      }
+      matches = helpers.guess_geometry_fields(layer)
+      if (layer.geomType != gdal.wkbNone)
+        input.close()
       if (matches.wkt.length) {
         if (matches.wkt.length > 1) {
           this.warn(`Using first of many WKT fields: ${matches.wkt.join(', ')}`)
@@ -537,12 +547,15 @@ class Source {
   *
   * See https://gdal.org/drivers/vector/vrt.html
   *
-  * @param {gdal.Layer} layer - Feature layer
-  * @param {boolean} keep_geometry_fields - Whether VRT file should return
-  *   geometry fields as regular feature fields
+  * @param {gdal.Layer} [layer] - Feature layer
+  * @param {boolean} [keep_geometry_fields=false] - Whether VRT file should
+  *   return geometry fields as regular feature fields
   * @return {string} Path to VRT file.
   */
   write_vrt(layer, keep_geometry_fields = false) {
+    if (!layer) {
+      layer = this.open().layers.get(0)
+    }
     const srs = this.get_srs_string(layer)
     const geometry = this.get_geometry(layer)
     // Build <GeometryField> attributes
@@ -612,6 +625,30 @@ class Source {
   }
 
   /**
+   * Open input as GDAL dataset.
+   * 
+   * Result is cached until closed with close().
+   * 
+   * @return {gdal.Dataset} GDAL dataset
+   */
+  open() {
+    if (!this.__dataset) {
+      this.__dataset = gdal.open(this.find_input_path(true))
+    }
+    return this.__dataset
+  }
+
+  /**
+   * Close input if open as GDAL Dataset.
+   */
+  close() {
+    if (this.__dataset) {
+      this.__dataset.close()
+    }
+    this.__dataset = null
+  }
+
+  /**
    * Process input file and write to output.
    * 
    * @param {string} file - Output file path
@@ -647,10 +684,9 @@ class Source {
     if (!this.overwrite && fs.existsSync(file)) {
       return
     }
-    var input_path = this.find_input_path(true)
     // Read input
-    this.log(`Processing ${input_path}`)
-    var input = gdal.open(input_path)
+    var input = this.open()
+    this.log(`Processing ${input.description}`)
     if (input.layers.count() > 1) {
       this.warn(`Using first of ${input.layers.count()} layers`)
     }
@@ -662,8 +698,10 @@ class Source {
     if (!input_layer.features.first().getGeometry() && !this.props.coordsFunc) {
       // Write (and then read) VRT file with geometry definition
       this.log(`Writing VRT file`)
-      input_path = this.write_vrt(input_layer, options.keep_geometry_fields)
-      input = gdal.open(input_path)
+      this.write_vrt(input_layer, options.keep_geometry_fields)
+      // Destroy link to original input and link to VRT file
+      this.close()
+      input = this.open()
       input_layer = input.layers.get(0)
     }
     // Prepare input schema
@@ -797,7 +835,6 @@ class Source {
     }
     // Write
     output.close()
-    input.close()
     return file
   }
 }

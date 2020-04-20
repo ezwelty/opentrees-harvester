@@ -449,25 +449,34 @@ class Source {
    * @return {string} File path (if found) or undefined
    */
   find_input_path(error = false) {
-    var input_path = null
-    if (this.props.compression) {
-      const pattern = path.join(this.dir, `**/*.${this.props.format}`)
-      const files = glob.sync(pattern)
-      if (files.length <= 1) {
-        input_path = files[0]
-      } else {
-        this.error(`${pattern} matches ${files.length} files`);
-      }
-    } else {
-      input_path = this.get_download_path()
-      if (!fs.existsSync(input_path)) {
-        input_path = null
+    const extension = this.props.format ? this.props.format : '*'
+    var paths = glob.sync(
+      path.join(this.dir, '**', `*.${extension}`), { nocase: true })
+    if (!this.props.format) {
+      paths = paths.filter(s => s.match(helpers.gdal_patterns.all))
+      if (paths.length > 1) {
+        const primaries = paths.filter(s =>
+          s.match(helpers.gdal_patterns.primary))
+        const secondaries = paths.filter(s =>
+          s.match(helpers.gdal_patterns.secondary))
+        if (primaries.length) {
+          paths = primaries
+        } else if (secondaries.length) {
+          paths = secondaries
+        } else {
+          this.warn(`Found exotic input formats: ${util.inspect(paths)}`)
+        }
       }
     }
-    if (!input_path && error) {
-      this.error(`No input found`)
-    } else {
-      return input_path
+    if (paths.length) {
+      if (paths.length == 1) {
+        return paths[0]
+      } else if (error) {
+        this.error(
+          `Found ${paths.length} possible inputs: ${util.inspect(paths)}`)
+      }
+    } else if (error) {
+      this.error(`No supported inputs found: ${util.inspect(paths)}`)
     }
   }
 

@@ -198,6 +198,34 @@ function write_vrt(layer, options = {}) {
   return vrt_path
 }
 
+/**
+ * Get list of vector file extensions supported by GDAL.
+ * @return {string[]} File extensions
+ */
+function get_gdal_extensions() {
+  var extensions = []
+  gdal.drivers.forEach(driver => {
+    const meta = driver.getMetadata()
+    if (meta.DCAP_VECTOR === 'YES') {
+      if (meta.DMD_EXTENSION) extensions.push(meta.DMD_EXTENSION)
+      if (meta.DMD_EXTENSIONS) extensions.push(...meta.DMD_EXTENSIONS.split(' '))
+    }
+  })
+  return [...new Set(extensions.sort())]
+}
+
+/**
+ * Regular expressions matching vector file extensions supported by GDAL.
+ * @property {RegExp} any - Matches any supported file extension
+ * @property {RegExp} primary - Matches primary formats
+ * @property {RegExp} secondary - Matches secondary formats
+ */
+const gdal_patterns = {
+  any: new RegExp(`\\.(${get_gdal_extensions().join('|')})$`, 'i'),
+  primary: /\.(geojson|topojson|shp|vrt|gml|kml)$/i,
+  secondary: /\.(csv|json)$/i
+}
+
 module.exports = {
   gdal_date_to_string,
   gdal_time_to_string,
@@ -209,5 +237,6 @@ module.exports = {
   },
   map_object,
   guess_geometry_fields,
-  write_vrt
+  write_vrt,
+  gdal_patterns
 }

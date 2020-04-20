@@ -528,9 +528,11 @@ class Source {
   * See https://gdal.org/drivers/vector/vrt.html
   *
   * @param {gdal.Layer} layer - Feature layer
+  * @param {boolean} keep_geometry_fields - Whether VRT file should return
+  *   geometry fields as regular feature fields
   * @return {string} Path to VRT file.
   */
-  write_vrt(layer) {
+  write_vrt(layer, keep_geometry_fields = false) {
     const srs = this.get_srs_string(layer)
     const geometry = this.get_geometry(layer)
     // Build <GeometryField> attributes
@@ -553,7 +555,7 @@ class Source {
            <SrcDataSource relativeToVRT="1">${basename}</SrcDataSource>
            <GeometryType>wkbPoint</GeometryType>
            <LayerSRS>${srs}</LayerSRS>
-           <GeometryField ${attributes} reportSrcColumn="FALSE"/>
+           <GeometryField ${attributes} reportSrcColumn="${keep_geometry_fields}"/>
        </OGRVRTLayer>
      </OGRVRTDataSource>`
     // Write VRT
@@ -608,6 +610,9 @@ class Source {
    *  geometries to centroids
    * @param {boolean} [options.keep_fields=false] - Whether to keep original
    *  feature fields
+   * @param {boolean} [options.keep_geometry_fields=false] - Whether to keep
+   *  original feature fields reporting geometry. Applies only to layers for
+   *  which a VRT file had to be written.
    * @param {string} [options.prefix='_'] - String to append to original
    *  field names (if kept)
    */
@@ -616,6 +621,7 @@ class Source {
       ...{
         centroids: false,
         keep_fields: false,
+        keep_geometry_fields: false,
         prefix: '_'
       },
       ...options
@@ -638,7 +644,7 @@ class Source {
     if (!input_layer.features.first().getGeometry()) {
       // Write (and then read) VRT file with geometry definition
       this.log(`Writing VRT file`)
-      input_path = this.write_vrt(input_layer)
+      input_path = this.write_vrt(input_layer, options.keep_geometry_fields)
       input = gdal.open(input_path)
       input_layer = input.layers.get(0)
     }

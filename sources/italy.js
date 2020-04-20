@@ -21,7 +21,6 @@ module.exports = [
     country: 'Italy',
     download: 'https://www.dati.friuliveneziagiulia.it/api/views/uqpq-dr8x/rows.csv?accessType=DOWNLOAD',
     info: 'https://www.dati.friuliveneziagiulia.it/dataset/Alberi-di-Villa-Manin/uqpq-dr8x',
-    // coordsFunc: x => x['Nuova colonna georeferenziata'].split(/[(), ]/).filter(Number).map(Number),
     crosswalk: {
       location: 'dove',
       scientific: 'specie',

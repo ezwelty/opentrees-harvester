@@ -124,10 +124,10 @@ const geometry_fields = {
 function guess_geometry_fields(layer) {
   var geometry = {}
   const names = layer.fields.getNames()
-  for (const key in ['wkt', 'x', 'y']) {
+  Object.keys(geometry_fields).forEach(key => {
     geometry[key] = names.filter(x =>
       geometry_fields[key].includes(x.toLowerCase()))
-  }
+  })
   return geometry
 }
 
@@ -208,5 +208,6 @@ module.exports = {
     [gdal.OFTDateTime]: gdal_datetime_to_string
   },
   map_object,
+  guess_geometry_fields,
   write_vrt
 }

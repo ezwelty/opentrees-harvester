@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+const util = require('util')
 const colors = require('colors')
 const glob = require('glob')
 const unzipper = require('unzipper')
@@ -242,6 +243,8 @@ class Source {
    *   the old field name (string) or a function called as f(feature.properties).
    * @property {function} delFunc - Function called as f(feature.properties) for each feature (before crosswalk).
    *   Feature is excluded from output if function returns true.
+   * @property {function} coordsFunc - Function called as f(features.properties) for each feature (before crosswalk).
+   *   Returns an array of feature coordinates [x, y].
    */
 
   /**
@@ -498,7 +501,7 @@ class Source {
   get_geometry(layer) {
     var geometry = this.props.geometry
     if (!geometry && layer) {
-      matches = helpers.guess_geometry_fields(layer)
+      const matches = helpers.guess_geometry_fields(layer)
       if (matches.wkt.length) {
         if (matches.wkt.length > 1) {
           this.warn(`Using first of many WKT fields: ${matches.wkt.join(', ')}`)
@@ -644,7 +647,7 @@ class Source {
       this.warn(`Skipping: Layer has no features`)
       return
     }
-    if (!input_layer.features.first().getGeometry()) {
+    if (!input_layer.features.first().getGeometry() && !this.props.coordsFunc) {
       // Write (and then read) VRT file with geometry definition
       this.log(`Writing VRT file`)
       input_path = this.write_vrt(input_layer, options.keep_geometry_fields)
@@ -700,8 +703,14 @@ class Source {
     } else {
       output = driver.create(file)
     }
+    var output_type
+    if (options.centroids || input_layer.geomType == gdal.wkbNone) {
+      output_type = gdal.wkbPoint
+    } else {
+      output_type = input_layer.geomType
+    }
     const output_layer = output.layers.create(input_layer.name, DEFAULT_SRS,
-      options.centroids ? gdal.wkbPoint : input_layer.geomType)
+      output_type)
     output_layer.fields.add(output_schema)
     // Determine if a coordinate transformation is needed
     // TODO: Make and test transform, check whether points are unchanged?
@@ -734,18 +743,33 @@ class Source {
         options.keep_fields, options.prefix)
       output_feature.fields.set(output_fields)
       // Geometry
-      var input_geometry = input_feature.getGeometry()
+      var input_geometry
+      if (this.props.coordsFunc) {
+        const coords = this.props.coordsFunc(input_fields)
+        if (Array.isArray(coords) && coords.length == 2) {
+          input_geometry = new gdal.Point(coords[0], coords[1])
+          input_geometry.srs = input_srs
+        } else {
+          this.warn(`Invalid parsed coordinates at ${input_feature.fid}: ${util.inspect(coords)}`)
+          if (!options.keep_invalid) continue
+        }
+      } else {
+        input_geometry = input_feature.getGeometry()
+      }
       if (input_geometry) {
         if (options.centroids && input_geometry.wkbType != gdal.wkbPoint) {
           input_geometry = input_geometry.centroid()
         }
         if (input_geometry.isValid() &&
+          input_geometry.x && input_geometry.y &&
           isFinite(input_geometry.x) && isFinite(input_geometry.y)) {
-          try {
-            input_geometry.transform(transform)
-          } catch (error) {
-            this.warn(`Invalid geometry at ${input_feature.fid}: ${input_geometry.x}, ${input_geometry.y} (x, y)`)
-            if (!options.keep_invalid) continue
+          if (transform) {
+            try {
+              input_geometry.transform(transform)
+            } catch (error) {
+              this.warn(`Invalid geometry at ${input_feature.fid}: ${input_geometry.x}, ${input_geometry.y} (x, y)`)
+              if (!options.keep_invalid) continue
+            }
           }
         } else {
           this.warn(`Invalid geometry at ${input_feature.fid}: ${input_geometry.x}, ${input_geometry.y} (x, y)`)

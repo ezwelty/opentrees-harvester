@@ -213,10 +213,12 @@ module.exports = [
     download: 'https://data.strathcona.ca/api/views/v78i-7ntw/rows.csv?accessType=DOWNLOAD',
     info: 'https://data.strathcona.ca/Environment/Tree/v78i-7ntw',
     format: 'csv',
+    // Location: "(lat, lon)"
     coordsFunc: x =>
       x.Location.replace(/[()]/g, '')
         .split(', ')
-        .map(Number),
+        .map(Number)
+        .reverse(),
     crosswalk: {
       ref: 'TreeSiteID',
       common: 'Name'

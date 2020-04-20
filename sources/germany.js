@@ -278,7 +278,8 @@ module.exports = [
     info: 'http://www.stadtplan.troisdorf.de/opengeodata/opendata/open_data_baumkataster.html',
     format: 'csv',
     compression: 'zip',
-    coordsFunc: (props) => [Number(props['X-Koordinate'].replace(',', '.')), Number(props['Y-Koordinate'].replace(',', '.'))],
+    // X-Koordinate and Y-Koordinate use decimal separator ","
+    coordsFunc: x => [Number(x['X-Koordinate'].replace(',', '.')), Number(x['Y-Koordinate'].replace(',', '.'))],
     crosswalk: {
       height: 'Baumhoehe',
       scientific: x => x.Baumart.split(', ')[0],

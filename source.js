@@ -423,7 +423,7 @@ class Source {
    * @param {boolean} [error=false] - Whether to raise error if no input found
    * @return {string} File path (if found) or undefined
    */
-  find_input_path(error = false) {
+  find(error = false) {
     const extension = this.props.format ? this.props.format : '*'
     var paths = glob.sync(
       path.join(this.dir, '**', `*.${extension}`), { nocase: true })
@@ -586,7 +586,7 @@ class Source {
    * @return {Promise} Promise that resolves once file is downloaded.
    */
   download() {
-    if (this.props.download && (this.overwrite || !this.find_input_path())) {
+    if (this.props.download && (this.overwrite || !this.find())) {
       this.log(`Downloading ${this.props.download}`)
       return helpers.download_file(
         this.props.download, this.get_download_path())
@@ -600,7 +600,7 @@ class Source {
    * @param {boolean} rm - Whether to remove pack file after unpacking
    */
   unpack(rm = true) {
-    if (this.props.compression && (this.overwrite || !this.find_input_path())) {
+    if (this.props.compression && (this.overwrite || !this.find())) {
       const unpack_path = this.get_download_path()
       this.log(`Unpacking ${unpack_path}`)
       helpers.unpack_file(unpack_path, this.dir, this.props.compression)
@@ -619,7 +619,7 @@ class Source {
    */
   open() {
     if (!this.__dataset) {
-      this.__dataset = gdal.open(this.find_input_path(true))
+      this.__dataset = gdal.open(this.find(true))
     }
     return this.__dataset
   }

@@ -175,7 +175,6 @@ module.exports = [
     format: 'xlsx',
     srs: 'EPSG:31467', // or 2166, 31467, 3396...
     geometry: { x: 'Koordinaten_X_Y', y: 'Koordinate_Y' },
-    gdal_options: '-skipfailures',
     crosswalk: {
       scientific: 'Baumart_botanisch',
       common: 'Baumart',

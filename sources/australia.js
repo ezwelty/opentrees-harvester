@@ -60,13 +60,9 @@ module.exports = [
     }
   },
   {
-    // BAD 404
     id: 'ballarat',
     download: 'https://data.gov.au/geoserver/ballarattrees/wfs?request=GetFeature&typeName=ckan_eabaee3f_a563_449b_a04a_1ec847566ea1&outputFormat=json',
-    // download: 'http://data.gov.au/dataset/eabaee3f-a563-449b-a04a-1ec847566ea1/resource/2f5eb80f-55fa-418c-915c-0b6de7653719/download/BallaratTrees.csv',
     format: 'geojson',
-    // filename: 'ballarat.vrt',
-    // gdal_options: '-skipfailures',
     short: 'Ballarat',
     long: 'City of Ballarat',
     country: 'Australia',
@@ -131,7 +127,6 @@ module.exports = [
     id: 'adelaide',
     download: 'http://opendata.adelaidecitycouncil.com/street_trees/street_trees.csv',
     format: 'csv',
-    gdal_options: '-skipfailures',
     srs: 'EPSG:28354',
     geometry: { x: 'Easting (Location/Map Coordinates)', y: 'Northing (Location/Map Coordinates)' },
     short: 'Adelaide',

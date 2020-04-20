@@ -552,7 +552,7 @@ class Source {
        <OGRVRTLayer name="${layer.name}">
            <SrcDataSource relativeToVRT="1">${basename}</SrcDataSource>
            <GeometryType>wkbPoint</GeometryType>
-           <LayerSRS>${options.srs}</LayerSRS>
+           <LayerSRS>${srs}</LayerSRS>
            <GeometryField ${attributes} reportSrcColumn="FALSE"/>
        </OGRVRTLayer>
      </OGRVRTDataSource>`
@@ -622,10 +622,10 @@ class Source {
       this.warn(`Skipping: Layer has no features`)
       return
     }
-    if (input_layer.wkbType == gdal.wkbNone) {
+    if (!input_layer.features.first().getGeometry()) {
       // Write (and then read) VRT file with geometry definition
       this.log(`Writing VRT file`)
-      this.write_vrt(input_layer)
+      input_path = this.write_vrt(input_layer)
       input = gdal.open(input_path)
       input_layer = input.layers.get(0)
     }
@@ -715,9 +715,13 @@ class Source {
         if (centroids && input_geometry.wkbType != gdal.wkbPoint) {
           input_geometry = input_geometry.centroid()
         }
-        if (isFinite(input_geometry.x) && isFinite(input_geometry.y)) {
-          if (transform) {
-            input_geometry.transform(transform)
+        if (transform) {
+          if (isFinite(input_geometry.x) && isFinite(input_geometry.y)) {
+            try {
+              input_geometry.transform(transform)
+            } catch (err) {
+              this.warn(`Invalid geometry at ${input_feature.fid}`)
+            }
           }
         }
         output_feature.setGeometry(input_geometry)

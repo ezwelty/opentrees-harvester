@@ -230,7 +230,6 @@ module.exports = [
     download: 'https://ckanprodstorage.blob.core.windows.net/opendata/Tree/SHP_ZIP/shp.Tree.zip',
     info: 'http://open.regina.ca/dataset/city-of-regina-tree-inventory',
     format: 'shp',
-    gdal_options: '-skipfailures',
     crosswalk: {
       common: 'Species',
       owner: 'Ownership',

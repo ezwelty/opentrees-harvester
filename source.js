@@ -3,9 +3,9 @@ const path = require('path')
 const util = require('util')
 const colors = require('colors')
 const glob = require('glob')
-const unzipper = require('unzipper')
 const gdal = require('gdal-next')
-const download = require('download')
+const { DownloaderHelper } = require('node-downloader-helper')
+const decompress = require('decompress')
 const helpers = require('./helpers')
 
 const CROSSWALK_FIELDS = {
@@ -193,7 +193,7 @@ class Source {
    * @property {object} centre - Centre point (in case automatic placement is bad)
    * @property {number} centre.lon - Longitude in decimal degrees (EPSG:4326)
    * @property {number} centre.lat - Latitude in decimal degrees (EPSG:4326)
-   * @property {string} download - Remote file path
+   * @property {string|string[]} download - Remote file path(s)
    * @property {string} info - Page with more information
    * @property {string} language - Language tag (e.g. "en", "en-US") of data contents, especially of common names
    * @property {object} license - License
@@ -222,8 +222,6 @@ class Source {
    * @param {DatasetProperties} props - Dataset properties
    * @param {string} dir - Working directory
    * @param {object} options
-   * @param {boolean} [options.overwrite=false] - Whether to overwrite existing
-   *  files
    * @param {boolean} [options.exit=true] - Whether to throw (exit on) or print
    *  errors
    * @param {string} [options.default_srs='EPSG:4326'] -
@@ -244,14 +242,9 @@ class Source {
       },
       ...options
     }
-    this.overwrite = options.overwrite
     this.exit = options.exit
     this.default_srs = options.default_srs
     this.default_name = options.default_name
-    // Apply defaults
-    // NOTE: Alternatively, call get_* in methods
-    this.props.compression = this.get_compression()
-    this.props.format = this.get_format()
     // Cache
     this.__dataset = null
   }
@@ -265,20 +258,22 @@ class Source {
     var errors = []
     const props = this.props
     // Required fields
-    if (!props.id || typeof (props.id) !== 'string') {
-      errors.push(`Invalid id: ${props.id}`)
+    if (!props.id || typeof props.id !== 'string') {
+      errors.push(`Invalid or missing id: ${props.id}`)
     }
-    if (!props.download || typeof (props.download) !== 'string') {
-      errors.push(`Invalid download: ${props.download}`)
+    // download
+    if (props.download) {
+      if (!(typeof props.download === 'string' ||
+        (Array.isArray(props.download) && typeof props.download[1] === 'string'))) {
+        errors.push(`Invalid download: ${props.download}`)
+      }
     }
     // format
-    if (props.format &&
-      !['csv', 'geojson', 'shp', 'kml', 'gml'].includes(props.format)) {
-      errors.push(`Invalid format: ${props.format}`)
-    }
-    // compression
-    if (props.compression && !['zip'].includes(props.compression)) {
-      errors.push(`Invalid compression: ${props.compression}`)
+    if (props.format) {
+      if (!(typeof props.format === 'string' &&
+        helpers.get_gdal_extensions().includes(props.format.toLowerCase()))) {
+        errors.push(`Unsupported format: ${props.format}`)
+      }
     }
     // crosswalk
     if (props.crosswalk) {
@@ -348,74 +343,64 @@ class Source {
   }
 
   /**
-   * Get format of remote file (unpacked).
-   *
-   * Either the provided format or guessed from the download url (file
-   * extension, parameters) if these give a unique solution.
-   *
-   * @return {string} Compression format
+   * Empty and remove the working directory.
    */
-  get_format() {
-    var format = this.props.format
-    if (!format) {
-      if (this.props.compression) {
-        const format = 'shp'
-        this.warn(`Assuming format ${format} for compression ${this.props.compression}`)
-        return format
-      }
-      if (this.props.download) {
-        const url = this.props.download.toLowerCase()
-        const matches = [
-          // file extension
-          url.match(/\.([^\.\/\?\#]+)(?:$|\?|\#)/),
-          // parameters
-          url.match(/[\?\&\#](?:f|format|outputformat)=([^\&\s\#]+)/)]
-        const formats = matches.filter(x => x != null && !['zip'].includes(x)).
-          map(x => x[1]).
-          filter((v, i, x) => x.indexOf(v) === i)
-        if (formats.length == 1) {
-          format = formats[0]
-        }
-        if (formats.length != 1) {
-          // TODO: Move compression formats to constant
-          this.error(`Failed to determine format from url: ${this.props.download}`)
-        }
-        if (format === 'json') {
-          format = 'geojson'
-        }
-      }
-    }
-    return format
+  empty() {
+    fs.rmdirSync(this.dir, { recursive: true })
   }
 
   /**
-   * Get compression format of remote file.
-   *
-   * Either the provided compression format or the file extension of the
-   * download url, if it is a recognized compression format.
-   *
-   * @return {string} Compression format
+   * Check whether the working directory is missing or empty of files.
+   * @return {boolean} Whether working directory is empty
    */
-  get_compression() {
-    var compression = this.props.compression
-    if (!compression) {
-      const url = this.props.download.toLowerCase()
-      const matches = url.match(/\.([^\.\/\?\#]+)(?:$|\?|\#)/)
-      if (matches && matches.length && matches[1] === 'zip') {
-        // TODO: Move compression formats to constant
-        compression = matches[1]
-      }
-    }
-    return compression
+  is_empty() {
+    const files = glob.sync(path.join(this.dir, '**', '*.*'))
+    return files.length == 0
   }
 
   /**
-   * Get local path for remote file.
-   * @return {string} File path
+   * Download and unpack files.
+   * @param {boolean} [overwrite=false] - Whether to proceed even if working
+   *  directory is not empty.
+   * @return {Promise}
    */
-  get_download_path() {
-    const format = this.props.compression ? this.props.compression : this.props.format
-    return path.join(this.dir, `${this.default_name}.${format}`)
+  get(overwrite = false) {
+    if (!overwrite && !this.is_empty()) {
+      return Promise.resolve()
+    }
+    var urls = this.props.download
+    if (typeof urls === 'string') {
+      urls = [urls]
+    }
+    return Promise.all(urls.map(url => this.get_file(url))).
+      then(() => this.log('Ready to process'.green))
+  }
+
+  /**
+   * Download and unpack file.
+   * @param {string} url - Path to remote file
+   * @return {Promise}
+   */
+  get_file(url) {
+    fs.mkdirSync(this.dir, { recursive: true })
+    const options = { override: true, retry: { maxRetries: 3, delay: 3000 } }
+    const downloader = new DownloaderHelper(url, this.dir, options)
+    downloader.
+      on('download', info => this.log(`Downloading ${info.fileName}`)).
+      on('end', info => this.log(`Downloaded ${info.fileName} (${(info.downloadedSize / 1e6).toFixed()} MB)`)).
+      on('error', error => this.error(`Download failed for ${url}`)).
+      on('retry', (attempt, opts) => this.warn(`Download attempt ${attempt} of ${opts.maxRetries} in ${opts.delay / 1e3} s`))
+    return downloader.start().
+      then(() => downloader.getDownloadPath()).
+      then(file => {
+        return decompress(file, this.dir).
+          then(files => {
+            if (files.length) {
+              this.log(`Unpacked ${path.relative(this.dir, file)}: ${util.inspect(files.map(x => x.path))}`)
+              fs.unlinkSync(file)
+            }
+          })
+      })
   }
 
   /**
@@ -456,6 +441,30 @@ class Source {
   }
 
   /**
+   * Open input as GDAL dataset.
+   * 
+   * Result is cached until closed with close().
+   * 
+   * @return {gdal.Dataset} GDAL dataset
+   */
+  open() {
+    if (!this.__dataset) {
+      this.__dataset = gdal.open(this.find(true))
+    }
+    return this.__dataset
+  }
+
+  /**
+   * Close input if open as GDAL Dataset.
+   */
+  close() {
+    if (this.__dataset) {
+      this.__dataset.close()
+    }
+    this.__dataset = null
+  }
+
+  /**
    * Get input spatial reference system (SRS) as a string.
    *
    * Either the provided SRS, the SRS of the layer (as proj4 string),
@@ -468,7 +477,7 @@ class Source {
     if (!srs) {
       const layer = this.open().layers.get(0)
       if (layer.srs) {
-        srs = srs.toProj4()
+        srs = layer.srs.toProj4()
       }
     }
     if (!srs) {
@@ -574,74 +583,14 @@ class Source {
   }
 
   /**
-   * Download and unpack file.
-   * @param {boolean} rm - Whether to remove pack file after unpacking
-   */
-  get(rm = true) {
-    this.download().then(() => source.unpack())
-  }
-
-  /**
-   * Download remote file.
-   * @return {Promise} Promise that resolves once file is downloaded.
-   */
-  download() {
-    if (this.props.download && (this.overwrite || !this.find())) {
-      this.log(`Downloading ${this.props.download}`)
-      return helpers.download_file(
-        this.props.download, this.get_download_path())
-    } else {
-      return Promise.resolve()
-    }
-  }
-
-  /**
-   * Unpack file.
-   * @param {boolean} rm - Whether to remove pack file after unpacking
-   */
-  unpack(rm = true) {
-    if (this.props.compression && (this.overwrite || !this.find())) {
-      const unpack_path = this.get_download_path()
-      this.log(`Unpacking ${unpack_path}`)
-      helpers.unpack_file(unpack_path, this.dir, this.props.compression)
-      if (rm) {
-        fs.unlinkSync(unpack_path)
-      }
-    }
-  }
-
-  /**
-   * Open input as GDAL dataset.
-   * 
-   * Result is cached until closed with close().
-   * 
-   * @return {gdal.Dataset} GDAL dataset
-   */
-  open() {
-    if (!this.__dataset) {
-      this.__dataset = gdal.open(this.find(true))
-    }
-    return this.__dataset
-  }
-
-  /**
-   * Close input if open as GDAL Dataset.
-   */
-  close() {
-    if (this.__dataset) {
-      this.__dataset.close()
-    }
-    this.__dataset = null
-  }
-
-  /**
    * Process input file and write to output.
    * 
    * @param {string} file - Output file path
    * @param {string} format - Name of GDAL driver (e.g. "csv", "geojson")
    * @param {object} options
-   * @param {string} [options.srs='EPSG:4326'] - Output
-   *  spatial reference. Passed to gdal.SpatialReference.fromUserInput().
+   * @param {boolean} [overwrite=false] - Whether to overwrite an existing file.
+   * @param {string} [options.srs='EPSG:4326'] - Output spatial reference.
+   *  Passed to gdal.SpatialReference.fromUserInput().
    * @param {boolean} [options.centroids=false] - Whether to reduce non-point
    *  geometries to centroids
    * @param {boolean} [options.keep_invalid=false] - Whether to keep features
@@ -657,6 +606,7 @@ class Source {
   process(file, format = 'csv', options = {}) {
     options = {
       ...{
+        overwrite: false,
         srs: 'EPSG:4326',
         centroids: false,
         keep_invalid: false,
@@ -667,7 +617,7 @@ class Source {
       ...options
     }
     options.srs = gdal.SpatialReference.fromUserInput(options.srs)
-    if (!this.overwrite && fs.existsSync(file)) {
+    if (!options.overwrite && fs.existsSync(file)) {
       return
     }
     // Read input
@@ -812,7 +762,7 @@ class Source {
     }
     // Write
     output.close()
-    return file
+    this.log(`Wrote output to ${file}`.green)
   }
 }
 

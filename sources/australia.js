@@ -220,9 +220,7 @@ module.exports = [
     crosswalk: identity
   },
   {
-    pending: true,
     id: 'ryde',
-    // multiple files is not supported atm
     download: [
       'http://data.nsw.gov.au/data/dataset/f7cd2071-642e-4cac-9d28-d7ddf5635c39/resource/47843888-f9b6-4ae3-ba80-9318ff60a120/download/Public-Trees-2013.dbf',
       'http://data.nsw.gov.au/data/dataset/f7cd2071-642e-4cac-9d28-d7ddf5635c39/resource/1372b28f-4201-46ab-9099-be0458a317bb/download/Public-Trees-2013.prj',
@@ -230,7 +228,6 @@ module.exports = [
       'http://data.nsw.gov.au/data/dataset/f7cd2071-642e-4cac-9d28-d7ddf5635c39/resource/3f4f3346-52d5-4084-94fc-877bf70c0a76/download/Public-Trees-2013.shx'
     ],
     format: 'shp',
-    keepExtension: true,
     short: 'Ryde',
     long: 'City of Ryde',
     country: 'Australia',

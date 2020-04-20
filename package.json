@@ -14,9 +14,9 @@
   "license": "CC-BY-NC-4.0",
   "dependencies": {
     "colors": "^1.1.2",
-    "download": "^5.0.2",
+    "decompress": "^4.2.1",
     "gdal-next": "^1.0.2",
     "glob": "^7.1.2",
-    "unzipper": "^0.10.10"
+    "node-downloader-helper": "^1.0.12"
   }
 }

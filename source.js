@@ -8,8 +8,6 @@ const gdal = require('gdal-next')
 const download = require('download')
 const helpers = require('./helpers')
 
-const DEFAULT_SRS_STRING = 'EPSG:4326'
-const INPUT_NAME = 'input'
 const CROSSWALK_FIELDS = {
   // Identification
   ref: {
@@ -250,14 +248,33 @@ class Source {
    * Create a dataset.
    * @param {DatasetProperties} props - Dataset properties
    * @param {string} dir - Working directory
-   * @param {boolean} overwrite - Whether to overwrite existing files
-   * @param {boolean} exit - Whether to throw (exit on) or print errors
+   * @param {object} options
+   * @param {boolean} [options.overwrite=false] - Whether to overwrite existing
+   *  files
+   * @param {boolean} [options.exit=true] - Whether to throw (exit on) or print
+   *  errors
+   * @param {string} [options.default_srs='EPSG:4326'] -
+   *  Spatial reference to assume if not defined in dataset. Passed
+   *  to gdal.SpatialReference.fromUserInput().
+   * @param {string} [options.default_name='input'] - Basename to use for
+   *  downloaded file if no name is available from response header.
    */
-  constructor(props, dir, overwrite = false, exit = false) {
+  constructor(props, dir, options = {}) {
     this.props = props
     this.dir = dir
-    this.overwrite = overwrite
-    this.exit = exit
+    options = {
+      ...{
+        overwrite: false,
+        exit: true,
+        default_srs: 'EPSG:4326',
+        default_name: 'input'
+      },
+      ...options
+    }
+    this.overwrite = options.overwrite
+    this.exit = options.exit
+    this.default_srs = options.default_srs
+    this.default_name = options.default_name
     // Apply defaults
     // NOTE: Alternatively, call get_* in methods
     this.props.compression = this.get_compression()
@@ -423,15 +440,15 @@ class Source {
    */
   get_download_path() {
     const format = this.props.compression ? this.props.compression : this.props.format
-    return path.join(this.dir, `${INPUT_NAME}.${format}`)
+    return path.join(this.dir, `${this.default_name}.${format}`)
   }
 
   /**
    * Find path of input file.
-   * @param {boolean} error - Whether to raise error if no input found
+   * @param {boolean} [error=false] - Whether to raise error if no input found
    * @return {string} File path (if found) or undefined
    */
-  find_input_path(error = true) {
+  find_input_path(error = false) {
     var input_path = null
     if (this.props.compression) {
       const pattern = path.join(this.dir, `**/*.${this.props.format}`)
@@ -469,7 +486,7 @@ class Source {
       srs = layer.srs.toProj4()
     }
     if (!srs) {
-      srs = DEFAULT_SRS_STRING
+      srs = this.default_srs
       this.warn(`Assuming default SRS: ${srs}`)
     }
     return srs
@@ -592,7 +609,7 @@ class Source {
    * @param {boolean} rm - Whether to remove pack file after unpacking
    */
   unpack(rm = true) {
-    if (this.props.compression && (this.overwrite || !this.find_input_path(false))) {
+    if (this.props.compression && (this.overwrite || !this.find_input_path())) {
       const unpack_path = this.get_download_path()
       this.log(`Unpacking ${unpack_path}`)
       unpack_file(unpack_path, this.dir, this.props.compression)
@@ -608,9 +625,8 @@ class Source {
    * @param {string} file - Output file path
    * @param {string} format - Name of GDAL driver (e.g. "csv", "geojson")
    * @param {object} options
-   * @param {gdal.SpatialReference|string} [options.srs='EPSG:4326'] - Output
-   *  spatial reference. If string, passed to
-   *  gdal.SpatialReference.fromUserInput().
+   * @param {string} [options.srs='EPSG:4326'] - Output
+   *  spatial reference. Passed to gdal.SpatialReference.fromUserInput().
    * @param {boolean} [options.centroids=false] - Whether to reduce non-point
    *  geometries to centroids
    * @param {boolean} [options.keep_invalid=false] - Whether to keep features
@@ -635,13 +651,11 @@ class Source {
       },
       ...options
     }
-    if (typeof options.srs === 'string') {
-      options.srs = gdal.SpatialReference.fromUserInput(options.srs)
-    }
+    options.srs = gdal.SpatialReference.fromUserInput(options.srs)
     if (!this.overwrite && fs.existsSync(file)) {
       return
     }
-    var input_path = this.find_input_path()
+    var input_path = this.find_input_path(true)
     // Read input
     this.log(`Processing ${input_path}`)
     var input = gdal.open(input_path)

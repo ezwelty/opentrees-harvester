@@ -461,17 +461,13 @@ class Source {
    * Either the provided SRS, the SRS of the layer (as proj4 string),
    * or the default SRS.
    *
-   * @param {gdal.Layer} [layer] - Feature layer
    * @return {string} Input SRS
    */
-  get_srs_string(layer) {
+  get_srs_string() {
     var srs = this.props.srs
     if (!srs) {
-      if (!layer) {
-        layer = this.open().layers.get(0)
-      }
-      srs = layer.srs
-      if (srs) {
+      const layer = this.open().layers.get(0)
+      if (layer.srs) {
         srs = srs.toProj4()
       }
     }
@@ -488,37 +484,30 @@ class Source {
    * Either the provided SRS (passed to gdal.SpatialReference.fromUserInput),
    * the SRS of the layer, or the default SRS.
    * 
-   * @param {gdal.Layer} [layer] - Feature layer
    * @return {gdal.SpatialReference} Input SRS
    */
-  get_srs(layer) {
-    const srs = this.get_srs_string(layer)
+  get_srs() {
+    const srs = this.get_srs_string()
     return gdal.SpatialReference.fromUserInput(srs)
   }
 
   /**
    * Get input geometry definition.
    * 
-   * Either the provided geometry or guessed from layer field names.
+   * Either the provided geometry definition or guessed from layer field names.
    * 
-   * @param {gdal.Layer} [layer] - Feature layer
    * @return {object} Geometry definition, empty object if failed, or undefined
    *  if input already has geometry defined.
    */
-  get_geometry(layer) {
+  get_geometry() {
     var geometry = this.props.geometry
     if (!geometry) {
       geometry = {}
-      var matches
-      if (!layer) {
-        layer = this.open().layers.get(0)
-      }
+      const layer = this.open().layers.get(0)
       if (layer.geomType != gdal.wkbNone) {
         return
       }
-      matches = helpers.guess_geometry_fields(layer)
-      if (layer.geomType != gdal.wkbNone)
-        input.close()
+      const matches = helpers.guess_geometry_fields(layer)
       if (matches.wkt.length) {
         if (matches.wkt.length > 1) {
           this.warn(`Using first of many WKT fields: ${matches.wkt.join(', ')}`)
@@ -540,24 +529,20 @@ class Source {
   }
 
   /**
-  * Write VRT (OGR Virtual Format) for feature layer.
+  * Write VRT (OGR Virtual Format) for input.
   *
   * Relevant only for tabular data with feature geometry in fields.
-  * Writes the file to the path of the layer with '.vrt' added.
+  * Writes the file to the input path with '.vrt' added.
   *
   * See https://gdal.org/drivers/vector/vrt.html
   *
-  * @param {gdal.Layer} [layer] - Feature layer
   * @param {boolean} [keep_geometry_fields=false] - Whether VRT file should
   *   return geometry fields as regular feature fields
   * @return {string} Path to VRT file.
   */
-  write_vrt(layer, keep_geometry_fields = false) {
-    if (!layer) {
-      layer = this.open().layers.get(0)
-    }
-    const srs = this.get_srs_string(layer)
-    const geometry = this.get_geometry(layer)
+  write_vrt(keep_geometry_fields = false) {
+    const srs = this.get_srs_string()
+    const geometry = this.get_geometry()
     // Build <GeometryField> attributes
     var attributes
     if (geometry.wkt && typeof geometry.wkt === 'string') {
@@ -570,6 +555,7 @@ class Source {
       this.error(`Invalid geometry: ${util.inspect(geometry)}`)
     }
     // Build VRT
+    const layer = this.open().layers.get(0)
     var layer_path = layer.ds.description
     const basename = path.parse(layer_path).base
     const vrt =
@@ -698,7 +684,7 @@ class Source {
     if (!input_layer.features.first().getGeometry() && !this.props.coordsFunc) {
       // Write (and then read) VRT file with geometry definition
       this.log(`Writing VRT file`)
-      this.write_vrt(input_layer, options.keep_geometry_fields)
+      this.write_vrt(options.keep_geometry_fields)
       // Destroy link to original input and link to VRT file
       this.close()
       input = this.open()
@@ -764,7 +750,7 @@ class Source {
     output_layer.fields.add(output_schema)
     // Determine if a coordinate transformation is needed
     // TODO: Make and test transform, check whether points are unchanged?
-    const input_srs = this.get_srs(input_layer)
+    const input_srs = this.get_srs()
     var transform
     if (input_srs.isSame(options.srs) ||
       (input_srs.isSameGeogCS(options.srs) &&

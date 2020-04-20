@@ -175,33 +175,6 @@ const CROSSWALK_FIELDS = {
 }
 
 /**
- * Download file.
- * @param {string} url Remote path to download
- * @param {string} file Local path to write
- */
-async function download_file(url, file) {
-  fs.mkdirSync(path.dirname(file), { recursive: true });
-  fs.writeFileSync(file, await download(url));
-}
-
-/**
- * Unpack compressed or archive file to a directory.
- * @param {string} file Path of file to unpack
- * @param {string} dir Target directory
- * @param {string} format Compression or archive file format
- */
-function unpack_file(file, dir, format = 'zip') {
-  fs.mkdirSync(dir, { recursive: true })
-  switch (format) {
-    case 'zip':
-      fs.createReadStream(file).pipe(unzipper.Extract({ path: dir }))
-      break
-    default:
-      throw `Format ${format} not supported`
-  }
-}
-
-/**
  * Class representing a source dataset.
  *
  * The data can be in either a remote or local file.
@@ -607,7 +580,8 @@ class Source {
   download() {
     if (this.props.download && (this.overwrite || !this.find_input_path())) {
       this.log(`Downloading ${this.props.download}`)
-      return download_file(this.props.download, this.get_download_path())
+      return helpers.download_file(
+        this.props.download, this.get_download_path())
     } else {
       return Promise.resolve()
     }
@@ -621,7 +595,7 @@ class Source {
     if (this.props.compression && (this.overwrite || !this.find_input_path())) {
       const unpack_path = this.get_download_path()
       this.log(`Unpacking ${unpack_path}`)
-      unpack_file(unpack_path, this.dir, this.props.compression)
+      helpers.unpack_file(unpack_path, this.dir, this.props.compression)
       if (rm) {
         fs.unlinkSync(unpack_path)
       }

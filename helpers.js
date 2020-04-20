@@ -226,6 +226,33 @@ const gdal_patterns = {
   secondary: /\.(csv|json)$/i
 }
 
+/**
+ * Download file.
+ * @param {string} url Remote path to download
+ * @param {string} file Local path to write
+ */
+async function download_file(url, file) {
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  fs.writeFileSync(file, await download(url));
+}
+
+/**
+ * Unpack compressed or archive file to a directory.
+ * @param {string} file Path of file to unpack
+ * @param {string} dir Target directory
+ * @param {string} format Compression or archive file format
+ */
+function unpack_file(file, dir, format = 'zip') {
+  fs.mkdirSync(dir, { recursive: true })
+  switch (format) {
+    case 'zip':
+      fs.createReadStream(file).pipe(unzipper.Extract({ path: dir }))
+      break
+    default:
+      throw `Format ${format} not supported`
+  }
+}
+
 module.exports = {
   gdal_date_to_string,
   gdal_time_to_string,
@@ -238,5 +265,7 @@ module.exports = {
   map_object,
   guess_geometry_fields,
   write_vrt,
-  gdal_patterns
+  gdal_patterns,
+  download_file,
+  unpack_file
 }

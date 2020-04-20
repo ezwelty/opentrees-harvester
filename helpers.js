@@ -76,13 +76,19 @@ function gdal_datetime_to_string(obj) {
  *  Each key is a new property name and each value is either
  *  the original property name (string) or a function called as f(obj).
  * @param {boolean} drop - Whether to drop original object properties
+ * @param {string} prefix - String to append to original property names
  * @return {object} Mapped object
  */
-function map_object(obj, crosswalk, drop = false) {
-  var new_obj = drop ? {} : obj
+function map_object(obj, crosswalk, drop = false, prefix = '_') {
+  var new_obj = {}
   for (const key in crosswalk) {
     new_obj[key] = (typeof crosswalk[key] === 'function') ?
       crosswalk[key](obj) : obj[crosswalk[key]]
+  }
+  if (!drop) {
+    for (const key in obj) {
+      new_obj[`${prefix}${key}`] = obj[key]
+    }
   }
   return new_obj
 }

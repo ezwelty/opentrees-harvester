@@ -703,12 +703,11 @@ class Source {
       }
       const output_feature = new gdal.Feature(output_layer)
       var output_fields = helpers.map_object(
-        input_fields, string_crosswalk, false)
+        input_fields, string_crosswalk, false, '')
       if (this.props.crosswalk) {
         output_fields = helpers.map_object(
-          output_fields, this.props.crosswalk, false)
+          output_fields, this.props.crosswalk, false, '_')
       }
-      // NOTE: Set with object slow but does not require knowing field order
       output_feature.fields.set(output_fields)
       // Geometry
       var input_geometry = input_feature.getGeometry()

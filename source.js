@@ -9,7 +9,6 @@ const download = require('download')
 const helpers = require('./helpers')
 
 const DEFAULT_SRS_STRING = 'EPSG:4326'
-const DEFAULT_SRS = gdal.SpatialReference.fromUserInput(DEFAULT_SRS_STRING)
 const INPUT_NAME = 'input'
 const CROSSWALK_FIELDS = {
   // Identification
@@ -609,6 +608,9 @@ class Source {
    * @param {string} file - Output file path
    * @param {string} format - Name of GDAL driver (e.g. "csv", "geojson")
    * @param {object} options
+   * @param {gdal.SpatialReference|string} [options.srs='EPSG:4326'] - Output
+   *  spatial reference. If string, passed to
+   *  gdal.SpatialReference.fromUserInput().
    * @param {boolean} [options.centroids=false] - Whether to reduce non-point
    *  geometries to centroids
    * @param {boolean} [options.keep_invalid=false] - Whether to keep features
@@ -624,6 +626,7 @@ class Source {
   process(file, format = 'csv', options = {}) {
     options = {
       ...{
+        srs: 'EPSG:4326',
         centroids: false,
         keep_invalid: false,
         keep_fields: false,
@@ -631,6 +634,9 @@ class Source {
         prefix: '_'
       },
       ...options
+    }
+    if (typeof options.srs === 'string') {
+      options.srs = gdal.SpatialReference.fromUserInput(options.srs)
     }
     if (!this.overwrite && fs.existsSync(file)) {
       return
@@ -709,19 +715,19 @@ class Source {
     } else {
       output_type = input_layer.geomType
     }
-    const output_layer = output.layers.create(input_layer.name, DEFAULT_SRS,
+    const output_layer = output.layers.create(input_layer.name, options.srs,
       output_type)
     output_layer.fields.add(output_schema)
     // Determine if a coordinate transformation is needed
     // TODO: Make and test transform, check whether points are unchanged?
     const input_srs = this.get_srs(input_layer)
     var transform
-    if (input_srs.isSame(DEFAULT_SRS) ||
-      (input_srs.isSameGeogCS(DEFAULT_SRS) &&
-        (input_srs.isProjected() == DEFAULT_SRS.isProjected()))) {
+    if (input_srs.isSame(options.srs) ||
+      (input_srs.isSameGeogCS(options.srs) &&
+        (input_srs.isProjected() == options.srs.isProjected()))) {
       transform = null
     } else {
-      transform = new gdal.CoordinateTransformation(input_srs, DEFAULT_SRS)
+      transform = new gdal.CoordinateTransformation(input_srs, options.srs)
     }
     // Populate output
     var input_feature = input_layer.features.first()

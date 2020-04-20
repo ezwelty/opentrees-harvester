@@ -606,9 +606,20 @@ class Source {
    * @param {object} options
    * @param {boolean} [options.centroids=false] - Whether to reduce non-point
    *  geometries to centroids
+   * @param {boolean} [options.keep_fields=false] - Whether to keep original
+   *  feature fields
+   * @param {string} [options.prefix='_'] - String to append to original
+   *  field names (if kept)
    */
   process(file, format = 'csv', options = {}) {
-    options = { ...options, ...{ centroids: false } }
+    options = {
+      ...{
+        centroids: false,
+        keep_fields: false,
+        prefix: '_'
+      },
+      ...options
+    }
     if (!this.overwrite && fs.existsSync(file)) {
       return
     }
@@ -659,10 +670,12 @@ class Source {
         output_schema.push(new gdal.FieldDefn(key, gdal.OFTString))
       }
     }
-    input_schema.forEach(field => {
-      field.name = `_${field.name}`
-      output_schema.push(field)
-    })
+    if (options.keep_fields) {
+      input_schema.forEach(field => {
+        field.name = `${options.prefix}${field.name}`
+        output_schema.push(field)
+      })
+    }
     // Prepare output
     const driver = gdal.drivers.get(format)
     if (!driver) {
@@ -679,7 +692,7 @@ class Source {
       output = driver.create(file)
     }
     const output_layer = output.layers.create(input_layer.name, DEFAULT_SRS,
-      centroids ? gdal.wkbPoint : input_layer.geomType)
+      options.centroids ? gdal.wkbPoint : input_layer.geomType)
     output_layer.fields.add(output_schema)
     // Determine if a coordinate transformation is needed
     // TODO: Make and test transform, check whether points are unchanged?
@@ -704,17 +717,17 @@ class Source {
         continue
       }
       const output_feature = new gdal.Feature(output_layer)
-      var output_fields = helpers.map_object(
-        input_fields, string_crosswalk, false, '')
-      if (this.props.crosswalk) {
-        output_fields = helpers.map_object(
-          output_fields, this.props.crosswalk, false, '_')
-      }
+      var output_fields = helpers.map_object(input_fields, string_crosswalk,
+        true, '')
+      output_fields = helpers.map_object(
+        output_fields,
+        this.props.crosswalk ? this.props.crosswalk : {},
+        options.keep_fields, options.prefix)
       output_feature.fields.set(output_fields)
       // Geometry
       var input_geometry = input_feature.getGeometry()
       if (input_geometry) {
-        if (centroids && input_geometry.wkbType != gdal.wkbPoint) {
+        if (options.centroids && input_geometry.wkbType != gdal.wkbPoint) {
           input_geometry = input_geometry.centroid()
         }
         if (transform) {

@@ -423,7 +423,7 @@ class Source {
    */
   get_download_path() {
     const format = this.props.compression ? this.props.compression : this.props.format
-    return path.join(this.dir, INPUT_NAME, `${INPUT_NAME}.${format}`)
+    return path.join(this.dir, `${INPUT_NAME}.${format}`)
   }
 
   /**
@@ -434,7 +434,7 @@ class Source {
   find_input_path(error = true) {
     var input_path = null
     if (this.props.compression) {
-      const pattern = path.join(this.dir, INPUT_NAME, `**/*.${this.props.format}`)
+      const pattern = path.join(this.dir, `**/*.${this.props.format}`)
       const files = glob.sync(pattern)
       if (files.length <= 1) {
         input_path = files[0]
@@ -595,7 +595,7 @@ class Source {
     if (this.props.compression && (this.overwrite || !this.find_input_path(false))) {
       const unpack_path = this.get_download_path()
       this.log(`Unpacking ${unpack_path}`)
-      unpack_file(unpack_path, path.join(this.dir, INPUT_NAME), this.props.compression)
+      unpack_file(unpack_path, this.dir, this.props.compression)
       if (rm) {
         fs.unlinkSync(unpack_path)
       }

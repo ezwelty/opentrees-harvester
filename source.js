@@ -215,9 +215,9 @@ class Source {
    * Source properties
    * @typedef {object} DatasetProperties
    * @property {string} id - Unique identifer
-   * @property {string} primary_id - Identifier of primary dataset (in cases where 2+ datasets constitute the inventory)
-   * @property {string} name - Full name for the government body (e.g. City of Melbourne)
-   * @property {string} short_name - Display name for the government body
+   * @property {string} primary - Identifier of primary dataset (in cases where 2+ datasets constitute the inventory)
+   * @property {string} long - Full name for the government body (e.g. City of Melbourne)
+   * @property {string} short - Display name for the government body
    * @property {string} country - Country name (in English)
    * @property {object} centre - Centre point (in case automatic placement is bad)
    * @property {number} centre.lon - Longitude in decimal degrees (EPSG:4326)
@@ -240,7 +240,7 @@ class Source {
    * @property {object} crosswalk - Crosswalk mapping to the opentrees schema.
    *   For each <key>: <value>, <key> is the new field name and <value> is either
    *   the old field name (string) or a function called as f(feature.properties).
-   * @property {function} skip_function - Function called as f(feature.properties) for each feature (before crosswalk).
+   * @property {function} delFunc - Function called as f(feature.properties) for each feature (before crosswalk).
    *   Feature is excluded from output if function returns true.
    */
 
@@ -722,7 +722,7 @@ class Source {
       input_feature = input_layer.features.next()) {
       // Fields
       const input_fields = input_feature.fields.toObject()
-      if (this.props.skip_function && this.props.skip_function(input_fields)) {
+      if (this.props.delFunc && this.props.delFunc(input_fields)) {
         continue
       }
       const output_feature = new gdal.Feature(output_layer)

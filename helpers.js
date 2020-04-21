@@ -288,6 +288,47 @@ function get_srs_transform(source, target) {
   }
 }
 
+/**
+ * Build the GDAL polygon corresponding to a bounding box.
+ * @param {number[]} bounds - Bounding box [xmin, ymin, xmax, ymax]
+ * @param {string|gdal.SpatialReference} [srs] - Spatial reference system
+ * @returns {gdal.Polygon}
+ */
+function bounds_to_polygon(bounds, srs) {
+  if (typeof srs === 'string') {
+    srs = gdal.SpatialReference.fromUserInput(srs)
+  }
+  var polygon = new gdal.Polygon()
+  var ring = new gdal.LinearRing()
+  ring.points.add(new gdal.Point(bounds[0], bounds[1]))
+  ring.points.add(new gdal.Point(bounds[0], bounds[3]))
+  ring.points.add(new gdal.Point(bounds[2], bounds[3]))
+  ring.points.add(new gdal.Point(bounds[2], bounds[1]))
+  ring.points.add(new gdal.Point(bounds[0], bounds[1]))
+  polygon.rings.add(ring)
+  polygon.srs = srs
+  return polygon
+}
+
+/**
+ * Check whether spatial reference system has x (east), y (north) axis order.
+ * @param {string|gdal.SpatialReference} srs - Spatial reference system
+ */
+function is_srs_xy(srs) {
+  if (typeof srs === 'string') {
+    srs = gdal.SpatialReference.fromUserInput(srs)
+  }
+  wkt = srs.toWKT()
+  xi = wkt.match(/AXIS\[[^\]]*(EAST|WEST)\]/)
+  yi = wkt.match(/AXIS\[[^\]]*(NORTH|SOUTH)\]/)
+  if (xi && xi) {
+    return xi.index < yi.index
+  } else {
+    // NOTE: Assumes x, y axis order if axes not defined
+    return true
+  }
+}
+
 module.exports = {
   gdal_date_to_string,
   gdal_time_to_string,
@@ -304,5 +345,7 @@ module.exports = {
   get_gdal_drivers,
   get_file_extension,
   gdal_patterns,
-  get_srs_transform
+  get_srs_transform,
+  bounds_to_polygon,
+  is_srs_xy
 }

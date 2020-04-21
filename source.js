@@ -224,7 +224,7 @@ class Source {
    * @param {object} options
    * @param {boolean} [options.exit=true] - Whether to throw (exit on) or print
    *  errors
-   * @param {string} [options.default_srs='EPSG:4326'] -
+   * @param {string} [options.default_srs='+init=epsg:4326'] -
    *  Spatial reference to assume if not defined in dataset. Passed
    *  to gdal.SpatialReference.fromUserInput().
    * @param {string} [options.default_name='input'] - Basename to use for
@@ -237,7 +237,7 @@ class Source {
       ...{
         overwrite: false,
         exit: true,
-        default_srs: 'EPSG:4326',
+        default_srs: '+init=epsg:4326',
         default_name: 'input'
       },
       ...options
@@ -613,10 +613,11 @@ class Source {
    *  Only default, for 'csv': ['GEOMETRY=AS_WKT'].
    * @param {boolean} [options.overwrite=false] - Whether to overwrite an
    *  existing file.
-   * @param {string} [options.srs='EPSG:4326'] - Output spatial reference.
+   * @param {string} [options.srs='+init=epsg:4326'] - Output spatial reference.
    *  Passed to gdal.SpatialReference.fromUserInput().
    *  Use 'EPSG:*' for (latitude, longitude) and '+init=epsg:4326' (PROJ<6
-   *  behavior) for (longitude, latitude).
+   *  behavior) for (longitude, latitude). If input has the same SRS, axis order
+   *  will remain the same regardless.
    * @param {boolean} [options.centroids=false] - Whether to reduce non-point
    *  geometries to centroids
    * @param {boolean} [options.keep_invalid=false] - Whether to keep features
@@ -628,6 +629,8 @@ class Source {
    *  which a VRT file had to be written.
    * @param {string} [options.prefix='_'] - String to append to original
    *  field names (if kept)
+   * @param {number[]} [options.bounds] - Bounding box in output SRS
+   *  [xmin, ymin, xmax, ymax]. If provided, features outside box are skipped.
    */
   process(file, options = {}) {
     if (!options.overwrite && fs.existsSync(file)) {
@@ -638,12 +641,13 @@ class Source {
         driver: null,
         creation: null,
         overwrite: false,
-        srs: 'EPSG:4326',
+        srs: '+init=epsg:4326',
         centroids: false,
         keep_invalid: false,
         keep_fields: false,
         keep_geometry_fields: false,
-        prefix: '_'
+        prefix: '_',
+        bounds: null
       },
       ...options
     }
@@ -735,6 +739,16 @@ class Source {
     output_layer.fields.add(output_schema)
     const input_srs = this.get_srs()
     const transform = helpers.get_srs_transform(input_srs, options.srs)
+    if (options.bounds) {
+      if (transform && !helpers.is_srs_xy(options.srs)) {
+        // Swap x, y
+        options.bounds = [
+          options.bounds[1], options.bounds[0],
+          options.bounds[3], options.bounds[2]
+        ]
+      }
+      options.bounds = helpers.bounds_to_polygon(options.bounds)
+    }
     // Populate output
     var input_feature = input_layer.features.first()
     for (
@@ -773,22 +787,35 @@ class Source {
         if (options.centroids && input_geometry.wkbType != gdal.wkbPoint) {
           input_geometry = input_geometry.centroid()
         }
-        if (input_geometry.isValid() &&
-          input_geometry.x && input_geometry.y &&
-          isFinite(input_geometry.x) && isFinite(input_geometry.y)) {
-          if (transform) {
-            try {
-              input_geometry.transform(transform)
-            } catch (error) {
-              this.warn(`Invalid geometry at ${input_feature.fid}:`,
-                (({ x, y }) => ({ x, y }))(input_geometry))
-              if (!options.keep_invalid) continue
-            }
+        var is_valid = true
+        var is_point = input_geometry.wkbType == gdal.wkbPoint
+        if (transform) {
+          try {
+            input_geometry.transform(transform)
+          } catch (error) {
+            is_valid = false
           }
         } else {
-          this.warn(`Invalid geometry at ${input_feature.fid}:`,
-            (({ x, y }) => ({ x, y }))(input_geometry))
+          is_valid = input_geometry.isValid()
+          if (is_point) {
+            is_valid = is_valid && input_geometry.x && input_geometry.y &&
+              isFinite(input_geometry.x) && isFinite(input_geometry.y)
+          }
+        }
+        if (!is_valid) {
+          const msg = `Invalid ${input_geometry.name} at ${input_feature.fid}`
+          if (is_point) {
+            this.warn(msg, (({ x, y }) => ({ x, y }))(input_geometry))
+          } else {
+            this.warn(msg)
+          }
           if (!options.keep_invalid) continue
+        }
+        if (options.bounds && is_valid) {
+          if (!input_geometry.within(options.bounds)) {
+            this.warn(`Out of bounds ${input_geometry.name} at ${input_feature.fid}`)
+            continue
+          }
         }
         output_feature.setGeometry(input_geometry)
       } else {
@@ -800,6 +827,7 @@ class Source {
     }
     // Write
     output.close()
+    this.close()
     this.success('Wrote output:', file)
   }
 }

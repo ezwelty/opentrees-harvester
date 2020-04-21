@@ -260,32 +260,32 @@ class Source {
     // id
     if (props.id) {
       if (typeof props.id !== 'string') {
-        errors.push(`Invalid id: ${props.id}`)
+        errors.push(['Invalid id:', props.id])
       }
     }
     // download
     if (props.download) {
       if (!(typeof props.download === 'string' ||
         (Array.isArray(props.download) && typeof props.download[1] === 'string'))) {
-        errors.push(`Invalid download: ${props.download}`)
+        errors.push(['Invalid download:', props.download])
       }
     }
     // format
     if (props.format) {
       if (!(typeof props.format === 'string' &&
         helpers.get_gdal_extensions().includes(props.format.toLowerCase()))) {
-        errors.push(`Unsupported format: ${props.format}`)
+        errors.push(['Unsupported format:', props.format])
       }
     }
     // crosswalk
     if (props.crosswalk) {
       Object.keys(props.crosswalk).forEach(key => {
         if (!Object.keys(CROSSWALK_FIELDS).includes(key)) {
-          errors.push(`Unsupported crosswalk property: ${key}`)
+          errors.push(['Unsupported crosswalk property:', key])
         }
         const value = props.crosswalk[key]
         if (!['string', 'function'].includes(typeof (value))) {
-          errors.push(`Invalid type for crosswalk.${key}: ${typeof (value)}`)
+          errors.push([`Invalid type for crosswalk.${key}:`, typeof value])
         }
       })
     }
@@ -294,7 +294,7 @@ class Source {
       if (!(typeof (props.geometry) === 'object' &&
         (typeof (props.geometry.wkt) === 'string' ||
           (typeof (props.geometry.x) === 'string' && typeof (props.geometry.y) === 'string')))) {
-        errors.push(`Invalid geometry: ${JSON.stringify(props.geometry)}`)
+        errors.push(['Invalid geometry:', props.geometry])
       }
     }
     // srs
@@ -302,45 +302,58 @@ class Source {
       try {
         gdal.SpatialReference.fromUserInput(props.srs)
       } catch (err) {
-        errors.push(`Invalid srs: ${props.srs}`)
+        errors.push(['Invalid srs:', props.srs])
       }
     }
     if (error) {
-      errors.forEach(msg => this.error(msg))
+      errors.forEach(objects => this.error(...objects))
     } else {
       return errors
     }
   }
 
   /**
-   * Print message to console.
+   * Print success message to console (green tag).
    * @param {string} msg - Message
+   * @param {...*} objects - Additional objects passed directly to console.log()
    */
-  log(msg) {
-    const tag = colors.cyan(`[${this.props.id}]`)
-    console.log(`${tag} ${msg}`)
+  success(msg, ...objects) {
+    const tag = `[${this.props.id}]`.green
+    console.log(`${tag} ${msg}`, ...objects)
   }
 
   /**
-   * Print warning to console.
+   * Print message to console (cyan tag).
    * @param {string} msg - Message
+   * @param {...*} objects - Additional objects passed directly to console.log()
    */
-  warn(msg) {
-    const tag = colors.yellow(`[${this.props.id}]`)
-    console.log(`${tag} ${msg}`)
+  log(msg, ...objects) {
+    const tag = `[${this.props.id}]`.cyan
+    console.log(`${tag} ${msg}`, ...objects)
   }
 
   /**
-   * Throw or print error to console.
+   * Print warning to console (yellow tag).
    * @param {string} msg - Message
-   * @param {boolean} exit - Whether to throw or print the error
+   * @param {...*} objects - Additional objects passed directly to console.log()
    */
-  error(msg, exit = this.exit) {
+  warn(msg, ...objects) {
+    const tag = `[${this.props.id}]`.yellow
+    console.log(`${tag} ${msg}`, ...objects)
+  }
+
+  /**
+   * Throw or print error to console (red tag).
+   * @param {string} msg - Message
+   * @param {...*} objects - Additional objects passed directly to
+   *  console.error() or printed in error as util.inspect(objects).
+   */
+  error(msg, ...objects) {
     const tag = colors.red(`[${this.props.id}]`)
-    if (exit) {
-      throw new Error(`${tag} ${msg}`)
+    if (this.exit) {
+      throw new Error(`${tag} ${msg} ${objects.map(util.inspect).join(' ')}`)
     } else {
-      console.error(`${tag} ${msg}`)
+      console.error(`${tag} ${msg}`, ...objects)
     }
   }
 
@@ -375,7 +388,8 @@ class Source {
       urls = [urls]
     }
     return Promise.all(urls.map(url => this.get_file(url))).
-      then(() => this.log('Ready to process'.green))
+      then(files =>
+        this.success('Downloaded and unpacked:', files.flat().sort()))
   }
 
   /**
@@ -397,9 +411,14 @@ class Source {
       then(file => {
         return decompress(file, this.dir).
           then(files => {
+            const filename = path.relative(this.dir, file)
             if (files.length) {
-              this.log(`Unpacked ${path.relative(this.dir, file)}: ${util.inspect(files.map(x => x.path))}`)
+              const filenames = files.map(x => x.path)
+              this.log(`Unpacked ${filename}:`, filenames)
               fs.unlinkSync(file)
+              return filenames
+            } else {
+              return [filename]
             }
           })
       })
@@ -412,7 +431,7 @@ class Source {
   find() {
     const extension = this.props.format ? this.props.format : '*'
     var paths = glob.sync(
-      path.join(this.dir, '**', `*.${extension}`), { nocase: true })
+      path.join(this.dir, '**', `*.${extension} `), { nocase: true })
     if (!this.props.format) {
       paths = paths.filter(s => s.match(helpers.gdal_patterns.all))
       if (paths.length > 1) {
@@ -425,7 +444,7 @@ class Source {
         } else if (secondaries.length) {
           paths = secondaries
         } else {
-          this.warn(`Found exotic input formats: ${util.inspect(paths)}`)
+          this.warn('Found exotic input formats:', paths)
         }
       }
     }
@@ -433,11 +452,10 @@ class Source {
       if (paths.length == 1) {
         return paths[0]
       } else {
-        this.error(
-          `Found ${paths.length} possible inputs: ${util.inspect(paths)}`)
+        this.error(`Found ${paths.length} possible inputs:`, paths)
       }
     } else {
-      this.error(`No supported inputs found: ${util.inspect(paths)}`)
+      this.error('No supported inputs found:', paths)
     }
   }
 
@@ -483,7 +501,7 @@ class Source {
     }
     if (!srs) {
       srs = this.default_srs
-      this.warn(`Assuming default SRS: ${srs}`)
+      this.warn('Assuming default SRS:', srs)
     }
     return srs
   }
@@ -520,19 +538,19 @@ class Source {
       const matches = helpers.guess_geometry_fields(layer)
       if (matches.wkt.length) {
         if (matches.wkt.length > 1) {
-          this.warn(`Using first of many WKT fields: ${matches.wkt.join(', ')}`)
+          this.warn('Using first of matching WKT fields:', matches.wkt)
         }
         geometry = { wkt: matches.wkt[0] }
       } else if (matches.x.length && matches.y.length) {
         if (matches.x.length > 1) {
-          this.warn(`Using first of many X fields: ${matches.x.join(', ')}`)
+          this.warn('Using first of matching X fields:', matches.x)
         }
         if (matches.y.length > 1) {
-          this.warn(`Using first of many Y fields: ${matches.y.join(', ')}`)
+          this.warn('Using first of matching Y fields:', matches.y)
         }
         geometry = { x: matches.x[0], y: matches.y[0] }
       } else {
-        this.error(`Failed to guess geometry fields: ${util.inspect(matches)}`)
+        this.error('Failed to guess geometry fields:', matches)
       }
     }
     return geometry
@@ -556,27 +574,27 @@ class Source {
     // Build <GeometryField> attributes
     var attributes
     if (geometry.wkt && typeof geometry.wkt === 'string') {
-      attributes = `encoding="WKT" field="${geometry.wkt}"`
+      attributes = `encoding = "WKT" field = "${geometry.wkt}"`
     } else if (
       geometry.x && typeof geometry.x === 'string' &&
       geometry.y && typeof geometry.y === 'string') {
-      attributes = `encoding="PointFromColumns" x="${geometry.x}" y="${geometry.y}"`
+      attributes = `encoding = "PointFromColumns" x = "${geometry.x}" y = "${geometry.y}"`
     } else {
-      this.error(`Invalid geometry: ${util.inspect(geometry)}`)
+      this.error('Invalid geometry:', geometry)
     }
     // Build VRT
     const layer = this.open().layers.get(0)
     var layer_path = layer.ds.description
     const basename = path.parse(layer_path).base
     const vrt =
-      `<OGRVRTDataSource>
-       <OGRVRTLayer name="${layer.name}">
-           <SrcDataSource relativeToVRT="1">${basename}</SrcDataSource>
-           <GeometryType>wkbPoint</GeometryType>
-           <LayerSRS>${srs}</LayerSRS>
-           <GeometryField ${attributes} reportSrcColumn="${keep_geometry_fields}"/>
-       </OGRVRTLayer>
-     </OGRVRTDataSource>`
+      `< OGRVRTDataSource >
+          <OGRVRTLayer name="${layer.name}">
+            <SrcDataSource relativeToVRT="1">${basename}</SrcDataSource>
+            <GeometryType>wkbPoint</GeometryType>
+            <LayerSRS>${srs}</LayerSRS>
+            <GeometryField ${attributes} reportSrcColumn="${keep_geometry_fields}" />
+          </OGRVRTLayer>
+     </OGRVRTDataSource > `
     // Write VRT
     const vrt_path = `${layer_path}.vrt`
     fs.writeFileSync(vrt_path, vrt)
@@ -635,7 +653,7 @@ class Source {
       if (drivers && drivers.length == 1) {
         options.driver = drivers[0]
       } else {
-        this.error(`Failed to guess driver for *.${extension}: ${drivers}`)
+        this.error(`Failed to guess driver for *.${extension}:`, drivers)
       }
     } else {
       options.driver = options.driver.toLowerCase()
@@ -652,12 +670,12 @@ class Source {
     }
     var input_layer = input.layers.get(0)
     if (!input_layer.features.count()) {
-      this.warn(`Skipping: Layer has no features`)
+      this.warn('Skipping: Layer has no features')
       return
     }
     if (!input_layer.features.first().getGeometry() && !this.props.coordsFunc) {
       // Write (and then read) VRT file with geometry definition
-      this.log(`Writing VRT file`)
+      this.log('Writing VRT file')
       this.write_vrt(options.keep_geometry_fields)
       // Destroy link to original input and link to VRT file
       this.close()
@@ -680,7 +698,7 @@ class Source {
       const formatter = helpers.gdal_string_formatters[field.type]
       if (formatter) {
         string_crosswalk[field.name] =
-          eval(`x => helpers.${formatter.name}(x['${field.name}'])`)
+          eval(`x => helpers.${formatter.name} (x['${field.name}'])`)
         field.type = gdal.OFTString
       }
       return field
@@ -695,14 +713,14 @@ class Source {
     }
     if (options.keep_fields) {
       input_schema.forEach(field => {
-        field.name = `${options.prefix}${field.name}`
+        field.name = `${options.prefix} ${field.name} `
         output_schema.push(field)
       })
     }
     // Prepare output
     const driver = gdal.drivers.get(options.driver)
     if (!driver) {
-      this.error(`Unrecognized GDAL driver: ${options.driver}`)
+      this.error('Unrecognized GDAL driver:', options.driver)
     }
     fs.mkdirSync(path.dirname(file), { recursive: true })
     const output = driver.create(file, 0, 0, 0, gdal.GDT_Byte, options.creation)
@@ -744,7 +762,8 @@ class Source {
           input_geometry = new gdal.Point(coords[0], coords[1])
           input_geometry.srs = input_srs
         } else {
-          this.warn(`Invalid parsed coordinates at ${input_feature.fid}: ${util.inspect(coords)}`)
+          this.warn(
+            `Invalid parsed coordinates at ${input_feature.fid}:`, coords)
           if (!options.keep_invalid) continue
         }
       } else {
@@ -761,12 +780,14 @@ class Source {
             try {
               input_geometry.transform(transform)
             } catch (error) {
-              this.warn(`Invalid geometry at ${input_feature.fid}: ${input_geometry.x}, ${input_geometry.y} (x, y)`)
+              this.warn(`Invalid geometry at ${input_feature.fid}:`,
+                (({ x, y }) => ({ x, y }))(input_geometry))
               if (!options.keep_invalid) continue
             }
           }
         } else {
-          this.warn(`Invalid geometry at ${input_feature.fid}: ${input_geometry.x}, ${input_geometry.y} (x, y)`)
+          this.warn(`Invalid geometry at ${input_feature.fid}:`,
+            (({ x, y }) => ({ x, y }))(input_geometry))
           if (!options.keep_invalid) continue
         }
         output_feature.setGeometry(input_geometry)
@@ -779,7 +800,7 @@ class Source {
     }
     // Write
     output.close()
-    this.log(`Wrote output to ${file}`.green)
+    this.success('Wrote output:', file)
   }
 }
 

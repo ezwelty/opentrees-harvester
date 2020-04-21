@@ -586,9 +586,14 @@ class Source {
    * Process input file and write to output.
    * 
    * @param {string} file - Output file path
-   * @param {string} format - Name of GDAL driver (e.g. "csv", "geojson")
    * @param {object} options
-   * @param {boolean} [overwrite=false] - Whether to overwrite an existing file.
+   * @param {string} [options.driver] - Name of GDAL driver
+   *  (e.g. 'csv', 'geojsonseq'). Guessed from file extension if not provided.
+   * @param {string[]|object} [options.creation] - Driver-specific dataset
+   *  creation options. See https://gdal.org/drivers/vector.
+   *  Only default, for 'csv': ['GEOMETRY=AS_WKT'].
+   * @param {boolean} [options.overwrite=false] - Whether to overwrite an
+   *  existing file.
    * @param {string} [options.srs='EPSG:4326'] - Output spatial reference.
    *  Passed to gdal.SpatialReference.fromUserInput().
    * @param {boolean} [options.centroids=false] - Whether to reduce non-point
@@ -603,9 +608,14 @@ class Source {
    * @param {string} [options.prefix='_'] - String to append to original
    *  field names (if kept)
    */
-  process(file, format = 'csv', options = {}) {
+  process(file, options = {}) {
+    if (!options.overwrite && fs.existsSync(file)) {
+      return
+    }
     options = {
       ...{
+        driver: null,
+        creation: null,
         overwrite: false,
         srs: 'EPSG:4326',
         centroids: false,
@@ -616,10 +626,21 @@ class Source {
       },
       ...options
     }
-    options.srs = gdal.SpatialReference.fromUserInput(options.srs)
-    if (!options.overwrite && fs.existsSync(file)) {
-      return
+    if (!options.driver) {
+      const extension = helpers.get_file_extension(file.toLowerCase())
+      const drivers = helpers.get_gdal_drivers()[extension]
+      if (drivers && drivers.length == 1) {
+        options.driver = drivers[0]
+      } else {
+        this.error(`Failed to guess driver for *.${extension}: ${drivers}`)
+      }
+    } else {
+      options.driver = options.driver.toLowerCase()
     }
+    if (!options.creation && options.driver === 'csv') {
+      options.creation = { GEOMETRY: 'AS_WKT' }
+    }
+    options.srs = gdal.SpatialReference.fromUserInput(options.srs)
     // Read input
     var input = this.open()
     this.log(`Processing ${input.description}`)
@@ -655,7 +676,8 @@ class Source {
     input_schema = input_schema.map(field => {
       const formatter = helpers.gdal_string_formatters[field.type]
       if (formatter) {
-        string_crosswalk[field.name] = eval(`x => helpers.${formatter.name}(x['${field.name}'])`)
+        string_crosswalk[field.name] =
+          eval(`x => helpers.${formatter.name}(x['${field.name}'])`)
         field.type = gdal.OFTString
       }
       return field
@@ -675,20 +697,11 @@ class Source {
       })
     }
     // Prepare output
-    const driver = gdal.drivers.get(format)
+    const driver = gdal.drivers.get(options.driver)
     if (!driver) {
-      this.error(`Unsupported output format: ${format}`)
+      this.error(`Unrecognized GDAL driver: ${options.driver}`)
     }
-    var output
-    if (driver.description === 'CSV') {
-      // GEOMETRY=AS_WKT writes WKT geometry to 'WKT' field
-      // GEOMETRY=AS_XY, CREATE_CSVT=YES, OGR_WKT_PRECISION=6 not supported
-      // TODO: Write VRT (if needed)
-      output = driver.create(
-        file, 0, 0, 0, gdal.GDT_Byte, ['GEOMETRY=AS_WKT'])
-    } else {
-      output = driver.create(file)
-    }
+    const output = driver.create(file, 0, 0, 0, gdal.GDT_Byte, options.creation)
     var output_type
     if (options.centroids || input_layer.geomType == gdal.wkbNone) {
       output_type = gdal.wkbPoint

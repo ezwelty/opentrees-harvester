@@ -216,6 +216,42 @@ function get_gdal_extensions() {
 }
 
 /**
+ * Get list of GDAL driver names by file extension.
+ * @return {object} GDAL driver names by file extension
+ */
+function get_gdal_drivers() {
+  var drivers = {}
+  get_gdal_extensions().forEach(extension => drivers[extension] = [])
+  gdal.drivers.forEach(driver => {
+    const meta = driver.getMetadata()
+    if (meta.DCAP_VECTOR === 'YES') {
+      var extensions = []
+      if (meta.DMD_EXTENSION) {
+        extensions.push(meta.DMD_EXTENSION)
+      }
+      if (meta.DMD_EXTENSIONS) {
+        extensions.push(...meta.DMD_EXTENSIONS.split(' '))
+      }
+      [...new Set(extensions)].forEach(extension =>
+        drivers[extension].push(driver.description.toLowerCase()))
+    }
+  })
+  return drivers
+}
+
+/**
+ * Get the file extension from a local or remote file path.
+ * @param {string} file - Local or remote file path
+ * @return {string} File extension
+ */
+function get_file_extension(file) {
+  const matches = file.match(/\.([^\.\/\?\#]+)(?:$|\?|\#)/)
+  if (matches) {
+    return matches[1]
+  }
+}
+
+/**
  * Regular expressions matching vector file extensions supported by GDAL.
  * @property {RegExp} any - Matches any supported file extension
  * @property {RegExp} primary - Matches primary formats
@@ -266,6 +302,8 @@ module.exports = {
   guess_geometry_fields,
   write_vrt,
   get_gdal_extensions,
+  get_gdal_drivers,
+  get_file_extension,
   gdal_patterns,
   get_srs_transform
 }

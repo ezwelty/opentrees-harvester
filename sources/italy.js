@@ -6,7 +6,6 @@ module.exports = [
     country: 'Italy',
     download: 'http://dati.comune.bologna.it/download/file/fid/3989',
     info: 'http://dati.comune.bologna.it/node/207',
-    compression: 'zip',
     crosswalk: {
       scientific: 'decodifi_4',
       circumference: 'decodifi_2', //??

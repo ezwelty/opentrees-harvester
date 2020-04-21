@@ -6,7 +6,6 @@ module.exports = [
     long: 'Fingal County',
     download: 'http://data.fingal.ie/datasets/csv/Trees.csv',
     info: 'https://data.smartdublin.ie/dataset/tableview/ebf9151e-fd30-442e-93cb-fa88c2affc93',
-    format: 'csv',
     crosswalk: {
       ref: x => Math.round(x.TREE_ID),
       scientific: 'Species_Desc',

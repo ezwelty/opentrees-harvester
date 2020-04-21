@@ -6,7 +6,6 @@ module.exports = [
     long: 'Gemeente Amsterdam',
     download: 'https://maps.amsterdam.nl/open_geodata/excel.php?KAARTLAAG=BOMEN&THEMA=bomen1',
     info: 'https://maps.amsterdam.nl/open_geodata/?k=254',
-    format: 'csv',
     crosswalk: {
       common: 'Soortnaam_NL',
       scientific: 'Soortnaam_WTS',
@@ -23,7 +22,6 @@ module.exports = [
     long: 'Gemeente Amsterdam',
     download: 'https://maps.amsterdam.nl/open_geodata/excel.php?KAARTLAAG=BOMEN&THEMA=bomen2',
     info: 'https://maps.amsterdam.nl/open_geodata/?k=255',
-    format: 'csv',
     crosswalk: {
       common: 'Soortnaam_NL',
       scientific: 'Soortnaam_WTS',
@@ -41,7 +39,6 @@ module.exports = [
     long: 'Gemeente Amsterdam',
     download: 'https://maps.amsterdam.nl/open_geodata/excel.php?KAARTLAAG=BOMEN&THEMA=bomen3',
     info: 'https://maps.amsterdam.nl/open_geodata/?k=256',
-    format: 'csv',
     crosswalk: {
       common: 'Soortnaam_NL',
       scientific: 'Soortnaam_WTS',
@@ -59,7 +56,6 @@ module.exports = [
     long: 'Gemeente Amsterdam',
     download: 'https://maps.amsterdam.nl/open_geodata/excel.php?KAARTLAAG=BOMEN&THEMA=bomen4',
     info: 'https://maps.amsterdam.nl/open_geodata/?k=257',
-    format: 'csv',
     crosswalk: {
       common: 'Soortnaam_NL',
       scientific: 'Soortnaam_WTS',
@@ -76,8 +72,6 @@ module.exports = [
     short: 'Den Haag',
     download: 'https://ckan.dataplatform.nl/dataset/dd3873f6-b2d0-42e8-94c7-f7b47dcb71f0/resource/7ac8ba4a-586e-43f2-b12e-014079c83f00/download/bomen-csv.zip',
     info: 'https://data.overheid.nl/dataset/bomen-csv',
-    format: 'csv',
-    compression: 'zip',
     geometry: { x: 'LONG', y: 'LAT' },
     crosswalk: {
       ref: 'BOOMNUMMER',
@@ -95,7 +89,6 @@ module.exports = [
     short: 'Hilversum',
     download: 'https://ckan.dataplatform.nl/dataset/08fa5613-ec8f-4e43-ba2f-db986615075e/resource/2ae335c9-4228-4d4c-81a1-6688aa7218ac/download/bomenhilversum.csv',
     info: 'https://data.overheid.nl/dataset/bomen-hilversum',
-    format: 'csv',
     crosswalk: {
       scientific: 'BOOMSOORT_WETENSCHAPPELIJK',
       common: 'BOOMSOORT_NEDERLANDS',
@@ -110,7 +103,6 @@ module.exports = [
     short: 'Tilburg',
     download: 'https://ckan.dataplatform.nl/dataset/96b46ab5-7638-46bb-b416-c480170b9a84/resource/6f639eb1-7497-4fc7-831b-d24e077bfe45/download/bomen.csv',
     info: 'https://data.overheid.nl/dataset/bomen-tilburg',
-    format: 'csv',
     crosswalk: {
       updated: 'datum_gemeten',
       ref: 'boomnummer',
@@ -127,7 +119,6 @@ module.exports = [
     short: 'Eindhoven',
     download: 'https://ckan.dataplatform.nl/dataset/23d824dc-158f-4e23-8bbf-c10c00ce73cf/resource/0c8e87ba-0fde-48e4-a997-7abd04c7c692/download/bomen29-01.csv',
     info: 'https://data.overheid.nl/dataset/bomen-eindhoven',
-    format: 'csv',
     crosswalk: {
       scientific: 'LATIJNSENA',
       common: 'BOOMSOORT',
@@ -143,7 +134,6 @@ module.exports = [
     short: 'Amersfoot',
     download: 'https://ckan.dataplatform.nl/dataset/a6054acf-3e41-4142-9b1a-52d73ff022f3/resource/7794f7e2-8bb9-45ba-9a9f-df910b09c40f/download/amersfoort-gemeentelijke_bomen.csv',
     info: 'https://data.overheid.nl/dataset/amersfoort-gemeentelijke_bomen',
-    format: 'csv',
     crosswalk: {
       location: 'BOOMKLASSE',
       height: 'BOOMHOOGTE',
@@ -245,7 +235,6 @@ module.exports = [
     short: 'Delft',
     download: 'https://opendata.arcgis.com/datasets/e510d480282944c3a16c8a46d3d99064_0.csv?outSR=%7B%22latestWkid%22%3A3857%2C%22wkid%22%3A102100%7D',
     info: 'https://data.overheid.nl/dataset/bomen-in-beheer-door-gemeente-delft',
-    format: 'csv',
     crosswalk: {
       ref: 'ID_VELD',
       scientific: 'BOOMSOORT_',
@@ -299,13 +288,11 @@ module.exports = [
     short: 'Lingewaard',
     download: 'https://geodatastore.pdok.nl/id/dataset/3251be7c-b01f-4503-8858-0958c004e6de',
     info: 'https://data.overheid.nl/dataset/waardevolle-bomen-gemeente-lingewaard',
-    compression: 'zip',
     license: { id: 'CC0-1.0' }
   },
   {
     id: 'barendrecht_nl',
     short: 'Barendrecht',
-    format: 'csv',
     download: 'https://maps.bar-organisatie.nl/Online/Open%20Data%20Portaal/Barendrecht/Bomen/Bomen.CSV',
     info: 'https://data.overheid.nl/dataset/58765-bomen-barendrecht',
     crosswalk: {
@@ -334,7 +321,6 @@ module.exports = [
     short: 'Nijmegen',
     download: 'https://services.nijmegen.nl/geoservices/extern_OpenData/ows?service=WFS&version=1.1.0&request=GetFeature&typeName=extern_kaartviewer_GRN_BOMEN&outputFormat=csv',
     info: 'https://opendata.nijmegen.nl/dataset/geoserver-bomen-nijmegen',
-    format: 'csv',
     crosswalk: {
       ref: 'ID',
       planted: 'PLANTJAAR',
@@ -348,7 +334,6 @@ module.exports = [
     id: 'haarlem_nl',
     short: 'Haarlem',
     download: 'https://data.haarlem.nl/geoserver/wfs?service=WFS&version=2.0&request=GetFeature&outputFormat=csv&srsName=EPSG%3A4326&typeName=gemeentehaarlem:bor_bomen&bbox=491380.2526954542,6859676.6140624685,532619.7473045458,6880323.3859375315,EPSG%3A3857',
-    format: 'csv',
     info: 'https://www.haarlem.nl/opendata/open-data-detail/#/odp/odp_datasets.33',
     crosswalk: {
       ref: 'boomnummer',
@@ -364,7 +349,6 @@ module.exports = [
     short: 'Utrecht',
     download: 'https://ckan.dataplatform.nl/datastore/dump/2d6893b4-d56d-4865-b6cc-0bda42e547f5?bom=True',
     info: 'https://ckan.dataplatform.nl/dataset/bomenkaart/resource/2d6893b4-d56d-4865-b6cc-0bda42e547f5',
-    format: 'csv',
     crosswalk: {
       scientific: 'Naam_Wet',
       common: 'Naam_NL',

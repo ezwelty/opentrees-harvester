@@ -6,7 +6,6 @@ module.exports = [
     // shapefile was incomplete?
     download: 'http://cdn.buenosaires.gob.ar/datosabiertos/datasets/arbolado-en-espacios-verdes/arbolado-en-espacios-verdes.csv',
     info: 'https://data.buenosaires.gob.ar/dataset/arbolado-espacios-verdes',
-    format: 'csv',
     crosswalk: {
       ref: 'id_arbol',
       height: 'altura_tot',
@@ -24,7 +23,6 @@ module.exports = [
     short: 'Buenos Aires',
     download: 'http://cdn.buenosaires.gob.ar/datosabiertos/datasets/arbolado-publico-lineal/arbolado-publico-lineal-2017-2018.geojson',
     info: 'https://data.buenosaires.gob.ar/dataset/arbolado-publico-lineal',
-    format: 'geojson',
     crosswalk: {
       ref: 'nro_registro',
       scientific: 'nombre_cientifico',

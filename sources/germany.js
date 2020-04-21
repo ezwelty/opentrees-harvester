@@ -6,7 +6,6 @@ module.exports = [
     long: 'Halle (Saale)',
     download: 'https://www.halle.de/pushOD.aspx?FileName=f2087a53-2c10-f7c5-4dba-9ad5112a90cb_shp.zip',
     info: 'https://www.halle.de/de/Verwaltung/Online-Angebote/Offene-Verwaltungsdaten/Mit-Kartenbezug/index.aspx?ID=f2087a53-2c10-f7c5-4dba-9ad5112a90cb',
-    compression: 'zip',
     crosswalk: {
       planted: 'pflanzjahr',
       crown: 'krone_m',
@@ -24,7 +23,6 @@ module.exports = [
     short: 'Leipzig',
     download: 'https://opendata.arcgis.com/datasets/918dfaa87b754c4384ddcf869cfd6dc6_0.zip',
     info: 'https://hub.arcgis.com/datasets/esri-de-content::stra%C3%9Fenbaumkataster-leipzig',
-    compression: 'zip',
     crosswalk: {
       scientific: 'Baumart_wi',
       common: 'Baumart_de',
@@ -38,7 +36,6 @@ module.exports = [
     short: 'Bonn',
     download: 'https://opendata.arcgis.com/datasets/f8f130c1dd4e4ea9b5fe1f2385673cab_0.zip',
     info: 'http://opendata.gis.ms.gov/datasets/esri-de-content::baumkataster-bonn',
-    compression: 'zip',
     crosswalk: {
       ref: 'baum_id',
       scientific: 'lateinisch',
@@ -53,7 +50,6 @@ module.exports = [
     long: 'Stadt Köln',
     download: 'https://offenedaten-koeln.de/sites/default/files/Bestand_Einzelbaeume_Koeln_0.csv',
     info: 'https://offenedaten-koeln.de/dataset/baumkataster-koeln',
-    format: 'csv',
     srs: 'EPSG:3044',
     crosswalk: {
       ref: 'Baum-Nr.',
@@ -73,7 +69,6 @@ module.exports = [
     country: 'Germany',
     short: 'Berlin',
     download: 'https://opendata.arcgis.com/datasets/05c3f9d7dea6422b86e30967811bddd7_0.zip',
-    compression: 'zip',
     crosswalk: {
       scientific: 'Art_Bot',
       common: 'Art_Dtsch',
@@ -91,7 +86,6 @@ module.exports = [
     long: 'Frankfurt am Main',
     download: 'https://opendata.arcgis.com/datasets/8c50110f190e43599baf50701aaff13a_0.zip',
     info: 'https://hub.arcgis.com/datasets/esri-de-content::baumkataster-frankfurt-am-main',
-    compression: 'zip',
     crosswalk: {
       scientific: x => String(x.Gattung_Ar).split(', ')[0],
       common: x => String(x.Gattung_Ar).split(', ')[1],
@@ -107,7 +101,6 @@ module.exports = [
     short: 'Hamburg Hafen',
     download: 'https://opendata.arcgis.com/datasets/35950460a3744fa4b088570b2df55718_0.zip',
     info: 'https://hub.arcgis.com/datasets/esri-de-content::stra%C3%9Fenbaumkataster-hamburg-hafen',
-    compression: 'zip',
     crosswalk: {
       scientific: 'art_latein',
       common: 'art_deutsc',
@@ -126,7 +119,6 @@ module.exports = [
     long: 'Hanse- und Universitätsstadt Rostock',
     download: 'https://geo.sv.rostock.de/download/opendata/baeume/baeume.csv',
     info: 'https://www.opendata-hro.de/dataset/baeume',
-    format: 'csv',
     crosswalk: {
       scientific: 'gattung_botanisch',
       common: 'gattung_deutsch',
@@ -142,7 +134,6 @@ module.exports = [
     short: 'Chemnitz',
     download: 'https://opendata.arcgis.com/datasets/70330324e2364b209f7511ca20581f83_0.zip?outSR=%7B%22latestWkid%22%3A3857%2C%22wkid%22%3A102100%7D',
     info: 'http://portal-chemnitz.opendata.arcgis.com/datasets/baeume?geometry=12.910%2C50.819%2C12.914%2C50.822',
-    compression: 'zip',
     crosswalk: {
       ref: 'BaumNummer',
       scientific: x => String(x.BaumArt).split(', ')[0],
@@ -156,7 +147,6 @@ module.exports = [
     short: 'Wesel',
     download: 'http://data.geoportal-wesel.de/OPENDATA/Baumkataster/Baumkataster.geojson',
     info: 'https://open.nrw/dataset/baumkataster-odp',
-    format: 'geojson',
     crosswalk: {
       ref: 'ID',
       scientific: x => String(x.GA_LANG).split(', ')[0],
@@ -172,7 +162,6 @@ module.exports = [
     short: 'Ulm',
     download: 'http://daten.ulm.de/sites/default/files/20180921_Baeume_1.xlsx',
     info: 'http://www.daten.ulm.de/datenkatalog/metadaten/baumbestand-stadt-ulm-testdatensatz',
-    format: 'xlsx',
     srs: 'EPSG:31467', // or 2166, 31467, 3396...
     geometry: { x: 'Koordinaten_X_Y', y: 'Koordinate_Y' },
     crosswalk: {
@@ -194,8 +183,6 @@ module.exports = [
     short: 'Hamburg',
     download: 'http://daten-hamburg.de/umwelt_klima/strassenbaumkataster/Strassenbaumkataster_HH_2019-06-19.zip',
     // info:'',
-    compression: 'zip',
-    format: 'gml',
     crosswalk: {
       ref: 'baumid',
       scientific: 'art_latein',
@@ -276,8 +263,6 @@ module.exports = [
     long: 'Stadt Troisdorf',
     download: 'http://www.stadtplan.troisdorf.de/opengeodata/opendata/data/Troisdorf_Baumkataster_180926.zip',
     info: 'http://www.stadtplan.troisdorf.de/opengeodata/opendata/open_data_baumkataster.html',
-    format: 'csv',
-    compression: 'zip',
     // X-Koordinate and Y-Koordinate use decimal separator ","
     coordsFunc: x => [Number(x['X-Koordinate'].replace(',', '.')), Number(x['Y-Koordinate'].replace(',', '.'))],
     crosswalk: {

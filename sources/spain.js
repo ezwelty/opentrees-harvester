@@ -13,7 +13,6 @@ module.exports = [
   {
     id: 'barcelona',
     download: 'https://opendata-ajuntament.barcelona.cat/data/dataset/27b3f8a7-e536-4eea-b025-ce094817b2bd/resource/28034af4-b636-48e7-b3df-fa1c422e6287/download',
-    format: 'csv',
     short: 'Barcelona',
     long: 'City of Barcelona',
     geometry: { x: 'LONGITUD_WGS84', y: 'LATITUD_WGS84' },
@@ -36,7 +35,6 @@ module.exports = [
     short: 'Valencia',
     download: 'http://mapas.valencia.es/lanzadera/opendata/arboles/JSON',
     info: 'https://github.com/stevage/OpenTrees/issues/29',
-    format: 'geojson',
     crosswalk: {
       scientific: 'planta',
       common: 'castellano',
@@ -76,8 +74,6 @@ module.exports = [
     short: 'Madrid',
     download: 'https://datosabiertos.ayto-arganda.es/dataset/bc20e1e3-0c6c-4f0e-817b-c95f052e3783/resource/411fb473-7620-4060-be7a-5f2bebc090b4/download/argandainventario2015.zip',
     info: 'https://datos.gob.es/es/catalogo/l01280148-inventario-arboles-casco-urbano-20151',
-    compression: 'zip',
-    format: 'kml', // ew
     crosswalk: {
       description: 'Description', // seriously? HTML table. this cannot end well.
     }

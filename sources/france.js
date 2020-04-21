@@ -2,7 +2,6 @@ module.exports = [
   {
     id: 'paris',
     download: 'https://www.data.gouv.fr/en/datasets/r/c558ddb2-cc46-4e26-b96a-bd2735a8f343',
-    format: 'geojson',
     short: 'Paris',
     country: 'France',
     crosswalk: {
@@ -19,9 +18,6 @@ module.exports = [
     id: 'lyon',
     // download: 'https://transcode.geo.data.gouv.fr/services/5e2a1e77fa4268bc255379c2/feature-types/ms:abr_arbres_alignement.abrarbre?format=GeoJSON&projection=WGS84',
     download: 'https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre.shp?srsname=EPSG:4326',
-    // format: 'geojson',
-    compression: 'zip',
-    format: 'shp',
     crosswalk: {
       scientific: 'essence',
       variety: 'variete',
@@ -39,7 +35,6 @@ module.exports = [
     id: 'bordeaux',
     info: 'https://opendata.bordeaux-metropole.fr/explore/dataset/bor_arbres/information/',
     download: 'https://opendata.bordeaux-metropole.fr/explore/dataset/bor_arbres/download/?format=geojson&lang=en',
-    format: 'geojson',
     crosswalk: {
       scientific: 'nom',
       updated: 'mdate',
@@ -59,7 +54,6 @@ module.exports = [
     id: 'nice',
     download: 'http://opendata.nicecotedazur.org/data/storage/f/2019-07-22T07%3A41%3A29.958Z/ev-arbre-opendata-2019.geojson',
     info: 'https://trouver.datasud.fr/dataset/sync149f50a-cartographie-des-arbres-communaux',
-    format: 'geojson',
     crosswalk: {
       ref: 'idENT'
     },
@@ -70,7 +64,6 @@ module.exports = [
     id: 'grenoble',
     download: 'http://entrepot.metropolegrenoble.fr/opendata/38185-GRE/EspacePublic/json/ARBRES_TERRITOIRE_VDG_EPSG4326.json',
     info: 'http://data.metropolegrenoble.fr/ckan/dataset/les-arbres-de-grenoble',
-    format: 'geojson',
     crosswalk: {
       ref: 'BIEN_REFERENCE', // asset id?
       genus: 'GENRE_BOTA',
@@ -88,8 +81,6 @@ module.exports = [
     country: 'France',
     download: 'https://data.montpellier3m.fr/sites/default/files/ressources/MMM_MTP_ArbresAlign.zip',
     info: 'https://data.montpellier3m.fr/dataset/arbres-dalignement-de-montpellier',
-    compression: 'zip',
-    format: 'shp',
     crosswalk: {
       ref: 'idarbre',
       scientific: 'nom_latin',
@@ -108,8 +99,6 @@ module.exports = [
     country: 'France',
     info: 'https://www.data.gouv.fr/fr/datasets/arbres-2/',
     download: 'https://www.data.gouv.fr/fr/datasets/r/a10c7776-afa5-4b8a-8050-081788818b55',
-    compression: 'zip',
-    format: 'shp',
     short: 'Grand Paris Seine Ouest',
     crosswalk: {
       scientific: 'genespvar',
@@ -122,8 +111,6 @@ module.exports = [
     id: 'agen',
     country: 'France',
     download: 'https://www.data.gouv.fr/fr/datasets/r/fededc1c-6e42-4a6d-9469-849fd956fbfe',
-    compression: 'zip',
-    format: 'shp',
     crosswalk: {
       ref: 'id_ponctue',
       common: 'espece_arb',
@@ -135,8 +122,6 @@ module.exports = [
     id: 'saint_quentinois',
     country: 'France',
     download: 'https://www.data.gouv.fr/fr/datasets/r/c6000378-1f3c-4c0c-8f62-9a5b72dc7a85',
-    compression: 'zip',
-    format: 'shp', // hmmm
     short: 'Saint Quentinois',
     long: 'Agglomération du Saint Quentinois',
     crosswalk: {
@@ -153,8 +138,6 @@ module.exports = [
     id: 'metz',
     country: 'France',
     download: 'https://www.data.gouv.fr/fr/datasets/r/3aa28eaa-9ee4-49ff-bb73-74c21d14268d',
-    compression: 'zip',
-    format: 'shp',
     short: 'Metz',
     crosswalk: {
       dbh: 'diametre',
@@ -166,8 +149,6 @@ module.exports = [
     id: 'seine_saint_denis',
     country: 'France',
     download: 'https://www.data.gouv.fr/fr/datasets/r/c631e78d-4d15-44eb-a40d-cd593f0e1bed',
-    compression: 'zip',
-    format: 'shp',
     short: 'Seine-Saint-Denis',
     crosswalk: {
       height: 'hauteur',
@@ -180,7 +161,6 @@ module.exports = [
     id: 'versailles',
     country: 'France',
     download: 'https://www.data.gouv.fr/fr/datasets/r/4b9d9fe4-f8da-4db1-8057-9e83b2abf5d2',
-    format: 'geojson',
     short: 'Versailles',
     crosswalk: {
       scientific: 'ESPECE', // watch out for 'VIDE' TODO
@@ -191,8 +171,6 @@ module.exports = [
     id: 'nevers',
     country: 'France',
     download: 'https://www.data.gouv.fr/fr/datasets/r/dbdc2068-ee22-474d-8a42-261554482a4f',
-    compression: 'zip',
-    format: 'shp',
     short: 'Nevers',
     long: 'Ville de Nevers',
     crosswalk: {
@@ -207,7 +185,6 @@ module.exports = [
     long: 'Toulouse Métropole',
     download: 'https://www.data.gouv.fr/fr/datasets/r/b5b275e5-ef20-43c4-ad3f-5604c67a75a3',
     info: 'https://www.data.gouv.fr/fr/datasets/arbres-dalignement-toulouse/',
-    compression: 'zip',
     centre: { lon: 1.44, lat: 43.6 },
     // dear god, linestring geometries...
     crosswalk: {
@@ -222,7 +199,6 @@ module.exports = [
     long: "Ville d'Orléans",
     download: 'https://www.data.gouv.fr/fr/datasets/r/804b8b61-9f8f-4a0d-8524-35ea5d6e265f',
     info: 'https://www.data.gouv.fr/fr/datasets/arbres-ville-dorleans/',
-    compression: 'zip',
     crosswalk: {
       ref: 'id_arbre',
       genus: x => String(x.genre).replace(/ \?/, ''),
@@ -238,7 +214,6 @@ module.exports = [
     long: 'Ville de Saint-Egrève',
     download: 'https://www.data.gouv.fr/fr/datasets/r/2bda9508-27e5-4de6-aba3-fdb0d9059a22',
     info: 'https://www.data.gouv.fr/fr/datasets/les-arbres-de-saint-egreve/',
-    compression: 'zip',
     crosswalk: {
       genus: 'genre',
       species: 'espece',
@@ -253,7 +228,6 @@ module.exports = [
     long: 'Ville de Bayonne',
     download: 'https://www.data.gouv.fr/fr/datasets/r/e99bddd1-384b-4954-9f4f-483bb0fcaef0',
     info: 'https://www.data.gouv.fr/fr/datasets/arbres-dalignement-bayonne/',
-    compression: 'zip',
     crosswalk: {
       genus: 'genre',
       species: 'espece',
@@ -273,7 +247,6 @@ module.exports = [
     long: "Ville d'Issy-les-Moulineaux",
     download: 'https://www.data.gouv.fr/fr/datasets/r/578636b3-e9ca-4aa7-b298-e69fd0f3acc9',
     info: 'https://www.data.gouv.fr/fr/datasets/r/578636b3-e9ca-4aa7-b298-e69fd0f3acc9',
-    compression: 'zip',
     crosswalk: {
       scientific: 'essence_sci',
       common: 'essence_com',
@@ -291,7 +264,6 @@ module.exports = [
     long: 'Rennes Métropole',
     download: 'https://www.data.gouv.fr/fr/datasets/r/85d25eb0-b34e-4559-884d-ac052e62c620',
     info: 'https://www.data.gouv.fr/fr/datasets/arbres-dornement-des-espaces-verts-de-la-ville-de-rennes-1/',
-    compression: 'zip',
     crosswalk: {
       genus: 'genre',
       species: 'espece',
@@ -307,7 +279,6 @@ module.exports = [
     long: 'Rennes Métropole',
     download: 'https://www.data.gouv.fr/fr/datasets/r/c9cf6518-267c-4aa4-bdbe-d1602f78b07f',
     info: 'https://www.data.gouv.fr/fr/datasets/arbres-dalignement-en-accompagnement-de-voirie-sur-la-ville-de-rennes-1/',
-    compression: 'zip',
     primary: 'rennes1',
     crosswalk: {
       ref: 'numero',
@@ -327,7 +298,6 @@ module.exports = [
     long: 'Mulhouse Alsace Agglomération',
     download: 'https://www.data.gouv.fr/fr/datasets/r/3c47ef6b-10ea-4723-81b9-a3c0b99e9550',
     info: 'https://www.data.gouv.fr/fr/datasets/caracteristiques-des-arbres-dalignements-geres-par-la-ville-de-mulhouse/',
-    compression: 'zip',
     crosswalk: {
       scientific: 'libelle_es',
       planted: 'date_plant',
@@ -373,7 +343,6 @@ module.exports = [
     short: 'Guingamp',
     long: 'Ville de Guingamp',
     download: 'https://datarmor.cotesdarmor.fr:443/dataserver/cg22/data/Arbres_Guingamp?&$format=csv',
-    format: 'csv', // non-standard download url parameter '$format'
     info: 'https://datarmor.cotesdarmor.fr/data-presentation-ux/#/cg22/datasets/Arbres_Guingamp/views/grid?primary-bg-color=@046D8B&primary-font-color=@fff',
     crosswalk: {
       genus: 'Genre',

@@ -3,7 +3,6 @@ module.exports = [
     id: 'montreal',
     info: 'http://donnees.ville.montreal.qc.ca/dataset/arbres',
     download: 'http://donnees.ville.montreal.qc.ca/dataset/3e3efad6-9f2f-4cc0-8f1b-92de1ccdb282/resource/c6c5afe8-10be-4539-8eae-93918ea9866e/download/arbres-publics.csv',
-    format: 'csv',
     crosswalk: {
       scientific: 'Essence_latin',
       common: 'ESSENCE_ANG',
@@ -22,7 +21,6 @@ module.exports = [
     id: 'quebec',
     download: 'https://www.donneesquebec.ca/recherche/fr/dataset/34103a43-3712-4a29-92e1-039e9188e915/resource/de031174-cbdf-4d69-869c-21cca8036279/download/vdq-arbrerepertorie.geojson',
     info: 'https://www.donneesquebec.ca/recherche/fr/dataset/vque_26',
-    format: 'csv',
     crosswalk: {
       scientific: 'NOM_LATIN',
       common: 'NOM_FRANCAIS',
@@ -37,7 +35,6 @@ module.exports = [
     id: 'longueuil', // Canada
     info: 'https://www.longueuil.quebec/fr/donnees-ouvertes/arbres',
     download: 'https://www.longueuil.quebec/sites/longueuil/files/donnees_ouvertes/arbres.zip',
-    format: 'shp',
     short: 'Longueuil',
     long: 'Ville de Longueuil',
     country: 'Canada',
@@ -50,7 +47,6 @@ module.exports = [
   {
     id: 'calgary',
     download: 'https://data.calgary.ca/api/views/tfs4-3wwa/rows.csv?accessType=DOWNLOAD',
-    format: 'csv',
     short: 'Calgary',
     long: 'City of Calgary',
     country: 'Canada',
@@ -73,7 +69,6 @@ module.exports = [
   {
     id: 'edmonton',
     download: 'https://data.edmonton.ca/api/views/eecg-fc54/rows.csv?accessType=DOWNLOAD',
-    format: 'csv',
     short: 'Edmonton',
     long: 'City of Edmonton',
     country: 'Canada',
@@ -101,7 +96,6 @@ module.exports = [
     id: 'ottawa',
     info: 'https://ouverte.ottawa.ca/datasets/inventaire-des-arbres',
     download: 'https://opendata.arcgis.com/datasets/451e904e2753453eb699b2e853ab5857_1.csv',
-    format: 'csv',
     crosswalk: {
       scientific: 'SPECIES',
       ref: 'SAP_ID'
@@ -113,7 +107,6 @@ module.exports = [
     id: 'moncton',
     info: 'http://ouvert.moncton.ca/datasets/arbres',
     download: 'https://opendata.arcgis.com/datasets/60d5b564e732444b81a650c7c4aa548a_0.csv?outSR=%7B%22latestWkid%22%3A2953%2C%22wkid%22%3A2036%7D',
-    format: 'csv',
     country: 'Canada',
     srs: 'EPSG:2953',
     crosswalk: {
@@ -145,7 +138,6 @@ module.exports = [
     country: 'Canada',
     download: 'https://data.winnipeg.ca/api/views/h923-dxid/rows.csv?accessType=DOWNLOAD',
     info: 'https://data.winnipeg.ca/Parks/Tree-Inventory-Map/xyma-gm38',
-    format: 'csv',
     short: 'Winnipeg',
     crosswalk: {
       ref: 'tree_id',
@@ -157,7 +149,6 @@ module.exports = [
   {
     id: 'vancouver',
     download: 'https://opendata.vancouver.ca/explore/dataset/street-trees/download/?format=geojson&lang=en',
-    format: 'geojson',
     short: 'Vancouver',
     country: 'Canada',
     crosswalk: {
@@ -180,7 +171,6 @@ module.exports = [
     country: 'Canada',
     download: 'http://data.surrey.ca/dataset/634d2f06-2214-49b3-9309-4baa51b61ec4/resource/86625e14-8d09-45e8-9b91-9d301d32b10e/download/parkspecimentrees.csv',
     info: 'https://data.surrey.ca/dataset/park-specimen-trees',
-    format: 'csv',
     crosswalk: {
       // scientific: 'DESCRIPTION', // breakdown fields available too
       genus: 'TREE_GENUS',
@@ -197,7 +187,6 @@ module.exports = [
     country: 'Canada',
     download: 'https://ckan0.cf.opendata.inter.prod-toronto.ca/download_resource/c1229af1-8ab6-4c71-b131-8be12da59c8e',
     info: 'https://open.toronto.ca/dataset/street-tree-data/',
-    format: 'shp',
     gdalOptions: '-skipfailures',
     crosswalk: {
       dbh: 'DBH_TRUNK',
@@ -212,7 +201,6 @@ module.exports = [
     short: 'Strathcona',
     download: 'https://data.strathcona.ca/api/views/v78i-7ntw/rows.csv?accessType=DOWNLOAD',
     info: 'https://data.strathcona.ca/Environment/Tree/v78i-7ntw',
-    format: 'csv',
     // Location: "(lat, lon)"
     coordsFunc: x =>
       x.Location.replace(/[()]/g, '')
@@ -231,7 +219,6 @@ module.exports = [
     short: 'Regina',
     download: 'https://ckanprodstorage.blob.core.windows.net/opendata/Tree/SHP_ZIP/shp.Tree.zip',
     info: 'http://open.regina.ca/dataset/city-of-regina-tree-inventory',
-    format: 'shp',
     crosswalk: {
       common: 'Species',
       owner: 'Ownership',
@@ -246,7 +233,6 @@ module.exports = [
     short: 'North Vancouver',
     download: 'http://geoweb.dnv.org/Products/Data/SHP/EnvStreetTree_shp.zip',
     info: 'http://geoweb.dnv.org/data/index.php',
-    format: 'shp',
     crosswalk: {
       common: 'COMMONNAME',
       genus: 'GENUS',
@@ -265,7 +251,6 @@ module.exports = [
     long: 'City of White Rock',
     download: 'http://wroms.whiterockcity.ca/opendata/GIS/Data/Spatial/Parks/SHP/Tree.zip',
     info: 'http://data.whiterockcity.ca/dataset/tree',
-    format: 'shp',
     crosswalk: {
       scientific: 'SpeciesNam',
       ref: 'Tree_ID',

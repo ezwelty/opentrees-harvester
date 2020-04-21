@@ -19,7 +19,6 @@ module.exports = [
     download: 'https://opendata.arcgis.com/datasets/b700541a20e446839b18d62426c266a3_0.zip',
     short: 'Madison',
     country: 'United States',
-    format: 'shp',
     crosswalk: {
       common: 'SPECIES',
       dbh: x => Number(x.DIAMETER) * INCHES
@@ -28,7 +27,6 @@ module.exports = [
   {
     id: 'pdx-street',
     download: 'https://opendata.arcgis.com/datasets/eb67a0ad684d4bb6afda51dc065d1664_25.zip',
-    format: 'shp',
     short: 'Portland',
     long: 'Portland, Oregon',
     country: 'United States',
@@ -47,8 +45,6 @@ module.exports = [
   {
     id: 'pdx-park',
     download: 'https://opendata.arcgis.com/datasets/83a7e3f6a1d94db09f24849ee90f4be2_220.zip?outSR=%7B%22latestWkid%22%3A3857%2C%22wkid%22%3A102100%7D&session=undefined',
-    compression: 'zip',
-    format: 'shp',
     short: 'Portland, Oregon',
     long: 'Portland, Oregon',
     country: 'United States',
@@ -69,7 +65,6 @@ module.exports = [
   {
     id: 'nyc',
     download: 'https://data.cityofnewyork.us/api/views/uvpi-gqnh/rows.csv?accessType=DOWNLOAD',
-    format: 'csv',
     srs: 'EPSG:4326',
     geometry: { x: 'longitude', y: 'latitude' },
     short: 'New York',
@@ -88,7 +83,6 @@ module.exports = [
   {
     id: 'providence',
     download: 'https://data.providenceri.gov/api/views/uv9w-h8i4/rows.csv?accessType=DOWNLOAD',
-    format: 'csv',
     short: 'Providence',
     long: 'Providence, Rhode Island',
     coordsFunc: x => x['Property Address'].split('\n').reverse()[0].split(/[(), ]/).filter(Number).map(Number).reverse(),
@@ -101,8 +95,6 @@ module.exports = [
   {
     id: 'washington-dc',
     download: 'https://opendata.arcgis.com/datasets/f6c3c04113944f23a7993f2e603abaf2_23.zip',
-    compression: 'zip',
-    format: 'shp',
     short: 'Washington DC',
     long: 'Washington DC',
     country: 'United States',
@@ -123,7 +115,6 @@ module.exports = [
   {
     id: 'buffalo-ny',
     download: 'https://data.buffalony.gov/api/views/n4ni-uuec/rows.csv?accessType=DOWNLOAD',
-    format: 'csv',
     short: 'Buffalo',
     long: 'City of Buffalo, NY',
     country: 'United States',
@@ -138,7 +129,6 @@ module.exports = [
     id: 'san_francisco',
     // download: 'https://data.sfgov.org/api/geospatial/tkzw-k3nq?method=export&format=GeoJSON',
     download: 'https://data.sfgov.org/api/views/337t-q2b4/rows.csv?accessType=DOWNLOAD',
-    format: 'csv',
     short: 'San Francisco',
     long: 'City of San Francisco',
     country: 'United States',
@@ -156,7 +146,6 @@ module.exports = [
   {
     id: 'philadelphia',
     download: 'http://data.phl.opendata.arcgis.com/datasets/957f032f9c874327a1ad800abd887d17_0.csv',
-    format: 'csv',
     short: 'Philadelphia',
     long: 'City of Philadelphia',
     country: 'United States',
@@ -167,7 +156,6 @@ module.exports = [
   {
     id: 'denver',
     download: 'https://data.colorado.gov/api/views/wz8h-dap6/rows.csv?accessType=DOWNLOAD',
-    format: 'csv',
     short: 'Denver',
     country: 'United States',
     crosswalk: {
@@ -184,10 +172,8 @@ module.exports = [
     country: 'United States',
     download: 'https://opendata.arcgis.com/datasets/dbbae8bdb0a44d17934243b88e85ef2b_0.zip',
     info: 'https://data-boulder.opendata.arcgis.com/datasets/dbbae8bdb0a44d17934243b88e85ef2b_0',
-    compression: 'zip',
     short: 'Boulder',
     long: 'City of Boulder, Colorado',
-    format: 'shp',
     crosswalk: {
       scientific: 'LATINNAME',
       common: 'COMMONNAME',
@@ -202,7 +188,6 @@ module.exports = [
     country: 'United States',
     download: 'https://data.cambridgema.gov/api/views/q83f-7quz/rows.csv?accessType=DOWNLOAD',
     info: 'https://data.cambridgema.gov/Public-Works/Street-Trees/ni4i-5bnn',
-    format: 'csv',
     crosswalk: {
       common: 'CommonName',
       scientific: 'Scientific',
@@ -219,7 +204,6 @@ module.exports = [
     country: 'United States',
     download: 'https://data.cityofberkeley.info/api/views/x39z-ushg/rows.csv?accessType=DOWNLOAD',
     info: 'https://data.cityofberkeley.info/Natural-Resources/City-Trees/9t35-jmin',
-    format: 'csv',
     crosswalk: {
       scientific: 'SPECIES',
       common: 'Common_Nam',
@@ -235,7 +219,6 @@ module.exports = [
     country: 'United States',
     download: 'https://data.wprdc.org/dataset/9ce31f01-1dfa-4a14-9969-a5c5507a4b40/resource/d876927a-d3da-44d1-82e1-24310cdb7baf/download/trees_img.geojson',
     info: 'https://data.wprdc.org/dataset/city-trees',
-    format: 'geojson',
     centre: { lon: -80, lat: 40.436 },
     short: 'Pittsburgh',
     crosswalk: {
@@ -251,8 +234,6 @@ module.exports = [
     country: 'United States',
     download: 'https://opendata.arcgis.com/datasets/674e4a358e8042f69a734f229a93823c_1.zip?outSR=%7B%22wkt%22%3A%22PROJCS%5B%5C%22Ohio%203402%2C%20Southern%20Zone%20(1983%2C%20US%20Survey%20feet)%5C%22%2CGEOGCS%5B%5C%22NAD%2083%20(Continental%20US)%5C%22%2CDATUM%5B%5C%22NAD%2083%20(Continental%20US)%5C%22%2CSPHEROID%5B%5C%22GRS%2080%5C%22%2C6378137.0%2C298.257222101%5D%5D%2CPRIMEM%5B%5C%22Greenwich%5C%22%2C0.0%5D%2CUNIT%5B%5C%22Degree%5C%22%2C0.0174532925199433%5D%5D%2CPROJECTION%5B%5C%22Lambert_Conformal_Conic%5C%22%5D%2CPARAMETER%5B%5C%22False_Easting%5C%22%2C1968500.0%5D%2CPARAMETER%5B%5C%22Central_Meridian%5C%22%2C-82.5%5D%2CPARAMETER%5B%5C%22Standard_Parallel_1%5C%22%2C38.7333333333%5D%2CPARAMETER%5B%5C%22Standard_Parallel_2%5C%22%2C40.0333333333%5D%2CPARAMETER%5B%5C%22Latitude_Of_Origin%5C%22%2C38.0%5D%2CUNIT%5B%5C%22U.S.%20Foot%5C%22%2C0.3048006096012%5D%5D%22%7D',
     info: 'http://opendata.columbus.gov/datasets/public-owned-trees',
-    compression: 'zip',
-    format: 'shp',
     short: 'Colombus',
     crosswalk: {
       ref: 'OBJECTID',
@@ -270,7 +251,6 @@ module.exports = [
     short: 'Austin',
     download: 'https://data.austintexas.gov/api/views/7aq7-a66u/rows.csv?accessType=DOWNLOAD',
     info: 'https://catalog.data.gov/dataset/downtown-tree-inventory-2013',
-    format: 'csv',
     crosswalk: {
       scientific: 'SPECIES',
       common: 'COM_NAME',
@@ -286,8 +266,6 @@ module.exports = [
     short: 'Cornell University',
     download: 'https://cugir-data.s3.amazonaws.com/00/80/25/cugir-008025.zip',
     info: 'https://cugir.library.cornell.edu/catalog/cugir-008025',
-    compression: 'zip',
-    format: 'shp',
     crosswalk: {
       scientific: 'Botanic',
       common: 'Common',
@@ -302,7 +280,6 @@ module.exports = [
     short: 'Cary',
     download: 'https://data.townofcary.org/api/v2/catalog/datasets/cary-trees/exports/csv',
     info: 'https://catalog.data.gov/dataset/cary-trees',
-    format: 'csv',
     crosswalk: {
       updated: 'editdate',
       common: 'name',
@@ -315,7 +292,6 @@ module.exports = [
     short: 'Rochester',
     download: 'https://opendata.arcgis.com/datasets/4c209944e2984b4a908a14b0cbe48075_0.zip',
     info: 'http://hub.arcgis.com/datasets/RochesterNY::trees-open-data',
-    compression: 'zip',
     crosswalk: {
       description: 'TREE_NAME',
       health: 'COND',
@@ -330,7 +306,6 @@ module.exports = [
     short: 'Seattle',
     download: 'https://opendata.arcgis.com/datasets/0b8c124ace214943ab0379623937eccb_6.zip',
     info: 'http://hub.arcgis.com/datasets/SeattleCityGIS::trees',
-    compression: 'zip',
     crosswalk: {
       ref: 'UNITID',
       health: 'CONDITION',
@@ -351,7 +326,6 @@ module.exports = [
     short: 'Cupertino',
     download: 'https://opendata.arcgis.com/datasets/caa50a924b7d4b5ba8e8a4cbfd0d7f13_29.csv',
     info: 'http://hub.arcgis.com/datasets/Cupertino::trees',
-    format: 'csv',
     geometry: { x: 'LONG', y: 'LAT' },
     crosswalk: {
       ref: 'AssetID',
@@ -372,7 +346,6 @@ module.exports = [
     long: 'City of Oxnard',
     download: 'https://opendata.arcgis.com/datasets/a5aa2d1dfd344ef79d61507d33cdbc02_1.csv',
     info: 'http://hub.arcgis.com/datasets/a5aa2d1dfd344ef79d61507d33cdbc02_1',
-    format: 'csv',
     crosswalk: {
       // FICTITIOUS?
       scientific: 'BOTANICALN',
@@ -388,7 +361,6 @@ module.exports = [
     long: 'Town of Wake Forest',
     download: 'https://opendata.arcgis.com/datasets/ba930858554a43cca1be2f06a44d2449_0.csv',
     info: 'http://hub.arcgis.com/datasets/wakeforestnc::trees',
-    // format: 'csv',
     crosswalk: {
       scientific: 'SPECIES_LA',
       common: 'SPECIES_CO',
@@ -882,7 +854,6 @@ module.exports = [
     long: 'University of California Davis',
     info: 'http://hub.arcgis.com/datasets/ucda::uc-davis-tree-database',
     download: 'https://opendata.arcgis.com/datasets/07939ef894984a95b58098315f80c046_0.zip',
-    format: 'shp'
   },
   {
     id: 'hudson_river_park',

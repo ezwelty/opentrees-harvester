@@ -405,10 +405,9 @@ class Source {
 
   /**
    * Find path of input file.
-   * @param {boolean} [error=false] - Whether to raise error if no input found
-   * @return {string} File path (if found) or undefined
+   * @return {string} File path (if found) or error if not found
    */
-  find(error = false) {
+  find() {
     const extension = this.props.format ? this.props.format : '*'
     var paths = glob.sync(
       path.join(this.dir, '**', `*.${extension}`), { nocase: true })
@@ -431,11 +430,11 @@ class Source {
     if (paths.length) {
       if (paths.length == 1) {
         return paths[0]
-      } else if (error) {
+      } else {
         this.error(
           `Found ${paths.length} possible inputs: ${util.inspect(paths)}`)
       }
-    } else if (error) {
+    } else {
       this.error(`No supported inputs found: ${util.inspect(paths)}`)
     }
   }
@@ -449,7 +448,7 @@ class Source {
    */
   open() {
     if (!this.__dataset) {
-      this.__dataset = gdal.open(this.find(true))
+      this.__dataset = gdal.open(this.find())
     }
     return this.__dataset
   }

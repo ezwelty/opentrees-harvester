@@ -17,7 +17,6 @@ module.exports = [
     id: 'tradportalen',
     info: 'https://www.tradportalen.se/Summary.aspx',
     download: 'https://tradportalen.s3.eu-north-1.amazonaws.com/tradportalen.zip',
-    filename: 'data/combined.json',
     short: 'Trädportalen',
     long: 'Trädportalen',
     country: 'Sweden',

@@ -100,7 +100,7 @@ module.exports = [
   {
     id: 'melbourne',
     download: 'https://data.melbourne.vic.gov.au/api/views/fp38-wiyy/rows.csv?accessType=DOWNLOAD',
-    epsg: 'EPSG:4326',
+    srs: 'EPSG:4326',
     geometry: { x: 'Longitude', y: 'Latitude' },
     short: 'Melbourne',
     long: 'City of Melbourne',

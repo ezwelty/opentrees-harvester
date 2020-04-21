@@ -257,9 +257,11 @@ class Source {
   validate(error = false) {
     var errors = []
     const props = this.props
-    // Required fields
-    if (!props.id || typeof props.id !== 'string') {
-      errors.push(`Invalid or missing id: ${props.id}`)
+    // id
+    if (props.id) {
+      if (typeof props.id !== 'string') {
+        errors.push(`Invalid id: ${props.id}`)
+      }
     }
     // download
     if (props.download) {

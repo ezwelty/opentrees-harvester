@@ -6,6 +6,7 @@ const glob = require('glob')
 const gdal = require('gdal-next')
 const { DownloaderHelper } = require('node-downloader-helper')
 const decompress = require('decompress')
+const { table } = require('table')
 const helpers = require('./helpers')
 
 const CROSSWALK_FIELDS = {
@@ -481,6 +482,95 @@ class Source {
       this.__dataset.close()
     }
     this.__dataset = null
+  }
+
+  /**
+   * Sample unique values from feature fields.
+   * @param {object} [options]
+   * @param {number} [options.n=1000] - Max features to sample
+   * @param {number} [options.max=100] - Max unique values to collect per field
+   * @param {boolean} [options.sort=true] - Whether to sort values
+   * @return {object} Object with format <field name>: [unique field values]
+   */
+  sample(options = {}) {
+    options = {
+      n: 1000,
+      max: 100,
+      sort: true,
+      ...options
+    }
+    const types = {}
+    const values = {}
+    const layer = this.open().layers.get(0)
+    layer.fields.forEach(field => {
+      types[field.name] = field.type
+      values[field.name] = new Set()
+    })
+    let f
+    let i = 1
+    for (f = layer.features.first();
+      f && i <= options.n; f = layer.features.next()) {
+      for (let [key, value] of Object.entries(f.fields.toObject())) {
+        const formatter = helpers.gdal_string_formatters[types[key]]
+        value = formatter ? formatter(value) : value
+        if (value && values[key].size < options.max) {
+          values[key].add(value)
+        }
+      }
+      i++
+    }
+    // Convert sets to arrays
+    for (const key in values) {
+      values[key] = [...values[key]]
+      if (options.sort) {
+        values[key].sort()
+      }
+    }
+    return values
+  }
+
+  /**
+   * Display field name, type, and unique values.
+   * @param {object} [options] - Options to sample() plus:
+   * @param {object} [options.sample] - Result of sample()
+   * @param {number} [options.truncate=1280] - Max characters to print per field
+   * @param {number[]} [options.widths=[20, 10, 130]] - Column widths for
+   *  [name, type, values]
+   * @param {string} [options.sep=' · '] - Values separator
+   */
+  glimpse(options = {}) {
+    options = {
+      truncate: 1280,
+      widths: [20, 10, 130],
+      sep: ' · ',
+      ...options
+    }
+    if (!options.sample) {
+      options.sample = this.sample(options)
+    }
+    const table_options = {
+      columnDefault: {
+        wrapWord: true,
+        truncate: options.truncate
+      },
+      columns: {
+        0: { width: options.widths[0] },
+        1: { width: options.widths[1] },
+        2: { width: options.widths[2] }
+      }
+    }
+    const types = {}
+    const layer = this.open().layers.get(0)
+    layer.fields.forEach(field => {
+      types[field.name] = field.type
+    })
+    // Print
+    const data = [
+      ['name'.bold, 'type'.bold, 'values'.bold],
+      ...Object.keys(options.sample).map(key =>
+        [key, types[key], options.sample[key].join(options.sep)])
+    ]
+    console.log(table(data, table_options))
   }
 
   /**

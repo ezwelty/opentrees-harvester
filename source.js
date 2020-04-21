@@ -203,18 +203,18 @@ class Source {
    * @property {string} format - Data file format (e.g. "geojson", "csv", "shp")
    * @property {string} compression - Compression or archive file format (e.g. "zip", "tar")
    * @property {string} srs - Spatial reference system in any format supported by OGRSpatialReference.SetFromUserInput().
-   *   See https://gdal.org/api/ogrspatialref.html?highlight=setfromuserinput#_CPPv4N19OGRSpatialReference16SetFromUserInputEPKc
+   *  See https://gdal.org/api/ogrspatialref.html?highlight=setfromuserinput#_CPPv4N19OGRSpatialReference16SetFromUserInputEPKc.
    * @property {object} geometry - Geometry field (for non-spatial data like CSV).
    * @property {string} geometry.wkt - Name of field with WKT geometry (takes precedence)
    * @property {string} geometry.x - Name of field with x coordinate (longitude, easting)
    * @property {string} geometry.y - Name of field with y coordinate (latitude, northing)
    * @property {object} crosswalk - Crosswalk mapping to the opentrees schema.
-   *   For each <key>: <value>, <key> is the new field name and <value> is either
-   *   the old field name (string) or a function called as f(feature.properties).
+   *  For each <key>: <value>, <key> is the new field name and <value> is either
+   *  the old field name (string) or a function called as f(feature.properties).
    * @property {function} delFunc - Function called as f(feature.properties) for each feature (before crosswalk).
-   *   Feature is excluded from output if function returns true.
+   *  Feature is excluded from output if function returns true.
    * @property {function} coordsFunc - Function called as f(features.properties) for each feature (before crosswalk).
-   *   Returns an array of feature coordinates [x, y].
+   *  Returns an array of feature coordinates [x, y].
    */
 
   /**
@@ -595,6 +595,8 @@ class Source {
    *  existing file.
    * @param {string} [options.srs='EPSG:4326'] - Output spatial reference.
    *  Passed to gdal.SpatialReference.fromUserInput().
+   *  Use 'EPSG:*' for (latitude, longitude) and '+init=epsg:4326' (PROJ<6
+   *  behavior) for (longitude, latitude).
    * @param {boolean} [options.centroids=false] - Whether to reduce non-point
    *  geometries to centroids
    * @param {boolean} [options.keep_invalid=false] - Whether to keep features
@@ -700,6 +702,7 @@ class Source {
     if (!driver) {
       this.error(`Unrecognized GDAL driver: ${options.driver}`)
     }
+    fs.mkdirSync(path.dirname(file), { recursive: true })
     const output = driver.create(file, 0, 0, 0, gdal.GDT_Byte, options.creation)
     var output_type
     if (options.centroids || input_layer.geomType == gdal.wkbNone) {

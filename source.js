@@ -467,7 +467,7 @@ class Source {
   /**
    * Get input spatial reference system (SRS) as a string.
    *
-   * Either the provided SRS, the SRS of the layer (as proj4 string),
+   * Either the provided SRS, the SRS of the layer (as well-known-text),
    * or the default SRS.
    *
    * @return {string} Input SRS
@@ -477,7 +477,7 @@ class Source {
     if (!srs) {
       const layer = this.open().layers.get(0)
       if (layer.srs) {
-        srs = layer.srs.toProj4()
+        srs = layer.srs.toWKT()
       }
     }
     if (!srs) {

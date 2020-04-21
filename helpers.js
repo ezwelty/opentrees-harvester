@@ -280,8 +280,7 @@ function get_srs_transform(source, target) {
   }
   // NOTE: Only sure way to test for equality is to test the transformation
   const same = source.isSame(target) ||
-    source.toProj4() === target.toProj4() ||
-    (source.isSameGeogCS(target) && (source.isProjected() == target.isProjected()))
+    (source.isSameGeogCS(target) && !source.isProjected() && !target.isProjected())
   if (same) {
     return
   } else {

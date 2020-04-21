@@ -255,7 +255,7 @@ class Source {
    * @return {string[]} Errors
    */
   validate(error = false) {
-    var errors = []
+    let errors = []
     const props = this.props
     // id
     if (props.id) {
@@ -380,10 +380,10 @@ class Source {
    * @return {Promise}
    */
   get(overwrite = false) {
-    if (!overwrite && !this.is_empty()) {
+    if (!this.props.download || (!overwrite && !this.is_empty())) {
       return Promise.resolve()
     }
-    var urls = this.props.download
+    let urls = this.props.download
     if (typeof urls === 'string') {
       urls = [urls]
     }
@@ -430,7 +430,7 @@ class Source {
    */
   find() {
     const extension = this.props.format ? this.props.format : '*'
-    var paths = glob.sync(
+    let paths = glob.sync(
       path.join(this.dir, '**', `*.${extension} `), { nocase: true })
     if (!this.props.format) {
       paths = paths.filter(s => s.match(helpers.gdal_patterns.all))
@@ -492,7 +492,7 @@ class Source {
    * @return {string} Input SRS
    */
   get_srs_string() {
-    var srs = this.props.srs
+    let srs = this.props.srs
     if (!srs) {
       const layer = this.open().layers.get(0)
       if (layer.srs) {
@@ -528,7 +528,7 @@ class Source {
    *  if input already has geometry defined.
    */
   get_geometry() {
-    var geometry = this.props.geometry
+    let geometry = this.props.geometry
     if (!geometry) {
       geometry = {}
       const layer = this.open().layers.get(0)
@@ -572,7 +572,7 @@ class Source {
     const srs = this.get_srs_string()
     const geometry = this.get_geometry()
     // Build <GeometryField> attributes
-    var attributes
+    let attributes
     if (geometry.wkt && typeof geometry.wkt === 'string') {
       attributes = `encoding = "WKT" field = "${geometry.wkt}"`
     } else if (
@@ -584,7 +584,7 @@ class Source {
     }
     // Build VRT
     const layer = this.open().layers.get(0)
-    var layer_path = layer.ds.description
+    const layer_path = layer.ds.description
     const basename = path.parse(layer_path).base
     const vrt =
       `< OGRVRTDataSource >
@@ -667,12 +667,12 @@ class Source {
     }
     options.srs = gdal.SpatialReference.fromUserInput(options.srs)
     // Read input
-    var input = this.open()
+    let input = this.open()
     this.log(`Processing ${input.description}`)
     if (input.layers.count() > 1) {
       this.warn(`Using first of ${input.layers.count()} layers`)
     }
-    var input_layer = input.layers.get(0)
+    let input_layer = input.layers.get(0)
     if (!input_layer.features.count()) {
       this.warn('Skipping: Layer has no features')
       return
@@ -687,7 +687,7 @@ class Source {
       input_layer = input.layers.get(0)
     }
     // Prepare input schema
-    var input_schema = input_layer.fields.map(field => field)
+    let input_schema = input_layer.fields.map(field => field)
     /**
      * NOTE: Confusing gdal bindings handling of date/time fields
      * - Fields detected as date/time are read as objects, not strings
@@ -697,7 +697,7 @@ class Source {
      * - Set output date/time fields as string
      * - Convert input date/time fields to string
      */
-    var string_crosswalk = {}
+    const string_crosswalk = {}
     input_schema = input_schema.map(field => {
       const formatter = helpers.gdal_string_formatters[field.type]
       if (formatter) {
@@ -708,7 +708,7 @@ class Source {
       return field
     })
     // Prepare output schema
-    var output_schema = []
+    const output_schema = []
     if (this.props.crosswalk) {
       for (const key in this.props.crosswalk) {
         // NOTE: Output as string to preserve malformed values
@@ -728,7 +728,7 @@ class Source {
     }
     fs.mkdirSync(path.dirname(file), { recursive: true })
     const output = driver.create(file, 0, 0, 0, gdal.GDT_Byte, options.creation)
-    var output_type
+    let output_type
     if (options.centroids || input_layer.geomType == gdal.wkbNone) {
       output_type = gdal.wkbPoint
     } else {
@@ -750,9 +750,9 @@ class Source {
       options.bounds = helpers.bounds_to_polygon(options.bounds)
     }
     // Populate output
-    var input_feature = input_layer.features.first()
+    let input_feature
     for (
-      var input_feature = input_layer.features.first();
+      input_feature = input_layer.features.first();
       input_feature;
       input_feature = input_layer.features.next()) {
       // Fields
@@ -761,7 +761,7 @@ class Source {
         continue
       }
       const output_feature = new gdal.Feature(output_layer)
-      var output_fields = helpers.map_object(input_fields, string_crosswalk,
+      let output_fields = helpers.map_object(input_fields, string_crosswalk,
         true, '')
       output_fields = helpers.map_object(
         output_fields,
@@ -769,7 +769,7 @@ class Source {
         options.keep_fields, options.prefix)
       output_feature.fields.set(output_fields)
       // Geometry
-      var input_geometry
+      let input_geometry
       if (this.props.coordsFunc) {
         const coords = this.props.coordsFunc(input_fields)
         if (Array.isArray(coords) && coords.length == 2) {
@@ -787,8 +787,8 @@ class Source {
         if (options.centroids && input_geometry.wkbType != gdal.wkbPoint) {
           input_geometry = input_geometry.centroid()
         }
-        var is_valid = true
-        var is_point = input_geometry.wkbType == gdal.wkbPoint
+        let is_valid = true
+        let is_point = input_geometry.wkbType == gdal.wkbPoint
         if (transform) {
           try {
             input_geometry.transform(transform)
@@ -827,7 +827,6 @@ class Source {
     }
     // Write
     output.close()
-    this.close()
     this.success('Wrote output:', file)
   }
 }

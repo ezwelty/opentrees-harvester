@@ -717,7 +717,7 @@ class Source {
     }
     if (options.keep_fields) {
       input_schema.forEach(field => {
-        field.name = `${options.prefix} ${field.name} `
+        field.name = `${options.prefix}${field.name}`
         output_schema.push(field)
       })
     }

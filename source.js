@@ -378,7 +378,8 @@ class Source {
    * @return {boolean} Whether working directory is empty
    */
   is_empty() {
-    const files = glob.sync(path.join(this.dir, '**', '*.*'))
+    const files = glob.sync('**/*',
+      { nocase: true, nodir: true, dot: false, cwd: this.dir })
     return files.length == 0
   }
 
@@ -438,12 +439,11 @@ class Source {
    * @return {string} File path (if found) or error if not found
    */
   find() {
-    const extension = this.props.format ? this.props.format : '*'
-    let paths = glob.sync(
-      path.join(this.dir, '**', `*.${extension} `), { nocase: true })
+    const extension = this.props.format ? `.${this.props.format}` : ''
+    let paths = glob.sync(`**/*${extension}`,
+      { nocase: true, nodir: true, dot: false, cwd: this.dir })
     if (!this.props.format) {
-      paths = paths.filter(s => s.match(helpers.gdal_patterns.all))
-      if (paths.length > 1) {
+      if (paths.length) {
         const primaries = paths.filter(s =>
           s.match(helpers.gdal_patterns.primary))
         const secondaries = paths.filter(s =>
@@ -453,18 +453,18 @@ class Source {
         } else if (secondaries.length) {
           paths = secondaries
         } else {
-          this.warn('Found exotic input formats:', paths)
+          this.warn('Found files with exotic or missing extensions:', paths)
         }
       }
     }
     if (paths.length) {
       if (paths.length == 1) {
-        return paths[0]
+        return path.join(this.dir, paths[0])
       } else {
         this.error(`Found ${paths.length} possible inputs:`, paths)
       }
     } else {
-      this.error('No supported inputs found:', paths)
+      this.error('No inputs found')
     }
   }
 

@@ -429,15 +429,35 @@ module.exports = [
     }
   },
   {
-    // something wrong with this one, it never generates
-    pending: true,
     id: 'langley',
     country: 'Canada',
     short: 'Langley',
     long: 'Township of Langley',
     download: 'https://opendata.arcgis.com/datasets/1971f19fc28c489b908eab199a5d2e72_85.geojson',
-    // info: 'http://data-tol.opendata.arcgis.com/datasets/trees',
-    info: 'https://hub.arcgis.com/datasets/1971f19fc28c489b908eab199a5d2e72_85'
+    info: 'https://hub.arcgis.com/datasets/1971f19fc28c489b908eab199a5d2e72_85',
+    crosswalk: {
+      ref: 'TreeID',
+      updated: 'last_edited_date', // datetime
+      // TODO: ReplantedDate = planted ?
+      // CommonName_txt: <Genus> <species|sp.> '<cultivar>' (<common>)
+      // TreeName: Equal (?) to CommonName_txt but some characters are corrupt
+      scientific: x => {
+        // TODO: Trailing white space, 'unknown', 'sp./spp', 'x.' 
+        const match = x['CommonName_txt'].match(/^\s*([^\(\'\"\‘]+)\s*/)
+        if (match) return match[1]
+      },
+      cultivar: x => {
+        const match = x['CommonName_txt'].
+          replace(/"|‘/, '\'').match(/'\s*([^\(]+)\s*'/)
+        if (match) return match[1]
+      },
+      common: x => {
+        const match = x['CommonName_txt'].match(/\(\s*([^\)]+)\s*\)$/)
+        if (match) return match[1]
+      },
+      // TODO: TreeType = Park Tree, Street Tree, Heritage Tree, ..., Other
+      location: 'TreeType'
+    }
   },
   {
     id: 'victoriaville',

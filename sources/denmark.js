@@ -16,14 +16,18 @@ module.exports = [
     short: 'Copenhagen'
   },
   {
-    // eww, this is not GeoJSON, and doesn't actually contain data.
+    // Data is empty
     pending: true,
     id: 'ballerup',
     country: 'Denmark',
     short: 'Ballerup',
     long: 'Ballerup Kommune',
-    download: 'http://ballerup.mapcentia.com/api/v1/sql/ballerup?q=SELECT%20*%20FROM%20drift.mapgo_punkter%20WHERE%20underelement%20=%20%27Fritvoksende%20tr%C3%A6er%27&lifetime=0&srs=4326&client_encoding=UTF8',
+    download: 'http://ballerup.mapcentia.com/api/v1/sql/ballerup?q=SELECT%20*%20FROM%20drift.mapgo_punkter%20WHERE%20underelement%20=%20%27Fritvoksende%20tr%C3%A6er%27&lifetime=0&srs=4326&client_encoding=UTF8&format=csv',
     info: 'https://www.opendata.dk/ballerup-kommune/fritvoksende-trae',
+    license: {
+      name: 'Open Data DK licens',
+      url: 'http://portal.opendata.dk/dataset/open-data-dk-licens'
+    }
   },
   {
     // This is not geojson. TODO: construct a GeoJSON endpoint from the WFS one:

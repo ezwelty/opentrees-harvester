@@ -30,14 +30,23 @@ module.exports = [
     }
   },
   {
-    // This is not geojson. TODO: construct a GeoJSON endpoint from the WFS one:
-    // http://kortservice.vejle.dk/gis/services/OPENDATA/Vejle/MapServer/WFSServer?request=GetCapabilities&service=WFS
-    pending: true,
     id: 'vejle',
     country: 'Denmark',
     short: 'Vejle',
-    long: 'Vejle Kommune',
-    download: 'http://kortservice.vejle.dk/gis/rest/services/OPENDATA/Vejle/MapServer/12/query?where=OBJECTID%3C%3E0&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=pjson',
+    long: 'Vejle Kommune - Vej & Park Drift',
+    download: 'http://kortservice.vejle.dk/gis/rest/services/OPENDATA/Vejle/MapServer/12/query?where=OBJECTID%3C%3E0&geometryType=esriGeometryEnvelope&spatialRel=esriSpatialRelIntersects&outFields=*&returnGeometry=true&outSR=4326&returnIdsOnly=false&returnCountOnly=false&returnZ=false&returnM=false&returnDistinctValues=false&f=geojson',
     info: 'https://www.opendata.dk/city-of-vejle/parkdrift-parkpleje-punktdata',
+    license: { name: 'Andet (Open)' },
+    // Includes all park point features, not just trees and bushes
+    delFunc: x => !Boolean(x.ELTTYPE.match(/(træer|træ|buske)/i)),
+    crosswalk: {
+      ref: 'OBJECTID',
+      // PLANTENAVN: Very messy mix of scientific name, common name, and notes
+      scientific: 'PLANTENAVN',
+      notable: x => x.ELTTYPE ? Number(x.ELTTYPE === 'Historisk træ') : null,
+      location: x => 'park',
+      health: x => x.ELTTYPE === 'Træruin' ? 'dead' : null,
+      note: 'BESKRIVELSE'
+    }
   }
 ].map(s => ({ ...s, country: 'Denmark' }))

@@ -245,8 +245,6 @@ module.exports = [
     }
   },
   {
-    // can't download for some reason
-    pending: true,
     id: 'moers_de',
     short: 'Mörs',
     long: 'Stadt Mörs',
@@ -255,6 +253,11 @@ module.exports = [
     license: {
       name: 'Datenlizenz Deutschland – Zero – Version 2.0',
       url: 'https://www.govdata.de/dl-de/zero-2-0'
+    },
+    crosswalk: {
+      description: x => x.ART ? x.ART.replace(/�/, 'ß') : null,
+      location: x => x.ART === 'Laubbaum_Stra�enbaum' ? 'street' : null,
+      edible: x => x.ART ? Number(x.ART == 'Laubbaum_Obstbaum') : null
     }
   },
   {

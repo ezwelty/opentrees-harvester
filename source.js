@@ -173,6 +173,13 @@ const CROSSWALK_FIELDS = {
     description: 'Monetary value',
     type: gdal.OFTReal
   },
+  edible: {
+    description: 'Whether edible (e.g. "fruit tree")',
+    type: gdal.OFTInteger,
+    constraints: {
+      enum: [0, 1]
+    }
+  },
   notable: {
     description: 'Whether notable (champion, heritage, memorial, etc)',
     type: gdal.OFTInteger,

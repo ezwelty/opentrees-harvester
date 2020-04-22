@@ -1,5 +1,9 @@
 module.exports = [
   {
+    /**
+     * thesisdendrondbf.zip unzips to thesis_dendron.dbf rather than
+     * thesisdendron.dbf. Regardless, it contains no useful attributes.
+     */
     id: 'thessaloniki_gr',
     short: 'Thessaloniki',
     country: 'Greece',

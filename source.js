@@ -172,6 +172,13 @@ const CROSSWALK_FIELDS = {
   value: {
     description: 'Monetary value',
     type: gdal.OFTReal
+  },
+  notable: {
+    description: 'Whether notable (champion, heritage, memorial, etc)',
+    type: gdal.OFTInteger,
+    constraints: {
+      enum: [0, 1]
+    }
   }
 }
 

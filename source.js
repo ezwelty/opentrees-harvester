@@ -248,6 +248,7 @@ class Source {
     this.default_name = options.default_name
     // Cache
     this.__dataset = null
+    this.__vrt = null
   }
 
   /**
@@ -468,6 +469,13 @@ class Source {
    * @return {gdal.Dataset} GDAL dataset
    */
   open() {
+    // Clear if already destroyed
+    try {
+      // Choice of property is arbitrary
+      this.__dataset.description
+    } catch {
+      this.__dataset = null
+    }
     if (!this.__dataset) {
       this.__dataset = gdal.open(this.find())
     }
@@ -478,10 +486,51 @@ class Source {
    * Close input if open as GDAL Dataset.
    */
   close() {
-    if (this.__dataset) {
+    try {
       this.__dataset.close()
+    } catch {
+    } finally {
+      this.__dataset = null
     }
-    this.__dataset = null
+  }
+
+  /**
+   * Open input as GDAL dataset via VRT file.
+   * 
+   * Opens via the virtual format (VRT) file built by get_vrt().
+   * Result is cached until closed with close_vrt().
+   * 
+   * @param {boolean} keep_geometry_fields - Whether VRT should
+   *   return geometry fields as regular feature fields
+   * @return {gdal.Dataset} GDAL dataset
+   */
+  open_vrt(keep_geometry_fields = false) {
+    // Clear if already destroyed
+    try {
+      // Choice of property is arbitrary
+      this.__vrt.description
+    } catch {
+      this.__vrt = null
+    }
+    if (!this.__vrt) {
+      // HACK: Avoids *.* name to hide from find()
+      const vrt_path = path.join(this.dir, '_vrt')
+      fs.writeFileSync(vrt_path, this.get_vrt(keep_geometry_fields))
+      this.__vrt = gdal.open(vrt_path)
+    }
+    return this.__vrt
+  }
+
+  /**
+   * Close input if open as VRT GDAL Dataset.
+   */
+  close_vrt() {
+    try {
+      this.__vrt.close()
+    } catch {
+    } finally {
+      this.__vrt = null
+    }
   }
 
   /**
@@ -647,48 +696,41 @@ class Source {
   }
 
   /**
-  * Write VRT (OGR Virtual Format) for input.
+  * Get VRT (OGR Virtual Format) file content.
   *
   * Relevant only for tabular data with feature geometry in fields.
-  * Writes the file to the input path with '.vrt' added.
-  *
   * See https://gdal.org/drivers/vector/vrt.html
   *
-  * @param {boolean} [keep_geometry_fields=false] - Whether VRT file should
+  * @param {boolean} [keep_geometry_fields=false] - Whether VRT should
   *   return geometry fields as regular feature fields
-  * @return {string} Path to VRT file.
+  * @return {string} VRT file content
   */
-  write_vrt(keep_geometry_fields = false) {
+  get_vrt(keep_geometry_fields = false) {
     const srs = this.get_srs_string()
     const geometry = this.get_geometry()
     // Build <GeometryField> attributes
     let attributes
     if (geometry.wkt && typeof geometry.wkt === 'string') {
-      attributes = `encoding = "WKT" field = "${geometry.wkt}"`
+      attributes = `encoding="WKT" field="${geometry.wkt}"`
     } else if (
       geometry.x && typeof geometry.x === 'string' &&
       geometry.y && typeof geometry.y === 'string') {
-      attributes = `encoding = "PointFromColumns" x = "${geometry.x}" y = "${geometry.y}"`
+      attributes = `encoding="PointFromColumns" x="${geometry.x}" y="${geometry.y}"`
     } else {
       this.error('Invalid geometry:', geometry)
     }
     // Build VRT
     const layer = this.open().layers.get(0)
-    const layer_path = layer.ds.description
-    const basename = path.parse(layer_path).base
-    const vrt =
-      `< OGRVRTDataSource >
-          <OGRVRTLayer name="${layer.name}">
-            <SrcDataSource relativeToVRT="1">${basename}</SrcDataSource>
-            <GeometryType>wkbPoint</GeometryType>
-            <LayerSRS>${srs}</LayerSRS>
-            <GeometryField ${attributes} reportSrcColumn="${keep_geometry_fields}" />
-          </OGRVRTLayer>
-     </OGRVRTDataSource > `
-    // Write VRT
-    const vrt_path = `${layer_path}.vrt`
-    fs.writeFileSync(vrt_path, vrt)
-    return vrt_path
+    const layer_path = path.resolve(layer.ds.description)
+    return (
+      `<OGRVRTDataSource>
+        <OGRVRTLayer name="${layer.name}">
+          <SrcDataSource relativeToVRT="0">${layer_path}</SrcDataSource>
+          <GeometryType>wkbPoint</GeometryType>
+          <LayerSRS>${srs}</LayerSRS>
+          <GeometryField ${attributes} reportSrcColumn="${keep_geometry_fields}" />
+        </OGRVRTLayer>
+      </OGRVRTDataSource>`.replace(/^[ ]{6}/gm, ''))
   }
 
   /**
@@ -769,11 +811,8 @@ class Source {
     }
     if (!input_layer.features.first().getGeometry() && !this.props.coordsFunc) {
       // Write (and then read) VRT file with geometry definition
-      this.log('Writing VRT file')
-      this.write_vrt(options.keep_geometry_fields)
-      // Destroy link to original input and link to VRT file
-      this.close()
-      input = this.open()
+      this.log('Writing and reading VRT file')
+      input = this.open_vrt(options.keep_geometry_fields)
       input_layer = input.layers.get(0)
     }
     // Prepare input schema

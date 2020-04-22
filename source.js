@@ -569,7 +569,7 @@ class Source {
       for (let [key, value] of Object.entries(f.fields.toObject())) {
         const formatter = helpers.gdal_string_formatters[types[key]]
         value = formatter ? formatter(value) : value
-        if (value && values[key].size < options.max) {
+        if (values[key].size < options.max) {
           values[key].add(value)
         }
       }

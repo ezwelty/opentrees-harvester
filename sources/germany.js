@@ -246,8 +246,8 @@ module.exports = [
   },
   {
     id: 'moers_de',
-    short: 'Mörs',
-    long: 'Stadt Mörs',
+    short: 'Moers',
+    long: 'Stadt Moers',
     download: 'https://www.offenesdatenportal.de/dataset/cc69db13-f6b9-4319-9ee6-3f385dc7d944/resource/6c36f4a2-560e-4689-93cc-6af845247c38/download/baumstrauch.json',
     info: 'https://www.offenesdatenportal.de/dataset/baume-und-straucher-in-bebauten-ortslagen',
     license: {

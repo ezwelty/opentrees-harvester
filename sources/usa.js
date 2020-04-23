@@ -682,13 +682,14 @@ module.exports = [
     }
   },
   {
-    // broken
-    // alternative, also broken: http://opendata.minneapolismn.gov/datasets/tree-inventory/data
+    // Broken download link
     pending: true,
     id: 'minneapolis_mn',
     short: 'Minneapolis',
+    long: 'City of Minneapolis',
     download: 'https://opendata.arcgis.com/datasets/5c607cf94314467f87e285526b72e4d6_0.csv',
-    info: 'http://hub.arcgis.com/datasets/cityoflakes::tree-inventory'
+    info: 'http://opendata.minneapolismn.gov/datasets/tree-inventory',
+    license: { id: 'CC-BY-SA-4.0' }
   },
   {
     id: 'pacific_grove_ca',

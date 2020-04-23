@@ -214,8 +214,11 @@ class Source {
    * @property {object} centre - Centre point (in case automatic placement is bad)
    * @property {number} centre.lon - Longitude in decimal degrees (EPSG:4326)
    * @property {number} centre.lat - Latitude in decimal degrees (EPSG:4326)
-   * @property {number} cmd - Shell command executed from working directory (Source.dir) after file download and unpack
-   * @property {string|string[]} download - Remote file path(s) to download and unpack
+   * @property {string|string[]} download - Remote file paths to download and unpack
+   * @property {string|string[]} execute - Shell commands executed from working
+   * directory (Source.dir) after file download and unpack. In `npm run`
+   * commands, use the INIT_CWD variable to build paths to input files
+   * (https://docs.npmjs.com/cli/run-script).
    * @property {string} info - Page with more information
    * @property {string} language - Language tag (e.g. "en", "en-US") of data contents, especially of common names
    * @property {object} license - License
@@ -414,9 +417,11 @@ class Source {
     return Promise.
       all(urls.map(url => this.get_file(url))).
       then(() => {
-        if (this.props.cmd) {
-          this.log('Executing:', this.props.cmd)
-          return exec(`cd '${this.dir}' && ${this.props.cmd}`)
+        const cmd = typeof this.props.execute === 'string' ?
+          this.props.execute : this.props.execute.join(' && ')
+        if (cmd) {
+          this.log('Executing:', this.props.execute)
+          return exec(`cd '${this.dir}' && ${cmd}`)
         }
       }).
       then(() => this.success('Ready to process'))
@@ -537,8 +542,8 @@ class Source {
       this.__vrt = null
     }
     if (!this.__vrt) {
-      // HACK: Avoids *.* name to hide from find()
-      const vrt_path = path.join(this.dir, '_vrt')
+      // HACK: Writes to local dotfile to hide from find()
+      const vrt_path = path.join(this.dir, '.vrt')
       fs.writeFileSync(vrt_path, this.get_vrt(keep_geometry_fields))
       this.__vrt = gdal.open(vrt_path)
     }

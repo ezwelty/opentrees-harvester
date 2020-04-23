@@ -5,9 +5,9 @@ module.exports = [
     long: 'Câmara Municipal de Cascais',
     download: 'https://dadosabertos.cascais.pt/dataset/5ae9100a-01ea-45da-bb02-e033aa5ebe90/resource/9a3f0648-de96-4075-88d5-f0e15ded4d2a/download/mnarvore.geojson',
     info: 'http://dadosabertos.cascais.pt/dataset/arvores-em-espaco-publico',
-    // GeoJSON has invalid lines that must be removed
+    // GeoJSON has extra ',' that must be removed
     // Other available formats are valid but have corrupt characters
-    cmd: "grep -v '^,' mnarvore.geojson > temp && mv temp mnarvore.geojson",
+    execute: `npm run replace '^,\\$' '' '$INIT_CWD/mnarvore.geojson' -- --silent=true`,
     license: { id: 'CC0-1.0' },
     delFunc: x => x['Geometry name'] === 'Localização Abate',
     crosswalk: {

@@ -68,14 +68,30 @@ module.exports = [
     }
   },
   {
-    // ugh, very messed up. Even most of the coordinates are bad, like "[-3,44509490754315]"
-    pending: true,
-    id: 'madrid_es',
-    short: 'Madrid',
-    download: 'https://datosabiertos.ayto-arganda.es/dataset/bc20e1e3-0c6c-4f0e-817b-c95f052e3783/resource/411fb473-7620-4060-be7a-5f2bebc090b4/download/argandainventario2015.zip',
-    info: 'https://datos.gob.es/es/catalogo/l01280148-inventario-arboles-casco-urbano-20151',
+    id: 'arganda-del-rey',
+    long: 'Ayuntamiento de Arganda del Rey',
+    short: 'Arganda del Rey',
+    download: 'https://datosabiertos.ayto-arganda.es/dataset/bc20e1e3-0c6c-4f0e-817b-c95f052e3783/resource/f41cfeb0-6d98-48c1-b8be-fa50c3b958aa/download/arbolado.csv',
+    execute: [
+      // CSV uses ',' as decimal separator and 'sp,' (and ';' as delimiter)
+      "npm run replace ',' '.' '$INIT_CWD/arbolado.csv' -- --silent=true",
+      // Strangely, GDAL needs the field names COORDENADA (X|Y) quoted
+      `npm run replace '(COORDENADA [A-Z])' '"\\$1"' '$INIT_CWD/arbolado.csv' -- --silent=true`
+    ],
+    srs: 'EPSG:32630', // WGS84 UTM Zone 30N
+    info: 'https://datosabiertos.ayto-arganda.es/dataset/bc20e1e3-0c6c-4f0e-817b-c95f052e3783',
+    license: { id: 'CC-BY-4.0' },
+    delFunc: x => x['ESTADO'] === 'ALCORQUE VACIO',
     crosswalk: {
-      description: 'Description', // seriously? HTML table. this cannot end well.
+      ref: 'REFERENCIA',
+      scientific: 'EMPLAZAMIENTO',
+      common: 'NOMBRE COMUN',
+      height: 'ALTURA', // 0-60: meter
+      dbh: 'DIAMETRO', // 0-200: centimer trunk
+      circumference: 'PERIMETRO', // 0-400: centimeter trunk
+      age: 'EDAD', // 0-100: year
+      location: x => ({ 'ZONA VERDE': 'park', VIARIO: 'street' })[x.ZONA],
+      health: x => ({ 'ARBOL SECO': 'dead', ENFERMO: 'poor', DUDOSO: 'fair', REGULAR: 'good', BUENO: 'very good' })[x.ESTADO]
     }
   },
   {

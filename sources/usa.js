@@ -754,13 +754,14 @@ module.exports = [
     }
   },
   {
-    // broken - generating
+    // Broken download link
     pending: true,
     id: 'ucsb',
     short: 'UC Santa Barbara',
     long: 'University of California, Santa Barbara',
     download: 'https://opendata.arcgis.com/datasets/c6eb1b782f674be082f9eb764314dda5_0.csv',
-    info: 'http://hub.arcgis.com/datasets/ucsb::treekeeper-012116'
+    info: 'http://spatialdiscovery-ucsb.opendata.arcgis.com/datasets/treekeeper-012116',
+    license: {} // None specified
   },
   {
     id: 'sarasota_fl',

@@ -16,8 +16,7 @@ module.exports = [
     short: 'Copenhagen'
   },
   {
-    // Data is empty
-    pending: true,
+    pending: 'Data is empty',
     id: 'ballerup',
     country: 'Denmark',
     short: 'Ballerup',

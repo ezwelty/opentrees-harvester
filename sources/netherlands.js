@@ -282,8 +282,7 @@ module.exports = [
     license: { id: 'CC-BY-4.0' }
   },
   {
-    // Broken download link
-    pending: true,
+    pending: 'Broken download link',
     id: 'lingewaard_nl',
     short: 'Lingewaard',
     download: 'https://geodatastore.pdok.nl/id/dataset/3251be7c-b01f-4503-8858-0958c004e6de',

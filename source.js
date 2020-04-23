@@ -256,6 +256,7 @@ class Source {
   /**
    * Source properties
    * @typedef {object} DatasetProperties
+   * @property {string} pending - Pending issues preventing further processing
    * @property {string} id - Unique identifer
    * @property {string} primary - Identifier of primary dataset (in cases where 2+ datasets constitute the inventory)
    * @property {string} long - Full name for the government body (e.g. City of Melbourne)

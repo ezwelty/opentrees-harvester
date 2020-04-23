@@ -682,8 +682,7 @@ module.exports = [
     }
   },
   {
-    // Broken download link
-    pending: true,
+    pending: 'Broken download link',
     id: 'minneapolis_mn',
     short: 'Minneapolis',
     long: 'City of Minneapolis',
@@ -754,8 +753,7 @@ module.exports = [
     }
   },
   {
-    // Broken download link
-    pending: true,
+    pending: 'Broken download link',
     id: 'ucsb',
     short: 'UC Santa Barbara',
     long: 'University of California, Santa Barbara',

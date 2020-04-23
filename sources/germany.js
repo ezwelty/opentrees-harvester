@@ -232,8 +232,7 @@ module.exports = [
     }
   },
   {
-    // Broken link
-    pending: true,
+    pending: 'Broken download link',
     id: 'krefeld_de',
     short: 'Krefeld',
     long: 'Stadt Krefeld',

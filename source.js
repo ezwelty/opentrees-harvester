@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const util = require('util')
+const exec = util.promisify(require('child_process').exec)
 const colors = require('colors')
 const glob = require('glob')
 const gdal = require('gdal-next')
@@ -97,6 +98,7 @@ const CROSSWALK_FIELDS = {
     description: 'Maturity',
     type: gdal.OFTString,
     constraints: {
+      // TODO: Simplify to 'young', 'mature', 'old'
       enum: ['young', 'semi-mature', 'mature', 'over-mature']
     }
   },
@@ -165,7 +167,11 @@ const CROSSWALK_FIELDS = {
     type: gdal.OFTString
   },
   owner: {
-    description: 'Name of owner or ownership description',
+    description: 'Name or description of owner (person or agency)',
+    type: gdal.OFTString
+  },
+  manager: {
+    description: 'Name or description of manager or maintainer',
     type: gdal.OFTString
   },
   // NOTE: Only Canada.regina
@@ -208,7 +214,8 @@ class Source {
    * @property {object} centre - Centre point (in case automatic placement is bad)
    * @property {number} centre.lon - Longitude in decimal degrees (EPSG:4326)
    * @property {number} centre.lat - Latitude in decimal degrees (EPSG:4326)
-   * @property {string|string[]} download - Remote file path(s)
+   * @property {number} cmd - Shell command executed from working directory (Source.dir) after file download and unpack
+   * @property {string|string[]} download - Remote file path(s) to download and unpack
    * @property {string} info - Page with more information
    * @property {string} language - Language tag (e.g. "en", "en-US") of data contents, especially of common names
    * @property {object} license - License
@@ -391,7 +398,7 @@ class Source {
   }
 
   /**
-   * Download and unpack files.
+   * Download and unpack files and execute shell commands.
    * @param {boolean} [overwrite=false] - Whether to proceed even if working
    *  directory is not empty.
    * @return {Promise}
@@ -404,9 +411,15 @@ class Source {
     if (typeof urls === 'string') {
       urls = [urls]
     }
-    return Promise.all(urls.map(url => this.get_file(url))).
-      then(files =>
-        this.success('Downloaded and unpacked:', files.flat().sort()))
+    return Promise.
+      all(urls.map(url => this.get_file(url))).
+      then(() => {
+        if (this.props.cmd) {
+          this.log('Executing:', this.props.cmd)
+          return exec(`cd '${this.dir}' && ${this.props.cmd}`)
+        }
+      }).
+      then(() => this.success('Ready to process'))
   }
 
   /**
@@ -420,7 +433,7 @@ class Source {
     const downloader = new DownloaderHelper(url, this.dir, options)
     downloader.
       on('download', info => this.log(`Downloading ${info.fileName}`)).
-      on('end', info => this.log(`Downloaded ${info.fileName} (${(info.downloadedSize / 1e6).toFixed()} MB)`)).
+      on('end', info => this.success(`Downloaded ${info.fileName} (${(info.downloadedSize / 1e6).toFixed()} MB)`)).
       on('error', error => this.error(`Download failed for ${url}`)).
       on('retry', (attempt, opts) => this.warn(`Download attempt ${attempt} of ${opts.maxRetries} in ${opts.delay / 1e3} s`))
     return downloader.start().
@@ -431,11 +444,8 @@ class Source {
             const filename = path.relative(this.dir, file)
             if (files.length) {
               const filenames = files.map(x => x.path)
-              this.log(`Unpacked ${filename}:`, filenames)
+              this.success(`Unpacked ${filename}:`, filenames)
               fs.unlinkSync(file)
-              return filenames
-            } else {
-              return [filename]
             }
           })
       })

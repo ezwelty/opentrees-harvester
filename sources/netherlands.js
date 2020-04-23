@@ -282,7 +282,7 @@ module.exports = [
     license: { id: 'CC-BY-4.0' }
   },
   {
-    // broken
+    // Broken download link
     pending: true,
     id: 'lingewaard_nl',
     short: 'Lingewaard',

@@ -115,6 +115,7 @@ const CROSSWALK_FIELDS = {
     type: gdal.OFTString,
     constraints: {
       // TODO: Replace 'council' with more global term?
+      // 'park', 'street', 'local', 'regional', 'federal', 'school', 'private', ...
       enum: ['park', 'street', 'council']
     }
   },
@@ -139,10 +140,18 @@ const CROSSWALK_FIELDS = {
     description: 'Year installed',
     type: gdal.OFTInteger
   },
+  // TODO: Convert to absolute years
   age: {
     description: 'Age',
     unit: 'year',
     type: gdal.OFTInteger
+  },
+  gender: {
+    description: 'Gender, applicable to dioecious plants',
+    type: gdal.OFTString,
+    constraints: {
+      enum: ['male', 'female']
+    }
   },
   // TODO: Convert to absolute years
   ule: {
@@ -161,7 +170,6 @@ const CROSSWALK_FIELDS = {
     type: gdal.OFTInteger
   },
   // Other
-  // TODO: Merge with description?
   note: {
     description: 'Notes',
     type: gdal.OFTString

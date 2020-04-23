@@ -103,7 +103,8 @@ function map_object(obj, crosswalk, keep = false, prefix = '_') {
  */
 const geometry_fields = {
   wkt: [
-    'geom', 'the_geom', 'wkb_geometry', 'shape', 'geo_shape', 'geometrie'
+    'geom', 'the_geom', 'wkb_geometry', 'shape', 'geo_shape', 'geometrie',
+    'geometry'
   ],
   x: [
     'longitude', 'lon', 'lng', 'long', 'x', 'x_long', 'x_koordina',

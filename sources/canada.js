@@ -442,8 +442,8 @@ module.exports = [
       // CommonName_txt: <Genus> <species|sp.> '<cultivar>' (<common>)
       // TreeName: Equal (?) to CommonName_txt but some characters are corrupt
       scientific: x => {
-        // TODO: Trailing white space, 'unknown', 'sp./spp', 'x.' 
-        const match = x['CommonName_txt'].match(/^\s*([^\(\'\"\‘]+)\s*/)
+        // TODO: 'unknown', 'sp./spp', 'x.' 
+        const match = x['CommonName_txt'].match(/^\s*([^\(\'\"\‘]+)(?:$|\s+)/)
         if (match) return match[1]
       },
       cultivar: x => {

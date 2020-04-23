@@ -23,12 +23,85 @@ module.exports = [
     long: 'Greater London Authority',
     country: 'United Kingdom',
     centre: { lon: -0.1051, lat: 51.5164 },
+    // Camden and Lambeth provides more recent and detailed data directly
+    delFunc: x => ['Camden', 'Lambeth'].includes(x.borough),
     crosswalk: {
       ref: 'gla_id',
       scientific: 'species_name',
       common: 'common_name',
       description: 'display_name',
       //gla_id,borough,species_name,common_name,display_name,load_date,easting,northing,longitude,latitude
+    }
+  },
+  {
+    id: 'camden-uk',
+    info: 'https://opendata.camden.gov.uk/Environment/Trees-In-Camden/csqp-kdss',
+    download: 'https://opendata.camden.gov.uk/api/views/csqp-kdss/rows.csv?accessType=DOWNLOAD',
+    license: { id: 'OGL-UK-3.0' },
+    short: 'Camden',
+    long: 'London Borough of Camden',
+    delFunc: x => x['Number Of Trees'] == 0 || x['Scientific Name'].match(/^vacant /i),
+    geometry: { x: 'Longitude', y: 'Latitude' },
+    epsg: 'EPSG:4326',
+    crosswalk: {
+      count: 'Number Of Trees',
+      location: x => ({
+        'Corporate Landlord': 'corporate',
+        'Education': 'school',
+        'Highways': 'street',
+        'Housing': 'residential',
+        'Parks': 'park'
+      })[x['Contract Area']],
+      // Scientific Name: <Genus> <species> ... (|'|")<(C|c)ultivar>(|'|")
+      // Messy specific epithets (e.g. 'Yucca unidentified species')
+      scientific: 'Scientific Name',
+      // Common Name: <Alder> - <Common>
+      common: x => x['Common Name'] ?
+        x['Common Name'].replace(/^\s*(.*) - (.*).*/, '$2 $1') : null,
+      // Inspection Date: DD/MM/YYYY
+      updated: x => x['Inspection Date'] ?
+        x['Inspection Date'].replace(/^([0-9]{2})\/([0-9]{2})\/([0-9]{4}).*$/, '$3-$2-$1') : null,
+      height: 'Height In Metres',
+      crown: 'Spread In Metres',
+      dbh: 'Diameter In Centimetres At Breast Height',
+      maturity: x => ({
+        'Juvenile': 'young',
+        'Middle aged': 'semi-mature',
+        'Mature': 'mature',
+        'Veteran': 'mature',
+        'Over Mature': 'over-mature'
+      })[x['Maturity']],
+      notable: x => x['Maturity'] === 'Veteran' ? 1 : null,
+      health: x => ({
+        'Dead': 'dead',
+        'Poor': 'poor',
+        'Fair': 'fair',
+        'Good': 'good',
+        'Excellent': 'excellent'
+      })[x['Physiological Condition']],
+      value: 'Capital Asset Value For Amenity Trees', // GBP
+      carbon: 'Carbon Storage In Kilograms',
+      carbon_annual: 'Gross Carbon Sequestration Per Year In Kilograms',
+      ref: 'Identifier'
+    }
+  },
+  {
+    id: 'lambeth',
+    short: 'Lambeth',
+    long: 'London Borough of Lambeth',
+    info: 'http://lambethopenmappingdata-lambethcouncil.opendata.arcgis.com/datasets/4830faac39b44e3da6a18bc70f6ad3b9_0',
+    download: 'https://opendata.arcgis.com/datasets/4830faac39b44e3da6a18bc70f6ad3b9_0.csv',
+    license: { id: 'OGL-UK-3.0' },
+    geometry: { x: 'X', y: 'Y' },
+    srs: 'EPSG:4326',
+    delFunc: x => x.COMMONNAME === "'Vacant tree pit'" ||
+      x.SPECIES.match(/tree removed|^\[/i),
+    crosswalk: {
+      ref: 'OBJECTID',
+      // SPECIES & COMMONNAME: Quoted strings are null (e.g. 'Species unknown')
+      scientific: x => x.SPECIES.match(/^'|unknown/i) ? null : x.SPECIES,
+      common: x => x.COMMONNAME.match(/^'/) ? null : x.COMMONNAME,
+      health: x => x.COMMONNAME === "'Dead Tree'" ? 'dead' : null,
     }
   },
   {
@@ -126,23 +199,5 @@ module.exports = [
       updated: 'survey_date'
     },
     centre: { lon: -3.684357, lat: 51.826852 }
-  },
-  {
-    // these seem to be included in london already, in better quality.
-    pending: true,
-    id: 'camden-uk',
-    download: 'https://opendata.camden.gov.uk/api/views/csqp-kdss/rows.csv?accessType=DOWNLOAD',
-    short: 'Camden',
-    long: 'Camden Council',
-    crosswalk: {
-      scientific: 'Scientific Name',
-      common: 'Common Name',
-      height: 'Height in Metres',
-      spread: 'Spread in Metres',
-      dbh: 'Diameter In Centimetres At Breast Height',
-      maturity: 'Maturity',
-      health: 'Physiological Condition',
-      ref: 'Identifier'
-    }
-  },
+  }
 ].map(s => ({ ...s, country: 'United Kingdom' }))

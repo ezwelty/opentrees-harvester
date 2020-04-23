@@ -18,32 +18,41 @@ const CROSSWALK_FIELDS = {
   },
   // Names
   scientific: {
-    description: 'Scientific name (e.g. "Malus pumila")',
-    type: gdal.OFTString
+    description: 'Scientific name including subspecies epithets and cultivar',
+    type: gdal.OFTString,
+    examples: [
+      'Malus', 'Malus sp.', 'Malus pumila', 'Malus pumila var. asiatica',
+      'Malus x asiatica', `Malus pumila 'Gala'`
+    ]
   },
   family: {
-    description: 'Family (e.g. "Rosaceae")',
-    type: gdal.OFTString
+    description: 'Family (capitalized)',
+    type: gdal.OFTString,
+    examples: ['Rosaceae']
   },
   genus: {
-    description: 'Genus (e.g. "Malus")',
-    type: gdal.OFTString
+    description: 'Genus (capitalized)',
+    type: gdal.OFTString,
+    examples: ['Malus']
   },
   species: {
-    description: 'Species (e.g. "pumila")',
-    type: gdal.OFTString
+    description: 'Species (lowercase)',
+    type: gdal.OFTString,
+    examples: ['pumila']
+  },
+  cultivar: {
+    description: 'Cultivar (capitalized)',
+    type: gdal.OFTString,
+    examples: ['Gala']
+  },
+  common: {
+    description: 'Common name (lowercase, except for proper nouns)',
+    type: gdal.OFTString,
+    examples: ['apple', 'live oak', 'California poppy']
   },
   // TODO: Better distinguish between subspecies epithets and cultivar
   variety: {
-    description: 'Subspecies, variety, form, cultivar, etc. (e.g. "asiatica")',
-    type: gdal.OFTString
-  },
-  cultivar: {
-    description: 'Cultivar (e.g. "Gala")',
-    type: gdal.OFTString
-  },
-  common: {
-    description: 'Common name (e.g. "Apple")',
+    description: 'Subspecies, variety, form, cultivar, etc.',
     type: gdal.OFTString
   },
   description: {
@@ -86,11 +95,16 @@ const CROSSWALK_FIELDS = {
     description: 'Number of trunks',
     type: gdal.OFTInteger
   },
+  count: {
+    description: 'Number (default: 1)',
+    type: gdal.OFTInteger
+  },
   // Condition
   health: {
     description: 'Health rating',
     type: gdal.OFTString,
     constraints: {
+      // TODO: Remove 'very good' ?
       enum: ['dead', 'poor', 'fair', 'good', 'very good', 'excellent']
     }
   },
@@ -116,7 +130,15 @@ const CROSSWALK_FIELDS = {
     constraints: {
       // TODO: Replace 'council' with more global term?
       // 'park', 'street', 'local', 'regional', 'federal', 'school', 'private', ...
-      enum: ['park', 'street', 'council']
+      enum: [
+        'park', 'street',
+        'council', // Australia
+        'canton', // Switzerland
+        'school',
+        'federal',
+        'corporate',
+        'residential'
+      ]
     }
   },
   // Time
@@ -182,9 +204,18 @@ const CROSSWALK_FIELDS = {
     description: 'Name or description of manager or maintainer',
     type: gdal.OFTString
   },
-  // NOTE: Only Canada.regina
   value: {
-    description: 'Monetary value',
+    description: 'Monetary value in the local currency',
+    type: gdal.OFTReal
+  },
+  carbon: {
+    description: 'Carbon storage',
+    unit: 'kilogram',
+    type: gdal.OFTReal
+  },
+  carbon_annual: {
+    description: 'Carbon storage',
+    unit: 'kilogram / year',
     type: gdal.OFTReal
   },
   edible: {
@@ -195,7 +226,7 @@ const CROSSWALK_FIELDS = {
     }
   },
   notable: {
-    description: 'Whether notable (champion, heritage, memorial, etc)',
+    description: 'Whether notable (champion, heritage, memorial, veteran, etc)',
     type: gdal.OFTInteger,
     constraints: {
       enum: [0, 1]
@@ -425,9 +456,9 @@ class Source {
     return Promise.
       all(urls.map(url => this.get_file(url))).
       then(() => {
-        const cmd = typeof this.props.execute === 'string' ?
-          this.props.execute : this.props.execute.join(' && ')
-        if (cmd) {
+        if (this.props.execute) {
+          const cmd = typeof this.props.execute === 'string' ?
+            this.props.execute : this.props.execute.join(' && ')
           this.log('Executing:', this.props.execute)
           return exec(`cd '${this.dir}' && ${cmd}`)
         }

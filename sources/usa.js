@@ -999,17 +999,5 @@ module.exports = [
       owner: 'OWNEDBY'
     },
     primary: 'san_jose_ca1'
-  },
-  {
-    // these are probably generated from lidar or satellite and don't contain any actual information about each tree
-    pending: true,
-    id: 'loudoun',
-    country: 'United States',
-    short: 'Loudoun',
-    download: 'http://geohub-loudoungis.opendata.arcgis.com/datasets/21ece36a6fbd447b95b9446f752552a4_0.zip',
-    info: 'https://catalog.data.gov/dataset/loudoun-trees-9b144',
-    crosswalk: {
-      ref: 'TR_LOUD_ID'
-    }
   }
 ].map(s => ({ ...s, country: 'United States' }))

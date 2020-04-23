@@ -225,11 +225,22 @@ const CROSSWALK_FIELDS = {
       enum: [0, 1]
     }
   },
+  harvest: {
+    description: 'Description of when to harvest',
+    type: gdal.OFTString
+  },
   notable: {
     description: 'Whether notable (champion, heritage, memorial, veteran, etc)',
     type: gdal.OFTInteger,
     constraints: {
       enum: [0, 1]
+    }
+  },
+  origin: {
+    description: 'Geographic origin at that location',
+    type: gdal.OFTString,
+    constraints: {
+      enum: ['endemic', 'native', 'introduced', 'naturalized', 'invasive']
     }
   }
 }

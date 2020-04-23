@@ -761,7 +761,7 @@ module.exports = [
     long: 'University of California, Santa Barbara',
     download: 'https://opendata.arcgis.com/datasets/c6eb1b782f674be082f9eb764314dda5_0.csv',
     info: 'http://spatialdiscovery-ucsb.opendata.arcgis.com/datasets/treekeeper-012116',
-    license: {} // None specified
+    license: { name: 'No license specified' }
   },
   {
     id: 'sarasota_fl',
@@ -850,12 +850,51 @@ module.exports = [
     }
   },
   {
-    pending: true,
     id: 'uc_davis',
     short: 'UC Davis',
-    long: 'University of California Davis',
-    info: 'http://hub.arcgis.com/datasets/ucda::uc-davis-tree-database',
-    download: 'https://opendata.arcgis.com/datasets/07939ef894984a95b58098315f80c046_0.zip',
+    long: 'University of California, Davis',
+    info: 'https://data-ucda.opendata.arcgis.com/datasets/uc-davis-tree-database',
+    download: 'https://opendata.arcgis.com/datasets/07939ef894984a95b58098315f80c046_0.csv',
+    license: { name: 'No license specified' },
+    geometry: { x: 'X', y: 'Y' },
+    srs: 'EPSG:2226',
+    crosswalk: {
+      ref: 'TreeID',
+      // TODO PlantingDate: MM/YYYY, DD/MM/YYYY, YYYY, or text (e.g. 'early 1980s')
+      planted: 'PlantingDate',
+      updated: 'InventoryDate',
+      genus: 'Genus',
+      species: 'SpecificEpithet',
+      cultivar: 'CultivarName',
+      scientific: 'ScientificName',
+      common: 'CommonName',
+      origin: x => ({
+        'Introduced': 'introduced',
+        'Native': 'native',
+        'Naturalized': 'naturalized'
+      })[x.Origin],
+      dbh: 'DBH', // centimeters (confirmed by DBH_in)
+      height_min: x => ({
+        '0': 0, '< 5 meters': 0, '5 - 10 meters': 5, '11 - 15 meters': 11,
+        '16 - 20 meters': 16, '20 - 25 meters': 20, '> 25 meters': 25
+      })[x.Height],
+      height_max: x => ({
+        '0': 0, '< 5 meters': 5, '5 - 10 meters': 10, '11 - 15 meters': 15,
+        '16 - 20 meters': 20, '20 - 25 meters': 25
+      })[x.Height],
+      // TODO Stems: '> 10'
+      trunks: 'Stems',
+      health: x => ({
+        'very poor': 'poor',
+        'poor': 'poor',
+        'fair': 'fair',
+        'good': 'good',
+        'excellent': 'excellent'
+      })[x.Condition_Rating],
+      notable: x => x.MemorialTree ? Number(x.MemorialTree == 'Yes') : null,
+      edible: x => x.edible ? Number(x.edible == 'Yes') : null,
+      harvest: 'Harvest_Window'
+    }
   },
   {
     id: 'hudson_river_park',

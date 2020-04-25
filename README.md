@@ -88,76 +88,74 @@ Numeric and date ranges can be expressed by appending `_min` and `_max` to the f
 
 | name | description |
 | -- | -- |
-| `ref` | Original feature identifier | 
+`ref` | Original feature identifier.
 
 ### Name & Gender
 
 | name | description |
 | -- | -- |
 | *Primary* | |
-`scientific` | Scientific name including infraspecific epithets, hybrids, and cultivar (e.g. `Malus`, `Malus pumila`, `Malus pumila var. asiatica`, `Malus x asiatica`, `Malus pumila 'Gala'`)
-`common` | Common name (e.g. `apple`, `live oak`, `California poppy`)
-`gender` | Gender, applicable to dioecious plants: [`male`, `female`]
+`scientific` | Scientific name, including infraspecific epithets, hybrids, and cultivar (e.g. `Malus`, `Malus pumila`, `Malus pumila var. asiatica`, `Malus x asiatica`, `Malus pumila 'Gala'`).
+`common` | Common name (e.g. `apple`, `live oak`, `California poppy`).
+`gender` | Gender, applicable to dioecious plants: [`male`, `female`].
 | *Secondary* | |
-`family` | Family (e.g. `Rosaceae`)
-`genus` | Genus (e.g. `Malus`)
-`species` | Species (e.g. `pumila`)
-`cultivar` | Cultivar (e.g. `Gala`)
-`description` | Other name information not covered by other fields
+`family` | Family (e.g. `Rosaceae`).
+`genus` | Genus (e.g. `Malus`).
+`species` | Species (e.g. `pumila`).
+`cultivar` | Cultivar (e.g. `Gala`).
+`description` | Other name information not covered by other fields.
 | *Disputed* | |
-`variety` | Any infrastpecific epithet (subspecies, variety, form) or cultivar (e.g. `asiatica`, `Gala`)
+`variety` | Any infraspecific epithet (subspecies, variety, form) or cultivar (e.g. `asiatica`, `Gala`).
 
 
 ### Dimension
 
 | name | description |
 | -- | -- |
-`count` | Number of individuals, if more than `1` (default)
-`height` | Height [m]
-`dbh` | Diameter at breast height [cm]
-`crown` | Crown spread (average diameter of crown) [m]
-`trunks` | Number of trunks or stems
+`count` | Number of individuals, if more than `1` (the default).
+`height` | Height in meters.
+`dbh` | Diameter at breast height in centimeters.
+`crown` | Crown spread (average diameter of crown) in meters.
+`trunks` | Number of trunks or stems.
 | *Disputed* | |
-`spread` | Crown spread [m]
-`circumference` | Circumference [?]
-`diameter` | Diameter [?]
+`spread` | Crown spread (average diameter of crown) in meters.
+`circumference` | Circumference (*units and meaning unclear*).
+`diameter` | Diameter (*units and meaning unclear*).
 
 ### Condition
 
 | name | description |
 | -- | -- |
-`health` | Health: [`dead`, `poor`, `fair`, `good`, `very good`, `excellent`]
-`maturity` | Maturity: [`young`, `semi-mature`, `mature`, `over-mature`]
-`solidity` | Solidity (unlikelihood of falling): [`failed`, `poor`, `fair`, `good`]
+`health` | Health: [`dead`, `poor`, `fair`, `good`, `very good`, `excellent`].
+`maturity` | Maturity: [`young`, `semi-mature`, `mature`, `over-mature`].
+`solidity` | Solidity (unlikelihood of falling): [`failed`, `poor`, `fair`, `good`].
 
 ### Time
 
 | name | description |
 | -- | -- |
-`updated` | Date that data was last updated
-`planted` | Date of planting (or ideally, date of sprouting)
-`birth` | Date of birth
-`death` | Date of (past or future) death
-`age` | Age [year]
-`ule` | Useful life expectancy [year]
+`updated` | Date that data was last updated.
+`planted` | Date of planting (or ideally, date of birth).
+`age` | Age in years.
+`ule` | Useful life expectancy in years.
 | *Disputed* | |
-`installed` | Date installed
+`installed` | Date installed (*meaning unclear*).
 
 ### Other
 
 | name | description |
 | -- | -- |
-`note` | Miscellaneous notes
-`location` | Geopolitical setting: [`park`, `street`, `council` (Australia), `canton` (Switzerland), `school`, `federal`, `corporate`, `residential`]
-`owner` | Name or description of owner
-`manager` | Name or description of manager or maintainer
-`value` | Monetary value in the local currency
-`carbon` | Carbon storage [kg]
-`carbon_annual` | Carbon storage [kg/year]
-`edible` | Whether flagged as edible: [`true`, `false`]
-`harvest` | Notes about when or how to harvest
-`notable` | Whether flagged as notable: [`true`, `false`] (champion, heritage, memorial, veteran, etc)
-`origin` | Biogeographic origin: [`endemic`, `native`, `introduced`, `naturalized`, `invasive`]
+`note` | Notes.
+`location` | Geopolitical setting: [`park`, `street`, `council` (Australia), `canton` (Switzerland), `school`, `federal`, `corporate`, `residential`].
+`owner` | Name or description of owner.
+`manager` | Name or description of manager or maintainer.
+`value` | Monetary value in the local currency.
+`carbon` | Carbon storage in kilograms.
+`carbon_annual` | Carbon storage in kilograms per year.
+`edible` | Whether flagged as edible: [`true`, `false`].
+`harvest` | Notes about when or how to harvest.
+`notable` | Whether flagged as notable (champion, heritage, memorial, veteran, etc): [`true`, `false`].
+`origin` | Biogeographic origin: [`endemic`, `native`, `introduced`, `naturalized`, `invasive`].
 
 ## Development
 

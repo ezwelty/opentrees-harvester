@@ -32,11 +32,11 @@ const helpers = require('./helpers')
  * easting).
  * @property {string} geometry.y - Name of field with y coordinate (latitude,
  * northing).
- * @property {string|function} crosswalk - Crosswalk mapping to a target schema.
- * For each `key: value` pair, `key` is the new field name and `value` is either
- * the old field name (e.g. `height: 'HEIGHT'`) or a function that takes an
- * object (of feature field values) and returns a value (e.g. `height: obj =>
- * obj.HEIGHT / 100`).
+ * @property {Object.<string, string|function>} crosswalk - Crosswalk mapping to
+ * a target schema. For each `key: value` pair, `key` is the new field name and
+ * `value` is either the old field name (e.g. `height: 'HEIGHT'`) or a function
+ * that takes an object (of feature field values) and returns a value (e.g.
+ * `height: obj => obj.HEIGHT / 100`).
  * @property {function} delFunc - Function that takes an object (of feature
  * field values before the crosswalk) and returns a value (e.g. `obj =>
  * obj.HEALTH === 'dead'`). The feature is excluded from the output if the
@@ -56,7 +56,7 @@ const helpers = require('./helpers')
  * @property {string} primary - `id` of the primary source (for grouping sources
  * together).
  * @property {string} long - Full name of the government body, university, or
- * other institution (e.g. 'City of Melbourne').
+ * other institution (e.g. `City of Melbourne`).
  * @property {string} short - Short name (e.g. `Melbourne`).
  * @property {string} country - Country name in English (e.g. `Australia`).
  * @property {object} centre - Centre point (for map label placement).
@@ -64,9 +64,9 @@ const helpers = require('./helpers')
  * @property {number} centre.lat - Latitude in decimal degrees (EPSG:4326).
  * @property {string} info - Path to page with more information.
  * @property {string} language - Language of contents as an [ISO
- * 639-1](https://en.wikipedia.org/wiki/ISO_639-1) code (e.g. en) and an
+ * 639-1](https://en.wikipedia.org/wiki/ISO_639-1) code (e.g. `en`) and an
  * optional [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
- * region code (e.g. "en-AU").
+ * region code (e.g. `en-AU`).
  * @property {object} license - Data license.
  * @property {string} license.id - License identifier from the Software Package
  * Data Exchange (SPDX) [license list](https://spdx.org/licenses/) (e.g.

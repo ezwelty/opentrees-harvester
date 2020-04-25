@@ -10,317 +10,98 @@ const decompress = require('decompress')
 const { table } = require('table')
 const helpers = require('./helpers')
 
-const CROSSWALK_FIELDS = {
-  // Identification
-  ref: {
-    description: 'Feature identifier in source',
-    type: gdal.OFTString
-  },
-  // Names
-  scientific: {
-    description: 'Scientific name including subspecies epithets and cultivar',
-    type: gdal.OFTString,
-    examples: [
-      'Malus', 'Malus sp.', 'Malus pumila', 'Malus pumila var. asiatica',
-      'Malus x asiatica', `Malus pumila 'Gala'`
-    ]
-  },
-  family: {
-    description: 'Family (capitalized)',
-    type: gdal.OFTString,
-    examples: ['Rosaceae']
-  },
-  genus: {
-    description: 'Genus (capitalized)',
-    type: gdal.OFTString,
-    examples: ['Malus']
-  },
-  species: {
-    description: 'Species (lowercase)',
-    type: gdal.OFTString,
-    examples: ['pumila']
-  },
-  cultivar: {
-    description: 'Cultivar (capitalized)',
-    type: gdal.OFTString,
-    examples: ['Gala']
-  },
-  common: {
-    description: 'Common name (lowercase, except for proper nouns)',
-    type: gdal.OFTString,
-    examples: ['apple', 'live oak', 'California poppy']
-  },
-  // TODO: Better distinguish between subspecies epithets and cultivar
-  variety: {
-    description: 'Subspecies, variety, form, cultivar, etc.',
-    type: gdal.OFTString
-  },
-  description: {
-    description: 'Any other name information not covered by other fields',
-    type: gdal.OFTString
-  },
-  // Dimensions
-  height: {
-    description: 'Height',
-    unit: 'meter',
-    type: gdal.OFTReal
-  },
-  dbh: {
-    description: 'Diameter at breast height',
-    unit: 'centimetre',
-    type: gdal.OFTReal,
-  },
-  crown: {
-    description: 'Diameter of crown',
-    unit: 'meter',
-    type: gdal.OFTReal
-  },
-  // TODO: May be the same as crown
-  spread: {
-    description: 'Crown spread',
-    unit: 'meter',
-    type: gdal.OFTReal
-  },
-  // TODO: Clarify whether circumference of trunk or crown, convert to diameter
-  circumference: {
-    description: 'Circumference',
-    type: gdal.OFTReal
-  },
-  // TODO: Clarify whether diameter of trunk or crown
-  diameter: {
-    description: 'Diameter',
-    type: gdal.OFTReal
-  },
-  trunks: {
-    description: 'Number of trunks',
-    type: gdal.OFTInteger
-  },
-  count: {
-    description: 'Number (default: 1)',
-    type: gdal.OFTInteger
-  },
-  // Condition
-  health: {
-    description: 'Health rating',
-    type: gdal.OFTString,
-    constraints: {
-      // TODO: Remove 'very good' ?
-      enum: ['dead', 'poor', 'fair', 'good', 'very good', 'excellent']
-    }
-  },
-  maturity: {
-    description: 'Maturity',
-    type: gdal.OFTString,
-    constraints: {
-      // TODO: Simplify to 'young', 'mature', 'old'
-      enum: ['young', 'semi-mature', 'mature', 'over-mature']
-    }
-  },
-  structure: {
-    description: 'Solidity, unlikelihood of falling',
-    type: gdal.OFTString,
-    constraints: {
-      enum: ['failed', 'poor', 'fair', 'good']
-    }
-  },
-  // Place
-  location: {
-    description: 'Where the tree is located',
-    type: gdal.OFTString,
-    constraints: {
-      // TODO: Replace 'council' with more global term?
-      // 'park', 'street', 'local', 'regional', 'federal', 'school', 'private', ...
-      enum: [
-        'park', 'street',
-        'council', // Australia
-        'canton', // Switzerland
-        'school',
-        'federal',
-        'corporate',
-        'residential'
-      ]
-    }
-  },
-  // Time
-  planted: {
-    description: 'Date of planting (or ideally, start from seed)',
-    type: gdal.OFTString,
-    constraints: {
-      pattern: /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/
-    }
-  },
-  // TODO: Distinguish between different kinds of updates
-  updated: {
-    description: 'Date that data was last updated',
-    type: gdal.OFTString,
-    constraints: {
-      pattern: /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/
-    }
-  },
-  // TODO: Only used by sources in Netherlands. Meaning unclear.
-  installed: {
-    description: 'Year installed',
-    type: gdal.OFTInteger
-  },
-  // TODO: Convert to absolute years
-  age: {
-    description: 'Age',
-    unit: 'year',
-    type: gdal.OFTInteger
-  },
-  gender: {
-    description: 'Gender, applicable to dioecious plants',
-    type: gdal.OFTString,
-    constraints: {
-      enum: ['male', 'female']
-    }
-  },
-  // TODO: Convert to absolute years
-  ule: {
-    description: 'Useful life expectancy',
-    unit: 'year',
-    type: gdal.OFTInteger
-  },
-  ule_min: {
-    description: 'Minimum useful life expectancy',
-    unit: 'year',
-    type: gdal.OFTInteger
-  },
-  ule_max: {
-    description: 'Maximum useful life expectancy',
-    unit: 'year',
-    type: gdal.OFTInteger
-  },
-  // Other
-  note: {
-    description: 'Notes',
-    type: gdal.OFTString
-  },
-  owner: {
-    description: 'Name or description of owner (person or agency)',
-    type: gdal.OFTString
-  },
-  manager: {
-    description: 'Name or description of manager or maintainer',
-    type: gdal.OFTString
-  },
-  value: {
-    description: 'Monetary value in the local currency',
-    type: gdal.OFTReal
-  },
-  carbon: {
-    description: 'Carbon storage',
-    unit: 'kilogram',
-    type: gdal.OFTReal
-  },
-  carbon_annual: {
-    description: 'Carbon storage',
-    unit: 'kilogram / year',
-    type: gdal.OFTReal
-  },
-  edible: {
-    description: 'Whether edible (e.g. "fruit tree")',
-    type: gdal.OFTInteger,
-    constraints: {
-      enum: [0, 1]
-    }
-  },
-  harvest: {
-    description: 'Description of when to harvest',
-    type: gdal.OFTString
-  },
-  notable: {
-    description: 'Whether notable (champion, heritage, memorial, veteran, etc)',
-    type: gdal.OFTInteger,
-    constraints: {
-      enum: [0, 1]
-    }
-  },
-  origin: {
-    description: 'Geographic origin at that location',
-    type: gdal.OFTString,
-    constraints: {
-      enum: ['endemic', 'native', 'introduced', 'naturalized', 'invasive']
-    }
-  }
-}
+/**
+ * Properties used by {@link Source} for data processing.
+ *
+ * @typedef {object} SourceProperties
+ * @property {string} id - Identifier prepended to console output.
+ * @property {string|string[]} download - Path to remote files to download and
+ * unpack.
+ * @property {string|string[]} execute - Shell commands executed from working
+ * directory (`Source.dir`) after file download and unpack. In `npm run`
+ * commands, prepend the `INIT_CWD` variable to paths to the files
+ * (https://docs.npmjs.com/cli/run-script).
+ * @property {string} srs - Spatial reference system in any format supported by
+ * [OGRSpatialReference.SetFromUserInput()](https://gdal.org/api/ogrspatialref.html#classOGRSpatialReference_1aec3c6a49533fe457ddc763d699ff8796).
+ * @property {object} geometry - Geometry field names for formats without
+ * explicit geometries (e.g. tabular text files like CSV). If not provided, will
+ * attempt to guess from field names.
+ * @property {string} geometry.wkt - Name of field with well-known-text (wkt)
+ * geometry. If provided, takes precedence over x, y.
+ * @property {string} geometry.x - Name of field with x coordinate (longitude,
+ * easting).
+ * @property {string} geometry.y - Name of field with y coordinate (latitude,
+ * northing).
+ * @property {string|function} crosswalk - Crosswalk mapping to a target schema.
+ * For each `key: value` pair, `key` is the new field name and `value` is either
+ * the old field name (e.g. `height: 'HEIGHT'`) or a function that takes an
+ * object (of feature field values) and returns a value (e.g. `height: obj =>
+ * obj.HEIGHT / 100`).
+ * @property {function} delFunc - Function that takes an object (of feature
+ * field values before the crosswalk) and returns a value (e.g. `obj =>
+ * obj.HEALTH === 'dead'`). The feature is excluded from the output if the
+ * returned value evaluates to `true`.
+ * @property {function} coordsFunc - Function that takes an object (of feature
+ * field values before the crosswalk) and returns a number array of point
+ * coordinates `[x, y]`. This is a useful alternative to `geometry` if the
+ * coordinates need to be extracted from field values (e.g. `obj =>
+ * obj.XY.split(';').map(Number)`).
+ */
+
+/**
+ * Additional properties not used by {@link Source} but used downstream.
+ *
+ * @typedef {SourceProperties} SourcePropertiesExtended
+ * @property {string} pending - Pending issues preventing processing.
+ * @property {string} primary - `id` of the primary source (for grouping sources
+ * together).
+ * @property {string} long - Full name of the government body, university, or
+ * other institution (e.g. 'City of Melbourne').
+ * @property {string} short - Short name (e.g. `Melbourne`).
+ * @property {string} country - Country name in English (e.g. `Australia`).
+ * @property {object} centre - Centre point (for map label placement).
+ * @property {number} centre.lon - Longitude in decimal degrees (EPSG:4326).
+ * @property {number} centre.lat - Latitude in decimal degrees (EPSG:4326).
+ * @property {string} info - Path to page with more information.
+ * @property {string} language - Language of contents as an [ISO
+ * 639-1](https://en.wikipedia.org/wiki/ISO_639-1) code (e.g. en) and an
+ * optional [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+ * region code (e.g. "en-AU").
+ * @property {object} license - Data license.
+ * @property {string} license.id - License identifier from the Software Package
+ * Data Exchange (SPDX) [license list](https://spdx.org/licenses/) (e.g.
+ * `CC-BY-4.0`).
+ * @property {string} license.name - License name (e.g. `Creative Commons
+ * Attribution 4.0 International`).
+ * @property {string} license.url - Path to page with license text (e.g.
+ * `https://creativecommons.org/licenses/by/4.0`).
+ */
 
 /**
  * Class representing a source dataset.
  *
- * The data can be in either a remote or local file.
- * Compressed or archive files are unpacked as needed.
+ * @param {SourceProperties} props - Source properties.
+ * @param {string} dir - Local directory to which remote files are downloaded
+ * and where local files are searched for.
+ * @param {object} [options]
+ * @param {boolean} [options.exit=true] - Whether to throw errors or print them
+ * to the console.
+ * @param {string} [options.default_srs=EPSG:4326] - Spatial reference system to
+ * assume if none is defined in `props.srs` and none can be read from the input
+ * files.
  */
 class Source {
 
-  /**
-   * Source properties
-   * @typedef {object} DatasetProperties
-   * @property {string} pending - Pending issues preventing further processing
-   * @property {string} id - Unique identifer
-   * @property {string} primary - Identifier of primary dataset (in cases where 2+ datasets constitute the inventory)
-   * @property {string} long - Full name for the government body (e.g. City of Melbourne)
-   * @property {string} short - Display name for the government body
-   * @property {string} country - Country name (in English)
-   * @property {object} centre - Centre point (in case automatic placement is bad)
-   * @property {number} centre.lon - Longitude in decimal degrees (EPSG:4326)
-   * @property {number} centre.lat - Latitude in decimal degrees (EPSG:4326)
-   * @property {string|string[]} download - Remote file paths to download and unpack
-   * @property {string|string[]} execute - Shell commands executed from working
-   * directory (Source.dir) after file download and unpack. In `npm run`
-   * commands, use the INIT_CWD variable to build paths to input files
-   * (https://docs.npmjs.com/cli/run-script).
-   * @property {string} info - Page with more information
-   * @property {string} language - Language tag (e.g. "en", "en-US") of data contents, especially of common names
-   * @property {object} license - License
-   * @property {string} license.id - SPDX identifier: https://spdx.org/licenses (e.g. CC-BY-4.0)
-   * @property {string} license.name - Name (e.g. Creative Commons Attribution 4.0 International)
-   * @property {string} license.url - Page with full text of license text (e.g. https://creativecommons.org/licenses/by/4.0)
-   * @property {string} format - Data file format (e.g. "geojson", "csv", "shp")
-   * @property {string} compression - Compression or archive file format (e.g. "zip", "tar")
-   * @property {string} srs - Spatial reference system in any format supported by OGRSpatialReference.SetFromUserInput().
-   *  See https://gdal.org/api/ogrspatialref.html?highlight=setfromuserinput#_CPPv4N19OGRSpatialReference16SetFromUserInputEPKc.
-   * @property {object} geometry - Geometry field (for non-spatial data like CSV).
-   * @property {string} geometry.wkt - Name of field with WKT geometry (takes precedence)
-   * @property {string} geometry.x - Name of field with x coordinate (longitude, easting)
-   * @property {string} geometry.y - Name of field with y coordinate (latitude, northing)
-   * @property {object} crosswalk - Crosswalk mapping to the opentrees schema.
-   *  For each <key>: <value>, <key> is the new field name and <value> is either
-   *  the old field name (string) or a function called as f(feature.properties).
-   * @property {function} delFunc - Function called as f(feature.properties) for each feature (before crosswalk).
-   *  Feature is excluded from output if function returns true.
-   * @property {function} coordsFunc - Function called as f(features.properties) for each feature (before crosswalk).
-   *  Returns an array of feature coordinates [x, y].
-   */
-
-  /**
-   * Create a dataset.
-   * @param {DatasetProperties} props - Dataset properties
-   * @param {string} dir - Working directory
-   * @param {object} options
-   * @param {boolean} [options.exit=true] - Whether to throw (exit on) or print
-   *  errors
-   * @param {string} [options.default_srs='+init=epsg:4326'] -
-   *  Spatial reference to assume if not defined in dataset. Passed
-   *  to gdal.SpatialReference.fromUserInput().
-   * @param {string} [options.default_name='input'] - Basename to use for
-   *  downloaded file if no name is available from response header.
-   */
   constructor(props, dir, options = {}) {
     this.props = props
     this.dir = dir
-    options = {
+    this.options = {
       ...{
-        overwrite: false,
         exit: true,
-        default_srs: '+init=epsg:4326',
-        default_name: 'input'
+        default_srs: 'EPSG:4326'
       },
       ...options
     }
-    this.exit = options.exit
-    this.default_srs = options.default_srs
-    this.default_name = options.default_name
     // Cache
     this.__dataset = null
     this.__vrt = null
@@ -328,8 +109,9 @@ class Source {
 
   /**
    * Validate source properties.
-   * @param {boolean} error - Whether to raise errors
-   * @return {string[]} Errors
+   * 
+   * @param {boolean} [error=false] - Whether to raise errors.
+   * @return {Array.<Array<string, *>>} Errors in the format [message, value].
    */
   validate(error = false) {
     let errors = []
@@ -357,9 +139,6 @@ class Source {
     // crosswalk
     if (props.crosswalk) {
       Object.keys(props.crosswalk).forEach(key => {
-        if (!Object.keys(CROSSWALK_FIELDS).includes(key)) {
-          errors.push(['Unsupported crosswalk property:', key])
-        }
         const value = props.crosswalk[key]
         if (!['string', 'function'].includes(typeof (value))) {
           errors.push([`Invalid type for crosswalk.${key}:`, typeof value])
@@ -370,7 +149,8 @@ class Source {
     if (props.geometry) {
       if (!(typeof (props.geometry) === 'object' &&
         (typeof (props.geometry.wkt) === 'string' ||
-          (typeof (props.geometry.x) === 'string' && typeof (props.geometry.y) === 'string')))) {
+          (typeof (props.geometry.x) === 'string' &&
+            typeof (props.geometry.y) === 'string')))) {
         errors.push(['Invalid geometry:', props.geometry])
       }
     }
@@ -390,71 +170,10 @@ class Source {
   }
 
   /**
-   * Print success message to console (green tag).
-   * @param {string} msg - Message
-   * @param {...*} objects - Additional objects passed directly to console.log()
-   */
-  success(msg, ...objects) {
-    const tag = `[${this.props.id}]`.green
-    console.log(`${tag} ${msg}`, ...objects)
-  }
-
-  /**
-   * Print message to console (cyan tag).
-   * @param {string} msg - Message
-   * @param {...*} objects - Additional objects passed directly to console.log()
-   */
-  log(msg, ...objects) {
-    const tag = `[${this.props.id}]`.cyan
-    console.log(`${tag} ${msg}`, ...objects)
-  }
-
-  /**
-   * Print warning to console (yellow tag).
-   * @param {string} msg - Message
-   * @param {...*} objects - Additional objects passed directly to console.log()
-   */
-  warn(msg, ...objects) {
-    const tag = `[${this.props.id}]`.yellow
-    console.log(`${tag} ${msg}`, ...objects)
-  }
-
-  /**
-   * Throw or print error to console (red tag).
-   * @param {string} msg - Message
-   * @param {...*} objects - Additional objects passed directly to
-   *  console.error() or printed in error as util.inspect(objects).
-   */
-  error(msg, ...objects) {
-    const tag = colors.red(`[${this.props.id}]`)
-    if (this.exit) {
-      throw new Error(`${tag} ${msg} ${objects.map(util.inspect).join(' ')}`)
-    } else {
-      console.error(`${tag} ${msg}`, ...objects)
-    }
-  }
-
-  /**
-   * Empty and remove the working directory.
-   */
-  empty() {
-    fs.rmdirSync(this.dir, { recursive: true })
-  }
-
-  /**
-   * Check whether the working directory is missing or empty of files.
-   * @return {boolean} Whether working directory is empty
-   */
-  is_empty() {
-    const files = glob.sync('**/*',
-      { nocase: true, nodir: true, dot: false, cwd: this.dir })
-    return files.length == 0
-  }
-
-  /**
-   * Download and unpack files and execute shell commands.
-   * @param {boolean} [overwrite=false] - Whether to proceed even if working
-   *  directory is not empty.
+   * Download and unpack remote files and execute shell commands.
+   *
+   * @param {boolean} [overwrite=false] - Whether to proceed if working
+   * directory is not empty (see {@link Source#is_empty}).
    * @return {Promise}
    */
   get(overwrite = false) {
@@ -479,370 +198,52 @@ class Source {
   }
 
   /**
-   * Download and unpack file.
-   * @param {string} url - Path to remote file
-   * @return {Promise}
-   */
-  get_file(url) {
-    fs.mkdirSync(this.dir, { recursive: true })
-    const options = { override: true, retry: { maxRetries: 3, delay: 3000 } }
-    const downloader = new DownloaderHelper(url, this.dir, options)
-    downloader.
-      on('download', info => this.log(`Downloading ${info.fileName}`)).
-      on('end', info => this.success(`Downloaded ${info.fileName} (${(info.downloadedSize / 1e6).toFixed()} MB)`)).
-      on('error', error => this.error(`Download failed for ${url}`)).
-      on('retry', (attempt, opts) => this.warn(`Download attempt ${attempt} of ${opts.maxRetries} in ${opts.delay / 1e3} s`))
-    return downloader.start().
-      then(() => downloader.getDownloadPath()).
-      then(file => {
-        return decompress(file, this.dir).
-          then(files => {
-            const filename = path.relative(this.dir, file)
-            if (files.length) {
-              const filenames = files.map(x => x.path)
-              this.success(`Unpacked ${filename}:`, filenames)
-              fs.unlinkSync(file)
-            }
-          })
-      })
-  }
-
-  /**
-   * Find path of input file.
-   * @return {string} File path (if found) or error if not found
-   */
-  find() {
-    const extension = this.props.format ? `.${this.props.format}` : ''
-    let paths = glob.sync(`**/*${extension}`,
-      { nocase: true, nodir: true, dot: false, cwd: this.dir })
-    if (!this.props.format) {
-      if (paths.length) {
-        const primaries = paths.filter(s =>
-          s.match(helpers.gdal_patterns.primary))
-        const secondaries = paths.filter(s =>
-          s.match(helpers.gdal_patterns.secondary))
-        if (primaries.length) {
-          paths = primaries
-        } else if (secondaries.length) {
-          paths = secondaries
-        } else {
-          this.warn('Found files with exotic or missing extensions:', paths)
-        }
-      }
-    }
-    if (paths.length) {
-      if (paths.length == 1) {
-        return path.join(this.dir, paths[0])
-      } else {
-        this.error(`Found ${paths.length} possible inputs:`, paths)
-      }
-    } else {
-      this.error('No inputs found')
-    }
-  }
-
-  /**
-   * Open input as GDAL dataset.
-   * 
-   * Result is cached until closed with close().
-   * 
-   * @return {gdal.Dataset} GDAL dataset
-   */
-  open() {
-    // Clear if already destroyed
-    try {
-      // Choice of property is arbitrary
-      this.__dataset.description
-    } catch {
-      this.__dataset = null
-    }
-    if (!this.__dataset) {
-      this.__dataset = gdal.open(this.find())
-    }
-    return this.__dataset
-  }
-
-  /**
-   * Close input if open as GDAL Dataset.
-   */
-  close() {
-    try {
-      this.__dataset.close()
-    } catch {
-    } finally {
-      this.__dataset = null
-    }
-  }
-
-  /**
-   * Open input as GDAL dataset via VRT file.
-   * 
-   * Opens via the virtual format (VRT) file built by get_vrt().
-   * Result is cached until closed with close_vrt().
-   * 
-   * @param {boolean} keep_geometry_fields - Whether VRT should
-   *   return geometry fields as regular feature fields
-   * @return {gdal.Dataset} GDAL dataset
-   */
-  open_vrt(keep_geometry_fields = false) {
-    // Clear if already destroyed
-    try {
-      // Choice of property is arbitrary
-      this.__vrt.description
-    } catch {
-      this.__vrt = null
-    }
-    if (!this.__vrt) {
-      // HACK: Writes to local dotfile to hide from find()
-      const vrt_path = path.join(this.dir, '.vrt')
-      fs.writeFileSync(vrt_path, this.get_vrt(keep_geometry_fields))
-      this.__vrt = gdal.open(vrt_path)
-    }
-    return this.__vrt
-  }
-
-  /**
-   * Close input if open as VRT GDAL Dataset.
-   */
-  close_vrt() {
-    try {
-      this.__vrt.close()
-    } catch {
-    } finally {
-      this.__vrt = null
-    }
-  }
-
-  /**
-   * Sample unique values from feature fields.
-   * @param {object} [options]
-   * @param {number} [options.n=1000] - Max features to sample
-   * @param {number} [options.max=100] - Max unique values to collect per field
-   * @param {boolean} [options.sort=true] - Whether to sort values
-   * @return {object} Object with format <field name>: [unique field values]
-   */
-  sample(options = {}) {
-    options = {
-      n: 1000,
-      max: 100,
-      sort: true,
-      ...options
-    }
-    const types = {}
-    const values = {}
-    const layer = this.open().layers.get(0)
-    layer.fields.forEach(field => {
-      types[field.name] = field.type
-      values[field.name] = new Set()
-    })
-    let f
-    let i = 1
-    for (f = layer.features.first();
-      f && i <= options.n; f = layer.features.next()) {
-      for (let [key, value] of Object.entries(f.fields.toObject())) {
-        const formatter = helpers.gdal_string_formatters[types[key]]
-        value = formatter ? formatter(value) : value
-        if (values[key].size < options.max) {
-          values[key].add(value)
-        }
-      }
-      i++
-    }
-    // Convert sets to arrays
-    for (const key in values) {
-      values[key] = [...values[key]]
-      if (options.sort) {
-        values[key].sort()
-      }
-    }
-    return values
-  }
-
-  /**
-   * Display field name, type, and unique values.
-   * @param {object} [options] - Options to sample() plus:
-   * @param {object} [options.sample] - Result of sample()
-   * @param {number} [options.truncate=1280] - Max characters to print per field
-   * @param {number[]} [options.widths=[20, 10, 130]] - Column widths for
-   *  [name, type, values]
-   * @param {string} [options.sep=' · '] - Values separator
-   */
-  glimpse(options = {}) {
-    options = {
-      truncate: 1280,
-      widths: [20, 10, 130],
-      sep: ' · ',
-      ...options
-    }
-    if (!options.sample) {
-      options.sample = this.sample(options)
-    }
-    const table_options = {
-      columnDefault: {
-        wrapWord: true,
-        truncate: options.truncate
-      },
-      columns: {
-        0: { width: options.widths[0] },
-        1: { width: options.widths[1] },
-        2: { width: options.widths[2] }
-      }
-    }
-    const types = {}
-    const layer = this.open().layers.get(0)
-    layer.fields.forEach(field => {
-      types[field.name] = field.type
-    })
-    // Print
-    const data = [
-      ['name'.bold, 'type'.bold, 'values'.bold],
-      ...Object.keys(options.sample).map(key =>
-        [key, types[key], options.sample[key].join(options.sep)])
-    ]
-    console.log(table(data, table_options))
-  }
-
-  /**
-   * Get input spatial reference system (SRS) as a string.
+   * Process input and write to output.
    *
-   * Either the provided SRS, the SRS of the layer (as well-known-text),
-   * or the default SRS.
+   * Reading, writing, and coordinate transformations are performed by
+   * [GDAL](https://gdal.org) via the
+   * [node-gdal-next](https://www.npmjs.com/package/gdal-next) bindings.
    *
-   * @return {string} Input SRS
-   */
-  get_srs_string() {
-    let srs = this.props.srs
-    if (!srs) {
-      const layer = this.open().layers.get(0)
-      if (layer.srs) {
-        srs = layer.srs.toWKT()
-      }
-    }
-    if (!srs) {
-      srs = this.default_srs
-      this.warn('Assuming default SRS:', srs)
-    }
-    return srs
-  }
-
-  /**
-   * Get input spatial reference system (SRS).
+   * Processing steps include a schema crosswalk (`this.props.crosswalk`),
+   * skipping features by field values (`this.props.delFunc`), reducing complex
+   * geometries to centroid points (`options.centroids`), and skipping features
+   * outside a bounding box (`options.bounds`). For files without explicit
+   * geometries, a temporary [VRT](https://gdal.org/drivers/vector/vrt.html)
+   * file is created (see {@link Source#get_vrt}).
    *
-   * Either the provided SRS (passed to gdal.SpatialReference.fromUserInput),
-   * the SRS of the layer, or the default SRS.
-   * 
-   * @return {gdal.SpatialReference} Input SRS
-   */
-  get_srs() {
-    const srs = this.get_srs_string()
-    return gdal.SpatialReference.fromUserInput(srs)
-  }
-
-  /**
-   * Get input geometry definition.
-   * 
-   * Either the provided geometry definition or guessed from layer field names.
-   * 
-   * @return {object} Geometry definition, empty object if failed, or undefined
-   *  if input already has geometry defined.
-   */
-  get_geometry() {
-    let geometry = this.props.geometry
-    if (!geometry) {
-      geometry = {}
-      const layer = this.open().layers.get(0)
-      if (layer.geomType != gdal.wkbNone) {
-        return
-      }
-      const matches = helpers.guess_geometry_fields(layer)
-      if (matches.wkt.length) {
-        if (matches.wkt.length > 1) {
-          this.warn('Using first of matching WKT fields:', matches.wkt)
-        }
-        geometry = { wkt: matches.wkt[0] }
-      } else if (matches.x.length && matches.y.length) {
-        if (matches.x.length > 1) {
-          this.warn('Using first of matching X fields:', matches.x)
-        }
-        if (matches.y.length > 1) {
-          this.warn('Using first of matching Y fields:', matches.y)
-        }
-        geometry = { x: matches.x[0], y: matches.y[0] }
-      } else {
-        this.error('Failed to guess geometry fields:', matches)
-      }
-    }
-    return geometry
-  }
-
-  /**
-  * Get VRT (OGR Virtual Format) file content.
-  *
-  * Relevant only for tabular data with feature geometry in fields.
-  * See https://gdal.org/drivers/vector/vrt.html
-  *
-  * @param {boolean} [keep_geometry_fields=false] - Whether VRT should
-  *   return geometry fields as regular feature fields
-  * @return {string} VRT file content
-  */
-  get_vrt(keep_geometry_fields = false) {
-    const srs = this.get_srs_string()
-    const geometry = this.get_geometry()
-    // Build <GeometryField> attributes
-    let attributes
-    if (geometry.wkt && typeof geometry.wkt === 'string') {
-      attributes = `encoding="WKT" field="${geometry.wkt}"`
-    } else if (
-      geometry.x && typeof geometry.x === 'string' &&
-      geometry.y && typeof geometry.y === 'string') {
-      attributes = `encoding="PointFromColumns" x="${geometry.x}" y="${geometry.y}"`
-    } else {
-      this.error('Invalid geometry:', geometry)
-    }
-    // Build VRT
-    const layer = this.open().layers.get(0)
-    const layer_path = path.resolve(layer.ds.description)
-    return (
-      `<OGRVRTDataSource>
-        <OGRVRTLayer name="${layer.name}">
-          <SrcDataSource relativeToVRT="0">${layer_path}</SrcDataSource>
-          <GeometryType>wkbPoint</GeometryType>
-          <LayerSRS>${srs}</LayerSRS>
-          <GeometryField ${attributes} reportSrcColumn="${keep_geometry_fields}" />
-        </OGRVRTLayer>
-      </OGRVRTDataSource>`.replace(/^[ ]{6}/gm, ''))
-  }
-
-  /**
-   * Process input file and write to output.
-   * 
-   * @param {string} file - Output file path
-   * @param {object} options
-   * @param {string} [options.driver] - Name of GDAL driver
-   *  (e.g. 'csv', 'geojsonseq'). Guessed from file extension if not provided.
+   * @param {string} file - Output file path.
+   * @param {object} [options] - Output options.
+   * @param {string} [options.driver] - Name of GDAL driver to use to write to
+   * the output file (see https://gdal.org/drivers/vector). Guessed from file
+   * extension if not provided.
    * @param {string[]|object} [options.creation] - Driver-specific dataset
-   *  creation options. See https://gdal.org/drivers/vector.
-   *  Only default, for 'csv': ['GEOMETRY=AS_WKT'].
-   * @param {boolean} [options.overwrite=false] - Whether to overwrite an
-   *  existing file.
-   * @param {string} [options.srs='+init=epsg:4326'] - Output spatial reference.
-   *  Passed to gdal.SpatialReference.fromUserInput().
-   *  Use 'EPSG:*' for (latitude, longitude) and '+init=epsg:4326' (PROJ<6
-   *  behavior) for (longitude, latitude). If input has the same SRS, axis order
-   *  will remain the same regardless.
+   * creation options (see https://gdal.org/drivers/vector). Only default, for
+   * 'CSV', is `['GEOMETRY=AS_WKT']` to include feature geometry in output.
+   * @param {boolean} [options.overwrite=false] - Whether to proceed if `file`
+   * already exists.
+   * @param {string} [options.srs=+init=epsg:4326] - Output spatial reference
+   * system in any format supported by
+   * [OGRSpatialReference.SetFromUserInput()](https://gdal.org/api/ogrspatialref.html#classOGRSpatialReference_1aec3c6a49533fe457ddc763d699ff8796).
+   * Use 'EPSG:*' for (latitude, longitude) and '+init=epsg:*' (PROJ<6 behavior)
+   * for (longitude, latitude). If it is the same as the input SRS, axis order
+   * will remain unchanged regardless.
    * @param {boolean} [options.centroids=false] - Whether to reduce non-point
-   *  geometries to centroids
+   * geometries to centroids.
    * @param {boolean} [options.keep_invalid=false] - Whether to keep features
-   *  with empty or invalid geometries
-   * @param {boolean} [options.keep_fields=false] - Whether to keep original
-   *  feature fields
-   * @param {boolean} [options.keep_geometry_fields=false] - Whether to keep
-   *  original feature fields reporting geometry. Applies only to layers for
-   *  which a VRT file had to be written.
-   * @param {string} [options.prefix='_'] - String to append to original
-   *  field names (if kept)
+   * with empty or invalid geometries.
+   * @param {boolean} [options.keep_fields=false] - Whether to keep the input
+   * feature fields alongside the result of the schema crosswalk
+   * (`this.props.crosswalk`).
+   * @param {boolean} [options.keep_geometry_fields=false] - Whether to keep the
+   * input feature geometry fields. Applies only to inputs for which a VRT file
+   * is written (see {@link Source#get_vrt}) and if `options.keep_fields` is
+   * also `true`.
+   * @param {string} [options.prefix=_] - String to append to input field names
+   * to prevent collisions with output field names. Applies only if
+   * `options.keep_fields` is `true`.
    * @param {number[]} [options.bounds] - Bounding box in output SRS
-   *  [xmin, ymin, xmax, ymax]. If provided, features outside box are skipped.
+   * (`options.srs`) in the format [xmin, ymin, xmax, ymax]. If provided,
+   * features outside the bounds are skipped.
    */
   process(file, options = {}) {
     if (!options.overwrite && fs.existsSync(file)) {
@@ -874,8 +275,10 @@ class Source {
     } else {
       options.driver = options.driver.toLowerCase()
     }
-    if (!options.creation && options.driver === 'csv') {
-      options.creation = { GEOMETRY: 'AS_WKT' }
+    if (!options.creation) {
+      options.creation = ({
+        csv: { GEOMETRY: 'AS_WKT' }
+      })[options.driver]
     }
     options.srs = gdal.SpatialReference.fromUserInput(options.srs)
     // Read input
@@ -897,7 +300,7 @@ class Source {
     }
     // Prepare input schema
     let input_schema = input_layer.fields.map(field => field)
-    /**
+    /*
      * NOTE: Confusing gdal bindings handling of date/time fields
      * - Fields detected as date/time are read as objects, not strings
      * - Cannot yet set date/time field from date/time object, only strings
@@ -1037,6 +440,424 @@ class Source {
     // Write
     output.close()
     this.success('Wrote output:', file)
+  }
+
+  /**
+   * Sample unique field values from input.
+   *
+   * @param {object} [options]
+   * @param {number} [options.n=1000] - Maximum number of features to sample.
+   * @param {number} [options.max=100] - Maximum number of unique values to
+   * collect for each field.
+   * @param {boolean} [options.sort=true] - Whether to sort values.
+   * @return {object.<string, Array>} Object of unique field values with field
+   * names as keys.
+   */
+  sample(options = {}) {
+    options = {
+      n: 1000,
+      max: 100,
+      sort: true,
+      ...options
+    }
+    const types = {}
+    const values = {}
+    const layer = this.open().layers.get(0)
+    layer.fields.forEach(field => {
+      types[field.name] = field.type
+      values[field.name] = new Set()
+    })
+    let f
+    let i = 1
+    for (f = layer.features.first();
+      f && i <= options.n; f = layer.features.next()) {
+      for (let [key, value] of Object.entries(f.fields.toObject())) {
+        const formatter = helpers.gdal_string_formatters[types[key]]
+        value = formatter ? formatter(value) : value
+        if (values[key].size < options.max) {
+          values[key].add(value)
+        }
+      }
+      i++
+    }
+    // Convert sets to arrays
+    for (const key in values) {
+      values[key] = [...values[key]]
+      if (options.sort) {
+        values[key].sort()
+      }
+    }
+    return values
+  }
+
+  /**
+   * Print table of input field names, types, and unique values.
+   *
+   * @param {object} [options] - Options to pass to {@link Source#sample}, plus:
+   * @param {object.<string, Array>} [options.sample] - Result of
+   * {@link Source#sample}.
+   * @param {number} [options.truncate=1280] - Maximum number of characters to
+   * print per field.
+   * @param {number[]} [options.widths=[20, 10, 130]] - Column widths for field
+   * names, types, and unique values, respectively.
+   * @param {string} [options.sep= · ] - Separator between unique values.
+   */
+  glimpse(options = {}) {
+    options = {
+      truncate: 1280,
+      widths: [20, 10, 130],
+      sep: ' · ',
+      ...options
+    }
+    if (!options.sample) {
+      options.sample = this.sample(options)
+    }
+    const table_options = {
+      columnDefault: {
+        wrapWord: true,
+        truncate: options.truncate
+      },
+      columns: {
+        0: { width: options.widths[0] },
+        1: { width: options.widths[1] },
+        2: { width: options.widths[2] }
+      }
+    }
+    const types = {}
+    const layer = this.open().layers.get(0)
+    layer.fields.forEach(field => {
+      types[field.name] = field.type
+    })
+    // Print
+    const data = [
+      ['name'.bold, 'type'.bold, 'values'.bold],
+      ...Object.keys(options.sample).map(key =>
+        [key, types[key], options.sample[key].join(options.sep)])
+    ]
+    console.log(table(data, table_options))
+  }
+
+  /**
+   * Empty and remove the source directory.
+   */
+  empty() {
+    fs.rmdirSync(this.dir, { recursive: true })
+  }
+
+  /**
+   * Check whether the source directory is missing or empty of files.
+   * 
+   * Checks any child directories recursively and ignores dotfiles (.*).
+   * 
+   * @return {boolean} Whether source directory is empty.
+   */
+  is_empty() {
+    const files = glob.sync('**/*',
+      { nocase: true, nodir: true, dot: false, cwd: this.dir })
+    return files.length == 0
+  }
+
+  /**
+   * Download and unpack a file to the source directory.
+   * 
+   * @param {string} url - Path to remote file.
+   * @return {Promise}
+   */
+  get_file(url) {
+    fs.mkdirSync(this.dir, { recursive: true })
+    const options = { override: true, retry: { maxRetries: 3, delay: 3000 } }
+    const downloader = new DownloaderHelper(url, this.dir, options)
+    downloader.
+      on('download', info => this.log(`Downloading ${info.fileName}`)).
+      on('end', info => this.success(`Downloaded ${info.fileName} (${(info.downloadedSize / 1e6).toFixed()} MB)`)).
+      on('error', error => this.error(`Download failed for ${url}`)).
+      on('retry', (attempt, opts) => this.warn(`Download attempt ${attempt} of ${opts.maxRetries} in ${opts.delay / 1e3} s`))
+    return downloader.start().
+      then(() => downloader.getDownloadPath()).
+      then(file => {
+        return decompress(file, this.dir).
+          then(files => {
+            const filename = path.relative(this.dir, file)
+            if (files.length) {
+              const filenames = files.map(x => x.path)
+              this.success(`Unpacked ${filename}:`, filenames)
+              fs.unlinkSync(file)
+            }
+          })
+      })
+  }
+
+  /**
+   * Find path to input file.
+   *
+   * Searches for all non-dotfiles in the source directory recursively and
+   * attempts to guess which file to pass to GDAL based on file extensions.
+   * Throws an error if no file is found or if multiple candidate files are
+   * found.
+   *
+   * @return {string} File path.
+   */
+  find() {
+    const extension = this.props.format ? `.${this.props.format}` : ''
+    let paths = glob.sync(`**/*${extension}`,
+      { nocase: true, nodir: true, dot: false, cwd: this.dir })
+    if (!this.props.format) {
+      if (paths.length) {
+        const primaries = paths.filter(s =>
+          s.match(helpers.gdal_patterns.primary))
+        const secondaries = paths.filter(s =>
+          s.match(helpers.gdal_patterns.secondary))
+        if (primaries.length) {
+          paths = primaries
+        } else if (secondaries.length) {
+          paths = secondaries
+        } else {
+          this.warn('Found files with exotic or missing extensions:', paths)
+        }
+      }
+    }
+    if (paths.length) {
+      if (paths.length == 1) {
+        return path.join(this.dir, paths[0])
+      } else {
+        this.error(`Found ${paths.length} possible inputs:`, paths)
+      }
+    } else {
+      this.error('No inputs found')
+    }
+  }
+
+  /**
+   * Open input file with GDAL.
+   *
+   * @return {gdal.Dataset} See the documentation for
+   * [node-gdal-next](https://contra.io/node-gdal-next/classes/gdal.Dataset.html).
+   * Result is cached until closed with {@link Source#close}.
+   */
+  open() {
+    // Clear if already destroyed
+    try {
+      // Choice of property is arbitrary
+      this.__dataset.description
+    } catch {
+      this.__dataset = null
+    }
+    if (!this.__dataset) {
+      this.__dataset = gdal.open(this.find())
+    }
+    return this.__dataset
+  }
+
+  /**
+   * Close input file if open with GDAL.
+   */
+  close() {
+    try {
+      this.__dataset.close()
+    } catch {
+    } finally {
+      this.__dataset = null
+    }
+  }
+
+  /**
+   * Open input file with GDAL via a VRT file.
+   *
+   * Opens the input file via a virtual format (VRT) file written to the dotfile
+   * `.vrt`. The contents of the file is built by {@link Source#get_vrt}.
+   *
+   * @param {boolean} [keep_geometry_fields=false] - Whether the VRT file should
+   * return geometry fields as regular feature fields.
+   * @return {gdal.Dataset} See the documentation for
+   * [node-gdal-next](https://contra.io/node-gdal-next/classes/gdal.Dataset.html).
+   * The result is cached until closed with {@link Source#close_vrt}.
+   */
+  open_vrt(keep_geometry_fields = false) {
+    // Clear if already destroyed
+    try {
+      // Choice of property is arbitrary
+      this.__vrt.description
+    } catch {
+      this.__vrt = null
+    }
+    if (!this.__vrt) {
+      // HACK: Writes to local dotfile to hide from find()
+      const vrt_path = path.join(this.dir, '.vrt')
+      fs.writeFileSync(vrt_path, this.get_vrt(keep_geometry_fields))
+      this.__vrt = gdal.open(vrt_path)
+    }
+    return this.__vrt
+  }
+
+  /**
+   * Close input file if open with GDAL via a VRT file.
+   */
+  close_vrt() {
+    try {
+      this.__vrt.close()
+    } catch {
+    } finally {
+      this.__vrt = null
+    }
+  }
+
+  /**
+   * Get spatial reference system (SRS) of input as a string.
+   *
+   * @return {string} Either the provided SRS (`this.props.srs`), the SRS read
+   * from the input file (as well-known-text), or the default SRS
+   * (`this.options.default_srs`).
+   */
+  get_srs_string() {
+    let srs = this.props.srs
+    if (!srs) {
+      const layer = this.open().layers.get(0)
+      if (layer.srs) {
+        srs = layer.srs.toWKT()
+      }
+    }
+    if (!srs) {
+      srs = this.options.default_srs
+      this.warn('Assuming default SRS:', srs)
+    }
+    return srs
+  }
+
+  /**
+   * Get spatial reference system (SRS) of input.
+   *
+   * @return {gdal.SpatialReference} SRS object initialized by
+   * `gdal.SpatialReference.fromUserInput()` from the result of
+   * {@link Source#get_srs_string}. See the documentation for
+   * [node-gdal-next](https://contra.io/node-gdal-next/classes/gdal.SpatialReference.html#method-fromUserInput).
+   */
+  get_srs() {
+    const srs = this.get_srs_string()
+    return gdal.SpatialReference.fromUserInput(srs)
+  }
+
+  /**
+   * Get geometry field name(s) of input.
+   * 
+   * @return {{?wkt: string, ?x: string, ?y: string}|undefined} Names of geometry fields either provided (`this.props.srs`) or guessed from field names, or `undefined` if the input already has explicit geometries.
+   */
+  get_geometry() {
+    let geometry = this.props.geometry
+    if (!geometry) {
+      geometry = {}
+      const layer = this.open().layers.get(0)
+      if (layer.geomType != gdal.wkbNone) {
+        return
+      }
+      const matches = helpers.guess_geometry_fields(layer)
+      if (matches.wkt.length) {
+        if (matches.wkt.length > 1) {
+          this.warn('Using first of matching WKT fields:', matches.wkt)
+        }
+        geometry = { wkt: matches.wkt[0] }
+      } else if (matches.x.length && matches.y.length) {
+        if (matches.x.length > 1) {
+          this.warn('Using first of matching X fields:', matches.x)
+        }
+        if (matches.y.length > 1) {
+          this.warn('Using first of matching Y fields:', matches.y)
+        }
+        geometry = { x: matches.x[0], y: matches.y[0] }
+      } else {
+        this.error('Failed to guess geometry fields:', matches)
+      }
+    }
+    return geometry
+  }
+
+  /**
+  * Get VRT (OGR Virtual Format) file content.
+  *
+  * For files without explicit geometries (e.g. tabular text files), a temporary
+  * [VRT file](https://gdal.org/drivers/vector/vrt.html) can be created listing
+  * the spatial reference system (see {@link Source#get_srs_string}) and
+  * geometry field names (see {@link Source#get_geometry}) for GDAL to use.
+  *
+  * @param {boolean} [keep_geometry_fields=false] - Whether VRT file should
+  * return geometry fields as regular feature fields.
+  * @return {string} VRT file content.
+  */
+  get_vrt(keep_geometry_fields = false) {
+    const srs = this.get_srs_string()
+    const geometry = this.get_geometry()
+    // Build <GeometryField> attributes
+    let attributes
+    if (geometry.wkt && typeof geometry.wkt === 'string') {
+      attributes = `encoding="WKT" field="${geometry.wkt}"`
+    } else if (
+      geometry.x && typeof geometry.x === 'string' &&
+      geometry.y && typeof geometry.y === 'string') {
+      attributes =
+        `encoding="PointFromColumns" x="${geometry.x}" y="${geometry.y}"`
+    } else {
+      this.error('Invalid geometry:', geometry)
+    }
+    // Build VRT
+    const layer = this.open().layers.get(0)
+    const layer_path = path.resolve(layer.ds.description)
+    return (
+      `<OGRVRTDataSource>
+        <OGRVRTLayer name="${layer.name}">
+          <SrcDataSource relativeToVRT="0">${layer_path}</SrcDataSource>
+          <GeometryType>wkbPoint</GeometryType>
+          <LayerSRS>${srs}</LayerSRS>
+          <GeometryField ${attributes} reportSrcColumn="${keep_geometry_fields}" />
+        </OGRVRTLayer>
+      </OGRVRTDataSource>`.replace(/^[ ]{6}/gm, ''))
+  }
+
+  /**
+   * Print success message to console (green).
+   * 
+   * @param {string} msg - Message prepended with green tag (`[props.id]`).
+   * @param {...*} objects - Additional objects passed to `console.log()`.
+   */
+  success(msg, ...objects) {
+    const tag = `[${this.props.id}]`.green
+    console.log(`${tag} ${msg}`, ...objects)
+  }
+
+  /**
+   * Print message to console (cyan).
+   * 
+   * @param {string} msg - Message prepended with cyan tag (`[props.id]`).
+   * @param {...*} objects - Additional objects passed to `console.log()`.
+   */
+  log(msg, ...objects) {
+    const tag = `[${this.props.id}]`.cyan
+    console.log(`${tag} ${msg}`, ...objects)
+  }
+
+  /**
+   * Print warning to console (yellow).
+   * 
+   * @param {string} msg - Message prepended with yellow tag (`[props.id]`).
+   * @param {...*} objects - Additional objects passed to `console.log()`.
+   */
+  warn(msg, ...objects) {
+    const tag = `[${this.props.id}]`.yellow
+    console.log(`${tag} ${msg}`, ...objects)
+  }
+
+  /**
+   * Throw or print error to console (red).
+   * 
+   * @param {string} msg - Message prepended with red tag (`[props.id]`).
+   * @param {...*} objects - Additional objects passed directly to
+   * `console.error()` or appended to error via `util.inspect()`.
+   */
+  error(msg, ...objects) {
+    const tag = colors.red(`[${this.props.id}]`)
+    if (this.options.exit) {
+      throw new Error(`${tag} ${msg} ${objects.map(util.inspect).join(' ')}`)
+    } else {
+      console.error(`${tag} ${msg}`, ...objects)
+    }
   }
 }
 

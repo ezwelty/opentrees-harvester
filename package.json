@@ -9,10 +9,18 @@
     "process": "./3-processFiles.js &&  ./3a-updateTaxoCount.js && ./3b-addSpeciesCounts.js",
     "full-upload": "./1-gettrees.js &&  ./2-loadtrees.js && ./3-processFiles.js &&  ./3a-updateTaxoCount.js && ./3b-addSpeciesCounts.js && ./4-makeVectorTiles.js && ./5-upload.js",
     "export": "node ./export-sources.js; cp sources-out.json ../opentrees/src",
-    "replace": "replace"
+    "replace": "replace",
+    "apidoc": "./node_modules/.bin/jsdoc2md source.js --no-cache --separators > API.md"
   },
   "author": "Steve Bennett <me@stevebennett.me> (http://stevebennett.me)",
+  "contributors": [
+    "Ethan Welty <ethan@fallingfruit.org> (https://fallingfruit.org)"
+  ],
   "license": "CC-BY-NC-4.0",
+  "engines": {
+    "node": ">= 12.0.0",
+    "npm": ">= 6.0.0"
+  },
   "dependencies": {
     "colors": "^1.1.2",
     "decompress": "^4.2.1",
@@ -21,5 +29,8 @@
     "node-downloader-helper": "^1.0.12",
     "replace": "^1.1.5",
     "table": "^5.4.6"
+  },
+  "devDependencies": {
+    "jsdoc-to-markdown": "^5.0.3"
   }
 }

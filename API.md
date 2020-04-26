@@ -33,7 +33,11 @@ Class representing a source dataset.
     * [.glimpse([options])](#Source+glimpse)
     * [.empty()](#Source+empty)
     * [.is_empty()](#Source+is_empty) ⇒ <code>boolean</code>
-    * [.get_file(url)](#Source+get_file) ⇒ <code>Promise</code>
+    * [.download_file(url)](#Source+download_file) ⇒ <code>Promise.&lt;string&gt;</code>
+    * [.unpack_file(file, [rm])](#Source+unpack_file) ⇒ <code>Promise.&lt;Array.&lt;string&gt;&gt;</code>
+    * [.get_file(url)](#Source+get_file) ⇒ <code>Promise.&lt;Array.&lt;sring&gt;&gt;</code>
+    * [.get_files([overwrite])](#Source+get_files) ⇒ <code>Promise.&lt;Array.&lt;string&gt;&gt;</code>
+    * [.execute()](#Source+execute) ⇒ <code>Promise</code>
     * [.find()](#Source+find) ⇒ <code>string</code>
     * [.open()](#Source+open) ⇒ <code>gdal.Dataset</code>
     * [.close()](#Source+close)
@@ -84,7 +88,10 @@ Validate source properties.
 <a name="Source+get"></a>
 
 ### source.get([overwrite]) ⇒ <code>Promise</code>
-Download and unpack remote files and execute shell commands.
+Prepare remote source data for processing.
+
+Downloads remote files (`this.props.download`), unpacks compressed or
+archive files, and executes shell commands (`this.props.execute`).
 
 **Kind**: instance method of [<code>Source</code>](#Source)  
 
@@ -99,6 +106,17 @@ Download and unpack remote files and execute shell commands.
 
 ### source.process(file, [options])
 Process input and write to output.
+
+Reading, writing, and coordinate transformations are performed by
+[GDAL](https://gdal.org) via the
+[node-gdal-next](https://www.npmjs.com/package/gdal-next) bindings.
+
+Processing steps include a schema crosswalk (`this.props.crosswalk`),
+skipping features by field values (`this.props.delFunc`), reducing complex
+geometries to centroid points (`options.centroids`), and skipping features
+outside a bounding box (`options.bounds`). For files without explicit
+geometries, a temporary [VRT](https://gdal.org/drivers/vector/vrt.html)
+file is created (see [get_vrt](#Source+get_vrt)).
 
 **Kind**: instance method of [<code>Source</code>](#Source)  
 
@@ -178,17 +196,88 @@ Checks any child directories recursively and ignores dotfiles (.*).
 
 * * *
 
-<a name="Source+get_file"></a>
+<a name="Source+download_file"></a>
 
-### source.get\_file(url) ⇒ <code>Promise</code>
-Download and unpack a file to the source directory.
+### source.download\_file(url) ⇒ <code>Promise.&lt;string&gt;</code>
+Download a remote file to the source directory.
 
 **Kind**: instance method of [<code>Source</code>](#Source)  
+**Returns**: <code>Promise.&lt;string&gt;</code> - Resolves to the path of the downloaded file.  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| url | <code>string</code> | Path to remote file. |
+| url | <code>string</code> | Path to the remote file. |
 
+
+* * *
+
+<a name="Source+unpack_file"></a>
+
+### source.unpack\_file(file, [rm]) ⇒ <code>Promise.&lt;Array.&lt;string&gt;&gt;</code>
+Unpack a compressed or archive local file to the source directory.
+
+Currently supports zip, tar, tar.bz2, and tar.gz via
+[decompress](https://www.npmjs.com/package/decompress). Support can be
+added for bz2 and gz by adding the corresponding
+[plugins](https://www.npmjs.com/search?q=keywords:decompressplugin) to the
+dependencies.
+
+**Kind**: instance method of [<code>Source</code>](#Source)  
+**Returns**: <code>Promise.&lt;Array.&lt;string&gt;&gt;</code> - Resolves to the paths of the unpacked files (if
+any) or the path of the original file.  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| file | <code>string</code> |  | Path to the local file. |
+| [rm] | <code>boolean</code> | <code>true</code> | Whether to remove the original file if unpacked successfully. |
+
+
+* * *
+
+<a name="Source+get_file"></a>
+
+### source.get\_file(url) ⇒ <code>Promise.&lt;Array.&lt;sring&gt;&gt;</code>
+Download and unpack a remote file to the source directory.
+
+**Kind**: instance method of [<code>Source</code>](#Source)  
+**Returns**: <code>Promise.&lt;Array.&lt;sring&gt;&gt;</code> - Resolves to the paths of the unpacked files (if
+any) or the local path of the downloaded file.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| url | <code>string</code> | Path to the remote file. |
+
+
+* * *
+
+<a name="Source+get_files"></a>
+
+### source.get\_files([overwrite]) ⇒ <code>Promise.&lt;Array.&lt;string&gt;&gt;</code>
+Download and unpack remote files to the source directory.
+
+Downloads all file paths in `this.props.download` and unpacks any
+compressed or archive files.
+
+**Kind**: instance method of [<code>Source</code>](#Source)  
+**Returns**: <code>Promise.&lt;Array.&lt;string&gt;&gt;</code> - Resolves to the paths of the downloaded and
+unpacked local files.  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [overwrite] | <code>boolean</code> | <code>false</code> | Whether to proceed if working directory is not empty (see [is_empty](#Source+is_empty)). |
+
+
+* * *
+
+<a name="Source+execute"></a>
+
+### source.execute() ⇒ <code>Promise</code>
+Execute shell commands from the source directory.
+
+Executes all shell commands in `this.props.execute` from the source
+directory (`this.dir`).
+
+**Kind**: instance method of [<code>Source</code>](#Source)  
 
 * * *
 
@@ -297,8 +386,10 @@ Get geometry field name(s) of input.
 ### source.get\_vrt([keep_geometry_fields]) ⇒ <code>string</code>
 Get VRT (OGR Virtual Format) file content.
 
-Relevant only for tabular input with feature geometry in fields. See
-https://gdal.org/drivers/vector/vrt.html.
+For files without explicit geometries (e.g. tabular text files), a temporary
+[VRT file](https://gdal.org/drivers/vector/vrt.html) can be created listing
+the spatial reference system (see [get_srs_string](#Source+get_srs_string)) and
+geometry field names (see [get_geometry](#Source+get_geometry)) for GDAL to use.
 
 **Kind**: instance method of [<code>Source</code>](#Source)  
 **Returns**: <code>string</code> - VRT file content.  
@@ -388,7 +479,7 @@ Properties used by [Source](#Source) for data processing.
 | geometry.wkt | <code>string</code> | Name of field with well-known-text (wkt) geometry. If provided, takes precedence over x, y. |
 | geometry.x | <code>string</code> | Name of field with x coordinate (longitude, easting). |
 | geometry.y | <code>string</code> | Name of field with y coordinate (latitude, northing). |
-| crosswalk | <code>string</code> \| <code>function</code> | Crosswalk mapping to a target schema. For each `key: value` pair, `key` is the new field name and `value` is either the old field name (e.g. `height: 'HEIGHT'`) or a function that takes an object (of feature field values) and returns a value (e.g. `height: obj => obj.HEIGHT / 100`). |
+| crosswalk | <code>Object.&lt;string, (string\|function())&gt;</code> | Crosswalk mapping to a target schema. For each `key: value` pair, `key` is the new field name and `value` is either the old field name (e.g. `height: 'HEIGHT'`) or a function that takes an object (of feature field values) and returns a value (e.g. `height: obj => obj.HEIGHT / 100`). |
 | delFunc | <code>function</code> | Function that takes an object (of feature field values before the crosswalk) and returns a value (e.g. `obj => obj.HEALTH === 'dead'`). The feature is excluded from the output if the returned value evaluates to `true`. |
 | coordsFunc | <code>function</code> | Function that takes an object (of feature field values before the crosswalk) and returns a number array of point coordinates `[x, y]`. This is a useful alternative to `geometry` if the coordinates need to be extracted from field values (e.g. `obj => obj.XY.split(';').map(Number)`). |
 
@@ -407,14 +498,14 @@ Additional properties not used by [Source](#Source) but used downstream.
 | --- | --- | --- |
 | pending | <code>string</code> | Pending issues preventing processing. |
 | primary | <code>string</code> | `id` of the primary source (for grouping sources together). |
-| long | <code>string</code> | Full name of the government body, university, or other institution (e.g. 'City of Melbourne'). |
+| long | <code>string</code> | Full name of the government body, university, or other institution (e.g. `City of Melbourne`). |
 | short | <code>string</code> | Short name (e.g. `Melbourne`). |
 | country | <code>string</code> | Country name in English (e.g. `Australia`). |
 | centre | <code>object</code> | Centre point (for map label placement). |
 | centre.lon | <code>number</code> | Longitude in decimal degrees (EPSG:4326). |
 | centre.lat | <code>number</code> | Latitude in decimal degrees (EPSG:4326). |
 | info | <code>string</code> | Path to page with more information. |
-| language | <code>string</code> | Language of contents as an [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) code (e.g. en) and an optional [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) region code (e.g. "en-AU"). |
+| language | <code>string</code> | Language of contents as an [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) code (e.g. `en`) and an optional [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) region code (e.g. `en-AU`). |
 | license | <code>object</code> | Data license. |
 | license.id | <code>string</code> | License identifier from the Software Package Data Exchange (SPDX) [license list](https://spdx.org/licenses/) (e.g. `CC-BY-4.0`). |
 | license.name | <code>string</code> | License name (e.g. `Creative Commons Attribution 4.0 International`). |

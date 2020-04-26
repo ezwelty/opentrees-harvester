@@ -170,31 +170,25 @@ class Source {
   }
 
   /**
-   * Download and unpack remote files and execute shell commands.
+   * Prepare remote source data for processing.
+   *
+   * Downloads remote files (`this.props.download`), unpacks compressed or
+   * archive files, and executes shell commands (`this.props.execute`).
    *
    * @param {boolean} [overwrite=false] - Whether to proceed if working
    * directory is not empty (see {@link Source#is_empty}).
    * @return {Promise}
    */
   get(overwrite = false) {
-    if (!this.props.download || (!overwrite && !this.is_empty())) {
-      return Promise.resolve()
-    }
-    let urls = this.props.download
-    if (typeof urls === 'string') {
-      urls = [urls]
-    }
-    return Promise.
-      all(urls.map(url => this.get_file(url))).
-      then(() => {
-        if (this.props.execute) {
-          const cmd = typeof this.props.execute === 'string' ?
-            this.props.execute : this.props.execute.join(' && ')
-          this.log('Executing:', this.props.execute)
-          return exec(`cd '${this.dir}' && ${cmd}`)
-        }
+    return this.get_files(overwrite).
+      then(paths => {
+        if (paths.length) this.execute()
+        return paths
       }).
-      then(() => this.success('Ready to process'))
+      then(paths => {
+        if (paths.length) this.success('Ready to process')
+      }).
+      catch(error => this.error('Unexpected error:', error.message))
   }
 
   /**
@@ -558,33 +552,113 @@ class Source {
   }
 
   /**
-   * Download and unpack a file to the source directory.
-   * 
-   * @param {string} url - Path to remote file.
-   * @return {Promise}
+   * Download a remote file to the source directory.
+   *
+   * @param {string} url - Path to the remote file.
+   * @return {Promise<string>} Resolves to the path of the downloaded file.
    */
-  get_file(url) {
+  download_file(url) {
+    // Ensure that target directory exists
     fs.mkdirSync(this.dir, { recursive: true })
     const options = { override: true, retry: { maxRetries: 3, delay: 3000 } }
     const downloader = new DownloaderHelper(url, this.dir, options)
     downloader.
       on('download', info => this.log(`Downloading ${info.fileName}`)).
-      on('end', info => this.success(`Downloaded ${info.fileName} (${(info.downloadedSize / 1e6).toFixed()} MB)`)).
-      on('error', error => this.error(`Download failed for ${url}`)).
-      on('retry', (attempt, opts) => this.warn(`Download attempt ${attempt} of ${opts.maxRetries} in ${opts.delay / 1e3} s`))
+      on('end', info => this.success(
+        `Downloaded ${info.fileName} (${(info.downloadedSize / 1e6).toFixed()} MB)`)).
+      on('error', error => this.error(
+        `Download failed for ${url}:`, error.message)).
+      on('retry', (attempt, opts) => this.warn(
+        `Download attempt ${attempt} of ${opts.maxRetries} in ${opts.delay / 1e3} s`))
     return downloader.start().
-      then(() => downloader.getDownloadPath()).
-      then(file => {
-        return decompress(file, this.dir).
-          then(files => {
-            const filename = path.relative(this.dir, file)
-            if (files.length) {
-              const filenames = files.map(x => x.path)
-              this.success(`Unpacked ${filename}:`, filenames)
-              fs.unlinkSync(file)
-            }
-          })
-      })
+      then(() => downloader.getDownloadPath())
+  }
+
+  /**
+   * Unpack a compressed or archive local file to the source directory.
+   *
+   * Currently supports zip, tar, tar.bz2, and tar.gz via
+   * [decompress](https://www.npmjs.com/package/decompress). Support can be
+   * added for bz2 and gz by adding the corresponding
+   * [plugins](https://www.npmjs.com/search?q=keywords:decompressplugin) to the
+   * dependencies.
+   *
+   * @param {string} file - Path to the local file.
+   * @param {boolean} [rm=true] - Whether to remove the original file if
+   * unpacked successfully.
+   * @return {Promise<string[]>} Resolves to the paths of the unpacked files (if
+   * any) or the path of the original file.
+   */
+  unpack_file(file, rm = true) {
+    const filename = path.relative(this.dir, file)
+    return decompress(file, this.dir).
+      then(files => {
+        const filenames = files.map(x => x.path)
+        if (files.length) {
+          this.success(`Unpacked ${filename}:`, filenames)
+          if (rm) fs.unlinkSync(file)
+          return files.map(x => path.join(this.dir, x.path))
+        } else {
+          return [file]
+        }
+      }).
+      catch(error =>
+        this.error(`Unpack failed for ${filename}:`, error.message))
+  }
+
+  /**
+   * Download and unpack a remote file to the source directory.
+   * 
+   * @param {string} url - Path to the remote file.
+   * @return {Promise<sring[]>} Resolves to the paths of the unpacked files (if
+   * any) or the local path of the downloaded file.
+   */
+  get_file(url) {
+    return this.download_file(url).
+      then(file => this.unpack_file(file))
+  }
+
+  /**
+   * Download and unpack remote files to the source directory.
+   *
+   * Downloads all file paths in `this.props.download` and unpacks any
+   * compressed or archive files.
+   *
+   * @param {boolean} [overwrite=false] - Whether to proceed if working
+   * directory is not empty (see {@link Source#is_empty}).
+   * @return {Promise<string[]>} Resolves to the paths of the downloaded and
+   * unpacked local files.
+   */
+  get_files(overwrite = false) {
+    if (!this.props.download || (!overwrite && !this.is_empty())) {
+      return Promise.resolve([])
+    }
+    let urls = this.props.download
+    if (typeof urls === 'string') {
+      urls = [urls]
+    }
+    return Promise.
+      all(urls.map(url => this.get_file(url))).
+      then(paths => paths.flat())
+  }
+
+  /**
+   * Execute shell commands from the source directory.
+   *
+   * Executes all shell commands in `this.props.execute` from the source
+   * directory (`this.dir`).
+   *
+   * @return {Promise}
+   */
+  execute() {
+    if (!this.props.execute) {
+      return Promise.resolve()
+    }
+    const cmd = typeof this.props.execute === 'string' ?
+      this.props.execute : this.props.execute.join(' && ')
+    this.log('Executing:', this.props.execute)
+    return exec(`cd '${this.dir}' && ${cmd}`).
+      catch(error => this.error('Execution failed:', error.message))
   }
 
   /**

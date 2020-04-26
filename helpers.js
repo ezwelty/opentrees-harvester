@@ -95,7 +95,7 @@ function map_object(obj, crosswalk, keep = false, prefix = '_') {
 }
 
 /**
- * Common names for geometry fields.
+ * Common geometry field names.
  * 
  * @property {string[]} wkt - Field name for well-known text (WKT)
  * @property {string[]} x - Field names for x (longitude, easting)
@@ -186,6 +186,19 @@ function get_file_extension(file) {
 }
 
 /**
+ * Common file extensions for vector datasets.
+ *
+ * @property {string[]} 1 - Primary format file extensions (take
+ * precedence).
+ * @property {string[]} 2 - Secondary format file extensions (only take
+ * precedence if no primary extension present).
+ */
+const file_extensions = {
+  1: ['geojson', 'topojson', 'shp', 'vrt', 'gml', 'kml'],
+  2: ['csv', 'json']
+}
+
+/**
  * Regular expressions matching vector file extensions supported by GDAL.
  * @property {RegExp} any - Matches any supported file extension
  * @property {RegExp} primary - Matches primary formats
@@ -193,8 +206,8 @@ function get_file_extension(file) {
  */
 const gdal_patterns = {
   any: new RegExp(`\\.(${get_gdal_extensions().join('|')})$`, 'i'),
-  primary: /\.(geojson|topojson|shp|vrt|gml|kml)$/i,
-  secondary: /\.(csv|json)$/i
+  primary: new RegExp(`\\.(${file_extensions[1].join('|')})$`, 'i'),
+  secondary: new RegExp(`\\.(${file_extensions[2].join('|')})$`, 'i')
 }
 
 /**
@@ -274,7 +287,6 @@ module.exports = {
   },
   map_object,
   guess_geometry_fields,
-  write_vrt,
   get_gdal_extensions,
   get_gdal_drivers,
   get_file_extension,

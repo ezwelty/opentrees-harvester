@@ -125,8 +125,15 @@ class Source {
     // download
     if (props.download) {
       if (!(typeof props.download === 'string' ||
-        (Array.isArray(props.download) && typeof props.download[1] === 'string'))) {
+        (Array.isArray(props.download) && typeof props.download[0] === 'string'))) {
         errors.push(['Invalid download:', props.download])
+      }
+    }
+    // execute
+    if (props.execute) {
+      if (!(typeof props.execute === 'string' ||
+        (Array.isArray(props.execute) && typeof props.execute[0] === 'string'))) {
+        errors.push(['Invalid execute:', props.execute])
       }
     }
     // format

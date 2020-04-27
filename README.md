@@ -124,7 +124,6 @@ Numeric fields should be tagged with a unit (if known) for automatic unit conver
 `stems` | Number of stems.
 | *Secondary* | |
 `circumference` | Circumference of trunk in centimeters.
-`diameter` | Diameter (*units and meaning unclear*).
 
 ### Condition
 

@@ -102,11 +102,9 @@ Numeric and date ranges can be expressed by appending `_min` and `_max` to the f
 `family` | Family (e.g. `Rosaceae`).
 `genus` | Genus (e.g. `Malus`).
 `species` | Species (e.g. `pumila`).
+`infraspecies` | Any infraspecific epithets (subspecies, variety, form) or cultivars (e.g. `asiatica`, `Gala`, `var. asiatica 'Gala'`).
 `cultivar` | Cultivar (e.g. `Gala`).
 `description` | Other name information not covered by other fields.
-| *Disputed* | |
-`variety` | Any infraspecific epithet (subspecies, variety, form) or cultivar (e.g. `asiatica`, `Gala`).
-
 
 ### Dimension
 

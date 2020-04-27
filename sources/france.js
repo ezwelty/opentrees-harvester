@@ -22,7 +22,7 @@ module.exports = [
     crosswalk: {
       scientific: 'essence',
       // TODO: Cultivar with single exception (laricio).
-      variety: 'variete',
+      infraspecies: 'variete',
       genus: 'genre',
       species: 'espece',
       location: 'localisati',
@@ -206,7 +206,7 @@ module.exports = [
       ref: 'id_arbre',
       genus: x => String(x.genre).replace(/ \?/, ''),
       species: x => String(x.species).replace(/ \?/, ''),
-      variety: 'variete',
+      infraspecies: 'variete',
       planted: 'date_plant'
     }
   },

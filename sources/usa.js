@@ -787,7 +787,7 @@ module.exports = [
       common: 'COMMON',
       scientific: 'BOTANICAL',
       // CULTIVAR: Contains variety names (only mandshurica, pubens).
-      variety: 'CULTIVAR',
+      infraspecies: 'CULTIVAR',
       dbh: inches('DBH'),
       health: 'COND',
       note: 'NOTES',

@@ -411,7 +411,7 @@ module.exports = [
     info: 'http://hub.arcgis.com/datasets/mapleridge::street-tree',
     crosswalk: {
       common: 'CommonName',
-      variety: 'Variety',
+      infraspecies: 'Variety',
       genus: 'Genus',
       species: 'Species',
       // stuff about refunds?

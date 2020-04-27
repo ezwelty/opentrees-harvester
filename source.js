@@ -350,7 +350,7 @@ class Source {
     const output_layer = output.layers.create(input_layer.name, options.srs,
       output_type)
     output_layer.fields.add(output_schema)
-    const input_srs = this.get_srs()
+    const input_srs = this.get_srs(input_layer)
     const transform = helpers.get_srs_transform(input_srs, options.srs)
     if (options.bounds) {
       if (transform && !helpers.is_srs_xy(options.srs)) {
@@ -785,14 +785,19 @@ class Source {
   /**
    * Get spatial reference system (SRS) of input as a string.
    *
+   * @param {gdal.Layer} [layer] - Feature layer from which to read SRS. If not
+   * provided, defaults to the first layer of the input file (see @link
+   * Source#open).
    * @return {string} Either the provided SRS (`this.props.srs`), the SRS read
    * from the input file (as well-known-text), or the default SRS
    * (`this.options.default_srs`).
    */
-  get_srs_string() {
+  get_srs_string(layer) {
     let srs = this.props.srs
     if (!srs) {
-      const layer = this.open().layers.get(0)
+      if (!layer) {
+        layer = this.open().layers.get(0)
+      }
       if (layer.srs) {
         srs = layer.srs.toWKT()
       }
@@ -807,20 +812,25 @@ class Source {
   /**
    * Get spatial reference system (SRS) of input.
    *
+   * @param {gdal.Layer} [layer] - Feature layer from which to read SRS. If not
+   * provided, defaults to the first layer of the input file (see @link
+   * Source#open).
    * @return {gdal.SpatialReference} SRS object initialized by
    * `gdal.SpatialReference.fromUserInput()` from the result of
    * {@link Source#get_srs_string}. See the documentation for
    * [node-gdal-next](https://contra.io/node-gdal-next/classes/gdal.SpatialReference.html#method-fromUserInput).
    */
-  get_srs() {
-    const srs = this.get_srs_string()
+  get_srs(layer) {
+    const srs = this.get_srs_string(layer)
     return gdal.SpatialReference.fromUserInput(srs)
   }
 
   /**
    * Get geometry field name(s) of input.
-   * 
-   * @return {{?wkt: string, ?x: string, ?y: string}|undefined} Names of geometry fields either provided (`this.props.srs`) or guessed from field names, or `undefined` if the input already has explicit geometries.
+   *
+   * @return {{?wkt: string, ?x: string, ?y: string}|undefined} Names of
+   * geometry fields either provided (`this.props.srs`) or guessed from field
+   * names, or `undefined` if the input already has explicit geometries.
    */
   get_geometry() {
     let geometry = this.props.geometry

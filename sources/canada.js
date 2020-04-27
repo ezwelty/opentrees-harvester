@@ -382,8 +382,8 @@ module.exports = [
     id: 'new_west_west',
     country: 'Canada',
     short: 'New West',
-    download: 'https://opendata.arcgis.com/datasets/eb043d306e4b4652a10b4b7b51f718ab_102.zip',
-    info: 'http://hub.arcgis.com/datasets/newwestcity::trees-west',
+    download: 'http://opendata.newwestcity.ca/downloads/tree-inventory-west/TREES_WEST.zip',
+    info: 'http://opendata.newwestcity.ca/datasets/tree-inventory-west',
     crosswalk: {
       scientific: 'Scientific',
       common: 'Common_Nam',
@@ -394,8 +394,8 @@ module.exports = [
     id: 'new_west_east',
     country: 'Canada',
     short: 'New West',
-    download: 'https://opendata.arcgis.com/datasets/341e47f1d4cd4b4aa14a8804b992cc7e_101.zip',
-    info: 'http://hub.arcgis.com/datasets/newwestcity::trees-east',
+    download: 'http://opendata.newwestcity.ca/downloads/tree-inventory-east/TREES_EAST.ZIP',
+    info: 'http://opendata.newwestcity.ca/datasets/tree-inventory-east',
     crosswalk: {
       scientific: 'Scientific',
       common: 'Common_Nam',

@@ -287,6 +287,7 @@ module.exports = [
     }
   },
   {
+    pending: 'Download no longer available',
     id: 'rochester',
     country: 'United States',
     short: 'Rochester',
@@ -402,8 +403,8 @@ module.exports = [
   {
     id: 'las_vegas',
     short: 'Las Vegas',
-    download: 'https://opendata.arcgis.com/datasets/23364bb40f2640ff841ba4a8680b6421_0.csv',
-    info: 'http://hub.arcgis.com/datasets/lasvegas::trees',
+    download: 'https://opendata.arcgis.com/datasets/23364bb40f2640ff841ba4a8680b6421_0.csv?outSR=%7B%22latestWkid%22%3A3421%2C%22wkid%22%3A102707%7D',
+    info: 'http://geocommons-lasvegas.opendata.arcgis.com/datasets/trees',
     crosswalk: {
       location: 'LOC_TYPE',
       scientific: 'BOTANICAL',
@@ -637,10 +638,11 @@ module.exports = [
     }
   },
   {
+    pending: 'Broken download link',
     id: 'westerville_oh',
     short: 'Westerville',
     download: 'https://opendata.arcgis.com/datasets/137785bc78da47b4a2159f9c76218d55_0.csv',
-    info: 'http://hub.arcgis.com/datasets/Westerville::comm-parks-rec-trees/data?geometry=-83.315%2C40.085%2C-82.585%2C40.177',
+    info: 'http://hub.arcgis.com/datasets/Westerville::comm-parks-rec-trees',
     crosswalk: {
       dbh: inches('DBH'),
       common: 'COMMON_NAME',
@@ -943,11 +945,12 @@ module.exports = [
     }
   },
   {
+    pending: 'Unstable download link',
     id: 'san_jose_ca1',
     short: 'San Jose',
-    long: 'San Jose Medians and Backups',
-    download: 'https://opendata.arcgis.com/datasets/0b0ad30145394b1588ff09ef1a7c9225_1.csv',
-    info: 'http://hub.arcgis.com/datasets/csjdotgis::trees-medians-and-backups',
+    long: 'City of San Jose – Medians and Backups',
+    download: 'http://gisdata-csjdotgis.opendata.arcgis.com/datasets/0b0ad30145394b1588ff09ef1a7c9225_1.csv',
+    info: 'http://gisdata-csjdotgis.opendata.arcgis.com/datasets/0b0ad30145394b1588ff09ef1a7c9225_1',
     crosswalk: {
       scientific: 'NAMESCIENTIFIC',
       age: 'TREEAGE',
@@ -961,11 +964,12 @@ module.exports = [
     }
   },
   {
+    pending: 'Unstable download link',
     id: 'san_jose_ca2',
     short: 'San Jose',
-    long: 'San Jose Special Districts',
-    download: 'https://opendata.arcgis.com/datasets/0b0ad30145394b1588ff09ef1a7c9225_0.csv',
-    info: 'http://hub.arcgis.com/datasets/csjdotgis::trees-special-districts',
+    long: 'City of San Jose – Special Districts',
+    download: 'http://gisdata-csjdotgis.opendata.arcgis.com/datasets/0b0ad30145394b1588ff09ef1a7c9225_0.csv',
+    info: 'http://gisdata-csjdotgis.opendata.arcgis.com/datasets/0b0ad30145394b1588ff09ef1a7c9225_0',
     crosswalk: {
       scientific: 'NAMESCIENTIFIC',
       age: 'TREEAGE',
@@ -980,11 +984,12 @@ module.exports = [
     primary: 'san_jose_ca1'
   },
   {
+    pending: 'Unstable download link',
     id: 'san_jose_ca3',
     short: 'San Jose',
-    long: 'San Jose General Fund',
-    download: 'https://opendata.arcgis.com/datasets/0b0ad30145394b1588ff09ef1a7c9225_2.csv',
-    info: 'http://hub.arcgis.com/datasets/csjdotgis::trees-general-fund-street',
+    long: 'City of San Jose – General Fund',
+    download: 'http://gisdata-csjdotgis.opendata.arcgis.com/datasets/0b0ad30145394b1588ff09ef1a7c9225_2.csv',
+    info: 'http://gisdata-csjdotgis.opendata.arcgis.com/datasets/0b0ad30145394b1588ff09ef1a7c9225_2',
     crosswalk: {
       scientific: 'NAMESCIENTIFIC',
       age: 'TREEAGE',

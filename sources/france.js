@@ -226,8 +226,9 @@ module.exports = [
     country: 'France',
     short: 'Bayonne',
     long: 'Ville de Bayonne',
-    download: 'https://www.data.gouv.fr/fr/datasets/r/e99bddd1-384b-4954-9f4f-483bb0fcaef0',
+    download: 'https://www.data.gouv.fr/fr/datasets/r/407fde2b-b415-4491-a41f-0b9cc861512c',
     info: 'https://www.data.gouv.fr/fr/datasets/arbres-dalignement-bayonne/',
+    license: { id: 'etalab-2.0' },
     crosswalk: {
       genus: 'genre',
       species: 'espece',

@@ -157,7 +157,7 @@ Numeric fields should be tagged with a unit (if known) for automatic unit conver
 `carbon_annual` | Carbon storage in kilograms per year.
 `edible` | Whether flagged as edible: [`true`, `false`].
 `harvest` | Notes about when or how to harvest.
-`notable` | Whether flagged as notable (champion, heritage, memorial, veteran, etc): [`true`, `false`].
+`notable` | Designation as notable: [`champion`, `heritage`, `memorial`, `veteran`, `historic`].
 `origin` | Biogeographic origin: [`endemic`, `native`, `introduced`, `naturalized`, `invasive`].
 
 ## Development

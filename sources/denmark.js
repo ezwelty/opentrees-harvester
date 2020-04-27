@@ -42,7 +42,9 @@ module.exports = [
       ref: 'OBJECTID',
       // PLANTENAVN: Very messy mix of scientific name, common name, and notes
       scientific: 'PLANTENAVN',
-      notable: x => x.ELTTYPE ? Number(x.ELTTYPE === 'Historisk træ') : null,
+      notable: x => ({
+        'Historisk træ': 'historic',
+      })[x.ELTTYPE],
       location: x => 'park',
       health: x => x.ELTTYPE === 'Træruin' ? 'dead' : null,
       note: 'BESKRIVELSE'

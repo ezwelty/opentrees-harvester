@@ -456,10 +456,10 @@ module.exports = [
       },
       // TODO: TreeType = Park Tree, Street Tree, Heritage Tree, ..., Other
       location: 'TreeType',
-      notable: x => {
-        return x.TreeType ?
-          Number(['Heritage Tree', 'Memorial Tree'].includes(x.TreeType)) : null
-      }
+      notable: x => ({
+        'Heritage Tree': 'heritage',
+        'Memorial Tree': 'memorial'
+      })[x.TreeType]
     }
   },
   {

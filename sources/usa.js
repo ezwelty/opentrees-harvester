@@ -893,7 +893,9 @@ module.exports = [
         'good': 'good',
         'excellent': 'excellent'
       })[x.Condition_Rating],
-      notable: x => x.MemorialTree ? Number(x.MemorialTree == 'Yes') : null,
+      notable: x => ({
+        'Yes': 'memorial'
+      })[x.MemorialTree],
       edible: x => x.edible ? Number(x.edible == 'Yes') : null,
       harvest: 'Harvest_Window'
     }

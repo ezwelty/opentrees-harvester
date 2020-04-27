@@ -72,7 +72,9 @@ module.exports = [
         'Veteran': 'mature',
         'Over Mature': 'over-mature'
       })[x['Maturity']],
-      notable: x => x['Maturity'] === 'Veteran' ? 1 : null,
+      notable: x => ({
+        'Veteran': 'veteran'
+      })[x['Maturity']],
       health: x => ({
         'Dead': 'dead',
         'Poor': 'poor',

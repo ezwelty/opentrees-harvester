@@ -883,7 +883,7 @@ module.exports = [
         '16 - 20 meters': 20, '20 - 25 meters': 25
       })[x.Height],
       // TODO Stems: '> 10'
-      trunks: 'Stems',
+      stems: 'Stems',
       health: x => ({
         'very poor': 'poor',
         'poor': 'poor',

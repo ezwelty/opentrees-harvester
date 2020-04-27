@@ -483,7 +483,7 @@ module.exports = [
       dbh: 'diameter',
       height: 'height',
       spread: 'spread',
-      trunks: 'trunks',
+      stems: 'trunks',
       planted: 'planted',
       ref: 'AssetID'
     },
@@ -535,7 +535,7 @@ module.exports = [
       scientific: 'BOTANICAL',
       common: 'COMMON',
       dbh: 'DBH',
-      trunks: 'STEMS'
+      stems: 'STEMS'
     }
   },
   {

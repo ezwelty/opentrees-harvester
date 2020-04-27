@@ -116,7 +116,7 @@ Numeric and date ranges can be expressed by appending `_min` and `_max` to the f
 `height` | Height in meters.
 `dbh` | Diameter at breast height in centimeters.
 `crown` | Crown spread (average diameter of crown) in meters.
-`trunks` | Number of trunks or stems.
+`stems` | Number of stems.
 | *Disputed* | |
 `spread` | Crown spread (average diameter of crown) in meters.
 `circumference` | Circumference (*units and meaning unclear*).

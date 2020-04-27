@@ -55,7 +55,7 @@ module.exports = [
       common: 'COMMON_NAME',
       genus: 'GENUS',
       species: 'SPECIES',
-      variety: 'CULTIVAR',
+      cultivar: 'CULTIVAR',
       dbh: 'DBH_CM',
       health: x => {
         if (x.TREE_CONDITION_RATING_PERC >= 70) return 'Good';
@@ -155,7 +155,7 @@ module.exports = [
       ref: 'tree_id',
       genus: 'genus_name',
       species: 'species_name',
-      variety: 'cultivar_name',
+      cultivar: 'cultivar_name',
       common: 'common_name',
       height: 'height_range_id', // this is in feet? urgh
       dbh: x => Number(x.diameter) * 2.54, // seriouosly, inches
@@ -175,7 +175,7 @@ module.exports = [
       // scientific: 'DESCRIPTION', // breakdown fields available too
       genus: 'TREE_GENUS',
       species: 'TREE_SPECIES',
-      variety: 'TREE_VARIETY',
+      cultivar: 'TREE_VARIETY',
       ule: 'YRS_LIFE_EXPECTANCY',
       // health: 'CONDITION', // blank
       // updated: 'CONDITIONDATE'
@@ -310,7 +310,7 @@ module.exports = [
       common: 'CommonName',
       genus: 'GenusName',
       species: 'SpeciesNam',
-      variety: 'VarietyNam',
+      cultivar: 'VarietyNam',
       age: 'TreeAge',
       height: 'TreeHeight',
       dbh: 'DBH',
@@ -387,7 +387,7 @@ module.exports = [
     crosswalk: {
       scientific: 'Scientific',
       common: 'Common_Nam',
-      variety: 'Cultivar'
+      cultivar: 'Cultivar'
     }
   },
   {
@@ -399,7 +399,7 @@ module.exports = [
     crosswalk: {
       scientific: 'Scientific',
       common: 'Common_Nam',
-      variety: 'Cultivar'
+      cultivar: 'Cultivar'
     },
     primary: 'new_west_west'
   },
@@ -410,7 +410,6 @@ module.exports = [
     download: 'https://opendata.arcgis.com/datasets/290505c676d64cf09989eca1320aedd3_5.zip',
     info: 'http://hub.arcgis.com/datasets/mapleridge::street-tree',
     crosswalk: {
-      species: 'Type',
       common: 'CommonName',
       variety: 'Variety',
       genus: 'Genus',

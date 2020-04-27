@@ -10,7 +10,7 @@ module.exports = [
       common: 'libellefrancais',
       genus: 'genre',
       species: 'espece',
-      variety: 'varieteoucultivar',
+      cultivar: 'varieteoucultivar',
       dbh: x => (Number(x['circonferenceencm']) / 3.14159) * 2,
       maturity: 'stadedeveloppement', // A, J, JA, M. Maybe 'Jeune, jeune adulte, adulte, mûr/mature'?
     }
@@ -21,6 +21,7 @@ module.exports = [
     download: 'https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre.shp?srsname=EPSG:4326',
     crosswalk: {
       scientific: 'essence',
+      // TODO: Cultivar with single exception (laricio).
       variety: 'variete',
       genus: 'genre',
       species: 'espece',
@@ -42,7 +43,8 @@ module.exports = [
       dbh: 'diametre',
       height: 'hauteur',
       family: 'famille',
-      variety: 'variete',
+      // TODO variete: Full name with cultivar. Seems to supersede nom when available.
+      cultivar: 'variete',
       location: 'typo_espace',
       health: 'statut',
       planted: 'tranche_age', // not a date but a range, 42 - 63
@@ -69,7 +71,7 @@ module.exports = [
       ref: 'BIEN_REFERENCE', // asset id?
       genus: 'GENRE_BOTA',
       species: 'ESPECE',
-      variety: 'VARIETE',
+      cultivar: 'VARIETE',
       maturity: 'STADEDEDEVELOPPEMENT',
       description: 'REMARQUES',
       planted: 'ANNEDEPLANTATION'
@@ -235,7 +237,7 @@ module.exports = [
       species: 'espece',
       height: 'hauteur',
       common: 'vernaculai',
-      variety: 'variete',
+      cultivar: 'variete',
       planted: 'anne_plan',
       scientific: 'gev', // genus espece variete?
       circumference: 'circonf',
@@ -270,7 +272,7 @@ module.exports = [
       genus: 'genre',
       species: 'espece',
       planted: 'date_plant',
-      variety: 'variete',
+      cultivar: 'variete',
       circumference: 'circonfere'
     }
   },
@@ -288,7 +290,7 @@ module.exports = [
       health: 'etat',
       genus: 'genre',
       species: 'espece',
-      variety: 'variete',
+      cultivar: 'variete',
       circumference: 'circonfere',
       height: 'hauteur'
     }
@@ -349,7 +351,7 @@ module.exports = [
     crosswalk: {
       genus: 'Genre',
       species: 'Espce',
-      variety: 'VArit'
+      cultivar: 'Varit'
     }
   },
   {

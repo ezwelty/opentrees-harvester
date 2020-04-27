@@ -3,7 +3,6 @@ const identity = {
   common: 'common',
   species: 'species',
   genus: 'genus',
-  variety: 'variety',
   description: 'description',
   dbh: 'dbh',
   crown: 'crown',
@@ -342,7 +341,7 @@ module.exports = [
       // genus: 'genus', // contains rubbish like 'Eucalyptus M to Z' whereas scientific is clean.
       scientific: x => x.species.split(' - ')[0],
       common: x => x.species.split(' - ')[1],
-      variety: x => x.cultivar !== 'Not Specified' ? x.cultivar : '',
+      cultivar: x => x.cultivar !== 'Not Specified' ? x.cultivar : '',
       // house, st_name, st_type, st_suffix, suburb
     },
     centre: { lon: 144.298, lat: -36.755 }

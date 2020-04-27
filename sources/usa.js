@@ -177,7 +177,7 @@ module.exports = [
     crosswalk: {
       scientific: 'LATINNAME',
       common: 'COMMONNAME',
-      variety: 'CULTIVAR',
+      cultivar: 'CULTIVAR',
       dbh: x => 'DBHINT' * 2.54,
       location: 'LOCTYPE',
       // also interesting attributes on deciduous, broadlaved etc.
@@ -538,7 +538,7 @@ module.exports = [
       common: 'common',
       genus: 'genus',
       species: 'sp_epith',
-      variety: 'variety',
+      cultivar: 'variety',
       location: 'type',
       dbh: inches('dbh'),
       height: feet('height'),
@@ -618,7 +618,7 @@ module.exports = [
       common: 'COMMON',
       genus: 'GENUS',
       species: 'SPECIES',
-      variety: 'CULTIVAR',
+      cultivar: 'CULTIVAR',
       dbh: inches('DBH'),
       health: 'CONDITION',
       updated: 'LASTMODDATE'
@@ -700,7 +700,7 @@ module.exports = [
     crosswalk: {
       common: 'Type',
       scientific: 'BOTANICAL',
-      variety: 'CULTIVAR',
+      cultivar: 'CULTIVAR',
       dbh: inches('DBH'),
       health: x => String(x.CONDITION).split(' - ')[0],
       note: 'NOTES',
@@ -716,7 +716,7 @@ module.exports = [
     crosswalk: {
       genus: 'Genus',
       species: 'Species',
-      variety: 'Cultivar',
+      cultivar: 'Cultivar',
       dbh: inches('DBH'),
       health: 'Condition',
       updated: 'last_edited_date',
@@ -786,6 +786,7 @@ module.exports = [
     crosswalk: {
       common: 'COMMON',
       scientific: 'BOTANICAL',
+      // CULTIVAR: Contains variety names (only mandshurica, pubens).
       variety: 'CULTIVAR',
       dbh: inches('DBH'),
       health: 'COND',
@@ -940,7 +941,7 @@ module.exports = [
       planted: 'DatePlanted',
       dbh: inches('EST_DBH'),
       family: 'FAMILY',
-      variety: 'CULTIVAR',
+      cultivar: 'CULTIVAR',
       genus: 'GENUS', // no species?
     }
   },

@@ -87,8 +87,7 @@ module.exports = [
       scientific: 'EMPLAZAMIENTO',
       common: 'NOMBRE COMUN',
       height: 'ALTURA', // 0-60: meter
-      dbh: 'DIAMETRO', // 0-200: centimer trunk
-      circumference: 'PERIMETRO', // 0-400: centimeter trunk
+      dbh_cm: 'DIAMETRO', // 0-200: assuming trunk [cm]
       age: 'EDAD', // 0-100: year
       location: x => ({ 'ZONA VERDE': 'park', VIARIO: 'street' })[x.ZONA],
       health: x => ({ 'ARBOL SECO': 'dead', ENFERMO: 'poor', DUDOSO: 'fair', REGULAR: 'good', BUENO: 'very good' })[x.ESTADO]

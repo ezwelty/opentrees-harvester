@@ -118,6 +118,7 @@ module.exports = [
   },
   {
     id: 'adelaide',
+    info: 'http://opendata.adelaidecitycouncil.com/street_trees/Data%20Content%20Summary%20-%20ACC%20Street%20Trees.docx',
     download: 'http://opendata.adelaidecitycouncil.com/street_trees/street_trees.csv',
     srs: 'EPSG:28354',
     geometry: { x: 'Easting (Location/Map Coordinates)', y: 'Northing (Location/Map Coordinates)' },
@@ -127,7 +128,18 @@ module.exports = [
     country: 'Australia',
     crosswalk: {
       ref: 'Asset Id (identifier)',
-      dbh: x => x['Circum (Inspection)'] + ' circumference',
+      circumference_m_min: x => ({
+        '0m -1m': 0,
+        '1m - 2m': 1,
+        '2m - 3m': 2,
+        '>3m': 3,
+      })[x['Circum (Inspection)']],
+      circumference_m_max: x => ({
+        '0m -1m': 1,
+        '1m - 2m': 2,
+        '2m - 3m': 3
+      })[x['Circum (Inspection)']],
+      dbh_max: '',
       health: x => 'Vigour (Inspection)',
       height: 'Height (Inspection)',
       structure: 'Structure (Inspection)',
@@ -240,6 +252,10 @@ module.exports = [
   {
     id: 'prospect1',
     download: 'https://data.sa.gov.au/data/dataset/5d86d41e-b6c6-47d5-9b88-4d95916c5e76/resource/d1e30913-6e91-4a1f-b576-64120cc4b242/download/city-of-prospect-tree-species-in-reserves-2016.csv',
+    execute: [
+      // Strangely, GDAL needs the last field name quoted
+      `npm run replace '(Tree Height)\\$' '"\\$1"' '$INIT_CWD/city-of-prospect-tree-species-in-reserves-2016.csv' -- --silent=true`
+    ],
     srs: 'EPSG:4326',
     geometry: { x: 'Longitude', y: 'Latitude' },
     short: 'Prospect',
@@ -249,7 +265,17 @@ module.exports = [
     crosswalk: {
       species: 'Tree Species',
       maturity: 'Tree Age',
-      dbh: x => x['Tree Circumference'] + ' circumference',
+      circumference_m_min: x => ({
+        'Less than 2m': 0,
+        '2m': 2,
+        'Greater than 2m less than 3m': 2,
+        'Greater than 3m': 3,
+      })[x['Tree Circumference']],
+      circumference_m_max: x => ({
+        'Less than 2m': 2,
+        '2m': 2,
+        'Greater than 2m less than 3m': 3
+      })[x['Tree Circumference']],
       health: 'Tree Health',
       structure: 'Tree Structure',
       height: 'Tree Height'

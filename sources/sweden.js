@@ -14,7 +14,7 @@ module.exports = [
   },
   {
     id: 'tradportalen',
-    info: 'https://www.tradportalen.se/Summary.aspx',
+    info: 'https://www.tradportalen.se',
     download: 'https://tradportalen.s3.eu-north-1.amazonaws.com/tradportalen.zip',
     short: 'Trädportalen',
     long: 'Trädportalen',
@@ -23,7 +23,7 @@ module.exports = [
       scientific: x => String(x.Species).split(', ')[1],
       common: x => String(x.Species).split(', ')[0],
       height: 'Height',
-      dbh: x => Number(x['TrunkCircumference']) / 3.14159 * 2
+      circumference_cm: 'TrunkCircumference' // values > 100, assuming [cm]
     },
     country: 'Sweden'
   }

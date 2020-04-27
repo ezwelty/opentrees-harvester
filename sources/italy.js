@@ -8,7 +8,16 @@ module.exports = [
     info: 'http://dati.comune.bologna.it/node/207',
     crosswalk: {
       scientific: 'decodifi_4',
-      circumference: 'decodifi_2', //??
+      // decodifi_2: circumference min - max [cm] (diameter min-max [cm])
+      circumference_cm_min: x => {
+        let match = x['decodifi_2'].match(/^([0-9]+)\s*-\s*[0-9]+|^>\s*([0-9]+)/)
+        if (match) return match[1] | match[2]
+        else if (x['decodifi_2'].match(/^<\s*[0-9]+/)) return 0
+      },
+      circumference_cm_max: x => {
+        let match = x['decodifi_2'].match(/^[0-9]+\s*-\s*([0-9]+)|^<\s*([0-9]+)/)
+        if (match) return match[1] | match[2]
+      },
       ref: 'NUM_PT',
       // CL_H? height? health?
     },

@@ -157,7 +157,15 @@ module.exports = [
       height: 'hauteur',
       scientific: 'essence',
       maturity: 'stade_dvlp',
-      dbh: x => `Circumference: ${x.circonfere}`
+      circumference_cm_min: x => ({
+        '<50cm': 0,
+        '50-100cm': 50,
+        '>100cm': 100
+      })[x['circonfere']],
+      circumference_cm_max: x => ({
+        '<50cm': 50,
+        '50-100cm': 100
+      })[x['circonfere']]
     }
   },
   {
@@ -240,7 +248,7 @@ module.exports = [
       cultivar: 'variete',
       planted: 'anne_plan',
       scientific: 'gev', // genus espece variete?
-      circumference: 'circonf',
+      circumference_cm: 'circonf', // values > 100, assuming [cm]
       age: 'agechrono', // also agephysio??
     }
   },
@@ -254,7 +262,7 @@ module.exports = [
     crosswalk: {
       scientific: 'essence_sci',
       common: 'essence_com',
-      circumference: 'circonferen',
+      circumference_cm: 'circonferen', // values > 100, assuming [cm]
       height: 'hauteur',
       maturity: 'classe_age',
       health: 'statut_emp',
@@ -273,7 +281,7 @@ module.exports = [
       species: 'espece',
       planted: 'date_plant',
       cultivar: 'variete',
-      circumference: 'circonfere'
+      circumference_cm: 'circonfere' // values > 100, assuming [cm]
     }
   },
   {
@@ -291,7 +299,7 @@ module.exports = [
       genus: 'genre',
       species: 'espece',
       cultivar: 'variete',
-      circumference: 'circonfere',
+      circumference_cm: 'circonfere', // values > 100, assuming [cm]
       height: 'hauteur'
     }
   },
@@ -322,7 +330,15 @@ module.exports = [
       genus: x => x.genre.replace('spp.', ''),
       species: 'espece',
       height: 'classe_hau',
-      circumference: 'classe_cir',
+      circumference_cm_min: x => ({
+        '0-50cm': 0,
+        '50-150cm': 50,
+        '>150cm': 150
+      })[x['classe_cir']],
+      circumference_cm_max: x => ({
+        '0-50cm': 50,
+        '50-150cm': 150
+      })[x['classe_cir']],
       // cepee?
     }
   },

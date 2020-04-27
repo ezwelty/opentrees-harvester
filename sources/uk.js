@@ -158,7 +158,15 @@ module.exports = [
     crosswalk: {
       ref: 'TREE_NUMBER',
       height: 'HEIGHT_M',
-      circumference: 'GIRTH',
+      // GIRTH: ${min}-${max}cm, ${x}
+      circumference_cm_min: x => {
+        const match = x['GIRTH'].match(/^([0-9]+)/)
+        if (match) return match[1]
+      },
+      circumference_cm_max: x => {
+        const match = x['GIRTH'].match(/^[0-9]+\s*-\s*([0-9]+)|^([0-9]+)$/)
+        if (match) return match[1] | match[2]
+      },
       maturity: 'AGE_CLASS',
       scientific: 'SCIENTIFIC_NAME',
       common: 'POPULAR_NAME'

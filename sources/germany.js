@@ -106,8 +106,8 @@ module.exports = [
       common: 'art_deutsc',
       description: 'sorte', // contains variety...
       planted: 'pflanzjahr',
-      crown: 'kronendurc', //kronendmza??
-      circumference: 'stammumfan',
+      crown_m: 'kronendurc', // kronendmza confirms [m]
+      circumference_cm: 'stammumfan', // stammumf_1 confirms [cm]
       // stand-bear??
       owner: 'zustaendig'
     }

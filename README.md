@@ -84,6 +84,13 @@ Date fields should follow the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
 
 Numeric and date ranges can be expressed by appending `_min` and `_max` to the field name. For example, "planted in the 1950s" becomes `planted_min`: `1950`, `planted_max`: `1959`. Unbounded ranges leave out either `_min` or `_max`. For example, "height > 5 m" becomes `height_min`: `5`.
 
+Numeric fields should be tagged with a unit (if known) for automatic unit conversion downstream (e.g. `height_m`, `height_m_min`):
+
+- `_cm`: centimeters
+- `_m`: meters
+- `_in`: inches
+- `_ft`: feet
+
 ### Links
 
 | name | description |
@@ -112,11 +119,11 @@ Numeric and date ranges can be expressed by appending `_min` and `_max` to the f
 | -- | -- |
 `count` | Number of individuals, if more than `1` (the default).
 `height` | Height in meters.
-`dbh` | Diameter at breast height in centimeters.
+`dbh` | Diameter of trunk at breast height in centimeters.
 `crown` | Crown spread (average diameter of crown) in meters.
 `stems` | Number of stems.
-| *Disputed* | |
-`circumference` | Circumference (*units and meaning unclear*).
+| *Secondary* | |
+`circumference` | Circumference of trunk in centimeters.
 `diameter` | Diameter (*units and meaning unclear*).
 
 ### Condition

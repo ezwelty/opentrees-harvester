@@ -116,7 +116,6 @@ Numeric and date ranges can be expressed by appending `_min` and `_max` to the f
 `crown` | Crown spread (average diameter of crown) in meters.
 `stems` | Number of stems.
 | *Disputed* | |
-`spread` | Crown spread (average diameter of crown) in meters.
 `circumference` | Circumference (*units and meaning unclear*).
 `diameter` | Diameter (*units and meaning unclear*).
 

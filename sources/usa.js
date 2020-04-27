@@ -410,8 +410,9 @@ module.exports = [
       scientific: 'BOTANICAL',
       common: 'COMMON',
       // water_use!
+      // TODO: Unit conversions
       dbh: 'DBH', // "25-30",
-      spread: 'WIDTH',
+      crown: 'WIDTH',
       height: 'HEIGHT',
       health: 'COND',
       note: 'NOTES'
@@ -494,7 +495,7 @@ module.exports = [
       scientific: 'Species',
       family: 'Family',
       //TreeType: Deciduous
-      spread: 'Spread',
+      crown: feet('Spread'),
       height: feet('Height'),
       dbh: inches('Diameter'),
       health: 'Condition', // /100,
@@ -558,7 +559,7 @@ module.exports = [
       scientific: 'SciName',
       height: 'Height', // 11-20
       dbh: inches('Diameter'),
-      spread: 'Spread'
+      crown: 'Spread' // min-max
     }
   },
   {

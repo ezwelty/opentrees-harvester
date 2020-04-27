@@ -359,7 +359,7 @@ module.exports = [
     crosswalk: {
       // EDITBLEFRUITTREEFLAG!
       common: 'SPECIES', //mapl,amur
-      spread: 'SPREAD',
+      crown: 'SPREAD',
       planted: 'PLANTEDYEA',
       ref: 'FACILITYID'
     }
@@ -481,7 +481,7 @@ module.exports = [
       common: 'species',
       dbh: 'diameter',
       height: 'height',
-      spread: 'spread',
+      crown: 'spread',
       stems: 'trunks',
       planted: 'planted',
       ref: 'AssetID'

@@ -12,7 +12,8 @@ module.exports = [
       maturity: 'AGE',
       health: 'CONDITION',
       dbh: 'DIAMETERinCENTIMETRES',
-      spread: 'SPREADRADIUSinMETRES',
+      // TODO SPREADRADIUSinMETRES: -1, 0, impossible values (213, 500).
+      crown: x => x['SPREADRADIUSinMETRES'] * 2,
       height: 'TREEHEIGHTinMETRES'
     }
   },
@@ -142,7 +143,7 @@ module.exports = [
       scientific: 'LatinName',
       common: 'CommonName',
       height: 'Height',
-      spread: 'Spread',
+      crown: 'Spread',
       maturity: 'AgeGroup',
       dbh: 'DiameterAt'
     }

@@ -12,7 +12,7 @@ module.exports = [
       common: 'Common_Name',
       maturity: 'Age_Desc',
       height: 'Height',
-      spread: 'Spread',
+      crown: 'Spread',
       dbh: x => (x['Actual_Trunk'] || '').replace('cm', ''),
       health: 'Condition'
     }

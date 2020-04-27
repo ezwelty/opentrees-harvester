@@ -1,7 +1,8 @@
 module.exports = [
   {
     id: 'paris',
-    download: 'https://www.data.gouv.fr/en/datasets/r/c558ddb2-cc46-4e26-b96a-bd2735a8f343',
+    download: 'https://opendata.paris.fr/explore/dataset/les-arbres/download/?format=geojson',
+    info: 'https://opendata.paris.fr/explore/dataset/les-arbres',
     short: 'Paris',
     country: 'France',
     crosswalk: {
@@ -307,10 +308,10 @@ module.exports = [
     }
   },
   {
+    pending: 'Requires manual regeneration of link',
     id: 'divonne_les_bains_fr',
     short: 'Divonne-les-Bains',
-    // ugh, probably requires manual regeneration of link
-    download: 'https://telecarto.datara.gouv.fr/DOWNLOAD/Telechargement_1584570708_1630.zip',
+    download: 'https://telecarto.datara.gouv.fr/DOWNLOAD/Telechargement_1587948363_5423.zip',
     info: 'https://www.datara.gouv.fr/geonetwork/srv/fre/catalog.search#/metadata/b18070b7-4349-4fd5-8e56-1dc48c3eb03a',
     // limited scope? only collected for battle against one pest
     // check for date_abatt?

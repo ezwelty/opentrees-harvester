@@ -38,8 +38,11 @@ module.exports = [
       health: 'Condition',
       dbh: x => Math.round(x.DBH * 2.54 * 10) / 10, // assume inches
       note: 'Notes',
-      //Size, Edible, Species_De, DBH, Species (two letters), Planted_By, Plant_Date, Collected_, NEighborho, Address, Functional, Notes, Site_Size,Site_Devel, Wires, Site_Width,Site_Type,
-      // { 'type': 'Feature', 'properties': { 'OBJECTID': 1, 'Date_Inven': '2010-08-21T00:00:00.000Z', 'Species': 'CO', 'DBH': 1.0, 'Condition': 'Good', 'Site_Type': null, 'Site_Width': 9.0, 'Wires': 'High voltage', 'Site_devel': 'Improved', 'Site_Size': 'Medium', 'Notes': null, 'Address': '5234 NE 35TH PL', 'Neighborho': 'CONCORDIA', 'Collected_': 'volunteer', 'Planted_By': null, 'Plant_Date': null, 'Scientific': 'Cornus spp.', 'Family': 'Cornaceae', 'Genus': 'Cornus', 'Common': 'dogwood', 'Functional': 'BD', 'Size': 'S', 'Edible': 'no', 'Species_De': null }, 'geometry': { 'type': 'Point', 'coordinates': [ -122.627555010562858, 45.561116824606664 ] } }
+      edible: x => ({
+        'no': 'false',
+        'fruit': 'fruit',
+        'nut': 'nut'
+      })[x['Edible']]
     }
   },
   {
@@ -58,6 +61,11 @@ module.exports = [
       scientific: 'Genus_spec',
       common: 'Common_nam',
       description: 'Species_fa',
+      edible: x => ({
+        'Yes - fruit': 'fruit',
+        'Yes - nuts': 'nut',
+        'No': 'false'
+      })[x['Edible']],
       // lots more
     },
     primary: 'pdx-street'
@@ -896,7 +904,7 @@ module.exports = [
       notable: x => ({
         'Yes': 'memorial'
       })[x.MemorialTree],
-      edible: x => x.edible ? Number(x.edible == 'Yes') : null,
+      edible: x => x.edible ? String(x.edible === 'Yes') : null,
       harvest: 'Harvest_Window'
     }
   },

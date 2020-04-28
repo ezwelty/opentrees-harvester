@@ -256,7 +256,7 @@ module.exports = [
     crosswalk: {
       description: x => x.ART ? x.ART.replace(/�/, 'ß') : null,
       location: x => x.ART === 'Laubbaum_Stra�enbaum' ? 'street' : null,
-      edible: x => x.ART ? Number(x.ART == 'Laubbaum_Obstbaum') : null
+      edible: x => x.ART === 'Laubbaum_Obstbaum' ? 'fruit' : null
     }
   },
   {

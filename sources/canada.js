@@ -354,14 +354,19 @@ module.exports = [
     country: 'Canada',
     short: 'Kamloops',
     long: 'City of Kamloops',
-    download: 'https://opendata.arcgis.com/datasets/e14c04be6c6c4692b70147edb937088c_25.zip',
+    // Shapefile has truncated field names
+    download: 'https://opendata.arcgis.com/datasets/e14c04be6c6c4692b70147edb937088c_25.csv',
     info: 'http://hub.arcgis.com/datasets/kamloops::trees',
     crosswalk: {
-      // EDITBLEFRUITTREEFLAG!
-      common: 'SPECIES', //mapl,amur
+      common: 'SPECIES', // TODO mapl,amur
       crown: 'SPREAD',
-      planted: 'PLANTEDYEA',
-      ref: 'FACILITYID'
+      planted: 'PLANTEDYEAR',
+      ref: 'FACILITYID',
+      edible: x => {
+        if (x['EDIBLEFRUITTREEFLAG'] === 'Yes') return 'fruit'
+        if (x['EDIBLENUTTREEFLAG'] === 'Yes') return 'nut'
+        if (x['EDIBLEFRUITTREEFLAG'] === 'No' && x['EDIBLENUTTREEFLAG'] === 'No') return 'false'
+      }
     }
   },
   {

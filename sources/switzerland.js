@@ -54,7 +54,7 @@ module.exports = [
         'Wohnsiedlungen': 'residential'
       })[x.status],
       private: x => x.status === 'Privat' ? 1 : null,
-      edible: x => x.status === 'Obst' ? 1 : null
+      edible: x => x.status === 'Obst' ? 'fruit' : null
     }
   }
 ].map(s => ({ ...s, country: 'Switzerland' }))

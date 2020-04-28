@@ -155,7 +155,7 @@ Numeric fields should be tagged with a unit (if known) for automatic unit conver
 `value` | Monetary value in the local currency.
 `carbon` | Carbon storage in kilograms.
 `carbon_annual` | Carbon storage in kilograms per year.
-`edible` | Whether flagged as edible: [`true`, `false`].
+`edible` | Edible flag: [`true`, `false`, `fruit`, `nut`].
 `harvest` | Notes about when or how to harvest.
 `notable` | Designation as notable: [`champion`, `heritage`, `memorial`, `veteran`, `historic`].
 `origin` | Biogeographic origin: [`endemic`, `native`, `introduced`, `naturalized`, `invasive`].

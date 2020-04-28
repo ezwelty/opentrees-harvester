@@ -11,7 +11,7 @@ const gdal = require('gdal-next')
  * @param {object} obj - Date object {year, month, day, ...}
  * @return {string} ISO 8601 date
  */
-function gdal_date_to_string(obj) {
+exports.gdal_date_to_string = (obj) => {
   if (!obj) return ''
   const year = obj.year.toString().padStart(4, '0')
   const month = obj.month.toString().padStart(2, '0')
@@ -28,7 +28,7 @@ function gdal_date_to_string(obj) {
  * @param {object} obj - Time object {hour, minute, second, ...}
  * @return {string} ISO 8601 time
  */
-function gdal_time_to_string(obj) {
+exports.gdal_time_to_string = (obj) => {
   if (!obj) return ''
   const hour = obj.hour ? obj.hour.toString().padStart(2, '0') : '00'
   const minute = obj.minute ? obj.minute.toString().padStart(2, '0') : '00'
@@ -45,7 +45,7 @@ function gdal_time_to_string(obj) {
  * @param {object} obj - Datetime object {timezone, ...}
  * @return {string} ISO 8601 timezone
  */
-function gdal_timezone_to_string(obj) {
+exports.gdal_timezone_to_string = (obj) => {
   if (!obj) return ''
   // TZFlag: 0=unknown, 1=localtime(ambiguous), 100=GMT, 104=GMT+1, 80=GMT-5, etc
   // See https://gdal.org/development/rfc/rfc56_millisecond_precision.html
@@ -64,12 +64,18 @@ function gdal_timezone_to_string(obj) {
  * @param {object} obj - Datetime object {year, month, day, ...}
  * @return {string} ISO 8601 datetime
  */
-function gdal_datetime_to_string(obj) {
+exports.gdal_datetime_to_string = (obj) => {
   if (!obj) return ''
-  const date = gdal_date_to_string(obj)
-  const time = gdal_time_to_string(obj)
-  const timezone = gdal_timezone_to_string(obj)
+  const date = exports.gdal_date_to_string(obj)
+  const time = exports.gdal_time_to_string(obj)
+  const timezone = exports.gdal_timezone_to_string(obj)
   return `${date}T${time}${timezone}`
+}
+
+exports.gdal_string_formatters = {
+  [gdal.OFTDate]: exports.gdal_date_to_string,
+  [gdal.OFTTime]: exports.gdal_time_to_string,
+  [gdal.OFTDateTime]: exports.gdal_datetime_to_string
 }
 
 /**
@@ -83,7 +89,7 @@ function gdal_datetime_to_string(obj) {
  * @param {string} [prefix='_'] - String to append to original property names
  * @return {object} Mapped object
  */
-function map_object(obj, crosswalk, keep = false, prefix = '_') {
+exports.map_object = (obj, crosswalk, keep = false, prefix = '_') => {
   var new_obj = {}
   if (keep) {
     for (const key in obj) {
@@ -104,7 +110,7 @@ function map_object(obj, crosswalk, keep = false, prefix = '_') {
  * @property {string[]} x - Field names for x (longitude, easting)
  * @property {string[]} y - Field names for y (latitude, northing)
  */
-const geometry_fields = {
+exports.geometry_fields = {
   wkt: [
     'geom', 'the_geom', 'wkb_geometry', 'shape', 'geo_shape', 'geometrie',
     'geometry'
@@ -126,12 +132,12 @@ const geometry_fields = {
  * @return {object[]} Names of fields with potential WKT geometry (wkt) or
  *  x and y coordinates (x, y).
  */
-function guess_geometry_fields(layer) {
+exports.guess_geometry_fields = (layer) => {
   var geometry = {}
   const names = layer.fields.getNames()
-  Object.keys(geometry_fields).forEach(key => {
+  Object.keys(exports.geometry_fields).forEach(key => {
     geometry[key] = names.filter(x =>
-      geometry_fields[key].includes(x.toLowerCase()))
+      exports.geometry_fields[key].includes(x.toLowerCase()))
   })
   return geometry
 }
@@ -140,7 +146,7 @@ function guess_geometry_fields(layer) {
  * Get list of vector file extensions supported by GDAL.
  * @return {string[]} File extensions
  */
-function get_gdal_extensions() {
+exports.get_gdal_extensions = () => {
   var extensions = []
   gdal.drivers.forEach(driver => {
     const meta = driver.getMetadata()
@@ -156,9 +162,9 @@ function get_gdal_extensions() {
  * Get list of GDAL driver names by file extension.
  * @return {object} GDAL driver names by file extension
  */
-function get_gdal_drivers() {
+exports.get_gdal_drivers = () => {
   var drivers = {}
-  get_gdal_extensions().forEach(extension => drivers[extension] = [])
+  exports.get_gdal_extensions().forEach(extension => drivers[extension] = [])
   gdal.drivers.forEach(driver => {
     const meta = driver.getMetadata()
     if (meta.DCAP_VECTOR === 'YES') {
@@ -181,7 +187,7 @@ function get_gdal_drivers() {
  * @param {string} file - Local or remote file path
  * @return {string} File extension
  */
-function get_file_extension(file) {
+exports.get_file_extension = (file) => {
   const matches = file.match(/\.([^\.\/\?\#]+)(?:$|\?|\#)/)
   if (matches) {
     return matches[1]
@@ -196,7 +202,7 @@ function get_file_extension(file) {
  * @property {string[]} 2 - Secondary format file extensions (only take
  * precedence if no primary extension present).
  */
-const file_extensions = {
+exports.file_extensions = {
   1: ['geojson', 'topojson', 'shp', 'vrt', 'gml', 'kml'],
   2: ['csv', 'json']
 }
@@ -207,10 +213,10 @@ const file_extensions = {
  * @property {RegExp} primary - Matches primary formats
  * @property {RegExp} secondary - Matches secondary formats
  */
-const gdal_patterns = {
-  any: new RegExp(`\\.(${get_gdal_extensions().join('|')})$`, 'i'),
-  primary: new RegExp(`\\.(${file_extensions[1].join('|')})$`, 'i'),
-  secondary: new RegExp(`\\.(${file_extensions[2].join('|')})$`, 'i')
+exports.gdal_patterns = {
+  any: new RegExp(`\\.(${exports.get_gdal_extensions().join('|')})$`, 'i'),
+  primary: new RegExp(`\\.(${exports.file_extensions[1].join('|')})$`, 'i'),
+  secondary: new RegExp(`\\.(${exports.file_extensions[2].join('|')})$`, 'i')
 }
 
 /**
@@ -221,7 +227,7 @@ const gdal_patterns = {
  * @return {gdal.CoordinateTransformation|undefined} Coordinate transformation,
  *  or undefined if the two SRS are equal.
  */
-function get_srs_transform(source, target) {
+exports.get_srs_transform = (source, target) => {
   if (typeof source === 'string') {
     source = gdal.SpatialReference.fromUserInput(source)
   }
@@ -244,7 +250,7 @@ function get_srs_transform(source, target) {
  * @param {string|gdal.SpatialReference} [srs] - Spatial reference system
  * @returns {gdal.Polygon}
  */
-function bounds_to_polygon(bounds, srs) {
+exports.bounds_to_polygon = (bounds, srs) => {
   if (typeof srs === 'string') {
     srs = gdal.SpatialReference.fromUserInput(srs)
   }
@@ -264,7 +270,7 @@ function bounds_to_polygon(bounds, srs) {
  * Check whether spatial reference system has x (east), y (north) axis order.
  * @param {string|gdal.SpatialReference} srs - Spatial reference system
  */
-function is_srs_xy(srs) {
+exports.is_srs_xy = (srs) => {
   if (typeof srs === 'string') {
     srs = gdal.SpatialReference.fromUserInput(srs)
   }
@@ -277,24 +283,4 @@ function is_srs_xy(srs) {
     // NOTE: Assumes x, y axis order if axes not defined
     return true
   }
-}
-
-module.exports = {
-  gdal_date_to_string,
-  gdal_time_to_string,
-  gdal_datetime_to_string,
-  gdal_string_formatters: {
-    [gdal.OFTDate]: gdal_date_to_string,
-    [gdal.OFTTime]: gdal_time_to_string,
-    [gdal.OFTDateTime]: gdal_datetime_to_string
-  },
-  map_object,
-  guess_geometry_fields,
-  get_gdal_extensions,
-  get_gdal_drivers,
-  get_file_extension,
-  gdal_patterns,
-  get_srs_transform,
-  bounds_to_polygon,
-  is_srs_xy
 }

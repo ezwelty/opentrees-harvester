@@ -238,7 +238,7 @@ class Source {
    * input feature geometry fields. Applies only to inputs for which a VRT file
    * is written (see {@link Source#get_vrt}) and if `options.keep_fields` is
    * also `true`.
-   * @param {string} [options.prefix=_] - String to append to input field names
+   * @param {string} [options.prefix=] - String to append to input field names
    * to prevent collisions with output field names. Applies only if
    * `options.keep_fields` is `true`.
    * @param {number[]} [options.bounds] - Bounding box in output SRS
@@ -319,6 +319,19 @@ class Source {
       }
       return field
     })
+    // Prepare crosswalks
+    const crosswalks = [
+      {
+        crosswalk: string_crosswalk,
+        keep: true,
+        prefix: ''
+      },
+      {
+        crosswalk: this.props.crosswalk,
+        keep: options.keep_fields,
+        prefix: options.prefix
+      }
+    ]
     // Prepare output schema
     const output_schema = []
     if (this.props.crosswalk) {
@@ -373,12 +386,7 @@ class Source {
         continue
       }
       const output_feature = new gdal.Feature(output_layer)
-      let output_fields = helpers.map_object(input_fields, string_crosswalk,
-        true, '')
-      output_fields = helpers.map_object(
-        output_fields,
-        this.props.crosswalk ? this.props.crosswalk : {},
-        options.keep_fields, options.prefix)
+      const output_fields = helpers.map_object(input_fields, crosswalks)
       output_feature.fields.set(output_fields)
       // Geometry
       let input_geometry

@@ -101,28 +101,37 @@ exports.gdal_string_formatters = {
 }
 
 /**
- * Map object properties to a schema.
+ * Map object properties to a schema iteratively.
  *
  * @param {object} obj - Object
- * @param {object} crosswalk - Schema crosswalk. Each key is a new property name
- * and each value is either the original property name (string) or a function
- * called as f(obj).
- * @param {boolean} [keep=false] - Whether to keep original object properties
- * @param {string} [prefix='_'] - String to append to original property names
+ * @param {object|object[]} mapping - Either a single mapping or an array
+ * of mappings applied iteratively.
+ * @param {object} [mapping.crosswalk={}] - Schema crosswalk. Each key is a new
+ * property name and each value is either the original property name (string) or
+ * a function called as f(obj).
+ * @param {boolean} [mapping.keep=false] - Whether to keep original object
+ * properties
+ * @param {string} [mapping.prefix=''] - String to append to original property
+ * names
  * @return {object} Mapped object
  */
-exports.map_object = (obj, crosswalk, keep = false, prefix = '_') => {
-  var new_obj = {}
-  if (keep) {
-    for (const key in obj) {
-      new_obj[`${prefix}${key}`] = obj[key]
+exports.map_object = (obj, mapping) => {
+  let final = obj
+  if (!Array.isArray(mapping)) mapping = [mapping]
+  for (const { crosswalk = {}, keep, prefix = '' } of mapping) {
+    const current = {}
+    if (keep) {
+      for (const key in final) {
+        current[`${prefix}${key}`] = final[key]
+      }
     }
+    for (const key in crosswalk) {
+      current[key] = (typeof crosswalk[key] === 'function') ?
+        crosswalk[key](final) : final[crosswalk[key]]
+    }
+    final = current
   }
-  for (const key in crosswalk) {
-    new_obj[key] = (typeof crosswalk[key] === 'function') ?
-      crosswalk[key](obj) : obj[crosswalk[key]]
-  }
-  return new_obj
+  return final
 }
 
 /**

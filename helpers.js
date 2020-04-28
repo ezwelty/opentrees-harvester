@@ -164,7 +164,7 @@ exports.geometry_fields = {
  *  x and y coordinates (x, y).
  */
 exports.guess_geometry_fields = (layer) => {
-  var geometry = {}
+  const geometry = {}
   const names = layer.fields.getNames()
   Object.keys(exports.geometry_fields).forEach(key => {
     geometry[key] = names.filter(x =>
@@ -179,7 +179,7 @@ exports.guess_geometry_fields = (layer) => {
  * @return {string[]} File extensions
  */
 exports.get_gdal_extensions = () => {
-  var extensions = []
+  const extensions = []
   gdal.drivers.forEach(driver => {
     const meta = driver.getMetadata()
     if (meta.DCAP_VECTOR === 'YES') {
@@ -196,12 +196,12 @@ exports.get_gdal_extensions = () => {
  * @return {object} GDAL driver names by file extension
  */
 exports.get_gdal_drivers = () => {
-  var drivers = {}
+  const drivers = {}
   exports.get_gdal_extensions().forEach(extension => drivers[extension] = [])
   gdal.drivers.forEach(driver => {
     const meta = driver.getMetadata()
     if (meta.DCAP_VECTOR === 'YES') {
-      var extensions = []
+      const extensions = []
       if (meta.DMD_EXTENSION) {
         extensions.push(meta.DMD_EXTENSION)
       }
@@ -284,8 +284,8 @@ exports.bounds_to_polygon = (bounds, srs) => {
   if (typeof srs === 'string') {
     srs = gdal.SpatialReference.fromUserInput(srs)
   }
-  var polygon = new gdal.Polygon()
-  var ring = new gdal.LinearRing()
+  const polygon = new gdal.Polygon()
+  const ring = new gdal.LinearRing()
   ring.points.add(new gdal.Point(bounds[0], bounds[1]))
   ring.points.add(new gdal.Point(bounds[0], bounds[3]))
   ring.points.add(new gdal.Point(bounds[2], bounds[3]))

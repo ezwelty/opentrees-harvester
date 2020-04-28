@@ -286,8 +286,8 @@ module.exports = [
     id: 'cary',
     country: 'United States',
     short: 'Cary',
-    download: 'https://data.townofcary.org/api/v2/catalog/datasets/cary-trees/exports/csv',
-    info: 'https://catalog.data.gov/dataset/cary-trees',
+    download: 'https://data.townofcary.org/explore/dataset/cary-trees/download/?format=geojson',
+    info: 'https://data.townofcary.org/explore/dataset/cary-trees',
     crosswalk: {
       updated: 'editdate',
       common: 'name',
@@ -838,6 +838,7 @@ module.exports = [
     long: 'City of Wylie',
     download: 'https://opendata.arcgis.com/datasets/82060fffb84045fdafbe2a56c989b353_0.csv',
     info: 'http://hub.arcgis.com/datasets/WylieTX::treesurvey',
+    geometry: { x: 'X', y: 'Y' },
     crosswalk: {
       ref: 'TK_ID',
       common: 'COMMON', dbh: inches('DBH'),

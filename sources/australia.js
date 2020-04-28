@@ -99,6 +99,10 @@ module.exports = [
   {
     id: 'melbourne',
     download: 'https://data.melbourne.vic.gov.au/api/views/fp38-wiyy/rows.csv?accessType=DOWNLOAD',
+    execute: [
+      // Quote long field names for GDAL
+      `npm run replace ',([a-zA-Z ]+ [a-zA-Z ]+),' ',"\\$1",' '$INIT_CWD' -- --include='*.csv' --recursive=true --silent=true`
+    ],
     srs: 'EPSG:4326',
     geometry: { x: 'Longitude', y: 'Latitude' },
     short: 'Melbourne',

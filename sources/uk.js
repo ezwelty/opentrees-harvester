@@ -193,6 +193,7 @@ module.exports = [
     short: 'York',
     download: 'https://opendata.arcgis.com/datasets/a602aca10afb49659720b435d3f54023_18.csv',
     info: 'https://data.gov.uk/dataset/c166b067-5a9d-487b-a37d-4d350f8cff51/private-trees',
+    geometry: { x: 'X', y: 'Y' },
     crosswalk: {
       owner: 'OWNER',
       common: 'SPECIES',

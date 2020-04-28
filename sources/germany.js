@@ -1,5 +1,6 @@
 module.exports = [
   {
+    pending: 'Downloaded zip file has invalid comment length',
     id: 'halle',
     country: 'Germany',
     short: 'Halle',

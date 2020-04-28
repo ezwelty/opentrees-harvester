@@ -194,8 +194,7 @@ class Source {
       }).
       then(paths => {
         if (paths.length) this.success('Ready to process')
-      }).
-      catch(error => this.error('Unexpected error:', error.message))
+      })
   }
 
   /**

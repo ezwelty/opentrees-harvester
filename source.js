@@ -684,9 +684,9 @@ class Source {
     if (!this.props.format) {
       if (paths.length) {
         const primaries = paths.filter(s =>
-          s.match(helpers.gdal_patterns.primary))
+          s.match(helpers.gdal_file_patterns.primary))
         const secondaries = paths.filter(s =>
-          s.match(helpers.gdal_patterns.secondary))
+          s.match(helpers.gdal_file_patterns.secondary))
         if (primaries.length) {
           paths = primaries
         } else if (secondaries.length) {

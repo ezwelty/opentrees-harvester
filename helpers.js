@@ -1,88 +1,112 @@
 const gdal = require('gdal-next')
 
 /**
- * Format gdal.OFTDate field as string.
+ * Format a date object as a string.
  * 
- * Formats a date as 'YYYY-MM-DD'.
+ * Formats a date as `YYYY-MM-DD`, `YYYY-MM`, or `YYYY`.
  * See https://en.wikipedia.org/wiki/ISO_8601.
  * 
- * @param {object} obj - Date object {year, month, day, ...}
+ * @param {object} obj - Date
+ * @param {integer} obj.year - Year (e.g. `2020`)
+ * @param {integer} [obj.month] - Month (`1`-`12`)
+ * @param {integer} [obj.day] - Day of the month (`1`-`31`)
  * @return {string} ISO 8601 date
  */
-exports.gdal_date_to_string = (obj) => {
+exports.date_to_string = (obj) => {
   if (!obj) return ''
-  const year = obj.year.toString().padStart(4, '0')
-  const month = obj.month.toString().padStart(2, '0')
-  const day = obj.day.toString().padStart(2, '0')
-  return `${year}-${month}-${day}`
+  const yyyy = obj.year.toString().padStart(4, '0')
+  if (!obj.month) return `${yyyy}`
+  const mm = obj.month.toString().padStart(2, '0')
+  if (!obj.day) return `${yyyy}-${mm}`
+  const dd = obj.day.toString().padStart(2, '0')
+  return `${yyyy}-${mm}-${dd}`
 }
 
 /**
- * Format gdal.OFTTime field as string.
+ * Format a time object as string.
  * 
- * Formats a time as 'hh:mm:ss'.
+ * Formats a time as `hh:mm:ss.*`.
  * See https://en.wikipedia.org/wiki/ISO_8601.
  * 
- * @param {object} obj - Time object {hour, minute, second, ...}
+ * @param {object} obj - Time
+ * @param {integer} [obj.hour=0] - Hour (`0` - `23`)
+ * @param {integer} [obj.minute=0] - Minute (`0` - `59`)
+ * @param {number} [obj.second=0] - Second (`0` - `59.*`)
  * @return {string} ISO 8601 time
  */
-exports.gdal_time_to_string = (obj) => {
+exports.time_to_string = (obj) => {
   if (!obj) return ''
-  const hour = obj.hour ? obj.hour.toString().padStart(2, '0') : '00'
-  const minute = obj.minute ? obj.minute.toString().padStart(2, '0') : '00'
-  const second = obj.second ? obj.second.toString().padStart(2, '0') : '00'
-  return `${hour}:${minute}:${second}`
+  const hh = (obj.hour || 0).toString().padStart(2, '0')
+  const mm = (obj.minute || 0).toString().padStart(2, '0')
+  const ss_ms = (obj.second || 0).toString().split('.')
+  const ss = ss_ms[0].padStart(2, '0')
+  const ms = ss_ms[1] ? `.${ss_ms[1]}` : ''
+  return `${hh}:${mm}:${ss}${ms}`
 }
 
 /**
- * Format gdal.OFTDateTime timezone flag as string.
+ * Format a GDAL timezone flag as a string.
  * 
- * Formats a timezone as '' (unknown), 'Z' (UTC), or '[+-]hh:mm'.
+ * Formats a GDAL timezone flag as `''` (unknown), `Z` (UTC), or `[+-]hh:mm`.
  * See https://en.wikipedia.org/wiki/ISO_8601.
  * 
- * @param {object} obj - Datetime object {timezone, ...}
+ * @param {integer} [timezone=0] - GDAL timezone flag
  * @return {string} ISO 8601 timezone
  */
-exports.gdal_timezone_to_string = (obj) => {
-  if (!obj) return ''
-  // TZFlag: 0=unknown, 1=localtime(ambiguous), 100=GMT, 104=GMT+1, 80=GMT-5, etc
+exports.timezone_to_string = (timezone = 0) => {
+  // TZFlag: 0=unknown, 1=ambiguous, 100=GMT, 104=GMT+1, 80=GMT-5
   // See https://gdal.org/development/rfc/rfc56_millisecond_precision.html
-  const delta = obj.timezone > 1 ? (obj.timezone - 100) * 15 : null // minutes
-  const hours = Math.floor(Math.abs(delta) / 60).toString().padStart(2, '0')
-  const minutes = (Math.abs(delta) % 60).toString().padStart(2, '0')
-  return timezone = delta ? `${delta > 0 ? '+' : '-'}${hours}:${minutes}` : (delta == 0 ? 'Z' : '')
+  const min = timezone > 1 ? (timezone - 100) * 15 : null
+  const hh = Math.floor(Math.abs(min) / 60).toString().padStart(2, '0')
+  const mm = (Math.abs(min) % 60).toString().padStart(2, '0')
+  return min ? `${min > 0 ? '+' : '-'}${hh}:${mm}` : (min == 0 ? 'Z' : '')
 }
 
 /**
- * Format gdal.OFTDateTime field as string.
- * 
- * Formats a date as 'YYYY-MM-DDThh:mm:ss' and appropriate timezone tag.
+ * Format a datetime object as a string.
+ *
+ * Formats a datetime as `YYYY-MM-DDThh:mm:ss.*` and the appropriate timezone.
  * See https://en.wikipedia.org/wiki/ISO_8601.
- * 
- * @param {object} obj - Datetime object {year, month, day, ...}
+ *
+ * @param {object} obj - Datetime
+ * @param {integer} obj.year - Year (e.g. `2020`)
+ * @param {integer} obj.month - Month (`1`-`12`)
+ * @param {integer} obj.day - Day of the month (`1`-`31`)
+ * @param {integer} [obj.hour=0] - Hour (`0` - `23`)
+ * @param {integer} [obj.minute=0] - Minute (`0` - `59`)
+ * @param {number} [obj.second=0] - Second (`0` - `59.*`)
+ * @param {integer} [obj.timezone=0] - GDAL timezone flag
+ * @param {boolean} [truncate=false] - Whether to return only date when hour,
+ * minute, and second are all zero.
  * @return {string} ISO 8601 datetime
  */
-exports.gdal_datetime_to_string = (obj) => {
+exports.datetime_to_string = (obj, truncate = false) => {
   if (!obj) return ''
-  const date = exports.gdal_date_to_string(obj)
-  const time = exports.gdal_time_to_string(obj)
-  const timezone = exports.gdal_timezone_to_string(obj)
+  const date = exports.date_to_string(obj)
+  if (truncate && !(obj.hour || obj.minute || obj.second)) {
+    return date
+  }
+  const time = exports.time_to_string(obj)
+  const timezone = exports.timezone_to_string(obj.timezone)
   return `${date}T${time}${timezone}`
 }
 
+/**
+ * String formatters by GDAL field type.
+ */
 exports.gdal_string_formatters = {
-  [gdal.OFTDate]: exports.gdal_date_to_string,
-  [gdal.OFTTime]: exports.gdal_time_to_string,
-  [gdal.OFTDateTime]: exports.gdal_datetime_to_string
+  [gdal.OFTDate]: exports.date_to_string,
+  [gdal.OFTTime]: exports.time_to_string,
+  [gdal.OFTDateTime]: exports.datetime_to_string
 }
 
 /**
  * Map object properties to a schema.
- * 
+ *
  * @param {object} obj - Object
- * @param {object} crosswalk - Schema crosswalk:
- *  Each key is a new property name and each value is either
- *  the original property name (string) or a function called as f(obj).
+ * @param {object} crosswalk - Schema crosswalk. Each key is a new property name
+ * and each value is either the original property name (string) or a function
+ * called as f(obj).
  * @param {boolean} [keep=false] - Whether to keep original object properties
  * @param {string} [prefix='_'] - String to append to original property names
  * @return {object} Mapped object
@@ -104,7 +128,7 @@ exports.map_object = (obj, crosswalk, keep = false, prefix = '_') => {
 /**
  * Common geometry field names.
  * 
- * @property {string[]} wkt - Field name for well-known text (WKT)
+ * @property {string[]} wkt - Field names for well-known-text (WKT)
  * @property {string[]} x - Field names for x (longitude, easting)
  * @property {string[]} y - Field names for y (latitude, northing)
  */
@@ -141,7 +165,8 @@ exports.guess_geometry_fields = (layer) => {
 }
 
 /**
- * Get list of vector file extensions supported by GDAL.
+ * Get the list of vector file extensions supported by GDAL.
+ * 
  * @return {string[]} File extensions
  */
 exports.get_gdal_extensions = () => {
@@ -157,7 +182,8 @@ exports.get_gdal_extensions = () => {
 }
 
 /**
- * Get list of GDAL driver names by file extension.
+ * Get the list of GDAL driver names assigned to each file extension.
+ * 
  * @return {object} GDAL driver names by file extension
  */
 exports.get_gdal_drivers = () => {
@@ -182,23 +208,20 @@ exports.get_gdal_drivers = () => {
 
 /**
  * Get the file extension from a local or remote file path.
+ * 
  * @param {string} file - Local or remote file path
  * @return {string} File extension
  */
 exports.get_file_extension = (file) => {
   const matches = file.match(/\.([^\.\/\?\#]+)(?:$|\?|\#)/)
-  if (matches) {
-    return matches[1]
-  }
+  return matches ? matches[1] : ''
 }
 
 /**
  * Common file extensions for vector datasets.
  *
- * @property {string[]} 1 - Primary format file extensions (take
- * precedence).
- * @property {string[]} 2 - Secondary format file extensions (only take
- * precedence if no primary extension present).
+ * @property {string[]} 1 - Primary file extensions (take precedence)
+ * @property {string[]} 2 - Secondary file extensions
  */
 exports.file_extensions = {
   1: ['geojson', 'topojson', 'shp', 'vrt', 'gml', 'kml'],
@@ -207,11 +230,12 @@ exports.file_extensions = {
 
 /**
  * Regular expressions matching vector file extensions supported by GDAL.
+ * 
  * @property {RegExp} any - Matches any supported file extension
- * @property {RegExp} primary - Matches primary formats
- * @property {RegExp} secondary - Matches secondary formats
+ * @property {RegExp} primary - Matches primary file extensions
+ * @property {RegExp} secondary - Matches secondary file extensions
  */
-exports.gdal_patterns = {
+exports.gdal_file_patterns = {
   any: new RegExp(`\\.(${exports.get_gdal_extensions().join('|')})$`, 'i'),
   primary: new RegExp(`\\.(${exports.file_extensions[1].join('|')})$`, 'i'),
   secondary: new RegExp(`\\.(${exports.file_extensions[2].join('|')})$`, 'i')
@@ -219,11 +243,11 @@ exports.gdal_patterns = {
 
 /**
  * Get the transformation between two spatial reference systems (SRS).
- * 
+ *
  * @param {string|gdal.SpatialReference} source - Source SRS
  * @param {string|gdal.SpatialReference} target - Target SRS
  * @return {gdal.CoordinateTransformation|undefined} Coordinate transformation,
- *  or undefined if the two SRS are equal.
+ * or undefined if the two SRS are equal.
  */
 exports.get_srs_transform = (source, target) => {
   if (typeof source === 'string') {
@@ -235,15 +259,14 @@ exports.get_srs_transform = (source, target) => {
   // NOTE: Only sure way to test for equality is to test the transformation
   const same = source.isSame(target) ||
     (source.isSameGeogCS(target) && !source.isProjected() && !target.isProjected())
-  if (same) {
-    return
-  } else {
+  if (!same) {
     return new gdal.CoordinateTransformation(source, target)
   }
 }
 
 /**
  * Build the GDAL polygon corresponding to a bounding box.
+ * 
  * @param {number[]} bounds - Bounding box [xmin, ymin, xmax, ymax]
  * @param {string|gdal.SpatialReference} [srs] - Spatial reference system
  * @returns {gdal.Polygon}
@@ -266,6 +289,7 @@ exports.bounds_to_polygon = (bounds, srs) => {
 
 /**
  * Check whether spatial reference system has x (east), y (north) axis order.
+ * 
  * @param {string|gdal.SpatialReference} srs - Spatial reference system
  */
 exports.is_srs_xy = (srs) => {

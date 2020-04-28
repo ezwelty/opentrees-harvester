@@ -1,5 +1,3 @@
-const util = require('util')
-const path = require('path')
 const gdal = require('gdal-next')
 
 /**

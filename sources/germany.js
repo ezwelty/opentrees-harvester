@@ -182,6 +182,7 @@ module.exports = [
     id: 'hamburg',
     country: 'Germany',
     short: 'Hamburg',
+    info: 'http://suche.transparenz.hamburg.de/dataset/strassenbaumkataster-hamburg10',
     download: 'http://daten-hamburg.de/umwelt_klima/strassenbaumkataster/Strassenbaumkataster_HH_2019-06-19.zip',
     // info:'',
     crosswalk: {

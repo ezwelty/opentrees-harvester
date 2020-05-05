@@ -395,18 +395,22 @@ module.exports = [
     }
   },
   {
+    pending: 'Unstable download link',
     id: 'aurora',
     country: 'United States',
     short: 'Aurora',
-    download: 'https://opendata.arcgis.com/datasets/1dbb32bf07ca421db4f01dac6beb812d_85.csv',
-    info: 'http://hub.arcgis.com/datasets/AuroraCo::trees-city',
+    download: 'https://opendata.arcgis.com/datasets/1dbb32bf07ca421db4f01dac6beb812d_85.geojson',
+    info: 'http://data-auroraco.opendata.arcgis.com/datasets/trees-city',
     crosswalk: {
       ref: 'TREE_ID_NO',
-      common: 'SPECIES',
+      // TODO MAN_UNIT: 'Street Tree', 'Park/Greenbelt', ...
+      location: 'MAN_UNIT',
+      // SPECIES: ${general}; ${specific}
+      common: x => x['SPECIES'].replace(/^(.*);\s*(.*)$/, '$2 $1'),
+      health: 'CONDITION',
       dbh_in: 'DIAMETER',
-      health: 'CONDITION', // what, there is "CONDITION_RATING_NUMERIC" which has "Good" twhereas condition is "Fair"...
-      updated: 'ACTIVITY_DATE',
-      // genus: 'GENUS', // "Pine" is not a genus...
+      // TODO SURVEY_DATE, ACTIVITY_DATE: format? e.g. 1015804800000
+      maintainer: 'MAINTENANCE'
     }
   },
   {
@@ -635,21 +639,23 @@ module.exports = [
     }
   },
   {
+    pending: 'Unstable download link',
     id: 'durango_co',
     short: 'Durango',
-    download: 'https://opendata.arcgis.com/datasets/3e3e00d6224b43ee9acc514244fffdb9_0.csv',
-    info: 'http://hub.arcgis.com/datasets/CityOfDurango::city-trees',
+    long: 'City of Durango',
+    info: 'http://data-cityofdurango.opendata.arcgis.com/datasets/city-trees',
+    download: 'https://opendata.arcgis.com/datasets/78af5d2e6d584929a7b590fdf6cb437e_6.geojson',
     crosswalk: {
-      planted: 'DATEID', //?
       ref: 'ID',
-      //type: 'Deciduous',
       common: 'COMMON',
       genus: 'GENUS',
       species: 'SPECIES',
       cultivar: 'CULTIVAR',
       dbh_in: 'DBH',
-      health: 'CONDITION',
-      updated: 'LASTMODDATE'
+      age: 'GRWTHYEARS',
+      health: 'CONDITION', // numeric
+      note: 'TREENOTES'
+      // TODO PLANTDATE, REMOVALDATE, LASTMODDATE: integer (GeoJSON)
     }
   },
   {
@@ -1034,5 +1040,37 @@ module.exports = [
       owner: 'OWNEDBY'
     },
     primary: 'san_jose_ca1'
+  },
+  {
+    id: 'colorado_springs-co',
+    long: 'City of Colorado Springs',
+    info: 'https://data.coloradosprings.gov/dataset/City-of-Colorado-Springs-Trees/wbac-9b3h',
+    download: 'https://data.coloradosprings.gov/api/views/e6wv-b629/rows.csv?accessType=DOWNLOAD',
+    crosswalk: {
+      ref: 'OBJECTID',
+      common: 'Common_Name',
+      dbh_in: 'DBH'
+    }
+  },
+  {
+    pending: 'Unstable download link',
+    id: 'grand_junction-co',
+    long: 'City of Grand Junction',
+    info: 'https://data-gjcitygis.opendata.arcgis.com/datasets/c352d4f4c8384951ae445b2212e16f8f_1',
+    // No geometry in CSV
+    download: 'https://opendata.arcgis.com/datasets/c352d4f4c8384951ae445b2212e16f8f_1.geojson',
+    license: { id: 'CC-BY-4.0' },
+    crosswalk: {
+      ref: 'OBJECTID',
+      // TRG_COMMON: e.g. 'SPRUCE, BLUE'
+      common: x => x['TRG_COMMON'].replace(/^(.*), (.*)$/, '$2 $1'),
+      // TODO TRG_COND_CD: numeric (0-48?)
+      health: 'TRG_COND_CD',
+      genus: 'TRG_GENUS',
+      species: 'TRG_SPECIES',
+      cultivar: 'TRG_CULTIVAR',
+      dbh_in: 'TRG_DIA',
+      height_ft: 'TRG_HEIGHT'
+    }
   }
-].map(s => ({ ...s, country: 'United States' }))
+].map(s => ({ ...s, country: 'United States', language: 'en-US' }))

@@ -56,5 +56,45 @@ module.exports = [
       private: x => x.status === 'Privat' ? 1 : null,
       edible: x => x.status === 'Obst' ? 'fruit' : null
     }
+  },
+  {
+    id: 'geneva',
+    long: 'Canton de Genève',
+    info: 'https://ge.ch/sitg/fiche/4571',
+    download: 'https://ge.ch/sitg/geodata/SITG/OPENDATA/4571/CSV_SIPV_ICA_ARBRE_ISOLE.zip',
+    license: {
+      url: 'https://ge.ch/sitg/media/sitg/files/documents/conditions_generales_dutilisation_des_donnees_et_produits_du_sitg_en_libre_acces.pdf'
+    },
+    geometry: { x: 'E', y: 'N' },
+    srs: 'EPSG:2056',
+    language: 'fr-CH',
+    crosswalk: {
+      scientific: 'NOM_COMPLET',
+      notable: x => x['REMARQUABLE'] ? 'remarquable' : null,
+      // TODO TYPE_PLANTATION: Bocage, Alignement, Verger, ...
+      location: 'TYPE_PLANTATION',
+      stems_range: x => x['NOMBRE_TRONCS'] == -9999 ? null : x['NOMBRE_TRONCS'],
+      // ID_ARBRE: e.g. '1373.0'
+      ref: x => x['ID_ARBRE'] ? Math.round(x['ID_ARBRE']) : null,
+      dbh_cm: 'DIAMETRE_1M',
+      height_m: 'HAUTEUR_TOTALE',
+      crown_m: 'DIAMETRE_COURONNE',
+      maturity: x => ({
+        'Jeune': 'young',
+        'Adulte': 'mature',
+        'S�n�scent': 'over-mature' // Sénescent
+      })[x['STADE_DEVELOPPEMENT']],
+      health: x => x['STADE_DEVELOPPEMENT'] === 'Mort' ? 'dead' : ({
+        'Tr�s mauvais': 'poor', // Très mauvais
+        'Mauvais': 'fair',
+        'M�diocre': 'good', // Médiocre
+        'Bon': 'very good',
+        'Excellent': 'excellent'
+      })[x['VITALITE']],
+      // ESPERANCE_VIE: e.g. '2030.0'
+      dead: x => x['ESPERANCE_VIE'] ? Math.round(x['ESPERANCE_VIE']) : null,
+      planted: 'DATE_PLANTATION',
+      updated: 'DATE_OBSERVATION'
+    }
   }
 ].map(s => ({ ...s, country: 'Switzerland' }))

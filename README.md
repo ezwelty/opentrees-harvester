@@ -141,8 +141,11 @@ Numeric fields should be tagged with a unit (if known) for automatic unit conver
 
 | name | description |
 | -- | -- |
+`planted` | Date of planting.
+`born` | Date of birth.
+`dead` | Date of death (expected or actual).
 `updated` | Date that data was last updated.
-`planted` | Date of planting (or ideally, date of birth).
+| *Secondary* | |
 `age` | Age in years.
 `ule` | Useful life expectancy in years.
 | *Disputed* | |
@@ -161,7 +164,7 @@ Numeric fields should be tagged with a unit (if known) for automatic unit conver
 `carbon_annual` | Carbon storage in kilograms per year.
 `edible` | Edible flag: [`true`, `false`, `fruit`, `nut`].
 `harvest` | Notes about when or how to harvest.
-`notable` | Designation as notable: [`champion`, `heritage`, `memorial`, `veteran`, `historic`].
+`notable` | Designation as notable: [`champion`, `heritage`, `memorial`, `veteran`, `historic`, `remarquable` (fr)].
 `origin` | Biogeographic origin: [`endemic`, `native`, `introduced`, `naturalized`, `invasive`].
 
 ## Development

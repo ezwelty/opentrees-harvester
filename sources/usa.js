@@ -280,8 +280,8 @@ module.exports = [
     crosswalk: {
       scientific: 'SPECIES',
       common: 'COM_NAME',
-      dbh_in: 'DBH', // assuming inches
-      height_ft: 'HEIGHT', // assuming feet
+      dbh_in: 'DBH',
+      height_ft: 'HEIGHT',
       health: 'CONDITION',
       location: 'LAND_TYPE'
     }
@@ -295,7 +295,7 @@ module.exports = [
     crosswalk: {
       scientific: 'Botanic',
       common: 'Common',
-      dbh_in: 'DBH', // assuming inches
+      dbh_in: 'DBH',
       note: 'Comment',
       updated: 'SurveyDate'
     }
@@ -431,15 +431,16 @@ module.exports = [
     short: 'Las Vegas',
     download: 'https://opendata.arcgis.com/datasets/23364bb40f2640ff841ba4a8680b6421_0.csv?outSR=%7B%22latestWkid%22%3A3421%2C%22wkid%22%3A102707%7D',
     info: 'http://geocommons-lasvegas.opendata.arcgis.com/datasets/trees',
+    srs: 'EPSG:3421',
     crosswalk: {
       location: 'LOC_TYPE',
       scientific: 'BOTANICAL',
       common: 'COMMON',
       // water_use!
-      // TODO DBH: "25-30"
-      dbh_in: 'DBH',
-      crown_ft: 'WIDTH',
-      height_ft: 'HEIGHT',
+      stems: 'STEMS',
+      dbh_in_range: 'DBH',
+      crown_ft_range: 'WIDTH',
+      height_ft_range: 'HEIGHT',
       health: 'COND',
       note: 'NOTES'
     }
@@ -583,11 +584,9 @@ module.exports = [
       health: 'Condition',
       common: 'TreeType',
       scientific: 'SciName',
-      // TODO Height: 'min-max'
-      height_ft: 'Height',
+      height_ft_range: 'Height',
       dbh_in: 'Diameter',
-      // TODO Spread: 'min-max'
-      crown_ft: 'Spread'
+      crown_ft_range: 'Spread'
     }
   },
   {
@@ -598,10 +597,8 @@ module.exports = [
     crosswalk: {
       common: 'COMMONNAME',
       scientific: 'BOTANICALNAME',
-      // TODO DBH: 'min-max'
-      dbh_in: 'DBH',
-      // TODO HEIGHT: 'min-max'
-      height_ft: 'HEIGHT',
+      dbh_in_range: 'DBH',
+      height_ft_range: 'HEIGHT',
       // FICTITIOUS?
     },
     centre: { lon: -117.86, lat: 33.83 }
@@ -692,8 +689,7 @@ module.exports = [
       updated: 'INSPECT_DT',
       note: 'NOTES',
       scientific: 'SPP', // often "Palm" though
-      // TODO DBH: 'min-max'
-      dbh_in: 'DBH',
+      dbh_in_range: 'DBH',
     }
   },
   {
@@ -781,10 +777,8 @@ module.exports = [
       ref: 'INVENTORYI',
       scientific: 'BOTANICALN',
       common: 'COMMONNAME',
-      // TODO DBH: 'min-max'
-      dbh_in: 'DBH',
-      // TODO HEIGHT: 'min-max'
-      height_ft: 'HEIGHT',
+      dbh_in_range: 'DBH',
+      height_ft_range: 'HEIGHT',
       updated: 'EditDate'
     }
   },
@@ -851,10 +845,8 @@ module.exports = [
       // FICTITIOUS ??
       scientific: 'BOTANICAL',
       common: 'COMMON',
-      // TODO DBH_RANGE: 'min-max' (or EXACTDBH)
-      dbh_in: 'DBH_RANGE',
-      // TODO HEIGHT_RAN(GE): 'min-max'
-      height_ft: 'HEIGHT_RAN',
+      dbh_in_range: 'DBH_RANGE',
+      height_ft_range: 'HEIGHT_RAN',
       health: 'CONDITION',
       updated: 'LAST_EDITED_DATE'
     }
@@ -921,8 +913,7 @@ module.exports = [
         '0': 0, '< 5 meters': 5, '5 - 10 meters': 10, '11 - 15 meters': 15,
         '16 - 20 meters': 20, '20 - 25 meters': 25
       })[x.Height],
-      // TODO Stems: '> 10'
-      stems: 'Stems',
+      stems_range: 'Stems',
       health: x => ({
         'very poor': 'poor',
         'poor': 'poor',
@@ -959,14 +950,12 @@ module.exports = [
     info: 'http://hub.arcgis.com/datasets/CapeGIS::tree-inventory',
     crosswalk: {
       common: 'SPECIES',
-      // TODO DBH: 'min-max'
-      dbh_in: 'DBH',
+      dbh_in_range: 'DBH',
       crown_ft: 'CANOPY',
       location: 'SITE',
       health: 'CONDITION',
       updated: 'last_edited_date',
-      // TODO: HEIGHT: 'min-max'
-      height_ft: 'HEIGHT',
+      height_ft_range: 'HEIGHT',
       note: 'COMMENTS'
     }
   },

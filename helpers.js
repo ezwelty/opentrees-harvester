@@ -148,11 +148,11 @@ exports.geometry_fields = {
   ],
   x: [
     'longitude', 'lon', 'lng', 'long', 'x', 'x_long', 'x_koordina',
-    'x-koordinate', 'coord long', 'x_coord', 'coordenada x'
+    'x-koordinate', 'coord long', 'x_coord', 'coordenada x', 'xcoord'
   ],
   y: [
     'latitude', 'lat', 'y', 'y_lat', 'y_koordina', 'y-koordinate',
-    'coord lat', 'y_coord', 'coordenada y'
+    'coord lat', 'y_coord', 'coordenada y', 'ycoord'
   ]
 }
 

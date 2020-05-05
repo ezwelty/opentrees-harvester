@@ -82,7 +82,7 @@ The ultimate goal is to harmonize the many disparate source datasets to a common
 
 Date fields should follow the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format `YYYY-MM-DDThh:mm:ss(Z|±hh:mm)` or a subset thereof (e.g. `YYYY-MM-DD`, `YYYY`).
 
-Numeric and date ranges can be expressed by appending `_min` and `_max` to the field name. For example, "planted in the 1950s" becomes `planted_min`: `1950`, `planted_max`: `1959`. Unbounded ranges leave out either `_min` or `_max`. For example, "height > 5 m" becomes `height_min`: `5`.
+Numeric and date ranges can be expressed by appending `_min` and `_max` to the field name. For example, "planted in the 1950s" becomes `planted_min`: `1950`, `planted_max`: `1959`. Unbounded ranges leave out either `_min` or `_max`. For example, "height > 5 m" becomes `height_min`: `5`. For fields representing a range as a string, append `_range` to the field name for automatic parsing of the range downstream (e.g. `height_range` to `height_min`, `height_max`).
 
 Numeric fields should be tagged with a unit (if known) for automatic unit conversion downstream (e.g. `height_m`, `height_m_min`):
 

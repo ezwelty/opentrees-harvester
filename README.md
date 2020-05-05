@@ -86,10 +86,14 @@ Numeric and date ranges can be expressed by appending `_min` and `_max` to the f
 
 Numeric fields should be tagged with a unit (if known) for automatic unit conversion downstream (e.g. `height_m`, `height_m_min`):
 
-- `_cm`: centimeters
-- `_m`: meters
-- `_in`: inches
-- `_ft`: feet
+- Length
+  - `_cm`: centimeters
+  - `_m`: meters
+  - `_in`: inches
+  - `_ft`: feet
+- Mass
+  - `_kg`: kilograms
+  - `_lb`: pounds
 
 ### Links
 

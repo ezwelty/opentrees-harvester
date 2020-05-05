@@ -83,8 +83,8 @@ module.exports = [
         'Excellent': 'excellent'
       })[x['Physiological Condition']],
       value: 'Capital Asset Value For Amenity Trees', // GBP
-      carbon: 'Carbon Storage In Kilograms',
-      carbon_annual: 'Gross Carbon Sequestration Per Year In Kilograms',
+      carbon_kg: 'Carbon Storage In Kilograms',
+      carbon_annual_kg: 'Gross Carbon Sequestration Per Year In Kilograms',
       ref: 'Identifier'
     }
   },

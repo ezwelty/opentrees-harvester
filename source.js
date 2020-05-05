@@ -314,7 +314,7 @@ class Source {
       const formatter = helpers.gdal_string_formatters[field.type]
       if (formatter) {
         string_crosswalk[field.name] =
-          eval(`x => helpers.${formatter.name} (x['${field.name}'])`)
+          eval(`x => helpers.gdal_string_formatters.${field.type}(x['${field.name}'])`)
         field.type = gdal.OFTString
       }
       return field

@@ -1,127 +1,132 @@
-const FEET = 3.280084;
-const INCHES = 2.54;
-
-function numeric(x) {
-  return Number.isFinite(x) ? x : null;
-}
-
-function inches(field) {
-  return tree => numeric(Number(tree[field]) * 2.54);
-}
-
-function feet(field) {
-  return tree => numeric(Number(tree[field]) / 3.280084);
-}
-
 module.exports = [
   {
     id: 'madison',
+    info: 'https://data-cityofmadison.opendata.arcgis.com/datasets/street-trees',
     download: 'https://opendata.arcgis.com/datasets/b700541a20e446839b18d62426c266a3_0.zip',
     short: 'Madison',
     country: 'United States',
     crosswalk: {
-      common: 'SPECIES',
-      dbh: x => Number(x.DIAMETER) * INCHES
+      ref: 'OBJECTID',
+      // SPECIES: Code only, even though preview shows values
+      // common: 'SPECIES',
+      dbh_in: 'DIAMETER' // max: 78, assuming inches
     }
   },
   {
     id: 'pdx-street',
-    download: 'https://opendata.arcgis.com/datasets/eb67a0ad684d4bb6afda51dc065d1664_25.zip',
+    info: 'http://gis-pdx.opendata.arcgis.com/datasets/street-trees',
+    download: 'https://opendata.arcgis.com/datasets/eb67a0ad684d4bb6afda51dc065d1664_25.zip?outSR=%7B%22latestWkid%22%3A3857%2C%22wkid%22%3A102100%7D',
     short: 'Portland',
-    long: 'Portland, Oregon',
+    long: 'City of Portland',
     country: 'United States',
     crosswalk: {
+      ref: 'OBJECTID',
+      updated: 'Date_Inven', // Date_Inventoried
+      planted: 'Plant_Date',
       scientific: 'Scientific',
       genus: 'Genus',
       family: 'Family',
       common: 'Common',
       health: 'Condition',
-      dbh: x => Math.round(x.DBH * 2.54 * 10) / 10, // assume inches
+      dbh_in: 'DBH', // max: 86.5, assuming inches
       note: 'Notes',
       edible: x => ({
         'no': 'false',
         'fruit': 'fruit',
         'nut': 'nut'
-      })[x['Edible']]
+      })[x['Edible']],
+      location: x => 'street'
     }
   },
   {
     id: 'pdx-park',
-    download: 'https://opendata.arcgis.com/datasets/83a7e3f6a1d94db09f24849ee90f4be2_220.zip?outSR=%7B%22latestWkid%22%3A3857%2C%22wkid%22%3A102100%7D&session=undefined',
+    info: 'http://gis-pdx.opendata.arcgis.com/datasets/parks-tree-inventory',
+    download: 'https://opendata.arcgis.com/datasets/83a7e3f6a1d94db09f24849ee90f4be2_220.zip?outSR=%7B%22latestWkid%22%3A3857%2C%22wkid%22%3A102100%7D',
     short: 'Portland, Oregon',
-    long: 'Portland, Oregon',
+    long: 'City of Portland',
     country: 'United States',
     crosswalk: {
-      dbh: x => Math.round(x.DBH * 2.54 * 10) / 10, // assume inches
-      height: x => Math.round(x.HEIGHT / 3.280084 * 10) / 10, // assume feet
+      ref: 'OBJECTID',
+      updated: 'Inventory_', // Inventory_Date
+      dbh_in: 'DBH', // max: 99, assume inches
+      height_ft: 'TreeHeight', // "Tree Height (feet)"
+      // CrownWidthNS, CrownWidthEW: Crown width N-S and E-W (feet)
+      crown_ft: x => (x['CrownWidth'] + x['CrownWid_1']) / 2,
+      carbon_lb: 'Carbon_Sto', // Carbon_Storage_lb
+      carbon_annual_lb: 'Carbon_Seq', // 	Carbon_Sequestration_lb
       health: 'Condition',
-      crown: 'CrownWidth', // inches??
       family: 'Family',
-      // genus: 'Genus',
-      scientific: 'Genus_spec',
-      common: 'Common_nam',
+      genus: 'Genus',
+      scientific: 'Genus_spec', // Genus_species
+      common: 'Common_nam', // Common_name
       description: 'Species_fa',
+      origin: x => ({
+        'Yes': 'native'
+      })[x['Native']],
       edible: x => ({
+        'Yes': 'true',
         'Yes - fruit': 'fruit',
         'Yes - nuts': 'nut',
         'No': 'false'
-      })[x['Edible']],
-      // lots more
+      })[x['Edible']]
     },
     primary: 'pdx-street'
   },
   {
     id: 'nyc',
+    info: 'https://data.cityofnewyork.us/Environment/2015-Street-Tree-Census-Tree-Data/uvpi-gqnh',
     download: 'https://data.cityofnewyork.us/api/views/uvpi-gqnh/rows.csv?accessType=DOWNLOAD',
     srs: 'EPSG:4326',
     geometry: { x: 'longitude', y: 'latitude' },
     short: 'New York',
     long: 'New York City',
     country: 'United States',
+    // TODO: Add 'stump' to health ?
+    delFunc: x => x['status'] === 'Stump',
     crosswalk: {
       ref: 'tree_id',
-      dbh: x => x.tree_dbh * 2.54,
+      // tree_dbh: "rounded to nearest whole inch"
+      dbh_in: 'tree_dbh',
       scientific: 'spc_latin',
       common: 'spc_common',
-      health: 'health',
-      // sooo many other fields.
+      health: x => x['status'] === 'Dead' ? x['health'] : 'dead'
     }
   },
-  // TODO there is a lat lon buiried in "Property Address" field
   {
     id: 'providence',
+    info: 'https://data.providenceri.gov/Neighborhoods/Providence-Tree-Inventory/uv9w-h8i4',
     download: 'https://data.providenceri.gov/api/views/uv9w-h8i4/rows.csv?accessType=DOWNLOAD',
     short: 'Providence',
     long: 'Providence, Rhode Island',
     coordsFunc: x => x['Property Address'].split('\n').reverse()[0].split(/[(), ]/).filter(Number).map(Number).reverse(),
     crosswalk: {
       scientific: 'Species',
-      dbh: x => Number(x['Diameter in Inches']) * INCHES
+      dbh_in: 'Diameter in Inches'
     },
     centre: { lon: -71.43, lat: 41.83 }
   },
   {
     id: 'washington-dc',
+    info: 'http://opendata.dc.gov/datasets/urban-forestry-street-trees',
     download: 'https://opendata.arcgis.com/datasets/f6c3c04113944f23a7993f2e603abaf2_23.zip',
     short: 'Washington DC',
     long: 'Washington DC',
     country: 'United States',
     centre: { lon: -77, lat: 38.92 },
     crosswalk: {
-      dbh: x => x.DBH * 2.54,
+      dbh_in: 'DBH',
       common: 'COMMON.NAME',
       scientific: 'SCI_NM',
       planted: 'DATE_PLANT',
       family: 'FAM_NAME',
-      // simpler to not populate genus and have it extracted from scientific
-      // genus: 'GENUS_NAME',
       note: 'TREE_NOTES',
-      health: 'CONDITION',
+      health: 'CONDITION'
       // maybe ref: 'FACILITYID'
     }
   },
   {
     id: 'buffalo-ny',
+    info: 'https://data.buffalony.gov/Quality-of-Life/Tree-Inventory/n4ni-uuec',
     download: 'https://data.buffalony.gov/api/views/n4ni-uuec/rows.csv?accessType=DOWNLOAD',
     short: 'Buffalo',
     long: 'City of Buffalo, NY',
@@ -129,23 +134,24 @@ module.exports = [
     crosswalk: {
       scientific: 'Botanical Name',
       common: 'Common Name',
-      dbh: x => Number(x.DBH) * 2.54, // assuming
+      dbh_in: 'DBH', // "in inches"
       ref: 'Site ID'
     }
   },
   {
     id: 'san_francisco',
-    // download: 'https://data.sfgov.org/api/geospatial/tkzw-k3nq?method=export&format=GeoJSON',
-    download: 'https://data.sfgov.org/api/views/337t-q2b4/rows.csv?accessType=DOWNLOAD',
+    info: 'https://data.sfgov.org/City-Infrastructure/Street-Tree-List/tkzw-k3nq',
+    download: 'https://data.sfgov.org/api/views/tkzw-k3nq/rows.csv?accessType=DOWNLOAD',
     short: 'San Francisco',
     long: 'City of San Francisco',
     country: 'United States',
+    geometry: {x: 'Longitude', y: 'Latitude'},
     crosswalk: {
       ref: 'TreeID',
       scientific: x => String(x.qSpecies).split(' :: ')[0],
       common: x => String(x.qSpecies).split(' :: ')[1],
       description: 'qSiteInfo',
-      dbh: x => Number(x.DBH) * 2.54, // assuming
+      dbh_in: 'DBH', // assuming inches
       planted: 'PlantDate',
       // also qLegalStatus (private/DPW), qCaretaker, PlantType
     },
@@ -153,6 +159,7 @@ module.exports = [
   },
   {
     id: 'philadelphia',
+    info: 'https://www.opendataphilly.org/dataset/philadelphia-street-tree-inventory',
     download: 'http://data.phl.opendata.arcgis.com/datasets/957f032f9c874327a1ad800abd887d17_0.csv',
     short: 'Philadelphia',
     long: 'City of Philadelphia',
@@ -163,14 +170,15 @@ module.exports = [
   },
   {
     id: 'denver',
-    download: 'https://data.colorado.gov/api/views/wz8h-dap6/rows.csv?accessType=DOWNLOAD',
+    info: 'https://www.denvergov.org/opendata/dataset/city-and-county-of-denver-tree-inventory',
+    download: 'https://www.denvergov.org/media/gis/DataCatalog/tree_inventory/csv/tree_inventory.csv',
     short: 'Denver',
     country: 'United States',
     crosswalk: {
       ref: 'SITE_ID',
-      scientific: 'SPECIES_BO',
-      common: 'SPECIES_CO',
-      dbh: 'DIAMETER',
+      scientific: 'SPECIES_BOTANIC',
+      common: 'SPECIES_COMMON',
+      dbh_in: 'DIAMETER', // assuming inches
       location: 'LOCATION_NAME'
     },
     centre: { lon: -104.9454, lat: 39.7273 }
@@ -186,23 +194,29 @@ module.exports = [
       scientific: 'LATINNAME',
       common: 'COMMONNAME',
       cultivar: 'CULTIVAR',
-      dbh: x => 'DBHINT' * 2.54,
-      location: 'LOCTYPE',
+      dbh_in: 'DBHINT', // "integer in inches"
+      location: 'LOCTYPE'
       // also interesting attributes on deciduous, broadlaved etc.
     }
   },
   {
     id: 'cambridge',
     country: 'United States',
-    download: 'https://data.cambridgema.gov/api/views/q83f-7quz/rows.csv?accessType=DOWNLOAD',
-    info: 'https://data.cambridgema.gov/Public-Works/Street-Trees/ni4i-5bnn',
+    download: 'https://gis.cambridgema.gov/download/shp/ENVIRONMENTAL_StreetTrees.shp.zip',
+    info: 'https://www.cambridgema.gov/GIS/gisdatadictionary/Environmental/ENVIRONMENTAL_StreetTrees',
+    delFunc: x => x['SiteType'] !== 'Tree',
     crosswalk: {
       common: 'CommonName',
       scientific: 'Scientific',
       ref: 'TreeID',
-      dbh: 'diameter',
-      updated: 'last_edite',
+      dbh_in: 'diameter', // Tree diameter in inches
+      updated: 'modified',
       planted: 'PlantDate',
+      stems: 'trunks',
+      notable: x => ({'Y': 'memorial'})[x['MemTree']],
+      // TODO Location: 'Street Tree', 'Park Tree', 'Public School', ...
+      location: 'Location',
+      owner: 'Ownership',
       health: x => String(x.TreeCondit).replace(/ \(.*/, '') // strings like "Good (EW 2013)"
     },
     short: 'Cambridge'
@@ -215,8 +229,8 @@ module.exports = [
     crosswalk: {
       scientific: 'SPECIES',
       common: 'Common_Nam',
-      height: x => Number(x.HEIGHT_FT) / FEET,
-      dbh: x => Number(x.DBH_IN) * INCHES,
+      height_ft: 'HEIGHT_FT',
+      dbh_in: 'DBH_IN',
       health: 'CONDITION', // numeric...
       note: 'note'
     },
@@ -233,7 +247,7 @@ module.exports = [
       common: 'common_name',
       ref: 'id',
       scientific: 'scientific_name',
-      height: 'height',
+      height_ft: 'height', // max: 158, assuming feet
       health: 'condition'
     }
   },
@@ -245,10 +259,14 @@ module.exports = [
     short: 'Colombus',
     crosswalk: {
       ref: 'OBJECTID',
-      dbh: x => Number('DIAM_BREAS') * INCHES,
+      // DIAM_BREAST_HEIGHT: "Measurement in inches"
+      dbh_in: 'DIAM_BREAS',
+      // HEIGHT: "Height of tree top above ground in feet."
+      height_ft: 'HEIGHT',
       updated: 'INSPECTION',
       health: 'CONDITION1',
       maturity: 'LIFE_STAGE',
+      // TODO SP_CODE: e.g. 'Maple, Sugar'
       common: 'SP_CODE',
       description: 'STR_NAME'
     }
@@ -262,8 +280,8 @@ module.exports = [
     crosswalk: {
       scientific: 'SPECIES',
       common: 'COM_NAME',
-      dbh: x => x.DBH * INCHES,
-      height: x => x.HEIGHT / FEET,
+      dbh_in: 'DBH', // assuming inches
+      height_ft: 'HEIGHT', // assuming feet
       health: 'CONDITION',
       location: 'LAND_TYPE'
     }
@@ -277,7 +295,7 @@ module.exports = [
     crosswalk: {
       scientific: 'Botanic',
       common: 'Common',
-      dbh: x => x.DBH * INCHES,
+      dbh_in: 'DBH', // assuming inches
       note: 'Comment',
       updated: 'SurveyDate'
     }
@@ -304,7 +322,7 @@ module.exports = [
     crosswalk: {
       description: 'TREE_NAME',
       health: 'COND',
-      dbh: x => String(x.DBH).replace('"', '') * INCHES,
+      dbh_in: x => String(x.DBH).replace('"', ''),
       ref: 'TREE_NUMBE',
       note: 'NOTES'
     }
@@ -323,8 +341,8 @@ module.exports = [
       planted: 'PLANTED_DA',
       scientific: 'SCIENTIFIC',
       common: 'COMMON_NAM',
-      height: x => x.TREEHEIGHT / FEET,
-      dbh: x => x.DIAM * INCHES,
+      height_ft: 'TREEHEIGHT',
+      dbh_in: 'DIAM',
       health: x => ['Very poor', 'Poor', 'Fair', 'Good', 'Excellent'][x.CONDITIO_3 - 1],
       // lots more https://www.seattle.gov/Documents/Departments/SDOT/GIS/Trees_OD.pdf
     }
@@ -341,8 +359,8 @@ module.exports = [
       updated: 'UpdateDate',
       scientific: 'Species',
       common: 'SpeciesCommonName',
-      dbh: x => Number(x.DiameterBreastHeight) * INCHES,
-      height: x => Number(x.Height) / FEET,
+      dbh_in: 'DiameterBreastHeight',
+      height_ft: 'Height',
       location: 'LocationType',
       health: 'Condition'
     },
@@ -359,8 +377,8 @@ module.exports = [
       // FICTITIOUS?
       scientific: 'BOTANICALN',
       common: 'COMMONNAME',
-      dbh: x => Number(x.DBH) * INCHES,
-      height: x => Number(x.HEIGHT) / FEET
+      dbh_in: 'DBH',
+      height_ft: 'HEIGHT'
     }
   },
   {
@@ -385,7 +403,7 @@ module.exports = [
     crosswalk: {
       ref: 'TREE_ID_NO',
       common: 'SPECIES',
-      dbh: x => Number(x.DIAMETER) * INCHES,
+      dbh_in: 'DIAMETER',
       health: 'CONDITION', // what, there is "CONDITION_RATING_NUMERIC" which has "Good" twhereas condition is "Fair"...
       updated: 'ACTIVITY_DATE',
       // genus: 'GENUS', // "Pine" is not a genus...
@@ -400,9 +418,9 @@ module.exports = [
       updated: 'DATE_',
       scientific: 'BOTANICAL_',
       common: 'COMMON_N',
-      dbh: inches('DIAMETER'),
-      height: feet('HEIGHT'),
-      crown: feet('CROWN_RADI'),
+      dbh_in: 'DIAMETER',
+      height_ft: 'HEIGHT',
+      crown_ft: x => x['CROWN_RADI'] * 2,
       health: 'RATING', // out of 10?
       note: 'COMMENT',
       ref: 'TREE_ID'
@@ -418,10 +436,10 @@ module.exports = [
       scientific: 'BOTANICAL',
       common: 'COMMON',
       // water_use!
-      // TODO: Unit conversions
-      dbh: 'DBH', // "25-30",
-      crown: 'WIDTH',
-      height: 'HEIGHT',
+      // TODO DBH: "25-30"
+      dbh_in: 'DBH',
+      crown_ft: 'WIDTH',
+      height_ft: 'HEIGHT',
       health: 'COND',
       note: 'NOTES'
     }
@@ -437,8 +455,8 @@ module.exports = [
       common: 'NAME',
       ref: 'FACILITYID',
       age: 'TREEAGE',
-      dbh: inches('DIAMETER'), // TRUNKDIAM?
-      height: feet('HEIGHT'),
+      dbh_in: 'DIAMETER', // TRUNKDIAM?
+      height_ft: 'HEIGHT',
       planted: 'INSTALLDATE',
       health: 'CONDITION',
       updated: 'LASTUPDATE',
@@ -468,8 +486,8 @@ module.exports = [
       genus: 'GENUS',
       species: 'SPECIES',
       age: 'TREEAGE',
-      dbh: inches('DIAMETER'), // also TRUNKDIAM
-      height: feet('HEIGHT'),
+      dbh_in: 'DIAMETER', // also TRUNKDIAM
+      height_ft: 'HEIGHT',
       owner: 'OWNEDBY',
       structure: 'TRUNKSTRCT', // also BRANCHSTRCT
       note: 'COMMENTS',
@@ -485,7 +503,7 @@ module.exports = [
     crosswalk: {
       common: 'TR_COMMON',
       scientific: 'TR_GENUS',
-      dbh: inches('TR_DIA'),
+      dbh_in: 'TR_DIA',
       health: 'CONDITION',
       // lots of others
       updated: 'INPUT_DATE'
@@ -503,9 +521,9 @@ module.exports = [
       scientific: 'Species',
       family: 'Family',
       //TreeType: Deciduous
-      crown: feet('Spread'),
-      height: feet('Height'),
-      dbh: inches('Diameter'),
+      crown_ft: 'Spread',
+      height_ft: 'Height',
+      dbh_in: 'Diameter',
       health: 'Condition', // /100,
       note: 'SpecialComments',
       updated: 'last_edited_date'
@@ -532,7 +550,7 @@ module.exports = [
     info: 'http://hub.arcgis.com/datasets/coloradosprings::trees/data?geometry=-106.259%2C38.699%2C-103.338%2C39.073',
     crosswalk: {
       common: 'Common_Name',
-      dbh: inches('DBH')
+      dbh_in: 'DBH'
     }
   },
   {
@@ -549,8 +567,8 @@ module.exports = [
       species: 'sp_epith',
       cultivar: 'variety',
       location: 'type',
-      dbh: inches('dbh'),
-      height: feet('height'),
+      dbh_in: 'dbh',
+      height_ft: 'height',
       health: 'trcond',
       updated: 'last_edited_date'
     }
@@ -565,9 +583,11 @@ module.exports = [
       health: 'Condition',
       common: 'TreeType',
       scientific: 'SciName',
-      height: 'Height', // 11-20
-      dbh: inches('Diameter'),
-      crown: 'Spread' // min-max
+      // TODO Height: 'min-max'
+      height_ft: 'Height',
+      dbh_in: 'Diameter',
+      // TODO Spread: 'min-max'
+      crown_ft: 'Spread'
     }
   },
   {
@@ -578,8 +598,10 @@ module.exports = [
     crosswalk: {
       common: 'COMMONNAME',
       scientific: 'BOTANICALNAME',
-      dbh: 'DBH', //13-18
-      height: 'HEIGHT',
+      // TODO DBH: 'min-max'
+      dbh_in: 'DBH',
+      // TODO HEIGHT: 'min-max'
+      height_ft: 'HEIGHT',
       // FICTITIOUS?
     },
     centre: { lon: -117.86, lat: 33.83 }
@@ -607,7 +629,7 @@ module.exports = [
     download: 'https://opendata.arcgis.com/datasets/7fdf2b5d2b674e99b33e8d77d052e30c_0.csv',
     info: 'http://hub.arcgis.com/datasets/WCUPAGIS::borotrees-1?geometry=-87.273%2C38.460%2C-63.905%2C41.408',
     crosswalk: {
-      dbh: inches('DBH'),
+      dbh_in: 'DBH',
       ref: 'ID_1',
       genus: 'Genus',
       species: 'Species_1',
@@ -628,7 +650,7 @@ module.exports = [
       genus: 'GENUS',
       species: 'SPECIES',
       cultivar: 'CULTIVAR',
-      dbh: inches('DBH'),
+      dbh_in: 'DBH',
       health: 'CONDITION',
       updated: 'LASTMODDATE'
     }
@@ -653,7 +675,7 @@ module.exports = [
     download: 'https://opendata.arcgis.com/datasets/137785bc78da47b4a2159f9c76218d55_0.csv',
     info: 'http://hub.arcgis.com/datasets/Westerville::comm-parks-rec-trees',
     crosswalk: {
-      dbh: inches('DBH'),
+      dbh_in: 'DBH',
       common: 'COMMON_NAME',
       //class: deciduous
       location: 'TREE_TYPE',
@@ -670,7 +692,8 @@ module.exports = [
       updated: 'INSPECT_DT',
       note: 'NOTES',
       scientific: 'SPP', // often "Palm" though
-      dbh: 'DBH', //13-14
+      // TODO DBH: 'min-max'
+      dbh_in: 'DBH',
     }
   },
   {
@@ -683,8 +706,8 @@ module.exports = [
       genus: 'GENUS',
       species: 'SPECIES',
       age: 'TREEAGE',
-      dbh: inches('TRUNKDIAM'),
-      height: feet('HEIGHT'),
+      dbh_in: 'TRUNKDIAM',
+      height_ft: 'HEIGHT',
       health: 'CONDITION',
       owner: 'OWNEDBY',
       updated: 'LASTUPDATE',
@@ -710,7 +733,7 @@ module.exports = [
       common: 'Type',
       scientific: 'BOTANICAL',
       cultivar: 'CULTIVAR',
-      dbh: inches('DBH'),
+      dbh_in: 'DBH',
       health: x => String(x.CONDITION).split(' - ')[0],
       note: 'NOTES',
       // DATE_1 - 2015-ish. planted? updated?
@@ -726,7 +749,7 @@ module.exports = [
       genus: 'Genus',
       species: 'Species',
       cultivar: 'Cultivar',
-      dbh: inches('DBH'),
+      dbh_in: 'DBH',
       health: 'Condition',
       updated: 'last_edited_date',
       common: 'Common_Name',
@@ -742,7 +765,7 @@ module.exports = [
       ref: 'ID',
       scientific: 'SPP',
       common: 'COMMON',
-      dbh: inches('DBH'),
+      dbh_in: 'DBH',
       health: 'COND',
       updated: 'INSPECT_DT',
       note: 'NOTES',
@@ -758,8 +781,10 @@ module.exports = [
       ref: 'INVENTORYI',
       scientific: 'BOTANICALN',
       common: 'COMMONNAME',
-      dbh: 'DBH', //07-12
-      height: 'HEIGHT', // 15-30
+      // TODO DBH: 'min-max'
+      dbh_in: 'DBH',
+      // TODO HEIGHT: 'min-max'
+      height_ft: 'HEIGHT',
       updated: 'EditDate'
     }
   },
@@ -779,8 +804,8 @@ module.exports = [
     info: 'http://hub.arcgis.com/datasets/sarasota::tree-inventory',
     crosswalk: {
       scientific: 'Species', // often common names like "Laurel Oak',
-      dbh: inches('DBH_1_99_'),
-      height: feet('Height_1_1'),
+      dbh_in: 'DBH_1_99_',
+      height_ft: 'Height_1_1',
       health: 'Condition',
       owner: 'Ownership',
       note: 'Notes',
@@ -797,7 +822,7 @@ module.exports = [
       scientific: 'BOTANICAL',
       // CULTIVAR: Contains variety names (only mandshurica, pubens).
       infraspecies: 'CULTIVAR',
-      dbh: inches('DBH'),
+      dbh_in: 'DBH',
       health: 'COND',
       note: 'NOTES',
       updated: 'DATE', // EDITTIME?
@@ -826,8 +851,10 @@ module.exports = [
       // FICTITIOUS ??
       scientific: 'BOTANICAL',
       common: 'COMMON',
-      dbh: 'DBH_RANGE', //19-24 also EXACTDBH
-      height: feet('HEIGHT_RAN'), // 30-45
+      // TODO DBH_RANGE: 'min-max' (or EXACTDBH)
+      dbh_in: 'DBH_RANGE',
+      // TODO HEIGHT_RAN(GE): 'min-max'
+      height_ft: 'HEIGHT_RAN',
       health: 'CONDITION',
       updated: 'LAST_EDITED_DATE'
     }
@@ -841,7 +868,8 @@ module.exports = [
     geometry: { x: 'X', y: 'Y' },
     crosswalk: {
       ref: 'TK_ID',
-      common: 'COMMON', dbh: inches('DBH'),
+      common: 'COMMON',
+      dbh_in: 'DBH',
       health: 'CONDITION',
       updated: 'INSPECT_DT'
     }
@@ -855,7 +883,7 @@ module.exports = [
       ref: 'ID',
       common: 'COMMON',
       scientific: 'BOTANICAL',
-      dbh: 'DBH', // many blanks...?
+      dbh_in: 'DBH',
       health: 'COND',
       note: 'NOTES'
     }
@@ -884,12 +912,12 @@ module.exports = [
         'Native': 'native',
         'Naturalized': 'naturalized'
       })[x.Origin],
-      dbh: 'DBH', // centimeters (confirmed by DBH_in)
-      height_min: x => ({
+      dbh_cm: 'DBH', // centimeters (confirmed by DBH_in)
+      height_m_min: x => ({
         '0': 0, '< 5 meters': 0, '5 - 10 meters': 5, '11 - 15 meters': 11,
         '16 - 20 meters': 16, '20 - 25 meters': 20, '> 25 meters': 25
       })[x.Height],
-      height_max: x => ({
+      height_m_max: x => ({
         '0': 0, '< 5 meters': 5, '5 - 10 meters': 10, '11 - 15 meters': 15,
         '16 - 20 meters': 20, '20 - 25 meters': 25
       })[x.Height],
@@ -918,8 +946,8 @@ module.exports = [
     crosswalk: {
       scientific: 'Species_Latin_Name',
       common: 'Species_Common_Name',
-      height: feet('Height'),
-      dbh: inches('DBH'),
+      height_ft: 'Height',
+      dbh_in: 'DBH',
       structure: 'Structural_Value',
       ref: 'HRPT_Numbering_1'
     }
@@ -931,12 +959,14 @@ module.exports = [
     info: 'http://hub.arcgis.com/datasets/CapeGIS::tree-inventory',
     crosswalk: {
       common: 'SPECIES',
-      dbh: 'DBH', // 0-6"
-      crown: 'CANOPY',
+      // TODO DBH: 'min-max'
+      dbh_in: 'DBH',
+      crown_ft: 'CANOPY',
       location: 'SITE',
       health: 'CONDITION',
       updated: 'last_edited_date',
-      height: 'HEIGHT', //11-20
+      // TODO: HEIGHT: 'min-max'
+      height_ft: 'HEIGHT',
       note: 'COMMENTS'
     }
   },
@@ -951,7 +981,7 @@ module.exports = [
       health: 'CONDITION_CLASS',
       updated: 'DATE_CHANGED',
       planted: 'DatePlanted',
-      dbh: inches('EST_DBH'),
+      dbh_in: 'EST_DBH',
       family: 'FAMILY',
       cultivar: 'CULTIVAR',
       genus: 'GENUS', // no species?
@@ -967,9 +997,9 @@ module.exports = [
     crosswalk: {
       scientific: 'NAMESCIENTIFIC',
       age: 'TREEAGE',
-      dbh: inches('TRUNKDIAM'),
-      height: feet('HEIGHT'),
-      crown: feet('DIAMETER'),
+      dbh_in: 'TRUNKDIAM',
+      height_ft: 'HEIGHT',
+      crown_ft: 'DIAMETER',
       health: x => String(x.CONDITION).split(' ')[0],
       note: 'NOTES',
       updated: 'EditDate',
@@ -986,9 +1016,9 @@ module.exports = [
     crosswalk: {
       scientific: 'NAMESCIENTIFIC',
       age: 'TREEAGE',
-      dbh: inches('TRUNKDIAM'),
-      height: feet('HEIGHT'),
-      crown: feet('DIAMETER'),
+      dbh_in: 'TRUNKDIAM',
+      height_ft: 'HEIGHT',
+      crown_ft: 'DIAMETER',
       health: x => String(x.CONDITION).split(' ')[0],
       note: 'NOTES',
       updated: 'EditDate',
@@ -1006,9 +1036,9 @@ module.exports = [
     crosswalk: {
       scientific: 'NAMESCIENTIFIC',
       age: 'TREEAGE',
-      dbh: inches('TRUNKDIAM'),
-      height: feet('HEIGHT'),
-      crown: feet('DIAMETER'),
+      dbh_in: 'TRUNKDIAM',
+      height_ft: 'HEIGHT',
+      crown_ft: 'DIAMETER',
       health: x => String(x.CONDITION).split(' ')[0],
       note: 'NOTES',
       updated: 'EditDate',

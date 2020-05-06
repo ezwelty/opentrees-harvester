@@ -1,3 +1,5 @@
+const { reformat_datetime } = require('../helpers')
+
 const identity = {
   scientific: 'scientific',
   common: 'common',
@@ -77,11 +79,11 @@ module.exports = [
     long: 'City of Manningham',
     country: 'Australia',
     crosswalk: {
-      updated: 'date1',  // TODO YYYY-MM-DD
-      ref: 'tree_no', // hansen_id?
+      ref: 'id',
+      updated: 'date1',
       scientific: 'species',
-      height: 'height',
-      dbh: 'dbh'
+      height_m_range: 'height',
+      dbh_mm_range: 'dbh'
     }
   },
   {
@@ -91,7 +93,7 @@ module.exports = [
     long: 'City of Greater Geelong',
     country: 'Australia',
     crosswalk: {
-      ...identity, // requires Node 10
+      ...identity,
       scientific: x => x.genus + ' ' + (x.species || '').toLowerCase(),
       // TODO captured is a date
     }
@@ -109,14 +111,15 @@ module.exports = [
     long: 'City of Melbourne',
     country: 'Australia',
     crosswalk: {
-      ref: 'com_id',
+      ref: 'CoM ID',
       common: 'Common Name',
       scientific: 'Scientific Name',
       dbh: 'Diameter Breast Height',
-      //planted: x => processDate(x['date planted']),
-      planted: 'Date Planted',
+      planted: x => reformat_datetime(
+        x['Date Planted'],
+        [/(?<day>[0-9]{2})\/(?<month>[0-9]{2})\/(?<year>[0-9]{4})/]),
       maturity: 'Age Description',
-      ule_min: 'Useful Life Expectency',
+      ule_range: x => x['Useful Life Expectency'].replace(/\s*\(.*\)$/, ''),
       location: 'Located In'
     }
   },

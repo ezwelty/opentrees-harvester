@@ -1,3 +1,5 @@
+const { reformat_datetime } = require('../helpers')
+
 module.exports = [
   {
     id: 'madison',
@@ -897,8 +899,15 @@ module.exports = [
     srs: 'EPSG:2226',
     crosswalk: {
       ref: 'TreeID',
-      // TODO PlantingDate: MM/YYYY, DD/MM/YYYY, YYYY, or text (e.g. 'early 1980s')
-      planted: 'PlantingDate',
+      // TODO PlantingDate: e.g. early 1980s, late 50's, between 2003 and 2007
+      planted: x => reformat_datetime(
+        x['PlantingDate'],
+        [
+          /^(?<day>[0-9]{1,2})\/(?<month>[0-9]{1,2})\/(?<year>[0-9]{4})$/,
+          /^(?<month>[0-9]{1,2})\/(?<year>[0-9]{4})$/,
+          /^(?<year>[0-9]{4})$/ // HACK: Prevent warning for YYYY
+        ]
+      ),
       updated: 'InventoryDate',
       genus: 'Genus',
       species: 'SpecificEpithet',
@@ -911,14 +920,7 @@ module.exports = [
         'Naturalized': 'naturalized'
       })[x.Origin],
       dbh_cm: 'DBH', // centimeters (confirmed by DBH_in)
-      height_m_min: x => ({
-        '0': 0, '< 5 meters': 0, '5 - 10 meters': 5, '11 - 15 meters': 11,
-        '16 - 20 meters': 16, '20 - 25 meters': 20, '> 25 meters': 25
-      })[x.Height],
-      height_m_max: x => ({
-        '0': 0, '< 5 meters': 5, '5 - 10 meters': 10, '11 - 15 meters': 15,
-        '16 - 20 meters': 20, '20 - 25 meters': 25
-      })[x.Height],
+      height_m_range: 'Height',
       stems_range: 'Stems',
       health: x => ({
         'very poor': 'poor',

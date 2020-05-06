@@ -53,7 +53,7 @@ exports.time_to_string = (obj) => {
  * @param {integer} [timezone=0] - GDAL timezone flag
  * @return {string} ISO 8601 timezone
  */
-exports.timezone_to_string = (timezone = 0) => {
+exports.gdal_timezone_to_string = (timezone = 0) => {
   // TZFlag: 0=unknown, 1=ambiguous, 100=GMT, 104=GMT+1, 80=GMT-5
   // See https://gdal.org/development/rfc/rfc56_millisecond_precision.html
   const min = timezone > 1 ? (timezone - 100) * 15 : null
@@ -75,20 +75,55 @@ exports.timezone_to_string = (timezone = 0) => {
  * @param {integer} [obj.hour=0] - Hour (`0` - `23`)
  * @param {integer} [obj.minute=0] - Minute (`0` - `59`)
  * @param {number} [obj.second=0] - Second (`0` - `59.*`)
- * @param {integer} [obj.timezone=0] - GDAL timezone flag
+ * @param {integer} [obj.timezone=0] - Timezone flag
  * @param {boolean} [truncate=false] - Whether to return only date when hour,
  * minute, and second are all zero.
+ * @param {boolean} [gdal_timezone=true] - Whether `obj.timezone` is a GDAL
+ * timezone flag (see {@link gdal_timezone_to_string}) or already formatted as
+ * an ISO 8601 timezone.
  * @return {string} ISO 8601 datetime
  */
-exports.datetime_to_string = (obj, truncate = false) => {
+exports.datetime_to_string = (obj, truncate = false, gdal_timezone = true) => {
   if (!obj) return ''
   const date = exports.date_to_string(obj)
   if (truncate && !(obj.hour || obj.minute || obj.second)) {
     return date
   }
   const time = exports.time_to_string(obj)
-  const timezone = exports.timezone_to_string(obj.timezone)
+  let timezone
+  if (gdal_timezone) {
+    timezone = exports.gdal_timezone_to_string(obj.timezone)
+  } else {
+    timezone = obj.timezone || ''
+  }
   return `${date}T${time}${timezone}`
+}
+
+/**
+ * Reformat a datetime string as an ISO 8601 string.
+ *
+ * Reformats a datetime string as `YYYY-MM-DDThh:mm:ss.*` and the appropriate
+ * timezone. See https://en.wikipedia.org/wiki/ISO_8601.
+ *
+ * @param {string} x - Datetime string
+ * @param {RegExp[]} patterns - Regular expressions with capture groups
+ * with names from the following list: `year`, `month`, `day`, `hour`, `minute`,
+ * `second`, `timezone`. Returns result from first matching pattern.
+ * @return {string} ISO 8601 datetime
+ */
+exports.reformat_datetime = (x, patterns) => {
+  // Skip if already parsed to object by gdal
+  if (!x || typeof x === 'object') return x
+  x = x.trim()
+  for (const pattern of patterns) {
+    const matches = x.match(pattern)
+    if (matches) {
+      return exports.datetime_to_string(
+        matches.groups, truncate = true, gdal_timezone = false)
+    }
+  }
+  console.warn('Failed to parse datetime:', x)
+  return x
 }
 
 /**

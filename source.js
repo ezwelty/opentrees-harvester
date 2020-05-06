@@ -848,6 +848,9 @@ class Source {
         return
       }
       const matches = helpers.guess_geometry_fields(layer)
+      // Prioritize geographic (vs projected) coordinate fields
+      if (matches.lon.length) matches.x = matches.lon
+      if (matches.lat.length) matches.y = matches.lat
       if (matches.wkt.length) {
         if (matches.wkt.length > 1) {
           this.warn('Using first of matching WKT fields:', matches.wkt)

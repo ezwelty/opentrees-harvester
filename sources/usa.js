@@ -895,6 +895,7 @@ module.exports = [
     info: 'https://data-ucda.opendata.arcgis.com/datasets/uc-davis-tree-database',
     download: 'https://opendata.arcgis.com/datasets/07939ef894984a95b58098315f80c046_0.csv',
     license: { name: 'No license specified' },
+    // Fields lat, lon not complete
     geometry: { x: 'X', y: 'Y' },
     srs: 'EPSG:2226',
     crosswalk: {

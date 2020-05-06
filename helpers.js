@@ -173,6 +173,8 @@ exports.map_object = (obj, mapping) => {
  * Common geometry field names.
  * 
  * @property {string[]} wkt - Field names for well-known-text (WKT)
+ * @property {string[]} lon - Field names for longitude
+ * @property {string[]} lat - Field names for latitude
  * @property {string[]} x - Field names for x (longitude, easting)
  * @property {string[]} y - Field names for y (latitude, northing)
  */
@@ -181,22 +183,29 @@ exports.geometry_fields = {
     'geom', 'the_geom', 'wkb_geometry', 'shape', 'geo_shape', 'geometrie',
     'geometry'
   ],
+  lon: [
+    'longitude', 'lon', 'lng', 'long', 'x_long', 'coord long'
+  ],
+  lat: [
+    'latitude', 'lat', 'y_lat', 'coord lat'
+  ],
   x: [
-    'longitude', 'lon', 'lng', 'long', 'x', 'x_long', 'x_koordina',
-    'x-koordinate', 'coord long', 'x_coord', 'coordenada x', 'xcoord'
+    'x', 'x_koordina', 'x-koordinate', 'x_coord', 'coordenada x', 'xcoord',
+    'easting', 'east', 'e', 'point_x'
   ],
   y: [
-    'latitude', 'lat', 'y', 'y_lat', 'y_koordina', 'y-koordinate',
-    'coord lat', 'y_coord', 'coordenada y', 'ycoord'
+    'y', 'y_koordina', 'y-koordinate', 'y_coord', 'coordenada y', 'ycoord',
+    'northing', 'north', 'n', 'point_y'
   ]
 }
 
 /**
  * Guess feature layer geometry fields based on their name.
- * 
+ *
  * @param {gdal.Layer} layer - Feature layer
- * @return {object[]} Names of fields with potential WKT geometry (wkt) or
- *  x and y coordinates (x, y).
+ * @return {object[]} Names of fields with potential WKT geometry (wkt),
+ * geographic coordinates (lon, lat), or geographic or projected coordinates (x,
+ * y).
  */
 exports.guess_geometry_fields = (layer) => {
   const geometry = {}

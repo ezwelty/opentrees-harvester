@@ -1,4 +1,8 @@
-UNIT_MULTIPLIERS = {
+module.exports = {
+  modifyCrosswalk
+}
+
+const UNIT_MULTIPLIERS = {
   in: {
     m: 0.0254
   },
@@ -13,7 +17,7 @@ UNIT_MULTIPLIERS = {
   }
 }
 
-FIELD_MULTIPLIERS = {
+const FIELD_MULTIPLIERS = {
   circumference: {
     dbh: 0.5
   }
@@ -23,7 +27,7 @@ FIELD_MULTIPLIERS = {
  * Return all supported unit names.
  * @return {string[]}
  */
-getUnits = () => {
+function getUnits() {
   const units = new Set()
   for (const key in UNIT_MULTIPLIERS) {
     units.add(key)
@@ -39,7 +43,7 @@ getUnits = () => {
  * @return {string} name.unit - Unit (e.g. 'm')
  * @return {string} name.range - Range type ('min', 'max', or 'range')
  */
-parseFieldName = (name) => {
+function parseFieldName(name) {
   let base, range, unit, matches
   // Extract unit tag (m, cm, ft, in, ...)
   matches = [...name.matchAll(
@@ -85,7 +89,7 @@ parseFieldName = (name) => {
  * parseRange('>0m')
  * parseRange('Greater than 0 but less than 1m')
  */
-parseRange = (x) => {
+function parseRange(x) {
   if (!x) {
     return {}
   }
@@ -118,7 +122,7 @@ parseRange = (x) => {
  * either null (no change) or a function called as f(x), where x is the value of
  * the field.
  */
-getFieldCrosswalk = (name) => {
+function getFieldCrosswalk(name) {
   let { base, range, unit } = parseFieldName(name)
   let multiplier = 1
   // units
@@ -168,7 +172,7 @@ getFieldCrosswalk = (name) => {
  * @param {object} crosswalk
  * @return {object} Modified crosswalk
  */
-exports.modifyCrosswalk = (crosswalk) => {
+function modifyCrosswalk(crosswalk) {
   const target = {}
   for (const old in crosswalk) {
     const conversions = getFieldCrosswalk(old)

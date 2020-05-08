@@ -1,4 +1,4 @@
-unit_multipliers = {
+UNIT_MULTIPLIERS = {
   in: {
     m: 0.0254
   },
@@ -13,7 +13,7 @@ unit_multipliers = {
   }
 }
 
-field_multipliers = {
+FIELD_MULTIPLIERS = {
   circumference: {
     dbh: 0.5
   }
@@ -23,11 +23,11 @@ field_multipliers = {
  * Return all supported unit names.
  * @return {string[]}
  */
-get_units = () => {
+getUnits = () => {
   const units = new Set()
-  for (const key in unit_multipliers) {
+  for (const key in UNIT_MULTIPLIERS) {
     units.add(key)
-    Object.keys(unit_multipliers[key]).forEach(x => units.add(x))
+    Object.keys(UNIT_MULTIPLIERS[key]).forEach(x => units.add(x))
   }
   return [...units]
 }
@@ -39,11 +39,11 @@ get_units = () => {
  * @return {string} name.unit - Unit (e.g. 'm')
  * @return {string} name.range - Range type ('min', 'max', or 'range')
  */
-parse_field_name = (name) => {
+parseFieldName = (name) => {
   let base, range, unit, matches
   // Extract unit tag (m, cm, ft, in, ...)
   matches = [...name.matchAll(
-    new RegExp(`_(${get_units().join('|')})(?=$|_)`, 'g'))]
+    new RegExp(`_(${getUnits().join('|')})(?=$|_)`, 'g'))]
   if (matches.length == 1) {
     unit = matches[0][1]
     name = name.replace(`_${unit}`, '')
@@ -78,14 +78,14 @@ parse_field_name = (name) => {
  * @return {string} range.min - Range minimum
  * @return {string} range.max - Range maximum
  * @example
- * parse_range('0')
- * parse_range('0-1m')
- * parse_range('1-0m')
- * parse_range('<1m')
- * parse_range('>0m')
- * parse_range('Greater than 0 but less than 1m')
+ * parseRange('0')
+ * parseRange('0-1m')
+ * parseRange('1-0m')
+ * parseRange('<1m')
+ * parseRange('>0m')
+ * parseRange('Greater than 0 but less than 1m')
  */
-parse_range = (x) => {
+parseRange = (x) => {
   if (!x) {
     return {}
   }
@@ -118,23 +118,23 @@ parse_range = (x) => {
  * either null (no change) or a function called as f(x), where x is the value of
  * the field.
  */
-get_field_crosswalk = (name) => {
-  let { base, range, unit } = parse_field_name(name)
+getFieldCrosswalk = (name) => {
+  let { base, range, unit } = parseFieldName(name)
   let multiplier = 1
   // units
   if (unit) {
     // NOTE: Taking first target
-    const target = Object.keys(unit_multipliers[unit] || {})[0]
+    const target = Object.keys(UNIT_MULTIPLIERS[unit] || {})[0]
     if (target) {
-      multiplier *= unit_multipliers[unit][target]
+      multiplier *= UNIT_MULTIPLIERS[unit][target]
       unit = target
     }
   }
   if (base) {
     // NOTE: Taking first target
-    const target = Object.keys(field_multipliers[base] || {})[0]
+    const target = Object.keys(FIELD_MULTIPLIERS[base] || {})[0]
     if (target) {
-      multiplier *= field_multipliers[base][target]
+      multiplier *= FIELD_MULTIPLIERS[base][target]
       base = target
     }
   }
@@ -143,11 +143,11 @@ get_field_crosswalk = (name) => {
     // Parse into min, max
     return {
       [`${basename}_min`]: multiplier === 1 ?
-        eval(`x => parse_range(x).min`) :
-        eval(`x => parse_range(x).min * ${multiplier}`),
+        eval(`x => parseRange(x).min`) :
+        eval(`x => parseRange(x).min * ${multiplier}`),
       [`${basename}_max`]: multiplier === 1 ?
-        eval(`x => parse_range(x).max`) :
-        eval(`x => parse_range(x).max * ${multiplier}`),
+        eval(`x => parseRange(x).max`) :
+        eval(`x => parseRange(x).max * ${multiplier}`),
     }
   }
   const rename = `${basename}${range ? `_${range}` : ''}`
@@ -168,10 +168,10 @@ get_field_crosswalk = (name) => {
  * @param {object} crosswalk
  * @return {object} Modified crosswalk
  */
-exports.modify_crosswalk = (crosswalk) => {
+exports.modifyCrosswalk = (crosswalk) => {
   const target = {}
   for (const old in crosswalk) {
-    const conversions = get_field_crosswalk(old)
+    const conversions = getFieldCrosswalk(old)
     if (conversions) {
       for (const name in conversions) {
         if (Object.keys(crosswalk).includes(name)) {

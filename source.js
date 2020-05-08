@@ -86,7 +86,7 @@ const helpers = require('./helpers')
  * @param {object} [options]
  * @param {boolean} [options.exit=true] - Whether to throw errors or print them
  * to the console.
- * @param {string} [options.default_srs=EPSG:4326] - Spatial reference system to
+ * @param {string} [options.srs=EPSG:4326] - Spatial reference system to
  * assume if none is defined in `props.srs` and none can be read from the input
  * files.
  */
@@ -98,7 +98,7 @@ class Source {
     this.options = {
       ...{
         exit: true,
-        default_srs: 'EPSG:4326'
+        srs: 'EPSG:4326'
       },
       ...options
     }
@@ -139,7 +139,7 @@ class Source {
     // format
     if (props.format) {
       if (!(typeof props.format === 'string' &&
-        helpers.get_gdal_extensions().includes(props.format.toLowerCase()))) {
+        helpers.getGdalExtensions().includes(props.format.toLowerCase()))) {
         errors.push(['Unsupported format:', props.format])
       }
     }
@@ -183,11 +183,11 @@ class Source {
    * archive files, and executes shell commands (`this.props.execute`).
    *
    * @param {boolean} [overwrite=false] - Whether to proceed if working
-   * directory is not empty (see {@link Source#is_empty}).
+   * directory is not empty (see {@link Source#isEmpty}).
    * @return {Promise}
    */
   get(overwrite = false) {
-    return this.get_files(overwrite).
+    return this.getFiles(overwrite).
       then(paths => {
         if (paths.length) this.execute()
         return paths
@@ -209,7 +209,7 @@ class Source {
    * geometries to centroid points (`options.centroids`), and skipping features
    * outside a bounding box (`options.bounds`). For files without explicit
    * geometries, a temporary [VRT](https://gdal.org/drivers/vector/vrt.html)
-   * file is created (see {@link Source#get_vrt}).
+   * file is created (see {@link Source#getVrt}).
    *
    * @param {string} file - Output file path.
    * @param {object} [options] - Output options.
@@ -229,18 +229,18 @@ class Source {
    * will remain unchanged regardless.
    * @param {boolean} [options.centroids=false] - Whether to reduce non-point
    * geometries to centroids.
-   * @param {boolean} [options.keep_invalid=false] - Whether to keep features
+   * @param {boolean} [options.keepInvalid=false] - Whether to keep features
    * with empty or invalid geometries.
-   * @param {boolean} [options.keep_fields=false] - Whether to keep the input
+   * @param {boolean} [options.keepFields=false] - Whether to keep the input
    * feature fields alongside the result of the schema crosswalk
    * (`this.props.crosswalk`).
-   * @param {boolean} [options.keep_geometry_fields=false] - Whether to keep the
+   * @param {boolean} [options.keepGeometryFields=false] - Whether to keep the
    * input feature geometry fields. Applies only to inputs for which a VRT file
-   * is written (see {@link Source#get_vrt}) and if `options.keep_fields` is
+   * is written (see {@link Source#getVrt}) and if `options.keepFields` is
    * also `true`.
    * @param {string} [options.prefix=] - String to append to input field names
    * to prevent collisions with output field names. Applies only if
-   * `options.keep_fields` is `true`.
+   * `options.keepFields` is `true`.
    * @param {number[]} [options.bounds] - Bounding box in output SRS
    * (`options.srs`) in the format [xmin, ymin, xmax, ymax]. If provided,
    * features outside the bounds are skipped.
@@ -256,17 +256,17 @@ class Source {
         overwrite: false,
         srs: '+init=epsg:4326',
         centroids: false,
-        keep_invalid: false,
-        keep_fields: false,
-        keep_geometry_fields: false,
-        prefix: '_',
+        keepInvalid: false,
+        keepFields: false,
+        keepGeometryFields: false,
+        prefix: '',
         bounds: null
       },
       ...options
     }
     if (!options.driver) {
-      const extension = helpers.get_file_extension(file.toLowerCase())
-      const drivers = helpers.get_gdal_drivers()[extension]
+      const extension = helpers.getFileExtension(file.toLowerCase())
+      const drivers = helpers.getGdalDrivers()[extension]
       if (drivers && drivers.length == 1) {
         options.driver = drivers[0]
       } else {
@@ -287,19 +287,19 @@ class Source {
     if (input.layers.count() > 1) {
       this.warn(`Using first of ${input.layers.count()} layers`)
     }
-    let input_layer = input.layers.get(0)
-    if (!input_layer.features.count()) {
+    let inputLayer = input.layers.get(0)
+    if (!inputLayer.features.count()) {
       this.warn('Skipping: Layer has no features')
       return
     }
-    if (!input_layer.features.first().getGeometry() && !this.props.coordsFunc) {
+    if (!inputLayer.features.first().getGeometry() && !this.props.coordsFunc) {
       // Write (and then read) VRT file with geometry definition
       this.log('Writing and reading VRT file')
-      input = this.open_vrt(options.keep_geometry_fields)
-      input_layer = input.layers.get(0)
+      input = this.openVrt(options.keepGeometryFields)
+      inputLayer = input.layers.get(0)
     }
     // Prepare input schema
-    let input_schema = input_layer.fields.map(field => field)
+    let inputSchema = inputLayer.fields.map(field => field)
     /*
      * NOTE: Confusing gdal bindings handling of date/time fields
      * - Fields detected as date/time are read as objects, not strings
@@ -309,12 +309,12 @@ class Source {
      * - Set output date/time fields as string
      * - Convert input date/time fields to string
      */
-    const string_crosswalk = {}
-    input_schema = input_schema.map(field => {
-      const formatter = helpers.gdal_string_formatters[field.type]
+    const stringCrosswalk = {}
+    inputSchema = inputSchema.map(field => {
+      const formatter = helpers.GDAL_STRING_FORMATTERS[field.type]
       if (formatter) {
-        string_crosswalk[field.name] =
-          eval(`x => helpers.gdal_string_formatters.${field.type}(x['${field.name}'])`)
+        stringCrosswalk[field.name] =
+          eval(`x => helpers.GDAL_STRING_FORMATTERS.${field.type}(x['${field.name}'])`)
         field.type = gdal.OFTString
       }
       return field
@@ -322,28 +322,28 @@ class Source {
     // Prepare crosswalks
     const crosswalks = [
       {
-        crosswalk: string_crosswalk,
+        crosswalk: stringCrosswalk,
         keep: true,
         prefix: ''
       },
       {
         crosswalk: this.props.crosswalk,
-        keep: options.keep_fields,
+        keep: options.keepFields,
         prefix: options.prefix
       }
     ]
     // Prepare output schema
-    const output_schema = []
+    const outputSchema = []
     if (this.props.crosswalk) {
       for (const key in this.props.crosswalk) {
         // NOTE: Output as string to preserve malformed values
-        output_schema.push(new gdal.FieldDefn(key, gdal.OFTString))
+        outputSchema.push(new gdal.FieldDefn(key, gdal.OFTString))
       }
     }
-    if (options.keep_fields) {
-      input_schema.forEach(field => {
+    if (options.keepFields) {
+      inputSchema.forEach(field => {
         field.name = `${options.prefix}${field.name}`
-        output_schema.push(field)
+        outputSchema.push(field)
       })
     }
     // Prepare output
@@ -353,97 +353,97 @@ class Source {
     }
     fs.mkdirSync(path.dirname(file), { recursive: true })
     const output = driver.create(file, 0, 0, 0, gdal.GDT_Byte, options.creation)
-    let output_type
-    if (options.centroids || input_layer.geomType == gdal.wkbNone) {
-      output_type = gdal.wkbPoint
+    let outputType
+    if (options.centroids || inputLayer.geomType == gdal.wkbNone) {
+      outputType = gdal.wkbPoint
     } else {
-      output_type = input_layer.geomType
+      outputType = inputLayer.geomType
     }
-    const output_layer = output.layers.create(input_layer.name, options.srs,
-      output_type)
-    output_layer.fields.add(output_schema)
-    const input_srs = this.get_srs(input_layer)
-    const transform = helpers.get_srs_transform(input_srs, options.srs)
+    const outputLayer = output.layers.create(inputLayer.name, options.srs,
+      outputType)
+    outputLayer.fields.add(outputSchema)
+    const srs = this.getSrs(inputLayer)
+    const transform = helpers.getTransform(srs, options.srs)
     if (options.bounds) {
-      if (transform && !helpers.is_srs_xy(options.srs)) {
+      if (transform && !helpers.isAxesXY(options.srs)) {
         // Swap x, y
         options.bounds = [
           options.bounds[1], options.bounds[0],
           options.bounds[3], options.bounds[2]
         ]
       }
-      options.bounds = helpers.bounds_to_polygon(options.bounds)
+      options.bounds = helpers.boundsToPolygon(options.bounds)
     }
     // Populate output
-    let input_feature
+    let inputFeature
     for (
-      input_feature = input_layer.features.first();
-      input_feature;
-      input_feature = input_layer.features.next()) {
+      inputFeature = inputLayer.features.first();
+      inputFeature;
+      inputFeature = inputLayer.features.next()) {
       // Fields
-      const input_fields = input_feature.fields.toObject()
-      if (this.props.delFunc && this.props.delFunc(input_fields)) {
+      const inputFields = inputFeature.fields.toObject()
+      if (this.props.delFunc && this.props.delFunc(inputFields)) {
         continue
       }
-      const output_feature = new gdal.Feature(output_layer)
-      const output_fields = helpers.map_object(input_fields, crosswalks)
-      output_feature.fields.set(output_fields)
+      const outputFeature = new gdal.Feature(outputLayer)
+      const outputFields = helpers.mapObject(inputFields, crosswalks)
+      outputFeature.fields.set(outputFields)
       // Geometry
-      let input_geometry
+      let inputGeometry
       if (this.props.coordsFunc) {
-        const coords = this.props.coordsFunc(input_fields)
+        const coords = this.props.coordsFunc(inputFields)
         if (Array.isArray(coords) && coords.length == 2) {
-          input_geometry = new gdal.Point(coords[0], coords[1])
-          input_geometry.srs = input_srs
+          inputGeometry = new gdal.Point(coords[0], coords[1])
+          inputGeometry.srs = srs
         } else {
           this.warn(
-            `Invalid parsed coordinates at ${input_feature.fid}:`, coords)
-          if (!options.keep_invalid) continue
+            `Invalid parsed coordinates at ${inputFeature.fid}:`, coords)
+          if (!options.keepInvalid) continue
         }
       } else {
-        input_geometry = input_feature.getGeometry()
+        inputGeometry = inputFeature.getGeometry()
       }
-      if (input_geometry) {
-        if (options.centroids && input_geometry.wkbType != gdal.wkbPoint) {
-          input_geometry = input_geometry.centroid()
+      if (inputGeometry) {
+        if (options.centroids && inputGeometry.wkbType != gdal.wkbPoint) {
+          inputGeometry = inputGeometry.centroid()
         }
-        let is_valid = true
-        let is_point = input_geometry.wkbType == gdal.wkbPoint
+        let isValid = true
+        let isPoint = inputGeometry.wkbType == gdal.wkbPoint
         if (transform) {
           try {
-            input_geometry.transform(transform)
+            inputGeometry.transform(transform)
           } catch (error) {
-            is_valid = false
+            isValid = false
           }
         } else {
-          is_valid = input_geometry.isValid()
-          if (is_point) {
-            is_valid = is_valid && input_geometry.x && input_geometry.y &&
-              isFinite(input_geometry.x) && isFinite(input_geometry.y)
+          isValid = inputGeometry.isValid()
+          if (isPoint) {
+            isValid = isValid && inputGeometry.x && inputGeometry.y &&
+              isFinite(inputGeometry.x) && isFinite(inputGeometry.y)
           }
         }
-        if (!is_valid) {
-          const msg = `Invalid ${input_geometry.name} at ${input_feature.fid}`
-          if (is_point) {
-            this.warn(msg, (({ x, y }) => ({ x, y }))(input_geometry))
+        if (!isValid) {
+          const msg = `Invalid ${inputGeometry.name} at ${inputFeature.fid}`
+          if (isPoint) {
+            this.warn(msg, (({ x, y }) => ({ x, y }))(inputGeometry))
           } else {
             this.warn(msg)
           }
-          if (!options.keep_invalid) continue
+          if (!options.keepInvalid) continue
         }
-        if (options.bounds && is_valid) {
-          if (!input_geometry.within(options.bounds)) {
-            this.warn(`Out of bounds ${input_geometry.name} at ${input_feature.fid}`)
+        if (options.bounds && isValid) {
+          if (!inputGeometry.within(options.bounds)) {
+            this.warn(`Out of bounds ${inputGeometry.name} at ${inputFeature.fid}`)
             continue
           }
         }
-        output_feature.setGeometry(input_geometry)
+        outputFeature.setGeometry(inputGeometry)
       } else {
-        this.warn(`Empty geometry at ${input_feature.fid}`)
-        if (!options.keep_invalid) continue
+        this.warn(`Empty geometry at ${inputFeature.fid}`)
+        if (!options.keepInvalid) continue
       }
       // TODO: flush after each n features
-      output_layer.features.add(output_feature)
+      outputLayer.features.add(outputFeature)
     }
     // Write
     output.close()
@@ -480,7 +480,7 @@ class Source {
     for (f = layer.features.first();
       f && i <= options.n; f = layer.features.next()) {
       for (let [key, value] of Object.entries(f.fields.toObject())) {
-        const formatter = helpers.gdal_string_formatters[types[key]]
+        const formatter = helpers.GDAL_STRING_FORMATTERS[types[key]]
         value = formatter ? formatter(value) : value
         if (values[key].size < options.max) {
           values[key].add(value)
@@ -520,7 +520,7 @@ class Source {
     if (!options.sample) {
       options.sample = this.sample(options)
     }
-    const table_options = {
+    const tableOptions = {
       columnDefault: {
         wrapWord: true,
         truncate: options.truncate
@@ -542,7 +542,7 @@ class Source {
       ...Object.keys(options.sample).map(key =>
         [key, types[key], options.sample[key].join(options.sep)])
     ]
-    console.log(table(data, table_options))
+    console.log(table(data, tableOptions))
   }
 
   /**
@@ -559,7 +559,7 @@ class Source {
    * 
    * @return {boolean} Whether source directory is empty.
    */
-  is_empty() {
+  isEmpty() {
     const files = glob.sync('**/*',
       { nocase: true, nodir: true, dot: false, cwd: this.dir })
     return files.length == 0
@@ -571,7 +571,7 @@ class Source {
    * @param {string} url - Path to the remote file.
    * @return {Promise<string>} Resolves to the path of the downloaded file.
    */
-  download_file(url) {
+  downloadFile(url) {
     // Ensure that target directory exists
     fs.mkdirSync(this.dir, { recursive: true })
     const options = { override: true, retry: { maxRetries: 3, delay: 3000 } }
@@ -603,7 +603,7 @@ class Source {
    * @return {Promise<string[]>} Resolves to the paths of the unpacked files (if
    * any) or the path of the original file.
    */
-  unpack_file(file, rm = true) {
+  unpackFile(file, rm = true) {
     const filename = path.relative(this.dir, file)
     return decompress(file, this.dir).
       then(files => {
@@ -627,9 +627,9 @@ class Source {
    * @return {Promise<sring[]>} Resolves to the paths of the unpacked files (if
    * any) or the local path of the downloaded file.
    */
-  get_file(url) {
-    return this.download_file(url).
-      then(file => this.unpack_file(file))
+  getFile(url) {
+    return this.downloadFile(url).
+      then(file => this.unpackFile(file))
   }
 
   /**
@@ -639,12 +639,12 @@ class Source {
    * compressed or archive files.
    *
    * @param {boolean} [overwrite=false] - Whether to proceed if working
-   * directory is not empty (see {@link Source#is_empty}).
+   * directory is not empty (see {@link Source#isEmpty}).
    * @return {Promise<string[]>} Resolves to the paths of the downloaded and
    * unpacked local files.
    */
-  get_files(overwrite = false) {
-    if (!this.props.download || (!overwrite && !this.is_empty())) {
+  getFiles(overwrite = false) {
+    if (!this.props.download || (!overwrite && !this.isEmpty())) {
       return Promise.resolve([])
     }
     let urls = this.props.download
@@ -652,7 +652,7 @@ class Source {
       urls = [urls]
     }
     return Promise.
-      all(urls.map(url => this.get_file(url))).
+      all(urls.map(url => this.getFile(url))).
       then(paths => paths.flat())
   }
 
@@ -692,9 +692,9 @@ class Source {
     if (!this.props.format) {
       if (paths.length) {
         const primaries = paths.filter(s =>
-          s.match(helpers.gdal_file_patterns.primary))
+          s.match(helpers.GDAL_FILE_PATTERNS.primary))
         const secondaries = paths.filter(s =>
-          s.match(helpers.gdal_file_patterns.secondary))
+          s.match(helpers.GDAL_FILE_PATTERNS.secondary))
         if (primaries.length) {
           paths = primaries
         } else if (secondaries.length) {
@@ -752,15 +752,15 @@ class Source {
    * Open input file with GDAL via a VRT file.
    *
    * Opens the input file via a virtual format (VRT) file written to the dotfile
-   * `.vrt`. The contents of the file is built by {@link Source#get_vrt}.
+   * `.vrt`. The contents of the file is built by {@link Source#getVrt}.
    *
-   * @param {boolean} [keep_geometry_fields=false] - Whether the VRT file should
+   * @param {boolean} [keepGeometryFields=false] - Whether the VRT file should
    * return geometry fields as regular feature fields.
    * @return {gdal.Dataset} See the documentation for
    * [node-gdal-next](https://contra.io/node-gdal-next/classes/gdal.Dataset.html).
-   * The result is cached until closed with {@link Source#close_vrt}.
+   * The result is cached until closed with {@link Source#closeVrt}.
    */
-  open_vrt(keep_geometry_fields = false) {
+  openVrt(keepGeometryFields = false) {
     // Clear if already destroyed
     try {
       // Choice of property is arbitrary
@@ -770,9 +770,9 @@ class Source {
     }
     if (!this.__vrt) {
       // HACK: Writes to local dotfile to hide from find()
-      const vrt_path = path.join(this.dir, '.vrt')
-      fs.writeFileSync(vrt_path, this.get_vrt(keep_geometry_fields))
-      this.__vrt = gdal.open(vrt_path)
+      const vrtPath = path.join(this.dir, '.vrt')
+      fs.writeFileSync(vrtPath, this.getVrt(keepGeometryFields))
+      this.__vrt = gdal.open(vrtPath)
     }
     return this.__vrt
   }
@@ -780,7 +780,7 @@ class Source {
   /**
    * Close input file if open with GDAL via a VRT file.
    */
-  close_vrt() {
+  closeVrt() {
     try {
       this.__vrt.close()
     } catch {
@@ -797,9 +797,9 @@ class Source {
    * Source#open).
    * @return {string} Either the provided SRS (`this.props.srs`), the SRS read
    * from the input file (as well-known-text), or the default SRS
-   * (`this.options.default_srs`).
+   * (`this.options.srs`).
    */
-  get_srs_string(layer) {
+  getSrsString(layer) {
     let srs = this.props.srs
     if (!srs) {
       if (!layer) {
@@ -810,7 +810,7 @@ class Source {
       }
     }
     if (!srs) {
-      srs = this.options.default_srs
+      srs = this.options.srs
       this.warn('Assuming default SRS:', srs)
     }
     return srs
@@ -824,11 +824,11 @@ class Source {
    * Source#open).
    * @return {gdal.SpatialReference} SRS object initialized by
    * `gdal.SpatialReference.fromUserInput()` from the result of
-   * {@link Source#get_srs_string}. See the documentation for
+   * {@link Source#getSrsString}. See the documentation for
    * [node-gdal-next](https://contra.io/node-gdal-next/classes/gdal.SpatialReference.html#method-fromUserInput).
    */
-  get_srs(layer) {
-    const srs = this.get_srs_string(layer)
+  getSrs(layer) {
+    const srs = this.getSrsString(layer)
     return gdal.SpatialReference.fromUserInput(srs)
   }
 
@@ -839,7 +839,7 @@ class Source {
    * geometry fields either provided (`this.props.srs`) or guessed from field
    * names, or `undefined` if the input already has explicit geometries.
    */
-  get_geometry() {
+  getGeometry() {
     let geometry = this.props.geometry
     if (!geometry) {
       geometry = {}
@@ -847,7 +847,7 @@ class Source {
       if (layer.geomType != gdal.wkbNone) {
         return
       }
-      const matches = helpers.guess_geometry_fields(layer)
+      const matches = helpers.guessGeometryFields(layer)
       // Prioritize geographic (vs projected) coordinate fields
       if (matches.lon.length) matches.x = matches.lon
       if (matches.lat.length) matches.y = matches.lat
@@ -876,16 +876,16 @@ class Source {
   *
   * For files without explicit geometries (e.g. tabular text files), a temporary
   * [VRT file](https://gdal.org/drivers/vector/vrt.html) can be created listing
-  * the spatial reference system (see {@link Source#get_srs_string}) and
-  * geometry field names (see {@link Source#get_geometry}) for GDAL to use.
+  * the spatial reference system (see {@link Source#getSrsString}) and
+  * geometry field names (see {@link Source#getGeometry}) for GDAL to use.
   *
-  * @param {boolean} [keep_geometry_fields=false] - Whether VRT file should
+  * @param {boolean} [keepGeometryFields=false] - Whether VRT file should
   * return geometry fields as regular feature fields.
   * @return {string} VRT file content.
   */
-  get_vrt(keep_geometry_fields = false) {
-    const srs = this.get_srs_string()
-    const geometry = this.get_geometry()
+  getVrt(keepGeometryFields = false) {
+    const srs = this.getSrsString()
+    const geometry = this.getGeometry()
     // Build <GeometryField> attributes
     let attributes
     if (geometry.wkt && typeof geometry.wkt === 'string') {
@@ -900,14 +900,14 @@ class Source {
     }
     // Build VRT
     const layer = this.open().layers.get(0)
-    const layer_path = path.resolve(layer.ds.description)
+    const layerPath = path.resolve(layer.ds.description)
     return (
       `<OGRVRTDataSource>
         <OGRVRTLayer name="${layer.name}">
-          <SrcDataSource relativeToVRT="0">${layer_path}</SrcDataSource>
+          <SrcDataSource relativeToVRT="0">${layerPath}</SrcDataSource>
           <GeometryType>wkbPoint</GeometryType>
           <LayerSRS>${srs}</LayerSRS>
-          <GeometryField ${attributes} reportSrcColumn="${keep_geometry_fields}" />
+          <GeometryField ${attributes} reportSrcColumn="${keepGeometryFields}" />
         </OGRVRTLayer>
       </OGRVRTDataSource>`.replace(/^[ ]{6}/gm, ''))
   }

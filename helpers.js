@@ -12,7 +12,7 @@ const gdal = require('gdal-next')
  * @param {integer} [obj.day] - Day of the month (`1`-`31`)
  * @return {string} ISO 8601 date
  */
-exports.date_to_string = (obj) => {
+exports.dateToString = (obj) => {
   if (!obj) return ''
   const yyyy = obj.year.toString().padStart(4, '0')
   if (!obj.month) return `${yyyy}`
@@ -34,13 +34,13 @@ exports.date_to_string = (obj) => {
  * @param {number} [obj.second=0] - Second (`0` - `59.*`)
  * @return {string} ISO 8601 time
  */
-exports.time_to_string = (obj) => {
+exports.timeToString = (obj) => {
   if (!obj) return ''
   const hh = (obj.hour || 0).toString().padStart(2, '0')
   const mm = (obj.minute || 0).toString().padStart(2, '0')
-  const ss_ms = (obj.second || 0).toString().split('.')
-  const ss = ss_ms[0].padStart(2, '0')
-  const ms = ss_ms[1] ? `.${ss_ms[1]}` : ''
+  const ssms = (obj.second || 0).toString().split('.')
+  const ss = ssms[0].padStart(2, '0')
+  const ms = ssms[1] ? `.${ssms[1]}` : ''
   return `${hh}:${mm}:${ss}${ms}`
 }
 
@@ -53,7 +53,7 @@ exports.time_to_string = (obj) => {
  * @param {integer} [timezone=0] - GDAL timezone flag
  * @return {string} ISO 8601 timezone
  */
-exports.gdal_timezone_to_string = (timezone = 0) => {
+exports.gdalTimezoneToString = (timezone = 0) => {
   // TZFlag: 0=unknown, 1=ambiguous, 100=GMT, 104=GMT+1, 80=GMT-5
   // See https://gdal.org/development/rfc/rfc56_millisecond_precision.html
   const min = timezone > 1 ? (timezone - 100) * 15 : null
@@ -78,21 +78,21 @@ exports.gdal_timezone_to_string = (timezone = 0) => {
  * @param {integer} [obj.timezone=0] - Timezone flag
  * @param {boolean} [truncate=false] - Whether to return only date when hour,
  * minute, and second are all zero.
- * @param {boolean} [gdal_timezone=true] - Whether `obj.timezone` is a GDAL
- * timezone flag (see {@link gdal_timezone_to_string}) or already formatted as
+ * @param {boolean} [gdalTimezone=true] - Whether `obj.timezone` is a GDAL
+ * timezone flag (see {@link gdalTimezoneToString}) or already formatted as
  * an ISO 8601 timezone.
  * @return {string} ISO 8601 datetime
  */
-exports.datetime_to_string = (obj, truncate = false, gdal_timezone = true) => {
+exports.datetimeToString = (obj, truncate = false, gdalTimezone = true) => {
   if (!obj) return ''
-  const date = exports.date_to_string(obj)
+  const date = exports.dateToString(obj)
   if (truncate && !(obj.hour || obj.minute || obj.second)) {
     return date
   }
-  const time = exports.time_to_string(obj)
+  const time = exports.timeToString(obj)
   let timezone
-  if (gdal_timezone) {
-    timezone = exports.gdal_timezone_to_string(obj.timezone)
+  if (gdalTimezone) {
+    timezone = exports.gdalTimezoneToString(obj.timezone)
   } else {
     timezone = obj.timezone || ''
   }
@@ -111,15 +111,15 @@ exports.datetime_to_string = (obj, truncate = false, gdal_timezone = true) => {
  * `second`, `timezone`. Returns result from first matching pattern.
  * @return {string} ISO 8601 datetime
  */
-exports.reformat_datetime = (x, patterns) => {
+exports.reformatDatetime = (x, patterns) => {
   // Skip if already parsed to object by gdal
   if (!x || typeof x === 'object') return x
   x = x.trim()
   for (const pattern of patterns) {
     const matches = x.match(pattern)
     if (matches) {
-      return exports.datetime_to_string(
-        matches.groups, truncate = true, gdal_timezone = false)
+      return exports.datetimeToString(
+        matches.groups, truncate = true, gdalTimezone = false)
     }
   }
   console.warn('Failed to parse datetime:', x)
@@ -129,10 +129,10 @@ exports.reformat_datetime = (x, patterns) => {
 /**
  * String formatters by GDAL field type.
  */
-exports.gdal_string_formatters = {
-  [gdal.OFTDate]: exports.date_to_string,
-  [gdal.OFTTime]: exports.time_to_string,
-  [gdal.OFTDateTime]: exports.datetime_to_string
+exports.GDAL_STRING_FORMATTERS = {
+  [gdal.OFTDate]: exports.dateToString,
+  [gdal.OFTTime]: exports.timeToString,
+  [gdal.OFTDateTime]: exports.datetimeToString
 }
 
 /**
@@ -150,7 +150,7 @@ exports.gdal_string_formatters = {
  * names
  * @return {object} Mapped object
  */
-exports.map_object = (obj, mapping) => {
+exports.mapObject = (obj, mapping) => {
   let final = obj
   if (!Array.isArray(mapping)) mapping = [mapping]
   for (const { crosswalk = {}, keep, prefix = '' } of mapping) {
@@ -178,7 +178,7 @@ exports.map_object = (obj, mapping) => {
  * @property {string[]} x - Field names for x (longitude, easting)
  * @property {string[]} y - Field names for y (latitude, northing)
  */
-exports.geometry_fields = {
+exports.GEOMETRY_FIELDS = {
   wkt: [
     'geom', 'the_geom', 'wkb_geometry', 'shape', 'geo_shape', 'geometrie',
     'geometry'
@@ -207,12 +207,12 @@ exports.geometry_fields = {
  * geographic coordinates (lon, lat), or geographic or projected coordinates (x,
  * y).
  */
-exports.guess_geometry_fields = (layer) => {
+exports.guessGeometryFields = (layer) => {
   const geometry = {}
   const names = layer.fields.getNames()
-  Object.keys(exports.geometry_fields).forEach(key => {
+  Object.keys(exports.GEOMETRY_FIELDS).forEach(key => {
     geometry[key] = names.filter(x =>
-      exports.geometry_fields[key].includes(x.toLowerCase()))
+      exports.GEOMETRY_FIELDS[key].includes(x.toLowerCase()))
   })
   return geometry
 }
@@ -222,7 +222,7 @@ exports.guess_geometry_fields = (layer) => {
  * 
  * @return {string[]} File extensions
  */
-exports.get_gdal_extensions = () => {
+exports.getGdalExtensions = () => {
   const extensions = []
   gdal.drivers.forEach(driver => {
     const meta = driver.getMetadata()
@@ -239,9 +239,9 @@ exports.get_gdal_extensions = () => {
  * 
  * @return {object} GDAL driver names by file extension
  */
-exports.get_gdal_drivers = () => {
+exports.getGdalDrivers = () => {
   const drivers = {}
-  exports.get_gdal_extensions().forEach(extension => drivers[extension] = [])
+  exports.getGdalExtensions().forEach(extension => drivers[extension] = [])
   gdal.drivers.forEach(driver => {
     const meta = driver.getMetadata()
     if (meta.DCAP_VECTOR === 'YES') {
@@ -265,7 +265,7 @@ exports.get_gdal_drivers = () => {
  * @param {string} file - Local or remote file path
  * @return {string} File extension
  */
-exports.get_file_extension = (file) => {
+exports.getFileExtension = (file) => {
   const matches = file.match(/\.([^\.\/\?\#]+)(?:$|\?|\#)/)
   return matches ? matches[1] : ''
 }
@@ -276,7 +276,7 @@ exports.get_file_extension = (file) => {
  * @property {string[]} 1 - Primary file extensions (take precedence)
  * @property {string[]} 2 - Secondary file extensions
  */
-exports.file_extensions = {
+exports.FILE_EXTENSIONS = {
   1: ['geojson', 'topojson', 'shp', 'vrt', 'gml', 'kml'],
   2: ['csv', 'json']
 }
@@ -288,10 +288,10 @@ exports.file_extensions = {
  * @property {RegExp} primary - Matches primary file extensions
  * @property {RegExp} secondary - Matches secondary file extensions
  */
-exports.gdal_file_patterns = {
-  any: new RegExp(`\\.(${exports.get_gdal_extensions().join('|')})$`, 'i'),
-  primary: new RegExp(`\\.(${exports.file_extensions[1].join('|')})$`, 'i'),
-  secondary: new RegExp(`\\.(${exports.file_extensions[2].join('|')})$`, 'i')
+exports.GDAL_FILE_PATTERNS = {
+  any: new RegExp(`\\.(${exports.getGdalExtensions().join('|')})$`, 'i'),
+  primary: new RegExp(`\\.(${exports.FILE_EXTENSIONS[1].join('|')})$`, 'i'),
+  secondary: new RegExp(`\\.(${exports.FILE_EXTENSIONS[2].join('|')})$`, 'i')
 }
 
 /**
@@ -302,7 +302,7 @@ exports.gdal_file_patterns = {
  * @return {gdal.CoordinateTransformation|undefined} Coordinate transformation,
  * or undefined if the two SRS are equal.
  */
-exports.get_srs_transform = (source, target) => {
+exports.getTransform = (source, target) => {
   if (typeof source === 'string') {
     source = gdal.SpatialReference.fromUserInput(source)
   }
@@ -324,7 +324,7 @@ exports.get_srs_transform = (source, target) => {
  * @param {string|gdal.SpatialReference} [srs] - Spatial reference system
  * @returns {gdal.Polygon}
  */
-exports.bounds_to_polygon = (bounds, srs) => {
+exports.boundsToPolygon = (bounds, srs) => {
   if (typeof srs === 'string') {
     srs = gdal.SpatialReference.fromUserInput(srs)
   }
@@ -345,7 +345,7 @@ exports.bounds_to_polygon = (bounds, srs) => {
  * 
  * @param {string|gdal.SpatialReference} srs - Spatial reference system
  */
-exports.is_srs_xy = (srs) => {
+exports.isAxesXY = (srs) => {
   if (typeof srs === 'string') {
     srs = gdal.SpatialReference.fromUserInput(srs)
   }

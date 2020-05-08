@@ -32,21 +32,21 @@ Class representing a source dataset.
     * [.sample([options])](#Source+sample) ⇒ <code>object.&lt;string, Array&gt;</code>
     * [.glimpse([options])](#Source+glimpse)
     * [.empty()](#Source+empty)
-    * [.is_empty()](#Source+is_empty) ⇒ <code>boolean</code>
-    * [.download_file(url)](#Source+download_file) ⇒ <code>Promise.&lt;string&gt;</code>
-    * [.unpack_file(file, [rm])](#Source+unpack_file) ⇒ <code>Promise.&lt;Array.&lt;string&gt;&gt;</code>
-    * [.get_file(url)](#Source+get_file) ⇒ <code>Promise.&lt;Array.&lt;sring&gt;&gt;</code>
-    * [.get_files([overwrite])](#Source+get_files) ⇒ <code>Promise.&lt;Array.&lt;string&gt;&gt;</code>
+    * [.isEmpty()](#Source+isEmpty) ⇒ <code>boolean</code>
+    * [.downloadFile(url)](#Source+downloadFile) ⇒ <code>Promise.&lt;string&gt;</code>
+    * [.unpackFile(file, [rm])](#Source+unpackFile) ⇒ <code>Promise.&lt;Array.&lt;string&gt;&gt;</code>
+    * [.getFile(url)](#Source+getFile) ⇒ <code>Promise.&lt;Array.&lt;sring&gt;&gt;</code>
+    * [.getFiles([overwrite])](#Source+getFiles) ⇒ <code>Promise.&lt;Array.&lt;string&gt;&gt;</code>
     * [.execute()](#Source+execute) ⇒ <code>Promise</code>
     * [.find()](#Source+find) ⇒ <code>string</code>
     * [.open()](#Source+open) ⇒ <code>gdal.Dataset</code>
     * [.close()](#Source+close)
-    * [.open_vrt([keep_geometry_fields])](#Source+open_vrt) ⇒ <code>gdal.Dataset</code>
-    * [.close_vrt()](#Source+close_vrt)
-    * [.get_srs_string()](#Source+get_srs_string) ⇒ <code>string</code>
-    * [.get_srs()](#Source+get_srs) ⇒ <code>gdal.SpatialReference</code>
-    * [.get_geometry()](#Source+get_geometry) ⇒ <code>Object</code> \| <code>undefined</code>
-    * [.get_vrt([keep_geometry_fields])](#Source+get_vrt) ⇒ <code>string</code>
+    * [.openVrt([keepGeometryFields])](#Source+openVrt) ⇒ <code>gdal.Dataset</code>
+    * [.closeVrt()](#Source+closeVrt)
+    * [.getSrsString([layer])](#Source+getSrsString) ⇒ <code>string</code>
+    * [.getSrs([layer])](#Source+getSrs) ⇒ <code>gdal.SpatialReference</code>
+    * [.getGeometry()](#Source+getGeometry) ⇒ <code>Object</code> \| <code>undefined</code>
+    * [.getVrt([keepGeometryFields])](#Source+getVrt) ⇒ <code>string</code>
     * [.success(msg, ...objects)](#Source+success)
     * [.log(msg, ...objects)](#Source+log)
     * [.warn(msg, ...objects)](#Source+warn)
@@ -65,7 +65,7 @@ Class representing a source dataset.
 | dir | <code>string</code> |  | Local directory to which remote files are downloaded and where local files are searched for. |
 | [options] | <code>object</code> |  |  |
 | [options.exit] | <code>boolean</code> | <code>true</code> | Whether to throw errors or print them to the console. |
-| [options.default_srs] | <code>string</code> | <code>&quot;EPSG:4326&quot;</code> | Spatial reference system to assume if none is defined in `props.srs` and none can be read from the input files. |
+| [options.srs] | <code>string</code> | <code>&quot;EPSG:4326&quot;</code> | Spatial reference system to assume if none is defined in `props.srs` and none can be read from the input files. |
 
 
 * * *
@@ -97,7 +97,7 @@ archive files, and executes shell commands (`this.props.execute`).
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [overwrite] | <code>boolean</code> | <code>false</code> | Whether to proceed if working directory is not empty (see [is_empty](#Source+is_empty)). |
+| [overwrite] | <code>boolean</code> | <code>false</code> | Whether to proceed if working directory is not empty (see [isEmpty](#Source+isEmpty)). |
 
 
 * * *
@@ -116,7 +116,7 @@ skipping features by field values (`this.props.delFunc`), reducing complex
 geometries to centroid points (`options.centroids`), and skipping features
 outside a bounding box (`options.bounds`). For files without explicit
 geometries, a temporary [VRT](https://gdal.org/drivers/vector/vrt.html)
-file is created (see [get_vrt](#Source+get_vrt)).
+file is created (see [getVrt](#Source+getVrt)).
 
 **Kind**: instance method of [<code>Source</code>](#Source)  
 
@@ -129,10 +129,10 @@ file is created (see [get_vrt](#Source+get_vrt)).
 | [options.overwrite] | <code>boolean</code> | <code>false</code> | Whether to proceed if `file` already exists. |
 | [options.srs] | <code>string</code> | <code>&quot;+init&#x3D;epsg:4326&quot;</code> | Output spatial reference system in any format supported by [OGRSpatialReference.SetFromUserInput()](https://gdal.org/api/ogrspatialref.html#classOGRSpatialReference_1aec3c6a49533fe457ddc763d699ff8796). Use 'EPSG:*' for (latitude, longitude) and '+init=epsg:*' (PROJ<6 behavior) for (longitude, latitude). If it is the same as the input SRS, axis order will remain unchanged regardless. |
 | [options.centroids] | <code>boolean</code> | <code>false</code> | Whether to reduce non-point geometries to centroids. |
-| [options.keep_invalid] | <code>boolean</code> | <code>false</code> | Whether to keep features with empty or invalid geometries. |
-| [options.keep_fields] | <code>boolean</code> | <code>false</code> | Whether to keep the input feature fields alongside the result of the schema crosswalk (`this.props.crosswalk`). |
-| [options.keep_geometry_fields] | <code>boolean</code> | <code>false</code> | Whether to keep the input feature geometry fields. Applies only to inputs for which a VRT file is written (see [get_vrt](#Source+get_vrt)) and if `options.keep_fields` is also `true`. |
-| [options.prefix] | <code>string</code> | <code>&quot;_&quot;</code> | String to append to input field names to prevent collisions with output field names. Applies only if `options.keep_fields` is `true`. |
+| [options.keepInvalid] | <code>boolean</code> | <code>false</code> | Whether to keep features with empty or invalid geometries. |
+| [options.keepFields] | <code>boolean</code> | <code>false</code> | Whether to keep the input feature fields alongside the result of the schema crosswalk (`this.props.crosswalk`). |
+| [options.keepGeometryFields] | <code>boolean</code> | <code>false</code> | Whether to keep the input feature geometry fields. Applies only to inputs for which a VRT file is written (see [getVrt](#Source+getVrt)) and if `options.keepFields` is also `true`. |
+| [options.prefix=] | <code>string</code> |  | String to append to input field names to prevent collisions with output field names. Applies only if `options.keepFields` is `true`. |
 | [options.bounds] | <code>Array.&lt;number&gt;</code> |  | Bounding box in output SRS (`options.srs`) in the format [xmin, ymin, xmax, ymax]. If provided, features outside the bounds are skipped. |
 
 
@@ -184,9 +184,9 @@ Empty and remove the source directory.
 
 * * *
 
-<a name="Source+is_empty"></a>
+<a name="Source+isEmpty"></a>
 
-### source.is\_empty() ⇒ <code>boolean</code>
+### source.isEmpty() ⇒ <code>boolean</code>
 Check whether the source directory is missing or empty of files.
 
 Checks any child directories recursively and ignores dotfiles (.*).
@@ -196,9 +196,9 @@ Checks any child directories recursively and ignores dotfiles (.*).
 
 * * *
 
-<a name="Source+download_file"></a>
+<a name="Source+downloadFile"></a>
 
-### source.download\_file(url) ⇒ <code>Promise.&lt;string&gt;</code>
+### source.downloadFile(url) ⇒ <code>Promise.&lt;string&gt;</code>
 Download a remote file to the source directory.
 
 **Kind**: instance method of [<code>Source</code>](#Source)  
@@ -211,9 +211,9 @@ Download a remote file to the source directory.
 
 * * *
 
-<a name="Source+unpack_file"></a>
+<a name="Source+unpackFile"></a>
 
-### source.unpack\_file(file, [rm]) ⇒ <code>Promise.&lt;Array.&lt;string&gt;&gt;</code>
+### source.unpackFile(file, [rm]) ⇒ <code>Promise.&lt;Array.&lt;string&gt;&gt;</code>
 Unpack a compressed or archive local file to the source directory.
 
 Currently supports zip, tar, tar.bz2, and tar.gz via
@@ -234,9 +234,9 @@ any) or the path of the original file.
 
 * * *
 
-<a name="Source+get_file"></a>
+<a name="Source+getFile"></a>
 
-### source.get\_file(url) ⇒ <code>Promise.&lt;Array.&lt;sring&gt;&gt;</code>
+### source.getFile(url) ⇒ <code>Promise.&lt;Array.&lt;sring&gt;&gt;</code>
 Download and unpack a remote file to the source directory.
 
 **Kind**: instance method of [<code>Source</code>](#Source)  
@@ -250,9 +250,9 @@ any) or the local path of the downloaded file.
 
 * * *
 
-<a name="Source+get_files"></a>
+<a name="Source+getFiles"></a>
 
-### source.get\_files([overwrite]) ⇒ <code>Promise.&lt;Array.&lt;string&gt;&gt;</code>
+### source.getFiles([overwrite]) ⇒ <code>Promise.&lt;Array.&lt;string&gt;&gt;</code>
 Download and unpack remote files to the source directory.
 
 Downloads all file paths in `this.props.download` and unpacks any
@@ -264,7 +264,7 @@ unpacked local files.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [overwrite] | <code>boolean</code> | <code>false</code> | Whether to proceed if working directory is not empty (see [is_empty](#Source+is_empty)). |
+| [overwrite] | <code>boolean</code> | <code>false</code> | Whether to proceed if working directory is not empty (see [isEmpty](#Source+isEmpty)). |
 
 
 * * *
@@ -317,86 +317,98 @@ Close input file if open with GDAL.
 
 * * *
 
-<a name="Source+open_vrt"></a>
+<a name="Source+openVrt"></a>
 
-### source.open\_vrt([keep_geometry_fields]) ⇒ <code>gdal.Dataset</code>
+### source.openVrt([keepGeometryFields]) ⇒ <code>gdal.Dataset</code>
 Open input file with GDAL via a VRT file.
 
 Opens the input file via a virtual format (VRT) file written to the dotfile
-`.vrt`. The contents of the file is built by [get_vrt](#Source+get_vrt).
+`.vrt`. The contents of the file is built by [getVrt](#Source+getVrt).
 
 **Kind**: instance method of [<code>Source</code>](#Source)  
 **Returns**: <code>gdal.Dataset</code> - See the documentation for
 [node-gdal-next](https://contra.io/node-gdal-next/classes/gdal.Dataset.html).
-The result is cached until closed with [close_vrt](#Source+close_vrt).  
+The result is cached until closed with [closeVrt](#Source+closeVrt).  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [keep_geometry_fields] | <code>boolean</code> | <code>false</code> | Whether the VRT file should return geometry fields as regular feature fields. |
+| [keepGeometryFields] | <code>boolean</code> | <code>false</code> | Whether the VRT file should return geometry fields as regular feature fields. |
 
 
 * * *
 
-<a name="Source+close_vrt"></a>
+<a name="Source+closeVrt"></a>
 
-### source.close\_vrt()
+### source.closeVrt()
 Close input file if open with GDAL via a VRT file.
 
 **Kind**: instance method of [<code>Source</code>](#Source)  
 
 * * *
 
-<a name="Source+get_srs_string"></a>
+<a name="Source+getSrsString"></a>
 
-### source.get\_srs\_string() ⇒ <code>string</code>
+### source.getSrsString([layer]) ⇒ <code>string</code>
 Get spatial reference system (SRS) of input as a string.
 
 **Kind**: instance method of [<code>Source</code>](#Source)  
 **Returns**: <code>string</code> - Either the provided SRS (`this.props.srs`), the SRS read
 from the input file (as well-known-text), or the default SRS
-(`this.options.default_srs`).  
+(`this.options.srs`).  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [layer] | <code>gdal.Layer</code> | Feature layer from which to read SRS. If not provided, defaults to the first layer of the input file (see @link Source#open). |
+
 
 * * *
 
-<a name="Source+get_srs"></a>
+<a name="Source+getSrs"></a>
 
-### source.get\_srs() ⇒ <code>gdal.SpatialReference</code>
+### source.getSrs([layer]) ⇒ <code>gdal.SpatialReference</code>
 Get spatial reference system (SRS) of input.
 
 **Kind**: instance method of [<code>Source</code>](#Source)  
 **Returns**: <code>gdal.SpatialReference</code> - SRS object initialized by
 `gdal.SpatialReference.fromUserInput()` from the result of
-[get_srs_string](#Source+get_srs_string). See the documentation for
+[getSrsString](#Source+getSrsString). See the documentation for
 [node-gdal-next](https://contra.io/node-gdal-next/classes/gdal.SpatialReference.html#method-fromUserInput).  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [layer] | <code>gdal.Layer</code> | Feature layer from which to read SRS. If not provided, defaults to the first layer of the input file (see @link Source#open). |
+
 
 * * *
 
-<a name="Source+get_geometry"></a>
+<a name="Source+getGeometry"></a>
 
-### source.get\_geometry() ⇒ <code>Object</code> \| <code>undefined</code>
+### source.getGeometry() ⇒ <code>Object</code> \| <code>undefined</code>
 Get geometry field name(s) of input.
 
 **Kind**: instance method of [<code>Source</code>](#Source)  
-**Returns**: <code>Object</code> \| <code>undefined</code> - Names of geometry fields either provided (`this.props.srs`) or guessed from field names, or `undefined` if the input already has explicit geometries.  
+**Returns**: <code>Object</code> \| <code>undefined</code> - Names of
+geometry fields either provided (`this.props.srs`) or guessed from field
+names, or `undefined` if the input already has explicit geometries.  
 
 * * *
 
-<a name="Source+get_vrt"></a>
+<a name="Source+getVrt"></a>
 
-### source.get\_vrt([keep_geometry_fields]) ⇒ <code>string</code>
+### source.getVrt([keepGeometryFields]) ⇒ <code>string</code>
 Get VRT (OGR Virtual Format) file content.
 
 For files without explicit geometries (e.g. tabular text files), a temporary
 [VRT file](https://gdal.org/drivers/vector/vrt.html) can be created listing
-the spatial reference system (see [get_srs_string](#Source+get_srs_string)) and
-geometry field names (see [get_geometry](#Source+get_geometry)) for GDAL to use.
+the spatial reference system (see [getSrsString](#Source+getSrsString)) and
+geometry field names (see [getGeometry](#Source+getGeometry)) for GDAL to use.
 
 **Kind**: instance method of [<code>Source</code>](#Source)  
 **Returns**: <code>string</code> - VRT file content.  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [keep_geometry_fields] | <code>boolean</code> | <code>false</code> | Whether VRT file should return geometry fields as regular feature fields. |
+| [keepGeometryFields] | <code>boolean</code> | <code>false</code> | Whether VRT file should return geometry fields as regular feature fields. |
 
 
 * * *

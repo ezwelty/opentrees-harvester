@@ -186,15 +186,12 @@ class Source {
    * directory is not empty (see {@link Source#isEmpty}).
    * @return {Promise}
    */
-  get(overwrite = false) {
-    return this.getFiles(overwrite).
-      then(paths => {
-        if (paths.length) this.execute()
-        return paths
-      }).
-      then(paths => {
-        if (paths.length) this.success('Ready to process')
-      })
+  async get(overwrite = false) {
+    const paths = await this.getFiles(overwrite)
+    if (paths.length) {
+      await this.execute()
+      this.success('Ready to process')
+    }
   }
 
   /**
@@ -570,7 +567,7 @@ class Source {
    * @param {string} url - Path to the remote file.
    * @return {Promise<string>} Resolves to the path of the downloaded file.
    */
-  downloadFile(url) {
+  async downloadFile(url) {
     // Ensure that target directory exists
     fs.mkdirSync(this.dir, { recursive: true })
     const options = { override: true, retry: { maxRetries: 3, delay: 3000 } }
@@ -583,8 +580,8 @@ class Source {
         `Download failed for ${url}:`, error.message)).
       on('retry', (attempt, opts) => this.warn(
         `Download attempt ${attempt} of ${opts.maxRetries} in ${opts.delay / 1e3} s`))
-    return downloader.start().
-      then(() => downloader.getDownloadPath())
+    await downloader.start()
+    return downloader.getDownloadPath()
   }
 
   /**
@@ -602,21 +599,20 @@ class Source {
    * @return {Promise<string[]>} Resolves to the paths of the unpacked files (if
    * any) or the path of the original file.
    */
-  unpackFile(file, rm = true) {
+  async unpackFile(file, rm = true) {
     const filename = path.relative(this.dir, file)
-    return decompress(file, this.dir).
-      then(files => {
-        const filenames = files.map(x => x.path)
-        if (files.length) {
-          this.success(`Unpacked ${filename}:`, filenames)
-          if (rm) fs.unlinkSync(file)
-          return files.map(x => path.join(this.dir, x.path))
-        } else {
-          return [file]
-        }
-      }).
-      catch(error =>
-        this.error(`Unpack failed for ${filename}:`, error.message))
+    try {
+      const files = await decompress(file, this.dir)
+      if (files.length) { 
+        this.success(`Unpacked ${filename}:`, files.map(file => file.path))
+        if (rm) fs.unlinkSync(file)
+        return files.map(file => path.join(this.dir, file.path))
+      } else {
+        return [file]
+      }
+    } catch (error) {
+      this.error(`Unpack failed for ${filename}:`, error.message)
+    }
   }
 
   /**
@@ -626,9 +622,9 @@ class Source {
    * @return {Promise<sring[]>} Resolves to the paths of the unpacked files (if
    * any) or the local path of the downloaded file.
    */
-  getFile(url) {
-    return this.downloadFile(url).
-      then(file => this.unpackFile(file))
+  async getFile(url) {
+    const file = await this.downloadFile(url)
+    return this.unpackFile(file)
   }
 
   /**
@@ -642,17 +638,16 @@ class Source {
    * @return {Promise<string[]>} Resolves to the paths of the downloaded and
    * unpacked local files.
    */
-  getFiles(overwrite = false) {
+  async getFiles(overwrite = false) {
     if (!this.props.download || (!overwrite && !this.isEmpty())) {
-      return Promise.resolve([])
+      return []
     }
     let urls = this.props.download
     if (typeof urls === 'string') {
       urls = [urls]
     }
-    return Promise.
-      all(urls.map(url => this.getFile(url))).
-      then(paths => paths.flat())
+    const paths = await Promise.all(urls.map(url => this.getFile(url)))
+    return paths.flat()
   }
 
   /**
@@ -663,15 +658,17 @@ class Source {
    *
    * @return {Promise}
    */
-  execute() {
-    if (!this.props.execute) {
-      return Promise.resolve()
+  async execute() {
+    if (this.props.execute) {
+      const cmd = typeof this.props.execute === 'string' ? 
+        this.props.execute : this.props.execute.join(' && ')
+      this.log('Executing:', this.props.execute)
+      try {
+        exec(`cd '${this.dir}' && ${cmd}`)
+      } catch(error) {
+        this.error('Execution failed:', error.message)
+      }
     }
-    const cmd = typeof this.props.execute === 'string' ?
-      this.props.execute : this.props.execute.join(' && ')
-    this.log('Executing:', this.props.execute)
-    return exec(`cd '${this.dir}' && ${cmd}`).
-      catch(error => this.error('Execution failed:', error.message))
   }
 
   /**

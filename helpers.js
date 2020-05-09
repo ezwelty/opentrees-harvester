@@ -1,6 +1,69 @@
 const gdal = require('gdal-next')
 
 /**
+ * Common geometry field names.
+ * 
+ * @property {string[]} wkt - Field names for well-known-text (WKT)
+ * @property {string[]} lon - Field names for longitude
+ * @property {string[]} lat - Field names for latitude
+ * @property {string[]} x - Field names for x (longitude, easting)
+ * @property {string[]} y - Field names for y (latitude, northing)
+ */
+const GEOMETRY_FIELDS = {
+  wkt: [
+    'geom', 'the_geom', 'wkb_geometry', 'shape', 'geo_shape', 'geometrie',
+    'geometry'
+  ],
+  lon: [
+    'longitude', 'lon', 'lng', 'long', 'x_long', 'coord long'
+  ],
+  lat: [
+    'latitude', 'lat', 'y_lat', 'coord lat'
+  ],
+  x: [
+    'x', 'x_koordina', 'x-koordinate', 'x_coord', 'coordenada x', 'xcoord',
+    'easting', 'east', 'e', 'point_x'
+  ],
+  y: [
+    'y', 'y_koordina', 'y-koordinate', 'y_coord', 'coordenada y', 'ycoord',
+    'northing', 'north', 'n', 'point_y'
+  ]
+}
+
+/**
+ * Common file extensions for vector datasets.
+ *
+ * @property {string[]} 1 - Primary file extensions (take precedence)
+ * @property {string[]} 2 - Secondary file extensions
+ */
+const FILE_EXTENSIONS = {
+  1: ['geojson', 'topojson', 'shp', 'vrt', 'gml', 'kml'],
+  2: ['csv', 'json']
+}
+
+/**
+ * Regular expressions matching vector file extensions supported by GDAL.
+ * 
+ * @property {RegExp} any - Matches any supported file extension
+ * @property {RegExp} primary - Matches primary file extensions
+ * @property {RegExp} secondary - Matches secondary file extensions
+ */
+const gdalFilePatterns = {
+  any: new RegExp(`\\.(${getGdalExtensions().join('|')})$`, 'i'),
+  primary: new RegExp(`\\.(${FILE_EXTENSIONS[1].join('|')})$`, 'i'),
+  secondary: new RegExp(`\\.(${FILE_EXTENSIONS[2].join('|')})$`, 'i')
+}
+
+/**
+ * String formatters by GDAL field type.
+ */
+const gdalStringFormatters = {
+  [gdal.OFTDate]: dateToString,
+  [gdal.OFTTime]: timeToString,
+  [gdal.OFTDateTime]: datetimeToString
+}
+
+/**
  * Format a date object as a string.
  * 
  * Formats a date as `YYYY-MM-DD`, `YYYY-MM`, or `YYYY`.
@@ -12,7 +75,7 @@ const gdal = require('gdal-next')
  * @param {integer} [obj.day] - Day of the month (`1`-`31`)
  * @return {string} ISO 8601 date
  */
-exports.dateToString = (obj) => {
+function dateToString(obj) {
   if (!obj) return ''
   const yyyy = obj.year.toString().padStart(4, '0')
   if (!obj.month) return `${yyyy}`
@@ -34,7 +97,7 @@ exports.dateToString = (obj) => {
  * @param {number} [obj.second=0] - Second (`0` - `59.*`)
  * @return {string} ISO 8601 time
  */
-exports.timeToString = (obj) => {
+function timeToString(obj) {
   if (!obj) return ''
   const hh = (obj.hour || 0).toString().padStart(2, '0')
   const mm = (obj.minute || 0).toString().padStart(2, '0')
@@ -53,7 +116,7 @@ exports.timeToString = (obj) => {
  * @param {integer} [timezone=0] - GDAL timezone flag
  * @return {string} ISO 8601 timezone
  */
-exports.gdalTimezoneToString = (timezone = 0) => {
+function gdalTimezoneToString(timezone = 0) {
   // TZFlag: 0=unknown, 1=ambiguous, 100=GMT, 104=GMT+1, 80=GMT-5
   // See https://gdal.org/development/rfc/rfc56_millisecond_precision.html
   const min = timezone > 1 ? (timezone - 100) * 15 : null
@@ -83,16 +146,16 @@ exports.gdalTimezoneToString = (timezone = 0) => {
  * an ISO 8601 timezone.
  * @return {string} ISO 8601 datetime
  */
-exports.datetimeToString = (obj, truncate = false, gdalTimezone = true) => {
+function datetimeToString(obj, truncate = false, gdalTimezone = true) {
   if (!obj) return ''
-  const date = exports.dateToString(obj)
+  const date = dateToString(obj)
   if (truncate && !(obj.hour || obj.minute || obj.second)) {
     return date
   }
-  const time = exports.timeToString(obj)
+  const time = timeToString(obj)
   let timezone
   if (gdalTimezone) {
-    timezone = exports.gdalTimezoneToString(obj.timezone)
+    timezone = gdalTimezoneToString(obj.timezone)
   } else {
     timezone = obj.timezone || ''
   }
@@ -111,28 +174,19 @@ exports.datetimeToString = (obj, truncate = false, gdalTimezone = true) => {
  * `second`, `timezone`. Returns result from first matching pattern.
  * @return {string} ISO 8601 datetime
  */
-exports.reformatDatetime = (x, patterns) => {
+function reformatDatetime(x, patterns) {
   // Skip if already parsed to object by gdal
   if (!x || typeof x === 'object') return x
   x = x.trim()
   for (const pattern of patterns) {
     const matches = x.match(pattern)
     if (matches) {
-      return exports.datetimeToString(
+      return datetimeToString(
         matches.groups, truncate = true, gdalTimezone = false)
     }
   }
   console.warn('Failed to parse datetime:', x)
   return x
-}
-
-/**
- * String formatters by GDAL field type.
- */
-exports.GDAL_STRING_FORMATTERS = {
-  [gdal.OFTDate]: exports.dateToString,
-  [gdal.OFTTime]: exports.timeToString,
-  [gdal.OFTDateTime]: exports.datetimeToString
 }
 
 /**
@@ -150,7 +204,7 @@ exports.GDAL_STRING_FORMATTERS = {
  * names
  * @return {object} Mapped object
  */
-exports.mapObject = (obj, mapping) => {
+function mapObject(obj, mapping) {
   let final = obj
   if (!Array.isArray(mapping)) mapping = [mapping]
   for (const { crosswalk = {}, keep, prefix = '' } of mapping) {
@@ -170,36 +224,6 @@ exports.mapObject = (obj, mapping) => {
 }
 
 /**
- * Common geometry field names.
- * 
- * @property {string[]} wkt - Field names for well-known-text (WKT)
- * @property {string[]} lon - Field names for longitude
- * @property {string[]} lat - Field names for latitude
- * @property {string[]} x - Field names for x (longitude, easting)
- * @property {string[]} y - Field names for y (latitude, northing)
- */
-exports.GEOMETRY_FIELDS = {
-  wkt: [
-    'geom', 'the_geom', 'wkb_geometry', 'shape', 'geo_shape', 'geometrie',
-    'geometry'
-  ],
-  lon: [
-    'longitude', 'lon', 'lng', 'long', 'x_long', 'coord long'
-  ],
-  lat: [
-    'latitude', 'lat', 'y_lat', 'coord lat'
-  ],
-  x: [
-    'x', 'x_koordina', 'x-koordinate', 'x_coord', 'coordenada x', 'xcoord',
-    'easting', 'east', 'e', 'point_x'
-  ],
-  y: [
-    'y', 'y_koordina', 'y-koordinate', 'y_coord', 'coordenada y', 'ycoord',
-    'northing', 'north', 'n', 'point_y'
-  ]
-}
-
-/**
  * Guess feature layer geometry fields based on their name.
  *
  * @param {gdal.Layer} layer - Feature layer
@@ -207,12 +231,12 @@ exports.GEOMETRY_FIELDS = {
  * geographic coordinates (lon, lat), or geographic or projected coordinates (x,
  * y).
  */
-exports.guessGeometryFields = (layer) => {
+function guessGeometryFields(layer) {
   const geometry = {}
   const names = layer.fields.getNames()
-  Object.keys(exports.GEOMETRY_FIELDS).forEach(key => {
+  Object.keys(GEOMETRY_FIELDS).forEach(key => {
     geometry[key] = names.filter(x =>
-      exports.GEOMETRY_FIELDS[key].includes(x.toLowerCase()))
+      GEOMETRY_FIELDS[key].includes(x.toLowerCase()))
   })
   return geometry
 }
@@ -222,7 +246,7 @@ exports.guessGeometryFields = (layer) => {
  * 
  * @return {string[]} File extensions
  */
-exports.getGdalExtensions = () => {
+function getGdalExtensions() {
   const extensions = []
   gdal.drivers.forEach(driver => {
     const meta = driver.getMetadata()
@@ -239,9 +263,9 @@ exports.getGdalExtensions = () => {
  * 
  * @return {object} GDAL driver names by file extension
  */
-exports.getGdalDrivers = () => {
+function getGdalDrivers() {
   const drivers = {}
-  exports.getGdalExtensions().forEach(extension => drivers[extension] = [])
+  getGdalExtensions().forEach(extension => drivers[extension] = [])
   gdal.drivers.forEach(driver => {
     const meta = driver.getMetadata()
     if (meta.DCAP_VECTOR === 'YES') {
@@ -265,33 +289,9 @@ exports.getGdalDrivers = () => {
  * @param {string} file - Local or remote file path
  * @return {string} File extension
  */
-exports.getFileExtension = (file) => {
+function getFileExtension(file) {
   const matches = file.match(/\.([^\.\/\?\#]+)(?:$|\?|\#)/)
   return matches ? matches[1] : ''
-}
-
-/**
- * Common file extensions for vector datasets.
- *
- * @property {string[]} 1 - Primary file extensions (take precedence)
- * @property {string[]} 2 - Secondary file extensions
- */
-exports.FILE_EXTENSIONS = {
-  1: ['geojson', 'topojson', 'shp', 'vrt', 'gml', 'kml'],
-  2: ['csv', 'json']
-}
-
-/**
- * Regular expressions matching vector file extensions supported by GDAL.
- * 
- * @property {RegExp} any - Matches any supported file extension
- * @property {RegExp} primary - Matches primary file extensions
- * @property {RegExp} secondary - Matches secondary file extensions
- */
-exports.GDAL_FILE_PATTERNS = {
-  any: new RegExp(`\\.(${exports.getGdalExtensions().join('|')})$`, 'i'),
-  primary: new RegExp(`\\.(${exports.FILE_EXTENSIONS[1].join('|')})$`, 'i'),
-  secondary: new RegExp(`\\.(${exports.FILE_EXTENSIONS[2].join('|')})$`, 'i')
 }
 
 /**
@@ -302,7 +302,7 @@ exports.GDAL_FILE_PATTERNS = {
  * @return {gdal.CoordinateTransformation|undefined} Coordinate transformation,
  * or undefined if the two SRS are equal.
  */
-exports.getTransform = (source, target) => {
+function getTransform(source, target) {
   if (typeof source === 'string') {
     source = gdal.SpatialReference.fromUserInput(source)
   }
@@ -324,7 +324,7 @@ exports.getTransform = (source, target) => {
  * @param {string|gdal.SpatialReference} [srs] - Spatial reference system
  * @returns {gdal.Polygon}
  */
-exports.boundsToPolygon = (bounds, srs) => {
+function boundsToPolygon(bounds, srs) {
   if (typeof srs === 'string') {
     srs = gdal.SpatialReference.fromUserInput(srs)
   }
@@ -345,7 +345,7 @@ exports.boundsToPolygon = (bounds, srs) => {
  * 
  * @param {string|gdal.SpatialReference} srs - Spatial reference system
  */
-exports.isAxesXY = (srs) => {
+function isAxesXY(srs) {
   if (typeof srs === 'string') {
     srs = gdal.SpatialReference.fromUserInput(srs)
   }
@@ -358,4 +358,17 @@ exports.isAxesXY = (srs) => {
     // NOTE: Assumes x, y axis order if axes not defined
     return true
   }
+}
+
+module.exports = {
+  gdalFilePatterns,
+  gdalStringFormatters,
+  reformatDatetime,
+  mapObject,
+  guessGeometryFields,
+  getGdalDrivers,
+  getFileExtension,
+  getTransform,
+  boundsToPolygon,
+  isAxesXY
 }

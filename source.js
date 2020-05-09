@@ -308,7 +308,7 @@ class Source {
      */
     const stringCrosswalk = {}
     inputSchema = inputSchema.map(field => {
-      const formatter = helpers.GDAL_STRING_FORMATTERS[field.type]
+      const formatter = helpers.gdalStringFormatters[field.type]
       if (formatter) {
         stringCrosswalk[field.name] = x => formatter(x[field.name])
         field.type = gdal.OFTString
@@ -476,7 +476,7 @@ class Source {
     for (f = layer.features.first();
       f && i <= options.n; f = layer.features.next()) {
       for (let [key, value] of Object.entries(f.fields.toObject())) {
-        const formatter = helpers.GDAL_STRING_FORMATTERS[types[key]]
+        const formatter = helpers.gdalStringFormatters[types[key]]
         value = formatter ? formatter(value) : value
         if (values[key].size < options.max) {
           values[key].add(value)
@@ -688,9 +688,9 @@ class Source {
     if (!this.props.format) {
       if (paths.length) {
         const primaries = paths.filter(s =>
-          s.match(helpers.GDAL_FILE_PATTERNS.primary))
+          s.match(helpers.gdalFilePatterns.primary))
         const secondaries = paths.filter(s =>
-          s.match(helpers.GDAL_FILE_PATTERNS.secondary))
+          s.match(helpers.gdalFilePatterns.secondary))
         if (primaries.length) {
           paths = primaries
         } else if (secondaries.length) {

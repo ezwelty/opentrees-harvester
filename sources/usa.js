@@ -896,7 +896,7 @@ module.exports = [
     download: 'https://opendata.arcgis.com/datasets/07939ef894984a95b58098315f80c046_0.csv',
     license: { name: 'No license specified' },
     // Fields lat, lon not complete
-    geometry: { x: 'X', y: 'Y' },
+    geometry: { x: 'POINT_X', y: 'POINT_Y' },
     srs: 'EPSG:2226',
     crosswalk: {
       ref: 'TreeID',

@@ -2,25 +2,38 @@ module.exports = {
   modifyCrosswalk
 }
 
+/**
+ * Unit conversions.
+ *
+ * Each key is the original unit and each value is the multiplication factor to
+ * convert it to the corresponding standard unit.
+ */
 const UNIT_MULTIPLIERS = {
-  in: {
-    m: 0.0254
-  },
-  ft: {
-    m: 0.3048
-  },
-  cm: {
-    m: 0.01
-  },
-  lb: {
-    kg: 0.453592
-  }
+  // Length
+  in: { m: 0.0254 },
+  ft: { m: 0.3048 },
+  cm: { m: 0.01 },
+  // Weight
+  lb: { kg: 0.453592 }
 }
 
+/**
+ * Custom field units.
+ * 
+ * Units for fields that do not use a standard unit.
+ */
+const CUSTOM_FIELD_UNITS = {
+  dbh: 'cm'
+}
+
+/**
+ * Field conversions.
+ * 
+ * Each key is the original field and each value is the multiplication factor to
+ * convert it to the corresponding standard field.
+ */
 const FIELD_MULTIPLIERS = {
-  circumference: {
-    dbh: 0.5
-  }
+  circumference: { dbh: 0.5 }
 }
 
 /**
@@ -42,6 +55,10 @@ function getUnits() {
  * @return {string} name.base - Variable (e.g. 'height')
  * @return {string} name.unit - Unit (e.g. 'm')
  * @return {string} name.range - Range type ('min', 'max', or 'range')
+ * @example
+ * parseFieldName('height_m_min')
+ * parseFieldName('height_min_m')
+ * parseFieldName('height_range')
  */
 function parseFieldName(name) {
   let base, range, unit, matches
@@ -50,7 +67,7 @@ function parseFieldName(name) {
     new RegExp(`_(${getUnits().join('|')})(?=$|_)`, 'g'))]
   if (matches.length == 1) {
     unit = matches[0][1]
-    name = name.replace(`_${unit}`, '')
+    name = name.replace(new RegExp(`_${unit}(?=$|_)`), '')
   } else if (matches.length > 1) {
     throw new Error(`Invalid field name - multiple unit tags: ${name}`)
   }
@@ -58,7 +75,7 @@ function parseFieldName(name) {
   matches = [...name.matchAll(/_(min|max|range)(?=$|_)/g)]
   if (matches.length == 1) {
     range = matches[0][1]
-    name = name.replace(`_${range}`, '')
+    name = name.replace(new RegExp(`_${range}(?=$|_)`), '')
   } else if (matches.length > 1) {
     throw new Error(`Invalid field name - multiple range tags: ${name}`)
   }
@@ -121,40 +138,54 @@ function parseRange(x) {
  * @return {object} Crosswalk, where keys are new field names and values are
  * either null (no change) or a function called as f(x), where x is the value of
  * the field.
+ * @example
+ * // Unit conversions
+ * getFieldCrosswalk('height')
+ * getFieldCrosswalk('height_m')
+ * getFieldCrosswalk('height_cm').height.toString()
+ * // Range parsing
+ * getFieldCrosswalk('height_range').height_min.toString()
+ * getFieldCrosswalk('height_cm_range').height_min.toString()
+ * // Custom field units
+ * getFieldCrosswalk('dbh_m').dbh.toString()
+ * // Field conversions
+ * getFieldCrosswalk('circumference').dbh.toString()
  */
 function getFieldCrosswalk(name) {
   let { base, range, unit } = parseFieldName(name)
   let multiplier = 1
-  // units
-  if (unit) {
-    // NOTE: Taking first target
-    const target = Object.keys(UNIT_MULTIPLIERS[unit] || {})[0]
-    if (target) {
-      multiplier *= UNIT_MULTIPLIERS[unit][target]
-      unit = target
-    }
-  }
   if (base) {
-    // NOTE: Taking first target
     const target = Object.keys(FIELD_MULTIPLIERS[base] || {})[0]
     if (target) {
       multiplier *= FIELD_MULTIPLIERS[base][target]
       base = target
     }
   }
-  const basename = `${base}${unit ? `_${unit}` : ''}`
+  if (unit) {
+    // Convert to standard unit
+    const target = Object.keys(UNIT_MULTIPLIERS[unit] || {})[0]
+    if (target) {
+      multiplier *= UNIT_MULTIPLIERS[unit][target]
+      unit = target
+    }
+    const custom_unit = CUSTOM_FIELD_UNITS[base]
+    if (custom_unit && unit !== custom_unit) {
+      // Convert from standard unit to custom unit
+      multiplier /= UNIT_MULTIPLIERS[custom_unit][unit]
+    }
+  }
   if (range === 'range') {
     // Parse into min, max
     return {
-      [`${basename}_min`]: multiplier === 1 ?
+      [`${base}_min`]: multiplier === 1 ?
         eval(`x => parseRange(x).min`) :
         eval(`x => parseRange(x).min * ${multiplier}`),
-      [`${basename}_max`]: multiplier === 1 ?
+      [`${base}_max`]: multiplier === 1 ?
         eval(`x => parseRange(x).max`) :
         eval(`x => parseRange(x).max * ${multiplier}`),
     }
   }
-  const rename = `${basename}${range ? `_${range}` : ''}`
+  const rename = `${base}${range ? `_${range}` : ''}`
   if (name !== rename) {
     return {
       [rename]: multiplier === 1 ? null : eval(`x => x * ${multiplier}`)
@@ -167,10 +198,17 @@ function getFieldCrosswalk(name) {
  *
  * Performs the following modifications:
  * - Expands ranges to min, max
- * - Converts fields to standard units
+ * - Converts fields to standard or custom units
+ * - Converts fields to standard fields (e.g. circumference to diameter)
  * 
  * @param {object} crosswalk
  * @return {object} Modified crosswalk
+ * @example
+ * obj = { HEIGHT: 100, DBH: '10-20cm' }
+ * crosswalk = modifyCrosswalk({ height_cm: 'HEIGHT', dbh_cm_range: 'DBH' })
+ * crosswalk.height(obj)
+ * crosswalk.dbh_min(obj)
+ * crosswalk.dbh_max(obj)
  */
 function modifyCrosswalk(crosswalk) {
   const target = {}

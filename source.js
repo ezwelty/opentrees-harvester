@@ -447,6 +447,19 @@ class Source {
   }
 
   /**
+   * Get layer field names and GDAL data types.
+   * @return {object} Field names (keys) and GDAL data types (values)
+   */
+  getFields() {
+    const layer = this.open().layers.get(0)
+    const fields = {}
+    layer.fields.forEach(field => {
+      fields[field.name] = field.type
+    })
+    return fields
+  }
+
+  /**
    * Sample unique field values from input.
    *
    * @param {object} [options]
@@ -464,13 +477,12 @@ class Source {
       sort: true,
       ...options
     }
-    const types = {}
+    const types = this.getFields()
     const values = {}
+    for (const key in types) {
+      values[key] = new Set()
+    }
     const layer = this.open().layers.get(0)
-    layer.fields.forEach(field => {
-      types[field.name] = field.type
-      values[field.name] = new Set()
-    })
     let f
     let i = 1
     for (f = layer.features.first();
@@ -527,11 +539,7 @@ class Source {
         2: { width: options.widths[2] }
       }
     }
-    const types = {}
-    const layer = this.open().layers.get(0)
-    layer.fields.forEach(field => {
-      types[field.name] = field.type
-    })
+    const types = this.getFields()
     // Print
     const data = [
       ['name'.bold, 'type'.bold, 'values'.bold],

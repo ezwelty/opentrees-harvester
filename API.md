@@ -29,6 +29,7 @@ Class representing a source dataset.
     * [.validate([error])](#Source+validate) ⇒ <code>Array.&lt;Array.&lt;string, \*&gt;&gt;</code>
     * [.get([overwrite])](#Source+get) ⇒ <code>Promise</code>
     * [.process(file, [options])](#Source+process)
+    * [.getFields()](#Source+getFields) ⇒ <code>object</code>
     * [.sample([options])](#Source+sample) ⇒ <code>object.&lt;string, Array&gt;</code>
     * [.glimpse([options])](#Source+glimpse)
     * [.empty()](#Source+empty)
@@ -135,6 +136,16 @@ file is created (see [getVrt](#Source+getVrt)).
 | [options.prefix=] | <code>string</code> |  | String to append to input field names to prevent collisions with output field names. Applies only if `options.keepFields` is `true`. |
 | [options.bounds] | <code>Array.&lt;number&gt;</code> |  | Bounding box in output SRS (`options.srs`) in the format [xmin, ymin, xmax, ymax]. If provided, features outside the bounds are skipped. |
 
+
+* * *
+
+<a name="Source+getFields"></a>
+
+### source.getFields() ⇒ <code>object</code>
+Get layer field names and GDAL data types.
+
+**Kind**: instance method of [<code>Source</code>](#Source)  
+**Returns**: <code>object</code> - Field names (keys) and GDAL data types (values)  
 
 * * *
 

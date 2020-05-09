@@ -1,4 +1,4 @@
-const { reformat_datetime } = require('../helpers')
+const { reformatDatetime } = require('../helpers')
 
 const identity = {
   scientific: 'scientific',
@@ -115,7 +115,7 @@ module.exports = [
       common: 'Common Name',
       scientific: 'Scientific Name',
       dbh: 'Diameter Breast Height',
-      planted: x => reformat_datetime(
+      planted: x => reformatDatetime(
         x['Date Planted'],
         [/(?<day>[0-9]{2})\/(?<month>[0-9]{2})\/(?<year>[0-9]{4})/]),
       maturity: 'Age Description',

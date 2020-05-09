@@ -1,4 +1,4 @@
-const { reformat_datetime } = require('../helpers')
+const { reformatDatetime } = require('../helpers')
 
 module.exports = [
   {
@@ -901,7 +901,7 @@ module.exports = [
     crosswalk: {
       ref: 'TreeID',
       // TODO PlantingDate: e.g. early 1980s, late 50's, between 2003 and 2007
-      planted: x => reformat_datetime(
+      planted: x => reformatDatetime(
         x['PlantingDate'],
         [
           /^(?<day>[0-9]{1,2})\/(?<month>[0-9]{1,2})\/(?<year>[0-9]{4})$/,

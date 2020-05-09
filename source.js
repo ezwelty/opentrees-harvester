@@ -303,7 +303,7 @@ class Source {
     /*
      * NOTE: Confusing gdal bindings handling of date/time fields
      * - Fields detected as date/time are read as objects, not strings
-     * - Cannot yet set date/time field from date/time object, only strings
+     * - Cannot yet set date/time field with date/time object, only strings
      * (see https://github.com/naturalatlas/node-gdal/issues/144)
      * HACK:
      * - Set output date/time fields as string
@@ -313,8 +313,7 @@ class Source {
     inputSchema = inputSchema.map(field => {
       const formatter = helpers.GDAL_STRING_FORMATTERS[field.type]
       if (formatter) {
-        stringCrosswalk[field.name] =
-          eval(`x => helpers.GDAL_STRING_FORMATTERS.${field.type}(x['${field.name}'])`)
+        stringCrosswalk[field.name] = x => formatter(x[field.name])
         field.type = gdal.OFTString
       }
       return field

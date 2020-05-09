@@ -178,17 +178,17 @@ function getFieldCrosswalk(name) {
     // Parse into min, max
     return {
       [`${base}_min`]: multiplier === 1 ?
-        eval(`x => parseRange(x).min`) :
-        eval(`x => parseRange(x).min * ${multiplier}`),
+        x => parseRange(x).min :
+        x => parseRange(x).min * multiplier,
       [`${base}_max`]: multiplier === 1 ?
-        eval(`x => parseRange(x).max`) :
-        eval(`x => parseRange(x).max * ${multiplier}`),
+        x => parseRange(x).max :
+        x => parseRange(x).max * multiplier
     }
   }
   const rename = `${base}${range ? `_${range}` : ''}`
   if (name !== rename) {
     return {
-      [rename]: multiplier === 1 ? null : eval(`x => x * ${multiplier}`)
+      [rename]: multiplier === 1 ? null : x => x * multiplier
     }
   }
 }

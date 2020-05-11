@@ -27,8 +27,8 @@ Class representing a source dataset.
 * [Source](#Source)
     * [new Source(props, dir, [options])](#new_Source_new)
     * [.validate([error])](#Source+validate) ⇒ <code>Array.&lt;Array.&lt;string, \*&gt;&gt;</code>
-    * [.get([overwrite])](#Source+get) ⇒ <code>Promise</code>
-    * [.process(file, [options])](#Source+process)
+    * [.get([overwrite])](#Source+get) ⇒ <code>Promise.&lt;Array.&lt;string&gt;&gt;</code>
+    * [.process(file, [options])](#Source+process) ⇒ <code>boolean</code>
     * [.getFields()](#Source+getFields) ⇒ <code>object</code>
     * [.sample([options])](#Source+sample) ⇒ <code>object.&lt;string, Array&gt;</code>
     * [.glimpse([options])](#Source+glimpse)
@@ -88,13 +88,15 @@ Validate source properties.
 
 <a name="Source+get"></a>
 
-### source.get([overwrite]) ⇒ <code>Promise</code>
+### source.get([overwrite]) ⇒ <code>Promise.&lt;Array.&lt;string&gt;&gt;</code>
 Prepare remote source data for processing.
 
 Downloads remote files (`this.props.download`), unpacks compressed or
 archive files, and executes shell commands (`this.props.execute`).
 
 **Kind**: instance method of [<code>Source</code>](#Source)  
+**Returns**: <code>Promise.&lt;Array.&lt;string&gt;&gt;</code> - Resolves to the paths of the downloaded and
+unpacked local files (if any).  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -105,7 +107,7 @@ archive files, and executes shell commands (`this.props.execute`).
 
 <a name="Source+process"></a>
 
-### source.process(file, [options])
+### source.process(file, [options]) ⇒ <code>boolean</code>
 Process input and write to output.
 
 Reading, writing, and coordinate transformations are performed by
@@ -120,6 +122,7 @@ geometries, a temporary [VRT](https://gdal.org/drivers/vector/vrt.html)
 file is created (see [getVrt](#Source+getVrt)).
 
 **Kind**: instance method of [<code>Source</code>](#Source)  
+**Returns**: <code>boolean</code> - Whether processed file (true) or skipped (false).  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |

@@ -49,8 +49,8 @@ const source = new Source(
     srs: 'EPSG:4326',
     crosswalk: {
       ref: 'ID',
-      common: 'NAME',
-      height_cm: x => x.HEIGHT_CM / 100
+      common: x => x['NAME'].toLowerCase(),
+      height_cm: 'HEIGHT_CM'
     }
   },
   dir = 'test/input'
@@ -81,7 +81,7 @@ We can modify the crosswalk following our conventions to apply unit conversions 
 ```js
 const { modifyCrosswalk } = require('./lib/cleaners.js')
 source.props.crosswalk = modifyCrosswalk(source.props.crosswalk)
-// { ref: 'ID', common: 'NAME', height: [Function] }
+// { ref: 'ID', common: [Function], height: [Function] }
 source.process('test/output/output-clean.csv')
 // [test] Processing test/input/simple.csv
 // [test] Writing and reading VRT file

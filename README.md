@@ -27,7 +27,7 @@ Each source dataset is described as a Javascript `object` following the format d
 
 The command line interface provides a quick way to process all or a subset of the source datasets. See each command's help message:
 
-```js
+```bash
 npm run get -- -h
 npm run process -- -h
 ```

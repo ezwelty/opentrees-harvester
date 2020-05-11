@@ -66,7 +66,7 @@ module.exports = [
     country: 'Australia',
     crosswalk: {
       ...identity,
-      genus: () => undefined, // contains same as species, this way it gets generated properly.
+      genus: x => undefined, // contains same as species, this way it gets generated properly.
       scientific: 'species'
       // aohplaque, maintenance, description
     }
@@ -450,7 +450,7 @@ module.exports = [
     country: 'Australia',
     crosswalk: {
       ...identity,
-      species: s => (s.species || '').replace(/^[A-Z]\. /, '')
+      species: x => (x.species || '').replace(/^[A-Z]\. /, '')
     }
   },
   {

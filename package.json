@@ -1,16 +1,13 @@
 {
   "name": "opentrees-data",
   "version": "1.0.0",
-  "description": "",
-  "main": "1-gettrees.js",
+  "description": "Data processing pipeline for open tree inventories.",
+  "main": "source.js",
   "scripts": {
-    "tiles": "nodemon --watch mbtiles/trees.mbtiles -- node_modules/tessera/bin/tessera.js -p 4011 mbtiles://./mbtiles/trees.mbtiles",
-    "get": "./1-gettrees.js && ./2-loadtrees.js",
-    "process": "./3-processFiles.js &&  ./3a-updateTaxoCount.js && ./3b-addSpeciesCounts.js",
-    "full-upload": "./1-gettrees.js &&  ./2-loadtrees.js && ./3-processFiles.js &&  ./3a-updateTaxoCount.js && ./3b-addSpeciesCounts.js && ./4-makeVectorTiles.js && ./5-upload.js",
-    "export": "node ./export-sources.js; cp sources-out.json ../opentrees/src",
-    "replace": "replace",
-    "apidoc": "./node_modules/.bin/jsdoc2md source.js --no-cache --separators > API.md"
+    "get": "./example/get.js",
+    "process": "./example/process.js",
+    "apidoc": "./node_modules/.bin/jsdoc2md source.js --no-cache --separators > API.md",
+    "replace": "replace"
   },
   "author": "Steve Bennett <me@stevebennett.me> (http://stevebennett.me)",
   "contributors": [

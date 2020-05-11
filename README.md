@@ -1,6 +1,6 @@
 # OpenTrees data
 
-Authors: Steve Bennett (opentrees.org), Ethan Welty (fallingfruit.org)
+Authors: Steve Bennett ([opentrees.org](https://opentrees.org)), Ethan Welty ([fallingfruit.org](https://fallingfruit.org))
 
 Scripts that fetch and process data about inventoried trees and other plants from government and university open data sources. The result is used to generate vector tiles for display on opentrees.org.
 
@@ -23,6 +23,15 @@ npm install
 
 Each source dataset is described as a Javascript `object` following the format described at [`API.md#SourceProperties`](API.md#SourceProperties). They are sorted into modules organized by country. The schema crosswalks (`crosswalk` properties) strive to map each source dataset to our [target schema](#target-schema).
 
+### Command line interface ([`cli/*.js`](cli))
+
+The command line interface provides a quick way to process all or a subset of the source datasets. See each command's help message:
+
+```js
+npm run get -- -h
+npm run process -- -h
+```
+
 ### Source class ([`lib/source.js`](lib/source.js))
 
 The `Source` class wraps source properties to facilitate data processing. All methods are documented at [`API.md#Source`](API.md#Source).
@@ -30,7 +39,7 @@ The `Source` class wraps source properties to facilitate data processing. All me
 Here is a simple example using the included [`tests/simple.csv`](tests/simple.csv):
 
 ```js
-const Source = require('./source')
+const Source = require('./lib/source')
 
 const source = new Source(
   props = { 
@@ -41,7 +50,7 @@ const source = new Source(
     crosswalk: {
       ref: 'ID',
       common: 'NAME',
-      height: x => x.HEIGHT_CM / 100
+      height_cm: x => x.HEIGHT_CM / 100
     }
   },
   dir = 'test/input'
@@ -65,6 +74,18 @@ source.process('test/output/output.csv')
 // [test] Processing test/input/simple.csv
 // [test] Writing and reading VRT file
 // [test] Wrote output: test/output/output.csv
+```
+
+We can modify the crosswalk following our conventions to apply unit conversions and other cleaning steps (see [`lib/cleaners.js`](lib/cleaners.js)). In this case, `height_cm` (in centimeters) is automatically converted to standard `height` (in meters).
+
+```js
+const { modifyCrosswalk } = require('./lib/cleaners.js')
+source.props.crosswalk = modifyCrosswalk(source.props.crosswalk)
+// { ref: 'ID', common: 'NAME', height: [Function] }
+source.process('test/output/output-clean.csv')
+// [test] Processing test/input/simple.csv
+// [test] Writing and reading VRT file
+// [test] Wrote output: test/output/output-clean.csv
 ```
 
 ## Target schema
@@ -127,7 +148,7 @@ Numeric fields should be tagged with a unit (if known) for automatic unit conver
 `crown` | Crown spread (average diameter of crown) in meters.
 `stems` | Number of stems.
 | *Secondary* | |
-`circumference` | Circumference of trunk in centimeters.
+`circumference` | Circumference of trunk in centimeters (converted to `dbh` downstream).
 
 ### Condition
 

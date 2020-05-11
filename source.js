@@ -119,28 +119,30 @@ class Source {
     // id
     if (props.id) {
       if (typeof props.id !== 'string') {
-        errors.push(['Invalid id:', props.id])
+        errors.push(['Invalid id', props.id])
       }
+    } else {
+      errors.push(['Missing id'])
     }
     // download
     if (props.download) {
       if (!(typeof props.download === 'string' ||
         (Array.isArray(props.download) && typeof props.download[0] === 'string'))) {
-        errors.push(['Invalid download:', props.download])
+        errors.push(['Invalid download', props.download])
       }
     }
     // execute
     if (props.execute) {
       if (!(typeof props.execute === 'string' ||
         (Array.isArray(props.execute) && typeof props.execute[0] === 'string'))) {
-        errors.push(['Invalid execute:', props.execute])
+        errors.push(['Invalid execute', props.execute])
       }
     }
     // format
     if (props.format) {
       if (!(typeof props.format === 'string' &&
         helpers.getGdalExtensions().includes(props.format.toLowerCase()))) {
-        errors.push(['Unsupported format:', props.format])
+        errors.push(['Unsupported format', props.format])
       }
     }
     // crosswalk
@@ -148,7 +150,7 @@ class Source {
       Object.keys(props.crosswalk).forEach(key => {
         const value = props.crosswalk[key]
         if (!['string', 'function'].includes(typeof (value))) {
-          errors.push([`Invalid type for crosswalk.${key}:`, typeof value])
+          errors.push([`Invalid type for crosswalk.${key}`, typeof value])
         }
       })
     }
@@ -158,7 +160,7 @@ class Source {
         (typeof (props.geometry.wkt) === 'string' ||
           (typeof (props.geometry.x) === 'string' &&
             typeof (props.geometry.y) === 'string')))) {
-        errors.push(['Invalid geometry:', props.geometry])
+        errors.push(['Invalid geometry', props.geometry])
       }
     }
     // srs
@@ -166,11 +168,11 @@ class Source {
       try {
         gdal.SpatialReference.fromUserInput(props.srs)
       } catch (err) {
-        errors.push(['Invalid srs:', props.srs])
+        errors.push(['Invalid srs', props.srs])
       }
     }
-    if (error) {
-      errors.forEach(objects => this.error(...objects))
+    if (error && errors.length) {
+      this.error('Validation failed:', errors)
     } else {
       return errors
     }
@@ -184,13 +186,19 @@ class Source {
    *
    * @param {boolean} [overwrite=false] - Whether to proceed if working
    * directory is not empty (see {@link Source#isEmpty}).
-   * @return {Promise}
+   * @return {Promise<string[]>} Resolves to the paths of the downloaded and
+   * unpacked local files (if any).
    */
   async get(overwrite = false) {
-    const paths = await this.getFiles(overwrite)
-    if (paths.length) {
-      await this.execute()
-      this.success('Ready to process')
+    try {
+      const paths = await this.getFiles(overwrite)
+      if (paths.length) {
+        await this.execute()
+        this.success('Ready to process')
+      }
+      return paths
+    } catch (error) {
+      throw error
     }
   }
 
@@ -241,10 +249,11 @@ class Source {
    * @param {number[]} [options.bounds] - Bounding box in output SRS
    * (`options.srs`) in the format [xmin, ymin, xmax, ymax]. If provided,
    * features outside the bounds are skipped.
+   * @return {boolean} Whether processed file (true) or skipped (false).
    */
   process(file, options = {}) {
     if (!options.overwrite && fs.existsSync(file)) {
-      return
+      return false
     }
     options = {
       ...{
@@ -444,6 +453,7 @@ class Source {
     // Write
     output.close()
     this.success('Wrote output:', file)
+    return true
   }
 
   /**
@@ -578,18 +588,30 @@ class Source {
   async downloadFile(url) {
     // Ensure that target directory exists
     fs.mkdirSync(this.dir, { recursive: true })
-    const options = { override: true, retry: { maxRetries: 3, delay: 3000 } }
+    const options = { override: true, retry: { maxRetries: 1, delay: 3000 } }
     const downloader = new DownloaderHelper(url, this.dir, options)
+    let failure
     downloader.
       on('download', info => this.log(`Downloading ${info.fileName}`)).
       on('end', info => this.success(
         `Downloaded ${info.fileName} (${(info.downloadedSize / 1e6).toFixed()} MB)`)).
-      on('error', error => this.error(
-        `Download failed for ${url}:`, error.message)).
-      on('retry', (attempt, opts) => this.warn(
-        `Download attempt ${attempt} of ${opts.maxRetries} in ${opts.delay / 1e3} s`))
-    await downloader.start()
-    return downloader.getDownloadPath()
+      on('error', error => {
+        const attempt = downloader.__retryCount + 1
+        const attempts = options.retry.maxRetries + 1
+        if (attempt === attempts) {
+          failure = error
+        }
+      })
+    try {
+      await downloader.start()
+    } catch (error) {
+      failure = error
+    }
+    if (failure) {
+      this.error(`Download failed for ${url}: ${failure.message}`)
+    } else {
+      return downloader.getDownloadPath()
+    }
   }
 
   /**
@@ -611,7 +633,7 @@ class Source {
     const filename = path.relative(this.dir, file)
     try {
       const files = await decompress(file, this.dir)
-      if (files.length) { 
+      if (files.length) {
         this.success(`Unpacked ${filename}:`, files.map(file => file.path))
         if (rm) fs.unlinkSync(file)
         return files.map(file => path.join(this.dir, file.path))
@@ -631,8 +653,12 @@ class Source {
    * any) or the local path of the downloaded file.
    */
   async getFile(url) {
-    const file = await this.downloadFile(url)
-    return this.unpackFile(file)
+    try {
+      const file = await this.downloadFile(url)
+      return await this.unpackFile(file)
+    } catch (error) {
+      throw error
+    }
   }
 
   /**
@@ -654,8 +680,12 @@ class Source {
     if (typeof urls === 'string') {
       urls = [urls]
     }
-    const paths = await Promise.all(urls.map(url => this.getFile(url)))
-    return paths.flat()
+    try {
+      const paths = await Promise.all(urls.map(url => this.getFile(url)))
+      return paths.flat()
+    } catch (error) {
+      throw error
+    }
   }
 
   /**
@@ -668,12 +698,12 @@ class Source {
    */
   async execute() {
     if (this.props.execute) {
-      const cmd = typeof this.props.execute === 'string' ? 
+      const cmd = typeof this.props.execute === 'string' ?
         this.props.execute : this.props.execute.join(' && ')
       this.log('Executing:', this.props.execute)
       try {
         exec(`cd '${this.dir}' && ${cmd}`)
-      } catch(error) {
+      } catch (error) {
         this.error('Execution failed:', error.message)
       }
     }

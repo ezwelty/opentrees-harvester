@@ -4,9 +4,9 @@
   "description": "Data processing pipeline for open tree inventories.",
   "main": "source.js",
   "scripts": {
-    "get": "./example/get.js",
-    "process": "./example/process.js",
-    "apidoc": "./node_modules/.bin/jsdoc2md source.js --no-cache --separators > API.md",
+    "get": "./cli/get.js",
+    "process": "./cli/process.js",
+    "apidoc": "./node_modules/.bin/jsdoc2md lib/source.js --no-cache --separators > API.md",
     "replace": "replace"
   },
   "author": "Steve Bennett <me@stevebennett.me> (http://stevebennett.me)",

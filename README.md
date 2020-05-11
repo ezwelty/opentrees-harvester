@@ -23,7 +23,7 @@ npm install
 
 Each source dataset is described as a Javascript `object` following the format described at [`API.md#SourceProperties`](API.md#SourceProperties). They are sorted into modules organized by country. The schema crosswalks (`crosswalk` properties) strive to map each source dataset to our [target schema](#target-schema).
 
-### Source class ([`source.js`](source.js))
+### Source class ([`lib/source.js`](lib/source.js))
 
 The `Source` class wraps source properties to facilitate data processing. All methods are documented at [`API.md#Source`](API.md#Source).
 

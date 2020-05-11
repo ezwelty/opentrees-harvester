@@ -3,7 +3,7 @@ const colors = require('colors')
 const commandLineUsage = require('command-line-usage')
 const commandLineArgs = require('command-line-args')
 const { loadSources, interpolateString, DEFAULT_OPTIONS } = require('./load')
-const { modifyCrosswalk } = require('../cleaners')
+const { modifyCrosswalk } = require('../lib/cleaners')
 
 const OPTIONS = [
   ...DEFAULT_OPTIONS,

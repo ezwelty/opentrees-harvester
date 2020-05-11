@@ -1,6 +1,6 @@
 const glob = require('glob')
 const colors = require('colors')
-const Source = require('../source')
+const Source = require('../lib/source')
 
 const DEFAULT_OPTIONS = [
   {

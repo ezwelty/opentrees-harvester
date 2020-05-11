@@ -1,4 +1,4 @@
-const { reformatDatetime } = require('../helpers')
+const { reformatDatetime } = require('../lib/helpers')
 
 const identity = {
   scientific: 'scientific',

@@ -37,8 +37,6 @@ try {
   process.exit(1)
 }
 
-process.exit(0)
-
 // Load sources
 const sources = loadSources(options.ids, options.countries, options.dir)
 

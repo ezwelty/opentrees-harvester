@@ -1,4 +1,4 @@
-const { reformatDatetime } = require('../helpers')
+const { reformatDatetime } = require('../lib/helpers')
 
 module.exports = [
   {
@@ -147,7 +147,7 @@ module.exports = [
     short: 'San Francisco',
     long: 'City of San Francisco',
     country: 'United States',
-    geometry: {x: 'Longitude', y: 'Latitude'},
+    geometry: { x: 'Longitude', y: 'Latitude' },
     crosswalk: {
       ref: 'TreeID',
       scientific: x => String(x.qSpecies).split(' :: ')[0],
@@ -215,7 +215,7 @@ module.exports = [
       updated: 'modified',
       planted: 'PlantDate',
       stems: 'trunks',
-      notable: x => ({'Y': 'memorial'})[x['MemTree']],
+      notable: x => ({ 'Y': 'memorial' })[x['MemTree']],
       // TODO Location: 'Street Tree', 'Park Tree', 'Public School', ...
       location: 'Location',
       owner: 'Ownership',

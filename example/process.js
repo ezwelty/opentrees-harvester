@@ -2,28 +2,40 @@
 const colors = require('colors')
 const commandLineUsage = require('command-line-usage')
 const commandLineArgs = require('command-line-args')
-let sources = require('./load.js')
+const { loadSources, interpolateString, DEFAULT_OPTIONS } = require('./load')
+const { modifyCrosswalk } = require('../cleaners')
 
 const OPTIONS = [
+  ...DEFAULT_OPTIONS,
   {
-    name: 'help', alias: 'h', type: Boolean, defaultValue: false
+    name: 'out', alias: 'o', type: String, defaultValue: 'data/${s.id}/output/output.csv',
+    // Escape special characters for chalk. See https://github.com/Polymer/tools/pull/612
+    description: "Template for output file, where source properties are represented by 's' (default: 'data/${s.id}/output/output.csv').".
+      replace(/[{}\\]/g, '\\$&')
   },
   {
-    name: 'ids', alias: 'i', type: String, multiple: true, defaultOption: true,
-    description: 'Restrict processing to these source identifiers.'
+    name: 'centroids', type: Boolean, defaultValue: false,
+    description: 'Whether to reduce non-point geometries to centroids.'
   },
   {
-    name: 'countries', alias: 'c', type: String, multiple: true,
-    description: 'Restrict processing to these countries (case and whitespace insensitive).'
+    name: 'keepInvalid', type: Boolean, defaultValue: false,
+    description: 'Whether to keep features with empty or invalid geometries.'
   },
   {
-    name: 'out', alias: 'o', type: String,
-    defaultValue: 'data/${source.props.id}/output/output.csv',
-    description: "Template for output file path (default: 'data/${source.props.id}/output/output.csv')."
+    name: 'keepFields', type: Boolean, defaultValue: false,
+    description: 'Whether to keep the input feature fields alongside the result of the schema crosswalk.'
   },
   {
-    name: 'force', alias: 'f', type: Boolean,
-    description: 'Overwrite existing output files.'
+    name: 'prefix', type: String, defaultValue: '',
+    description: 'String to append to input field names to prevent collisions with output field names. Applies only with `keepFields`.'
+  },
+  {
+    name: 'bounds', type: Number, multiple: true,
+    description: 'Bounding box in the format [xmin, ymin, xmax, ymax] (EPSG:4326). If provided, features outside the bounds are skipped.'
+  },
+  {
+    name: 'force', alias: 'f', type: Boolean, defaultValue: false,
+    description: 'Overwrite output file even if it already exists.'
   }
 ]
 
@@ -47,32 +59,32 @@ try {
     process.exit(0)
   }
 } catch (error) {
-  console.error(`${'[Error]'.red}`, error)
+  console.error(`${'[ERROR]'.red} ${error.message}`)
   console.log(commandLineUsage(USAGE))
   process.exit(1)
 }
-if (options.contries) {
-  options.contries = options.countries.map(x =>
-    x.toLowerCase().replace('\s*', ''))
-}
 
-// Filter sources
-sources = sources.
-  filter(source => !options.ids || options.ids.includes(source.props.id)).
-  filter(source => !options.countries ||
-    options.countries.includes(
-      source.props.country.toLowerCase().replace('\s*', '')
-    )
-  )
+// Load sources
+const sources = loadSources(options.ids, options.countries, options.dir)
 
 // Process sources
 const success = []
 const failure = []
 const skip = []
+const processOptions = {
+  overwrite: options.force,
+  centroids: options.centroids,
+  keepInvalid: options.keepInvalid,
+  keepFields: options.keepFields,
+  prefix: options.prefix,
+  bounds: options.bounds
+}
 sources.forEach(source => {
-  const file = eval(`\`${options.out}\``)
+  const file = interpolateString(options.out, source.props)
+  // Modify crosswalk for unit conversions and range parsing
+  source.props.crosswalk = modifyCrosswalk(source.props.crosswalk)
   try {
-    const result = source.process(file, { overwrite: options.force })
+    const result = source.process(file, processOptions)
     if (result) success.push(source.props.id)
     else skip.push(source.props.id)
   } catch (error) {

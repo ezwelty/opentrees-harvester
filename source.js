@@ -102,6 +102,8 @@ class Source {
       },
       ...options
     }
+    // Validate
+    this.validate(true)
     // Cache
     this.__dataset = null
     this.__vrt = null

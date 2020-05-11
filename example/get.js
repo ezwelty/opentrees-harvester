@@ -2,30 +2,20 @@
 const colors = require('colors')
 const commandLineUsage = require('command-line-usage')
 const commandLineArgs = require('command-line-args')
-let sources = require('./load.js')
+const { loadSources, DEFAULT_OPTIONS } = require('./load')
 
 const OPTIONS = [
-  {
-    name: 'help', alias: 'h', type: Boolean, defaultValue: false
-  },
-  {
-    name: 'ids', alias: 'i', type: String, multiple: true, defaultOption: true,
-    description: 'Restrict to these source identifiers.'
-  },
-  {
-    name: 'countries', alias: 'c', type: String, multiple: true,
-    description: 'Restrict to these countries (case and whitespace insensitive).'
-  },
+  ...DEFAULT_OPTIONS,
   {
     name: 'force', alias: 'f', type: Boolean, defaultValue: false,
-    description: 'Overwrite the target directory even if it is not empty.'
+    description: 'Overwrite input directory even if it is not empty.'
   }
 ]
 
 const USAGE = [
   {
     header: 'example/get.js',
-    content: 'Download remote files, unpack compressed or archive files, and execute shell commands to prepare source files for processing. By default, each source is assigned to the directory `data/${source.props.id}/input` (see `example/load.js`).'
+    content: 'Download remote files, unpack compressed or archive files, and execute shell commands to prepare source files for processing.'
   },
   {
     header: 'Options',
@@ -46,19 +36,11 @@ try {
   console.log(commandLineUsage(USAGE))
   process.exit(1)
 }
-if (options.contries) {
-  options.contries = options.countries.map(x =>
-    x.toLowerCase().replace('\s*', ''))
-}
 
-// Filter sources
-sources = sources.
-  filter(source => !options.ids || options.ids.includes(source.props.id)).
-  filter(source => !options.countries ||
-    options.countries.includes(
-      source.props.country.toLowerCase().replace('\s*', '')
-    )
-  )
+process.exit(0)
+
+// Load sources
+const sources = loadSources(options.ids, options.countries, options.dir)
 
 // Get sources
 const success = []
@@ -66,7 +48,7 @@ const failure = []
 const skip = []
 async function getSource(source) {
   try {
-    const paths = await source.get(overwrite = options.force)
+    const paths = await source.get(options.force)
     if (paths.length) {
       success.push(source.props.id)
     } else {

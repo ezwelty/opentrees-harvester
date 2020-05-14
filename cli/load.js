@@ -15,9 +15,9 @@ const DEFAULT_OPTIONS = [
     description: 'Restrict to these source countries (case and whitespace insensitive).'
   },
   {
-    name: 'dir', alias: 'd', type: String, defaultValue: 'data/${s.id}/input',
+    name: 'dir', alias: 'd', type: String, defaultValue: 'data/${id}/input',
     // Escape special characters for chalk. See https://github.com/Polymer/tools/pull/612
-    description: "Template for input directory, where source properties are represented by 's' (default: 'data/${s.id}/input').".
+    description: "Template for input directory, with source properties referred to by name (default: 'data/${id}/input').".
       replace(/[{}\\]/g, '\\$&')
   }
 ]
@@ -26,12 +26,18 @@ const DEFAULT_OPTIONS = [
  * Interpolate string as template with values from object.
  * 
  * @param {string} x - String to interpolate
- * @param {object} s - Object with properties to use for interpolation
+ * @param {object} obj - Object with properties to use for interpolation
  * @example
- * interpolateString('data/${s.id}/input', {id: 'melbourne'})
+ * interpolateString('data/${id}/${id}/input', {id: 'melbourne'})
+ * interpolateString('data/${ids}/input', {id: 'melbourne'})
  */
-function interpolateString(x, s) {
-  return eval(`\`${x.replace(/`/g, '\\`')}\``)
+function interpolateString(x, obj) {
+  let ix = x
+  let match
+  while ((match = ix.match(/\$\{([^\}]*)\}/))) {
+    ix = ix.replace(match[0], obj[match[1]])
+  }
+  return ix
 }
 
 /**

@@ -8,9 +8,9 @@ const { modifyCrosswalk } = require('../lib/cleaners')
 const OPTIONS = [
   ...DEFAULT_OPTIONS,
   {
-    name: 'out', alias: 'o', type: String, defaultValue: 'data/${s.id}/output/output.csv',
+    name: 'out', alias: 'o', type: String, defaultValue: 'data/${id}/output/output.csv',
     // Escape special characters for chalk. See https://github.com/Polymer/tools/pull/612
-    description: "Template for output file, where source properties are represented by 's' (default: 'data/${s.id}/output/output.csv').".
+    description: "Template for output file, with source properties referred to by name (default: 'data/${id}/output/output.csv').".
       replace(/[{}\\]/g, '\\$&')
   },
   {

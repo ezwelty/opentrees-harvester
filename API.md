@@ -138,6 +138,7 @@ file is created (see [getVrt](#Source+getVrt)).
 | [options.keepGeometryFields] | <code>boolean</code> | <code>false</code> | Whether to keep the input feature geometry fields. Applies only to inputs for which a VRT file is written (see [getVrt](#Source+getVrt)) and if `options.keepFields` is also `true`. |
 | [options.prefix=] | <code>string</code> |  | String to append to input field names to prevent collisions with output field names. Applies only if `options.keepFields` is `true`. |
 | [options.bounds] | <code>Array.&lt;number&gt;</code> |  | Bounding box in output SRS (`options.srs`) in the format [xmin, ymin, xmax, ymax]. If provided, features outside the bounds are skipped. |
+| [options.delFunc] | <code>function</code> |  | Function that takes an object (of feature field values after the crosswalk) and returns a value (e.g. `obj => obj.description === 'vacant site'`). The feature is excluded from the output if the returned value evaluates to `true`. |
 
 
 * * *

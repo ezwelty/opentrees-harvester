@@ -4,6 +4,7 @@ const commandLineUsage = require('command-line-usage')
 const commandLineArgs = require('command-line-args')
 const { loadSources, interpolateString, DEFAULT_OPTIONS } = require('./load')
 const { modifyCrosswalk } = require('../lib/convert')
+const { deleteFeature } = require('../lib/clean')
 
 const OPTIONS = [
   ...DEFAULT_OPTIONS,
@@ -77,7 +78,8 @@ const processOptions = {
   keepInvalid: options.keepInvalid,
   keepFields: options.keepFields,
   prefix: options.prefix,
-  bounds: options.bounds
+  bounds: options.bounds,
+  delFunc: deleteFeature
 }
 sources.forEach(source => {
   const file = interpolateString(options.out, source.props)

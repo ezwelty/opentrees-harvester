@@ -501,6 +501,7 @@ Properties used by [Source](#Source) for data processing.
 | id | <code>string</code> | Identifier prepended to console output. |
 | download | <code>string</code> \| <code>Array.&lt;string&gt;</code> | Path to remote files to download and unpack. |
 | execute | <code>string</code> \| <code>Array.&lt;string&gt;</code> | Shell commands executed from working directory (`Source.dir`) after file download and unpack. In `npm run` commands, prepend the `INIT_CWD` variable to paths to the files (https://docs.npmjs.com/cli/run-script). |
+| filename | <code>string</code> | Glob pattern (relative to working directory) used to find the file to read. Only needed when there are multiple files and either none or multiple have extensions recognized by GDAL. |
 | srs | <code>string</code> | Spatial reference system in any format supported by [OGRSpatialReference.SetFromUserInput()](https://gdal.org/api/ogrspatialref.html#classOGRSpatialReference_1aec3c6a49533fe457ddc763d699ff8796). |
 | geometry | <code>object</code> | Geometry field names for formats without explicit geometries (e.g. tabular text files like CSV). If not provided, will attempt to guess from field names. |
 | geometry.wkt | <code>string</code> | Name of field with well-known-text (wkt) geometry. If provided, takes precedence over x, y. |

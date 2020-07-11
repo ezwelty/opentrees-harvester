@@ -157,18 +157,18 @@ Get layer field names and GDAL data types.
 <a name="Source+sample"></a>
 
 ### source.sample([options]) ⇒ <code>object.&lt;string, Array&gt;</code>
-Sample unique field values from input.
+Sample field values from input.
 
 **Kind**: instance method of [<code>Source</code>](#Source)  
-**Returns**: <code>object.&lt;string, Array&gt;</code> - Object of unique field values with field
-names as keys.  
+**Returns**: <code>object.&lt;string, Array&gt;</code> - Object of field values with field names as keys.  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [options] | <code>object</code> |  |  |
 | [options.n] | <code>number</code> | <code>1000</code> | Maximum number of features to sample. |
-| [options.max] | <code>number</code> | <code>100</code> | Maximum number of unique values to collect for each field. |
+| [options.max] | <code>number</code> | <code>100</code> | Maximum number of values to collect for each field. |
 | [options.sort] | <code>boolean</code> | <code>true</code> | Whether to sort values. |
+| [options.unique] | <code>boolean</code> | <code>true</code> | Whether to only save unique values. |
 
 
 * * *

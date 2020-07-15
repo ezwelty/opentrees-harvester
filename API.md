@@ -30,6 +30,7 @@ Class representing a source dataset.
     * [.get([overwrite])](#Source+get) ⇒ <code>Promise.&lt;Array.&lt;string&gt;&gt;</code>
     * [.process(file, [options])](#Source+process) ⇒ <code>boolean</code>
     * [.getFields()](#Source+getFields) ⇒ <code>object</code>
+    * [.getRows([n])](#Source+getRows) ⇒ <code>Array.&lt;object&gt;</code>
     * [.sample([options])](#Source+sample) ⇒ <code>object.&lt;string, Array&gt;</code>
     * [.glimpse([options])](#Source+glimpse)
     * [.empty()](#Source+empty)
@@ -151,6 +152,20 @@ Get layer field names and GDAL data types.
 
 **Kind**: instance method of [<code>Source</code>](#Source)  
 **Returns**: <code>object</code> - Field names (keys) and GDAL data types (values)  
+
+* * *
+
+<a name="Source+getRows"></a>
+
+### source.getRows([n]) ⇒ <code>Array.&lt;object&gt;</code>
+Get feature fields.
+
+**Kind**: instance method of [<code>Source</code>](#Source)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [n] | <code>integer</code> | <code>Infinity</code> | Maximum number of features to read. |
+
 
 * * *
 

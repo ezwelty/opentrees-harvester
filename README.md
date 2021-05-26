@@ -67,6 +67,23 @@ source.get()
 // [test] Ready to process
 ```
 
+Optionally, use [`Source.find()`](API.md/#Source+find) to check that we downloaded a file recognized by GDAL, then [`Source.getRows()`](API.md/#Source+getRows) (or `Source.getFields()`, `Source.sample()`, `Source.glimpse()`, etc) to read content from the file with GDAL.
+
+```js
+source.find()
+// 'test/input/simple.csv'
+source.getRows(1)
+// [
+//   {
+//     ID: '1',
+//     LON: '145',
+//     LAT: '-37.8',
+//     NAME: 'Loquat',
+//     HEIGHT_CM: '1200'
+//   }
+// ]
+```
+
 Use [`Source.process()`](API.md/#Source+process) to process the input and write the result to a new file. In this case, this includes (1) writing a [VRT file](https://gdal.org/drivers/vector/vrt.html) to tell [GDAL](https://gdal.org) which spatial reference system and geometry field names to use when reading the input and (2) applying our schema crosswalk (`source.props.crosswalk`).
 
 ```js
@@ -82,10 +99,17 @@ We can modify the crosswalk following our conventions to apply unit conversions 
 const { modifyCrosswalk } = require('./lib/convert.js')
 source.props.crosswalk = modifyCrosswalk(source.props.crosswalk)
 // { ref: 'ID', common: [Function], height: [Function] }
-source.process('test/output/output-clean.csv')
-// [test] Processing test/input/simple.csv
-// [test] Writing and reading VRT file
-// [test] Wrote output: test/output/output-clean.csv
+source.process('test/output/output.csv', {overwrite: true})
+```
+
+Finally, the result can also be inspected using the `Source` class.
+
+```js
+const out = new Source({id: 'out'}, 'test/output')
+out.find()
+// 'test/output/output.csv'
+out.getRows(1)
+// [ { ref: '1', common: 'loquat', height: '12' } ]
 ```
 
 ## Target schema

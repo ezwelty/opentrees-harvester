@@ -56,11 +56,11 @@ function reduceString(x) {
  *
  * @param {string[]} ids - Return only sources with these identifiers
  * @param {string[]} countries - Return only source with these countries
- * @param {string} [dir=data/${s.id}/input] - Working directory path (template
+ * @param {string} [dir=data/${id}/input] - Working directory path (template
  * to interpolate)
  * @return {Source[]}
  */
-function loadSources(ids, countries, dir = 'data/${s.id}/input') {
+function loadSources(ids, countries, dir = 'data/${id}/input') {
   // Load source properties
   const sourceProps = glob.sync(`${__dirname}/../sources/**/*.js`).
     map(file => require(file)).

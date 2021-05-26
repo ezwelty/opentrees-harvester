@@ -76,10 +76,10 @@ source.process('test/output/output.csv')
 // [test] Wrote output: test/output/output.csv
 ```
 
-We can modify the crosswalk following our conventions to apply unit conversions and other cleaning steps (see [`lib/cleaners.js`](lib/cleaners.js)). In this case, `height_cm` (in centimeters) is automatically converted to standard `height` (in meters).
+We can modify the crosswalk following our conventions to apply unit conversions and other cleaning steps (see [`lib/convert.js`](lib/convert.js)). In this case, `height_cm` (in centimeters) is automatically converted to standard `height` (in meters).
 
 ```js
-const { modifyCrosswalk } = require('./lib/cleaners.js')
+const { modifyCrosswalk } = require('./lib/convert.js')
 source.props.crosswalk = modifyCrosswalk(source.props.crosswalk)
 // { ref: 'ID', common: [Function], height: [Function] }
 source.process('test/output/output-clean.csv')

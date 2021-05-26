@@ -146,7 +146,6 @@ module.exports = [
         '1m - 2m': 2,
         '2m - 3m': 3
       })[x['Circum (Inspection)']],
-      dbh_max: '',
       health: x => 'Vigour (Inspection)',
       height: 'Height (Inspection)',
       structure: 'Structure (Inspection)',

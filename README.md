@@ -90,6 +90,7 @@ source.process('test/output/output-clean.csv')
 
 ## Target schema
 
+- [Conventions](#conventions)
 - [Links](#links)
 - [Name & Gender](#name-&-gender)
 - [Dimension](#dimension)
@@ -99,22 +100,24 @@ source.process('test/output/output-clean.csv')
 
 The ultimate goal is to harmonize the many disparate source datasets to a common schema, described below.
 
-### General recommendations
+### Conventions
 
-Date fields should follow the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format `YYYY-MM-DDThh:mm:ss(Z|±hh:mm)` or a subset thereof (e.g. `YYYY-MM-DD`, `YYYY`).
+Spatial coordinates use WGS84 (EPSG:4326) decimal degrees.
 
-Numeric and date ranges can be expressed by appending `_min` and `_max` to the field name. For example, "planted in the 1950s" becomes `planted_min`: `1950`, `planted_max`: `1959`. Unbounded ranges leave out either `_min` or `_max`. For example, "height > 5 m" becomes `height_min`: `5`. For fields representing a range as a string, append `_range` to the field name for automatic parsing of the range downstream (e.g. `height_range` to `height_min`, `height_max`).
+Date fields follow the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format `YYYY-MM-DDThh:mm:ss(Z|±hh:mm)` or a subset thereof (e.g. `YYYY-MM-DD`, `YYYY`).
 
-Numeric fields should be tagged with a unit (if known) for automatic unit conversion downstream (e.g. `height_m`, `height_m_min`):
+Numeric fields use SI units: meters for length and kilograms for mass. In schema crosswalks, the original unit (if known) is appended to the field name for downstream unit conversion (e.g. `height_cm` in centimeters -> `height` in standard unit):
 
 - Length
+  - `_m`: meters (standard)
   - `_cm`: centimeters
-  - `_m`: meters
   - `_in`: inches
   - `_ft`: feet
 - Mass
-  - `_kg`: kilograms
+  - `_kg`: kilograms (standard)
   - `_lb`: pounds
+
+Numeric and date ranges use the field name suffixes `_min` and `_max`. For example, "planted in the 1950s" becomes `planted_min`: `50`, `planted_max`: `59`. A missing `_min` or `_max` indicates an unbounded range. For example, "height > 5 m" becomes `height_min`: `5`, `height_max`: `null`. In schema crosswalks, the `_range` suffix is added to fields representing a range as a string for downstream parsing (e.g. `height_m_range`: `0-1m` -> `height_min`: `0`, `height_max`: `1`).
 
 ### Links
 
@@ -143,12 +146,12 @@ Numeric fields should be tagged with a unit (if known) for automatic unit conver
 | name | description |
 | -- | -- |
 `count` | Number of individuals, if more than `1` (the default).
-`height` | Height in meters.
-`dbh` | Diameter of trunk at breast height in centimeters.
-`crown` | Crown spread (average diameter of crown) in meters.
+`height` | Height.
+`dbh` | Diameter of trunk at breast height.
+`crown` | Crown spread (average diameter of crown).
 `stems` | Number of stems.
 | *Secondary* | |
-`circumference` | Circumference of trunk in centimeters (converted to `dbh` downstream).
+`circumference` | Circumference of trunk (converted to `dbh` downstream).
 
 ### Condition
 
@@ -181,8 +184,8 @@ Numeric fields should be tagged with a unit (if known) for automatic unit conver
 `owner` | Name or description of owner.
 `manager` | Name or description of manager or maintainer.
 `value` | Monetary value in the local currency.
-`carbon` | Carbon storage in kilograms.
-`carbon_annual` | Carbon storage in kilograms per year.
+`carbon` | Carbon storage (mass).
+`carbon_annual` | Carbon storage (mass) per year.
 `edible` | Edible flag: [`true`, `false`, `fruit`, `nut`].
 `harvest` | Notes about when or how to harvest.
 `notable` | Designation as notable: [`champion`, `heritage`, `memorial`, `veteran`, `historic`, `remarquable` (fr)].

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-const colors = require('colors')
 const commandLineUsage = require('command-line-usage')
 const commandLineArgs = require('command-line-args')
-const { loadSources, DEFAULT_OPTIONS } = require('./load')
+const { DEFAULT_OPTIONS } = require('./common')
+const { loadSources } = require('../lib/load')
 
 const OPTIONS = [
   ...DEFAULT_OPTIONS,
@@ -38,7 +38,11 @@ try {
 }
 
 // Load sources
-const sources = loadSources(options.ids, options.countries, options.dir)
+const sources = loadSources(
+  `${__dirname}/../sources`,
+  { ids: options.ids, countries: options.countries },
+  options.dir
+)
 
 // Get sources
 const success = []

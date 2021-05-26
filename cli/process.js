@@ -2,9 +2,10 @@
 const colors = require('colors')
 const commandLineUsage = require('command-line-usage')
 const commandLineArgs = require('command-line-args')
-const { loadSources, interpolateString, DEFAULT_OPTIONS } = require('./load')
-const { modifyCrosswalk } = require('../lib/convert')
+const { DEFAULT_OPTIONS } = require('./common')
+const { loadSources } = require('../lib/load')
 const { deleteFeature } = require('../lib/clean')
+const { interpolateString } = require('../lib/helpers')
 
 const OPTIONS = [
   ...DEFAULT_OPTIONS,
@@ -66,7 +67,11 @@ try {
 }
 
 // Load sources
-const sources = loadSources(options.ids, options.countries, options.dir)
+const sources = loadSources(
+  `${__dirname}/../sources`,
+  { ids: options.ids, countries: options.countries },
+  options.dir
+)
 
 // Process sources
 const success = []
@@ -83,8 +88,6 @@ const processOptions = {
 }
 sources.forEach(source => {
   const file = interpolateString(options.out, source.props)
-  // Modify crosswalk for unit conversions and range parsing
-  source.props.crosswalk = modifyCrosswalk(source.props.crosswalk)
   try {
     const result = source.process(file, processOptions)
     if (result) success.push(source.props.id)

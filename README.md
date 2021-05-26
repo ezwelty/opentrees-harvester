@@ -112,6 +112,56 @@ out.getRows(1)
 // [ { ref: '1', common: 'loquat', height: '12' } ]
 ```
 
+### Scientific name matching
+
+Plant scientific names in our input datasets are frequently misspelled or deprecated synonyms of accepted names.
+Modules [`lib/names.js`](lib/names.js) and [`lib/taxamatch.js`](lib/taxamatch.js) incude tools to parse scientific names and match them to a reference taxonomy using exact, phonetic, and fuzzy matching.
+
+The example below loads a trivial taxonomy for speed. In practice, the taxonomy of all vascular plants in the [Catalogue of Life](https://www.catalogueoflife.org) is used as the reference (see [`lib/col.js`](lib/col.js)).
+
+```js
+const taxamatch = require('./lib/taxamatch')
+const { ScientificName } = require('./lib/names')
+
+const taxa = [
+  { id: 0, genus: 'Malus' },
+  { id: 1, genus: 'Malus', species: 'pumila' }
+]
+const matcher = new taxamatch.Matcher(taxa, 'id')
+sciname = ScientificName.fromFields({ scientific: 'Malus punila' })
+// ScientificName {
+//   parsed: { genus: 'Malus', species: 'punila' },
+//   input: { scientific: 'Malus punila' }
+// }
+sciname.matches = matcher.match(sciname.parsed)
+console.log(JSON.stringify(sciname.report(), null, 2))
+// {
+//   "input": {
+//     "scientific": "Malus punila"
+//   },
+//   "parsed": {
+//     "genus": "Malus",
+//     "species": "punila"
+//   },
+//   "matches": [
+//     {
+//       "fuzzy": [
+//         1,
+//         0.8333333333333334
+//       ],
+//       "taxon": {
+//         "id": 1,
+//         "genus": "Malus",
+//         "species": "pumila"
+//       }
+//     }
+//   ],
+//   "warnings": [
+//     "Fuzzy match"
+//   ]
+// }
+```
+
 ## Target schema
 
 - [Conventions](#conventions)

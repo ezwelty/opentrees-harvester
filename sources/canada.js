@@ -250,6 +250,7 @@ module.exports = [
     short: 'White Rock',
     long: 'City of White Rock',
     download: 'http://wroms.whiterockcity.ca/opendata/GIS/Data/Spatial/Parks/SHP/Tree.zip',
+    filename: '**/Tree.shp',
     info: 'http://data.whiterockcity.ca/dataset/tree',
     crosswalk: {
       scientific: 'SpeciesNam',

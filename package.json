@@ -6,7 +6,7 @@
   "scripts": {
     "get": "./cli/get.js",
     "process": "./cli/process.js",
-    "apidoc": "jsdoc2md lib/*.js --no-cache --separators > API.md",
+    "docs": "jsdoc2md lib/*.js --no-cache --separators > API.md",
     "replace": "replace"
   },
   "author": "Steve Bennett <me@stevebennett.me> (http://stevebennett.me)",

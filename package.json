@@ -1,17 +1,17 @@
 {
-  "name": "opentrees-data",
-  "version": "1.0.0",
+  "name": "opentrees-harvester",
+  "version": "0.1.0",
   "description": "Data processing pipeline for open tree inventories.",
-  "main": "source.js",
+  "main": "./lib/source.js",
   "scripts": {
     "get": "./cli/get.js",
     "process": "./cli/process.js",
-    "docs": "jsdoc2md lib/*.js --no-cache --separators > API.md",
+    "docs": "jsdoc2md ./lib/*.js --no-cache --separators > API.md",
     "replace": "replace"
   },
-  "author": "Steve Bennett <me@stevebennett.me> (http://stevebennett.me)",
+  "author": "Ethan Welty <ethan@fallingfruit.org> (https://fallingfruit.org)",
   "contributors": [
-    "Ethan Welty <ethan@fallingfruit.org> (https://fallingfruit.org)"
+    "Steve Bennett <me@stevebennett.me> (http://stevebennett.me)"
   ],
   "license": "CC-BY-NC-4.0",
   "engines": {

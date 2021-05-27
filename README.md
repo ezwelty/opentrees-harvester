@@ -14,7 +14,7 @@ Scripts that fetch and process data about inventoried trees and other plants fro
 ```bash
 git clone https://github.com/ezwelty/opentrees-data.git
 cd opentrees-data
-npm install
+yarn
 ```
 
 ## Usage
@@ -28,8 +28,8 @@ Each source dataset is described as a Javascript `object` following the format d
 The command line interface provides a quick way to process all or a subset of the source datasets. See each command's help message:
 
 ```bash
-npm run get -- -h
-npm run process -- -h
+yarn run get -h
+yarn run process -h
 ```
 
 ### Source class ([`lib/source.js`](lib/source.js))
@@ -270,5 +270,5 @@ Numeric and date ranges use the field name suffixes `_min` and `_max`. For examp
 The source code is documented using inline [JSDoc 3](https://jsdoc.app/) comments. Update the API documentation ([API.md](API.md)) from the source code by running:
 
 ```bash
-npm run apidoc
+yarn run apidoc
 ```

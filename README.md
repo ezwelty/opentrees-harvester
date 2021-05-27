@@ -1,8 +1,8 @@
-# OpenTrees data
+# Opentrees harvester
 
-Authors: Steve Bennett ([opentrees.org](https://opentrees.org)), Ethan Welty ([fallingfruit.org](https://fallingfruit.org))
+Authors: Ethan Welty ([fallingfruit.org](https://fallingfruit.org)), Steve Bennett ([opentrees.org](https://opentrees.org))
 
-Scripts that fetch and process data about inventoried trees and other plants from government and university open data sources. The result is used to generate vector tiles for display on opentrees.org.
+Scripts that fetch and process data about inventoried trees and other plants from government and university open data sources. The result is used, among other things, to populate [opentrees.org](https://opentrees.org).
 
 - [Installation](#installation)
 - [Usage](#usage)
@@ -12,8 +12,8 @@ Scripts that fetch and process data about inventoried trees and other plants fro
 ## Installation
 
 ```bash
-git clone https://github.com/ezwelty/opentrees-data.git
-cd opentrees-data
+git clone https://github.com/ezwelty/opentrees-harvester.git
+cd opentrees-harvester
 yarn
 ```
 

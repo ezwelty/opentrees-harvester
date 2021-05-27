@@ -44,7 +44,7 @@ const Source = require('./lib/source')
 const source = new Source(
   props = { 
     id: 'test',
-    download: 'https://raw.githubusercontent.com/ezwelty/opentrees-data/rewrite/tests/simple.csv',
+    download: 'https://raw.githubusercontent.com/ezwelty/opentrees-harvester/main/tests/simple.csv',
     geometry: { x: 'LON', y: 'LAT' },
     srs: 'EPSG:4326',
     crosswalk: {

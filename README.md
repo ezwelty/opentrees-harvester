@@ -34,7 +34,7 @@ yarn run process -h
 
 ### Source class ([`lib/source.js`](lib/source.js))
 
-The `Source` class wraps source properties to facilitate data processing. All methods are documented at [`API.md#Source`](API.md#Source).
+The `Source` class wraps source properties to facilitate data processing. All methods are documented at [`API.md`](API.md#module_source..Source).
 
 Here is a simple example using the included [`tests/simple.csv`](tests/simple.csv):
 
@@ -57,7 +57,7 @@ const source = new Source(
 )
 ```
 
-Use [`Source.get()`](API.md/#Source+get) to download remote files (`source.props.download`) to the source directory (`source.dir`) and prepare them for processing.
+Use [`Source.get()`](API.md/#module_source..Source+get) to download remote files (`source.props.download`) to the source directory (`source.dir`) and prepare them for processing.
 
 ```js
 source.get()
@@ -67,7 +67,7 @@ source.get()
 // [test] Ready to process
 ```
 
-Optionally, use [`Source.find()`](API.md/#Source+find) to check that we downloaded a file recognized by GDAL, then [`Source.getRows()`](API.md/#Source+getRows) (or `Source.getFields()`, `Source.sample()`, `Source.glimpse()`, etc) to read content from the file with GDAL.
+Optionally, use [`Source.find()`](API.md/#module_source..Source+find) to check that we downloaded a file recognized by GDAL, then [`Source.getRows()`](API.md/#module_source..Source+getRows) (or `Source.getFields()`, `Source.sample()`, `Source.glimpse()`, etc) to read content from the file with GDAL.
 
 ```js
 source.find()
@@ -84,7 +84,7 @@ source.getRows(1)
 // ]
 ```
 
-Use [`Source.process()`](API.md/#Source+process) to process the input and write the result to a new file. In this case, this includes (1) writing a [VRT file](https://gdal.org/drivers/vector/vrt.html) to tell [GDAL](https://gdal.org) which spatial reference system and geometry field names to use when reading the input and (2) applying our schema crosswalk (`source.props.crosswalk`).
+Use [`Source.process()`](API.md/#module_source..Source+process) to process the input and write the result to a new file. In this case, this includes (1) writing a [VRT file](https://gdal.org/drivers/vector/vrt.html) to tell [GDAL](https://gdal.org) which spatial reference system and geometry field names to use when reading the input and (2) applying our schema crosswalk (`source.props.crosswalk`).
 
 ```js
 source.process('test/output/output.csv')

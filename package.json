@@ -7,7 +7,8 @@
     "get": "./cli/get.js",
     "process": "./cli/process.js",
     "docs": "jsdoc2md ./lib/*.js --no-cache --separators > API.md",
-    "replace": "replace"
+    "replace": "replace",
+    "test": "jest tests/*.js"
   },
   "author": "Ethan Welty <ethan@fallingfruit.org> (https://fallingfruit.org)",
   "contributors": [
@@ -32,6 +33,12 @@
     "table": "^5.4.6"
   },
   "devDependencies": {
+    "jest": "^27.0.1",
     "jsdoc-to-markdown": "^5.0.3"
+  },
+  "jest": {
+    "modulePaths": [
+      "<rootDir>"
+    ]
   }
 }

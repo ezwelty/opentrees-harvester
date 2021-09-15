@@ -121,4 +121,4 @@ module.exports = [
       height: 'om_altura'
     }
   },
-].map(s => ({ ...s, country: 'Portugal' }))
+].map(s => ({ ...s, country: 'Spain' }))

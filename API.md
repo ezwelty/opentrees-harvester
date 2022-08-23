@@ -239,7 +239,7 @@ Build scientific name from feature fields.
 ```js
 ScientificName.fromFields({ scientific: 'Malus pumila', other: 'Bloop' })
 // ScientificName {
-//   parsed: { scientific: 'Malus pumila', genus: 'Malus', species: 'pumila' },
+//   parsed: { genus: 'Malus', species: 'pumila' },
 //   input: { scientific: 'Malus pumila' }
 // }
 ScientificName.fromFields({ genus: 'malus', species: 'PLATANOÏDES' })
@@ -751,8 +751,9 @@ Class representing a source dataset.
 #### source.get([overwrite]) ⇒ <code>Promise.&lt;Array.&lt;string&gt;&gt;</code>
 Prepare remote source data for processing.
 
-Downloads remote files (`this.props.download`), unpacks compressed or
-archive files, and executes shell commands (`this.props.execute`).
+Downloads remote data (`this.props.download`, `this.props.featureLayer`),
+unpacks compressed or archive files,
+and executes shell commands (`this.props.execute`).
 
 **Kind**: instance method of [<code>Source</code>](#module_source..Source)  
 **Returns**: <code>Promise.&lt;Array.&lt;string&gt;&gt;</code> - Resolves to the paths of the downloaded and
@@ -1090,6 +1091,7 @@ Properties used by [Source](Source) for data processing.
 | --- | --- | --- |
 | id | <code>string</code> | Identifier prepended to console output. |
 | download | <code>string</code> \| <code>Array.&lt;string&gt;</code> | Path to remote files to download and unpack. |
+| featureLayer | <code>string</code> | Path to ArcGIS Feature Server layer. See https://developers.arcgis.com/rest/services-reference/enterprise/query-feature-service-layer-.htm. |
 | execute | <code>string</code> \| <code>Array.&lt;string&gt;</code> | Shell commands executed from working directory (`Source.dir`) after file download and unpack. In `npm run` commands, prepend the `INIT_CWD` variable to paths to the files (https://docs.npmjs.com/cli/run-script). |
 | filename | <code>string</code> | Glob pattern (relative to working directory) used to find the file to read. Only needed when there are multiple files and either none or multiple have extensions recognized by GDAL. |
 | srs | <code>string</code> | Spatial reference system in any format supported by [OGRSpatialReference.SetFromUserInput()](https://gdal.org/api/ogrspatialref.html#classOGRSpatialReference_1aec3c6a49533fe457ddc763d699ff8796). |

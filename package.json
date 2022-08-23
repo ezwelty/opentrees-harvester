@@ -28,6 +28,7 @@
     "fuzzyset.js": "^1.0.5",
     "gdal-next": "^2.8.0",
     "glob": "^7.1.2",
+    "lodash.isequal": "^4.5.0",
     "node-downloader-helper": "^1.0.12",
     "replace": "^1.1.5",
     "table": "^5.4.6"

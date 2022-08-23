@@ -59,10 +59,31 @@ Parse scientific names.
             * [.fromString(str)](#module_names..ScientificName.fromString) ⇒ <code>ScientificName</code>
             * [.fromFields(fields)](#module_names..ScientificName.fromFields) ⇒ <code>ScientificName</code>
             * [.compareStrings(options)](#module_names..ScientificName.compareStrings) ⇒ <code>function</code>
-    * [~parseScientificName(name)](#module_names..parseScientificName) ⇒ <code>ParsedScientificName</code>
+    * [~GENERIC](#module_names..GENERIC)
+    * [~SPECIFIC](#module_names..SPECIFIC)
+    * [~SUBG](#module_names..SUBG)
+    * [~SP](#module_names..SP)
+    * [~RANKS](#module_names..RANKS)
+    * [~RANK](#module_names..RANK)
+    * [~HEAD](#module_names..HEAD)
+    * [~UNINOMIAL](#module_names..UNINOMIAL)
+    * [~GENUS](#module_names..GENUS)
+    * [~HYBRID_GENUS](#module_names..HYBRID_GENUS)
+    * [~SUBGENUS](#module_names..SUBGENUS)
+    * [~SPECIES](#module_names..SPECIES)
+    * [~INFRASPECIES](#module_names..INFRASPECIES)
+    * [~RANK_EPITHET](#module_names..RANK_EPITHET)
+    * [~CULTIVAR](#module_names..CULTIVAR)
+    * [~FIRST](#module_names..FIRST)
+    * [~HYBRID](#module_names..HYBRID)
+    * [~cleanName(s)](#module_names..cleanName) ⇒ <code>string</code>
+    * [~parseInfraspecies(s)](#module_names..parseInfraspecies) ⇒ <code>Array.&lt;Infraspecies&gt;</code>
+    * [~printInfraspecies(infraspecies, options)](#module_names..printInfraspecies) ⇒ <code>string</code>
     * [~printScientificName(name, [options])](#module_names..printScientificName) ⇒ <code>string</code>
+    * [~formatScientificName(name, defaultGenus)](#module_names..formatScientificName) ⇒ <code>ParsedScientificName</code>
+    * [~parseScientificName(name)](#module_names..parseScientificName) ⇒ <code>ParsedScientificName</code>
+    * [~Infraspecies](#module_names..Infraspecies) : <code>object</code>
     * [~ParsedScientificName](#module_names..ParsedScientificName) : <code>object</code>
-    * [~ParsedInfraspecies](#module_names..ParsedInfraspecies) : <code>object</code>
 
 
 * * *
@@ -122,6 +143,7 @@ Print scientific name to string.
 **Example**  
 ```js
 ScientificName.fromString(`Malus pumila var. asiatica 'Gala'`).toString()
+// "Malus pumila var. asiatica 'Gala'"
 ```
 
 * * *
@@ -135,7 +157,9 @@ Get warnings.
 **Example**  
 ```js
 ScientificName.fromString('... Malus x pumila ...').warnings()
+// [ 'Unparsed head', 'Unparsed tail', 'Hybrid' ]
 ScientificName.fromFields({genus: 'Malus', species: 'pumila', scientific: 'Pyrus communis'}).warnings()
+// [ 'Inconsistent secondary fields: genus, species' ]
 ```
 
 * * *
@@ -149,6 +173,7 @@ Get errors.
 **Example**  
 ```js
 (new ScientificName({species: 'pumila'})).errors()
+// [ 'Missing genus' ]
 ```
 
 * * *
@@ -162,6 +187,17 @@ Get full report.
 **Example**  
 ```js
 ScientificName.fromString('... Malus x pumila ...').report()
+// {
+//    input: '... Malus x pumila ...',
+//    parsed: {
+//      head: '... ',
+//      genus: 'Malus',
+//      species: 'pumila',
+//      hybrid: true,
+//      tail: '...'
+//    },
+//    warnings: [ 'Unparsed head', 'Unparsed tail', 'Hybrid' ]
+// }
 ```
 
 * * *
@@ -180,6 +216,10 @@ Build scientific name from string.
 **Example**  
 ```js
 ScientificName.fromString('Malus pumila')
+// ScientificName {
+//   parsed: { genus: 'Malus', species: 'pumila' },
+//   input: 'Malus pumila'
+// }
 ```
 
 * * *
@@ -198,7 +238,15 @@ Build scientific name from feature fields.
 **Example**  
 ```js
 ScientificName.fromFields({ scientific: 'Malus pumila', other: 'Bloop' })
-ScientificName.fromFields({ genus: 'Malus', species: 'platanoïdes' })
+// ScientificName {
+//   parsed: { scientific: 'Malus pumila', genus: 'Malus', species: 'pumila' },
+//   input: { scientific: 'Malus pumila' }
+// }
+ScientificName.fromFields({ genus: 'malus', species: 'PLATANOÏDES' })
+// ScientificName {
+//   parsed: { genus: 'Malus', species: 'platanoides' },
+//   input: { genus: 'malus', species: 'PLATANOÏDES'}
+// }
 ```
 
 * * *
@@ -219,39 +267,254 @@ Generate compare function for sorting by string representation.
 ```js
 l = [new ScientificName({genus: 'Prunus'}), new ScientificName({genus: 'Malus'})]
 l.sort(ScientificName.compareStrings())
+// [
+//   ScientificName { parsed: { genus: 'Malus' } },
+//   ScientificName { parsed: { genus: 'Prunus' } }
+// ]
 ```
 
 * * *
 
-<a name="module_names..parseScientificName"></a>
+<a name="module_names..GENERIC"></a>
 
-### names~parseScientificName(name) ⇒ <code>ParsedScientificName</code>
-Parse scientific name.
+### names~GENERIC
+Generic epithet.
+
+Minimum two letters.
+Dash can be within three letters of end (e.g. 'Uva-ursi', 'Filix-mas').
+
+**Kind**: inner constant of [<code>names</code>](#module_names)  
+
+* * *
+
+<a name="module_names..SPECIFIC"></a>
+
+### names~SPECIFIC
+Specifc epithet.
+
+Minimum two letters.
+Dashes can be within one letter of end (e.g. 's-stylata', 'laurel-y').
+
+**Kind**: inner constant of [<code>names</code>](#module_names)  
+
+* * *
+
+<a name="module_names..SUBG"></a>
+
+### names~SUBG
+Subgenus rank.
+
+subg: subg(.) | subgen(.) | subgenus
+
+**Kind**: inner constant of [<code>names</code>](#module_names)  
+
+* * *
+
+<a name="module_names..SP"></a>
+
+### names~SP
+Species rank.
+
+sp: sp(.), spp(.), species
+
+**Kind**: inner constant of [<code>names</code>](#module_names)  
+
+* * *
+
+<a name="module_names..RANKS"></a>
+
+### names~RANKS
+Infraspecific ranks.
+
+subsp: subsp(.) | subspp(.) | ssp(.) | sspp(.) | subspecies
+var: var(.) | variety | varietas
+subvar: subvar(.), subvariety, subvarietas
+f: f(.) | form | forma
+subf: subf(.) | subform | subforma
+
+**Kind**: inner constant of [<code>names</code>](#module_names)  
+
+* * *
+
+<a name="module_names..RANK"></a>
+
+### names~RANK
+Any infraspecific rank.
+
+**Kind**: inner constant of [<code>names</code>](#module_names)  
+
+* * *
+
+<a name="module_names..HEAD"></a>
+
+### names~HEAD
+Everything before the first (latin) letter or hybrid symbol.
+
+**Kind**: inner constant of [<code>names</code>](#module_names)  
+
+* * *
+
+<a name="module_names..UNINOMIAL"></a>
+
+### names~UNINOMIAL
+Uninomial.
+
+**Kind**: inner constant of [<code>names</code>](#module_names)  
+
+* * *
+
+<a name="module_names..GENUS"></a>
+
+### names~GENUS
+Genus.
+
+Identical to uninomial, but inferred to be a genus based on context.
+
+**Kind**: inner constant of [<code>names</code>](#module_names)  
+
+* * *
+
+<a name="module_names..HYBRID_GENUS"></a>
+
+### names~HYBRID\_GENUS
+Secondary genus in hybrid formula.
+
+May be abbreviated down to a single letter.
+
+**Kind**: inner constant of [<code>names</code>](#module_names)  
+
+* * *
+
+<a name="module_names..SUBGENUS"></a>
+
+### names~SUBGENUS
+Subgenus.
+
+**Kind**: inner constant of [<code>names</code>](#module_names)  
+
+* * *
+
+<a name="module_names..SPECIES"></a>
+
+### names~SPECIES
+Species.
+
+**Kind**: inner constant of [<code>names</code>](#module_names)  
+
+* * *
+
+<a name="module_names..INFRASPECIES"></a>
+
+### names~INFRASPECIES
+One or more infraspecific epithets, each preceded by an optional rank.
+
+**Kind**: inner constant of [<code>names</code>](#module_names)  
+
+* * *
+
+<a name="module_names..RANK_EPITHET"></a>
+
+### names~RANK\_EPITHET
+Single infraspecific epithet preceded by an optional rank.
+
+**Kind**: inner constant of [<code>names</code>](#module_names)  
+
+* * *
+
+<a name="module_names..CULTIVAR"></a>
+
+### names~CULTIVAR
+Cultivar.
+
+Must be wrapped in quotes and not include certain characters.
+
+**Kind**: inner constant of [<code>names</code>](#module_names)  
+
+* * *
+
+<a name="module_names..FIRST"></a>
+
+### names~FIRST
+Parse a scientific name (or the first name in a hybrid formula).
+
+Each key is a regular expression with named capture groups. Try each in
+order. As soon as a match is found, proceed to the children keys and repeat
+until `null` or no more children are found. Any `tags`, if encountered, are
+added to the result.
+
+**Kind**: inner constant of [<code>names</code>](#module_names)  
+
+* * *
+
+<a name="module_names..HYBRID"></a>
+
+### names~HYBRID
+Parse a secondary name in a hybrid formula.
+
+**Kind**: inner constant of [<code>names</code>](#module_names)  
+
+* * *
+
+<a name="module_names..cleanName"></a>
+
+### names~cleanName(s) ⇒ <code>string</code>
+Clean name string.
+
+- Latinizes characters.
+- Replaces whitespace sequences with a single space.
+- Removes leading and trailing whitespace.
 
 **Kind**: inner method of [<code>names</code>](#module_names)  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| name | <code>string</code> | Scientific name to parse |
+| Param | Type |
+| --- | --- |
+| s | <code>string</code> | 
 
 **Example**  
 ```js
-parseScientificName(`Genus`)
-parseScientificName(`Genus sp.`)
-parseScientificName(`Genus 'Cultivar'`)
-parseScientificName(`Genus sp. 'Cultivar'`)
-parseScientificName(`Genus subgen. Subgenus`)
-parseScientificName(`Genus x`)
-parseScientificName(`Genus x speciosa`)
-parseScientificName(`Genus ×speciosa`)
-parseScientificName(`Genus speciosa`)
-parseScientificName(`Genus speciosa infraspecies`)
-parseScientificName(`Genus speciosa var. subspeciosa f formosa 'Cultivar'`)
-parseScientificName(`Hibiscus-falsa rosa-sinensis ima-gina`)
-parseScientificName(`Genus hybrid`) // { genus: 'Genus', hybrid: true }
-parseScientificName(`Genus hybrida`) // { genus: 'Genus', species: 'hybrida' }
-parseScientificName(`Genus hybrid 'Cultivar'`) // { genus: 'Genus', hybrid: true, cultivar: 'Cultivar' }
-parseScientificName(`Acer platanoïdes`) // { genus: 'Acer', species: 'platanoides' }
+cleanName(' Acer  platanoïdes ') // 'Acer platanoides'
+```
+
+* * *
+
+<a name="module_names..parseInfraspecies"></a>
+
+### names~parseInfraspecies(s) ⇒ <code>Array.&lt;Infraspecies&gt;</code>
+Parse infraspecific ranks and epithets.
+
+**Kind**: inner method of [<code>names</code>](#module_names)  
+
+| Param | Type |
+| --- | --- |
+| s | <code>string</code> | 
+
+**Example**  
+```js
+parseInfraspecies('foo f bar') // [{epithet: 'foo'}, {rank: 'f.', epithet: 'bar'}]
+```
+
+* * *
+
+<a name="module_names..printInfraspecies"></a>
+
+### names~printInfraspecies(infraspecies, options) ⇒ <code>string</code>
+Print infraspecific ranks and epithets.
+
+**Kind**: inner method of [<code>names</code>](#module_names)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| infraspecies | <code>Array.&lt;Infraspecies&gt;</code> |  |  |
+| options | <code>object</code> |  |  |
+| [options.n] | <code>object</code> | <code>Infinity</code> | – Number of infraspecies. |
+| [options.rank] | <code>object</code> | <code>true</code> | – Print infraspecies rank. |
+
+**Example**  
+```js
+printInfraspecies([ { rank: 'f.', epithet: 'mora' } ])
+// 'f. mora'
+printInfraspecies([ { rank: 'f.', epithet: 'mora' } ], { rank: false })
+// 'mora'
 ```
 
 * * *
@@ -265,34 +528,118 @@ Print scientific name.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| name | <code>ParsedScientificName</code> |  | Parsed scientific name. |
+| name | <code>ParsedScientificName</code> |  | Scientific name. |
 | [options] | <code>object</code> |  | Printing options. |
-| [options.infraspecies] | <code>number</code> | <code>Infinity</code> | Number of infraspecies to print. |
-| [options.rank] | <code>boolean</code> | <code>true</code> | Whether to print infraspecies rank. |
-| [options.cultivar] | <code>boolean</code> | <code>true</code> | Whether to print cultivar. |
+| [options.infraspecies] | <code>number</code> | <code>Infinity</code> | Number of infraspecies. |
+| [options.hybrid] | <code>boolean</code> | <code>true</code> | Print hybrid symbol and formulas. |
+| [options.rank] | <code>boolean</code> | <code>true</code> | Print infraspecies rank. |
+| [options.cultivar] | <code>boolean</code> | <code>true</code> | Print cultivar. |
 
 **Example**  
 ```js
-printScientificName({ genus: 'Genus', subgenus: 'Subgenus' })
-printScientificName({ genus: 'Genus', species: 'species', hybrid: true })
-base = { genus: 'Genus', species: 'species' }
-printScientificName({ ...base, infraspecies: [{ epithet: 'formosa' }] })
-printScientificName({ ...base, infraspecies: [{ rank: 'f.', epithet: 'formosa' }] })
-printScientificName({ ...base, infraspecies: [{ rank: 'f.', epithet: 'formosa' }] })
-printScientificName({ ...base, infraspecies: [{ rank: 'f.', epithet: 'formosa' }] }, { rank: false })
-printScientificName({ ...base, infraspecies: [{ epithet: 'formosa' }, { epithet: 'varietas' }] }, { infraspecies: 1 })
-printScientificName({ ...base, infraspecies: [{ epithet: 'formosa' }, { epithet: 'varietas' }] }, { infraspecies: 0 })
-printScientificName({ ...base, cultivar: 'Cultivar' })
-printScientificName({ ...base, cultivar: 'Cultivar' }, { cultivar: false })
-printScientificName({ head: 'head', genus: 'Genus', tail: 'tail' })
+name = {
+  genus: 'Genus',
+  species: 'speciosa',
+  infraspecies: [{ rank: 'f.', epithet: 'formosa' }],
+  cultivar: 'Gala',
+  hybrid: true,
+  hybrids: [{ genus: 'Genus', species: 'pendula' }]
+}
+printScientificName(name)
+// "Genus speciosa f. formosa 'Gala' × Genus pendula'"
+printScientificName(name, {cultivar: false})
+// "Genus speciosa f. formosa × Genus pendula'"
+printScientificName(name, {infraspecies: 0, cultivar: false})
+// 'Genus speciosa × Genus pendula'
+printScientificName(name, {hybrid: false, infraspecies: 0, cultivar: false})
+// 'Genus speciosa'
 ```
+
+* * *
+
+<a name="module_names..formatScientificName"></a>
+
+### names~formatScientificName(name, defaultGenus) ⇒ <code>ParsedScientificName</code>
+Format scientific name.
+
+**Kind**: inner method of [<code>names</code>](#module_names)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| name | <code>ParsedScientificName</code> |  | – Scientific name. |
+| defaultGenus | <code>string</code> \| <code>boolean</code> | <code>null</code> | – Genus to assume if hybrid genus is blank or an abbreviation of `defaultGenus`. Defaults to `genus` if `null`, or skipped if `false`. |
+
+**Example**  
+```js
+name = {
+  genus: ' GENUS',
+  species: 'SPECIOSA ',
+  infraspecies: [ { rank: 'VAR', epithet: 'FORMOSA' } ],
+  cultivar: 'CULTI VAR',
+  hybrids: [ {genus: 'G', species: 'spéciosa' } ],
+  hybrid: true
+}
+formatScientificName(name)
+// {
+//   genus: 'Genus',
+//   species: 'speciosa',
+//   infraspecies: [ { rank: 'var.', epithet: 'formosa' } ],
+//   cultivar: 'Culti Var',
+//   hybrids: [ { genus: 'Genus', species: 'speciosa' } ],
+//   hybrid: true
+// }
+```
+
+* * *
+
+<a name="module_names..parseScientificName"></a>
+
+### names~parseScientificName(name) ⇒ <code>ParsedScientificName</code>
+Parse scientific name.
+
+**Kind**: inner method of [<code>names</code>](#module_names)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | Name to parse as a scientific name. |
+
+**Example**  
+```js
+parseScientificName(`Genus`)
+// { uninomial: 'Genus' }
+parseScientificName(`Genus speciosa var. segunda 'Cultivar' x Genus hybrida`)
+// {
+//   genus: 'Genus',
+//   species: 'speciosa',
+//   infraspecies: [ { rank: 'var.', epithet: 'segunda' } ],
+//   cultivar: 'Cultivar',
+//   hybrids: [ { genus: 'Genus', species: 'hybrida' } ],
+//   hybrid: true
+// }
+```
+
+* * *
+
+<a name="module_names..Infraspecies"></a>
+
+### names~Infraspecies : <code>object</code>
+Infraspecies.
+
+**Kind**: inner typedef of [<code>names</code>](#module_names)  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| rank | <code>string</code> | Rank (`subsp.`, `var.`, `f.`, `subvar.`, `subf.`). |
+| epithet | <code>string</code> | Epithet (lowercase: e.g. `pontica`). |
+
 
 * * *
 
 <a name="module_names..ParsedScientificName"></a>
 
 ### names~ParsedScientificName : <code>object</code>
-Parsed scientific name.
+Scientific name.
 
 **Kind**: inner typedef of [<code>names</code>](#module_names)  
 **Properties**
@@ -300,29 +647,16 @@ Parsed scientific name.
 | Name | Type | Description |
 | --- | --- | --- |
 | head | <code>string</code> | Unparsed head. |
+| uninomial | <code>string</code> | – Uninomial name (maybe `genus`). |
 | genus | <code>string</code> | Genus (capitalized: e.g. `Malus`). |
 | subgenus | <code>string</code> | Subgenus (capitalized: e.g. `Malus`). |
 | species | <code>string</code> | Specific epithet (lowercase: e.g. `pumila`). |
-| hybrid | <code>boolean</code> | Whether `species` is a named hybrid. |
-| infraspecies | <code>Array.&lt;ParsedInfraspecies&gt;</code> | Infraspecific epithets. |
-| cultivar | <code>string</code> | Cultivar (title case: e.g. 'Golden Delicious'). |
+| infraspecies | <code>Array.&lt;Infraspecies&gt;</code> | Infraspecific epithets. |
+| cultivar | <code>string</code> | Cultivar (title case: e.g. `Golden Delicious`). |
+| hybrid | <code>boolean</code> | Whether this is a hybrid. |
+| hybridGenus | <code>boolean</code> | – Whether `genus` is a nothogenus (e.g. `× Sorbopyrus`). |
+| hybrids | <code>Array.&lt;Hybrid&gt;</code> | – Secondary names in a hybrid formula. |
 | tail | <code>string</code> | Unparsed tail. |
-
-
-* * *
-
-<a name="module_names..ParsedInfraspecies"></a>
-
-### names~ParsedInfraspecies : <code>object</code>
-Parsed infraspecies.
-
-**Kind**: inner typedef of [<code>names</code>](#module_names)  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| rank | <code>string</code> | Rank (subsp, var, f, subvar, subf). |
-| epithet | <code>string</code> | Epithet. |
 
 
 * * *

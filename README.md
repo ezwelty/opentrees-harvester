@@ -98,7 +98,6 @@ We can modify the crosswalk following our conventions to apply unit conversions 
 ```js
 const { modifyCrosswalk } = require('./lib/convert.js')
 source.props.crosswalk = modifyCrosswalk(source.props.crosswalk)
-// { ref: 'ID', common: [Function], height: [Function] }
 source.process('test/output/output.csv', {overwrite: true})
 ```
 

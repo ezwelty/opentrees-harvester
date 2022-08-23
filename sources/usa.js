@@ -551,6 +551,30 @@ module.exports = [
     centre: { lon: -72.49307, lat: 42.3818 }
   },
   {
+    id: 'umass_amherst',
+    short: 'University of Massachusetts Amherst',
+    featureLayer: 'https://maps.umass.edu/arcgis/rest/services/Campus/CampusLandscapeManagement/FeatureServer/0',
+    crosswalk: {
+      ref: 'SiteId',
+      genus: 'Genus',
+      scientific: 'BotanicalName',
+      common: 'CommonFullName',
+      dbh_in: 'DbhInch',
+      height_ft: 'HeightFt',
+      stems: 'Trunks',
+      crown_ft: 'SpreadFt',
+      // 0, 1890, ...
+      planted: x => x['DatePlanted'] || null,
+      // MM/DD/YYYY
+      updated: x => reformatDatetime(
+        x['DateModified'],
+        [/^(?<month>[0-9]{2})\/(?<day>[0-9]{2})\/(?<year>[0-9]{4})$/]
+      ),
+      // 0, 1000, ...
+      value: x => x['AppraisedValue'] || null,
+    }
+  },
+  {
     id: 'colorado_springs',
     short: 'Colorado Springs',
     download: 'https://opendata.arcgis.com/datasets/91758518026d4b1089f2180602399d73_0.csv',

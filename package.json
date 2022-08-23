@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@esri/arcgis-rest-feature-service": "^4.0.3",
+    "@esri/arcgis-rest-form-data": "^4.0.0",
     "@esri/arcgis-rest-portal": "^4.0.3",
     "@esri/arcgis-rest-request": "^4.0.3",
     "colors": "^1.1.2",
@@ -37,7 +38,7 @@
     "table": "^5.4.6"
   },
   "devDependencies": {
-    "jest": "^27.0.1",
+    "jest": "^28.0.0",
     "jsdoc-to-markdown": "^5.0.3"
   },
   "jest": {

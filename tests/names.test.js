@@ -1,6 +1,5 @@
-const util = require('util')
-const { isEqual } = require('lodash')
 const { parseScientificName } = require('../lib/names')
+const { expect, test } = require('@jest/globals')
 
 const STANDARDS = {
   "Generic": {
@@ -405,24 +404,31 @@ const SINGLES = {
 
 // ---- Run tests ----
 
-for (const group of [STANDARDS, SINGLES]) {
-  for (const name in group) {
-    const parsed = parseScientificName(name)
-    if (!isEqual(group[name], parsed)) {
-      console.error(
-        `[${name}]\nEXPECTED: ${util.inspect(group[name])}\nACTUAL: ${util.inspect(parsed)}\n`
-      )
-    }
+describe("Parses standard formats", () => {
+  for (const name in STANDARDS) {
+    test(name, () => {
+      const parsed = parseScientificName(name)
+      expect(parsed).toEqual(STANDARDS[name])
+    })
   }
-}
+})
 
-for (const group of VARIANTS) {
-  for (const name of group.scientific) {
-    const parsed = parseScientificName(name)
-    if (!isEqual(group.parsed, parsed)) {
-      console.log(
-        `[${name}]\nEXPECTED: ${util.inspect(group.parsed)}\nACTUAL: ${util.inspect(parsed)}\n`
-      )
+describe("Parses variants", () => {
+  for (const name in SINGLES) {
+    test(name, () => {
+      const parsed = parseScientificName(name)
+      expect(parsed).toEqual(SINGLES[name])
+    })
+  }
+})
+
+describe("Parses outliers", () => {
+  for (const group of VARIANTS) {
+    for (const name of group.scientific) {
+      test(name, () => {
+        const parsed = parseScientificName(name)
+        expect(parsed).toEqual(group.parsed)
+      })
     }
   }
-}
+})

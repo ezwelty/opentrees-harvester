@@ -575,6 +575,24 @@ module.exports = [
     }
   },
   {
+    id: 'baltimore_md',
+    short: 'Baltimore',
+    featureLayer: 'https://services1.arcgis.com/UWYHeuuJISiGmgXx/arcgis/rest/services/Trees_12052017/FeatureServer/0',
+    crosswalk: {
+      ref: 'UniqueID',
+      scientific: 'SPP',
+      genus: 'GENUS',
+      common: 'COMMON',
+      cultivar: 'CULTIVAR',
+      dbh_in: 'DBH',
+      height_ft: 'TREE_HT',
+      stems: 'MULTI_STEM',
+      health: x => x['CONDITION'].toLowerCase(),
+      // Unix timestamp (milliseconds)
+      updated: x => new Date(x['INSPECT_DT']).toISOString().slice(0, 10)
+    }
+  },
+  {
     id: 'colorado_springs',
     short: 'Colorado Springs',
     download: 'https://opendata.arcgis.com/datasets/91758518026d4b1089f2180602399d73_0.csv',

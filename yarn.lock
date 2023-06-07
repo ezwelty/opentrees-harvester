@@ -1921,7 +1921,7 @@ gauge@^4.0.3:
     strip-ansi "^6.0.1"
     wide-align "^1.1.5"
 
-gdal-async@^2.8.0:
+gdal-async@^3.7.0:
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/gdal-async/-/gdal-async-3.7.0.tgz#b7cf9cc0320f5ee3c979888f2c9360c7b3aa3da1"
   integrity sha512-UeG7RPw3xDJa759QIcZ5LM0OhsIqqDZo39WSCYZfve53oC9wjjdUD+qmXauB9dpbDCYE+MGKO4QKCVDzX/FaDQ==

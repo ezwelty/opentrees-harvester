@@ -30,7 +30,7 @@
     "csv-parser": "^2.3.2",
     "decompress": "^4.2.1",
     "fuzzyset.js": "^1.0.5",
-    "gdal-next": "^2.8.0",
+    "gdal-async": "^3.7.0",
     "glob": "^7.1.2",
     "lodash.isequal": "^4.5.0",
     "node-downloader-helper": "^1.0.12",

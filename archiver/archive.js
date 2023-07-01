@@ -1,6 +1,11 @@
 const fs = require('fs')
 const mime = require('mime-types')
 const puppeteer = require('puppeteer')
+const readline = require('readline');
+const crypto = require('crypto');
+var { doesArchiverContainHash } = require('../lib/helpers')
+
+
 
 ARCHIVE_PATH = 'archive'
 LOG_PATH = 'archive.jsonl'
@@ -70,6 +75,14 @@ function buildPath(url, date = new Date()) {
  */
 function log({ date = new Date(), ...props } = {}) {
   const entry = { date, ...props }
+  console.log("entry: ", entry);
+  if (entry.type && entry.type === "data") {
+    console.log("checking if the data file is the same as the one in the archiver already...")
+    if (areDataHashesEqual(entry.path)) {
+      console.log("the data hashes are requal for the url: ", entry.url);
+      process.exit(1);
+    }
+  }
   fs.writeFileSync(LOG_PATH, JSON.stringify(entry) + '\n', { flag: 'a' })
   return entry
 }
@@ -146,6 +159,26 @@ async function search(params, limit) {
   return entries
 }
 
+/**
+ * TODO: We need to read and download the data first
+ * @param {String} datafile should be a direct path to a datafile, for example https://s3.ap-southeast-2.amazonaws.com/dmzweb.adelaidecitycouncil.com/OpenData/Street_Trees/Street_Trees.csv
+ * @param {*} registryid 
+ */
+function areDataHashesEqual(datafile) {
+  var bytesDataFile = "";
+  try {
+    bytesDataFile = fs.readFileSync(datafile);
+  } catch (err) {
+    console.error("Error reading file: ", err.message);
+    process.exit(1);
+  }
+  dataHash = md5(bytesDataFile);
+
+  return doesArchiverContainHash(dataHash);
+
+
+}
+
 module.exports = {
   loadPage,
   readPageHtml,
@@ -155,4 +188,5 @@ module.exports = {
   log,
   logData,
   search,
+  areDataHashesEqual
 }

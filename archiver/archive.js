@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path');
 const mime = require('mime-types')
 const puppeteer = require('puppeteer')
 const readline = require('readline');
@@ -73,14 +74,27 @@ function buildPath(url, date = new Date()) {
  * @param {Date} params.date
  * @returns {object}
  */
-function log({ date = new Date(), ...props } = {}) {
-  const entry = { date, ...props }
-  console.log("entry: ", entry);
+async function log({ date = new Date(), ...props } = {}) {
+  let entry = { date, ...props }
+  // add the hash for the data to the archiver entry
+  if (entry.path) {
+    const hash = hashData(entry.path)
+    const hashEntry = {data_hash: hash}
+    entry = { ...entry, ...hashEntry};
+  }
+
   if (entry.type && entry.type === "data") {
     console.log("checking if the data file is the same as the one in the archiver already...")
-    if (areDataHashesEqual(entry.path)) {
-      console.log("the data hashes are requal for the url: ", entry.url);
-      process.exit(1);
+    if (entry.data_hash) {
+      const archiverInfo = await doesArchiverContainHash(entry.data_hash);
+      const hashesEqual = archiverInfo[0];
+      const entryWithExistingHash = archiverInfo[1];
+      // If they are equal, record this to the registry by reusing the path of the previous version.
+      if (hashesEqual) {
+        console.log("Data hashes are equal...")
+        entry.path = entryWithExistingHash.path;
+      }
+      // If the hashes are not equal, add the newly downloaded file to the archive/registry
     }
   }
   fs.writeFileSync(LOG_PATH, JSON.stringify(entry) + '\n', { flag: 'a' })
@@ -136,12 +150,18 @@ function logData({ data, filename, url, date = new Date(), ...props } = {}) {
  *
  * @param {object} params - Search criteria as key-value pairs that must match
  * @param {int} limit
+ * @param {int} minAge  number that represents to only download the data if the most recent version is older than X hours. Default behavior (null) will return a result if a version exists in the archiver at all. 
  * @return {object[]} Log entries that match search criteria
  */
-async function search(params, limit) {
+async function search(params, limit = null, minAge = null) {
   const readInterface = readline.createInterface({
     input: fs.createReadStream(LOG_PATH),
   })
+  dateToCheck = new Date();
+  if (minAge !== null) {
+    // Here, we just set the hours based on the minAge. If we want to go by a different timeunit, we will need to change .setHours to the specified time unit.
+    dateToCheck.setHours(dateToCheck.getHours() - minAge);
+  } 
   const criterias = Object.entries(params || {})
   const entries = []
   for await (const line of readInterface) {
@@ -153,30 +173,38 @@ async function search(params, limit) {
     }
     const log = JSON.parse(line)
     if (criterias.map(([key, value]) => log[key] === value).every(Boolean)) {
-      entries.push(log)
+      if (minAge === null) {
+        // if user does not specify a minAge, then we should not further filter based on the log.date and just return if the url exists in the archiver at all
+        entries.push(log);
+      }
+      else if (minAge && minAge === 0) {
+        // if user DOES specify a minAge but the minAge is 0, this means we should always download for the data, regardless of the age of the data in the archiver.
+        return [];
+      }
+      else if (minAge && new Date(log.date) > dateToCheck) {
+        // lastly, if the user does specify a minAge that isn't 0, we should filter to see if the log.date is minAge hours old. If it is minAge hours old, we should still download.
+        entries.push(log)
+      }
     }
   }
   return entries
 }
 
+
 /**
- * TODO: We need to read and download the data first
- * @param {String} datafile should be a direct path to a datafile, for example https://s3.ap-southeast-2.amazonaws.com/dmzweb.adelaidecitycouncil.com/OpenData/Street_Trees/Street_Trees.csv
- * @param {*} registryid 
+ * Use this function to read in data from local url and then hash the data
+ * @param {string} dataFileUrl points to the data file such as archive\cfe690c9ecadb70910fa8ea57f6aa8a7\2023-06-25T23-54-52.993Z\Street_Trees.csv
  */
-function areDataHashesEqual(datafile) {
-  var bytesDataFile = "";
+function hashData(dataFileUrl) {
+  let bytesDataFile = "";
   try {
-    bytesDataFile = fs.readFileSync(datafile);
+    const absoluteFilePath = path.resolve(dataFileUrl);
+    bytesDataFile = fs.readFileSync(absoluteFilePath, 'utf8');
   } catch (err) {
-    console.error("Error reading file: ", err.message);
-    process.exit(1);
+    console.error("Error reading datafile: ", dataFileUrl);
+    throw err.message;
   }
-  dataHash = md5(bytesDataFile);
-
-  return doesArchiverContainHash(dataHash);
-
-
+  return md5(bytesDataFile);
 }
 
 module.exports = {
@@ -188,5 +216,5 @@ module.exports = {
   log,
   logData,
   search,
-  areDataHashesEqual
+  hashData
 }

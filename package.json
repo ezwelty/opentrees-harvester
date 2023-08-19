@@ -24,6 +24,7 @@
     "@esri/arcgis-rest-form-data": "^4.0.0",
     "@esri/arcgis-rest-portal": "^4.0.3",
     "@esri/arcgis-rest-request": "^4.0.3",
+    "axios": "^1.4.0",
     "colors": "^1.1.2",
     "command-line-args": "^5.1.1",
     "command-line-usage": "^6.1.0",
@@ -36,7 +37,9 @@
     "node-downloader-helper": "^1.0.12",
     "puppeteer": "^19.8.5",
     "replace": "^1.1.5",
-    "table": "^5.4.6"
+    "table": "^5.4.6",
+    "xml2js": "^0.6.0",
+    "xmlbuilder2": "^3.1.1"
   },
   "devDependencies": {
     "jest": "^28.0.0",

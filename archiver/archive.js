@@ -1,15 +1,45 @@
 const fs = require('fs')
-const path = require('path');
 const mime = require('mime-types')
 const puppeteer = require('puppeteer')
-const readline = require('readline');
-const crypto = require('crypto');
-var { doesArchiverContainHash } = require('../lib/helpers')
+const crypto = require('crypto')
+const axios = require('axios')
+const util = require('util')
+const stream = require('stream')
+const streamPipeline = util.promisify(stream.pipeline)
 
-
+const helpers = require('../lib/helpers')
 
 ARCHIVE_PATH = 'archive'
 LOG_PATH = 'archive.jsonl'
+
+/**
+ * Download file and compute MD5 hash of the stream.
+ *
+ * @param {string} url – URL to download
+ * @param {string} dir – Directory to save file to
+ * @returns {object|null} File path (file) and md5-base64 checksum (checksum)
+ */
+async function downloadFile(url, dir = '.') {
+  try {
+    const response = await axios.get(url, {responseType: 'stream'})
+    const filename = guessFilename({headers: response.headers, url: url})
+    const file = path.join(dir, filename)
+    fs.mkdirSync(dir, { recursive: true })
+    const hasher = crypto.createHash('md5')
+    const base64 = new stream.PassThrough({encoding: 'base64'})
+    await Promise.all([
+      streamPipeline(response.data, fs.createWriteStream(file)),
+      streamPipeline(response.data, base64),
+      streamPipeline(base64, hasher)
+    ])
+    const checksum = hasher.digest('hex')
+    const megabytes = (fs.statSync(file).size / (1024**2)).toFixed(3)
+    console.log(`Downloaded ${url} to ${file} (${megabytes} MB)`)
+    return {file, checksum}
+  } catch (error) {
+    throw new Error(`Download of ${url} failed: ${error.message}}`)
+  }
+}
 
 /**
  * Load URL in browser page.
@@ -55,16 +85,35 @@ function md5(x) {
 }
 
 /**
+ * Compute MD5 hash of a file read as a stream.
+ *
+ * Uses base64 encoding by default as it was found to be much faster for large
+ * binary files and same as UTF-8 for text.
+ *
+ * @param {string} file
+ * @returns {string} MD5 hash
+ */
+async function hashFile(file, options = {encoding: 'base64'}) {
+  const hash = crypto.createHash('md5')
+  const stream = fs.createReadStream(file, options)
+  for await (const chunk of stream) {
+    hash.update(chunk.toString())
+  }
+  return hash.digest('hex')
+}
+
+/**
  * Build archive path.
  *
  * @param {string} url – Represented with MD5 hash
- * @param {Date} date – Represented with ISO 8601 string with colons (:)
- * replaced with dashes (-)
+ * @param {string} checksum - File hash. Used as the hash if no url
+ * @param {Date} date – Represented with ISO 8601 string with no colons (:)
  * @returns {string}
  */
-function buildPath(url, date = new Date()) {
-  const hash = md5(url)
-  return `${ARCHIVE_PATH}/${hash}/${date.toISOString().replace(/:/g, '-')}`
+function buildPath({url, checksum, date = new Date()} = {}) {
+  const hash = url ? md5(url) : checksum
+  date = date.toISOString().replace(/:/g, '')
+  return path.join(ARCHIVE_PATH, hash, date)
 }
 
 /**
@@ -76,50 +125,62 @@ function buildPath(url, date = new Date()) {
  */
 async function log({ date = new Date(), ...props } = {}) {
   let entry = { date, ...props }
-  // add the hash for the data to the archiver entry
-  if (entry.path) {
-    const hash = hashData(entry.path)
-    const hashEntry = {data_hash: hash}
-    entry = { ...entry, ...hashEntry};
+  if (entry.path && !entry.checksum) {
+    entry.checksum = await hashFile(entry.path)
   }
-
-  if (entry.type && entry.type === "data") {
-    console.log("checking if the data file is the same as the one in the archiver already...")
-    if (entry.data_hash) {
-      const archiverInfo = await doesArchiverContainHash(entry.data_hash);
-      const hashesEqual = archiverInfo[0];
-      const entryWithExistingHash = archiverInfo[1];
-      // If they are equal, record this to the registry by reusing the path of the previous version.
-      if (hashesEqual) {
-        console.log("Data hashes are equal...")
-        entry.path = entryWithExistingHash.path;
-      }
-      // If the hashes are not equal, add the newly downloaded file to the archive/registry
+  if (entry.checksum) {
+    const entries = await search({ checksum: entry.checksum })
+    if (entries.length > 0) {
+      // Reuse path of most recent entry with same checksum
+      const existingEntry = entries.sort(
+        (a, b) => new Date(b.date) - new Date(a.date)
+      )[0]
+      entry.path = existingEntry.path
     }
   }
-  fs.writeFileSync(LOG_PATH, JSON.stringify(entry) + '\n', { flag: 'a' })
+  fs.appendFileSync(LOG_PATH, JSON.stringify(entry) + '\n')
   return entry
 }
 
 /**
  * Guess filename from HTTP response headers.
  *
- * @param {object} headers
- * @param {string} extension - Default extension
- * @param {string} basename - Default basename
+ * @param {object} headers – HTTP response headers
+ * @param {string} defaultBasename - Basename to use if none is found
+ * @param {string} url - HTTP request URL
  * @returns {string}
  */
-function guessFilename(headers = {}, extension = '', basename = 'response') {
+function guessFilename({headers = {}, defaultBasename = 'response', url = null} = {}) {
+  const basenames = []
   if (headers['content-disposition']) {
     const match = headers['content-disposition'].match(
       /filename[^;=\n]*=\s*(UTF-\d['"]*)?((['"]).*?[.]$\2|[^;\n]*)?/i
     )
     if (match) {
-      basename = match[2]
+      // Remove begin or end quotes
+      basenames.push(match[2].replace(/^['"]|['"]$/g, ''))
     }
   }
-  extension = mime.extension(headers['content-type']) || extension
-  if (extension && !basename.toLowerCase().endsWith(`.${extension}`)) {
+  if (url) {
+    const u = new URL(url)
+    const filename = path.basename(u.pathname)
+    if (path.extname(filename)) {
+      basenames.push(filename)
+    }
+  }
+  basenames.push(defaultBasename)
+  ADDITIONAL_MIME_TYPES = {
+    // https://mimetype.io/application/x-zip-compressed
+    'application/zip-compressed': 'zip',
+    'application/x-zip-compressed': 'zip',
+    'multipart/x-zip': 'zip'
+  }
+  const extension = (
+    mime.extension(headers['content-type']) ||
+    ADDITIONAL_MIME_TYPES[headers['content-type']]
+  )
+  const basename = basenames[0].replace(/\.$/, '')
+  if (extension && path.extname(basename) !== `.${extension}`) {
     return `${basename}.${extension}`
   }
   return basename
@@ -137,52 +198,37 @@ function guessFilename(headers = {}, extension = '', basename = 'response') {
  */
 function logData({ data, filename, url, date = new Date(), ...props } = {}) {
   const dir = buildPath(url, date)
-  const path = `${dir}/${filename}`
-  // Write file to path
-  fs.mkdirSync(dir, { recursive: true })
-  fs.writeFileSync(path, data)
+  const file = `${dir}/${filename}`
+  // Write file
+  fs.mkdirSync(file, { recursive: true })
+  fs.writeFileSync(file, data)
   // Log file
-  return log({ url, path, date, ...props })
+  return log({ url, file, date, ...props })
 }
 
 /**
  * Search log for matching entries.
  *
  * @param {object} params - Search criteria as key-value pairs that must match
- * @param {int} limit
- * @param {int} minAge  number that represents to only download the data if the most recent version is older than X hours. Default behavior (null) will return a result if a version exists in the archiver at all. 
- * @return {object[]} Log entries that match search criteria
+ * @param {object} options
+ * @param {int} [options.limit] - Maximum number of results to return
+ * @param {int} [options.maxDays] - Maximum age of result in days
+ * @return {object[]} Entries that match search criteria
  */
-async function search(params, limit = null, minAge = null) {
-  const readInterface = readline.createInterface({
-    input: fs.createReadStream(LOG_PATH),
-  })
-  dateToCheck = new Date();
-  if (minAge !== null) {
-    // Here, we just set the hours based on the minAge. If we want to go by a different timeunit, we will need to change .setHours to the specified time unit.
-    dateToCheck.setHours(dateToCheck.getHours() - minAge);
-  } 
+async function search(params, {limit, maxDays} = {}) {
+  let maxDate
+  if (typeof maxDays === 'number' && isFinite(maxDays)) {
+    maxDate = new Date()
+    maxDate.setSeconds(maxDate.getSeconds() - maxDays * 24 * 3600)
+  }
   const criterias = Object.entries(params || {})
   const entries = []
-  for await (const line of readInterface) {
-    if (!line.trim()) {
-      continue
-    }
+  for await (const log of helpers.iterateJSONL(LOG_PATH)) {
     if (limit && entries.length === limit) {
       return entries
     }
-    const log = JSON.parse(line)
     if (criterias.map(([key, value]) => log[key] === value).every(Boolean)) {
-      if (minAge === null) {
-        // if user does not specify a minAge, then we should not further filter based on the log.date and just return if the url exists in the archiver at all
-        entries.push(log);
-      }
-      else if (minAge && minAge === 0) {
-        // if user DOES specify a minAge but the minAge is 0, this means we should always download for the data, regardless of the age of the data in the archiver.
-        return [];
-      }
-      else if (minAge && new Date(log.date) > dateToCheck) {
-        // lastly, if the user does specify a minAge that isn't 0, we should filter to see if the log.date is minAge hours old. If it is minAge hours old, we should still download.
+      if (!maxDate || new Date(log.date) > maxDate) {
         entries.push(log)
       }
     }
@@ -190,24 +236,10 @@ async function search(params, limit = null, minAge = null) {
   return entries
 }
 
-
-/**
- * Use this function to read in data from local url and then hash the data
- * @param {string} dataFileUrl points to the data file such as archive\cfe690c9ecadb70910fa8ea57f6aa8a7\2023-06-25T23-54-52.993Z\Street_Trees.csv
- */
-function hashData(dataFileUrl) {
-  let bytesDataFile = "";
-  try {
-    const absoluteFilePath = path.resolve(dataFileUrl);
-    bytesDataFile = fs.readFileSync(absoluteFilePath, 'utf8');
-  } catch (err) {
-    console.error("Error reading datafile: ", dataFileUrl);
-    throw err.message;
-  }
-  return md5(bytesDataFile);
-}
-
 module.exports = {
+  ARCHIVE_PATH,
+  LOG_PATH,
+  md5,
   loadPage,
   readPageHtml,
   readPageMhtml,
@@ -216,5 +248,6 @@ module.exports = {
   log,
   logData,
   search,
-  hashData
+  hashFile,
+  downloadFile
 }

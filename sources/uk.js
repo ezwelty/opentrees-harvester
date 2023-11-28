@@ -43,7 +43,7 @@ module.exports = [
     long: 'London Borough of Camden',
     delFunc: x => x['Number Of Trees'] == 0 || x['Scientific Name'].match(/^vacant /i),
     geometry: { x: 'Longitude', y: 'Latitude' },
-    epsg: 'EPSG:4326',
+    srs: 'EPSG:4326',
     crosswalk: {
       count: 'Number Of Trees',
       location: x => ({

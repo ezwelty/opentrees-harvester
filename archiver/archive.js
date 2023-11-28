@@ -179,7 +179,7 @@ function guessFilename({headers = {}, defaultBasename = 'response', url = null} 
     mime.extension(headers['content-type']) ||
     ADDITIONAL_MIME_TYPES[headers['content-type']]
   )
-  const basename = basenames[0].replace(/\.$/, '')
+  const basename = basenames.filter(x => x)[0].replace(/\.$/, '')
   if (extension && path.extname(basename) !== `.${extension}`) {
     return `${basename}.${extension}`
   }

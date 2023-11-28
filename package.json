@@ -7,7 +7,6 @@
     "get": "./cli/get.js",
     "process": "./cli/process.js",
     "docs": "jsdoc2md ./lib/*.js --no-cache --separators > API.md",
-    "replace": "replace",
     "test": "jest tests/*.js"
   },
   "author": "Ethan Welty <ethan@fallingfruit.org> (https://fallingfruit.org)",
@@ -37,7 +36,6 @@
     "node-downloader-helper": "^1.0.12",
     "node-unrar-js": "2.0.0",
     "puppeteer": "^19.8.5",
-    "replace": "^1.1.5",
     "table": "^5.4.6",
     "xlsx": "^0.18.5",
     "xml2js": "^0.6.0",

@@ -1,6 +1,6 @@
 # Archiver (draft)
 
-[`archive.js`](/archive.js) contains a set of functions that together implement a basic versioned data archive. The sections below provide simple usage examples.
+[`lib/archive.js`](/lib/archive.js) contains a set of functions that together implement a basic versioned data archive. The sections below provide simple usage examples.
 
 ## Archive a web page
 
@@ -8,7 +8,7 @@ Uses [Puppeteer](https://pptr.dev) to render web pages with a headless brower (C
 
 ```js
 const puppeteer = require('puppeteer')
-const archive = require('./archive')
+const archive = require('./lib/archive')
 
 URL = 'https://data.sa.gov.au/data/dataset/street-trees'
 DATE = new Date()
@@ -63,33 +63,20 @@ await browser.close()
 
 ## Archive a file
 
+See the functions in [`lib/workflow.js`](/lib/workflow.js).
+
 ```js
-var { downloadFile } = require('../lib/helpers')
-const archive = require('./archive')
+const workflow = require('./lib/workflow')
 
-URL =
-  'https://s3.ap-southeast-2.amazonaws.com/dmzweb.adelaidecitycouncil.com/OpenData/Street_Trees/Street_Trees.csv'
-DATE = new Date()
-
-// Check that we have not already downloaded this URL
-results = await archive.search({ url: URL })
-assert(results.length == 0)
-
-// Build archive directory for file
-dir = archive.buildPath(URL, DATE)
-
-// Download file to directory
-path = await downloadFile(URL, dir, {
-  override: { skip: true, skipSmaller: true },
+// Download a remote file
+await workflow.downloadFile({
+  url: 'https://path/to/remote/file',
 })
 
-if (path) {
-  // Log file
-  archive.log({
-    url: URL,
-    path: path,
-    date: DATE,
-    type: 'data',
-  })
-}
+// Register an existing local file
+await workflow.registerFile({
+  file: '/path/to/local/file',
+  url: 'https://original/path/to/remote/file',
+  type: 'data'
+})
 ```

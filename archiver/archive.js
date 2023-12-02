@@ -213,7 +213,8 @@ function logData({ data, filename, url, date = new Date(), ...props } = {}) {
  * @param {object} options
  * @param {int} [options.limit] - Maximum number of results to return
  * @param {int} [options.maxDays] - Maximum age of result in days
- * @return {object[]} Entries that match search criteria
+ * @return {Promise<object[]>} Entries that match search criteria, sorted by date
+ * descending.
  */
 async function search(params, {limit, maxDays} = {}) {
   let maxDate

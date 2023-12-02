@@ -234,6 +234,8 @@ async function search(params, {limit, maxDays} = {}) {
       }
     }
   }
+  // Sort entries by date descending
+  entries.sort((a, b) => new Date(b.date) - new Date(a.date))
   return entries
 }
 

@@ -56,8 +56,9 @@ module.exports = [
     designation: 'University of Canberra > Bruce Campus',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=cb635cadf24e45c7a4d40e75892f2b88',
-    download: 'https://services3.arcgis.com/iR1gOFe0FlzMQ2yd/arcgis/rest/services/Trees/FeatureServer/4',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/iR1gOFe0FlzMQ2yd/arcgis/rest/services/Trees/FeatureServer/4'
+    }
   },
   {
     country: 'Australia',
@@ -66,8 +67,9 @@ module.exports = [
     designation: 'University of Canberra > Bruce Campus',
     scope: 'Plant',
     info: 'https://www.arcgis.com/home/item.html?id=cb635cadf24e45c7a4d40e75892f2b88',
-    download: 'https://services3.arcgis.com/iR1gOFe0FlzMQ2yd/arcgis/rest/services/Trees/FeatureServer/3',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/iR1gOFe0FlzMQ2yd/arcgis/rest/services/Trees/FeatureServer/3'
+    }
   },
   {
     country: 'Australia',
@@ -76,8 +78,9 @@ module.exports = [
     designation: 'University of Canberra > Bruce Campus > Arscott House',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=cb635cadf24e45c7a4d40e75892f2b88',
-    download: 'https://services3.arcgis.com/iR1gOFe0FlzMQ2yd/arcgis/rest/services/Trees/FeatureServer/2',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/iR1gOFe0FlzMQ2yd/arcgis/rest/services/Trees/FeatureServer/2'
+    }
   },
   {
     country: 'Australia',
@@ -86,8 +89,9 @@ module.exports = [
     designation: 'University of Canberra > Bruce Campus > Building 18',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=cb635cadf24e45c7a4d40e75892f2b88',
-    download: 'https://services3.arcgis.com/iR1gOFe0FlzMQ2yd/arcgis/rest/services/Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/iR1gOFe0FlzMQ2yd/arcgis/rest/services/Trees/FeatureServer/0'
+    }
   },
   {
     country: 'Australia',
@@ -95,8 +99,9 @@ module.exports = [
     city: 'Canberra',
     scope: 'Tree: notable',
     info: 'https://www.arcgis.com/home/item.html?id=b0cfb6e7767940e7ad381f318377854c',
-    download: 'https://services1.arcgis.com/E5n4f1VY84i0xSjy/arcgis/rest/services/Urban_Tree_Planting_V2_2020_Public_Facing_V2/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/E5n4f1VY84i0xSjy/arcgis/rest/services/Urban_Tree_Planting_V2_2020_Public_Facing_V2/FeatureServer/0'
+    }
   },
   {
     country: 'Australia',
@@ -104,8 +109,9 @@ module.exports = [
     city: 'Armidale',
     designation: 'University of New England',
     info: 'https://www.arcgis.com/home/item.html?id=ecc21d05a0874c35af213d09112f7f4b',
-    download: 'https://services8.arcgis.com/gigBJvypnoBXUXfx/arcgis/rest/services/UNE_Tree_Map_WFL1/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services8.arcgis.com/gigBJvypnoBXUXfx/arcgis/rest/services/UNE_Tree_Map_WFL1/FeatureServer/0'
+    }
   },
   {
     pending: 'multiple files',
@@ -130,8 +136,9 @@ module.exports = [
     city: 'Sydney',
     scope: 'Tree',
     info: 'https://data.cityofsydney.nsw.gov.au/datasets/cityofsydney::trees/about',
-    download: 'https://services1.arcgis.com/cNVyNtjGVZybOQWZ/arcgis/rest/services/Trees/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/cNVyNtjGVZybOQWZ/arcgis/rest/services/Trees/FeatureServer/0'
+    },
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -140,8 +147,9 @@ module.exports = [
     designation: 'Sunshine Coast',
     scope: 'Tree',
     info: 'https://data.sunshinecoast.qld.gov.au/datasets/scrcpublic::trees-planted/about',
-    download: 'https://gislegacy.scc.qld.gov.au/arcgis/rest/services/Environment/ParksandGardensContracts_SCRC/MapServer/21',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gislegacy.scc.qld.gov.au/arcgis/rest/services/Environment/ParksandGardensContracts_SCRC/MapServer/21'
+    },
     license: { id: 'CC-BY-3.0' }
   },
   {
@@ -150,8 +158,9 @@ module.exports = [
     city: 'Moreton Bay',
     scope: 'Tree: notable',
     info: 'https://datahub.moretonbay.qld.gov.au/datasets/moretonbay::mbrc-planning-scheme-heritage-landscape-significant-trees/about',
-    download: 'https://services-ap1.arcgis.com/152ojN3Ts9H3cdtl/arcgis/rest/services/MBRC_PlanningScheme_HeritageLandscape_SignificantTree/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services-ap1.arcgis.com/152ojN3Ts9H3cdtl/arcgis/rest/services/MBRC_PlanningScheme_HeritageLandscape_SignificantTree/FeatureServer/0'
+    },
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -160,8 +169,9 @@ module.exports = [
     city: 'Noosa Shire',
     scope: 'Tree',
     info: 'https://data.gov.au/data/dataset/tree-register',
-    download: 'https://data.gov.au/geoserver/tree-register/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=tree-register:TreeRegister_point19&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://data.gov.au/geoserver/tree-register/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=tree-register:TreeRegister_point19&srsName=EPSG:4326&outputFormat=application/json'
+    },
     license: { id: 'CC-BY-2.5-AU' }
   },
   {
@@ -171,8 +181,9 @@ module.exports = [
     designation: 'Sherwood Arboretum',
     scope: 'Tree',
     info: 'https://www.data.brisbane.qld.gov.au/data/dataset/botanic-collection-sherwood-arboretum',
-    download: 'https://services2.arcgis.com/dEKgZETqwmDAh1rP/arcgis/rest/services/Botanic_collection_%E2%80%94_Sherwood_Arboretum/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services2.arcgis.com/dEKgZETqwmDAh1rP/arcgis/rest/services/Botanic_collection_%E2%80%94_Sherwood_Arboretum/FeatureServer/0'
+    },
     crosswalk: {
       common: 'Common_Name',
       scientific: 'Scientific_Name',
@@ -301,8 +312,9 @@ module.exports = [
     city: 'Unley',
     scope: 'Tree',
     info: 'https://opendata.unley.sa.gov.au/datasets/unley::street-trees/about',
-    download: 'https://services9.arcgis.com/vsQXCXZ0LMZJANxk/arcgis/rest/services/Trees/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services9.arcgis.com/vsQXCXZ0LMZJANxk/arcgis/rest/services/Trees/FeatureServer/0'
+    },
     crosswalk: {
       genus: 'dom_genus_',
       species: 'dom_spcie',
@@ -319,8 +331,9 @@ module.exports = [
     city: 'Hobart',
     scope: 'Tree: notable',
     info: 'https://data-1-hobartcc.opendata.arcgis.com/datasets/hobartcc::significant-tree-point/about',
-    download: 'https://services1.arcgis.com/NHqdsnvwfSTg42I8/arcgis/rest/services/ENVIRON_Significant_Tree_Locations/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/NHqdsnvwfSTg42I8/arcgis/rest/services/ENVIRON_Significant_Tree_Locations/FeatureServer/0'
+    },
     license: { id: 'CC-BY-4.0' },
     opentrees_id: 'hobart'
   },
@@ -330,8 +343,9 @@ module.exports = [
     city: 'Launceston',
     scope: 'Tree',
     info: 'https://opendata.launceston.tas.gov.au/datasets/launceston::trees-4/about',
-    download: 'https://services.arcgis.com/yeXpdyjk3azbqItW/arcgis/rest/services/ParksAndRecreation/FeatureServer/1',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services.arcgis.com/yeXpdyjk3azbqItW/arcgis/rest/services/ParksAndRecreation/FeatureServer/1'
+    },
     crosswalk: {
       ref: 'objectid',
       common: 'name',
@@ -382,8 +396,9 @@ module.exports = [
     city: 'Ballarat',
     scope: 'Tree: notable',
     info: 'https://data.ballarat.vic.gov.au/explore/dataset/exceptional-tree-register/information/',
-    download: 'https://data.ballarat.vic.gov.au/api/explore/v2.1/catalog/datasets/exceptional-tree-register/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.ballarat.vic.gov.au/api/explore/v2.1/catalog/datasets/exceptional-tree-register/exports/geojson'
+    },
     license: { id: 'CC-BY-3.0-AU' },
     opentrees_id: 'ballarat'
   },
@@ -410,8 +425,9 @@ module.exports = [
     city: 'Boroondara',
     scope: 'Tree: notable',
     info: 'https://data.gov.au/data/dataset/significant-tree',
-    download: 'https://data.gov.au/geoserver/significant-tree/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=significant-tree:Significant_Trees_201616&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://data.gov.au/geoserver/significant-tree/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=significant-tree:Significant_Trees_201616&srsName=EPSG:4326&outputFormat=application/json'
+    },
     crosswalk: {
       species: 'botanicaln',
       common: 'commonname',
@@ -453,8 +469,9 @@ module.exports = [
     city: 'Colac Otway Shire',
     scope: 'Tree',
     info: 'https://data.gov.au/data/dataset/colac-otway-shire-trees',
-    download: 'https://data.gov.au/geoserver/colac-otway-shire-trees/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=colac-otway-shire-trees:COS_Trees_OpenData0&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://data.gov.au/geoserver/colac-otway-shire-trees/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=colac-otway-shire-trees:COS_Trees_OpenData0&srsName=EPSG:4326&outputFormat=application/json'
+    },
     crosswalk: {
       ref: 'tree_id',
       genus: 'genus_desc',
@@ -496,8 +513,9 @@ module.exports = [
     city: 'Dookie College',
     designation: 'University of Melbourne',
     info: 'https://www.arcgis.com/home/item.html?id=8fcfd4c7dd524707b97a6797fed8351a',
-    download: 'https://services6.arcgis.com/wNUCgbZ3TmLukLnT/arcgis/rest/services/Dookie_Tree_Inventory_2022/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/wNUCgbZ3TmLukLnT/arcgis/rest/services/Dookie_Tree_Inventory_2022/FeatureServer/0'
+    }
   },
   {
     country: 'Australia',
@@ -555,8 +573,9 @@ module.exports = [
     city: 'Greater Geelong',
     scope: 'Tree',
     info: 'https://www.geelongdataexchange.com.au/explore/dataset/plaprodplacestreepoints_prod/information/',
-    download: 'https://www.geelongdataexchange.com.au/api/explore/v2.1/catalog/datasets/plaprodplacestreepoints_prod/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://www.geelongdataexchange.com.au/api/explore/v2.1/catalog/datasets/plaprodplacestreepoints_prod/exports/geojson'
+    },
     crosswalk: {
       scientific: x => x.genus + ' ' + (x.species || '').toLowerCase(),
       common: 'common',
@@ -586,8 +605,9 @@ module.exports = [
     city: 'Greater Shepparton',
     scope: 'Tree',
     info: 'https://data.gov.au/data/dataset/greater-shepparton-city-council-street-and-park-trees',
-    download: 'https://data.gov.au/geoserver/greater-shepparton-city-council-street-and-park-trees/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=greater-shepparton-city-council-street-and-park-trees:Greater_Shepparton_City_Council_Street_and_Pa0&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://data.gov.au/geoserver/greater-shepparton-city-council-street-and-park-trees/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=greater-shepparton-city-council-street-and-park-trees:Greater_Shepparton_City_Council_Street_and_Pa0&srsName=EPSG:4326&outputFormat=application/json'
+    },
     crosswalk: {
       scientific: 'scientific',
       common: 'common',
@@ -652,8 +672,9 @@ module.exports = [
     city: 'Melbourne',
     scope: 'Tree',
     info: 'https://data.melbourne.vic.gov.au/explore/dataset/trees-with-species-and-dimensions-urban-forest/information/',
-    download: 'https://data.melbourne.vic.gov.au/api/explore/v2.1/catalog/datasets/trees-with-species-and-dimensions-urban-forest/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.melbourne.vic.gov.au/api/explore/v2.1/catalog/datasets/trees-with-species-and-dimensions-urban-forest/exports/geojson'
+    },
     geometry: { x: 'Longitude', y: 'Latitude' },
     srs: 'EPSG:4326',
     crosswalk: {
@@ -677,8 +698,9 @@ module.exports = [
     city: 'Mildura',
     scope: 'Tree: notable',
     info: 'https://data.gov.au/data/dataset/significant-trees',
-    download: 'https://data.gov.au/geoserver/significant-trees/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=significant-trees:SignificantTrees18&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://data.gov.au/geoserver/significant-trees/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=significant-trees:SignificantTrees18&srsName=EPSG:4326&outputFormat=application/json'
+    },
     license: { id: 'CC-BY-3.0-AU' }
   },
   {
@@ -726,8 +748,9 @@ module.exports = [
     city: 'Southern Grampians',
     scope: 'Tree',
     info: 'https://data.gov.au/data/dataset/southern-grampians-street-and-park-trees',
-    download: 'https://data.gov.au/geoserver/southern-grampians-street-and-park-trees/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=southern-grampians-street-and-park-trees:Southern_Grampians_Street_and_Park_Trees49&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://data.gov.au/geoserver/southern-grampians-street-and-park-trees/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=southern-grampians-street-and-park-trees:Southern_Grampians_Street_and_Park_Trees49&srsName=EPSG:4326&outputFormat=application/json'
+    },
     crosswalk: {
       ref: 'ref',
       scientific: 'species',
@@ -808,8 +831,9 @@ module.exports = [
     city: 'Albany',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=68fe20abaf904d9ca8b3a93988a6357b',
-    download: 'https://services6.arcgis.com/qG6LEFhXeMyvh3U3/arcgis/rest/services/Tree_Inventory_WFL1/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/qG6LEFhXeMyvh3U3/arcgis/rest/services/Tree_Inventory_WFL1/FeatureServer/0'
+    }
   },
   {
     country: 'Australia',
@@ -817,8 +841,9 @@ module.exports = [
     city: 'Perth',
     scope: 'Tree',
     info: 'https://geohub-perth.opendata.arcgis.com/datasets/perth::trees-in-the-city-1/about',
-    download: 'https://services7.arcgis.com/v8XBa2naYNQGOjlG/arcgis/rest/services/PKS_AST_TREESMASTER_PV/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services7.arcgis.com/v8XBa2naYNQGOjlG/arcgis/rest/services/PKS_AST_TREESMASTER_PV/FeatureServer/0'
+    },
     crosswalk: {
       scientific: 'BOTANICAL_',
       common: 'COMMON_NAM',
@@ -906,8 +931,9 @@ module.exports = [
     city: 'Graz',
     scope: 'Tree',
     info: 'https://data.graz.gv.at/daten/package/cb3fb7aa-4b79-41b1-aeb9-cd60d575fe92',
-    download: 'https://geodaten.graz.at/arcgis/rest/services/OGD/OGD_WFS/MapServer/15',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://geodaten.graz.at/arcgis/rest/services/OGD/OGD_WFS/MapServer/15'
+    },
     license: { id: 'CC-BY-4.0' },
     terms: 'https://data.graz.gv.at/nutzungsbedingungen'
   },
@@ -929,8 +955,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'Download as CSV to allow download in single transaction',
     info: 'https://www.data.gv.at/katalog/dataset/c91a4635-8b7d-43fe-9b27-d95dec8392a7',
-    download: 'https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:BAUMKATOGD&srsName=EPSG:4326&outputFormat=csv',
-    api: 'wfs',
+    download: {
+      wfs: 'https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:BAUMKATOGD&srsName=EPSG:4326&outputFormat=csv'
+    },
     geometry: { wkt: 'SHAPE' },
     srs: 'EPSG:4326',
     crosswalk: {
@@ -949,16 +976,18 @@ module.exports = [
     city: 'Mechelen',
     scope: 'Tree',
     info: 'https://hub.arcgis.com/datasets/Mechelen::bomen2/about',
-    download: 'https://services9.arcgis.com/NQi6fFGrJ3ThImfU/arcgis/rest/services/Bomen2/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services9.arcgis.com/NQi6fFGrJ3ThImfU/arcgis/rest/services/Bomen2/FeatureServer/0'
+    }
   },
   {
     country: 'Belgium',
     state: 'Bruxelles',
     scope: 'Tree: street',
     info: 'https://data.mobility.brussels/fr/info/trees/',
-    download: 'https://data.mobility.brussels/geoserver/bm_public_space/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=bm_public_space:trees&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://data.mobility.brussels/geoserver/bm_public_space/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=bm_public_space:trees&srsName=EPSG:4326&outputFormat=application/json'
+    },
     license: { id: 'CC0-1.0' }
   },
   {
@@ -969,8 +998,9 @@ module.exports = [
     scope: 'Tree: notable',
     notes: 'Subset of regional inventory',
     info: 'https://opendata.bruxelles.be/explore/dataset/bruxelles_arbres_remarquables/information/',
-    download: 'https://opendata.bruxelles.be/api/explore/v2.1/catalog/datasets/bruxelles_arbres_remarquables/exports/csv?delimiter=,',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://opendata.bruxelles.be/api/explore/v2.1/catalog/datasets/bruxelles_arbres_remarquables/exports/csv?delimiter=,'
+    },
     license: { id: 'etalab-2.0' }
   },
   {
@@ -979,8 +1009,9 @@ module.exports = [
     city: 'Jette',
     scope: 'Tree',
     info: 'https://datastore.brussels/web/data/service/dbb199bc-fc34-4ebf-96e2-f6aad40cb1df',
-    download: 'https://geoservices-others.irisnet.be/geoserver/UrbisAasArbre/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=UrbisAasArbre:arbres_jette_vue&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://geoservices-others.irisnet.be/geoserver/UrbisAasArbre/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=UrbisAasArbre:arbres_jette_vue&srsName=EPSG:4326&outputFormat=application/json'
+    },
     license: { id: 'CC0-1.0' }
   },
   {
@@ -989,8 +1020,9 @@ module.exports = [
     city: 'Venray',
     scope: 'Tree: notable',
     info: 'https://hub.arcgis.com/datasets/c7d1269ddfe343088c68f52e3478bae1_0/about',
-    download: 'https://services6.arcgis.com/av36q4cfx52r5s7V/arcgis/rest/services/Monumentale_bomen_Open_Data/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/av36q4cfx52r5s7V/arcgis/rest/services/Monumentale_bomen_Open_Data/FeatureServer/0'
+    }
   },
   {
     country: 'Belgium',
@@ -998,8 +1030,9 @@ module.exports = [
     city: 'Agentschap Wegen en Verkeer',
     scope: 'Tree',
     info: 'https://www.vlaanderen.be/datavindplaats/catalogus/bomen-langs-de-genummerde-wegen-in-beheer-van-awv',
-    download: 'https://opendata.apps.mow.vlaanderen.be/opendata-geoserver/awv/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=awv:Bomen&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs'
+    download: {
+      wfs: 'https://opendata.apps.mow.vlaanderen.be/opendata-geoserver/awv/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=awv:Bomen&srsName=EPSG:4326&outputFormat=application/json'
+    }
   },
   {
     country: 'Belgium',
@@ -1007,8 +1040,9 @@ module.exports = [
     city: 'Antwerpen',
     scope: 'Tree',
     info: 'https://portaal-stadantwerpen.opendata.arcgis.com/datasets/boom/about',
-    download: 'https://geodata.antwerpen.be/arcgissql/rest/services/P_Portal/portal_publiek6/MapServer/676',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://geodata.antwerpen.be/arcgissql/rest/services/P_Portal/portal_publiek6/MapServer/676'
+    },
     crosswalk: { scientific: 'LATBOOMSOO', dbh: 'STAMOMTREK', ref: 'ANTW_ID' },
     opentrees_id: 'antwerpen_be'
   },
@@ -1018,8 +1052,9 @@ module.exports = [
     city: 'Gent',
     scope: 'Tree',
     info: 'https://data.stad.gent/explore/dataset/locaties-bomen-gent/information/',
-    download: 'https://data.stad.gent/api/explore/v2.1/catalog/datasets/locaties-bomen-gent/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.stad.gent/api/explore/v2.1/catalog/datasets/locaties-bomen-gent/exports/geojson'
+    },
     srs: 'EPSG:3857',
     license: {
       name: 'Modellicentie Gratis Hergebruik 1.0',
@@ -1033,8 +1068,9 @@ module.exports = [
     scope: 'Tree: notable',
     notes: 'Manual download using QGIS | Failed to download features so read the layer using QGIS and exported it to a CSV file with coordinates in columns x and y',
     info: 'http://geoportail.wallonie.be/catalogue/d594f5a3-34ac-4cc2-a357-aae5d5263f35.html',
-    download: 'https://geoservices.wallonie.be/arcgis/rest/services/FAUNE_FLORE/AHREM/MapServer/0',
-    api: 'manual',
+    download: {
+      manual: 'https://geoservices.wallonie.be/arcgis/rest/services/FAUNE_FLORE/AHREM/MapServer/0'
+    },
     driver: 'CSV',
     geometry: { x: 'x', y: 'y' },
     srs: 'EPSG:31370'
@@ -1045,8 +1081,9 @@ module.exports = [
     city: 'Liège',
     scope: 'Tree',
     info: 'https://www.odwb.be/explore/dataset/arbustum/information/',
-    download: 'https://www.odwb.be/api/explore/v2.1/catalog/datasets/arbustum/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://www.odwb.be/api/explore/v2.1/catalog/datasets/arbustum/exports/geojson'
+    },
     license: { id: 'CC-BY-4.0' },
     opentrees_id: 'wallonie_bruxelles_be'
   },
@@ -1080,8 +1117,9 @@ module.exports = [
     city: 'Niterói',
     scope: 'Tree',
     info: 'https://www.sigeo.niteroi.rj.gov.br/datasets/cadastro-de-%C3%A1rvores-arb%C3%B3ribus-1/about',
-    download: 'https://geo.niteroi.rj.gov.br/arcgisesri/rest/services/civitas/Dadosabertos_TUR_NITT_SECON_SEDEN/MapServer/25',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://geo.niteroi.rj.gov.br/arcgisesri/rest/services/civitas/Dadosabertos_TUR_NITT_SECON_SEDEN/MapServer/25'
+    }
   },
   {
     country: 'Brazil',
@@ -1107,8 +1145,9 @@ module.exports = [
     designation: 'Universidade Estadual de Campinas',
     scope: 'Tree',
     info: 'https://atlas.unicamp.br/apps/unicamp-arcgis::censo-das-%C3%A1rvores/about',
-    download: 'https://services5.arcgis.com/dFCi4j751Fk5jtHP/ArcGIS/rest/services/%c3%81rvores/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/dFCi4j751Fk5jtHP/ArcGIS/rest/services/%c3%81rvores/FeatureServer/0'
+    }
   },
   {
     country: 'Canada',
@@ -1116,8 +1155,9 @@ module.exports = [
     designation: 'Strathcona County',
     scope: 'Tree',
     info: 'https://data.strathcona.ca/Environment/Trees/ig6t-pdus',
-    download: 'https://data.strathcona.ca/api/geospatial/ig6t-pdus?method=export&format=geojson',
-    api: 'socrata',
+    download: {
+      socrata: 'https://data.strathcona.ca/api/geospatial/ig6t-pdus?method=export&format=geojson'
+    },
     crosswalk: { ref: 'TreeSiteID', common: 'Name' },
     license: { id: 'OGL-Canada-2.0' },
     opentrees_id: 'strathcona'
@@ -1127,8 +1167,9 @@ module.exports = [
     state: 'Alberta',
     city: 'Beaumont',
     info: 'https://www.arcgis.com/home/item.html?id=d9f4e37abe484234adfdff9631877374',
-    download: 'https://services.arcgis.com/bXIYJft7hzGvJuKH/arcgis/rest/services/TreeInv_Points_Public_View/FeatureServer/4',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/bXIYJft7hzGvJuKH/arcgis/rest/services/TreeInv_Points_Public_View/FeatureServer/4'
+    }
   },
   {
     country: 'Canada',
@@ -1136,8 +1177,9 @@ module.exports = [
     city: 'Chestermere',
     scope: 'Tree',
     info: 'http://data-chestermere.opendata.arcgis.com/datasets/trees/about',
-    download: 'https://gis.chestermere.ca/serversite/rest/services/Trees_Open/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gis.chestermere.ca/serversite/rest/services/Trees_Open/FeatureServer/0'
+    },
     crosswalk: {
       common: 'Species',
       scientific: 'Species_Sc',
@@ -1154,8 +1196,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'GeoJSON export yields a broken file',
     info: 'https://data.edmonton.ca/Environmental-Services/Trees/eecg-fc54',
-    download: 'https://data.edmonton.ca/api/views/eecg-fc54/rows.csv',
-    api: 'socrata',
+    download: {
+      socrata: 'https://data.edmonton.ca/api/views/eecg-fc54/rows.csv'
+    },
     driver: 'CSV',
     geometry: { x: 'LONGITUDE', y: 'LATITUDE' },
     srs: 'EPSG:4326',
@@ -1182,8 +1225,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'geofenced (US)',
     info: 'https://opendata-cityofgp.hub.arcgis.com/datasets/cityofgp::trees-3/about',
-    download: 'https://services.gpgis.com/server/rest/services/Open_Data/Trees/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services.gpgis.com/server/rest/services/Open_Data/Trees/MapServer/0'
+    },
     license: {
       name: 'Open Government License – City of Grande Prairie 1.0',
       url: 'https://www.arcgis.com/home/item.html?id=5710daaf9f674a9784df26dccd664c8f'
@@ -1195,8 +1239,9 @@ module.exports = [
     city: 'Lethbridge',
     scope: 'Tree',
     info: 'https://opendata.lethbridge.ca/datasets/82841132047d47659508f60c52f6346a_0/about',
-    download: 'https://gis.lethbridge.ca/lethwebgisarcgis/rest/services/OpenData/odl_trees/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gis.lethbridge.ca/lethwebgisarcgis/rest/services/OpenData/odl_trees/MapServer/0'
+    },
     crosswalk: {
       common: 'species',
       dbh: 'diameter',
@@ -1217,8 +1262,9 @@ module.exports = [
     state: 'British Columbia',
     city: 'Burnaby',
     info: 'https://www.arcgis.com/home/item.html?id=2606c3de98244cba8f0debe09248af2c',
-    download: 'https://services5.arcgis.com/Q4JfC7BraThG8umv/arcgis/rest/services/FORM_BBY_StreetTree_City/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/Q4JfC7BraThG8umv/arcgis/rest/services/FORM_BBY_StreetTree_City/FeatureServer/0'
+    }
   },
   {
     country: 'Canada',
@@ -1227,8 +1273,9 @@ module.exports = [
     designation: 'Riverview',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=fb89536eebce4f7d820434aa0561ac4f',
-    download: 'https://services5.arcgis.com/Q4JfC7BraThG8umv/arcgis/rest/services/FORM_Tree_Inventory_Riverview_TreeRanking_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/Q4JfC7BraThG8umv/arcgis/rest/services/FORM_Tree_Inventory_Riverview_TreeRanking_view/FeatureServer/0'
+    }
   },
   {
     country: 'Canada',
@@ -1236,8 +1283,9 @@ module.exports = [
     city: 'Kamloops',
     scope: 'Tree',
     info: 'https://mydata-kamloops.opendata.arcgis.com/datasets/kamloops::test-1/about',
-    download: 'https://geoprodsvr.kamloops.ca/arcgis3/rest/services/OpenData/OpenDataHydroHypsoParks/MapServer/25',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://geoprodsvr.kamloops.ca/arcgis3/rest/services/OpenData/OpenDataHydroHypsoParks/MapServer/25'
+    },
     crosswalk: {
       common: 'SPECIES',
       crown: 'SPREAD',
@@ -1261,8 +1309,9 @@ module.exports = [
     city: 'Kelowna',
     scope: 'Tree',
     info: 'https://opendata.kelowna.ca/datasets/kelowna::tree-inventory/about',
-    download: 'https://geo.kelowna.ca/arcgis/rest/services/OpenData/MapServer/114',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://geo.kelowna.ca/arcgis/rest/services/OpenData/MapServer/114'
+    },
     crosswalk: {
       genus: 'GENUS',
       species: 'species',
@@ -1316,8 +1365,9 @@ module.exports = [
     city: 'Maple Ridge',
     scope: 'Tree',
     info: 'https://opengov.mapleridge.ca/datasets/mapleridge::street-tree/about',
-    download: 'https://geoservices.mapleridge.ca/server/rest/services/DataCatalog/Environment/MapServer/5',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://geoservices.mapleridge.ca/server/rest/services/DataCatalog/Environment/MapServer/5'
+    },
     crosswalk: {
       common: 'CommonName',
       infraspecies: 'Variety',
@@ -1336,8 +1386,9 @@ module.exports = [
     city: 'New Westminster',
     scope: 'Tree',
     info: 'https://opendata.newwestcity.ca/datasets/newwestcity::tree-inventory/about',
-    download: 'https://services3.arcgis.com/A7O8YnTNtzRPIn7T/arcgis/rest/services/Tree_Inventory_(PROD)_4_view/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services3.arcgis.com/A7O8YnTNtzRPIn7T/arcgis/rest/services/Tree_Inventory_(PROD)_4_view/FeatureServer/0'
+    },
     crosswalk: {
       scientific: 'Scientific',
       common: 'Common_Nam',
@@ -1403,8 +1454,9 @@ module.exports = [
     city: 'Penticton',
     scope: 'Tree',
     info: 'https://open.penticton.ca/datasets/e0905b0677bf4b468b57fb52d2d725db_1355/about',
-    download: 'https://gis.penticton.ca/external/rest/services/prd/Parks/MapServer/1355',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gis.penticton.ca/external/rest/services/prd/Parks/MapServer/1355'
+    },
     license: {
       name: 'Open Government Licence – City of Penticton 2.0',
       url: 'https://www.penticton.ca/sites/default/files/docs/our-community/maps-gis/2020-07-02-PDF-Open%20Data%20Government%20Licence.pdf'
@@ -1416,8 +1468,9 @@ module.exports = [
     city: 'Prince George',
     scope: 'Tree',
     info: 'https://data-cityofpg.opendata.arcgis.com/datasets/trees/about',
-    download: 'https://services2.arcgis.com/CnkB6jCzAsyli34z/arcgis/rest/services/OpenData_Parks/FeatureServer/3',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services2.arcgis.com/CnkB6jCzAsyli34z/arcgis/rest/services/OpenData_Parks/FeatureServer/3'
+    },
     crosswalk: {
       planted: 'TreePlantD',
       common: 'CommonName',
@@ -1443,8 +1496,9 @@ module.exports = [
     city: 'Surrey',
     scope: 'Tree',
     info: 'http://data.surrey.ca/dataset/park-specimen-trees',
-    download: 'https://gisservices.surrey.ca/arcgis/rest/services/OpenData/MapServer/257',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gisservices.surrey.ca/arcgis/rest/services/OpenData/MapServer/257'
+    },
     crosswalk: {
       genus: 'TREE_GENUS',
       species: 'TREE_SPECIES',
@@ -1463,8 +1517,9 @@ module.exports = [
     city: 'Vancouver',
     designation: 'Musqueam',
     info: 'https://www.arcgis.com/home/item.html?id=9da6c58c19574370a5164f82817ad824',
-    download: 'https://services2.arcgis.com/NlsizNmbMFiinWw4/arcgis/rest/services/FORSITE_Data_Web_Map_WFL1/FeatureServer/1',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/NlsizNmbMFiinWw4/arcgis/rest/services/FORSITE_Data_Web_Map_WFL1/FeatureServer/1'
+    }
   },
   {
     country: 'Canada',
@@ -1472,8 +1527,9 @@ module.exports = [
     city: 'Vancouver',
     designation: 'University of British Columbia',
     info: 'https://www.arcgis.com/home/item.html?id=9da6c58c19574370a5164f82817ad824',
-    download: 'https://services2.arcgis.com/NlsizNmbMFiinWw4/arcgis/rest/services/FORSITE_Data_Web_Map_WFL1/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/NlsizNmbMFiinWw4/arcgis/rest/services/FORSITE_Data_Web_Map_WFL1/FeatureServer/0'
+    }
   },
   {
     country: 'Canada',
@@ -1481,8 +1537,9 @@ module.exports = [
     city: 'Vancouver',
     scope: 'Tree',
     info: 'https://opendata.vancouver.ca/explore/dataset/street-trees/information/',
-    download: 'https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/street-trees/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/street-trees/exports/geojson'
+    },
     crosswalk: {
       ref: 'tree_id',
       genus: 'genus_name',
@@ -1506,8 +1563,9 @@ module.exports = [
     city: 'Victoria',
     scope: 'Tree',
     info: 'https://opendata.victoria.ca/datasets/VicMap::tree-species/about',
-    download: 'https://maps.victoria.ca/server/rest/services/OpenData/OpenData_Parks/MapServer/15',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://maps.victoria.ca/server/rest/services/OpenData/OpenData_Parks/MapServer/15'
+    },
     crosswalk: {
       scientific: 'Species',
       dbh: 'DiameterAt',
@@ -1540,8 +1598,9 @@ module.exports = [
     city: 'Brandon',
     scope: 'Tree',
     info: 'https://hub.arcgis.com/datasets/29d80f08f64d4ef9a6692b48d84627df_0/about',
-    download: 'https://services3.arcgis.com/JtdxzXM6C8Uto0D2/arcgis/rest/services/TreeInventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/JtdxzXM6C8Uto0D2/arcgis/rest/services/TreeInventory/FeatureServer/0'
+    }
   },
   {
     country: 'Canada',
@@ -1550,8 +1609,9 @@ module.exports = [
     designation: 'University of Manitoba',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=d475e8feb6f540858fcff9ca83e056d7',
-    download: 'https://services7.arcgis.com/qkMZANJ0iIMLiVSJ/arcgis/rest/services/2023_Tree_Inventory__PUBLIC_Database_September_Unfinished/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/qkMZANJ0iIMLiVSJ/arcgis/rest/services/2023_Tree_Inventory__PUBLIC_Database_September_Unfinished/FeatureServer/0'
+    }
   },
   {
     country: 'Canada',
@@ -1560,8 +1620,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'GeoJSON export yields a broken file',
     info: 'https://data.winnipeg.ca/Parks/Tree-Inventory/hfwk-jp4h',
-    download: 'https://data.winnipeg.ca/api/views/hfwk-jp4h/rows.csv',
-    api: 'socrata',
+    download: {
+      socrata: 'https://data.winnipeg.ca/api/views/hfwk-jp4h/rows.csv'
+    },
     driver: 'CSV',
     geometry: { wkt: 'Point' },
     srs: 'EPSG:4326',
@@ -1583,8 +1644,9 @@ module.exports = [
     city: 'Fredericton',
     designation: 'University of New Brunswick',
     info: 'https://www.arcgis.com/home/item.html?id=9af723fa32d246d8a36bcbb70d8daad2',
-    download: 'https://services1.arcgis.com/56dETZIzFXStwLka/arcgis/rest/services/Trees_of_UNB_Campus_WFL1/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/56dETZIzFXStwLka/arcgis/rest/services/Trees_of_UNB_Campus_WFL1/FeatureServer/0'
+    }
   },
   {
     country: 'Canada',
@@ -1592,8 +1654,9 @@ module.exports = [
     city: 'Fredericton',
     scope: 'Tree',
     info: 'https://data-fredericton.opendata.arcgis.com/datasets/Fredericton::tree-inventory-for-public-use/about',
-    download: 'https://services2.arcgis.com/iLWAxhpxafhOza2U/arcgis/rest/services/Fredericton__FREDERICTON_SCHIFKEE__TreeInventory/FeatureServer/1',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/iLWAxhpxafhOza2U/arcgis/rest/services/Fredericton__FREDERICTON_SCHIFKEE__TreeInventory/FeatureServer/1'
+    }
   },
   {
     country: 'Canada',
@@ -1601,8 +1664,9 @@ module.exports = [
     city: 'Moncton',
     scope: 'Tree',
     info: 'https://open.moncton.ca/datasets/moncton::trees/about',
-    download: 'https://services1.arcgis.com/E26PuSoie2Y7bbyI/arcgis/rest/services/Trees/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/E26PuSoie2Y7bbyI/arcgis/rest/services/Trees/FeatureServer/0'
+    },
     srs: 'EPSG:2953',
     crosswalk: {
       common: 'BOTNAME',
@@ -1622,8 +1686,9 @@ module.exports = [
     city: 'Saint John',
     scope: 'Tree',
     info: 'https://catalogue-saintjohn.opendata.arcgis.com/datasets/SaintJohn::urban-forestry-trees/about',
-    download: 'https://services.arcgis.com/DLk7hgTJeJILuEBg/arcgis/rest/services/Urban_Forestry_Trees/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services.arcgis.com/DLk7hgTJeJILuEBg/arcgis/rest/services/Urban_Forestry_Trees/FeatureServer/0'
+    },
     license: {
       name: 'Open Government Licence – City of Saint John 1.0',
       url: 'https://catalogue-saintjohn.opendata.arcgis.com/datasets/SaintJohn::urban-forestry-trees/about'
@@ -1635,8 +1700,9 @@ module.exports = [
     city: 'Woodstock',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=afd84d53590d4276bbbccd980c386515',
-    download: 'https://services1.arcgis.com/56dETZIzFXStwLka/arcgis/rest/services/survey123_fecbea9fdbf14a56a3aa229f815555ec_stakeholder/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/56dETZIzFXStwLka/arcgis/rest/services/survey123_fecbea9fdbf14a56a3aa229f815555ec_stakeholder/FeatureServer/0'
+    }
   },
   {
     country: 'Canada',
@@ -1644,8 +1710,9 @@ module.exports = [
     city: 'Halifax',
     scope: 'Tree',
     info: 'https://catalogue-hrm.opendata.arcgis.com/datasets/33a4e9b6c7e9439abcd2b20ac50c5a4d_0/about',
-    download: 'https://services2.arcgis.com/11XBiaBYA9Ep0yNJ/arcgis/rest/services/Public_Trees/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services2.arcgis.com/11XBiaBYA9Ep0yNJ/arcgis/rest/services/Public_Trees/FeatureServer/0'
+    },
     license: {
       name: 'Open Government Licence – Halifax 1.0',
       url: 'https://data-hrm.hub.arcgis.com/pages/open-data-licence'
@@ -1657,8 +1724,9 @@ module.exports = [
     designation: 'Waterloo Region District School Board',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=5fbde30896954305830ff57795ad7e4d',
-    download: 'https://services1.arcgis.com/xKY66Gy3crN5ZX2F/arcgis/rest/services/Tree_Inventory_with_Pics/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/xKY66Gy3crN5ZX2F/arcgis/rest/services/Tree_Inventory_with_Pics/FeatureServer/0'
+    }
   },
   {
     country: 'Canada',
@@ -1666,8 +1734,9 @@ module.exports = [
     designation: 'York Region',
     scope: 'Tree',
     info: 'https://insights-york.opendata.arcgis.com/datasets/street-trees/about',
-    download: 'https://ww8.yorkmaps.ca/arcgis/rest/services/OpenData/Biodiversity/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://ww8.yorkmaps.ca/arcgis/rest/services/OpenData/Biodiversity/MapServer/0'
+    },
     crosswalk: {
       ref: 'TREEID',
       scientific: 'SPECIES',
@@ -1689,8 +1758,9 @@ module.exports = [
     city: 'Ajax',
     scope: 'Tree',
     info: 'https://opendata.ajax.ca/datasets/TownofAjax::town-trees/about',
-    download: 'https://ajaxmaps.ajax.ca/gisernie/rest/services/Public/Ajax_Open_Data/MapServer/8',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://ajaxmaps.ajax.ca/gisernie/rest/services/Public/Ajax_Open_Data/MapServer/8'
+    },
     delFunc: x => x.STATUS === 'REMOVED',
     crosswalk: {
       dbh: 'DBH',
@@ -1711,8 +1781,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'geofenced (US)',
     info: 'https://opendata.barrie.ca/maps/tree/about',
-    download: 'https://gispublic.barrie.ca/arcgis/rest/services/Open_Data/FacilitiesStreets/MapServer/37',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gispublic.barrie.ca/arcgis/rest/services/Open_Data/FacilitiesStreets/MapServer/37'
+    },
     crosswalk: { ref: 'ASSETID', location: 'TREETYPE' },
     terms: '© Copyright City of Barrie, The City of Barrie does not warrant the accuracy, completeness, content, or currency of the information provided.',
     opentrees_id: 'barrie'
@@ -1724,8 +1795,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'geofenced (US)',
     info: 'https://navburl-burlington.opendata.arcgis.com/datasets/city-owned-trees/about',
-    download: 'https://mapping.burlington.ca/arcgisweb/rest/services/COB/Urban_Forestry/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://mapping.burlington.ca/arcgisweb/rest/services/COB/Urban_Forestry/MapServer/0'
+    },
     license: {
       name: 'Terms of Use for Open Data Burlington 2011.09.19',
       url: 'https://opendata.burlington.ca/opendata-terms-of-use/City%20of%20Burlington%20-%20Open%20Data%20Terms%20of%20Use.pdf'
@@ -1737,8 +1809,9 @@ module.exports = [
     city: 'Calgary',
     scope: 'Tree',
     info: 'https://data.calgary.ca/Environment/Public-Trees/tfs4-3wwa',
-    download: 'https://data.calgary.ca/api/geospatial/tfs4-3wwa?method=export&format=geojson',
-    api: 'socrata',
+    download: {
+      socrata: 'https://data.calgary.ca/api/geospatial/tfs4-3wwa?method=export&format=geojson'
+    },
     crosswalk: {
       common: 'COMMON_NAME',
       genus: 'GENUS',
@@ -1765,8 +1838,9 @@ module.exports = [
     city: 'Cambridge',
     scope: 'Tree',
     info: 'https://geohub.cambridge.ca/datasets/street-trees/about',
-    download: 'https://maps.cambridge.ca/arcgispub03/rest/services/OpenData1/MapServer/7',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://maps.cambridge.ca/arcgispub03/rest/services/OpenData1/MapServer/7'
+    },
     license: {
       name: 'Open Government Licence – City of Cambridge 2.0',
       url: 'https://maps.cambridge.ca/images/opendata/Open%20data%20licence.pdf'
@@ -1778,16 +1852,18 @@ module.exports = [
     city: 'Centre Wellington',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=2475343bea5d4bdea0a937dea123c8db',
-    download: 'https://services3.arcgis.com/3YI9BX0c4OLSriOZ/arcgis/rest/services/Tree_Inventory_2_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/3YI9BX0c4OLSriOZ/arcgis/rest/services/Tree_Inventory_2_view/FeatureServer/0'
+    }
   },
   {
     country: 'Canada',
     state: 'Ontario',
     city: 'Georgina',
     info: 'https://www.arcgis.com/home/item.html?id=4e44559883034b07bb3194921d1ff39c',
-    download: 'https://services7.arcgis.com/H9DyU85EnErZGhsY/arcgis/rest/services/Tree_Inventory_-_FL_-_File_1_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/H9DyU85EnErZGhsY/arcgis/rest/services/Tree_Inventory_-_FL_-_File_1_view/FeatureServer/0'
+    }
   },
   {
     country: 'Canada',
@@ -1796,8 +1872,9 @@ module.exports = [
     designation: 'University of Guelph',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=76ca11a45db648f595ee3094d6b95d16',
-    download: 'https://services9.arcgis.com/dzxx4ZRCVMc0u5ro/arcgis/rest/services/University_of_Guelph_Tree_Inventory_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services9.arcgis.com/dzxx4ZRCVMc0u5ro/arcgis/rest/services/University_of_Guelph_Tree_Inventory_view/FeatureServer/0'
+    }
   },
   {
     country: 'Canada',
@@ -1805,8 +1882,9 @@ module.exports = [
     city: 'Guelph',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=c6d45eb84f644550b6c29088361bdc07',
-    download: 'https://services7.arcgis.com/AHJOWTX3sFcnmA9U/arcgis/rest/services/City_of_Guelph/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/AHJOWTX3sFcnmA9U/arcgis/rest/services/City_of_Guelph/FeatureServer/0'
+    }
   },
   {
     country: 'Canada',
@@ -1825,8 +1903,9 @@ module.exports = [
     city: 'Kingston',
     scope: 'Tree',
     info: 'https://opendatakingston.cityofkingston.ca/explore/dataset/trees-municipal/information/',
-    download: 'https://opendatakingston.cityofkingston.ca/api/explore/v2.1/catalog/datasets/trees-municipal/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://opendatakingston.cityofkingston.ca/api/explore/v2.1/catalog/datasets/trees-municipal/exports/geojson'
+    },
     license: {
       name: 'Open Data Licence – City of Kingston 1.0',
       url: 'https://www.cityofkingston.ca/documents/10180/144997/CityofKingston_OpenDataLicense.pdf'
@@ -1838,8 +1917,9 @@ module.exports = [
     city: 'Kitchener',
     scope: 'Tree',
     info: 'https://open-kitchenergis.opendata.arcgis.com/datasets/e42a9601b87a4417b3d3d15a0f596f64_0/about',
-    download: 'https://services1.arcgis.com/qAo1OsXi67t7XgmS/arcgis/rest/services/Tree_Inventory/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/qAo1OsXi67t7XgmS/arcgis/rest/services/Tree_Inventory/FeatureServer/0'
+    },
     crosswalk: {
       ref: 'TREEID',
       common: 'SPECIES_NA',
@@ -1861,8 +1941,9 @@ module.exports = [
     city: 'London',
     designation: 'Western University',
     info: 'https://www.arcgis.com/home/item.html?id=07f4772f1067428cb69651a0b64cf6de',
-    download: 'https://services.arcgis.com/rGKxabTU9mcXMw7k/arcgis/rest/services/campus_tree_inventory_2018_View_Layer/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/rGKxabTU9mcXMw7k/arcgis/rest/services/campus_tree_inventory_2018_View_Layer/FeatureServer/0'
+    }
   },
   {
     country: 'Canada',
@@ -1878,8 +1959,9 @@ module.exports = [
     country: 'Canada',
     state: 'Ontario',
     city: 'London',
-    download: 'https://services.arcgis.com/rGKxabTU9mcXMw7k/ArcGIS/rest/services/Tree_Inventory_Public_CityLondon/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/rGKxabTU9mcXMw7k/ArcGIS/rest/services/Tree_Inventory_Public_CityLondon/FeatureServer/0'
+    }
   },
   {
     country: 'Canada',
@@ -1887,8 +1969,9 @@ module.exports = [
     city: 'Mississauga',
     scope: 'Tree',
     info: 'https://data.mississauga.ca/datasets/mississauga::2023-city-owned-tree-inventory/about',
-    download: 'https://services6.arcgis.com/hM5ymMLbxIyWTjn2/arcgis/rest/services/2023_City_Owned_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services6.arcgis.com/hM5ymMLbxIyWTjn2/arcgis/rest/services/2023_City_Owned_Tree_Inventory/FeatureServer/0'
+    },
     crosswalk: {
       dbh: 'DIAM',
       planted: 'INSTDATE',
@@ -1907,8 +1990,9 @@ module.exports = [
     city: 'Niagara Falls',
     scope: 'Tree',
     info: 'https://open.niagarafalls.ca/datasets/niagara-falls-trees-inventory/about',
-    download: 'https://services9.arcgis.com/oMFQlUUrLd1Uh1bd/arcgis/rest/services/Niagara_Falls_Trees_Inventory/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services9.arcgis.com/oMFQlUUrLd1Uh1bd/arcgis/rest/services/Niagara_Falls_Trees_Inventory/FeatureServer/0'
+    },
     license: {
       name: 'Open Government Licence – Niagara Falls 1.0',
       url: 'https://open.niagarafalls.ca/pages/terms-of-use'
@@ -1938,8 +2022,9 @@ module.exports = [
     city: 'Ottowa',
     scope: 'Tree',
     info: 'https://open.ottawa.ca/datasets/ottawa::tree-inventory/about',
-    download: 'https://maps.ottawa.ca/arcgis/rest/services/Forestry/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://maps.ottawa.ca/arcgis/rest/services/Forestry/MapServer/0'
+    },
     crosswalk: { scientific: 'SPECIES', ref: 'SAP_ID' },
     license: {
       name: 'Open Government Licence – City of Ottawa 2.0',
@@ -1954,8 +2039,9 @@ module.exports = [
     city: 'Peterborough',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=15070a4a804644969019a08bdb4a7564',
-    download: 'https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/Street_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/Street_Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'Canada',
@@ -1985,8 +2071,9 @@ module.exports = [
     designation: 'York University',
     scope: 'Tree',
     info: 'https://yorku.maps.arcgis.com/home/item.html?id=b86c7c68d1a440b8bc83d4962b5d61cc',
-    download: 'https://services.arcgis.com/4TKcmj8FHh5Vtobt/arcgis/rest/services/KeeleTreeMap/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/4TKcmj8FHh5Vtobt/arcgis/rest/services/KeeleTreeMap/FeatureServer/0'
+    }
   },
   {
     country: 'Canada',
@@ -2013,8 +2100,9 @@ module.exports = [
     city: 'Waterloo',
     scope: 'Tree',
     info: 'http://data.waterloo.ca/datasets/street-tree-inventory/about',
-    download: 'https://services.arcgis.com/ZpeBVw5o1kjit7LT/arcgis/rest/services/Street_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services.arcgis.com/ZpeBVw5o1kjit7LT/arcgis/rest/services/Street_Tree_Inventory/FeatureServer/0'
+    },
     crosswalk: {
       common: 'COM_NAME',
       scientific: 'LATIN_NAME',
@@ -2048,8 +2136,9 @@ module.exports = [
     city: 'Whitby',
     scope: 'Tree',
     info: 'https://geohub-whitby.hub.arcgis.com/datasets/5be6efcf4f264639874bf07009f155d2_0/about',
-    download: 'https://services5.arcgis.com/ATdLnvuMRJk8AGkQ/arcgis/rest/services/Trees/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services5.arcgis.com/ATdLnvuMRJk8AGkQ/arcgis/rest/services/Trees/FeatureServer/0'
+    },
     license: {
       name: 'Open Government License – Town of Whitby 1.0',
       url: 'https://whitby.maps.arcgis.com/sharing/rest/content/items/223810efc31c40b3aff99dd74f809a97/data'
@@ -2061,8 +2150,9 @@ module.exports = [
     city: 'Windsor',
     scope: 'Tree: street',
     info: 'https://opendata.citywindsor.ca/details/238',
-    download: 'https://opendata.citywindsor.ca/Uploads/Trees%20in%20Right%20of%20Way.csv',
-    api: 'manual',
+    download: {
+      manual: 'https://opendata.citywindsor.ca/Uploads/Trees%20in%20Right%20of%20Way.csv'
+    },
     geometry: { x: 'XCoord', y: 'YCoord' },
     srs: 'EPSG:4326'
   },
@@ -2072,8 +2162,9 @@ module.exports = [
     city: 'Windsor',
     scope: 'Tree: park',
     info: 'https://opendata.citywindsor.ca/details/238',
-    download: 'https://opendata.citywindsor.ca/Uploads/Trees%20in%20Parks_Facilities.csv',
-    api: 'manual',
+    download: {
+      manual: 'https://opendata.citywindsor.ca/Uploads/Trees%20in%20Parks_Facilities.csv'
+    },
     geometry: { x: 'XCoord', y: 'YCoord' },
     srs: 'EPSG:4326'
   },
@@ -2083,8 +2174,9 @@ module.exports = [
     city: 'Longueuil',
     scope: 'Tree',
     info: 'https://geohub.longueuil.quebec/datasets/longueuil::arbres/about',
-    download: 'https://services2.arcgis.com/h4XWvDXfYYyD6jNu/arcgis/rest/services/DO_Arbres/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services2.arcgis.com/h4XWvDXfYYyD6jNu/arcgis/rest/services/DO_Arbres/FeatureServer/0'
+    },
     crosswalk: {
       scientific: x => String(x.Espece).split(' - ')[0],
       common: x => String(x.Espece).split(' - ')[1],
@@ -2176,8 +2268,9 @@ module.exports = [
     city: 'Regina',
     scope: 'Tree: street',
     info: 'http://open.regina.ca/dataset/city-of-regina-tree-inventory',
-    download: 'https://opengis.regina.ca/arcgis/rest/services/CGISViewer/TreeWebApp/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://opengis.regina.ca/arcgis/rest/services/CGISViewer/TreeWebApp/MapServer/0'
+    },
     crosswalk: {
       common: 'Species',
       owner: 'Ownership',
@@ -2197,8 +2290,9 @@ module.exports = [
     city: 'Regina',
     scope: 'Tree: park',
     info: 'http://open.regina.ca/dataset/city-of-regina-tree-inventory',
-    download: 'https://opengis.regina.ca/arcgis/rest/services/CGISViewer/TreeWebApp/MapServer/2',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://opengis.regina.ca/arcgis/rest/services/CGISViewer/TreeWebApp/MapServer/2'
+    },
     crosswalk: {
       common: 'Species',
       owner: 'Ownership',
@@ -2217,16 +2311,18 @@ module.exports = [
     state: "O'Higgins",
     city: 'Navidad',
     info: 'https://www.arcgis.com/home/item.html?id=0728dc46fc514551b444ca48014b8e95',
-    download: 'https://services5.arcgis.com/YonhguLn2JSP8h66/arcgis/rest/services/survey123_134e48c9c8ba4d8ea14a7c986dec7660/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/YonhguLn2JSP8h66/arcgis/rest/services/survey123_134e48c9c8ba4d8ea14a7c986dec7660/FeatureServer/0'
+    }
   },
   {
     country: 'Chile',
     state: 'Santiago',
     city: 'Las Condes',
     info: 'https://www.arcgis.com/home/item.html?id=451bea94d7ee4d6692fe17b3cfe25e26',
-    download: 'https://services1.arcgis.com/PRbPsCbRWXrN5OXD/arcgis/rest/services/Arbolado_Urbano_Las_Condes/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/PRbPsCbRWXrN5OXD/arcgis/rest/services/Arbolado_Urbano_Las_Condes/FeatureServer/0'
+    }
   },
   {
     country: 'Chile',
@@ -2252,8 +2348,9 @@ module.exports = [
     state: 'Santiago',
     city: 'Vitacura',
     info: 'https://www.arcgis.com/home/item.html?id=0b2a3721793047fcaac82490260c70e6',
-    download: 'https://services3.arcgis.com/5vLt4epekc6aLljO/arcgis/rest/services/ARBOLES_COMUNA_GEO_UTM/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/5vLt4epekc6aLljO/arcgis/rest/services/ARBOLES_COMUNA_GEO_UTM/FeatureServer/0'
+    }
   },
   {
     country: 'China',
@@ -2279,8 +2376,9 @@ module.exports = [
     city: 'Sabaneta',
     scope: 'Tree',
     info: 'https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/Arbolado-urbano-de-Sabaneta/nwvv-nt5q',
-    download: 'https://www.datos.gov.co/api/geospatial/nwvv-nt5q?&method=export&format=geojson',
-    api: 'socrata'
+    download: {
+      socrata: 'https://www.datos.gov.co/api/geospatial/nwvv-nt5q?&method=export&format=geojson'
+    }
   },
   {
     country: 'Colombia',
@@ -2288,8 +2386,9 @@ module.exports = [
     city: 'Bogotá',
     designation: 'Bosa',
     info: 'https://www.arcgis.com/home/item.html?id=2fbbf07dfd88464fa4aa34fc9a15a5b3',
-    download: 'https://services8.arcgis.com/XnN79i2zv7tQsjdM/arcgis/rest/services/Arbolado_bosa/FeatureServer/30',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services8.arcgis.com/XnN79i2zv7tQsjdM/arcgis/rest/services/Arbolado_bosa/FeatureServer/30'
+    }
   },
   {
     country: 'Colombia',
@@ -2297,8 +2396,9 @@ module.exports = [
     city: 'Bogotá',
     designation: 'Ciudad Bolívar',
     info: 'https://www.arcgis.com/home/item.html?id=83febb831e3546ae93f0e2e1f6f05b46',
-    download: 'https://services7.arcgis.com/SttFSSHZYXsO8qIk/arcgis/rest/services/arbolado_CB/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/SttFSSHZYXsO8qIk/arcgis/rest/services/arbolado_CB/FeatureServer/0'
+    }
   },
   {
     country: 'Colombia',
@@ -2325,8 +2425,9 @@ module.exports = [
     city: 'Bogotá',
     notes: 'coarse species',
     info: 'https://www.arcgis.com/home/item.html?id=4872efc685ab4d728247c679dd440a33',
-    download: 'https://services7.arcgis.com/rxsqAG0ztOQO48WN/arcgis/rest/services/Arbolado_urbano_especies/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/rxsqAG0ztOQO48WN/arcgis/rest/services/Arbolado_urbano_especies/FeatureServer/0'
+    }
   },
   {
     country: 'Colombia',
@@ -2334,8 +2435,9 @@ module.exports = [
     city: 'La Dorada',
     scope: 'Tree',
     info: 'https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/Arboles-Sembrados-Faja-Rio-Magdalena/9w8h-nex7',
-    download: 'https://www.datos.gov.co/api/views/9w8h-nex7/rows.csv',
-    api: 'socrata',
+    download: {
+      socrata: 'https://www.datos.gov.co/api/views/9w8h-nex7/rows.csv'
+    },
     driver: 'CSV',
     geometry: { x: 'X', y: 'Y' },
     srs: 'EPSG:4326',
@@ -2347,16 +2449,18 @@ module.exports = [
     city: 'Manizales',
     scope: 'Tree: street (main)',
     info: 'http://geodata-manizales-sigalcmzl.opendata.arcgis.com/datasets/infraestructura-verde-urbana-%C3%A1rboles/about',
-    download: 'https://services6.arcgis.com/PtpS85InlUyG2Gqs/arcgis/rest/services/Infraestructura_verde_urbana/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/PtpS85InlUyG2Gqs/arcgis/rest/services/Infraestructura_verde_urbana/FeatureServer/0'
+    }
   },
   {
     country: 'Colombia',
     state: 'Cauca',
     city: 'Popayán',
     info: 'https://www.arcgis.com/home/item.html?id=12a70db96ee24b6c92ef4a070443d7de',
-    download: 'https://services7.arcgis.com/YM8uBt5E8RtU0HOh/arcgis/rest/services/arbol_(ZIP)/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/YM8uBt5E8RtU0HOh/arcgis/rest/services/arbol_(ZIP)/FeatureServer/0'
+    }
   },
   {
     country: 'Colombia',
@@ -2364,8 +2468,9 @@ module.exports = [
     city: 'Guatavita',
     scope: 'Tree',
     info: 'https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/CATASTRO-DE-ARBOLES-DEL-MUNICIPIO-DE-GUATAVITA/r4k4-8sux',
-    download: 'https://www.datos.gov.co/api/views/r4k4-8sux/rows.csv',
-    api: 'socrata',
+    download: {
+      socrata: 'https://www.datos.gov.co/api/views/r4k4-8sux/rows.csv'
+    },
     coordsFunc: x => {
       // LATITUD: 04° 56' 15.1", LONGITUD: 73° 50' 22.6"
       const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\.]+)"/
@@ -2381,8 +2486,9 @@ module.exports = [
     state: 'Cundinamarca',
     city: 'Soacha',
     info: 'https://www.arcgis.com/home/item.html?id=2ec498f597e74a848112988f793605f4',
-    download: 'https://services6.arcgis.com/nUuopas2GEc7q7Zf/arcgis/rest/services/service_daa98289b5314e7588e75b54201623aa/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/nUuopas2GEc7q7Zf/arcgis/rest/services/service_daa98289b5314e7588e75b54201623aa/FeatureServer/0'
+    }
   },
   {
     country: 'Colombia',
@@ -2390,8 +2496,9 @@ module.exports = [
     city: 'Quimbaya',
     scope: 'Tree',
     info: 'https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/Catastro-de-rboles-Quimbaya/bgqg-v25g',
-    download: 'https://www.datos.gov.co/api/views/bgqg-v25g/rows.csv',
-    api: 'socrata',
+    download: {
+      socrata: 'https://www.datos.gov.co/api/views/bgqg-v25g/rows.csv'
+    },
     coordsFunc: x => {
       // Latitud: Latitud:4°37'47", Longitud: Longitud: 75°45'28"
       const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\.]+)"/
@@ -2418,8 +2525,9 @@ module.exports = [
     state: 'Risaralda',
     city: 'Dosquebradas',
     info: 'https://www.arcgis.com/home/item.html?id=18eebe4bdacb40a7b007a35734612e1d',
-    download: 'https://services8.arcgis.com/ITOb3eSKiN3FTE9b/arcgis/rest/services/arboles2023/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services8.arcgis.com/ITOb3eSKiN3FTE9b/arcgis/rest/services/arboles2023/FeatureServer/0'
+    }
   },
   {
     country: 'Colombia',
@@ -2427,16 +2535,18 @@ module.exports = [
     city: 'Pereira',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=cd352c93f38245d6b26bd443e4eaa2c8',
-    download: 'https://services3.arcgis.com/Zdpg0E6lri7EggIc/arcgis/rest/services/ARBOLADO_PEREIRA_04_2018/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/Zdpg0E6lri7EggIc/arcgis/rest/services/ARBOLADO_PEREIRA_04_2018/FeatureServer/0'
+    }
   },
   {
     country: 'Colombia',
     state: 'Risaralda',
     city: 'Pereira',
     info: 'https://www.arcgis.com/home/item.html?id=ee1a7684f67541e190577576942eb64a',
-    download: 'https://services3.arcgis.com/Zdpg0E6lri7EggIc/arcgis/rest/services/inventario_arboles_2019/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/Zdpg0E6lri7EggIc/arcgis/rest/services/inventario_arboles_2019/FeatureServer/0'
+    }
   },
   {
     country: 'Colombia',
@@ -2444,8 +2554,9 @@ module.exports = [
     city: 'Bucaramanga',
     scope: 'Tree',
     info: 'https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/01-BASE-DE-DATOS-CENSO-ARBOREO-BUCARAMANGA-2018/3ah4-2b5a',
-    download: 'https://www.datos.gov.co/api/views/3ah4-2b5a/rows.csv',
-    api: 'socrata',
+    download: {
+      socrata: 'https://www.datos.gov.co/api/views/3ah4-2b5a/rows.csv'
+    },
     geometry: { x: 'long_', y: 'lat' },
     srs: 'EPSG:4326',
     license: { id: 'CC-BY-SA-4.0' }
@@ -2456,8 +2567,9 @@ module.exports = [
     city: 'Piedecuesta',
     scope: 'Tree',
     info: 'https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/ARBOLES_PIEDECUESTANA_ESP/dabb-sns7',
-    download: 'https://www.datos.gov.co/api/views/dabb-sns7/rows.csv',
-    api: 'socrata',
+    download: {
+      socrata: 'https://www.datos.gov.co/api/views/dabb-sns7/rows.csv'
+    },
     coordsFunc: x => {
       // Coordenada: 73° 3' 15.496" W, Coordena_1: 7° 0' 10.340" N
       const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\.]+)"/
@@ -2472,8 +2584,9 @@ module.exports = [
     state: 'Tolima',
     city: 'Carmen de Apicalá',
     info: 'https://www.arcgis.com/home/item.html?id=390578c1ea674992b89099d4bb88bd07',
-    download: 'https://services8.arcgis.com/SmipbzmIcghR23t6/arcgis/rest/services/survey123_b0245d166ff74e93acd6841f6023d232/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services8.arcgis.com/SmipbzmIcghR23t6/arcgis/rest/services/survey123_b0245d166ff74e93acd6841f6023d232/FeatureServer/0'
+    }
   },
   {
     country: 'Colombia',
@@ -2481,8 +2594,9 @@ module.exports = [
     city: 'Ibagué',
     designation: 'Universidad de Ibagué',
     info: 'https://www.arcgis.com/home/item.html?id=332722d336b94c7396c54fecc129bc4e',
-    download: 'https://services9.arcgis.com/RONz67S5ELf2Xi9H/arcgis/rest/services/INVENTARIO_ARBOLES_UNIBAGUE/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services9.arcgis.com/RONz67S5ELf2Xi9H/arcgis/rest/services/INVENTARIO_ARBOLES_UNIBAGUE/FeatureServer/0'
+    }
   },
   {
     country: 'Colombia',
@@ -2490,8 +2604,9 @@ module.exports = [
     city: 'Ibagué',
     scope: 'Tree',
     info: 'https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/Censo-de-Arbolado-urbano-en-Ibagu-Sria-Ambiente-y-/am4p-tz7w',
-    download: 'https://www.datos.gov.co/api/views/am4p-tz7w/rows.csv',
-    api: 'socrata',
+    download: {
+      socrata: 'https://www.datos.gov.co/api/views/am4p-tz7w/rows.csv'
+    },
     coordsFunc: x => {
       // Coordinates have varying levels of decimal offset
       const X = Number(x['X'])
@@ -2511,8 +2626,9 @@ module.exports = [
     state: 'Valle del Cauca',
     city: 'Cartago',
     info: 'https://www.arcgis.com/home/item.html?id=244a1d242657423486563dd932498a67',
-    download: 'https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/Arbolado_Urbano_WFL1/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/Arbolado_Urbano_WFL1/FeatureServer/0'
+    }
   },
   {
     country: 'Colombia',
@@ -2544,8 +2660,9 @@ module.exports = [
     country: 'Czechia',
     scope: 'Tree: notable',
     info: 'https://gis-aopkcr.opendata.arcgis.com/datasets/aopkcr::pam%C3%A1tn%C3%A9-stromy/about',
-    download: 'https://gis.nature.cz/arcgis/rest/services/Aplikace/Opendata/MapServer/5',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gis.nature.cz/arcgis/rest/services/Aplikace/Opendata/MapServer/5'
+    },
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -2554,8 +2671,9 @@ module.exports = [
     city: 'København',
     scope: 'Tree',
     info: 'https://www.opendata.dk/city-of-copenhagen/trae-basis-kommunale-traeer',
-    download: 'https://wfs-kbhkort.kk.dk/k101/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=k101:trae_basis&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://wfs-kbhkort.kk.dk/k101/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=k101:trae_basis&srsName=EPSG:4326&outputFormat=application/json'
+    },
     crosswalk: {
       scientific: 'traeart',
       common: 'dansk_navn',
@@ -2571,8 +2689,9 @@ module.exports = [
     city: 'København',
     scope: 'Tree: street',
     info: 'https://www.opendata.dk/city-of-copenhagen/gadetraeer',
-    download: 'https://wfs-kbhkort.kk.dk/k101/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=k101:gadetraer&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://wfs-kbhkort.kk.dk/k101/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=k101:gadetraer&srsName=EPSG:4326&outputFormat=application/json'
+    },
     license: { id: 'CC-BY-4.0' },
     opentrees_id: 'copenhagen'
   },
@@ -2582,8 +2701,9 @@ module.exports = [
     city: 'Vejle',
     scope: 'Tree: park',
     info: 'https://www.opendata.dk/city-of-vejle/parkdrift-parkpleje-punktdata',
-    download: 'https://kortservice.vejle.dk/gis/rest/services/OPENDATA/Vejle/MapServer/12',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://kortservice.vejle.dk/gis/rest/services/OPENDATA/Vejle/MapServer/12'
+    },
     delFunc: x => !Boolean(x.ELTTYPE.match(/(træer|træ|buske)/i)),
     crosswalk: {
       ref: 'OBJECTID',
@@ -2616,8 +2736,9 @@ module.exports = [
     city: 'Helsinki',
     scope: 'Tree',
     info: 'https://hri.fi/data/fi/dataset/helsingin-kaupungin-puurekisteri',
-    download: 'https://kartta.hel.fi/ws/geoserver/avoindata/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=avoindata:Puurekisteri_piste&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://kartta.hel.fi/ws/geoserver/avoindata/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=avoindata:Puurekisteri_piste&srsName=EPSG:4326&outputFormat=application/json'
+    },
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -2652,8 +2773,9 @@ module.exports = [
     city: 'Évian-les-Bains',
     scope: 'Tree',
     info: 'https://ville-d-evian-opendata-ville-evian.hub.arcgis.com/datasets/ddfeef65b8b64749ac93038d1d999ebe_7/about',
-    download: 'https://services.arcgis.com/Hbks8qlTugfLqQka/arcgis/rest/services/arbres/FeatureServer/7',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services.arcgis.com/Hbks8qlTugfLqQka/arcgis/rest/services/arbres/FeatureServer/7'
+    },
     license: { id: 'etalab-2.0' }
   },
   {
@@ -2692,8 +2814,9 @@ module.exports = [
     city: 'Lyon',
     scope: 'Tree',
     info: 'https://data.grandlyon.com/jeux-de-donnees/arbres-alignement-metropole-lyon/',
-    download: 'https://download.data.grandlyon.com/wfs/grandlyon?service=WFS&version=2.0.0&request=GetFeature&typeNames=metropole-de-lyon:abr_arbres_alignement.abrarbre&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://download.data.grandlyon.com/wfs/grandlyon?service=WFS&version=2.0.0&request=GetFeature&typeNames=metropole-de-lyon:abr_arbres_alignement.abrarbre&srsName=EPSG:4326&outputFormat=application/json'
+    },
     crosswalk: {
       scientific: 'essence',
       infraspecies: 'variete',
@@ -2760,8 +2883,9 @@ module.exports = [
     state: 'Bretagne',
     scope: 'Tree',
     info: 'https://data.bretagne.bzh/explore/dataset/patrimoine-arbore-ponctuel-des-voies-navigables-appartenant-a-la-region-bretagne/information/',
-    download: 'https://data.bretagne.bzh/api/explore/v2.1/catalog/datasets/patrimoine-arbore-ponctuel-des-voies-navigables-appartenant-a-la-region-bretagne/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.bretagne.bzh/api/explore/v2.1/catalog/datasets/patrimoine-arbore-ponctuel-des-voies-navigables-appartenant-a-la-region-bretagne/exports/geojson'
+    },
     crosswalk: {
       ref: 'gml_id',
       common: 'essence',
@@ -2804,8 +2928,9 @@ module.exports = [
     designation: 'Rennes Métropole',
     scope: 'Tree',
     info: 'https://data.rennesmetropole.fr/explore/dataset/arbre_hors_rennes/information/',
-    download: 'https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets/arbre_hors_rennes/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets/arbre_hors_rennes/exports/geojson'
+    },
     license: { id: 'ODbL-1.0' }
   },
   {
@@ -2814,8 +2939,9 @@ module.exports = [
     city: 'Rennes',
     scope: 'Tree: street',
     info: 'https://data.rennesmetropole.fr/explore/dataset/arbres-d-alignement-rennes/information/',
-    download: 'https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets/arbres-d-alignement-rennes/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets/arbres-d-alignement-rennes/exports/geojson'
+    },
     crosswalk: {
       ref: 'numero',
       planted: 'date_plant',
@@ -2835,8 +2961,9 @@ module.exports = [
     city: 'Rennes',
     scope: 'Tree: park',
     info: 'https://data.rennesmetropole.fr/explore/dataset/arbres-dornement-rennes/information/',
-    download: 'https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets/arbres-dornement-rennes/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets/arbres-dornement-rennes/exports/geojson'
+    },
     crosswalk: {
       genus: 'genre',
       species: 'espece',
@@ -2872,8 +2999,9 @@ module.exports = [
     city: 'Tours',
     scope: 'Tree',
     info: 'https://data.tours-metropole.fr/explore/dataset/arbres-tours/information/',
-    download: 'https://data.tours-metropole.fr/api/explore/v2.1/catalog/datasets/arbres-tours/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.tours-metropole.fr/api/explore/v2.1/catalog/datasets/arbres-tours/exports/geojson'
+    },
     license: { id: 'etalab-2.0' }
   },
   {
@@ -2882,8 +3010,9 @@ module.exports = [
     city: 'Metz',
     scope: 'Tree: street',
     info: 'https://www.data.gouv.fr/fr/datasets/arbres-dalignement/',
-    download: 'https://maps.eurometropolemetz.eu/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=public:vrd_esv_arb&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://maps.eurometropolemetz.eu/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=public:vrd_esv_arb&srsName=EPSG:4326&outputFormat=application/json'
+    },
     crosswalk: { dbh: 'diametre', scientific: 'nom_espece', note: 'observatio' },
     license: { id: 'ODbL-1.0' },
     opentrees_id: 'metz'
@@ -2894,8 +3023,9 @@ module.exports = [
     city: 'Metz',
     scope: 'Tree: notable',
     info: 'https://www.data.gouv.fr/fr/datasets/arbres-remarquables-metz/',
-    download: 'https://maps.eurometropolemetz.eu/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=public:vrd_esv_arb_rem&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://maps.eurometropolemetz.eu/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=public:vrd_esv_arb_rem&srsName=EPSG:4326&outputFormat=application/json'
+    },
     license: { id: 'ODbL-1.0' },
     opentrees_id: 'metz'
   },
@@ -2905,8 +3035,9 @@ module.exports = [
     city: 'Mulhouse',
     scope: 'Tree',
     info: 'https://data.mulhouse-alsace.fr/explore/dataset/68224_arbres_alignement/information/',
-    download: 'https://data.mulhouse-alsace.fr/api/explore/v2.1/catalog/datasets/68224_arbres_alignement/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.mulhouse-alsace.fr/api/explore/v2.1/catalog/datasets/68224_arbres_alignement/exports/geojson'
+    },
     crosswalk: {
       scientific: 'libelle_es',
       planted: 'date_plant',
@@ -2922,8 +3053,9 @@ module.exports = [
     city: 'Strasbourg',
     scope: 'Tree',
     info: 'https://data.strasbourg.eu/explore/dataset/patrimoine_arbore/information/',
-    download: 'https://data.strasbourg.eu/api/explore/v2.1/catalog/datasets/patrimoine_arbore/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.strasbourg.eu/api/explore/v2.1/catalog/datasets/patrimoine_arbore/exports/geojson'
+    },
     license: { id: 'etalab-2.0' }
   },
   {
@@ -2932,8 +3064,9 @@ module.exports = [
     city: 'Épinal',
     scope: 'Tree',
     info: 'https://hub.arcgis.com/datasets/epinal::arbres/about',
-    download: 'https://services1.arcgis.com/V9xtXbeaozrYojAm/arcgis/rest/services/esv_WFL1/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/V9xtXbeaozrYojAm/arcgis/rest/services/esv_WFL1/FeatureServer/0'
+    }
   },
   {
     country: 'France',
@@ -2941,8 +3074,9 @@ module.exports = [
     city: 'Croix',
     scope: 'Tree: notable',
     info: 'https://opendata.lillemetropole.fr/explore/dataset/arbres-remarquables0/information/',
-    download: 'https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/arbres-remarquables0/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/arbres-remarquables0/exports/geojson'
+    },
     license: { id: 'etalab-1.0' }
   },
   {
@@ -2951,8 +3085,9 @@ module.exports = [
     city: 'Dunkerque',
     scope: 'Tree: notable',
     info: 'https://data.dunkerque-agglo.fr/explore/dataset/cadastre-vert-de-la-communaute-urbaine-de-dunkerque-arbres-remarquables/information/',
-    download: 'https://data.dunkerque-agglo.fr/api/explore/v2.1/catalog/datasets/cadastre-vert-de-la-communaute-urbaine-de-dunkerque-arbres-remarquables/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.dunkerque-agglo.fr/api/explore/v2.1/catalog/datasets/cadastre-vert-de-la-communaute-urbaine-de-dunkerque-arbres-remarquables/exports/geojson'
+    },
     license: { id: 'ODbL-1.0' }
   },
   {
@@ -2961,8 +3096,9 @@ module.exports = [
     city: 'Roubaix',
     scope: 'Tree: park',
     info: 'https://opendata.roubaix.fr/explore/dataset/arbres_opendata_cassel_nvmonde_barbieux/information/',
-    download: 'https://opendata.roubaix.fr/api/explore/v2.1/catalog/datasets/arbres_opendata_cassel_nvmonde_barbieux/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://opendata.roubaix.fr/api/explore/v2.1/catalog/datasets/arbres_opendata_cassel_nvmonde_barbieux/exports/geojson'
+    },
     license: { id: 'etalab-1.0' }
   },
   {
@@ -2971,8 +3107,9 @@ module.exports = [
     city: 'Roubaix',
     scope: 'Tree: notable',
     info: 'https://opendata.roubaix.fr/explore/dataset/les-arbres-remarquables-a-roubaix/information/',
-    download: 'https://opendata.roubaix.fr/api/explore/v2.1/catalog/datasets/les-arbres-remarquables-a-roubaix/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://opendata.roubaix.fr/api/explore/v2.1/catalog/datasets/les-arbres-remarquables-a-roubaix/exports/geojson'
+    },
     license: { id: 'etalab-1.0' }
   },
   {
@@ -2981,8 +3118,9 @@ module.exports = [
     city: 'Saint-Quentin',
     scope: 'Tree',
     info: 'https://hub.arcgis.com/datasets/Saint-Quentin::patrimoine-arbor%C3%A9-ro/about?layer=0',
-    download: 'https://services1.arcgis.com/5nIW6mZeb2YNJ7np/arcgis/rest/services/PATRIMOINE_ARBOR%C3%89_(RO)/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/5nIW6mZeb2YNJ7np/arcgis/rest/services/PATRIMOINE_ARBOR%C3%89_(RO)/FeatureServer/0'
+    },
     crosswalk: {
       scientific: 'nomlatin',
       common: 'nomfrancai',
@@ -3001,8 +3139,9 @@ module.exports = [
     city: 'Tourcoing',
     scope: 'Tree',
     info: 'https://opendata.tourcoing.fr/explore/dataset/tourcoing-arbres-urbains/information/',
-    download: 'https://opendata.tourcoing.fr/api/explore/v2.1/catalog/datasets/tourcoing-arbres-urbains/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://opendata.tourcoing.fr/api/explore/v2.1/catalog/datasets/tourcoing-arbres-urbains/exports/geojson'
+    },
     license: { id: 'etalab-1.0' }
   },
   {
@@ -3011,8 +3150,9 @@ module.exports = [
     designation: 'Hauts-de-Seine',
     scope: 'Tree: street (main)',
     info: 'https://opendata.hauts-de-seine.fr/explore/dataset/arbres-dalignement-sur-la-voirie-departementale/information/',
-    download: 'https://opendata.hauts-de-seine.fr/api/explore/v2.1/catalog/datasets/arbres-dalignement-sur-la-voirie-departementale/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://opendata.hauts-de-seine.fr/api/explore/v2.1/catalog/datasets/arbres-dalignement-sur-la-voirie-departementale/exports/geojson'
+    },
     license: { id: 'etalab-1.0' }
   },
   {
@@ -3021,8 +3161,9 @@ module.exports = [
     designation: 'Hauts-de-Seine',
     scope: 'Tree: notable',
     info: 'https://opendata.hauts-de-seine.fr/explore/dataset/fr-229200506-arbres-remarquables/information',
-    download: 'https://opendata.hauts-de-seine.fr/api/explore/v2.1/catalog/datasets/fr-229200506-arbres-remarquables/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://opendata.hauts-de-seine.fr/api/explore/v2.1/catalog/datasets/fr-229200506-arbres-remarquables/exports/geojson'
+    },
     license: { id: 'etalab-1.0' }
   },
   {
@@ -3030,8 +3171,9 @@ module.exports = [
     state: 'Île-de-France',
     scope: 'Tree: notable',
     info: 'https://data.iledefrance.fr/explore/dataset/arbre_remarquable/information/',
-    download: 'https://data.iledefrance.fr/api/explore/v2.1/catalog/datasets/arbre_remarquable/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.iledefrance.fr/api/explore/v2.1/catalog/datasets/arbre_remarquable/exports/geojson'
+    },
     license: { id: 'ODbL-1.0' }
   },
   {
@@ -3039,8 +3181,9 @@ module.exports = [
     state: 'Île-de-France',
     scope: 'Tree: notable',
     info: 'https://data.iledefrance.fr/explore/dataset/arbres-remarquables/information/',
-    download: 'https://data.iledefrance.fr/api/explore/v2.1/catalog/datasets/arbres-remarquables/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.iledefrance.fr/api/explore/v2.1/catalog/datasets/arbres-remarquables/exports/geojson'
+    },
     license: { id: 'ODbL-1.0' }
   },
   {
@@ -3049,8 +3192,9 @@ module.exports = [
     city: 'Argenteuil',
     scope: 'Tree',
     info: 'https://www.data.gouv.fr/fr/datasets/les-arbres-de-lespace-public-a-argenteuil',
-    download: 'https://services.arcgis.com/r0pok8eBaO080DqT/arcgis/rest/services/ARBRES/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services.arcgis.com/r0pok8eBaO080DqT/arcgis/rest/services/ARBRES/FeatureServer/0'
+    },
     license: { id: 'etalab-2.0' }
   },
   {
@@ -3059,8 +3203,9 @@ module.exports = [
     city: 'Clichy',
     scope: 'Tree',
     info: 'https://opendata.hauts-de-seine.fr/explore/dataset/fr-219200243-arbres/information/',
-    download: 'https://opendata.hauts-de-seine.fr/api/explore/v2.1/catalog/datasets/fr-219200243-arbres/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://opendata.hauts-de-seine.fr/api/explore/v2.1/catalog/datasets/fr-219200243-arbres/exports/geojson'
+    },
     license: { id: 'etalab-1.0' }
   },
   {
@@ -3069,8 +3214,9 @@ module.exports = [
     city: 'La Défense',
     scope: 'Tree',
     info: 'https://opendata.hauts-de-seine.fr/explore/dataset/fr-833718794-arbres/information/',
-    download: 'https://opendata.hauts-de-seine.fr/api/explore/v2.1/catalog/datasets/fr-833718794-arbres/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://opendata.hauts-de-seine.fr/api/explore/v2.1/catalog/datasets/fr-833718794-arbres/exports/geojson'
+    },
     license: { id: 'etalab-1.0' }
   },
   {
@@ -3079,8 +3225,9 @@ module.exports = [
     city: 'Montreuil',
     scope: 'Tree: street',
     info: 'https://data.montreuil.fr/explore/dataset/arbres-voirie-communale/information/',
-    download: 'https://data.montreuil.fr/api/explore/v2.1/catalog/datasets/arbres-voirie-communale/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.montreuil.fr/api/explore/v2.1/catalog/datasets/arbres-voirie-communale/exports/geojson'
+    },
     license: { id: 'etalab-2.0' }
   },
   {
@@ -3089,8 +3236,9 @@ module.exports = [
     city: 'Montreuil',
     scope: 'Tree: edible',
     info: 'https://data.montreuil.fr/explore/dataset/montreuil-est-notre-jardin/information/',
-    download: 'https://data.montreuil.fr/api/explore/v2.1/catalog/datasets/montreuil-est-notre-jardin/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.montreuil.fr/api/explore/v2.1/catalog/datasets/montreuil-est-notre-jardin/exports/geojson'
+    },
     license: { id: 'etalab-2.0' }
   },
   {
@@ -3099,8 +3247,9 @@ module.exports = [
     city: 'Montreuil',
     scope: 'Tree: street (main)',
     info: 'https://data.montreuil.fr/explore/dataset/arbres-de-la-voirie-departementale/information/',
-    download: 'https://data.montreuil.fr/api/explore/v2.1/catalog/datasets/arbres-de-la-voirie-departementale/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.montreuil.fr/api/explore/v2.1/catalog/datasets/arbres-de-la-voirie-departementale/exports/geojson'
+    },
     license: { id: 'etalab-2.0' }
   },
   {
@@ -3110,8 +3259,9 @@ module.exports = [
     designation: 'Grand Paris Seine Ouest',
     scope: 'Tree',
     info: 'https://data.seineouest.fr/explore/dataset/arbres-v2/information/',
-    download: 'https://data.seineouest.fr/api/explore/v2.1/catalog/datasets/arbres-v2/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.seineouest.fr/api/explore/v2.1/catalog/datasets/arbres-v2/exports/geojson'
+    },
     crosswalk: {
       scientific: 'genespvar',
       height: 'hauteur',
@@ -3128,8 +3278,9 @@ module.exports = [
     designation: 'Grand Paris Sud',
     scope: 'Tree',
     info: 'https://data.grandparissud.fr/explore/dataset/patrimoine-arbore/information/',
-    download: 'https://data.grandparissud.fr/api/explore/v2.1/catalog/datasets/patrimoine-arbore/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.grandparissud.fr/api/explore/v2.1/catalog/datasets/patrimoine-arbore/exports/geojson'
+    },
     crosswalk: {
       location: 'categorie',
       owner: 'gestionnai',
@@ -3149,8 +3300,9 @@ module.exports = [
     city: 'Paris',
     scope: 'Tree',
     info: 'https://opendata.paris.fr/explore/dataset/les-arbres/information/',
-    download: 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/les-arbres/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/les-arbres/exports/geojson'
+    },
     crosswalk: {
       ref: 'idemplacement',
       common: 'libellefrancais',
@@ -3171,8 +3323,9 @@ module.exports = [
     scope: 'Tree: notable',
     notes: 'partly overlaps https://opendata.paris.fr/explore/dataset/les-arbres/information/',
     info: 'https://opendata.paris.fr/explore/dataset/arbresremarquablesparis/information',
-    download: 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/arbresremarquablesparis/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/arbresremarquablesparis/exports/geojson'
+    },
     license: { id: 'ODbL-1.0' },
     fallingfruit_id: 236,
     opentrees_id: 'paris'
@@ -3215,8 +3368,9 @@ module.exports = [
     city: 'Vallée-aux-Loups',
     scope: 'Tree',
     info: 'https://opendata.hauts-de-seine.fr/explore/dataset/inventaire-botanique-de-larboretum-du-domaine-departemental-de-la-vallee-aux-lou/information/',
-    download: 'https://opendata.hauts-de-seine.fr/api/explore/v2.1/catalog/datasets/inventaire-botanique-de-larboretum-du-domaine-departemental-de-la-vallee-aux-lou/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://opendata.hauts-de-seine.fr/api/explore/v2.1/catalog/datasets/inventaire-botanique-de-larboretum-du-domaine-departemental-de-la-vallee-aux-lou/exports/geojson'
+    },
     license: { id: 'etalab-1.0' }
   },
   {
@@ -3225,8 +3379,9 @@ module.exports = [
     city: 'Versailles',
     scope: 'Tree: street',
     info: 'https://sig-cavgp.opendata.arcgis.com/datasets/cavgp::arbres-dalignements/about',
-    download: 'https://services2.arcgis.com/YECJCCLQCtaylXWh/arcgis/rest/services/VER_Espaces_verts/FeatureServer/2',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services2.arcgis.com/YECJCCLQCtaylXWh/arcgis/rest/services/VER_Espaces_verts/FeatureServer/2'
+    },
     crosswalk: { scientific: 'ESPECE', common: 'FRANCAIS' },
     license: { id: 'etalab-2.0' },
     opentrees_id: 'versailles'
@@ -3237,8 +3392,9 @@ module.exports = [
     city: 'Versailles',
     scope: 'Tree: park',
     info: 'https://sig-cavgp.opendata.arcgis.com/datasets/cavgp::arbres-situ%C3%A9s-dans-les-parcs/about',
-    download: 'https://services2.arcgis.com/YECJCCLQCtaylXWh/arcgis/rest/services/VER_Espaces_verts/FeatureServer/1',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services2.arcgis.com/YECJCCLQCtaylXWh/arcgis/rest/services/VER_Espaces_verts/FeatureServer/1'
+    },
     license: { id: 'etalab-2.0' },
     opentrees_id: 'versailles'
   },
@@ -3248,8 +3404,9 @@ module.exports = [
     city: 'Versailles',
     scope: 'Tree: notable',
     info: 'https://sig-cavgp.opendata.arcgis.com/datasets/cavgp::arbres-remarquables/about',
-    download: 'https://services2.arcgis.com/YECJCCLQCtaylXWh/arcgis/rest/services/VER_Espaces_verts/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services2.arcgis.com/YECJCCLQCtaylXWh/arcgis/rest/services/VER_Espaces_verts/FeatureServer/0'
+    },
     license: { id: 'etalab-2.0' },
     opentrees_id: 'versailles'
   },
@@ -3259,8 +3416,9 @@ module.exports = [
     city: 'Rouen',
     scope: 'Tree: notable',
     info: 'https://data.metropole-rouen-normandie.fr/explore/dataset/arbres-remarquables-metropole-rouen-normandie-2019/information/',
-    download: 'https://data.metropole-rouen-normandie.fr/api/explore/v2.1/catalog/datasets/arbres-remarquables-metropole-rouen-normandie-2019/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.metropole-rouen-normandie.fr/api/explore/v2.1/catalog/datasets/arbres-remarquables-metropole-rouen-normandie-2019/exports/geojson'
+    },
     license: { id: 'etalab-2.0' }
   },
   {
@@ -3269,8 +3427,9 @@ module.exports = [
     city: 'Nouméa',
     scope: 'Tree: notable',
     info: 'https://data.noumea.nc/datasets/bd092c4a648b4012a28b048affa8ec1c_0/about',
-    download: 'https://services6.arcgis.com/dIDU3ttIicDWLftk/arcgis/rest/services/PUD_2020_ARBRE/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/dIDU3ttIicDWLftk/arcgis/rest/services/PUD_2020_ARBRE/FeatureServer/0'
+    }
   },
   {
     country: 'France',
@@ -3278,8 +3437,9 @@ module.exports = [
     city: 'Agen',
     scope: 'Tree',
     info: 'https://data.agen.fr/explore/dataset/arbres/information/',
-    download: 'https://data.agen.fr/api/explore/v2.1/catalog/datasets/arbres/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.agen.fr/api/explore/v2.1/catalog/datasets/arbres/exports/geojson'
+    },
     crosswalk: {
       ref: 'id_ponctue',
       common: 'espece_arb',
@@ -3315,8 +3475,9 @@ module.exports = [
     city: 'Bordeaux',
     scope: 'Tree',
     info: 'https://scnbdx.opendatasoft.com/explore/dataset/ec_arbre_p/information/',
-    download: 'https://scnbdx.opendatasoft.com/api/explore/v2.1/catalog/datasets/ec_arbre_p/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://scnbdx.opendatasoft.com/api/explore/v2.1/catalog/datasets/ec_arbre_p/exports/geojson'
+    },
     crosswalk: {
       scientific: 'nom',
       updated: 'mdate',
@@ -3355,8 +3516,9 @@ module.exports = [
     designation: 'Hérault',
     scope: 'Tree: street (main)',
     info: 'https://www.herault-data.fr/explore/dataset/arbres-dalignement-herault/information/',
-    download: 'https://www.herault-data.fr/api/explore/v2.1/catalog/datasets/arbres-dalignement-herault/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://www.herault-data.fr/api/explore/v2.1/catalog/datasets/arbres-dalignement-herault/exports/geojson'
+    },
     license: { id: 'etalab-2.0' }
   },
   {
@@ -3384,8 +3546,9 @@ module.exports = [
     city: 'Toulouse',
     scope: 'Tree',
     info: 'https://data.toulouse-metropole.fr/explore/dataset/arbres-urbains/information/',
-    download: 'https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets/arbres-urbains/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets/arbres-urbains/exports/geojson'
+    },
     license: { id: 'etalab-2.0' }
   },
   {
@@ -3394,8 +3557,9 @@ module.exports = [
     city: 'Angers',
     scope: 'Tree: notable',
     info: 'https://data.angers.fr/explore/dataset/arbre-signal-angers/information/',
-    download: 'https://data.angers.fr/api/explore/v2.1/catalog/datasets/arbre-signal-angers/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.angers.fr/api/explore/v2.1/catalog/datasets/arbre-signal-angers/exports/geojson'
+    },
     license: { id: 'ODbL-1.0' }
   },
   {
@@ -3466,8 +3630,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'versioned about page',
     info: 'https://suche.transparenz.hamburg.de/dataset/strassenbaumkataster-hamburger-hafen17',
-    download: 'https://geodienste.hamburg.de/HH_WFS_Strassenbaumkataster?service=WFS&version=2.0.0&request=GetFeature&typeNames=de.hh.up:strassenbaumkataster_hpa&srsName=EPSG:4326',
-    api: 'wfs',
+    download: {
+      wfs: 'https://geodienste.hamburg.de/HH_WFS_Strassenbaumkataster?service=WFS&version=2.0.0&request=GetFeature&typeNames=de.hh.up:strassenbaumkataster_hpa&srsName=EPSG:4326'
+    },
     crosswalk: {
       scientific: 'art_latein',
       common: 'art_deutsc',
@@ -3486,8 +3651,9 @@ module.exports = [
     scope: 'Tree: street',
     notes: 'versioned about page',
     info: 'https://suche.transparenz.hamburg.de/dataset/strassenbaumkataster-hamburg25',
-    download: 'https://geodienste.hamburg.de/HH_WFS_Strassenbaumkataster?service=WFS&version=2.0.0&request=GetFeature&typeNames=de.hh.up:strassenbaumkataster&srsName=EPSG:4326',
-    api: 'wfs',
+    download: {
+      wfs: 'https://geodienste.hamburg.de/HH_WFS_Strassenbaumkataster?service=WFS&version=2.0.0&request=GetFeature&typeNames=de.hh.up:strassenbaumkataster&srsName=EPSG:4326'
+    },
     crosswalk: {
       ref: 'baumid',
       scientific: 'art_latein',
@@ -3504,8 +3670,9 @@ module.exports = [
     city: 'Karlsruhe',
     scope: 'Tree',
     info: 'https://transparenz.karlsruhe.de/dataset/fachplane-baumkataster1',
-    download: 'https://geoportal.karlsruhe.de/server/rest/services/Fachplaene/Baumkataster/MapServer/1',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://geoportal.karlsruhe.de/server/rest/services/Fachplaene/Baumkataster/MapServer/1'
+    },
     crosswalk: { common: 'ARTDEUT', scientific: 'ARTLAT' },
     license: { id: 'CC-BY-4.0' },
     opentrees_id: 'karlsruhe_de'
@@ -3516,8 +3683,9 @@ module.exports = [
     city: 'Konstanz',
     scope: 'Tree',
     info: 'https://offenedaten-konstanz.de/dataset/baumkataster-konstanz',
-    download: 'https://services-eu1.arcgis.com/cgMeYTGtzFtnxdsx/arcgis/rest/services/KN_Baumkataster_2020S/FeatureServer/87',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services-eu1.arcgis.com/cgMeYTGtzFtnxdsx/arcgis/rest/services/KN_Baumkataster_2020S/FeatureServer/87'
+    },
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -3564,8 +3732,9 @@ module.exports = [
     city: 'Würzburg',
     scope: 'Tree',
     info: 'https://opendata.wuerzburg.de/explore/dataset/baumkataster_stadt_wuerzburg/information/',
-    download: 'https://opendata.wuerzburg.de/api/explore/v2.1/catalog/datasets/baumkataster_stadt_wuerzburg/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://opendata.wuerzburg.de/api/explore/v2.1/catalog/datasets/baumkataster_stadt_wuerzburg/exports/geojson'
+    },
     license: { id: 'DL-DE-BY-2.0' }
   },
   {
@@ -3574,8 +3743,9 @@ module.exports = [
     city: 'Berlin',
     scope: 'Tree: street',
     info: 'https://daten.berlin.de/datensaetze/baumbestand-berlin-stra%C3%9Fenb%C3%A4ume-wfs',
-    download: 'https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_baumbestand?service=WFS&version=2.0.0&request=GetFeature&typeNames=fis:s_baumbestand&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_baumbestand?service=WFS&version=2.0.0&request=GetFeature&typeNames=fis:s_baumbestand&srsName=EPSG:4326&outputFormat=application/json'
+    },
     crosswalk: {
       scientific: 'Art_Bot',
       common: 'Art_Dtsch',
@@ -3592,8 +3762,9 @@ module.exports = [
     city: 'Berlin',
     scope: 'Tree: park',
     info: 'https://daten.berlin.de/datensaetze/baumbestand-berlin-anlagenb%C3%A4ume-wfs',
-    download: 'https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_baumbestand_an?service=WFS&version=2.0.0&request=GetFeature&typeNames=fis:s_baumbestand_an&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_baumbestand_an?service=WFS&version=2.0.0&request=GetFeature&typeNames=fis:s_baumbestand_an&srsName=EPSG:4326&outputFormat=application/json'
+    },
     license: { id: 'DL-DE-BY-2.0' },
     opentrees_id: 'berlin'
   },
@@ -3603,8 +3774,9 @@ module.exports = [
     city: 'Kloster Lehnin',
     scope: 'Tree',
     info: 'https://data.europa.eu/data/datasets/75fe4dcb-91c5-4251-8f0e-5ac8aa3a6bde',
-    download: 'https://www.geoportal-klosterlehnin.de/isk/lehn_baumkataster?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:baeume&srsName=EPSG:4326',
-    api: 'wfs'
+    download: {
+      wfs: 'https://www.geoportal-klosterlehnin.de/isk/lehn_baumkataster?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:baeume&srsName=EPSG:4326'
+    }
   },
   {
     country: 'Germany',
@@ -3658,8 +3830,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'More coverage (includes university) and has species, but missing structural attributes from https://www.opendata-hro.de/dataset/baeume',
     info: 'https://www.govdata.de/web/guest/suchen/-/details/baume',
-    download: 'https://geo.sv.rostock.de/inspire/lcv-trees/download?service=WFS&version=2.0.0&request=GetFeature&typeNames=lcv:LandCoverUnit&srsName=EPSG:4326',
-    api: 'wfs',
+    download: {
+      wfs: 'https://geo.sv.rostock.de/inspire/lcv-trees/download?service=WFS&version=2.0.0&request=GetFeature&typeNames=lcv:LandCoverUnit&srsName=EPSG:4326'
+    },
     license: { id: 'CC0-1.0' },
     opentrees_id: 'rostock'
   },
@@ -3680,8 +3853,9 @@ module.exports = [
     city: 'Bielefeld',
     scope: 'Tree',
     info: 'https://open-data.bielefeld.de/dataset/baumbestand-umweltbetrieb',
-    download: 'https://www.bielefeld01.de/md/WFS/baumstandorte/01?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:einzelbaeume_p&srsName=EPSG:4326&outputFormat=application/json;+subtype=geojson',
-    api: 'wfs',
+    download: {
+      wfs: 'https://www.bielefeld01.de/md/WFS/baumstandorte/01?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:einzelbaeume_p&srsName=EPSG:4326&outputFormat=application/json;+subtype=geojson'
+    },
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -3691,8 +3865,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'tree groups',
     info: 'https://open-data.bielefeld.de/dataset/baumbestand-umweltbetrieb',
-    download: 'https://www.bielefeld01.de/md/WFS/baumstandorte/01?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:baumgruppe_p&srsName=EPSG:4326&outputFormat=application/json;+subtype=geojson',
-    api: 'wfs',
+    download: {
+      wfs: 'https://www.bielefeld01.de/md/WFS/baumstandorte/01?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:baumgruppe_p&srsName=EPSG:4326&outputFormat=application/json;+subtype=geojson'
+    },
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -3792,8 +3967,9 @@ module.exports = [
     city: 'Münster',
     scope: 'Tree',
     info: 'https://opendata.stadt-muenster.de/dataset/digitales-baumkataster-m%C3%BCnster',
-    download: 'https://www.stadt-muenster.de/ows/mapserv706/odgruenserv?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:Baeume&srsName=EPSG:4326&outputFormat=GEOJSON',
-    api: 'wfs',
+    download: {
+      wfs: 'https://www.stadt-muenster.de/ows/mapserv706/odgruenserv?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:Baeume&srsName=EPSG:4326&outputFormat=GEOJSON'
+    },
     license: { id: 'DL-DE-BY-2.0' }
   },
   {
@@ -3840,8 +4016,9 @@ module.exports = [
     city: 'Chemnitz',
     scope: 'Tree',
     info: 'http://portal-chemnitz.opendata.arcgis.com/datasets/baeume/about',
-    download: 'https://services6.arcgis.com/jiszdsDupTUO3fSM/arcgis/rest/services/Baeume_FL_1/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services6.arcgis.com/jiszdsDupTUO3fSM/arcgis/rest/services/Baeume_FL_1/FeatureServer/0'
+    },
     crosswalk: {
       ref: 'BaumNummer',
       scientific: x => String(x.BaumArt).split(', ')[0],
@@ -3884,8 +4061,9 @@ module.exports = [
     city: 'Halle',
     scope: 'Tree',
     info: 'https://www.halle.de/de/Verwaltung/Online-Angebote/Offene-Verwaltungsdaten/Mit-Kartenbezug/index.aspx?ID=fa3930b7-b3ed-b3fc-20d9-2fc8fd054b0e',
-    download: 'https://geodienste.halle.de/opendata/fa3930b7-b3ed-b3fc-20d9-2fc8fd054b0e?service=WFS&version=1.0.0&request=GetFeature&typeName=fa3930b7-b3ed-b3fc-20d9-2fc8fd054b0e&srsName=EPSG:4326',
-    api: 'wfs',
+    download: {
+      wfs: 'https://geodienste.halle.de/opendata/fa3930b7-b3ed-b3fc-20d9-2fc8fd054b0e?service=WFS&version=1.0.0&request=GetFeature&typeName=fa3930b7-b3ed-b3fc-20d9-2fc8fd054b0e&srsName=EPSG:4326'
+    },
     crosswalk: {
       planted: 'pflanzjahr',
       crown: 'krone_m',
@@ -4035,8 +4213,9 @@ module.exports = [
     designation: 'Fingal County',
     scope: 'Tree',
     info: 'https://data.fingal.ie/datasets/FingalCoCo::trees-fcc-1/about',
-    download: 'https://services5.arcgis.com/CI1e5PKQXvJgmJK8/arcgis/rest/services/Trees_FCC/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services5.arcgis.com/CI1e5PKQXvJgmJK8/arcgis/rest/services/Trees_FCC/FeatureServer/0'
+    },
     crosswalk: {
       ref: x => Math.round(x.TREE_ID),
       scientific: 'Species_Desc',
@@ -4066,15 +4245,17 @@ module.exports = [
     designation: 'Israel Oak Association',
     scope: 'Tree: notable',
     info: 'https://open.data.org.il/dataset/oaks-in-israel',
-    download: 'https://services8.arcgis.com/zQk64pz1ixL4yBfJ/ArcGIS/rest/services/OakSurvey/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services8.arcgis.com/zQk64pz1ixL4yBfJ/ArcGIS/rest/services/OakSurvey/FeatureServer/0'
+    }
   },
   {
     country: 'Israel',
     scope: 'Tree: notable',
     info: 'https://data1-moag.opendata.arcgis.com/datasets/moag::%D7%A2%D7%A6%D7%99-%D7%9E%D7%95%D7%A8%D7%A9%D7%AA-3/about',
-    download: 'https://services3.arcgis.com/Fqk0gVrfcnumlR5m/arcgis/rest/services/MOAG_Heritage_Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/Fqk0gVrfcnumlR5m/arcgis/rest/services/MOAG_Heritage_Trees/FeatureServer/0'
+    }
   },
   {
     country: 'Israel',
@@ -4082,8 +4263,9 @@ module.exports = [
     city: 'Ramat Hanadiv',
     scope: 'Tree: park',
     info: 'https://ramathanadiv.maps.arcgis.com/home/item.html?id=62d2e7f6cd7f486799fc728de48eb1d0',
-    download: 'https://services1.arcgis.com/8lB32dT1LAPsoSlg/arcgis/rest/services/MemorialGardenTrees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/8lB32dT1LAPsoSlg/arcgis/rest/services/MemorialGardenTrees/FeatureServer/0'
+    }
   },
   {
     country: 'Israel',
@@ -4091,8 +4273,9 @@ module.exports = [
     city: 'Ramat Hanadiv',
     scope: 'Plant: park',
     info: 'https://ramathanadiv.maps.arcgis.com/home/item.html?id=5d28feec7bc04d8290c6cbef39bbdf42',
-    download: 'https://services1.arcgis.com/8lB32dT1LAPsoSlg/arcgis/rest/services/Plant_Center__View/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/8lB32dT1LAPsoSlg/arcgis/rest/services/Plant_Center__View/FeatureServer/0'
+    }
   },
   {
     country: 'Israel',
@@ -4146,8 +4329,9 @@ module.exports = [
     state: 'Basilicata',
     scope: 'Tree: notable',
     info: 'https://www.dati.gov.it/view-dataset/dataset?id=dd224126-b7fb-4ec1-a985-fd9923c7543c',
-    download: 'https://rsdi.regione.basilicata.it/rbgeoserver2016/siti_protetti/beni_paesaggistici_art143_alberi_monumentali/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=siti_protetti:beni_paesaggistici_art143_alberi_monumentali&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://rsdi.regione.basilicata.it/rbgeoserver2016/siti_protetti/beni_paesaggistici_art143_alberi_monumentali/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=siti_protetti:beni_paesaggistici_art143_alberi_monumentali&srsName=EPSG:4326&outputFormat=application/json'
+    },
     license: { id: 'IODL-2.0' }
   },
   {
@@ -4249,8 +4433,9 @@ module.exports = [
     city: 'Bologna',
     scope: 'Tree',
     info: 'https://opendata.comune.bologna.it/explore/dataset/alberi-manutenzioni/information/',
-    download: 'https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/alberi-manutenzioni/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/alberi-manutenzioni/exports/geojson'
+    },
     crosswalk: {
       scientific: 'decodifi_4',
       circumference_cm_min: x => {
@@ -4273,8 +4458,9 @@ module.exports = [
     city: 'Ferrara',
     scope: 'Tree',
     info: 'https://dati.comune.fe.it/dataset/rilievo-alberature-ferraratua',
-    download: 'https://sit.comune.fe.it/geoserverckan/Ferrara/Rilievo_alberature_FerraraTUA_preview/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=Ferrara:Rilievo_alberature_FerraraTUA_preview&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://sit.comune.fe.it/geoserverckan/Ferrara/Rilievo_alberature_FerraraTUA_preview/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=Ferrara:Rilievo_alberature_FerraraTUA_preview&srsName=EPSG:4326&outputFormat=application/json'
+    },
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -4310,8 +4496,9 @@ module.exports = [
     city: 'Villa Manin',
     scope: 'Tree',
     info: 'https://www.dati.friuliveneziagiulia.it/dataset/Alberi-di-Villa-Manin/uqpq-dr8x',
-    download: 'https://www.dati.friuliveneziagiulia.it/api/views/uqpq-dr8x/rows.csv',
-    api: 'socrata',
+    download: {
+      socrata: 'https://www.dati.friuliveneziagiulia.it/api/views/uqpq-dr8x/rows.csv'
+    },
     geometry: { x: 'coord long', y: 'coord lat' },
     srs: 'EPSG:4326',
     crosswalk: {
@@ -4347,8 +4534,9 @@ module.exports = [
     state: 'Lazio',
     scope: 'Tree: notable',
     info: 'https://geoportale.regione.lazio.it/layers/geosdiownr:geonode:alberi_monumentali_20190624',
-    download: 'https://geoportale.regione.lazio.it/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=geonode:alberi_monumentali_20190624&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://geoportale.regione.lazio.it/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=geonode:alberi_monumentali_20190624&srsName=EPSG:4326&outputFormat=application/json'
+    },
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -4681,8 +4869,9 @@ module.exports = [
     state: 'Veneto',
     scope: 'Tree: notable',
     info: 'https://geodati.gov.it/resource/id/r_veneto:c1101133_AlbMo',
-    download: 'https://idt2-geoserver.regione.veneto.it/geoserver/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=rv:c1101133_albmo&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://idt2-geoserver.regione.veneto.it/geoserver/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=rv:c1101133_albmo&srsName=EPSG:4326&outputFormat=application/json'
+    },
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -4739,8 +4928,9 @@ module.exports = [
     city: 'Guadalajara',
     scope: 'Tree: street',
     info: 'https://www.arcgis.com/home/item.html?id=eb37f4e0ae0d4d6e96da08deb2603bae',
-    download: 'https://services7.arcgis.com/ymdxsA0VaxSiZBC4/arcgis/rest/services/Arboles_en_viario_público_vista/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/ymdxsA0VaxSiZBC4/arcgis/rest/services/Arboles_en_viario_público_vista/FeatureServer/0'
+    }
   },
   {
     country: 'Mexico',
@@ -4748,8 +4938,9 @@ module.exports = [
     city: 'Guadalajara',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=1df04237abbb4c6d8c1e2c17ab439a83',
-    download: 'https://services7.arcgis.com/ymdxsA0VaxSiZBC4/arcgis/rest/services/árboles_en_zona_verde_vista/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/ymdxsA0VaxSiZBC4/arcgis/rest/services/árboles_en_zona_verde_vista/FeatureServer/0'
+    }
   },
   {
     pending: 'address only',
@@ -4775,8 +4966,9 @@ module.exports = [
     city: 'Assen',
     scope: 'Tree',
     info: 'https://data.overheid.nl/dataset/dataset-bomen-assen',
-    download: 'https://services1.arcgis.com/p5QhXC0i0sZjprM1/ArcGIS/rest/services/Dataset_Bomen_Assen/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/p5QhXC0i0sZjprM1/ArcGIS/rest/services/Dataset_Bomen_Assen/FeatureServer/0'
+    },
     crosswalk: {
       ref: 'BOOMNUMMER',
       updated: 'DATUM',
@@ -4795,8 +4987,9 @@ module.exports = [
     city: 'Assen',
     scope: 'Tree: notable',
     info: 'https://data.overheid.nl/dataset/dataset-waardevolle-en-monumentale-bomen-assen',
-    download: 'https://gis.assen.nl/arcgis/rest/services/BOR/Waardevolle_en_monumentale_bomen/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gis.assen.nl/arcgis/rest/services/BOR/Waardevolle_en_monumentale_bomen/MapServer/0'
+    },
     license: { id: 'CC-BY-4.0' },
     opentrees_id: 'assen_nl'
   },
@@ -4806,8 +4999,9 @@ module.exports = [
     city: 'Assen',
     scope: 'Tree: notable',
     info: 'https://data.overheid.nl/dataset/dataset-waardevolle-en-monumentale-bomen-assen',
-    download: 'https://gis.assen.nl/arcgis/rest/services/BOR/Waardevolle_en_monumentale_bomen/MapServer/1',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gis.assen.nl/arcgis/rest/services/BOR/Waardevolle_en_monumentale_bomen/MapServer/1'
+    },
     license: { id: 'CC-BY-4.0' },
     opentrees_id: 'assen_nl'
   },
@@ -4817,8 +5011,9 @@ module.exports = [
     city: 'Assen',
     scope: 'Tree: notable',
     info: 'https://data.overheid.nl/dataset/dataset-waardevolle-en-monumentale-bomen-assen',
-    download: 'https://gis.assen.nl/arcgis/rest/services/BOR/Waardevolle_en_monumentale_bomen/MapServer/2',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gis.assen.nl/arcgis/rest/services/BOR/Waardevolle_en_monumentale_bomen/MapServer/2'
+    },
     license: { id: 'CC-BY-4.0' },
     opentrees_id: 'assen_nl'
   },
@@ -4847,8 +5042,9 @@ module.exports = [
     state: 'Gelderland',
     scope: 'Tree: notable',
     info: 'https://hub.arcgis.com/datasets/gelderland::bomen-individueel/about',
-    download: 'https://geoportaal.gelderland.nl/gisserver/rest/services/Infra/Infra/MapServer/41',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://geoportaal.gelderland.nl/gisserver/rest/services/Infra/Infra/MapServer/41'
+    }
   },
   {
     country: 'Netherlands',
@@ -4856,8 +5052,9 @@ module.exports = [
     city: 'Arnhem',
     scope: 'Tree',
     info: 'https://opendata.arnhem.nl/datasets/bomenkaart/about',
-    download: 'https://geo.arnhem.nl/arcgis/rest/services/OpenData/Bomenkaart/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://geo.arnhem.nl/arcgis/rest/services/OpenData/Bomenkaart/MapServer/0'
+    },
     crosswalk: {
       ref: 'BEHEERCODE',
       scientific: 'BOOMSOORT',
@@ -4874,8 +5071,9 @@ module.exports = [
     city: 'Nijmegen',
     scope: 'Tree',
     info: 'https://opendata.nijmegen.nl/dataset/bomen',
-    download: 'https://services.nijmegen.nl/geoservices/extern_BOR_Groen/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=extern_BOR_Groen:GRN_BOMEN&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://services.nijmegen.nl/geoservices/extern_BOR_Groen/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=extern_BOR_Groen:GRN_BOMEN&srsName=EPSG:4326&outputFormat=application/json'
+    },
     srs: 'EPSG:28992',
     crosswalk: {
       ref: 'ID',
@@ -4892,8 +5090,9 @@ module.exports = [
     city: 'Rheden',
     scope: 'Tree',
     info: 'https://hub.arcgis.com/datasets/rheden::gb-boom/about',
-    download: 'https://services3.arcgis.com/zi6uvGhzrY8amIBi/arcgis/rest/services/GB_Boom/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/zi6uvGhzrY8amIBi/arcgis/rest/services/GB_Boom/FeatureServer/0'
+    }
   },
   {
     country: 'Netherlands',
@@ -4901,8 +5100,9 @@ module.exports = [
     city: 'Groningen',
     scope: 'Tree',
     info: 'https://data.groningen.nl/dataset/bomen-gemeente-groningen',
-    download: 'https://maps.groningen.nl/geoserver/geo-data/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=geo-data:Bomen+gemeente+Groningen&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://maps.groningen.nl/geoserver/geo-data/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=geo-data:Bomen+gemeente+Groningen&srsName=EPSG:4326&outputFormat=application/json'
+    },
     srs: 'EPSG:28992',
     crosswalk: { common: 'NEDNAAM', scientific: 'LATNAAM', owner: 'OMSCHRIJVP' },
     license: { id: 'CC-BY-4.0' },
@@ -4914,8 +5114,9 @@ module.exports = [
     city: "'s-Hertogenbosch",
     scope: 'Tree: notable',
     info: 'https://geoportaal2-s-hertogenbosch.opendata.arcgis.com/datasets/s-hertogenbosch::monumentale-bomen/about',
-    download: 'https://geoproxy.s-hertogenbosch.nl/ags_extern/rest/services/Externvrij/monumentale_bomen/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://geoproxy.s-hertogenbosch.nl/ags_extern/rest/services/Externvrij/monumentale_bomen/MapServer/0'
+    },
     license: { id: 'CC-BY-SA-4.0' }
   },
   {
@@ -4944,8 +5145,9 @@ module.exports = [
     city: 'Roosendaal',
     scope: 'Tree',
     info: 'https://opendata.roosendaal.nl/datasets/roosendaal::bomen-open-data/about',
-    download: 'https://services8.arcgis.com/6UYedLDVU0fKJbOA/arcgis/rest/services/GBI_BOOM_PUBLIC/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services8.arcgis.com/6UYedLDVU0fKJbOA/arcgis/rest/services/GBI_BOOM_PUBLIC/FeatureServer/0'
+    },
     opentrees_id: 'roosendaal_be'
   },
   {
@@ -5007,8 +5209,9 @@ module.exports = [
     city: 'Bloemendaal',
     scope: 'Tree',
     info: 'https://gemeente-bloemendaal.opendata.arcgis.com/datasets/Bloemendaal::bomen/about',
-    download: 'https://gis.bloemendaal.nl/server/rest/services/OpenData/Bomen/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gis.bloemendaal.nl/server/rest/services/OpenData/Bomen/FeatureServer/0'
+    },
     license: { id: 'CC-BY-3.0' }
   },
   {
@@ -5017,8 +5220,9 @@ module.exports = [
     city: 'Haarlem',
     scope: 'Tree',
     info: 'https://haarlem.nl/open-data',
-    download: 'https://data.haarlem.nl/geoserver/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=gemeentehaarlem:bor_bomen&srsName=EPSG:4326&outputFormat=geopackage',
-    api: 'wfs',
+    download: {
+      wfs: 'https://data.haarlem.nl/geoserver/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=gemeentehaarlem:bor_bomen&srsName=EPSG:4326&outputFormat=geopackage'
+    },
     crosswalk: {
       ref: 'boomnummer',
       scientific: 'name',
@@ -5035,8 +5239,9 @@ module.exports = [
     city: 'Hilversum',
     scope: 'Tree',
     info: 'https://open-hilversum.hub.arcgis.com/datasets/hilversum-hub::bomen/about',
-    download: 'https://services-eu1.arcgis.com/zc5my8Mf0GNBBZN4/arcgis/rest/services/Bomen/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services-eu1.arcgis.com/zc5my8Mf0GNBBZN4/arcgis/rest/services/Bomen/FeatureServer/0'
+    },
     crosswalk: {
       scientific: 'BOOMSOORT_WETENSCHAPPELIJK',
       common: 'BOOMSOORT_NEDERLANDS',
@@ -5052,8 +5257,9 @@ module.exports = [
     city: 'Hilversum',
     scope: 'Tree: notable',
     info: 'https://open-hilversum.hub.arcgis.com/datasets/hilversum-hub::beschermde-bomen/about',
-    download: 'https://services-eu1.arcgis.com/zc5my8Mf0GNBBZN4/arcgis/rest/services/Beschermde_bomen/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services-eu1.arcgis.com/zc5my8Mf0GNBBZN4/arcgis/rest/services/Beschermde_bomen/FeatureServer/0'
+    },
     license: { id: 'CC0-1.0' },
     opentrees_id: 'hilversum'
   },
@@ -5085,8 +5291,9 @@ module.exports = [
     city: 'Zwartewaterland',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=d29812886105409face02f00534311c0',
-    download: 'https://services-eu1.arcgis.com/1AeFYBQaTUAzKcJu/arcgis/rest/services/Bomen/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services-eu1.arcgis.com/1AeFYBQaTUAzKcJu/arcgis/rest/services/Bomen/FeatureServer/0'
+    },
     crosswalk: {
       common: 'NEDBOOMSOORT',
       scientific: 'LATBOOMSOORT',
@@ -5101,8 +5308,9 @@ module.exports = [
     city: 'Zwartewaterland',
     scope: 'Tree: notable',
     info: 'https://www.arcgis.com/home/item.html?id=e4b27d0db4014b1780ea787e15729b69',
-    download: 'https://services-eu1.arcgis.com/1AeFYBQaTUAzKcJu/arcgis/rest/services/Bijzondere_bomen/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services-eu1.arcgis.com/1AeFYBQaTUAzKcJu/arcgis/rest/services/Bijzondere_bomen/FeatureServer/0'
+    },
     license: { id: 'CC-BY-4.0' },
     opentrees_id: 'zvartewaterland_nl'
   },
@@ -5112,8 +5320,9 @@ module.exports = [
     city: 'Zwolle',
     scope: 'Tree',
     info: 'https://smart-zwolle.opendata.arcgis.com/datasets/zwolle::bomen/about',
-    download: 'https://gisservices.zwolle.nl/ArcGIS/rest/services/BOR_groen_wegen/MapServer/2',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gisservices.zwolle.nl/ArcGIS/rest/services/BOR_groen_wegen/MapServer/2'
+    },
     license: { id: 'CC-PDM-1.0' }
   },
   {
@@ -5186,8 +5395,9 @@ module.exports = [
     city: 'Woerden',
     scope: 'Tree',
     info: 'https://hub.arcgis.com/datasets/Woerden::bomen-1/about',
-    download: 'https://services.arcgis.com/KTAv9h3GdyXXT8eV/arcgis/rest/services/open_data_groenbeheer/FeatureServer/1',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/KTAv9h3GdyXXT8eV/arcgis/rest/services/open_data_groenbeheer/FeatureServer/1'
+    }
   },
   {
     country: 'Netherlands',
@@ -5195,8 +5405,9 @@ module.exports = [
     city: 'Zeist',
     scope: 'Tree',
     info: 'https://gemeente-zeist.opendata.arcgis.com/datasets/21ffcc96238e47a28ea4e7727692840a_0/about',
-    download: 'https://services1.arcgis.com/vxtcdWjsjPHYpR1J/arcgis/rest/services/Zeist_Bomen/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/vxtcdWjsjPHYpR1J/arcgis/rest/services/Zeist_Bomen/FeatureServer/0'
+    },
     license: { id: 'CC0-1.0' }
   },
   {
@@ -5204,8 +5415,9 @@ module.exports = [
     state: 'Zeeland',
     scope: 'Tree: street (main)',
     info: 'https://nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/07885bed-2cf7-4399-9ae6-548e8c1d3dd7',
-    download: 'https://opengeodata.zeeland.nl/geoserver/chs/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=geocmd_chsgbmvpn&srsName=EPSG:4326&outputFormat=json',
-    api: 'wfs',
+    download: {
+      wfs: 'https://opengeodata.zeeland.nl/geoserver/chs/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=geocmd_chsgbmvpn&srsName=EPSG:4326&outputFormat=json'
+    },
     license: { id: 'CC-BY-SA-3.0' }
   },
   {
@@ -5214,8 +5426,9 @@ module.exports = [
     designation: 'Waterschap Hollandse Delta',
     scope: 'Tree: street (main)',
     info: 'https://hub.arcgis.com/datasets/WSHD::wshd-bomen-1/about',
-    download: 'https://services1.arcgis.com/kuOZuNSbAumsw8wc/arcgis/rest/services/Wshd_Bomenwacht/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/kuOZuNSbAumsw8wc/arcgis/rest/services/Wshd_Bomenwacht/FeatureServer/0'
+    },
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -5240,8 +5453,9 @@ module.exports = [
     city: 'Albrandswaard',
     scope: 'Tree',
     info: 'https://nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/e896eabc-0324-48d9-838c-d26d6dda67cf',
-    download: 'https://maps.bar-organisatie.nl/arcgis/rest/services/OpenDataPortaal/Bomen_AW/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://maps.bar-organisatie.nl/arcgis/rest/services/OpenDataPortaal/Bomen_AW/MapServer/0'
+    },
     license: { id: 'CC0-1.0' }
   },
   {
@@ -5250,8 +5464,9 @@ module.exports = [
     city: 'Barendrecht',
     scope: 'Tree',
     info: 'https://nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/5da10ecc-2d3d-44ef-be82-1f33ea305fd7',
-    download: 'https://maps.bar-organisatie.nl/arcgis/rest/services/OpenDataPortaal/Bomen_BD/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://maps.bar-organisatie.nl/arcgis/rest/services/OpenDataPortaal/Bomen_BD/MapServer/0'
+    },
     srs: 'EPSG:28992',
     crosswalk: {
       owner: 'BEHEERDER',
@@ -5270,8 +5485,9 @@ module.exports = [
     city: 'Delft',
     scope: 'Tree',
     info: 'https://data-delft.opendata.arcgis.com/datasets/Delft::bomen-in-beheer-door-gemeente-delft-1/about',
-    download: 'https://services3.arcgis.com/j07voPd56xoB4c87/arcgis/rest/services/Bomen%20in%20beheer%20door%20gemeente%20Delft/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services3.arcgis.com/j07voPd56xoB4c87/arcgis/rest/services/Bomen%20in%20beheer%20door%20gemeente%20Delft/FeatureServer/0'
+    },
     crosswalk: {
       ref: 'ID_VELD',
       scientific: 'BOOMSOORT_',
@@ -5331,8 +5547,9 @@ module.exports = [
     state: 'Zuid-Holland',
     city: 'Gouda',
     scope: 'Tree',
-    download: 'https://gis.gouda.nl/geoserver/BOR/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=BOR:V_BOMEN_ALLES&srsName=EPSG:4326&outputFormat=application/json',
-    api: 'wfs'
+    download: {
+      wfs: 'https://gis.gouda.nl/geoserver/BOR/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=BOR:V_BOMEN_ALLES&srsName=EPSG:4326&outputFormat=application/json'
+    }
   },
   {
     country: 'Netherlands',
@@ -5350,8 +5567,9 @@ module.exports = [
     city: 'Ridderkerk',
     scope: 'Tree',
     info: 'https://nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/9c8ca958-66c4-4cfc-90b8-73011fa732c8',
-    download: 'https://maps.bar-organisatie.nl/arcgis/rest/services/OpenDataPortaal/Bomen_RK/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://maps.bar-organisatie.nl/arcgis/rest/services/OpenDataPortaal/Bomen_RK/MapServer/0'
+    },
     license: { id: 'CC0-1.0' }
   },
   {
@@ -5381,8 +5599,9 @@ module.exports = [
     city: 'Zoetermeer',
     scope: 'Tree',
     info: 'https://hub.arcgis.com/datasets/stadsatlas::bomen-2/about',
-    download: 'https://gis.zoetermeer.nl/arcgis/rest/services/Public/Bomen/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gis.zoetermeer.nl/arcgis/rest/services/Public/Bomen/MapServer/0'
+    },
     license: { id: 'CC0-1.0' }
   },
   {
@@ -5391,8 +5610,9 @@ module.exports = [
     city: 'Auckland',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=bc3ee65c591d425cbaf90fc85cf5adef',
-    download: 'https://services1.arcgis.com/n4yPwebTjJCmXB6W/arcgis/rest/services/TreeRegisterPoints/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/n4yPwebTjJCmXB6W/arcgis/rest/services/TreeRegisterPoints/FeatureServer/0'
+    }
   },
   {
     country: 'New Zealand',
@@ -5400,8 +5620,9 @@ module.exports = [
     city: 'Palmerston North',
     scope: 'Tree',
     info: 'https://data-pncc.opendata.arcgis.com/datasets/077787e2299541bc8d2c2dbf8d7dc4e4_18/about',
-    download: 'https://geosite.pncc.govt.nz/arcgis/rest/services/Public/WEB_Open_Data/MapServer/18',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://geosite.pncc.govt.nz/arcgis/rest/services/Public/WEB_Open_Data/MapServer/18'
+    },
     crosswalk: { scientific: 'botanical_', common: 'species' },
     opentrees_id: 'palmerston_north'
   },
@@ -5411,8 +5632,9 @@ module.exports = [
     city: 'Palmerston North',
     scope: 'Tree: notable',
     info: 'https://data-pncc.opendata.arcgis.com/datasets/PNCC::pncc-notable-trees/about',
-    download: 'https://geosite.pncc.govt.nz/arcgis/rest/services/Public/WEB_Planning/MapServer/4',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://geosite.pncc.govt.nz/arcgis/rest/services/Public/WEB_Planning/MapServer/4'
+    },
     license: { id: 'CC-BY-4.0' },
     opentrees_id: 'palmerston_north'
   },
@@ -5422,8 +5644,9 @@ module.exports = [
     designation: 'Marlborough District',
     scope: 'Tree: notable',
     info: 'https://data-marlborough.opendata.arcgis.com/datasets/bbd06eb0f4fb4f1d8c8d56a3213ecc0b_21/about',
-    download: 'https://gis.marlborough.govt.nz/server/rest/services/OpenData/OpenData5/MapServer/21',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gis.marlborough.govt.nz/server/rest/services/OpenData/OpenData5/MapServer/21'
+    },
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -5432,8 +5655,9 @@ module.exports = [
     designation: 'Waikato District',
     scope: 'Tree: notable',
     info: 'https://data-waikatolass.opendata.arcgis.com/datasets/f627e48928b24266a9da8c042a77a2cc_0/about',
-    download: 'https://services9.arcgis.com/hFOIM3RwvlDTA5Jf/arcgis/rest/services/District_Plan_Overlay/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services9.arcgis.com/hFOIM3RwvlDTA5Jf/arcgis/rest/services/District_Plan_Overlay/FeatureServer/0'
+    }
   },
   {
     country: 'New Zealand',
@@ -5441,8 +5665,9 @@ module.exports = [
     city: 'Wellington',
     scope: 'Tree: notable',
     info: 'https://data-wcc.opendata.arcgis.com/datasets/aed53628016540388abfbe018da439b6_29/about',
-    download: 'https://gis.wcc.govt.nz/arcgis/rest/services/DistrictPlan/DistrictPlan_RuBRIC/MapServer/29',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gis.wcc.govt.nz/arcgis/rest/services/DistrictPlan/DistrictPlan_RuBRIC/MapServer/29'
+    },
     license: { id: 'CC-BY-3.0-NZ' }
   },
   {
@@ -5451,8 +5676,9 @@ module.exports = [
     city: 'Wellington',
     scope: 'Tree',
     info: 'https://data-wcc.opendata.arcgis.com/datasets/WCC::wcc-trees/about',
-    download: 'https://gis.wcc.govt.nz/arcgis/rest/services/Parks/Parks/MapServer/53',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://gis.wcc.govt.nz/arcgis/rest/services/Parks/Parks/MapServer/53'
+    }
   },
   {
     country: 'Norway',
@@ -5460,8 +5686,9 @@ module.exports = [
     city: 'Oslo',
     scope: 'Tree',
     info: 'https://hub.arcgis.com/datasets/f256d2d837554edab8b53bb6af90bc8d_19/about',
-    download: 'https://geodata.bymoslo.no/arcgis/rest/services/geodata/Temadata_Publikum/MapServer/19',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://geodata.bymoslo.no/arcgis/rest/services/geodata/Temadata_Publikum/MapServer/19'
+    },
     crosswalk: {
       updated: 'last_edi_1',
       scientific: 'BotNavn',
@@ -5475,8 +5702,9 @@ module.exports = [
     city: 'Bella Vista',
     scope: 'Tree',
     info: 'https://datos-geomupa.opendata.arcgis.com/datasets/arborizaci%C3%B3n-bella-vista-p/about',
-    download: 'https://services7.arcgis.com/1QmlDrAfwWWhhk9p/arcgis/rest/services/Arborizaci%C3%B3n_Bella_Vista_(P)/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services7.arcgis.com/1QmlDrAfwWWhhk9p/arcgis/rest/services/Arborizaci%C3%B3n_Bella_Vista_(P)/FeatureServer/0'
+    },
     terms: 'Uso público.'
   },
   {
@@ -5485,8 +5713,9 @@ module.exports = [
     city: 'Betania',
     scope: 'Tree',
     info: 'https://datos-geomupa.opendata.arcgis.com/datasets/arborizaci%C3%B3n-betania-p/about',
-    download: 'https://services7.arcgis.com/1QmlDrAfwWWhhk9p/arcgis/rest/services/Arborizaci%C3%B3n_Betania_(P)/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services7.arcgis.com/1QmlDrAfwWWhhk9p/arcgis/rest/services/Arborizaci%C3%B3n_Betania_(P)/FeatureServer/0'
+    },
     terms: 'Uso público.'
   },
   {
@@ -5495,8 +5724,9 @@ module.exports = [
     city: 'Calidonia',
     scope: 'Tree',
     info: 'https://datos-geomupa.opendata.arcgis.com/datasets/arborizaci%C3%B3n-calidonia-p/about',
-    download: 'https://services7.arcgis.com/1QmlDrAfwWWhhk9p/arcgis/rest/services/Arborizaci%C3%B3n_Calidonia_(P)/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services7.arcgis.com/1QmlDrAfwWWhhk9p/arcgis/rest/services/Arborizaci%C3%B3n_Calidonia_(P)/FeatureServer/0'
+    },
     terms: 'Uso público.'
   },
   {
@@ -5506,8 +5736,9 @@ module.exports = [
     designation: 'Cinta Costera',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=821e104cb34b46a0a4123643dc22a675',
-    download: 'https://services3.arcgis.com/fa6CZoHjgtjaj3J6/arcgis/rest/services/Inventario_Arboles_Cinta_Costera/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/fa6CZoHjgtjaj3J6/arcgis/rest/services/Inventario_Arboles_Cinta_Costera/FeatureServer/0'
+    }
   },
   {
     country: 'Panama',
@@ -5515,8 +5746,9 @@ module.exports = [
     city: 'San Felipe',
     scope: 'Tree',
     info: 'https://datos-geomupa.opendata.arcgis.com/datasets/arborizaci%C3%B3n-san-felipe-p/about',
-    download: 'https://services7.arcgis.com/1QmlDrAfwWWhhk9p/arcgis/rest/services/Arborizaci%C3%B3n_San_Felipe_(P)/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services7.arcgis.com/1QmlDrAfwWWhhk9p/arcgis/rest/services/Arborizaci%C3%B3n_San_Felipe_(P)/FeatureServer/0'
+    },
     terms: 'Uso público.'
   },
   {
@@ -5525,8 +5757,9 @@ module.exports = [
     city: 'Santa Ana',
     scope: 'Tree',
     info: 'https://datos-geomupa.opendata.arcgis.com/datasets/arborizacion-santa-ana-p/about',
-    download: 'https://services7.arcgis.com/1QmlDrAfwWWhhk9p/arcgis/rest/services/Arborizacion_Santa_Ana_(P)/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services7.arcgis.com/1QmlDrAfwWWhhk9p/arcgis/rest/services/Arborizacion_Santa_Ana_(P)/FeatureServer/0'
+    },
     terms: 'Uso público.'
   },
   {
@@ -5651,8 +5884,9 @@ module.exports = [
     city: 'Lisboa',
     scope: 'Tree',
     info: 'https://geodados-cml.hub.arcgis.com/datasets/arvoredo/about',
-    download: 'https://services.arcgis.com/1dSrzEWVQn5kHHyK/arcgis/rest/services/Ambiente_DMEVAE/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services.arcgis.com/1dSrzEWVQn5kHHyK/arcgis/rest/services/Ambiente_DMEVAE/FeatureServer/0'
+    },
     crosswalk: { scientific: 'ESPECIE_VA', location: 'LOCAL' },
     license: { id: 'CC0-1.0' },
     fallingfruit_id: 450,
@@ -5673,15 +5907,17 @@ module.exports = [
     city: 'Riyadh',
     designation: 'Al Safarat (Diplomatic Quarter)',
     info: 'https://www.arcgis.com/home/item.html?id=e87ac8ba79a74258afbe6efb7fbd5201',
-    download: 'https://services7.arcgis.com/VPnUdZ9GD3BHF2nT/arcgis/rest/services/a31787ce163bd25c/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/VPnUdZ9GD3BHF2nT/arcgis/rest/services/a31787ce163bd25c/FeatureServer/0'
+    }
   },
   {
     country: 'Singapore',
     scope: 'Tree: notable',
     info: 'https://beta.data.gov.sg/datasets/d_644ff187b6d14d6316f47284a4a6c81f/view',
-    download: 'https://beta.data.gov.sg/datasets/d_644ff187b6d14d6316f47284a4a6c81f/view',
-    api: 'manual',
+    download: {
+      manual: 'https://beta.data.gov.sg/datasets/d_644ff187b6d14d6316f47284a4a6c81f/view'
+    },
     license: {
       name: 'Singapore Open Data License 1.0',
       url: 'https://beta.data.gov.sg/open-data-license'
@@ -5693,8 +5929,9 @@ module.exports = [
     city: 'Sevilla',
     scope: 'Tree: street',
     info: 'https://cda-idesevilla.opendata.arcgis.com/datasets/parques-y-jardines-arbol-viario/about',
-    download: 'https://services1.arcgis.com/hcmP7kr0Cx3AcTJk/arcgis/rest/services/Parques_y_Jardines_Arbol_Viario/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/hcmP7kr0Cx3AcTJk/arcgis/rest/services/Parques_y_Jardines_Arbol_Viario/FeatureServer/0'
+    },
     crosswalk: { scientific: 'Nombre', height: 'Altura', maturity: 'Observ' },
     license: { id: 'CC-BY-NC-4.0' },
     opentrees_id: 'sevilla_es'
@@ -5705,8 +5942,9 @@ module.exports = [
     city: 'Sevilla',
     scope: 'Tree: park',
     info: 'https://cda-idesevilla.opendata.arcgis.com/datasets/parques-y-jardines-arbol-zona-verde/about',
-    download: 'https://services1.arcgis.com/hcmP7kr0Cx3AcTJk/arcgis/rest/services/Parques_y_Jardines_Arbol_ZonaVerde/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/hcmP7kr0Cx3AcTJk/arcgis/rest/services/Parques_y_Jardines_Arbol_ZonaVerde/FeatureServer/0'
+    },
     license: { id: 'CC-BY-NC-4.0' },
     opentrees_id: 'sevilla_es'
   },
@@ -5716,8 +5954,9 @@ module.exports = [
     city: 'Sevilla',
     scope: 'Tree: park',
     info: 'https://cda-idesevilla.opendata.arcgis.com/datasets/ideSEVILLA::parques-y-jardines-palmera-zona-verde/about',
-    download: 'https://services1.arcgis.com/hcmP7kr0Cx3AcTJk/arcgis/rest/services/Parques_y_Jardines_Palmera_ZonaVerde/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/hcmP7kr0Cx3AcTJk/arcgis/rest/services/Parques_y_Jardines_Palmera_ZonaVerde/FeatureServer/0'
+    },
     license: { id: 'CC-BY-NC-4.0' },
     opentrees_id: 'sevilla_es'
   },
@@ -5727,8 +5966,9 @@ module.exports = [
     city: 'Gijón / Xixón',
     scope: 'Tree: park',
     info: 'https://observa.gijon.es/explore/dataset/arbolado-municipal-parques-y-jardines/information/',
-    download: 'https://observa.gijon.es/api/explore/v2.1/catalog/datasets/arbolado-municipal-parques-y-jardines/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://observa.gijon.es/api/explore/v2.1/catalog/datasets/arbolado-municipal-parques-y-jardines/exports/geojson'
+    },
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -5820,8 +6060,9 @@ module.exports = [
     city: 'Manlleu',
     scope: 'Tree',
     info: 'https://dadesobertes-situam.opendata.arcgis.com/datasets/arbrat-del-nucli-urb%C3%A0/about',
-    download: 'https://services.arcgis.com/WNsrZDHEJ88NE4N8/arcgis/rest/services/Arbrat_del_nucli_urb%C3%A0/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services.arcgis.com/WNsrZDHEJ88NE4N8/arcgis/rest/services/Arbrat_del_nucli_urb%C3%A0/FeatureServer/0'
+    },
     crosswalk: { common: 'NCOMU', scientific: 'NCIENTIFIC', note: 'OBSERVACIO' },
     license: { id: 'CC-BY-4.0' },
     opentrees_id: 'manlleu_es'
@@ -5841,8 +6082,9 @@ module.exports = [
     city: 'Aranjuez',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=07d25d0bbbfd4666968e35bd19be4cdf',
-    download: 'https://services-eu1.arcgis.com/cinoPLPBK4W8ptpL/arcgis/rest/services/Inventario_final_gdb_vista/FeatureServer/1',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services-eu1.arcgis.com/cinoPLPBK4W8ptpL/arcgis/rest/services/Inventario_final_gdb_vista/FeatureServer/1'
+    }
   },
   {
     country: 'Spain',
@@ -5850,8 +6092,9 @@ module.exports = [
     city: 'Aranjuez',
     scope: 'Tree: notable',
     info: 'https://www.arcgis.com/home/item.html?id=07d25d0bbbfd4666968e35bd19be4cdf',
-    download: 'https://services-eu1.arcgis.com/cinoPLPBK4W8ptpL/arcgis/rest/services/Inventario_final_gdb_vista/FeatureServer/2',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services-eu1.arcgis.com/cinoPLPBK4W8ptpL/arcgis/rest/services/Inventario_final_gdb_vista/FeatureServer/2'
+    }
   },
   {
     country: 'Spain',
@@ -5881,8 +6124,9 @@ module.exports = [
     city: 'Madrid',
     designation: 'Ciudad Universitaria | Universidad Complutense de Madrid – Somosaguas',
     info: 'https://www.arcgis.com/home/item.html?id=e03f9083d0b94d3f911b0342f4804151',
-    download: 'https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Inventario_del_arbolado_UCM/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/wKWg6g7Ozgov9sfw/arcgis/rest/services/Inventario_del_arbolado_UCM/FeatureServer/0'
+    }
   },
   {
     country: 'Spain',
@@ -5899,8 +6143,9 @@ module.exports = [
     state: 'Comunidad Valenciana',
     scope: 'Tree: notable',
     info: 'https://datos.gob.es/es/catalogo/a10002983-catalogo-de-arboles-monumentales-y-singulares-de-la-comunitat-valenciana',
-    download: 'https://carto.icv.gva.es/arcgis/rest/services/tm_medio_ambiente/forestal/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://carto.icv.gva.es/arcgis/rest/services/tm_medio_ambiente/forestal/MapServer/0'
+    },
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -5923,8 +6168,9 @@ module.exports = [
     city: 'Valencia',
     scope: 'Tree',
     info: 'https://valencia.opendatasoft.com/explore/dataset/arbratge-arbolado/information/',
-    download: 'https://valencia.opendatasoft.com/api/explore/v2.1/catalog/datasets/arbratge-arbolado/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://valencia.opendatasoft.com/api/explore/v2.1/catalog/datasets/arbratge-arbolado/exports/geojson'
+    },
     crosswalk: { scientific: 'planta', common: 'castellano' },
     license: { id: 'CC-BY-4.0' },
     terms: 'https://valencia.opendatasoft.com/terms/terms-and-conditions/',
@@ -5936,8 +6182,9 @@ module.exports = [
     city: 'Valencia',
     scope: 'Tree: notable',
     info: 'https://valencia.opendatasoft.com/explore/dataset/arbratge-protegit-municipal-arbolado-protegido-municipal/information/',
-    download: 'https://valencia.opendatasoft.com/api/explore/v2.1/catalog/datasets/arbratge-protegit-municipal-arbolado-protegido-municipal/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://valencia.opendatasoft.com/api/explore/v2.1/catalog/datasets/arbratge-protegit-municipal-arbolado-protegido-municipal/exports/geojson'
+    },
     license: { id: 'CC-BY-4.0' },
     terms: 'https://valencia.opendatasoft.com/terms/terms-and-conditions/',
     opentrees_id: 'valencia_es'
@@ -5965,8 +6212,7 @@ module.exports = [
       'OPTIONAL  {?uri om:diametroCopa ?om_diametroCopa. }\n' +
       'OPTIONAL  {?uri om:ubicacion ?om_ubicacion. }}',
     info: 'http://opendata.caceres.es/dataset/arboles-caceres',
-    download: 'http://opendata.caceres.es/dataset/arboles-caceres',
-    api: 'manual',
+    download: { manual: 'http://opendata.caceres.es/dataset/arboles-caceres' },
     geometry: { x: 'geo_long', y: 'geo_lat' },
     srs: 'EPSG:4326',
     crosswalk: {
@@ -5989,8 +6235,9 @@ module.exports = [
     state: 'Illes Balears',
     scope: 'Tree: notable',
     info: 'https://catalegdades.caib.cat/Medi-ambient/Arbres-Singulars-Illes-Balears/f2hg-sgdb',
-    download: 'https://catalegdades.caib.cat/api/geospatial/f2hg-sgdb?method=export&format=geojson',
-    api: 'socrata',
+    download: {
+      socrata: 'https://catalegdades.caib.cat/api/geospatial/f2hg-sgdb?method=export&format=geojson'
+    },
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -6017,8 +6264,9 @@ module.exports = [
     state: 'Tenerife',
     city: 'Santa Cruz de Tenerife',
     info: 'https://www.arcgis.com/home/item.html?id=9d31b1cc9b2245d280264cb628a93126',
-    download: 'https://services1.arcgis.com/AidH51KIlT1JXpjE/arcgis/rest/services/Arbolado/FeatureServer/1',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/AidH51KIlT1JXpjE/arcgis/rest/services/Arbolado/FeatureServer/1'
+    }
   },
   {
     country: 'Sweden',
@@ -6060,8 +6308,9 @@ module.exports = [
     state: 'Jönköping',
     scope: 'Tree: notable',
     info: 'https://ext-geodatakatalog.lansstyrelsen.se/GeodataKatalogen/GetMetaDataById?id=251f9f84-e8b4-4e76-af39-1ccb19445a8f',
-    download: 'https://ext-geodata-lokala.lansstyrelsen.se/arcgis/rest/services/LSTF/lstf_wms_1/MapServer/8',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://ext-geodata-lokala.lansstyrelsen.se/arcgis/rest/services/LSTF/lstf_wms_1/MapServer/8'
+    },
     license: { id: 'CC0-1.0' }
   },
   {
@@ -6070,8 +6319,9 @@ module.exports = [
     city: 'Umeå',
     scope: 'Tree',
     info: 'https://opendata.umea.se/explore/dataset/trad-som-forvaltas-av-gator-och-parker/information/',
-    download: 'https://opendata.umea.se/api/explore/v2.1/catalog/datasets/trad-som-forvaltas-av-gator-och-parker/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://opendata.umea.se/api/explore/v2.1/catalog/datasets/trad-som-forvaltas-av-gator-och-parker/exports/geojson'
+    },
     crosswalk: {
       scientific: 'tradart_vet',
       common: 'tradart_sve',
@@ -6097,8 +6347,9 @@ module.exports = [
     city: 'Basel',
     scope: 'Tree',
     info: 'https://data.bs.ch/explore/dataset/100052/information/',
-    download: 'https://data.bs.ch/api/explore/v2.1/catalog/datasets/100052/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.bs.ch/api/explore/v2.1/catalog/datasets/100052/exports/geojson'
+    },
     crosswalk: {
       scientific: x => String(x.art).replace(/ \(.*/, ''),
       common: x => (String(x.art).match(/\((.*)\)/) || ['', ''])[1],
@@ -6114,8 +6365,9 @@ module.exports = [
     city: 'Bern',
     scope: 'Tree',
     info: 'https://map.bern.ch/geoportal/#/produkt/Baumkataster',
-    download: 'https://map.bern.ch/arcgis/services/Geoportal/Baumkataster/MapServer/WFSServer?service=WFS&version=2.0.0&request=GetFeature&typeNames=Geoportal_Baumkataster:Baumkataster&srsName=EPSG:4326&outputFormat=GEOJSON',
-    api: 'wfs',
+    download: {
+      wfs: 'https://map.bern.ch/arcgis/services/Geoportal/Baumkataster/MapServer/WFSServer?service=WFS&version=2.0.0&request=GetFeature&typeNames=Geoportal_Baumkataster:Baumkataster&srsName=EPSG:4326&outputFormat=GEOJSON'
+    },
     terms: 'Freie Nutzung. Quellenangabe ist Pflicht.'
   },
   {
@@ -6132,8 +6384,9 @@ module.exports = [
     state: 'Fribourg',
     scope: 'Tree: notable',
     info: 'https://geo.fr.ch/portal/apps/sites/#/geoportail/datasets/7d70360d05f647458d4255858448c10a',
-    download: 'https://geo.fr.ch/ags/rest/services/OpenData/Arbres_spectaculaires/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://geo.fr.ch/ags/rest/services/OpenData/Arbres_spectaculaires/FeatureServer/0'
+    },
     license: {
       name: 'opendata.swiss Attribution',
       url: 'https://opendata.swiss/en/terms-of-use/#terms_by'
@@ -6144,8 +6397,9 @@ module.exports = [
     state: 'Genève',
     scope: 'Tree',
     info: 'https://ge.ch/sitg/fiche/4571',
-    download: 'https://ge.ch/sitgags1/rest/services/VECTOR/SITG_OPENDATA_04/MapServer/4571',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://ge.ch/sitgags1/rest/services/VECTOR/SITG_OPENDATA_04/MapServer/4571'
+    },
     geometry: { x: 'E', y: 'N' },
     srs: 'EPSG:2056',
     crosswalk: {
@@ -6225,8 +6479,9 @@ module.exports = [
     scope: 'Tree: notable',
     notes: 'WFS server refuses to transform coordinates (srsName param)',
     info: 'https://viageo.ch/catalogue/donnee/201093',
-    download: 'https://www.sigip.ch/mapserv_proxy?ogcserver=ows&service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:pully_pp_arbres_classes',
-    api: 'wfs',
+    download: {
+      wfs: 'https://www.sigip.ch/mapserv_proxy?ogcserver=ows&service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:pully_pp_arbres_classes'
+    },
     terms: "Le responsable s’engage à utiliser les données commandées exclusivement pour le projet désigné. Il s'engage à ne pas commercialiser les données. La source doit être indiquée sur chaque reproduction (Copyrights géodonnées Ville de Pully). La rediffusion, sans autorisation préalable, des données est interdite (y compris sur internet)."
   },
   {
@@ -6236,8 +6491,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'WFS server refuses to transform coordinates (srsName param)',
     info: 'https://viageo.ch/catalogue/donnee/300053',
-    download: 'https://www.sigip.ch/mapserv_proxy?ogcserver=ows&service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:pully_arbres',
-    api: 'wfs',
+    download: {
+      wfs: 'https://www.sigip.ch/mapserv_proxy?ogcserver=ows&service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:pully_arbres'
+    },
     terms: "Le responsable s’engage à utiliser les données commandées exclusivement pour le projet désigné. Il s'engage à ne pas commercialiser les données. La source doit être indiquée sur chaque reproduction (Copyrights géodonnées Ville de Pully). La rediffusion, sans autorisation préalable, des données est interdite (y compris sur internet)."
   },
   {
@@ -6246,8 +6502,9 @@ module.exports = [
     city: 'Winterthur',
     scope: 'Tree',
     info: 'https://stadt.winterthur.ch/themen/leben-in-winterthur/planen-und-bauen/wir-beraten-sie/geoinformation-und-vermessung/2d-stadtplan/2d-stadtplan-datenbeschreibung#baumkastaster',
-    download: 'https://stadtplan.winterthur.ch/wms/Baumkataster?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:Stadtbaum&srsName=EPSG:4326',
-    api: 'wfs',
+    download: {
+      wfs: 'https://stadtplan.winterthur.ch/wms/Baumkataster?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:Stadtbaum&srsName=EPSG:4326'
+    },
     openFunc: file => {
       const txt = fs.readFileSync(file, 'utf8')
       // Fix <!-- WARNING: The value '*' is not valid in a XML tag context. -->
@@ -6262,8 +6519,9 @@ module.exports = [
     city: 'Zürich',
     scope: 'Tree',
     info: 'https://data.stadt-zuerich.ch/dataset/geo_baumkataster',
-    download: 'https://www.ogd.stadt-zuerich.ch/wfs/geoportal/Baumkataster?service=WFS&version=1.1.0&request=GetFeature&outputFormat=GeoJSON&typename=baumkataster_baumstandorte',
-    api: 'wfs',
+    download: {
+      wfs: 'https://www.ogd.stadt-zuerich.ch/wfs/geoportal/Baumkataster?service=WFS&version=1.1.0&request=GetFeature&outputFormat=GeoJSON&typename=baumkataster_baumstandorte'
+    },
     srs: 'EPSG:2056',
     crosswalk: {
       ref: 'baumnummer',
@@ -6325,15 +6583,17 @@ module.exports = [
     country: 'United Kingdom',
     scope: 'Tree: notable',
     info: 'https://data-forestry.opendata.arcgis.com/datasets/8bda5450dfbd402eb558baa7fb1e7210_0/about',
-    download: 'https://services2.arcgis.com/mHXjwgl3OARRqqD4/arcgis/rest/services/BIG_TREE_PLANT_SITES/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/mHXjwgl3OARRqqD4/arcgis/rest/services/BIG_TREE_PLANT_SITES/FeatureServer/0'
+    }
   },
   {
     country: 'United Kingdom',
     scope: 'Tree: notable',
     info: 'https://www.arcgis.com/home/item.html?id=cd7f5390ebde4312a53154432cf490b3',
-    download: 'https://services-eu1.arcgis.com/WIfgdJeDbrZU1cnA/arcgis/rest/services/Ancient_Tree_Inventory_ATI/FeatureServer/29',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services-eu1.arcgis.com/WIfgdJeDbrZU1cnA/arcgis/rest/services/Ancient_Tree_Inventory_ATI/FeatureServer/29'
+    },
     terms: 'The Data may not be used in publicly available Internet mapping services (e.g. Google Maps/Earth, Microsoft Bing Maps or Yahoo Maps) without prior written permission from the Woodland Trust. Please contact the Woodland Trust’s Ancient Tree Inventory via ancienttreeinventory@woodlandtrust.org.uk if you wish to publish The Data within the public domain.'
   },
   {
@@ -6352,8 +6612,9 @@ module.exports = [
     city: 'Norwich',
     scope: 'Tree: notable',
     info: 'https://data.gov.uk/dataset/d4779659-8981-4d5a-89bf-3058e7f6d21b/tree-preservation-orders-trees',
-    download: 'http://inspire.misoportal.com/geoserver/norwich_city_council_tpo_trees_trees/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=norwich_city_council_tpo_trees_trees:tpo_trees_trees&srsName=EPSG:4326',
-    api: 'wfs'
+    download: {
+      wfs: 'http://inspire.misoportal.com/geoserver/norwich_city_council_tpo_trees_trees/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=norwich_city_council_tpo_trees_trees:tpo_trees_trees&srsName=EPSG:4326'
+    }
   },
   {
     country: 'United Kingdom',
@@ -6362,8 +6623,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'Replaces Camden subset of London',
     info: 'https://opendata.camden.gov.uk/Environment/Trees-In-Camden/csqp-kdss',
-    download: 'https://opendata.camden.gov.uk/api/views/csqp-kdss/rows.csv',
-    api: 'socrata',
+    download: {
+      socrata: 'https://opendata.camden.gov.uk/api/views/csqp-kdss/rows.csv'
+    },
     driver: 'CSV',
     geometry: { x: 'Longitude', y: 'Latitude' },
     delFunc: x => x['Number Of Trees'] == 0 || x['Scientific Name'].match(/^vacant /i),
@@ -6416,8 +6678,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'Replaces Lambeth subset of London',
     info: 'https://lambethopenmappingdata-lambethcouncil.opendata.arcgis.com/datasets/lambethcouncil::trees-on-public-land/about',
-    download: 'https://gis.lambeth.gov.uk/arcgis/rest/services/LambethTreesonPublicLand/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gis.lambeth.gov.uk/arcgis/rest/services/LambethTreesonPublicLand/MapServer/0'
+    },
     geometry: { x: 'X', y: 'Y' },
     srs: 'EPSG:4326',
     delFunc: x => x.COMMONNAME === "'Vacant tree pit'" ||
@@ -6506,8 +6769,9 @@ module.exports = [
     city: 'Edinburgh',
     scope: 'Tree',
     info: 'https://data.edinburghcouncilmaps.info/datasets/cityofedinburgh::trees/about',
-    download: 'https://edinburghcouncilmaps.info/arcgis/rest/services/Misc/INSPIRE/MapServer/39',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://edinburghcouncilmaps.info/arcgis/rest/services/Misc/INSPIRE/MapServer/39'
+    },
     crosswalk: {
       scientific: 'LatinName',
       common: 'CommonName',
@@ -6525,8 +6789,9 @@ module.exports = [
     city: 'Milton Keynes',
     scope: 'Tree: notable',
     info: 'https://www.data.gov.uk/dataset/4e83ed56-f357-4974-8850-824dcbdea554/tree-preservation-orders-trees',
-    download: 'https://mapping.milton-keynes.gov.uk/GetOWS.ashx?MAPSOURCE=MiltonKeynes/inspire&version=1.1.0&request=GetFeature&service=WFS&typeName=tpo_points',
-    api: 'wfs'
+    download: {
+      wfs: 'https://mapping.milton-keynes.gov.uk/GetOWS.ashx?MAPSOURCE=MiltonKeynes/inspire&version=1.1.0&request=GetFeature&service=WFS&typeName=tpo_points'
+    }
   },
   {
     country: 'United Kingdom',
@@ -6545,8 +6810,9 @@ module.exports = [
     designation: 'Dartmoor National Park',
     scope: 'Tree: notable',
     info: 'https://www.data.gov.uk/dataset/fe56528a-c607-4dcd-845d-631f32fd92b9/dnpa-veteran-trees',
-    download: 'https://maps.dartmoor.gov.uk/geoserver/inspire/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=inspire:dnpa_veteran_trees&srsName=EPSG:4326',
-    api: 'wfs',
+    download: {
+      wfs: 'https://maps.dartmoor.gov.uk/geoserver/inspire/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=inspire:dnpa_veteran_trees&srsName=EPSG:4326'
+    },
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -6557,8 +6823,9 @@ module.exports = [
     inactive: true,
     notes: 'Tree preservation orders | Originally downloaded as a zipped shapefile',
     info: 'https://www.data.gov.uk/dataset/3169df15-9549-4fcf-8907-2fd3d96d0728/enpa-tree-preservation-orders',
-    download: 'http://inspire.nationalparks.gov.uk:80/geoserver/enpa_inspire/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=enpa_inspire:enpa_tpo_tree&maxFeatures=50&outputFormat=SHAPE-ZIP',
-    api: 'wfs',
+    download: {
+      wfs: 'http://inspire.nationalparks.gov.uk:80/geoserver/enpa_inspire/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=enpa_inspire:enpa_tpo_tree&maxFeatures=50&outputFormat=SHAPE-ZIP'
+    },
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -6569,8 +6836,9 @@ module.exports = [
     inactive: true,
     notes: 'Veteran trees | Originally downloaded as a zipped shapefile',
     info: 'https://www.data.gov.uk/dataset/0d414ed8-6424-4c8a-aebb-a156b17695bb/enpa-veteran-tree',
-    download: 'http://inspire.nationalparks.gov.uk:80/geoserver/enpa_inspire/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=enpa_inspire:enpa_vettree&maxFeatures=50&outputFormat=SHAPE-ZIP',
-    api: 'wfs',
+    download: {
+      wfs: 'http://inspire.nationalparks.gov.uk:80/geoserver/enpa_inspire/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=enpa_inspire:enpa_vettree&maxFeatures=50&outputFormat=SHAPE-ZIP'
+    },
     license: {
       name: 'Ordnance Survey INSPIRE End User Licence',
       url: 'https://www.ordnancesurvey.co.uk/documents/licensing/inspire-end-user-licence.pdf'
@@ -6582,8 +6850,9 @@ module.exports = [
     city: 'Bristol',
     scope: 'Tree',
     info: 'https://opendata.bristol.gov.uk/datasets/bcc::trees-2/about',
-    download: 'https://maps2.bristol.gov.uk/server2/rest/services/ext/ll_environment_and_planning/MapServer/32',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://maps2.bristol.gov.uk/server2/rest/services/ext/ll_environment_and_planning/MapServer/32'
+    },
     crosswalk: {
       dbh: 'dbh',
       height: 'crown_height',
@@ -6649,8 +6918,9 @@ module.exports = [
     city: 'Coventry',
     designation: 'Coventry University',
     info: 'https://www.arcgis.com/home/item.html?id=03ef28b08b9e431d92171606ed6e1b3b',
-    download: 'https://services-eu1.arcgis.com/Xptv3uICuvnvSDwV/arcgis/rest/services/SUMBHA_023_New_tree_inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services-eu1.arcgis.com/Xptv3uICuvnvSDwV/arcgis/rest/services/SUMBHA_023_New_tree_inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United Kingdom',
@@ -6704,8 +6974,9 @@ module.exports = [
     state: 'Alabama',
     city: 'Florence',
     info: 'https://www.arcgis.com/home/item.html?id=87dd86197a104226a38b04b26a79cf63',
-    download: 'https://services1.arcgis.com/4OouWsRyOft5wqPC/arcgis/rest/services/Tree_Inventory_2021/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/4OouWsRyOft5wqPC/arcgis/rest/services/Tree_Inventory_2021/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -6715,8 +6986,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'partial',
     info: 'https://www.arcgis.com/home/item.html?id=a7ba16de7a394851873930e53a1c6f7a',
-    download: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/UAB_Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/UAB_Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -6726,8 +6998,9 @@ module.exports = [
     scope: 'Tree: park',
     notes: 'FF: Careful adding these to Falling Fruit, since foraging may not be permitted (Audubon Society project)',
     info: 'https://www.arcgis.com/home/item.html?id=0bb4ff2be3e249b29e8036713e6322e7',
-    download: 'https://services2.arcgis.com/Vc8ZVP2akSzC6wq2/arcgis/rest/services/Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/Vc8ZVP2akSzC6wq2/arcgis/rest/services/Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -6735,8 +7008,9 @@ module.exports = [
     city: 'Mesa',
     scope: 'Tree',
     info: 'https://data.mesaaz.gov/Environmental-Management-and-Sustainability/Tree-Inventory/jcys-68y7',
-    download: 'https://data.mesaaz.gov/api/geospatial/jcys-68y7?method=export&format=geojson',
-    api: 'socrata'
+    download: {
+      socrata: 'https://data.mesaaz.gov/api/geospatial/jcys-68y7?method=export&format=geojson'
+    }
   },
   {
     country: 'United States',
@@ -6744,8 +7018,9 @@ module.exports = [
     city: 'Phoenix',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=973ecb3323fb4d50a4ea13de1efc02a7',
-    download: 'https://services.arcgis.com/40CMVGZPtmu7aNof/arcgis/rest/services/Tree_Keeper/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/40CMVGZPtmu7aNof/arcgis/rest/services/Tree_Keeper/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -6753,16 +7028,18 @@ module.exports = [
     city: 'Prescott Valley',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=2207cbe75dee45329d95537b1084e7fa',
-    download: 'https://services.arcgis.com/NxZdAmj8rBzdRpTr/arcgis/rest/services/PV_TREES/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/NxZdAmj8rBzdRpTr/arcgis/rest/services/PV_TREES/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
     state: 'Arizona',
     city: 'Scottsdale',
     info: 'https://www.arcgis.com/home/item.html?id=f57af05100ba4262bd5f7df844dd021c',
-    download: 'https://services6.arcgis.com/hvDuIN6e7bxkHpdO/arcgis/rest/services/TreeInventory_Public/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/hvDuIN6e7bxkHpdO/arcgis/rest/services/TreeInventory_Public/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -6770,8 +7047,9 @@ module.exports = [
     city: 'Tempe',
     scope: 'Tree',
     info: 'https://hub.arcgis.com/datasets/tempegov::tree-inventory/about',
-    download: 'https://services.arcgis.com/lQySeXwbBg53XWDi/arcgis/rest/services/TempeGuadalupe_CanopyCover2019_TreeInv_2021_Tempe_iTreeResults_TempeAZOct_2021_1/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services.arcgis.com/lQySeXwbBg53XWDi/arcgis/rest/services/TempeGuadalupe_CanopyCover2019_TreeInv_2021_Tempe_iTreeResults_TempeAZOct_2021_1/FeatureServer/0'
+    },
     license: { id: 'CC-BY-4.0' },
     fallingfruit_id: 445
   },
@@ -6782,8 +7060,9 @@ module.exports = [
     designation: 'University of Arizona',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=6a6bbb4ad7df4accb7e112ec1ba10145',
-    download: 'https://utility.arcgis.com/usrsvcs/servers/6a6bbb4ad7df4accb7e112ec1ba10145/rest/services/PublicMaps/CultureRecreation/MapServer/57',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://utility.arcgis.com/usrsvcs/servers/6a6bbb4ad7df4accb7e112ec1ba10145/rest/services/PublicMaps/CultureRecreation/MapServer/57'
+    }
   },
   {
     country: 'United States',
@@ -6792,8 +7071,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'partial',
     info: 'http://hub.arcgis.com/datasets/geotucson::tft-tree-inventory/about',
-    download: 'https://services5.arcgis.com/0AYM2OwGLAAywmdK/arcgis/rest/services/TFT_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/0AYM2OwGLAAywmdK/arcgis/rest/services/TFT_Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -6802,8 +7082,9 @@ module.exports = [
     designation: 'State Capitol',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=9e73b492e515404ea76ad67bfa71ae70',
-    download: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/Arkansas_State_Capitol_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/Arkansas_State_Capitol_Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -6811,8 +7092,9 @@ module.exports = [
     designation: 'Los Angeles County',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=31f9e84f7c5d43c09753c1a215737118',
-    download: 'https://services1.arcgis.com/ZIL9uO234SBBPGL7/arcgis/rest/services/LACo_Trees_shp/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/ZIL9uO234SBBPGL7/arcgis/rest/services/LACo_Trees_shp/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -6822,8 +7104,7 @@ module.exports = [
     inactive: true,
     notes: 'overlaps San Diego tree inventory | Overlaps the City of San Diego tree inventory. Also includes user data and data from the following cities: Carlsbad, Chula Vista, Coronado, El Cajon, Imperial Beach, La Mesa, Oceanside, Poway, Santee, Solano Beach, and Vista. Many entries have incomplete (or truncated) species names.',
     info: 'https://sandiegotreemap.org',
-    download: 'https://sandiegotreemap.org/sdtrees',
-    api: 'manual',
+    download: { manual: 'https://sandiegotreemap.org/sdtrees' },
     fallingfruit_id: 357
   },
   {
@@ -7431,8 +7712,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'geofenced (US)',
     info: 'https://data-anaheim.opendata.arcgis.com/datasets/city-trees/about',
-    download: 'https://gis.anaheim.net/map/rest/services/OpenData/MapServer/41',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gis.anaheim.net/map/rest/services/OpenData/MapServer/41'
+    },
     crosswalk: {
       common: 'COMMONNAME',
       scientific: 'BOTANICALNAME',
@@ -7472,8 +7754,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'Geofenced (US)',
     info: 'https://data.cityofberkeley.info/Natural-Resources/City-Trees/9t35-jmin',
-    download: 'https://data.cityofberkeley.info/api/geospatial/9t35-jmin?method=export&format=geojson',
-    api: 'socrata',
+    download: {
+      socrata: 'https://data.cityofberkeley.info/api/geospatial/9t35-jmin?method=export&format=geojson'
+    },
     crosswalk: {
       scientific: 'SPECIES',
       common: 'Common_Nam',
@@ -7491,8 +7774,9 @@ module.exports = [
     city: 'Carpinteria',
     designation: 'Shepard Place Apartments',
     info: 'https://www.arcgis.com/home/item.html?id=710fcd0c003048f4bd1f44bf9ce5b4e6',
-    download: 'https://services8.arcgis.com/usWxeh2AMSZvdpAg/arcgis/rest/services/Shepard_Place_Tree_Inventory_Public_View/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services8.arcgis.com/usWxeh2AMSZvdpAg/arcgis/rest/services/Shepard_Place_Tree_Inventory_Public_View/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -7500,8 +7784,9 @@ module.exports = [
     city: 'Carson',
     designation: 'California State University – Dominguez Hills',
     info: 'https://www.arcgis.com/home/item.html?id=b3c5954ee5094731afa0ff5beaf5d1c5',
-    download: 'https://services9.arcgis.com/H3sRUUw4G1T50MGB/arcgis/rest/services/Trees1121/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services9.arcgis.com/H3sRUUw4G1T50MGB/arcgis/rest/services/Trees1121/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -7520,8 +7805,9 @@ module.exports = [
     state: 'California',
     city: 'Commerce',
     info: 'https://www.arcgis.com/home/item.html?id=1687edd4fad94de5a4d4e094c91308a4',
-    download: 'https://services5.arcgis.com/t4zDNzBF9Dot8HEQ/arcgis/rest/services/Commerce_Public_Trees_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/t4zDNzBF9Dot8HEQ/arcgis/rest/services/Commerce_Public_Trees_view/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -7529,8 +7815,9 @@ module.exports = [
     city: 'Cupertino',
     scope: 'Tree',
     info: 'https://gis-cupertino.opendata.arcgis.com/datasets/trees/about',
-    download: 'https://gis.cupertino.org/cupgis/rest/services/Public/AmazonData/MapServer/29',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gis.cupertino.org/cupgis/rest/services/Public/AmazonData/MapServer/29'
+    },
     geometry: { x: 'LONG', y: 'LAT' },
     crosswalk: {
       ref: 'AssetID',
@@ -7551,8 +7838,9 @@ module.exports = [
     designation: 'University of California',
     scope: 'Tree',
     info: 'https://data-ucda.opendata.arcgis.com/datasets/uc-davis-tree-database/about',
-    download: 'https://gis.ucdavis.edu/server/rest/services/Grounds_Tree_Database/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gis.ucdavis.edu/server/rest/services/Grounds_Tree_Database/MapServer/0'
+    },
     geometry: { x: 'POINT_X', y: 'POINT_Y' },
     srs: 'EPSG:2226',
     crosswalk: {
@@ -7600,8 +7888,9 @@ module.exports = [
     city: 'Escondido',
     scope: 'Tree',
     info: 'https://hub.arcgis.com/datasets/CityofEscondido::tree-inventory/about',
-    download: 'https://services2.arcgis.com/eJcVbjTyyZIzZ5Ye/arcgis/rest/services/TreeInventory/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services2.arcgis.com/eJcVbjTyyZIzZ5Ye/arcgis/rest/services/TreeInventory/FeatureServer/0'
+    },
     crosswalk: {
       ref: 'TREEID',
       scientific: 'BOTANICAL',
@@ -7632,16 +7921,18 @@ module.exports = [
     city: 'Goleta',
     designation: 'Pacific Oaks Apartments',
     info: 'https://www.arcgis.com/home/item.html?id=68ca0b278c374452ae2789b65b4d927d',
-    download: 'https://services8.arcgis.com/usWxeh2AMSZvdpAg/arcgis/rest/services/Pacific_Oaks_Tree_Inventory_-Public_View/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services8.arcgis.com/usWxeh2AMSZvdpAg/arcgis/rest/services/Pacific_Oaks_Tree_Inventory_-Public_View/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
     state: 'California',
     city: 'Inglewood',
     info: 'https://www.arcgis.com/home/item.html?id=b0098996542542f997f3668f5712fa09',
-    download: 'https://services5.arcgis.com/t4zDNzBF9Dot8HEQ/arcgis/rest/services/Inglewood_Tree_Layer_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/t4zDNzBF9Dot8HEQ/arcgis/rest/services/Inglewood_Tree_Layer_view/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -7649,8 +7940,9 @@ module.exports = [
     city: 'Laguna Woods',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=517dc0aecd3244909bf9b71d02fcdaff',
-    download: 'https://services9.arcgis.com/DPQ7yLDIWIyMUXzD/arcgis/rest/services/GIS_Map/FeatureServer/13',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services9.arcgis.com/DPQ7yLDIWIyMUXzD/arcgis/rest/services/GIS_Map/FeatureServer/13'
+    }
   },
   {
     country: 'United States',
@@ -7658,8 +7950,9 @@ module.exports = [
     city: 'Long Beach',
     scope: 'Tree',
     info: 'https://data.longbeach.gov/explore/dataset/tree-inventory/information/',
-    download: 'https://data.longbeach.gov/api/explore/v2.1/catalog/datasets/tree-inventory/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.longbeach.gov/api/explore/v2.1/catalog/datasets/tree-inventory/exports/geojson'
+    },
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -7668,8 +7961,7 @@ module.exports = [
     city: 'Los Angeles',
     scope: 'Tree',
     info: 'https://data.lacity.org/A-Livable-and-Sustainable-City/Street-Tree-Inventory-1990s/vt5t-mscf',
-    download: 'https://data.lacity.org/api/views/vt5t-mscf/rows.csv',
-    api: 'socrata',
+    download: { socrata: 'https://data.lacity.org/api/views/vt5t-mscf/rows.csv' },
     geometry: { x: 'X', y: 'Y' },
     srs: 'EPSG:4326',
     license: { id: 'CC0-1.0' }
@@ -7680,8 +7972,9 @@ module.exports = [
     city: 'Los Angeles',
     scope: 'Tree: street',
     info: 'https://geohub.lacity.org/datasets/trees-bureau-of-street-services/about',
-    download: 'https://services5.arcgis.com/7nsPwEMP38bSkCjy/arcgis/rest/services/Trees_Data_Bureau_of_Street_Services/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/7nsPwEMP38bSkCjy/arcgis/rest/services/Trees_Data_Bureau_of_Street_Services/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -7689,16 +7982,18 @@ module.exports = [
     city: 'Los Angeles',
     scope: 'Tree: park',
     info: 'https://geohub.lacity.org/datasets/trees-recreation-and-parks-department/about',
-    download: 'https://maps.lacity.org/lahub/rest/services/Recreation_and_Parks_Department/MapServer/6',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://maps.lacity.org/lahub/rest/services/Recreation_and_Parks_Department/MapServer/6'
+    }
   },
   {
     country: 'United States',
     state: 'California',
     city: 'Lynwood',
     info: 'https://www.arcgis.com/home/item.html?id=3ec0340026de4a959d1b0af40e9cb160',
-    download: 'https://services5.arcgis.com/t4zDNzBF9Dot8HEQ/arcgis/rest/services/Lynwood_Public_Trees_(CAL_FIRE)_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/t4zDNzBF9Dot8HEQ/arcgis/rest/services/Lynwood_Public_Trees_(CAL_FIRE)_view/FeatureServer/0'
+    }
   },
   {
     pending: 'address only',
@@ -7717,8 +8012,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'geofenced (US)',
     info: 'https://data-mountainview.opendata.arcgis.com/datasets/trees/about',
-    download: 'https://maps.mountainview.gov/arcgis/rest/services/Public/Trees/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://maps.mountainview.gov/arcgis/rest/services/Public/Trees/MapServer/0'
+    },
     crosswalk: {
       scientific: 'SPECIES',
       common: 'NAME',
@@ -7739,8 +8035,9 @@ module.exports = [
     designation: 'California State University',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=a8f4e49a72d74f779f88bb59526191ed',
-    download: 'https://services6.arcgis.com/4XnW0LugjJEsZM3v/arcgis/rest/services/Tree_Inventory_20230226_WFL1/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/4XnW0LugjJEsZM3v/arcgis/rest/services/Tree_Inventory_20230226_WFL1/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -7748,8 +8045,9 @@ module.exports = [
     city: 'Oakland',
     scope: 'Tree',
     info: 'https://data.oaklandca.gov/dataset/Street-Trees/9e7e-63pp',
-    download: 'https://data.oaklandca.gov/api/geospatial/9e7e-63pp?method=export&format=geojson',
-    api: 'socrata',
+    download: {
+      socrata: 'https://data.oaklandca.gov/api/geospatial/9e7e-63pp?method=export&format=geojson'
+    },
     fallingfruit_id: 81
   },
   {
@@ -7771,8 +8069,9 @@ module.exports = [
     city: 'Oxnard',
     scope: 'Tree',
     info: 'http://data-oxnard.opendata.arcgis.com/datasets/a5aa2d1dfd344ef79d61507d33cdbc02_1/about',
-    download: 'https://maps.oxnard.org/arcgis/rest/services/ParksLayers/MapServer/1',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://maps.oxnard.org/arcgis/rest/services/ParksLayers/MapServer/1'
+    },
     crosswalk: {
       scientific: 'BOTANICALN',
       common: 'COMMONNAME',
@@ -7787,8 +8086,9 @@ module.exports = [
     city: 'Pacific Grove',
     scope: 'Tree',
     info: 'https://city-of-pacific-grove-open-data-citypacificgrove.hub.arcgis.com/datasets/507f740b82fa4202af8cdb09529f4e07_0/about',
-    download: 'https://gis-web.cityofpacificgrove.org/arcgis/rest/services/Open_Data/Trees/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gis-web.cityofpacificgrove.org/arcgis/rest/services/Open_Data/Trees/MapServer/0'
+    },
     crosswalk: {
       common: 'Type',
       scientific: 'BOTANICAL',
@@ -7805,8 +8105,9 @@ module.exports = [
     city: 'Palm Desert',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=f7965742dbb34b7ea7c66d09fbe51660',
-    download: 'https://services2.arcgis.com/i4mrGZu1Isvl0rWt/arcgis/rest/services/Palm_Desert_Tree_Inventory_2020/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/i4mrGZu1Isvl0rWt/arcgis/rest/services/Palm_Desert_Tree_Inventory_2020/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -7814,8 +8115,9 @@ module.exports = [
     city: 'Palo Alto',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=b9e82567e85549cdbe8aee5b336a6295',
-    download: 'https://services6.arcgis.com/evmyRZRrsopdeog7/arcgis/rest/services/TreeData/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services6.arcgis.com/evmyRZRrsopdeog7/arcgis/rest/services/TreeData/FeatureServer/0'
+    },
     fallingfruit_id: 178
   },
   {
@@ -7824,8 +8126,9 @@ module.exports = [
     city: 'Pasadena',
     scope: 'Tree: street',
     info: 'http://data.cityofpasadena.net/datasets/593b88391b614123890f54a1db8fbf55_2/about',
-    download: 'https://services2.arcgis.com/zNjnZafDYCAJAbN0/arcgis/rest/services/Street_ROW_Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/zNjnZafDYCAJAbN0/arcgis/rest/services/Street_ROW_Trees/FeatureServer/0'
+    }
   },
   {
     omit: 'empty',
@@ -7834,8 +8137,9 @@ module.exports = [
     city: 'Pasadena',
     scope: 'Tree: notable',
     info: 'http://data.cityofpasadena.net/datasets/6b8f7488ed824ea1b59c96398352ed8b_0/about',
-    download: 'https://services2.arcgis.com/zNjnZafDYCAJAbN0/arcgis/rest/services/Landmark_Tree/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services2.arcgis.com/zNjnZafDYCAJAbN0/arcgis/rest/services/Landmark_Tree/FeatureServer/0'
+    },
     terms: 'Any resale of this information is prohibited.'
   },
   {
@@ -7844,8 +8148,9 @@ module.exports = [
     city: 'Placentia',
     scope: 'Tree',
     info: 'https://placentia.maps.arcgis.com/home/item.html?id=96c75939ccb74bee91dd7c2856d5f1dc',
-    download: 'https://services1.arcgis.com/3CyDafKD7aN8Dr8M/arcgis/rest/services/Tree_Inventory_2021/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/3CyDafKD7aN8Dr8M/arcgis/rest/services/Tree_Inventory_2021/FeatureServer/0'
+    },
     crosswalk: {
       ref: 'INVENTORYI',
       scientific: 'BOTANICALN',
@@ -7862,8 +8167,9 @@ module.exports = [
     city: 'Rancho Cucamonga',
     scope: 'Tree',
     info: 'https://rcdata-regis.opendata.arcgis.com/datasets/REGIS::tree-inventory-public/about',
-    download: 'https://services1.arcgis.com/bF44QtfoYZDGo7TK/arcgis/rest/services/TreeInventoryPublic/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/bF44QtfoYZDGo7TK/arcgis/rest/services/TreeInventoryPublic/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -7871,8 +8177,9 @@ module.exports = [
     city: 'Redding',
     designation: 'Shasta College',
     info: 'https://www.arcgis.com/home/item.html?id=281082f77a3b425b85c16d9e9722c766',
-    download: 'https://services1.arcgis.com/BkEmXKuPzvnbC7ZB/arcgis/rest/services/Tree_Inventory_3_24_WFL1/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/BkEmXKuPzvnbC7ZB/arcgis/rest/services/Tree_Inventory_3_24_WFL1/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -7881,8 +8188,9 @@ module.exports = [
     designation: 'Esri Learning Center',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=c6cc3fd362ae4d32ba012defcca23320',
-    download: 'https://services6.arcgis.com/Do88DoK2xjTUCXd1/arcgis/rest/services/Esri_Redlands_Trees/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services6.arcgis.com/Do88DoK2xjTUCXd1/arcgis/rest/services/Esri_Redlands_Trees/FeatureServer/0'
+    },
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -7891,8 +8199,9 @@ module.exports = [
     city: 'Redlands',
     scope: 'Tree',
     info: 'https://opendata-coredlands.opendata.arcgis.com/datasets/9f9d4ad74a0d44fba8bf27c829e810f2_0/about',
-    download: 'https://services.arcgis.com/FLM8UAw9y5MmuVTV/arcgis/rest/services/Street_Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/FLM8UAw9y5MmuVTV/arcgis/rest/services/Street_Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -7900,8 +8209,9 @@ module.exports = [
     city: 'Richmond',
     scope: 'Tree',
     info: 'https://www.transparentrichmond.org/Environmental-and-Health-Initiatives/Richmond-Urban-Forestry-Inventory/pev4-ymun',
-    download: 'https://www.transparentrichmond.org/api/geospatial/pev4-ymun?method=export&format=geojson',
-    api: 'socrata'
+    download: {
+      socrata: 'https://www.transparentrichmond.org/api/geospatial/pev4-ymun?method=export&format=geojson'
+    }
   },
   {
     country: 'United States',
@@ -7921,8 +8231,9 @@ module.exports = [
     state: 'California',
     city: 'Riverside',
     info: 'https://www.arcgis.com/home/item.html?id=808f5a117266488ab5de8c98a4b74ea9',
-    download: 'https://services5.arcgis.com/t4zDNzBF9Dot8HEQ/arcgis/rest/services/Riverside_Public_Trees_(TCC)_1_view_only/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/t4zDNzBF9Dot8HEQ/arcgis/rest/services/Riverside_Public_Trees_(TCC)_1_view_only/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -7930,8 +8241,9 @@ module.exports = [
     city: 'Sacramento',
     scope: 'Tree',
     info: 'http://data.cityofsacramento.org/datasets/b9b716e09b5048179ab648bb4518452b_0/about',
-    download: 'https://services5.arcgis.com/54falWtcpty3V47Z/arcgis/rest/services/City_Maintained_Trees/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services5.arcgis.com/54falWtcpty3V47Z/arcgis/rest/services/City_Maintained_Trees/FeatureServer/0'
+    },
     fallingfruit_id: 96
   },
   {
@@ -7940,8 +8252,9 @@ module.exports = [
     city: 'Salinas',
     scope: 'Tree',
     info: 'https://cityofsalinas.opendatasoft.com/explore/dataset/tree-inventory/information/',
-    download: 'https://cityofsalinas.opendatasoft.com/api/explore/v2.1/catalog/datasets/tree-inventory/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://cityofsalinas.opendatasoft.com/api/explore/v2.1/catalog/datasets/tree-inventory/exports/geojson'
+    },
     license: { id: 'ODbL-1.0' }
   },
   {
@@ -7950,8 +8263,9 @@ module.exports = [
     city: 'San Diego',
     designation: 'Environmental Health Coalition',
     info: 'https://www.arcgis.com/home/item.html?id=aae56b40f8214c809a4642840950380a',
-    download: 'https://services5.arcgis.com/UuGNL8jmkrbAGh6f/arcgis/rest/services/Urban_Corp_EHC_Tree_Sites_WFL1/FeatureServer/1',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/UuGNL8jmkrbAGh6f/arcgis/rest/services/Urban_Corp_EHC_Tree_Sites_WFL1/FeatureServer/1'
+    }
   },
   {
     country: 'United States',
@@ -7960,8 +8274,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'login required',
     info: 'https://rdw.sandag.org/Account/GetFSFile.aspx?dir=Miscellaneous&Name=Trees_SD.pdf',
-    download: 'https://rdw.sandag.org/Account/GetFSFile.aspx?dir=Miscellaneous&Name=Trees_SD.ZIP',
-    api: 'manual',
+    download: {
+      manual: 'https://rdw.sandag.org/Account/GetFSFile.aspx?dir=Miscellaneous&Name=Trees_SD.ZIP'
+    },
     vfs: '/vsizip/',
     terms: 'https://gis.sangis.org/sanportal/apps/storymaps/stories/d26146d84e834ff6bcd58e4e620a983a',
     fallingfruit_id: 97
@@ -7971,8 +8286,9 @@ module.exports = [
     state: 'California',
     city: 'San Fernando',
     info: 'https://www.arcgis.com/home/item.html?id=fa970f39538c4bf0bb5b32a5df2e1f85',
-    download: 'https://services5.arcgis.com/t4zDNzBF9Dot8HEQ/arcgis/rest/services/San_Fernando_CAL_FIRE_Tree_Layer_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/t4zDNzBF9Dot8HEQ/arcgis/rest/services/San_Fernando_CAL_FIRE_Tree_Layer_view/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -7981,8 +8297,9 @@ module.exports = [
     designation: 'San Francisco State University',
     scope: 'Tree',
     info: 'http://www.arcgis.com/home/item.html?id=39d96c56d07c4f20858cb95a8e4307c4',
-    download: 'https://services.arcgis.com/MdapRpkzb0PVHqL1/arcgis/rest/services/SFSU_trees_2014_01_24/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/MdapRpkzb0PVHqL1/arcgis/rest/services/SFSU_trees_2014_01_24/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -7990,8 +8307,7 @@ module.exports = [
     city: 'San Francisco',
     scope: 'Tree',
     info: 'https://data.sfgov.org/City-Infrastructure/Street-Tree-List/tkzw-k3nq',
-    download: 'https://data.sfgov.org/api/views/tkzw-k3nq/rows.csv',
-    api: 'socrata',
+    download: { socrata: 'https://data.sfgov.org/api/views/tkzw-k3nq/rows.csv' },
     geometry: { x: 'Longitude', y: 'Latitude' },
     crosswalk: {
       ref: 'TreeID',
@@ -8012,8 +8328,9 @@ module.exports = [
     scope: 'Tree: street',
     notes: 'geofenced (US)',
     info: 'https://gisdata-csj.opendata.arcgis.com/maps/street-tree/about',
-    download: 'https://geo.sanjoseca.gov/server/rest/services/OPN/OPN_OpenDataService/MapServer/510',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://geo.sanjoseca.gov/server/rest/services/OPN/OPN_OpenDataService/MapServer/510'
+    },
     crosswalk: {
       scientific: 'NAMESCIENTIFIC',
       age: 'TREEAGE',
@@ -8034,8 +8351,9 @@ module.exports = [
     scope: 'Tree: notable',
     notes: 'geofenced (US)',
     info: 'https://gisdata-csj.opendata.arcgis.com/maps/heritage-tree/about',
-    download: 'https://geo.sanjoseca.gov/server/rest/services/OPN/OPN_OpenDataService/MapServer/511',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://geo.sanjoseca.gov/server/rest/services/OPN/OPN_OpenDataService/MapServer/511'
+    },
     opentrees_id: 'san_jose_ca1'
   },
   {
@@ -8044,8 +8362,9 @@ module.exports = [
     city: 'San Luis Obispo',
     designation: 'Anholm Greenway',
     info: 'https://www.arcgis.com/home/item.html?id=310c1e00da804039909c8c96c8a97c84',
-    download: 'https://services8.arcgis.com/usWxeh2AMSZvdpAg/arcgis/rest/services/Anholm_Greenway_Tree_Inventory_-_Public_View_Layer/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services8.arcgis.com/usWxeh2AMSZvdpAg/arcgis/rest/services/Anholm_Greenway_Tree_Inventory_-_Public_View_Layer/FeatureServer/0'
+    }
   },
   {
     omit: 'empty | superseded',
@@ -8055,8 +8374,9 @@ module.exports = [
     designation: 'University of California',
     scope: 'Tree',
     info: 'http://spatialdiscovery-ucsb.opendata.arcgis.com/datasets/treekeeper-012116/about',
-    download: 'https://services1.arcgis.com/4TXrdeWh0RyCqPgB/arcgis/rest/services/Treekeeper_012116/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/4TXrdeWh0RyCqPgB/arcgis/rest/services/Treekeeper_012116/FeatureServer/0'
+    },
     opentrees_id: 'ucsb'
   },
   {
@@ -8065,8 +8385,9 @@ module.exports = [
     city: 'Santa Barbara',
     designation: 'University of California',
     scope: 'Plant',
-    download: 'https://services1.arcgis.com/4TXrdeWh0RyCqPgB/ArcGIS/rest/services/UCSB_Campus_Flora_Map_WFL/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/4TXrdeWh0RyCqPgB/ArcGIS/rest/services/UCSB_Campus_Flora_Map_WFL/FeatureServer/0'
+    },
     opentrees_id: 'ucsb'
   },
   {
@@ -8098,8 +8419,9 @@ module.exports = [
     state: 'California',
     city: 'South Gate | Cudahy',
     info: 'https://www.arcgis.com/home/item.html?id=6e56852fecaa47ada57b42cf71544bfd',
-    download: 'https://services5.arcgis.com/t4zDNzBF9Dot8HEQ/arcgis/rest/services/South_Gate_Cudahy_Public_Tree_Layer_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/t4zDNzBF9Dot8HEQ/arcgis/rest/services/South_Gate_Cudahy_Public_Tree_Layer_view/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8107,8 +8429,9 @@ module.exports = [
     city: 'South Gate | Cudahy',
     scope: 'Tree: edible',
     info: 'https://www.arcgis.com/home/item.html?id=c1764d93de404103b5791364841337c2',
-    download: 'https://services5.arcgis.com/t4zDNzBF9Dot8HEQ/arcgis/rest/services/South_Gate_Cudahy_Fruit_Tree_Layer_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/t4zDNzBF9Dot8HEQ/arcgis/rest/services/South_Gate_Cudahy_Fruit_Tree_Layer_view/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8117,8 +8440,9 @@ module.exports = [
     designation: 'Stanford University',
     scope: 'Tree: inedible',
     info: 'https://stanford.maps.arcgis.com/home/item.html?id=67deaa4165124e48a9a5c40450ffbbcd',
-    download: 'https://services.arcgis.com/7CRlmWNEbeCqEJ6a/arcgis/rest/services/Stanford_Trees_Inedible/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/7CRlmWNEbeCqEJ6a/arcgis/rest/services/Stanford_Trees_Inedible/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8127,8 +8451,9 @@ module.exports = [
     designation: 'Stanford University',
     scope: 'Tree: edible',
     info: 'https://stanford.maps.arcgis.com/home/item.html?id=026fccaa2a8c4834a2b3a8ca0584fa35',
-    download: 'https://services.arcgis.com/7CRlmWNEbeCqEJ6a/arcgis/rest/services/Stanford_Trees_Edible/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/7CRlmWNEbeCqEJ6a/arcgis/rest/services/Stanford_Trees_Edible/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8137,8 +8462,9 @@ module.exports = [
     designation: 'Stanford University',
     scope: 'Tree',
     info: 'https://stanford.maps.arcgis.com/home/item.html?id=7e908a18a78142df8bcccda575e6a5e8',
-    download: 'https://services.arcgis.com/7CRlmWNEbeCqEJ6a/arcgis/rest/services/Operational_Layers_Annotation/FeatureServer/14',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/7CRlmWNEbeCqEJ6a/arcgis/rest/services/Operational_Layers_Annotation/FeatureServer/14'
+    }
   },
   {
     country: 'United States',
@@ -8169,8 +8495,9 @@ module.exports = [
     city: 'Watts',
     notes: 'overlaps Los Angeles street trees',
     info: 'https://www.arcgis.com/home/item.html?id=4a8a7f25ce054cc4839aa6e0133bd859',
-    download: 'https://services5.arcgis.com/t4zDNzBF9Dot8HEQ/arcgis/rest/services/Watts_44_3_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/t4zDNzBF9Dot8HEQ/arcgis/rest/services/Watts_44_3_view/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8178,8 +8505,9 @@ module.exports = [
     city: 'Watts',
     notes: 'overlaps Los Angeles street trees',
     info: 'https://www.arcgis.com/home/item.html?id=45c4ea6a3f1e4c989fb0c9f2fe910a59',
-    download: 'https://services5.arcgis.com/t4zDNzBF9Dot8HEQ/arcgis/rest/services/Watts_44_2_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/t4zDNzBF9Dot8HEQ/arcgis/rest/services/Watts_44_2_view/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8188,8 +8516,7 @@ module.exports = [
     scope: 'Tree',
     notes: 'Likely georeferenced from address',
     info: 'https://data.weho.org/Infrastructure/City-Tree-Inventory/qqwt-wx9z',
-    download: 'https://data.weho.org/api/views/qqwt-wx9z/rows.csv',
-    api: 'socrata',
+    download: { socrata: 'https://data.weho.org/api/views/qqwt-wx9z/rows.csv' },
     coordsFunc: x => {
       // 1250 FAIRFAX AV\nWest Hollywood, CA\n(34.093341, -118.361436)
       const match = x['Location'].match(/\(([0-9\.\-]+),\s*([0-9\.\-]+)\)$/)
@@ -8204,8 +8531,9 @@ module.exports = [
     city: 'Yucaipa',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=ac628fb7f6d446379ecd969f8425cd48',
-    download: 'https://services5.arcgis.com/86gdKBxZf7GIt2Or/arcgis/rest/services/City_of_Yucaipa_Trees/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services5.arcgis.com/86gdKBxZf7GIt2Or/arcgis/rest/services/City_of_Yucaipa_Trees/FeatureServer/0'
+    },
     license: { id: 'CC0-1.0' }
   },
   {
@@ -8215,8 +8543,9 @@ module.exports = [
     designation: 'City of Aspen Parks Department',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=1d315c099b734af0b4fe68cac13a7ed1',
-    download: 'https://services3.arcgis.com/5FkYBrhNzpVtlA6F/arcgis/rest/services/Parks/FeatureServer/2',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services3.arcgis.com/5FkYBrhNzpVtlA6F/arcgis/rest/services/Parks/FeatureServer/2'
+    },
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -8227,8 +8556,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'no overlap with https://ags.auroragov.org/aurora/rest/services/OpenData/MapServer/85',
     info: 'https://www.arcgis.com/home/item.html?id=c6b569b1ea64453d995cdf215003e666',
-    download: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/Danbury_Map_0/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/Danbury_Map_0/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8237,8 +8567,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'geofenced (US)',
     info: 'http://data-auroraco.opendata.arcgis.com/datasets/trees-city/about',
-    download: 'https://ags.auroragov.org/aurora/rest/services/OpenData/MapServer/85',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://ags.auroragov.org/aurora/rest/services/OpenData/MapServer/85'
+    },
     crosswalk: {
       ref: 'TREE_ID_NO',
       location: 'MAN_UNIT',
@@ -8255,8 +8586,9 @@ module.exports = [
     city: 'Basalt',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=a2bc2b4dd4ff4bd8b2b8f73eae4e0230',
-    download: 'https://services1.arcgis.com/WC9BfqWRsZfeuIHn/arcgis/rest/services/Tree_Inventory_/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/WC9BfqWRsZfeuIHn/arcgis/rest/services/Tree_Inventory_/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8264,8 +8596,9 @@ module.exports = [
     city: 'Boulder',
     scope: 'Tree',
     info: 'https://data-boulder.opendata.arcgis.com/datasets/dbbae8bdb0a44d17934243b88e85ef2b_0/about',
-    download: 'https://gis.bouldercolorado.gov/ags_svr2/rest/services/parks/TreesOpenData/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gis.bouldercolorado.gov/ags_svr2/rest/services/parks/TreesOpenData/MapServer/0'
+    },
     crosswalk: {
       scientific: 'LATINNAME',
       common: 'COMMONNAME',
@@ -8283,8 +8616,9 @@ module.exports = [
     city: 'Colorado Springs',
     scope: 'Tree',
     info: 'https://data.coloradosprings.gov/dataset/City-of-Colorado-Springs-Trees/e6wv-b629',
-    download: 'https://data.coloradosprings.gov/api/geospatial/e6wv-b629?method=export&format=geojson',
-    api: 'socrata',
+    download: {
+      socrata: 'https://data.coloradosprings.gov/api/geospatial/e6wv-b629?method=export&format=geojson'
+    },
     crosswalk: { ref: 'OBJECTID', common: 'Common_Name', dbh_in: 'DBH' },
     opentrees_id: 'colorado_springs-co'
   },
@@ -8306,8 +8640,9 @@ module.exports = [
     city: 'Denver',
     scope: 'Tree',
     info: 'https://www.denvergov.org/opendata/dataset/city-and-county-of-denver-tree-inventory',
-    download: 'https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/ArcGIS/rest/services/ODC_PARK_TREEINVENTORY_P/FeatureServer/241',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/ArcGIS/rest/services/ODC_PARK_TREEINVENTORY_P/FeatureServer/241'
+    },
     crosswalk: {
       ref: 'SITE_ID',
       scientific: 'SPECIES_BOTANIC',
@@ -8325,8 +8660,9 @@ module.exports = [
     city: 'Durango',
     scope: 'Tree',
     info: 'https://data-cityofdurango.opendata.arcgis.com/datasets/city-trees/about',
-    download: 'https://gis.durangogov.org/map/rest/services/ParksFeatureAccess/MapServer/3',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gis.durangogov.org/map/rest/services/ParksFeatureAccess/MapServer/3'
+    },
     crosswalk: {
       ref: 'ID',
       common: 'COMMON',
@@ -8346,8 +8682,9 @@ module.exports = [
     city: 'Fort Collins',
     designation: 'Colorado State University',
     info: 'https://www.arcgis.com/home/item.html?id=377be848e2274becad65284382e7e726',
-    download: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/CSU_Inventory_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/CSU_Inventory_view/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8355,8 +8692,9 @@ module.exports = [
     city: 'Grand Junction',
     scope: 'Tree',
     info: 'https://data-gjcitygis.opendata.arcgis.com/datasets/cef93c83233749eb9265914aca06b35c_1/about',
-    download: 'https://external22-gis.gjcity.org/arcgis/rest/services/Hub/City_Hub/MapServer/1',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://external22-gis.gjcity.org/arcgis/rest/services/Hub/City_Hub/MapServer/1'
+    },
     crosswalk: {
       ref: 'OBJECTID',
       common: x => x['TRG_COMMON'].replace(/^(.*), (.*)$/, '$2 $1'),
@@ -8386,16 +8724,18 @@ module.exports = [
     city: 'Morrison',
     designation: 'Willow Springs',
     info: 'https://www.arcgis.com/home/item.html?id=c803f17c4a4d4de585efe65f4d4631f8',
-    download: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/Willow_Springs/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/Willow_Springs/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
     state: 'Connecticut',
     city: 'Collinsville',
     scope: 'Tree',
-    download: 'https://services1.arcgis.com/7uJv7I3kgh2y7Pe0/ArcGIS/rest/services/Collinsville_Street_Trees_1/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/7uJv7I3kgh2y7Pe0/ArcGIS/rest/services/Collinsville_Street_Trees_1/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8403,8 +8743,9 @@ module.exports = [
     city: 'Farmington',
     designation: 'Hartford Connecticut Temple',
     info: 'https://www.arcgis.com/home/item.html?id=31f07939911e4f9b8c033c4cb4983513',
-    download: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/Hartford_Temple_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/Hartford_Temple_Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8412,8 +8753,9 @@ module.exports = [
     city: 'Hartford',
     designation: 'Asylum Hill',
     info: 'https://www.arcgis.com/home/item.html?id=cd174cb7fa734d3c99ccfa484c8acb8a',
-    download: 'https://services6.arcgis.com/mnq6ko7vA00FIgWY/arcgis/rest/services/Asylum_HillTreekeeper_data___trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/mnq6ko7vA00FIgWY/arcgis/rest/services/Asylum_HillTreekeeper_data___trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8422,8 +8764,9 @@ module.exports = [
     designation: 'Bushnell Park',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=0ab7819a521c41b7bbc075c5c67a1d74',
-    download: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/2022_Bushnell_Park_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/2022_Bushnell_Park_Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8432,8 +8775,9 @@ module.exports = [
     designation: 'Institute for Living',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=1401ad3b075442b1a114059cc30abc5a',
-    download: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/Institute_for_Living/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/Institute_for_Living/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8444,9 +8788,10 @@ module.exports = [
     inactive: true,
     notes: "superseded by https://services1.arcgis.com/7uJv7I3kgh2y7Pe0/ArcGIS/rest/services/New_Haven_Street_Trees_02/FeatureServer/0 ? | Mapping by the Yale University School of Forestry & Environmental Studies' Urban Resources Initiative (https://uri.yale.edu) of trees planted in association with Community Greenspace groups in New Haven, Connecticut (https://environment.yale.edu/uri/programs/community-greenspace)",
     info: 'https://uri.yale.edu/maps/community-greenspace-sites-map',
-    download: 'http://www.environment.yale.edu/uri/maps/community-greenspace-sites-map',
+    download: {
+      manual: 'http://www.environment.yale.edu/uri/maps/community-greenspace-sites-map'
+    },
     vfs: '/vsizip/',
-    api: 'manual',
     fallingfruit_id: 232
   },
   {
@@ -8466,8 +8811,9 @@ module.exports = [
     state: 'Connecticut',
     city: 'New Haven',
     scope: 'Tree',
-    download: 'https://services1.arcgis.com/7uJv7I3kgh2y7Pe0/ArcGIS/rest/services/New_Haven_Street_Trees_02/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/7uJv7I3kgh2y7Pe0/ArcGIS/rest/services/New_Haven_Street_Trees_02/FeatureServer/0'
+    },
     fallingfruit_id: 230
   },
   {
@@ -8476,16 +8822,18 @@ module.exports = [
     city: 'Stamford',
     designation: 'River Oaks',
     scope: 'Tree',
-    download: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/River_Oaks_FINAL/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/River_Oaks_FINAL/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
     state: 'Connecticut',
     city: 'Torrington',
     info: 'https://www.arcgis.com/home/item.html?id=a29be4896ea54b469c7af57efd464389',
-    download: 'https://services7.arcgis.com/cszgVAzZgLvRmS7T/arcgis/rest/services/TorringtonTreeInventory_AGOL_2023/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/cszgVAzZgLvRmS7T/arcgis/rest/services/TorringtonTreeInventory_AGOL_2023/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8493,8 +8841,9 @@ module.exports = [
     city: 'Washington',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=aa94f0815288452abe6e0fcfb14caab3',
-    download: 'https://services2.arcgis.com/j23KFYd23hRWewtZ/arcgis/rest/services/Inventory_2020/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services2.arcgis.com/j23KFYd23hRWewtZ/arcgis/rest/services/Inventory_2020/FeatureServer/0'
+    },
     opentrees_id: 'washington-dc'
   },
   {
@@ -8503,8 +8852,9 @@ module.exports = [
     city: 'Washington',
     scope: 'Tree',
     info: 'http://opendata.dc.gov/datasets/urban-forestry-street-trees/about',
-    download: 'https://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Environment_WebMercator/MapServer/23',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Environment_WebMercator/MapServer/23'
+    },
     crosswalk: {
       dbh_in: 'DBH',
       common: 'COMMON.NAME',
@@ -8524,8 +8874,9 @@ module.exports = [
     designation: 'Leon County',
     scope: 'Tree: street (main)',
     info: 'https://geodata-tlcgis.opendata.arcgis.com/datasets/tlcgis::canopy-road-tree-inventory-leon-county/about',
-    download: 'https://services.arcgis.com/ptvDyBs1KkcwzQNJ/arcgis/rest/services/Canopy_Road_Tree_Inventory_Public/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/ptvDyBs1KkcwzQNJ/arcgis/rest/services/Canopy_Road_Tree_Inventory_Public/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8533,8 +8884,9 @@ module.exports = [
     designation: 'Pinellas County',
     scope: 'Tree: street',
     info: 'https://www.arcgis.com/home/item.html?id=1ce91f03fff34dc0834a9f4a136fc7cf',
-    download: 'https://services1.arcgis.com/9lDFdeC4JIBgML6L/arcgis/rest/services/Pinellas_County_Tree_Inventory/FeatureServer/23',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/9lDFdeC4JIBgML6L/arcgis/rest/services/Pinellas_County_Tree_Inventory/FeatureServer/23'
+    }
   },
   {
     country: 'United States',
@@ -8542,8 +8894,9 @@ module.exports = [
     designation: 'Sarasota County',
     scope: 'Tree',
     info: 'https://data-sarco.opendata.arcgis.com/datasets/d83796771ba64ea88f958c058ddcfa79_0/about',
-    download: 'https://ags3.scgov.net/server/rest/services/Hosted/TreeInventory/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://ags3.scgov.net/server/rest/services/Hosted/TreeInventory/FeatureServer/0'
+    },
     driver: 'ESRIJSON'
   },
   {
@@ -8553,8 +8906,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'geofenced (US)',
     info: 'https://capecoral-capegis.opendata.arcgis.com/datasets/tree-inventory/about',
-    download: 'https://capeims.capecoral.gov/arcgis/rest/services/OpenData/Environmental/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://capeims.capecoral.gov/arcgis/rest/services/OpenData/Environmental/MapServer/0'
+    },
     crosswalk: {
       common: 'SPECIES',
       dbh_in_range: 'DBH',
@@ -8573,8 +8927,9 @@ module.exports = [
     city: 'Cocoa',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=4c7cac91b4ba43f0b5ddd2fab60f96b3',
-    download: 'https://services1.arcgis.com/Tex1uhbqnOZPx6qT/arcgis/rest/services/Cocoa_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/Tex1uhbqnOZPx6qT/arcgis/rest/services/Cocoa_Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8584,8 +8939,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'partial species',
     info: 'https://www.arcgis.com/home/item.html?id=e84fbc7a8a254b5a98bde4d57bcd682c',
-    download: 'https://services1.arcgis.com/B4MnusZHL3vmqU3t/arcgis/rest/services/UM_Tree_Inventory_Master_Public_view/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/B4MnusZHL3vmqU3t/arcgis/rest/services/UM_Tree_Inventory_Master_Public_view/FeatureServer/0'
+    },
     license: { id: 'ODbL-1.0' }
   },
   {
@@ -8593,8 +8949,9 @@ module.exports = [
     state: 'Florida',
     city: 'Crystal River',
     info: 'https://www.arcgis.com/home/item.html?id=a4a77e4ad2c34503b399a68d7be9c72b',
-    download: 'https://services7.arcgis.com/eJ0sm7uXev5e57yW/arcgis/rest/services/TreeInventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/eJ0sm7uXev5e57yW/arcgis/rest/services/TreeInventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8602,8 +8959,9 @@ module.exports = [
     city: 'Doral',
     scope: 'Tree: street',
     info: 'https://www.arcgis.com/home/item.html?id=d356e28579fa4af9a93f63973595d9df',
-    download: 'https://services.arcgis.com/rMDYWPzHhH9byMxO/arcgis/rest/services/Street_Tree_Inventory_Phase_I___II_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/rMDYWPzHhH9byMxO/arcgis/rest/services/Street_Tree_Inventory_Phase_I___II_view/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8611,8 +8969,9 @@ module.exports = [
     city: 'Doral',
     scope: 'Tree: street',
     info: 'https://www.arcgis.com/home/item.html?id=5b9a8f09d1fc4e22a9948165b8a014ee',
-    download: 'https://services.arcgis.com/rMDYWPzHhH9byMxO/arcgis/rest/services/Neat_Street_Miami_Grant_2021_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/rMDYWPzHhH9byMxO/arcgis/rest/services/Neat_Street_Miami_Grant_2021_view/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8620,8 +8979,9 @@ module.exports = [
     city: 'Doral',
     scope: 'Tree: street',
     info: 'https://www.arcgis.com/home/item.html?id=ffd6c12ac3ed4dac89502343e1f4dd29',
-    download: 'https://utility.arcgis.com/usrsvcs/servers/ffd6c12ac3ed4dac89502343e1f4dd29/rest/services/PW/Tree_Inventory_PROD/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://utility.arcgis.com/usrsvcs/servers/ffd6c12ac3ed4dac89502343e1f4dd29/rest/services/PW/Tree_Inventory_PROD/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8629,16 +8989,18 @@ module.exports = [
     city: 'Doral',
     scope: 'Tree: street',
     info: 'https://www.arcgis.com/home/item.html?id=e8f989b4c2c04d56bae16c14040051ea',
-    download: 'https://utility.arcgis.com/usrsvcs/servers/e8f989b4c2c04d56bae16c14040051ea/rest/services/PW/TreeInvPrivateNewDev2019/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://utility.arcgis.com/usrsvcs/servers/e8f989b4c2c04d56bae16c14040051ea/rest/services/PW/TreeInvPrivateNewDev2019/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
     state: 'Florida',
     city: 'Maitland',
     info: 'https://www.arcgis.com/home/item.html?id=5014e4adabae4765849f6facd2052403',
-    download: 'https://services8.arcgis.com/q4Vpy7r3KXnWcTBW/arcgis/rest/services/Tree_Inventory_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services8.arcgis.com/q4Vpy7r3KXnWcTBW/arcgis/rest/services/Tree_Inventory_view/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8646,8 +9008,9 @@ module.exports = [
     city: 'Ocala',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=b13bf42597fb458aa0dc471c77c3d0f8',
-    download: 'https://services1.arcgis.com/Xt7esznjGcR11P3w/arcgis/rest/services/CityTrees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/Xt7esznjGcR11P3w/arcgis/rest/services/CityTrees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8655,8 +9018,9 @@ module.exports = [
     city: 'Saint Augustine',
     scope: 'Tree',
     info: 'https://hub.arcgis.com/datasets/STAUG::lincolnville-tree-inventory-2020-wfl1/about',
-    download: 'https://services.arcgis.com/2HXAtOKdBRSMj8is/arcgis/rest/services/Lincolnville_Tree_Inventory_2020_WFL1/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services.arcgis.com/2HXAtOKdBRSMj8is/arcgis/rest/services/Lincolnville_Tree_Inventory_2020_WFL1/FeatureServer/0'
+    },
     crosswalk: {
       updated: 'INSPECT_DT',
       note: 'NOTES',
@@ -8671,8 +9035,9 @@ module.exports = [
     city: 'Sarasota',
     scope: 'Tree',
     info: 'https://data-sarasota.opendata.arcgis.com/datasets/sarasota::tree-inventory-view-only/about',
-    download: 'https://services3.arcgis.com/AWDwYUpli8WqpWxQ/ArcGIS/rest/services/Tree_Inventory_View_Only/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services3.arcgis.com/AWDwYUpli8WqpWxQ/ArcGIS/rest/services/Tree_Inventory_View_Only/FeatureServer/0'
+    },
     crosswalk: {
       scientific: 'Species',
       dbh_in: 'DBH_1_99_',
@@ -8690,8 +9055,9 @@ module.exports = [
     city: 'Tallahassee',
     scope: 'Tree',
     info: 'https://geodata-tlcgis.opendata.arcgis.com/datasets/tree-inventory-city-of-tallahassee/about',
-    download: 'https://cotinter.leoncountyfl.gov/cotinter/rest/services/Vector/COT_Cityworks_Trees_D_SP/MapServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://cotinter.leoncountyfl.gov/cotinter/rest/services/Vector/COT_Cityworks_Trees_D_SP/MapServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8712,8 +9078,9 @@ module.exports = [
     city: 'Weston',
     scope: 'Tree',
     info: 'https://datahub.westonfl.org/datasets/westonfl::tree-inventory-editing/about',
-    download: 'https://portal.westonfl.org/arcgis/rest/services/ParksAndRecreation/Tree_Inventory/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://portal.westonfl.org/arcgis/rest/services/ParksAndRecreation/Tree_Inventory/FeatureServer/0'
+    },
     crosswalk: {
       common: 'NAME',
       genus: 'GENUS',
@@ -8734,8 +9101,9 @@ module.exports = [
     state: 'Florida',
     city: 'Winter Haven',
     info: 'https://www.arcgis.com/home/item.html?id=6813da7f078d4c54a1c5aaf735dfde0b',
-    download: 'https://services5.arcgis.com/XQuwwPae94LHONaL/arcgis/rest/services/WinterHaven_All/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/XQuwwPae94LHONaL/arcgis/rest/services/WinterHaven_All/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8743,8 +9111,9 @@ module.exports = [
     city: 'Athens',
     scope: 'Tree: notable',
     info: 'https://www.arcgis.com/home/item.html?id=2cd09a9415034aa6b8a7c2de9df0d891',
-    download: 'https://services2.arcgis.com/xSEULKvB31odt3XQ/arcgis/rest/services/ACC_Protected_Trees_(viewable_only)/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/xSEULKvB31odt3XQ/arcgis/rest/services/ACC_Protected_Trees_(viewable_only)/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8752,8 +9121,9 @@ module.exports = [
     city: 'Atlanta',
     designation: 'downtown',
     scope: 'Tree',
-    download: 'https://services6.arcgis.com/BZn8g8tzu5WfMokL/ArcGIS/rest/services/DTMP_Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/BZn8g8tzu5WfMokL/ArcGIS/rest/services/DTMP_Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8762,8 +9132,9 @@ module.exports = [
     designation: 'Georgia Institute of Technology',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=a1276a459e974175a323d9b599b06fe1',
-    download: 'https://services5.arcgis.com/7WaXTZEsI88qiQGw/arcgis/rest/services/Tree_Inventory_View/FeatureServer/1',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/7WaXTZEsI88qiQGw/arcgis/rest/services/Tree_Inventory_View/FeatureServer/1'
+    }
   },
   {
     country: 'United States',
@@ -8772,8 +9143,9 @@ module.exports = [
     designation: 'Trees Atlanta',
     scope: 'Plant',
     info: 'https://www.treesatlanta.org/resources/tree-inventory/',
-    download: 'https://services6.arcgis.com/BZn8g8tzu5WfMokL/arcgis/rest/services/Trees_Atlanta_Plant_Inventory_Public_View/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/BZn8g8tzu5WfMokL/arcgis/rest/services/Trees_Atlanta_Plant_Inventory_Public_View/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8782,8 +9154,9 @@ module.exports = [
     scope: 'Tree: notable',
     notes: 'overlaps Trees Atlanta',
     info: 'https://www.arcgis.com/home/item.html?id=55ad15c5561a45c2933886eb6aa2cb14',
-    download: 'https://services6.arcgis.com/BZn8g8tzu5WfMokL/arcgis/rest/services/TreeChampionData_2019/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/BZn8g8tzu5WfMokL/arcgis/rest/services/TreeChampionData_2019/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8804,8 +9177,9 @@ module.exports = [
     scope: 'Tree: street',
     notes: 'overlaps Trees Atlanta',
     info: 'https://www.arcgis.com/home/item.html?id=5bfbd3da60684c6c8543d49a01b2920d',
-    download: 'https://services.arcgis.com/36QtML6Mf01B1N0W/arcgis/rest/services/Street_Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/36QtML6Mf01B1N0W/arcgis/rest/services/Street_Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8814,8 +9188,9 @@ module.exports = [
     designation: 'Gwinnett Technical College',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=0f1cfa9ced85446894cadd6582845f5d',
-    download: 'https://services1.arcgis.com/H4McGmCGCZqItOHs/ArcGIS/rest/services/GTC_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/H4McGmCGCZqItOHs/ArcGIS/rest/services/GTC_Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8823,8 +9198,9 @@ module.exports = [
     designation: 'Honolulu County',
     scope: 'Tree: street',
     info: 'https://koordinates.com/layer/98385-honolulu-hawaii-street-trees/',
-    download: 'https://koordinates.com/layer/98385-honolulu-hawaii-street-trees/',
-    api: 'manual',
+    download: {
+      manual: 'https://koordinates.com/layer/98385-honolulu-hawaii-street-trees/'
+    },
     vfs: '/vsizip/',
     filename: 'honolulu-hawaii-street-trees.gdb'
   },
@@ -8834,8 +9210,9 @@ module.exports = [
     designation: 'Honolulu County',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=2c573c2913434b6db62c75ceac32794b',
-    download: 'https://services1.arcgis.com/gGHDlz6USftL5Pau/arcgis/rest/services/Tree_Inventory/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/gGHDlz6USftL5Pau/arcgis/rest/services/Tree_Inventory/FeatureServer/0'
+    },
     license: { id: 'CC0-1.0' }
   },
   {
@@ -8844,8 +9221,9 @@ module.exports = [
     designation: 'Honolulu County',
     scope: 'Tree: notable',
     info: 'https://data.honolulu.gov/Recreation/Exceptional-Trees-On-Oahu/84fd-3fzf',
-    download: 'https://data.honolulu.gov/api/views/84fd-3fzf/rows.csv',
-    api: 'socrata',
+    download: {
+      socrata: 'https://data.honolulu.gov/api/views/84fd-3fzf/rows.csv'
+    },
     geometry: { x: 'Longitude', y: 'Latitude' },
     srs: 'EPSG:4326',
     license: { id: 'CC0-1.0' }
@@ -8857,8 +9235,9 @@ module.exports = [
     designation: 'Lyon Arboretum',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=4eddbf7eecd749cfa68de2a5401fa7d0',
-    download: 'https://services1.arcgis.com/x4h61KaW16vFs7PM/arcgis/rest/services/Living_Collection_Accessions_Public_View_2/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/x4h61KaW16vFs7PM/arcgis/rest/services/Living_Collection_Accessions_Public_View_2/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8866,8 +9245,9 @@ module.exports = [
     city: 'Boise',
     scope: 'Tree: street',
     info: 'https://www.arcgis.com/home/item.html?id=61e4dc96bc0745ecb42c3f3892728bd6',
-    download: 'https://services1.arcgis.com/WHM6qC35aMtyAAlN/arcgis/rest/services/BPR_Park_And_Street_Trees/FeatureServer/1',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/WHM6qC35aMtyAAlN/arcgis/rest/services/BPR_Park_And_Street_Trees/FeatureServer/1'
+    }
   },
   {
     country: 'United States',
@@ -8875,8 +9255,9 @@ module.exports = [
     city: 'Boise',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=61e4dc96bc0745ecb42c3f3892728bd6',
-    download: 'https://services1.arcgis.com/WHM6qC35aMtyAAlN/arcgis/rest/services/BPR_Park_And_Street_Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/WHM6qC35aMtyAAlN/arcgis/rest/services/BPR_Park_And_Street_Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8884,8 +9265,9 @@ module.exports = [
     city: 'Moscow',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=822290a740304c50b3912af5ea0db500',
-    download: 'https://services.arcgis.com/WLhB60Nqwp4NnHz3/arcgis/rest/services/Moscow_Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/WLhB60Nqwp4NnHz3/arcgis/rest/services/Moscow_Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8927,8 +9309,9 @@ module.exports = [
     city: 'Berwyn',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=95d7aacaead94d2487313d3801ac5b97',
-    download: 'https://services7.arcgis.com/DbKiZP6rBmETqLvl/arcgis/rest/services/City_of_Berwyn_Tree_Inventory/FeatureServer/1',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/DbKiZP6rBmETqLvl/arcgis/rest/services/City_of_Berwyn_Tree_Inventory/FeatureServer/1'
+    }
   },
   {
     country: 'United States',
@@ -8937,8 +9320,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'geofenced (US)',
     info: 'https://gis-cityofchampaign.opendata.arcgis.com/datasets/city-owned-trees/about',
-    download: 'https://gisportal.champaignil.gov/ms/rest/services/Open_Data/Open_Data/MapServer/22',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gisportal.champaignil.gov/ms/rest/services/Open_Data/Open_Data/MapServer/22'
+    },
     crosswalk: {
       ref: 'ID',
       scientific: 'SPP',
@@ -8968,16 +9352,18 @@ module.exports = [
     city: 'Evanston',
     scope: 'Tree',
     info: 'https://data.cityofevanston.org/Information-Technology-includes-maps-geospatial-da/Trees/5xaw-wg36',
-    download: 'https://data.cityofevanston.org/api/geospatial/5xaw-wg36?method=export&format=geojson',
-    api: 'socrata'
+    download: {
+      socrata: 'https://data.cityofevanston.org/api/geospatial/5xaw-wg36?method=export&format=geojson'
+    }
   },
   {
     country: 'United States',
     state: 'Illinois',
     city: 'Fox Lake',
     info: 'https://www.arcgis.com/home/item.html?id=a3af3acde5a94214bc48bf9708c27b49',
-    download: 'https://services6.arcgis.com/MKJI1IzdI5RxIY6T/arcgis/rest/services/Full_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/MKJI1IzdI5RxIY6T/arcgis/rest/services/Full_Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -8985,8 +9371,9 @@ module.exports = [
     city: 'Galesburg',
     scope: 'Tree',
     info: 'https://data-galesburg.opendata.arcgis.com/datasets/galesburg-tree-inventory/about',
-    download: 'https://services1.arcgis.com/T5ar9pn3YeFZ47Wh/arcgis/rest/services/Galesburg_Tree_Inventory_Public/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/T5ar9pn3YeFZ47Wh/arcgis/rest/services/Galesburg_Tree_Inventory_Public/FeatureServer/0'
+    },
     terms: 'It is required that the City of Galesburg be cited in any products generated from this data set. Any changes made should be clearly described on any hard copy map or other documentation without implying that changes made were approved by the City of Galesburg.'
   },
   {
@@ -8995,16 +9382,18 @@ module.exports = [
     city: 'Gurnee',
     scope: 'Tree: street',
     info: 'https://www.arcgis.com/home/item.html?id=da1342b999ba47aabc1268ca24a8c727',
-    download: 'https://webmaps.gurnee.il.us/arcgis/rest/services/ParkwayTrees/MapServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://webmaps.gurnee.il.us/arcgis/rest/services/ParkwayTrees/MapServer/0'
+    }
   },
   {
     country: 'United States',
     state: 'Illinois',
     city: 'Lake Zurich',
     info: 'https://www.arcgis.com/home/item.html?id=69f3c8d98d6d451fbbe01976a8d28663',
-    download: 'https://services8.arcgis.com/Xtf9vudSUg8Tu89i/arcgis/rest/services/Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services8.arcgis.com/Xtf9vudSUg8Tu89i/arcgis/rest/services/Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9012,16 +9401,18 @@ module.exports = [
     city: 'Macomb',
     designation: 'Western Illinois University',
     info: 'https://www.arcgis.com/home/item.html?id=3bc0c6de0ddc4f3e8a53efae9a62cd65',
-    download: 'https://services9.arcgis.com/yKAN6qXNTxhi4ojw/arcgis/rest/services/Tree_Map/FeatureServer/2',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services9.arcgis.com/yKAN6qXNTxhi4ojw/arcgis/rest/services/Tree_Map/FeatureServer/2'
+    }
   },
   {
     country: 'United States',
     state: 'Illinois',
     city: 'Macomb',
     info: 'https://www.arcgis.com/home/item.html?id=3bc0c6de0ddc4f3e8a53efae9a62cd65',
-    download: 'https://services9.arcgis.com/yKAN6qXNTxhi4ojw/arcgis/rest/services/Tree_Map/FeatureServer/3',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services9.arcgis.com/yKAN6qXNTxhi4ojw/arcgis/rest/services/Tree_Map/FeatureServer/3'
+    }
   },
   {
     country: 'United States',
@@ -9061,8 +9452,9 @@ module.exports = [
     city: "O'Fallon",
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=0d9714f08fec4eee8eb2258925986bb8',
-    download: 'https://services.arcgis.com/K8hCj4l2z1EMabnx/arcgis/rest/services/CityTrees/FeatureServer/4',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/K8hCj4l2z1EMabnx/arcgis/rest/services/CityTrees/FeatureServer/4'
+    }
   },
   {
     country: 'United States',
@@ -9071,8 +9463,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'partial species',
     info: 'https://www.arcgis.com/home/item.html?id=0d9714f08fec4eee8eb2258925986bb8',
-    download: 'https://services.arcgis.com/K8hCj4l2z1EMabnx/arcgis/rest/services/CityTrees/FeatureServer/2',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/K8hCj4l2z1EMabnx/arcgis/rest/services/CityTrees/FeatureServer/2'
+    }
   },
   {
     country: 'United States',
@@ -9080,8 +9473,9 @@ module.exports = [
     city: 'Oak Park',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=402e05e1ced64931b8908178c095bd0f',
-    download: 'https://services5.arcgis.com/aymthbPDQOcCnuwg/arcgis/rest/services/VOP_Trees_6_2_21_Viewing/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/aymthbPDQOcCnuwg/arcgis/rest/services/VOP_Trees_6_2_21_Viewing/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9089,8 +9483,9 @@ module.exports = [
     city: 'Vernon Hills',
     scope: 'Tree',
     info: 'https://hub.arcgis.com/datasets/VernonHills::tree-inventory-view-only/about',
-    download: 'https://services.arcgis.com/B6g1snvDJFY2QRqn/arcgis/rest/services/Tree_Inventory_(View_Only)/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services.arcgis.com/B6g1snvDJFY2QRqn/arcgis/rest/services/Tree_Inventory_(View_Only)/FeatureServer/0'
+    },
     terms: 'All information contained herein may not be reproduced, sold, distributed or utilized in any form on other projects without the express written permission of the Village of Vernon Hills (VVH). Due to the unsecured nature of these documents/data (electronic media) and the inability of the originator to establish controls over the use thereof, VVH assumes no responsibility for any consequences arising out of the use of the data. It is the sole responsibility of the user to check the validity of all information contained herein. The user shall assume all risks and liabilities resulting from the use of this data.'
   },
   {
@@ -9098,8 +9493,9 @@ module.exports = [
     state: 'Indiana',
     designation: 'Indiana University',
     scope: 'Tree',
-    download: 'https://services.arcgis.com/tKsJAIiLjd90D5q2/ArcGIS/rest/services/IUSystemTrees2022/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/tKsJAIiLjd90D5q2/ArcGIS/rest/services/IUSystemTrees2022/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9107,8 +9503,9 @@ module.exports = [
     city: 'Beech Grove',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=67db697b7e2f40c69be70999633fc43a',
-    download: 'https://services.arcgis.com/tKsJAIiLjd90D5q2/arcgis/rest/services/Beech_Grove_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services.arcgis.com/tKsJAIiLjd90D5q2/arcgis/rest/services/Beech_Grove_Tree_Inventory/FeatureServer/0'
+    },
     geometry: { x: 'LONGITUDE', y: 'LATITUDE' },
     srs: 'EPSG:4326'
   },
@@ -9119,8 +9516,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'aggregate (Bloomington, Indianapolis, suburbs)',
     info: 'https://www.arcgis.com/home/item.html?id=6aa1bfc6716f42d0b80ffdeab06e5bbf',
-    download: 'https://services.arcgis.com/tKsJAIiLjd90D5q2/arcgis/rest/services/Bloomington_and_Indianapolis_Tree_Inventories/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/tKsJAIiLjd90D5q2/arcgis/rest/services/Bloomington_and_Indianapolis_Tree_Inventories/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9128,8 +9526,9 @@ module.exports = [
     city: 'Evansville',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=a7a81e5bf27541598d63a4b0173d9e93',
-    download: 'https://services.arcgis.com/tKsJAIiLjd90D5q2/arcgis/rest/services/Evansville_Tree_Inventory_2008/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services.arcgis.com/tKsJAIiLjd90D5q2/arcgis/rest/services/Evansville_Tree_Inventory_2008/FeatureServer/0'
+    },
     geometry: { x: 'LONGITUDE', y: 'LATITUDE' },
     srs: 'EPSG:4326'
   },
@@ -9150,8 +9549,9 @@ module.exports = [
     designation: 'Bail State University',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=c39c206731334cce9cd6d8a46702936a',
-    download: 'https://services5.arcgis.com/b8MX9QNvXdvWFdta/arcgis/rest/services/Tree_Inventory_Public_View/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/b8MX9QNvXdvWFdta/arcgis/rest/services/Tree_Inventory_Public_View/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9159,16 +9559,18 @@ module.exports = [
     city: 'Muncie',
     scope: 'Tree',
     info: 'https://hub.arcgis.com/maps/DelCoGIS::muncie-tree-invenotry/about',
-    download: 'https://services.arcgis.com/VyRjdyMziYNF5Bwe/arcgis/rest/services/MuncieTreeInventory2021_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/VyRjdyMziYNF5Bwe/arcgis/rest/services/MuncieTreeInventory2021_view/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
     state: 'Indiana',
     city: 'New Albany',
     info: 'https://www.arcgis.com/home/item.html?id=40199dc2c3fa4a129d5deade29b1ff71',
-    download: 'https://services5.arcgis.com/fhY0REQd0M65vDjz/arcgis/rest/services/Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/fhY0REQd0M65vDjz/arcgis/rest/services/Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9176,8 +9578,9 @@ module.exports = [
     city: 'Richmond',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=7c918046813340989aa7e986abdd5b56',
-    download: 'https://services3.arcgis.com/fhBemP00ea7p7i0U/arcgis/rest/services/Tree_Inventory_2022/FeatureServer/3',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/fhBemP00ea7p7i0U/arcgis/rest/services/Tree_Inventory_2022/FeatureServer/3'
+    }
   },
   {
     country: 'United States',
@@ -9186,8 +9589,9 @@ module.exports = [
     designation: "Indiana Veterans' Home Cemetery",
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=b1687106bdae4b948017c3c110f04151',
-    download: 'https://services.arcgis.com/ac326V3ZvsskLNKN/arcgis/rest/services/Saluting_Branches_Tree_Inventory_2022/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/ac326V3ZvsskLNKN/arcgis/rest/services/Saluting_Branches_Tree_Inventory_2022/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9205,8 +9609,9 @@ module.exports = [
     designation: 'Iowa Department of Natural Resources',
     notes: 'aggregate',
     info: 'https://www.arcgis.com/home/item.html?id=4ec3a4c5bdf5409c850813f096eeddd0',
-    download: 'https://services2.arcgis.com/r6iFVcMJeA4kB4GC/arcgis/rest/services/TreeInventory20221118/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/r6iFVcMJeA4kB4GC/arcgis/rest/services/TreeInventory20221118/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9214,8 +9619,9 @@ module.exports = [
     city: 'Ames',
     scope: 'Tree',
     notes: 'FF: Request from Hector Arbuckle',
-    download: 'https://gis.cityofames.org/arcgis/rest/services/ames_basemap_ALL_read_only_V2/MapServer/76',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://gis.cityofames.org/arcgis/rest/services/ames_basemap_ALL_read_only_V2/MapServer/76'
+    }
   },
   {
     country: 'United States',
@@ -9223,8 +9629,9 @@ module.exports = [
     city: 'Davenport',
     scope: 'Tree',
     info: 'https://davenportiowa.maps.arcgis.com/home/item.html?id=1e73252e386144799b39e95dbaa684ef',
-    download: 'https://services.arcgis.com/Sf3rzzad9Dl4Cuf7/arcgis/rest/services/Trees_All/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/Sf3rzzad9Dl4Cuf7/arcgis/rest/services/Trees_All/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9245,16 +9652,18 @@ module.exports = [
     city: 'Iowa City',
     designation: 'Chatham Oaks',
     info: 'https://www.arcgis.com/home/item.html?id=2642cb059ebe49bf915d3716cfe042e7',
-    download: 'https://services6.arcgis.com/z18ulWf4F9mAUjih/arcgis/rest/services/Chatham_Tree_Inventory___StoryMap3_WFL1/FeatureServer/7',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/z18ulWf4F9mAUjih/arcgis/rest/services/Chatham_Tree_Inventory___StoryMap3_WFL1/FeatureServer/7'
+    }
   },
   {
     country: 'United States',
     state: 'Iowa',
     city: 'Marion',
     info: 'https://www.arcgis.com/home/item.html?id=2001b90fbe1e4656929ed20da048393b',
-    download: 'https://services2.arcgis.com/D5rqJ85qM97IJslY/arcgis/rest/services/Trees_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/D5rqJ85qM97IJslY/arcgis/rest/services/Trees_view/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9275,8 +9684,9 @@ module.exports = [
     city: 'Lexington',
     designation: 'Waverly Park',
     info: 'https://www.arcgis.com/home/item.html?id=fbd085aa25244b118725e103e33b494e',
-    download: 'https://services.arcgis.com/vQ8kO5zdqETeirEL/arcgis/rest/services/Waverly_Park_2022_Tree_Inventory_Map_WFL1/FeatureServer/1',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/vQ8kO5zdqETeirEL/arcgis/rest/services/Waverly_Park_2022_Tree_Inventory_Map_WFL1/FeatureServer/1'
+    }
   },
   {
     country: 'United States',
@@ -9284,8 +9694,9 @@ module.exports = [
     city: 'Louisville',
     designation: 'TreesLouisville',
     info: 'https://www.arcgis.com/home/item.html?id=40dab7f3716f46d7a9c6616aa740d739',
-    download: 'https://services9.arcgis.com/2WPY0g0NYKs6DzKS/ArcGIS/rest/services/TreesLouisville_Tree_Inventory_Public_View/FeatureServer/1',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services9.arcgis.com/2WPY0g0NYKs6DzKS/ArcGIS/rest/services/TreesLouisville_Tree_Inventory_Public_View/FeatureServer/1'
+    }
   },
   {
     country: 'United States',
@@ -9340,8 +9751,9 @@ module.exports = [
     city: 'New Orleans',
     scope: 'Tree',
     info: 'https://data.nola.gov/Parks-Parkways/Tree-Locations/g94y-wr47',
-    download: 'https://gis.nola.gov/arcgis/rest/services/Basemaps/TreeCanopy/MapServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://gis.nola.gov/arcgis/rest/services/Basemaps/TreeCanopy/MapServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9349,8 +9761,9 @@ module.exports = [
     city: 'Auburn',
     scope: 'Tree',
     info: 'https://accessauburn-auburnme.hub.arcgis.com/datasets/treeinventory/about',
-    download: 'https://services1.arcgis.com/4nU7cbKqLfftauX2/arcgis/rest/services/TreeInventory/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/4nU7cbKqLfftauX2/arcgis/rest/services/TreeInventory/FeatureServer/0'
+    },
     crosswalk: {
       ref: 'ID',
       common: 'COMMON',
@@ -9368,8 +9781,9 @@ module.exports = [
     city: 'Bath',
     scope: 'Tree: street',
     info: 'https://www.uvm.edu/femc/data/archive/project/bath_maine_street_tree_inventory/dataset/bath-maine-street-tree-inventory-data',
-    download: 'https://www.uvm.edu/femc/data/archive/project/bath_maine_street_tree_inventory/dataset/bath-maine-street-tree-inventory-data',
-    api: 'manual',
+    download: {
+      manual: 'https://www.uvm.edu/femc/data/archive/project/bath_maine_street_tree_inventory/dataset/bath-maine-street-tree-inventory-data'
+    },
     geometry: { x: 'Long', y: 'Lat' },
     srs: 'EPSG:4326',
     license: { id: 'CC0-1.0' }
@@ -9391,8 +9805,9 @@ module.exports = [
     city: 'Orono',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=c9b5413f58fe4b2fbfc91b5444b02c34',
-    download: 'https://services.arcgis.com/42HL8w3LvBbvPLB3/arcgis/rest/services/Urban_Tree_Inventory_Data_Public_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/42HL8w3LvBbvPLB3/arcgis/rest/services/Urban_Tree_Inventory_Data_Public_view/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9411,8 +9826,9 @@ module.exports = [
     city: 'Westbrook',
     scope: 'Tree',
     info: 'https://hub.arcgis.com/datasets/westbrookmaine::trees/about',
-    download: 'https://services5.arcgis.com/Cxl8RQ4PEBjdRbtW/arcgis/rest/services/Street_Trees_/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/Cxl8RQ4PEBjdRbtW/arcgis/rest/services/Street_Trees_/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9420,8 +9836,9 @@ module.exports = [
     designation: 'Montgomery County',
     scope: 'Tree: planted',
     info: 'https://data.montgomerycountymd.gov/Environment/Tree-Planting-Locations/2gfx-khvb',
-    download: 'https://data.montgomerycountymd.gov/api/geospatial/2gfx-khvb?method=export&format=geojson',
-    api: 'socrata'
+    download: {
+      socrata: 'https://data.montgomerycountymd.gov/api/geospatial/2gfx-khvb?method=export&format=geojson'
+    }
   },
   {
     country: 'United States',
@@ -9429,8 +9846,9 @@ module.exports = [
     city: 'Baltimore',
     designation: 'Morgan State University',
     info: 'https://www.arcgis.com/home/item.html?id=aa37523cca8a41f98e44a65cf9af7572',
-    download: 'https://services3.arcgis.com/f6DdLR4lY5RnYDuG/arcgis/rest/services/Morgan_State_Campus_Trees_WFL4/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/f6DdLR4lY5RnYDuG/arcgis/rest/services/Morgan_State_Campus_Trees_WFL4/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9438,8 +9856,9 @@ module.exports = [
     city: 'Baltimore',
     scope: 'Tree',
     info: 'https://baltimore.maps.arcgis.com/home/item.html?id=34c3b08c17f04d828d3facb51c9195cf',
-    download: 'https://services1.arcgis.com/UWYHeuuJISiGmgXx/arcgis/rest/services/Trees_12052017/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/UWYHeuuJISiGmgXx/arcgis/rest/services/Trees_12052017/FeatureServer/0'
+    },
     crosswalk: {
       ref: 'UniqueID',
       scientific: 'SPP',
@@ -9460,8 +9879,9 @@ module.exports = [
     city: 'Cambridge',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=caed0ffd3f874b6cbaf80208808c9748',
-    download: 'https://services2.arcgis.com/AB4o41cT2GQ69z4k/arcgis/rest/services/Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/AB4o41cT2GQ69z4k/arcgis/rest/services/Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9470,8 +9890,9 @@ module.exports = [
     designation: 'University of Maryland',
     scope: 'Plant',
     info: 'http://www.arcgis.com/home/item.html?id=01e461acc7c7435eaaf685887dc64a39',
-    download: 'https://services1.arcgis.com/qTQ6qYkHpxlu0G82/arcgis/rest/services/UMD_Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/qTQ6qYkHpxlu0G82/arcgis/rest/services/UMD_Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9480,8 +9901,9 @@ module.exports = [
     scope: 'Tree',
     notes: "FF: Request from deborah_fallingf@suberic.net: Mostly street trees, plenty of crabapples and some other edibles. Note that I think most of the pears are Bradfords, so you probably don't want to list them.",
     info: 'https://gis-arlingtonma.opendata.arcgis.com/datasets/4e6f2bc1691e405b93c2f7e85878be7f_0/about',
-    download: 'https://services2.arcgis.com/s1Sh73K7qtP9JdrG/arcgis/rest/services/ArlingtonMA_Tree/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/s1Sh73K7qtP9JdrG/arcgis/rest/services/ArlingtonMA_Tree/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9489,8 +9911,9 @@ module.exports = [
     city: 'Brighton',
     scope: 'Tree: street',
     info: 'https://www.uvm.edu/femc/data/archive/project/Brighton_massachusetts_street_tree_inventory/dataset/brighton-massachusetts-street-tree-inventory-data',
-    download: 'https://www.uvm.edu/femc/data/archive/project/Brighton_massachusetts_street_tree_inventory/dataset/brighton-massachusetts-street-tree-inventory-data',
-    api: 'manual',
+    download: {
+      manual: 'https://www.uvm.edu/femc/data/archive/project/Brighton_massachusetts_street_tree_inventory/dataset/brighton-massachusetts-street-tree-inventory-data'
+    },
     geometry: { x: 'x', y: 'y' },
     srs: 'EPSG:4326'
   },
@@ -9501,8 +9924,9 @@ module.exports = [
     designation: 'University of Massachusetts',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=a430f7728aec4048bb0c3017dbcc218e',
-    download: 'https://services7.arcgis.com/xVvSSLUlIfKXfbeq/arcgis/rest/services/UMass_Lowell_Trees_WFL1/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/xVvSSLUlIfKXfbeq/arcgis/rest/services/UMass_Lowell_Trees_WFL1/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9511,8 +9935,9 @@ module.exports = [
     designation: 'University of Massachusetts',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=a430f7728aec4048bb0c3017dbcc218e',
-    download: 'https://services7.arcgis.com/xVvSSLUlIfKXfbeq/arcgis/rest/services/UMass_Lowell_Trees_WFL1/FeatureServer/1',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/xVvSSLUlIfKXfbeq/arcgis/rest/services/UMass_Lowell_Trees_WFL1/FeatureServer/1'
+    }
   },
   {
     country: 'United States',
@@ -9521,16 +9946,18 @@ module.exports = [
     designation: 'University of Massachusetts',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=a430f7728aec4048bb0c3017dbcc218e',
-    download: 'https://services7.arcgis.com/xVvSSLUlIfKXfbeq/arcgis/rest/services/UMass_Lowell_Trees_WFL1/FeatureServer/2',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/xVvSSLUlIfKXfbeq/arcgis/rest/services/UMass_Lowell_Trees_WFL1/FeatureServer/2'
+    }
   },
   {
     country: 'United States',
     state: 'Massachusetts',
     city: 'New Bedford',
     info: 'https://www.arcgis.com/home/item.html?id=dbd2e5bec2b34fbbbd9ce41916143624',
-    download: 'https://services.arcgis.com/3RiQsDoOeneF0Q0P/arcgis/rest/services/NewBedfordTreeInventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/3RiQsDoOeneF0Q0P/arcgis/rest/services/NewBedfordTreeInventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9539,8 +9966,9 @@ module.exports = [
     designation: 'Botanic Garden of Smith College',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=aa2c2a6e8fc7470c95f1c84ddc9d5bd5',
-    download: 'https://services.arcgis.com/aMv9lrl6jFsuGNu8/arcgis/rest/services/ARBWoodyPlants_OCT2018/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/aMv9lrl6jFsuGNu8/arcgis/rest/services/ARBWoodyPlants_OCT2018/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9548,8 +9976,9 @@ module.exports = [
     city: 'Quincy',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=2012ecdd85ca4410a131d92363b8f268',
-    download: 'https://services2.arcgis.com/3zax1evKMkXchUjO/arcgis/rest/services/Join_Tree_Inventory_to_Inventory_Form/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/3zax1evKMkXchUjO/arcgis/rest/services/Join_Tree_Inventory_to_Inventory_Form/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9557,8 +9986,9 @@ module.exports = [
     city: 'Wellesley',
     scope: 'Tree',
     info: 'https://hub.arcgis.com/datasets/4b5c6eed495141fd85e56e06c5521327_1/about',
-    download: 'https://services6.arcgis.com/f6G5SbcwuEVmR1CW/arcgis/rest/services/OpenDataLayers2/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/f6G5SbcwuEVmR1CW/arcgis/rest/services/OpenDataLayers2/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9566,8 +9996,9 @@ module.exports = [
     city: 'Amherst',
     designation: 'University of Massachusetts',
     scope: 'Tree',
-    download: 'https://maps.umass.edu/arcgis/rest/services/Campus/CampusLandscapeManagement/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://maps.umass.edu/arcgis/rest/services/Campus/CampusLandscapeManagement/FeatureServer/0'
+    },
     crosswalk: {
       ref: 'SiteId',
       genus: 'Genus',
@@ -9593,8 +10024,9 @@ module.exports = [
     city: 'Amherst',
     scope: 'Tree',
     info: 'https://maps2-amherstma.opendata.arcgis.com/datasets/street-trees/about',
-    download: 'http://gis.amherstma.gov/arcgis/rest/services/iOS/StreetTrees/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'http://gis.amherstma.gov/arcgis/rest/services/iOS/StreetTrees/FeatureServer/0'
+    },
     crosswalk: {
       ref: 'TreeID',
       updated: 'LastEdit',
@@ -9612,8 +10044,9 @@ module.exports = [
     designation: 'Northeastern University',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=359dec81c4c84172b7a3d6f7711085f2',
-    download: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/Northeastern_Tree_Inventory_data/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/Northeastern_Tree_Inventory_data/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9622,8 +10055,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'geofenced (US)',
     info: 'https://hub.arcgis.com/maps/4500c14f85d846d6924c7f8cb532763f_14/about',
-    download: 'https://gisweb.brooklinema.gov/arcgis/rest/services/OpenDataPortal/OpenDataPortal/MapServer/14',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://gisweb.brooklinema.gov/arcgis/rest/services/OpenDataPortal/OpenDataPortal/MapServer/14'
+    }
   },
   {
     country: 'United States',
@@ -9632,8 +10066,9 @@ module.exports = [
     designation: 'Massachusetts Institute of Technology',
     scope: 'Tree',
     info: 'http://www.arcgis.com/home/item.html?id=20ac21f096904d098dc24403b85f8f5d',
-    download: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/MIT_TREES/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/MIT_TREES/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9665,8 +10100,9 @@ module.exports = [
     city: 'Dedham',
     scope: 'Tree',
     info: 'https://dedham.maps.arcgis.com/home/item.html?id=71f15db592974cd58c0bf042ff36e58f',
-    download: 'https://services1.arcgis.com/me41C4ZTLmDO2rPK/arcgis/rest/services/TreeInventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/me41C4ZTLmDO2rPK/arcgis/rest/services/TreeInventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9674,8 +10110,9 @@ module.exports = [
     city: 'Greenfield',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=116f6f34fd30422c97c7a15d2d5af604',
-    download: 'https://services1.arcgis.com/DdXlpq5ZPlhI0Mb0/arcgis/rest/services/GTC_Tree_Inventory_10132021/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/DdXlpq5ZPlhI0Mb0/arcgis/rest/services/GTC_Tree_Inventory_10132021/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9683,8 +10120,9 @@ module.exports = [
     city: 'Holyoke',
     scope: 'Tree',
     info: 'http://www.arcgis.com/home/item.html?id=5a8ef076bc7b470f8419fd39b93b6653',
-    download: 'https://services1.arcgis.com/yzNawWwHQXYQkxUq/arcgis/rest/services/treesholyoke/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/yzNawWwHQXYQkxUq/arcgis/rest/services/treesholyoke/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9692,8 +10130,9 @@ module.exports = [
     city: 'Longmeadow',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=202e5932c7d544288e2970b9f321948e',
-    download: 'https://services8.arcgis.com/N4Zyuaihnt51kZnl/arcgis/rest/services/Tree_Inv_noedit/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services8.arcgis.com/N4Zyuaihnt51kZnl/arcgis/rest/services/Tree_Inv_noedit/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9703,8 +10142,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'Code definitions in ir-tree-inventory-codebook.pdf, ir-tree-inventory-genus.txt, ir-tree-inventory-species.txt',
     info: 'https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/IBSB2R',
-    download: 'https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/IBSB2R',
-    api: 'manual',
+    download: {
+      manual: 'https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/IBSB2R'
+    },
     vfs: '/vsizip/',
     license: { id: 'CC-BY-NC-4.0' }
   },
@@ -9714,16 +10154,18 @@ module.exports = [
     city: 'Salem',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=df1d66111f2d481db82564d5b820dee0',
-    download: 'https://services9.arcgis.com/nPsFhwkdebYjxn1R/arcgis/rest/services/Salem_Street_Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services9.arcgis.com/nPsFhwkdebYjxn1R/arcgis/rest/services/Salem_Street_Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
     state: 'Massachussetts',
     city: 'Somerville',
     info: 'https://www.arcgis.com/home/item.html?id=4e33d47547e840fa9d459b275a367366',
-    download: 'https://services1.arcgis.com/qN3V93cYGMKQCOxL/arcgis/rest/services/Somerville_Tree_Inventory_as_of_03_05_23/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/qN3V93cYGMKQCOxL/arcgis/rest/services/Somerville_Tree_Inventory_as_of_03_05_23/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9742,8 +10184,9 @@ module.exports = [
     designation: 'Matthaei Botanical Gardens & Nichols Arboretum',
     scope: 'Tree',
     info: 'https://mbgna-umich.opendata.arcgis.com/datasets/nichols-arboretum-inventory-survey/about',
-    download: 'https://services1.arcgis.com/4ezfu5dIwH83BUNL/arcgis/rest/services/ARB_VEG_DaveyTree_pt/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/4ezfu5dIwH83BUNL/arcgis/rest/services/ARB_VEG_DaveyTree_pt/FeatureServer/0'
+    },
     crosswalk: {
       common: 'COMMON',
       scientific: 'BOTANICAL',
@@ -9784,8 +10227,9 @@ module.exports = [
     designation: 'Belle Isle Park',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=ef39ea325a304f61a3e737e52168397a',
-    download: 'https://services3.arcgis.com/f8FBNX4bfDyc804R/arcgis/rest/services/BelleIsle_Presentation/FeatureServer/12',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/f8FBNX4bfDyc804R/arcgis/rest/services/BelleIsle_Presentation/FeatureServer/12'
+    }
   },
   {
     country: 'United States',
@@ -9793,8 +10237,9 @@ module.exports = [
     city: 'Detroit',
     designation: 'Wayne State University',
     info: 'https://www.arcgis.com/home/item.html?id=c2050bc88c3548c382c94a388b8c1ba5',
-    download: 'https://services1.arcgis.com/xQo6zoNjmy3NNfkT/arcgis/rest/services/TreesOct2022/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/xQo6zoNjmy3NNfkT/arcgis/rest/services/TreesOct2022/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9816,8 +10261,9 @@ module.exports = [
     designation: 'Calvin University',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=6c6ae604ca8d42d981db9de2296a30e6',
-    download: 'https://services2.arcgis.com/DBcRJmfPI2l07jMS/ArcGIS/rest/services/Calvin_Tree_Inventory_2011/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/DBcRJmfPI2l07jMS/ArcGIS/rest/services/Calvin_Tree_Inventory_2011/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9825,8 +10271,9 @@ module.exports = [
     city: 'Grand Rapids',
     designation: 'Calvin University',
     scope: 'Tree: park',
-    download: 'https://services2.arcgis.com/DBcRJmfPI2l07jMS/ArcGIS/rest/services/CalvinCampusArboretum_WFL1/FeatureServer/7',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/DBcRJmfPI2l07jMS/ArcGIS/rest/services/CalvinCampusArboretum_WFL1/FeatureServer/7'
+    }
   },
   {
     country: 'United States',
@@ -9834,8 +10281,9 @@ module.exports = [
     city: 'Grand Rapids',
     designation: 'Downtown',
     info: 'https://www.arcgis.com/home/item.html?id=a27647fc806e4fb7813d1df1a6f0b7af',
-    download: 'https://services2.arcgis.com/L81TiOwAPO1ZvU9b/arcgis/rest/services/Inventory_Snapshot/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/L81TiOwAPO1ZvU9b/arcgis/rest/services/Inventory_Snapshot/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9843,8 +10291,9 @@ module.exports = [
     city: 'Grand Rapids',
     notes: 'overlaps Grand Rapids (downtown)',
     info: 'https://www.arcgis.com/home/item.html?id=8dd6632e710243d4b3620f2304e8e409',
-    download: 'https://services2.arcgis.com/L81TiOwAPO1ZvU9b/arcgis/rest/services/P2StreetTrees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/L81TiOwAPO1ZvU9b/arcgis/rest/services/P2StreetTrees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9852,8 +10301,9 @@ module.exports = [
     designation: 'Three Rivers Park District',
     scope: 'Tree',
     info: 'https://gis.threeriversparks.org/datasets/trpd::managed-trees-comprehensive-open-data/about?layer=0',
-    download: 'https://gis.trpdmn.org/hostserver/rest/services/ManagedTrees_Public_Viewing/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gis.trpdmn.org/hostserver/rest/services/ManagedTrees_Public_Viewing/FeatureServer/0'
+    },
     crosswalk: {
       common: 'CommonName',
       scientific: 'ScientificName',
@@ -9868,8 +10318,9 @@ module.exports = [
     designation: 'Washington County',
     scope: 'Tree: park',
     info: 'https://hub.arcgis.com/datasets/WCMN::tree-inventory/about',
-    download: 'https://services1.arcgis.com/3fjYPqJf7qalQMlb/ArcGIS/rest/services/Tree_Inventory/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/3fjYPqJf7qalQMlb/ArcGIS/rest/services/Tree_Inventory/FeatureServer/0'
+    },
     crosswalk: {
       common: 'Tree_Type',
       health: 'Health',
@@ -9883,8 +10334,9 @@ module.exports = [
     state: 'Minnesota',
     city: 'Columbia Heights',
     info: 'https://www.arcgis.com/home/item.html?id=11f0bf7c460546819eb4468bc78196f6',
-    download: 'https://services2.arcgis.com/jukipzcNaiQXqMc8/arcgis/rest/services/CH_trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/jukipzcNaiQXqMc8/arcgis/rest/services/CH_trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9893,8 +10345,9 @@ module.exports = [
     designation: 'Brighton Beach',
     scope: 'Tree: notable',
     info: 'https://www.arcgis.com/home/item.html?id=b67194947e0a4cbd90dc5dcbc1771356',
-    download: 'https://services5.arcgis.com/tDXj154iVHABwGu6/arcgis/rest/services/TKDA_Brighton_Beach_Tree_Preservation_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/tDXj154iVHABwGu6/arcgis/rest/services/TKDA_Brighton_Beach_Tree_Preservation_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9903,8 +10356,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'partial',
     info: 'https://www.arcgis.com/home/item.html?id=38c8cd4a302d43c69853a7756e9ce432',
-    download: 'https://services3.arcgis.com/0kRsKvAEycihgDRG/arcgis/rest/services/COF_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/0kRsKvAEycihgDRG/arcgis/rest/services/COF_Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9912,8 +10366,9 @@ module.exports = [
     city: 'Maple Grove',
     scope: 'Tree',
     info: 'https://hub.arcgis.com/datasets/maplegrovemn::public-trees/about',
-    download: 'https://services2.arcgis.com/UkDoq2fZJIfKR4NN/arcgis/rest/services/EAB_StoryMap_trees/FeatureServer/1',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/UkDoq2fZJIfKR4NN/arcgis/rest/services/EAB_StoryMap_trees/FeatureServer/1'
+    }
   },
   {
     country: 'United States',
@@ -9944,8 +10399,9 @@ module.exports = [
     city: 'Minneapolis',
     scope: 'Tree: park',
     info: 'https://services.arcgis.com/afSMGVsC7QlRK1kZ/ArcGIS/rest/services/msvcMPRB_ParkTrees_PROD/FeatureServer',
-    download: 'https://services.arcgis.com/afSMGVsC7QlRK1kZ/ArcGIS/rest/services/msvcMPRB_ParkTrees_PROD/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/afSMGVsC7QlRK1kZ/ArcGIS/rest/services/msvcMPRB_ParkTrees_PROD/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -9953,8 +10409,9 @@ module.exports = [
     city: 'Minneapolis',
     scope: 'Tree: park',
     info: 'https://services.arcgis.com/afSMGVsC7QlRK1kZ/ArcGIS/rest/services/msvcMPRB_ParkTrees_PROD/FeatureServer',
-    download: 'https://services.arcgis.com/afSMGVsC7QlRK1kZ/ArcGIS/rest/services/msvcMPRB_ParkTrees_PROD/FeatureServer/1',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/afSMGVsC7QlRK1kZ/ArcGIS/rest/services/msvcMPRB_ParkTrees_PROD/FeatureServer/1'
+    }
   },
   {
     country: 'United States',
@@ -9962,8 +10419,9 @@ module.exports = [
     city: 'Minneapolis',
     scope: 'Tree: park',
     info: 'https://services.arcgis.com/afSMGVsC7QlRK1kZ/ArcGIS/rest/services/msvcMPRB_ParkTrees_PROD/FeatureServer',
-    download: 'https://services.arcgis.com/afSMGVsC7QlRK1kZ/ArcGIS/rest/services/msvcMPRB_ParkTrees_PROD/FeatureServer/2',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/afSMGVsC7QlRK1kZ/ArcGIS/rest/services/msvcMPRB_ParkTrees_PROD/FeatureServer/2'
+    }
   },
   {
     country: 'United States',
@@ -9971,8 +10429,9 @@ module.exports = [
     city: 'Minneapolis',
     scope: 'Tree: park',
     info: 'https://services.arcgis.com/afSMGVsC7QlRK1kZ/ArcGIS/rest/services/msvcMPRB_ParkTrees_PROD/FeatureServer',
-    download: 'https://services.arcgis.com/afSMGVsC7QlRK1kZ/ArcGIS/rest/services/msvcMPRB_ParkTrees_PROD/FeatureServer/3',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/afSMGVsC7QlRK1kZ/ArcGIS/rest/services/msvcMPRB_ParkTrees_PROD/FeatureServer/3'
+    }
   },
   {
     country: 'United States',
@@ -9980,8 +10439,9 @@ module.exports = [
     city: 'Minneapolis',
     scope: 'Tree: park',
     info: 'https://services.arcgis.com/afSMGVsC7QlRK1kZ/ArcGIS/rest/services/msvcMPRB_ParkTrees_PROD/FeatureServer',
-    download: 'https://services.arcgis.com/afSMGVsC7QlRK1kZ/ArcGIS/rest/services/msvcMPRB_ParkTrees_PROD/FeatureServer/4',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/afSMGVsC7QlRK1kZ/ArcGIS/rest/services/msvcMPRB_ParkTrees_PROD/FeatureServer/4'
+    }
   },
   {
     country: 'United States',
@@ -9989,8 +10449,9 @@ module.exports = [
     city: 'Minneapolis',
     scope: 'Tree: park',
     info: 'https://services.arcgis.com/afSMGVsC7QlRK1kZ/ArcGIS/rest/services/msvcMPRB_ParkTrees_PROD/FeatureServer',
-    download: 'https://services.arcgis.com/afSMGVsC7QlRK1kZ/ArcGIS/rest/services/msvcMPRB_ParkTrees_PROD/FeatureServer/5',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/afSMGVsC7QlRK1kZ/ArcGIS/rest/services/msvcMPRB_ParkTrees_PROD/FeatureServer/5'
+    }
   },
   {
     country: 'United States',
@@ -10010,8 +10471,9 @@ module.exports = [
     city: 'Winona',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=830945236a3f4ce4a11b54ce5cc9ca73',
-    download: 'https://services.arcgis.com/n4v88Dv33V9Mhi0b/arcgis/rest/services/WinonaCity_TreeInventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/n4v88Dv33V9Mhi0b/arcgis/rest/services/WinonaCity_TreeInventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10042,8 +10504,9 @@ module.exports = [
     designation: 'Thomas G. Aberbethy Federal Building',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=2f4520876f3d4db4ab612094c2092832',
-    download: 'https://services3.arcgis.com/MQyvf2CpDJ4b9IjQ/arcgis/rest/services/Aberdeen_tree_Invenory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/MQyvf2CpDJ4b9IjQ/arcgis/rest/services/Aberdeen_tree_Invenory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10052,8 +10515,9 @@ module.exports = [
     designation: 'Keesler Air Force Base',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=029fa217b2a740f3bcb34d091ef00c8d',
-    download: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/Keesler_Tree_Inventory_11_30/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/Keesler_Tree_Inventory_11_30/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10062,8 +10526,9 @@ module.exports = [
     designation: 'Northeast Mississippi Community College',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=5b278fa79f1e428894f8e8a5534bc0ce',
-    download: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/Northeast_Mississippi_Community_College/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/Northeast_Mississippi_Community_College/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10072,8 +10537,9 @@ module.exports = [
     designation: 'Corinth National Cemetery',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=1057b138b3404c37844593b91860e9c4',
-    download: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/Corinth_National_Cemetery/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/Corinth_National_Cemetery/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10082,8 +10548,9 @@ module.exports = [
     designation: 'Jones County Junior College',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=9681439eb0334ed8985e4efc54b1c601',
-    download: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/Jones_College_Tree_Inventory_Map/FeatureServer/2',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/Jones_College_Tree_Inventory_Map/FeatureServer/2'
+    }
   },
   {
     country: 'United States',
@@ -10092,8 +10559,9 @@ module.exports = [
     designation: 'University of Southern Mississippi',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=c5f5c2c91b7d4b3aa60bff7de28e80a9',
-    download: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/Coastal_info_test/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/Coastal_info_test/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10102,8 +10570,9 @@ module.exports = [
     designation: 'Courhouse',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=2ec1461c402b4b7bac7847c31e86a4cf',
-    download: 'https://services3.arcgis.com/MQyvf2CpDJ4b9IjQ/arcgis/rest/services/Gulfport_tree_Invenory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/MQyvf2CpDJ4b9IjQ/arcgis/rest/services/Gulfport_tree_Invenory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10112,8 +10581,9 @@ module.exports = [
     designation: 'downtown',
     scope: 'Tree: street',
     info: 'https://www.arcgis.com/home/item.html?id=f267a1530ef540d0bcae2b29c36ed7de',
-    download: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/jackson/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/jackson/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10122,8 +10592,9 @@ module.exports = [
     designation: 'Tougaloo College',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=5f92b6a865ed45f88f619fcc781a76ba',
-    download: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/Tougaloo_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/Tougaloo_Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10132,8 +10603,9 @@ module.exports = [
     designation: 'West Street Park',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=e18b4ecc30b84eb29c8bc81d2ae75de9',
-    download: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/Smith_Park_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/Smith_Park_Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10152,8 +10624,9 @@ module.exports = [
     designation: 'US District Court',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=ed230a3998e24fd8bdcd6cd18457a20f',
-    download: 'https://services3.arcgis.com/MQyvf2CpDJ4b9IjQ/arcgis/rest/services/Oxford_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/MQyvf2CpDJ4b9IjQ/arcgis/rest/services/Oxford_Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10161,8 +10634,9 @@ module.exports = [
     city: 'Picayune',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=6e7139da4ab94e7c866dc9ca39ef22f7',
-    download: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/Picayune_WFL1/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/Picayune_WFL1/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10171,8 +10645,9 @@ module.exports = [
     designation: 'The Township at Colony Park',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=10af3986ae3b4c3fbf22c365b6cd1c43',
-    download: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/Township_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/Township_Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10181,8 +10656,9 @@ module.exports = [
     designation: 'Mississippi State University',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=fcd422dd1e424eee855d23e74b991616',
-    download: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/MSU_Trees_9154_WFL1/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/salQweOw5doOMYRw/arcgis/rest/services/MSU_Trees_9154_WFL1/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10227,8 +10703,9 @@ module.exports = [
     state: 'Missouri',
     city: 'Liberty',
     info: 'https://www.arcgis.com/home/item.html?id=760f142c03024edba74d7b36bf4b075e',
-    download: 'https://services.arcgis.com/70vcD5tpfNSJmyxA/arcgis/rest/services/TreeInventory/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services.arcgis.com/70vcD5tpfNSJmyxA/arcgis/rest/services/TreeInventory/FeatureServer/0'
+    },
     terms: 'For Informational Use Only.'
   },
   {
@@ -10249,8 +10726,9 @@ module.exports = [
     scope: 'Tree: street',
     notes: '(almost) no species',
     info: 'https://www.arcgis.com/home/item.html?id=b26753cfdc974de09a1c716cdbe6d072',
-    download: 'https://services5.arcgis.com/Xl0cAd6WMhA7fHTz/arcgis/rest/services/Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/Xl0cAd6WMhA7fHTz/arcgis/rest/services/Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10259,8 +10737,9 @@ module.exports = [
     designation: 'Forest Park',
     scope: 'Tree: park',
     info: 'https://www.stlouis-mo.gov/data/datasets/dataset.cfm?id=123',
-    download: 'https://maps6.stlouis-mo.gov/arcgis/rest/services/FORESTRY/FORESTRY_TREES/MapServer/4',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://maps6.stlouis-mo.gov/arcgis/rest/services/FORESTRY/FORESTRY_TREES/MapServer/4'
+    }
   },
   {
     country: 'United States',
@@ -10269,8 +10748,9 @@ module.exports = [
     designation: 'Tower Grove Park',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=39de9f08df9a48b08996fc2e2e4e380a',
-    download: 'https://services3.arcgis.com/WtyxQzC8Vs4vzwRJ/arcgis/rest/services/Tribute_Tree_Inventory_1_02_View/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/WtyxQzC8Vs4vzwRJ/arcgis/rest/services/Tribute_Tree_Inventory_1_02_View/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10278,8 +10758,9 @@ module.exports = [
     city: 'Saint Louis',
     scope: 'Tree: street',
     info: 'https://www.stlouis-mo.gov/data/datasets/dataset.cfm?id=121',
-    download: 'https://maps6.stlouis-mo.gov/arcgis/rest/services/FORESTRY/FORESTRY_TREES/MapServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://maps6.stlouis-mo.gov/arcgis/rest/services/FORESTRY/FORESTRY_TREES/MapServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10287,8 +10768,9 @@ module.exports = [
     city: 'Saint Louis',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=fb6f7b406f5241dcbcc915e4d5c484b4',
-    download: 'https://services2.arcgis.com/w657bnjzrjguNyOy/arcgis/rest/services/STLCO_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/w657bnjzrjguNyOy/arcgis/rest/services/STLCO_Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10307,8 +10789,9 @@ module.exports = [
     city: 'Springfield',
     scope: 'Tree',
     info: 'https://gisdata-cosmo.opendata.arcgis.com/datasets/tree-inventory/about',
-    download: 'https://maps.springfieldmo.gov/arcgis/rest/services/Maps/OpenData/MapServer/34',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://maps.springfieldmo.gov/arcgis/rest/services/Maps/OpenData/MapServer/34'
+    },
     crosswalk: {
       health: 'Condition',
       common: 'TreeType',
@@ -10327,8 +10810,9 @@ module.exports = [
     designation: 'Montana State University',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=35834988444b401b88a602019c4d3568',
-    download: 'https://services.arcgis.com/9ecg2KpMLcsUv1Oh/arcgis/rest/services/Public_Arborist_16/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/9ecg2KpMLcsUv1Oh/arcgis/rest/services/Public_Arborist_16/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10337,8 +10821,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'geofenced (US)',
     info: 'http://public-bozeman.opendata.arcgis.com/datasets/trees/about',
-    download: 'https://gisweb.bozeman.net/arcgis/rest/services/Internal/Forestry_Dashboard/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gisweb.bozeman.net/arcgis/rest/services/Internal/Forestry_Dashboard/MapServer/0'
+    },
     crosswalk: {
       genus: 'Genus',
       species: 'Species',
@@ -10394,8 +10879,9 @@ module.exports = [
     designation: 'University of Montana',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=4218561196a64a1e91e906b152f2eb4d',
-    download: 'https://services2.arcgis.com/3FyEz1ZRTg2oyrLc/arcgis/rest/services/Montana_Arboretum_Trees_and_Species/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/3FyEz1ZRTg2oyrLc/arcgis/rest/services/Montana_Arboretum_Trees_and_Species/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10403,8 +10889,9 @@ module.exports = [
     city: 'Omaha',
     scope: 'Tree',
     info: 'https://data-dogis.opendata.arcgis.com/datasets/dogis::omaha-trees/about',
-    download: 'https://gis.dogis.org/arcgis/rest/services/OpenData_Parks/MapServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://gis.dogis.org/arcgis/rest/services/OpenData_Parks/MapServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10412,16 +10899,18 @@ module.exports = [
     designation: 'Clark County',
     scope: 'Tree: park',
     info: 'https://koordinates.com/layer/97392-clark-county-nv-trees/',
-    download: 'http://gisgate.co.clark.nv.us/arcgis/rest/services/RPM/DisplayTrees/MapServer/1',
-    api: 'arcgis'
+    download: {
+      arcgis: 'http://gisgate.co.clark.nv.us/arcgis/rest/services/RPM/DisplayTrees/MapServer/1'
+    }
   },
   {
     country: 'United States',
     state: 'Nevada',
     designation: 'Clark County',
     scope: 'Tree: notable',
-    download: 'http://gisgate.co.clark.nv.us/arcgis/rest/services/RPM/DisplayTrees/MapServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'http://gisgate.co.clark.nv.us/arcgis/rest/services/RPM/DisplayTrees/MapServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10429,8 +10918,9 @@ module.exports = [
     city: 'Las Vegas',
     scope: 'Tree: park',
     info: 'https://mapdata.lasvegasnevada.gov/clvgis/rest/services/ExistingInfrastructure/Park_Features/MapServer/12',
-    download: 'https://mapdata.lasvegasnevada.gov/clvgis/rest/services/ExistingInfrastructure/Park_Features/MapServer/12',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://mapdata.lasvegasnevada.gov/clvgis/rest/services/ExistingInfrastructure/Park_Features/MapServer/12'
+    },
     srs: 'EPSG:3421',
     crosswalk: {
       location: 'LOC_TYPE',
@@ -10463,8 +10953,9 @@ module.exports = [
     designation: 'City of Manchester Parks and Recreation',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=880d1fd2f9404a0381814565f5ee4cd7',
-    download: 'https://maps.kimley-horn.com/server/rest/services/Hosted/Manchester_Trees_2022/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://maps.kimley-horn.com/server/rest/services/Hosted/Manchester_Trees_2022/FeatureServer/0'
+    },
     driver: 'ESRIJSON'
   },
   {
@@ -10474,8 +10965,9 @@ module.exports = [
     scope: 'Tree: park',
     notes: 'FF: Careful adding these to Falling Fruit, since foraging may not be permitted',
     info: 'https://www.arcgis.com/home/item.html?id=f2317e931a0f4c4fada8e2ec7acc95fe',
-    download: 'https://services5.arcgis.com/fui97fnwp2uOvw2J/arcgis/rest/services/DedicationBenchTree/FeatureServer/2',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/fui97fnwp2uOvw2J/arcgis/rest/services/DedicationBenchTree/FeatureServer/2'
+    }
   },
   {
     country: 'United States',
@@ -10485,8 +10977,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'private land',
     info: 'https://www.arcgis.com/home/item.html?id=6aaaf154ac2a45b1bb6fe98d542f0413',
-    download: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/Indian_Trail_Club_FINAL/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/Indian_Trail_Club_FINAL/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10494,8 +10987,9 @@ module.exports = [
     city: 'Hoboken',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=5e72becb5432489ea2c7cca4ee40f6ad',
-    download: 'https://services8.arcgis.com/LDmC4ZVHdfKcEzxl/arcgis/rest/services/Tree_Inventory_/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services8.arcgis.com/LDmC4ZVHdfKcEzxl/arcgis/rest/services/Tree_Inventory_/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10504,8 +10998,9 @@ module.exports = [
     designation: 'Holmdel Park',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=0ca08dac87de47898ab9c60f2610c601',
-    download: 'https://services2.arcgis.com/XGVCSkDqMwLJeGIy/arcgis/rest/services/MCPS_Holmdel_Tree_Inventory_Public_Layer/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/XGVCSkDqMwLJeGIy/arcgis/rest/services/MCPS_Holmdel_Tree_Inventory_Public_Layer/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10513,8 +11008,9 @@ module.exports = [
     city: 'Jersey City',
     scope: 'Tree',
     info: 'https://data.jerseycitynj.gov/explore/dataset/2021-tree-inventory/information/',
-    download: 'https://data.jerseycitynj.gov/api/explore/v2.1/catalog/datasets/2021-tree-inventory/exports/geojson',
-    api: 'opendatasoft'
+    download: {
+      opendatasoft: 'https://data.jerseycitynj.gov/api/explore/v2.1/catalog/datasets/2021-tree-inventory/exports/geojson'
+    }
   },
   {
     country: 'United States',
@@ -10523,8 +11019,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'partial',
     info: 'https://www.arcgis.com/home/item.html?id=3a43e803d6824cdcb9dc8e40d85bf4e5',
-    download: 'https://services9.arcgis.com/QHXEWAb0pE2rvfbb/arcgis/rest/services/Montclair_tree_inventory_Merged/FeatureServer/3',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services9.arcgis.com/QHXEWAb0pE2rvfbb/arcgis/rest/services/Montclair_tree_inventory_Merged/FeatureServer/3'
+    }
   },
   {
     country: 'United States',
@@ -10559,8 +11056,9 @@ module.exports = [
     designation: 'Warren County',
     scope: 'Tree: notable',
     info: 'https://warrencountyny.maps.arcgis.com/home/item.html?id=0139135162e54e2f86d31ce4f5a53d64',
-    download: 'https://services6.arcgis.com/Fg3XpDIUTR3JZZES/arcgis/rest/services/Remarkable_Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/Fg3XpDIUTR3JZZES/arcgis/rest/services/Remarkable_Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10569,8 +11067,9 @@ module.exports = [
     designation: 'Vassar College',
     scope: 'Tree',
     info: 'http://www.arcgis.com/home/item.html?id=85e12b5272ab4c2b9f0aab66e16a784c',
-    download: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/2014_Vassar_Tree_Inventory_and_Risk_Assessment/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/2014_Vassar_Tree_Inventory_and_Risk_Assessment/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10589,8 +11088,9 @@ module.exports = [
     city: 'Beacon',
     scope: 'Tree',
     info: 'http://www.arcgis.com/home/item.html?id=1a6676f11e91488eb81b3de240525ea6',
-    download: 'https://services1.arcgis.com/0Lw2m57KEotYYFaA/arcgis/rest/services/Q_All_Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/0Lw2m57KEotYYFaA/arcgis/rest/services/Q_All_Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10598,8 +11098,9 @@ module.exports = [
     city: 'Bedford | Katonah | Bedford Hills',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=c4a4fc47dbf640b99d77b1a3df923439',
-    download: 'https://services9.arcgis.com/knuEiqG2RpapGunj/arcgis/rest/services/Bedford_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services9.arcgis.com/knuEiqG2RpapGunj/arcgis/rest/services/Bedford_Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10607,8 +11108,9 @@ module.exports = [
     city: 'Briarcliff Manor',
     designation: 'YSG Solar',
     info: 'https://www.arcgis.com/home/item.html?id=f1d2f8bef88b4b1bada76aa67b47cc8a',
-    download: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/YSG_Solar_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/YSG_Solar_Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10617,8 +11119,9 @@ module.exports = [
     scope: 'Tree: street',
     notes: 'GeoJSON export yields a broken file',
     info: 'https://data.buffalony.gov/Quality-of-Life/Tree-Inventory/n4ni-uuec',
-    download: 'https://data.buffalony.gov/api/views/n4ni-uuec/rows.csv',
-    api: 'socrata',
+    download: {
+      socrata: 'https://data.buffalony.gov/api/views/n4ni-uuec/rows.csv'
+    },
     driver: 'CSV',
     geometry: { x: 'Longitude', y: 'Latitude' },
     srs: 'EPSG:4326',
@@ -10651,8 +11154,9 @@ module.exports = [
     city: 'Geneva',
     designation: 'Hobart and William Smith Colleges',
     info: 'https://www.arcgis.com/home/item.html?id=056466623ac840fd946a41549466f4c1',
-    download: 'https://services.arcgis.com/gAAqLWNS2IKt1zU1/arcgis/rest/services/HWS_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/gAAqLWNS2IKt1zU1/arcgis/rest/services/HWS_Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10693,8 +11197,9 @@ module.exports = [
     city: 'Ithaca',
     scope: 'Tree',
     info: 'https://hub.arcgis.com/datasets/881adbbd08bb408cbd33c1567886edae_0/about',
-    download: 'https://services5.arcgis.com/R1JbITZvSQHJsl5r/arcgis/rest/services/City_Managed_Trees/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services5.arcgis.com/R1JbITZvSQHJsl5r/arcgis/rest/services/City_Managed_Trees/FeatureServer/0'
+    },
     terms: 'The following statement must be included with any products that use or are derived from this data set: "Data contained in this product was originally produced by the GIS Program, City of Ithaca, NY. The originator does not warrant the accuracy or completeness of the information portrayed by the data."'
   },
   {
@@ -10749,8 +11254,9 @@ module.exports = [
     city: 'New York',
     scope: 'Tree: street',
     info: 'https://data.cityofnewyork.us/Environment/2015-Street-Tree-Census-Tree-Data/uvpi-gqnh',
-    download: 'https://data.cityofnewyork.us/api/views/uvpi-gqnh/rows.csv',
-    api: 'socrata',
+    download: {
+      socrata: 'https://data.cityofnewyork.us/api/views/uvpi-gqnh/rows.csv'
+    },
     geometry: { x: 'longitude', y: 'latitude' },
     srs: 'EPSG:4326',
     delFunc: x => x['status'] === 'Stump',
@@ -10770,10 +11276,11 @@ module.exports = [
     city: 'New York',
     scope: 'Tree',
     info: 'https://data.cityofnewyork.us/Environment/Forestry-Tree-Points/hn5i-inap',
-    download: 'https://data.cityofnewyork.us/api/views/hn5i-inap/rows.csv',
+    download: {
+      socrata: 'https://data.cityofnewyork.us/api/views/hn5i-inap/rows.csv'
+    },
     geometry: { wkt: 'Geometry' },
     srs: 'EPSG:4326',
-    api: 'socrata',
     opentrees_id: 'nyc'
   },
   {
@@ -10783,8 +11290,9 @@ module.exports = [
     city: 'Newburgh',
     scope: 'Tree: street',
     info: 'https://www.uvm.edu/femc/data/archive/project/Newburgh_new_york_street_tree_inventory/dataset/newburgh-new-york-street-tree-inventory',
-    download: 'https://www.uvm.edu/femc/data/archive/project/Newburgh_new_york_street_tree_inventory/dataset/newburgh-new-york-street-tree-inventory',
-    api: 'manual',
+    download: {
+      manual: 'https://www.uvm.edu/femc/data/archive/project/Newburgh_new_york_street_tree_inventory/dataset/newburgh-new-york-street-tree-inventory'
+    },
     license: { id: 'CC0-1.0' }
   },
   {
@@ -10792,8 +11300,9 @@ module.exports = [
     state: 'New York',
     city: 'Pawling',
     info: 'https://www.arcgis.com/home/item.html?id=a09c6cf25f74490584a131f39cbe1e81',
-    download: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/Pawling_Tree_Inventory_data_7_30_21/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/Pawling_Tree_Inventory_data_7_30_21/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10801,8 +11310,9 @@ module.exports = [
     city: 'Poughkeepsie',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=5c7e99b9cae146779d062e44cdbd913e',
-    download: 'https://services2.arcgis.com/HXuDXoXgsUiaeXTG/arcgis/rest/services/Street_Tree_Inventory_2019_(View_Layer)/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/HXuDXoXgsUiaeXTG/arcgis/rest/services/Street_Tree_Inventory_2019_(View_Layer)/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10811,8 +11321,9 @@ module.exports = [
     designation: "Saint John's University",
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=538edc6155e942a5afbde86fb819a648',
-    download: 'https://services1.arcgis.com/pzqYKKGextsqxzkb/arcgis/rest/services/TreeInventory_May2017/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/pzqYKKGextsqxzkb/arcgis/rest/services/TreeInventory_May2017/FeatureServer/0'
+    },
     terms: 'For educational purposes only.'
   },
   {
@@ -10821,8 +11332,9 @@ module.exports = [
     city: 'Rochester',
     designation: 'University of Rochester',
     info: 'https://www.arcgis.com/home/item.html?id=ef55c22bb36b4588a86203637470ee28',
-    download: 'https://services3.arcgis.com/Ue34o2qxc9h430hV/arcgis/rest/services/UR_Trees_View_Only/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/Ue34o2qxc9h430hV/arcgis/rest/services/UR_Trees_View_Only/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10830,8 +11342,9 @@ module.exports = [
     city: 'Rochester',
     scope: 'Tree',
     info: 'https://data.cityofrochester.gov/datasets/RochesterNY::trees-open-data-live/about',
-    download: 'https://maps.cityofrochester.gov/server/rest/services/Open_Data/Trees_Open_Data/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://maps.cityofrochester.gov/server/rest/services/Open_Data/Trees_Open_Data/FeatureServer/0'
+    },
     crosswalk: {
       description: 'TREE_NAME',
       health: 'COND',
@@ -10849,8 +11362,9 @@ module.exports = [
     designation: 'Griffiss Air Force Base',
     scope: 'Tree: park',
     info: 'https://data.gis.ny.gov/datasets/sharegisny::tree-data-2019/about',
-    download: 'https://services6.arcgis.com/EbVsqZ18sv1kVJ3k/ArcGIS/rest/services/MVCC_Tree_Data/FeatureServer/1',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/EbVsqZ18sv1kVJ3k/ArcGIS/rest/services/MVCC_Tree_Data/FeatureServer/1'
+    }
   },
   {
     country: 'United States',
@@ -10858,8 +11372,9 @@ module.exports = [
     city: 'Syracuse',
     scope: 'Tree: street',
     info: 'https://www.uvm.edu/femc/data/archive/project/syracuse_new_york_street_tree_inventories/dataset/syracuse-new-york-street-tree-inventory',
-    download: 'https://www.uvm.edu/femc/data/archive/project/syracuse_new_york_street_tree_inventories/dataset/syracuse-new-york-street-tree-inventory',
-    api: 'manual',
+    download: {
+      manual: 'https://www.uvm.edu/femc/data/archive/project/syracuse_new_york_street_tree_inventories/dataset/syracuse-new-york-street-tree-inventory'
+    },
     geometry: { x: 'Longitude', y: 'Latitude' },
     srs: 'EPSG:4326',
     license: { id: 'CC0-1.0' }
@@ -10869,8 +11384,9 @@ module.exports = [
     state: 'New York',
     city: 'Tonawanda',
     scope: 'Tree',
-    download: 'https://gis1.tonawanda.ny.us/arcgis/rest/services/FacilitiesStreets/TonawandaTrees_FeatureService/MapServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://gis1.tonawanda.ny.us/arcgis/rest/services/FacilitiesStreets/TonawandaTrees_FeatureService/MapServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10879,8 +11395,9 @@ module.exports = [
     designation: 'T.R. Proctor Park | F. T. Proctor Park',
     scope: 'Tree: park',
     info: 'https://data.gis.ny.gov/datasets/sharegisny::tree-data-2020/about',
-    download: 'https://services6.arcgis.com/EbVsqZ18sv1kVJ3k/ArcGIS/rest/services/MVCC_Tree_Data/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/EbVsqZ18sv1kVJ3k/ArcGIS/rest/services/MVCC_Tree_Data/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10888,8 +11405,9 @@ module.exports = [
     city: 'Utica',
     scope: 'Tree: park',
     info: 'https://data.gis.ny.gov/datasets/sharegisny::tree-data-2018/about',
-    download: 'https://services6.arcgis.com/EbVsqZ18sv1kVJ3k/ArcGIS/rest/services/MVCC_Tree_Data/FeatureServer/2',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/EbVsqZ18sv1kVJ3k/ArcGIS/rest/services/MVCC_Tree_Data/FeatureServer/2'
+    }
   },
   {
     country: 'United States',
@@ -10897,8 +11415,9 @@ module.exports = [
     city: 'Watertown',
     scope: 'Tree: street',
     info: 'https://www.uvm.edu/femc/data/archive/project/watertown_new_york_street_tree_inventory/dataset/watertown-new-york-street-tree-inventory-1',
-    download: 'https://www.uvm.edu/femc/data/archive/project/watertown_new_york_street_tree_inventory/dataset/watertown-new-york-street-tree-inventory-1',
-    api: 'manual',
+    download: {
+      manual: 'https://www.uvm.edu/femc/data/archive/project/watertown_new_york_street_tree_inventory/dataset/watertown-new-york-street-tree-inventory-1'
+    },
     geometry: { x: 'Longitude', y: 'Latitude' },
     srs: 'EPSG:4326',
     license: { id: 'CC0-1.0' }
@@ -10922,8 +11441,9 @@ module.exports = [
     city: 'Williamsville',
     scope: 'Tree: street',
     info: 'https://www.uvm.edu/femc/data/archive/project/williamsville_new_york_street_tree_inventory/dataset/williamsville-new-york-street-tree-inventory',
-    download: 'https://www.uvm.edu/femc/data/archive/project/williamsville_new_york_street_tree_inventory/dataset/williamsville-new-york-street-tree-inventory',
-    api: 'manual',
+    download: {
+      manual: 'https://www.uvm.edu/femc/data/archive/project/williamsville_new_york_street_tree_inventory/dataset/williamsville-new-york-street-tree-inventory'
+    },
     license: { id: 'CC0-1.0' }
   },
   {
@@ -10932,8 +11452,9 @@ module.exports = [
     city: 'Asheville',
     designation: 'Crowfields',
     info: 'https://www.arcgis.com/home/item.html?id=599f365dc9634225a0c38c60f9650cc9',
-    download: 'https://services1.arcgis.com/PwLrOgCfU0cYShcG/arcgis/rest/services/Tree_Inventory/FeatureServer/11',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/PwLrOgCfU0cYShcG/arcgis/rest/services/Tree_Inventory/FeatureServer/11'
+    }
   },
   {
     country: 'United States',
@@ -10942,8 +11463,7 @@ module.exports = [
     scope: 'Tree',
     inactive: true,
     info: 'http://ashevilletreemap.org',
-    download: 'http://ashevilletreemap.org',
-    api: 'manual',
+    download: { manual: 'http://ashevilletreemap.org' },
     vfs: '/vsizip/',
     fallingfruit_id: 349
   },
@@ -10953,8 +11473,9 @@ module.exports = [
     city: 'Cary',
     scope: 'Tree',
     info: 'https://data.townofcary.org/explore/dataset/cary-trees/information/',
-    download: 'https://data.townofcary.org/api/explore/v2.1/catalog/datasets/cary-trees/exports/geojson',
-    api: 'opendatasoft',
+    download: {
+      opendatasoft: 'https://data.townofcary.org/api/explore/v2.1/catalog/datasets/cary-trees/exports/geojson'
+    },
     crosswalk: { updated: 'editdate', common: 'name', description: 'description' },
     license: { id: 'ODbL-1.0' },
     opentrees_id: 'cary'
@@ -10966,8 +11487,9 @@ module.exports = [
     designation: 'University of North Carolina',
     scope: 'Tree',
     info: 'https://gisdata-uncadmin.opendata.arcgis.com/datasets/0643ac24fa324cf4a6c97d5c1e0d4c49_1/about',
-    download: 'https://gismaps.unc.edu/arcgis/rest/services/UNCOpenData/UNCOpenData/FeatureServer/1',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://gismaps.unc.edu/arcgis/rest/services/UNCOpenData/UNCOpenData/FeatureServer/1'
+    }
   },
   {
     country: 'United States',
@@ -10975,8 +11497,9 @@ module.exports = [
     city: 'Charlotte',
     designation: 'Bartlett Tree Research Laboratories',
     info: 'https://www.arcgis.com/home/item.html?id=69d2858822f74c4e8fad23d619b96b66',
-    download: 'https://services9.arcgis.com/6LNM62YYwpEJPKbo/arcgis/rest/services/BTRL_Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services9.arcgis.com/6LNM62YYwpEJPKbo/arcgis/rest/services/BTRL_Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -10984,8 +11507,9 @@ module.exports = [
     city: 'Charlotte',
     scope: 'Tree',
     info: 'https://koordinates.com/layer/96938-charlotte-nc-greenways-trees/',
-    download: 'https://koordinates.com/layer/96938-charlotte-nc-greenways-trees/',
-    api: 'manual',
+    download: {
+      manual: 'https://koordinates.com/layer/96938-charlotte-nc-greenways-trees/'
+    },
     vfs: '/vsizip/',
     filename: 'charlotte-nc-greenways-trees.gdb'
   },
@@ -10996,8 +11520,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'geofenced (US)',
     info: 'https://live-durhamnc.opendata.arcgis.com/datasets/DurhamNC::trees-planting-sites/about',
-    download: 'https://webgis2.durhamnc.gov/server/rest/services/PublicServices/Environmental/FeatureServer/11',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://webgis2.durhamnc.gov/server/rest/services/PublicServices/Environmental/FeatureServer/11'
+    }
   },
   {
     country: 'United States',
@@ -11005,8 +11530,9 @@ module.exports = [
     city: 'Fayetteville',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=23a36cf936d2451a9ed40e82238e14d0',
-    download: 'https://services.arcgis.com/j3zNT485kmwrBtMJ/arcgis/rest/services/Tree_Inventory_Phase_1/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/j3zNT485kmwrBtMJ/arcgis/rest/services/Tree_Inventory_Phase_1/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11014,8 +11540,9 @@ module.exports = [
     city: 'Fayetteville',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=a03ecf29baf44e83ad2903c2069ec91e',
-    download: 'https://services.arcgis.com/j3zNT485kmwrBtMJ/arcgis/rest/services/Tree_Inventory_Phase_2/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/j3zNT485kmwrBtMJ/arcgis/rest/services/Tree_Inventory_Phase_2/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11023,8 +11550,9 @@ module.exports = [
     city: 'Fayetteville',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=34c5a2f97b4f4e948459390d5c2cbd7e',
-    download: 'https://services.arcgis.com/j3zNT485kmwrBtMJ/arcgis/rest/services/Phase3_trees_2017/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/j3zNT485kmwrBtMJ/arcgis/rest/services/Phase3_trees_2017/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11032,8 +11560,9 @@ module.exports = [
     city: 'Fayetteville',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=b093800e97f040139e828d729201e2f8',
-    download: 'https://services.arcgis.com/j3zNT485kmwrBtMJ/arcgis/rest/services/Tree_Survey_2020/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/j3zNT485kmwrBtMJ/arcgis/rest/services/Tree_Survey_2020/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11042,8 +11571,9 @@ module.exports = [
     designation: 'Green Hill Cemetery',
     scope: 'Plant',
     info: 'https://www.arcgis.com/home/item.html?id=938ca2f492434c42b64e05df1eaea634',
-    download: 'https://services1.arcgis.com/A7KFW0gHh8qBaXk3/arcgis/rest/services/GreenHillCemeteryTreeInventory_gdb/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/A7KFW0gHh8qBaXk3/arcgis/rest/services/GreenHillCemeteryTreeInventory_gdb/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11051,8 +11581,9 @@ module.exports = [
     city: 'Greensboro',
     scope: 'Tree',
     info: 'http://www.arcgis.com/home/item.html?id=5b43f5c835bc472e993321d47526aefb',
-    download: 'https://gis.greensboro-nc.gov/arcgis/rest/services/Planning/TreeInventory_CollegeHill_Dunleath_MS/MapServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://gis.greensboro-nc.gov/arcgis/rest/services/Planning/TreeInventory_CollegeHill_Dunleath_MS/MapServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11060,8 +11591,9 @@ module.exports = [
     city: 'Raleigh',
     scope: 'Trees',
     info: 'https://data-ral.opendata.arcgis.com/datasets/ral::raleigh-street-and-park-trees/about',
-    download: 'https://services.arcgis.com/v400IkDOw1ad7Yad/arcgis/rest/services/PRCR_Urban_Forestry_Trees_Open_Data/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/v400IkDOw1ad7Yad/arcgis/rest/services/PRCR_Urban_Forestry_Trees_Open_Data/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11069,8 +11601,9 @@ module.exports = [
     city: 'Salisbury',
     scope: 'Tree',
     info: 'http://www.arcgis.com/home/item.html?id=9521dbe887db4617ad62d6e098b1a9d7',
-    download: 'https://services.arcgis.com/FKrJWv8CWiYT6Rsn/arcgis/rest/services/Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/FKrJWv8CWiYT6Rsn/arcgis/rest/services/Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11078,8 +11611,9 @@ module.exports = [
     city: 'Wake Forest',
     scope: 'Tree',
     info: 'http://data2-wakeforestnc.opendata.arcgis.com/datasets/trees/about',
-    download: 'https://services1.arcgis.com/gqTCvanrwF2z2HEu/arcgis/rest/services/Trees/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/gqTCvanrwF2z2HEu/arcgis/rest/services/Trees/FeatureServer/0'
+    },
     crosswalk: {
       scientific: 'SPECIES_LA',
       common: 'SPECIES_CO',
@@ -11093,8 +11627,9 @@ module.exports = [
     city: 'Wilmington',
     scope: 'Tree: notable',
     info: 'https://wilmingtonnc.hub.arcgis.com/datasets/wilmingtonnc::heritage-trees/about',
-    download: 'https://services1.arcgis.com/GwaLJVJq0Y6voqEc/arcgis/rest/services/Heritage_Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/GwaLJVJq0Y6voqEc/arcgis/rest/services/Heritage_Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11103,16 +11638,18 @@ module.exports = [
     designation: 'Ohio University',
     scope: 'Tree: notable',
     info: 'https://www.arcgis.com/home/item.html?id=ff1d92d407ae41e3a62107be6f830c7f',
-    download: 'https://services6.arcgis.com/VF9zVmfenvWNTmVd/arcgis/rest/services/Ohio_University_Campus_Memorials_WFL1/FeatureServer/8',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/VF9zVmfenvWNTmVd/arcgis/rest/services/Ohio_University_Campus_Memorials_WFL1/FeatureServer/8'
+    }
   },
   {
     country: 'United States',
     state: 'Ohio',
     city: 'Bratenahl',
     info: 'https://www.arcgis.com/home/item.html?id=779c2bba9296410b9f8ef4ea53037303',
-    download: 'https://services8.arcgis.com/G9HcjIcXXonYrtdY/arcgis/rest/services/Brat_Village_Tree_Map/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services8.arcgis.com/G9HcjIcXXonYrtdY/arcgis/rest/services/Brat_Village_Tree_Map/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11120,8 +11657,9 @@ module.exports = [
     city: 'Cincinnati',
     designation: 'Xavier University',
     info: 'https://www.arcgis.com/home/item.html?id=ac701913d1c24e988109d7679a1815d7',
-    download: 'https://services5.arcgis.com/bL9D2dODGA0Rk8hK/arcgis/rest/services/Xavier_Master_Tree_Inventory_View_/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/bL9D2dODGA0Rk8hK/arcgis/rest/services/Xavier_Master_Tree_Inventory_View_/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11130,8 +11668,9 @@ module.exports = [
     designation: 'Ohio State University',
     scope: 'Tree',
     info: 'http://hub.arcgis.com/datasets/2b4fc9ac4cdc43b7bba6f2b1e0d6f75f_29/about',
-    download: 'https://gismaps.osu.edu/arcgis/rest/services/OSUMaps/BaseMap_RO/MapServer/29',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://gismaps.osu.edu/arcgis/rest/services/OSUMaps/BaseMap_RO/MapServer/29'
+    }
   },
   {
     country: 'United States',
@@ -11140,8 +11679,9 @@ module.exports = [
     designation: 'Weinland Park',
     notes: 'overlaps Columbus',
     info: 'https://www.arcgis.com/home/item.html?id=9abe4b9c5a1340f8b243f77aeddd6717',
-    download: 'https://services7.arcgis.com/CKzlzHTK1Ng4peUH/arcgis/rest/services/WeinlandParkTreeDataExcel/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/CKzlzHTK1Ng4peUH/arcgis/rest/services/WeinlandParkTreeDataExcel/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11149,8 +11689,9 @@ module.exports = [
     city: 'Columbus',
     scope: 'Tree',
     info: 'http://opendata.columbus.gov/datasets/public-owned-trees/about',
-    download: 'https://maps2.columbus.gov/arcgis/rest/services/Schemas/RecreationParks/MapServer/1',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://maps2.columbus.gov/arcgis/rest/services/Schemas/RecreationParks/MapServer/1'
+    },
     crosswalk: {
       ref: 'OBJECTID',
       dbh_in: 'DIAM_BREAS',
@@ -11170,8 +11711,9 @@ module.exports = [
     city: 'Dublin',
     scope: 'Tree: street',
     info: 'https://data-dublinohio.opendata.arcgis.com/datasets/DublinOhio::street-trees-1/about',
-    download: 'https://services1.arcgis.com/NqY8dnPSEdMJhuRw/arcgis/rest/services/Street_Trees_including_Removed/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/NqY8dnPSEdMJhuRw/arcgis/rest/services/Street_Trees_including_Removed/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11179,16 +11721,18 @@ module.exports = [
     city: 'Dublin',
     scope: 'Tree: park',
     info: 'https://data-dublinohio.opendata.arcgis.com/datasets/DublinOhio::park-trees-2/about',
-    download: 'https://services1.arcgis.com/NqY8dnPSEdMJhuRw/arcgis/rest/services/Park_Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/NqY8dnPSEdMJhuRw/arcgis/rest/services/Park_Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
     state: 'Ohio',
     city: 'Grove City',
     info: 'https://www.arcgis.com/home/item.html?id=ab5f42155557484b970bfc1bb3538300',
-    download: 'https://arcgisweb.grovecityohio.gov:6443/arcgis/rest/services/Stage_Services/Tree_Inventory_ArcPro/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://arcgisweb.grovecityohio.gov:6443/arcgis/rest/services/Stage_Services/Tree_Inventory_ArcPro/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11525,8 +12069,9 @@ module.exports = [
     city: 'Marysville',
     scope: 'Tree',
     info: 'https://open-data-marysville.opendata.arcgis.com/datasets/Marysville::tree-sites/about',
-    download: 'https://services3.arcgis.com/ccRMrVzOSHBUG6X2/arcgis/rest/services/Tree_Sites_Public/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services3.arcgis.com/ccRMrVzOSHBUG6X2/arcgis/rest/services/Tree_Sites_Public/FeatureServer/0'
+    },
     delFunc: x => x.status === 'Site - Vacant',
     crosswalk: {
       ref: 'treeid',
@@ -11548,8 +12093,9 @@ module.exports = [
     city: 'Sandusky',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=ea3deef3f18445738bde158f6e604453',
-    download: 'https://services3.arcgis.com/r00vmm8eIzAwdHlO/arcgis/rest/services/COSTreeInventory_publicview/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/r00vmm8eIzAwdHlO/arcgis/rest/services/COSTreeInventory_publicview/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11557,8 +12103,9 @@ module.exports = [
     city: 'Westerville',
     scope: 'Tree',
     info: 'https://hub.arcgis.com/datasets/Westerville::comm-parks-rec-trees/about',
-    download: 'https://webgis.westerville.org/public/rest/services/TransparencyHub/Trees/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://webgis.westerville.org/public/rest/services/TransparencyHub/Trees/FeatureServer/0'
+    },
     crosswalk: {
       dbh_in: 'DBH',
       common: 'COMMON_NAME',
@@ -11587,8 +12134,9 @@ module.exports = [
     city: 'Grants Pass',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=885c198264304692b89fc3cc418fb6bf',
-    download: 'https://services2.arcgis.com/pc4beVTMEhYHqerq/arcgis/rest/services/Tree_Inventory_1_ViewLayer/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/pc4beVTMEhYHqerq/arcgis/rest/services/Tree_Inventory_1_ViewLayer/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11596,8 +12144,9 @@ module.exports = [
     city: 'La Grande',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=ccc61822a90042b39583afa2bace0c08',
-    download: 'https://services8.arcgis.com/fctQFRCLcuzAFEur/arcgis/rest/services/Tree_Inventory_Public/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services8.arcgis.com/fctQFRCLcuzAFEur/arcgis/rest/services/Tree_Inventory_Public/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11605,8 +12154,9 @@ module.exports = [
     city: 'Oregon City',
     scope: 'Tree',
     info: 'https://koordinates.com/layer/100048-oregon-city-oregon-trees/',
-    download: 'https://maps.orcity.org/arcgis/rest/services/WaterAndNaturalResources/MapServer/11',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://maps.orcity.org/arcgis/rest/services/WaterAndNaturalResources/MapServer/11'
+    }
   },
   {
     country: 'United States',
@@ -11614,8 +12164,9 @@ module.exports = [
     city: 'Portland',
     scope: 'Tree: street',
     info: 'http://gis-pdx.opendata.arcgis.com/datasets/street-trees/about',
-    download: 'https://www.portlandmaps.com/arcgis/rest/services/Public/COP_OpenData_Environment/MapServer/25',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://www.portlandmaps.com/arcgis/rest/services/Public/COP_OpenData_Environment/MapServer/25'
+    },
     crosswalk: {
       ref: 'OBJECTID',
       updated: 'Date_Inven',
@@ -11643,8 +12194,9 @@ module.exports = [
     city: 'Portland',
     scope: 'Tree: park',
     info: 'http://gis-pdx.opendata.arcgis.com/datasets/parks-tree-inventory/about',
-    download: 'https://www.portlandmaps.com/arcgis/rest/services/Public/COP_OpenData_Environment/MapServer/220',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://www.portlandmaps.com/arcgis/rest/services/Public/COP_OpenData_Environment/MapServer/220'
+    },
     crosswalk: {
       ref: 'OBJECTID',
       updated: 'Inventory_',
@@ -11679,16 +12231,18 @@ module.exports = [
     designation: 'Colver Road Park',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=e48dfc7cceab4dcab6d757f29a4c78a0',
-    download: 'https://services8.arcgis.com/WTpeil3dRPBpap1N/arcgis/rest/services/COLVER_PARK_TREE_POINTS/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services8.arcgis.com/WTpeil3dRPBpap1N/arcgis/rest/services/COLVER_PARK_TREE_POINTS/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
     state: 'Oregon',
     city: 'Wilsonville',
     info: 'https://www.arcgis.com/home/item.html?id=be1cd8dacddc4059b0818046f11e8964',
-    download: 'https://dev.wilsonvillemaps.com/server/rest/services/cartegraph_sde_gis16/FeatureServer/48',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://dev.wilsonvillemaps.com/server/rest/services/cartegraph_sde_gis16/FeatureServer/48'
+    }
   },
   {
     country: 'United States',
@@ -11696,8 +12250,9 @@ module.exports = [
     city: 'Allentown',
     scope: 'Tree',
     info: 'https://opendata.allentownpa.gov/datasets/AllentownPA::city-trees/about',
-    download: 'https://services1.arcgis.com/WUqVDRuvIiIiH2Pl/arcgis/rest/services/City_Trees/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/WUqVDRuvIiIiH2Pl/arcgis/rest/services/City_Trees/FeatureServer/0'
+    },
     crosswalk: {
       common: 'TR_COMMON',
       scientific: 'TR_GENUS',
@@ -11714,8 +12269,9 @@ module.exports = [
     designation: 'Lehigh University',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=6fb9dc7447524b3a9021a4e36a00f0fd',
-    download: 'https://services2.arcgis.com/NlbUAihbvA50xxJw/arcgis/rest/services/Lehigh_University_Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/NlbUAihbvA50xxJw/arcgis/rest/services/Lehigh_University_Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11724,8 +12280,9 @@ module.exports = [
     designation: 'Moravian University',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=1573495b484049719bb6a759f9e1fd60',
-    download: 'https://services2.arcgis.com/NlbUAihbvA50xxJw/arcgis/rest/services/Moravian_University_Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/NlbUAihbvA50xxJw/arcgis/rest/services/Moravian_University_Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11733,8 +12290,9 @@ module.exports = [
     city: 'Bethlehem',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=2f0bf054191d4fd381e26a3ed1a7958a',
-    download: 'https://services2.arcgis.com/NlbUAihbvA50xxJw/arcgis/rest/services/COB_Tree_Inventory_Public_View/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/NlbUAihbvA50xxJw/arcgis/rest/services/COB_Tree_Inventory_Public_View/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11742,8 +12300,9 @@ module.exports = [
     city: 'College Township',
     scope: 'Tree: street',
     info: 'https://www.arcgis.com/home/item.html?id=19dd6203a942417c8055371b9d9e9f0c',
-    download: 'https://services8.arcgis.com/qnunbWxvlJsj1oVm/arcgis/rest/services/Street_Trees_Public/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services8.arcgis.com/qnunbWxvlJsj1oVm/arcgis/rest/services/Street_Trees_Public/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11751,8 +12310,9 @@ module.exports = [
     city: 'Harrisburg',
     scope: 'Tree: street',
     info: 'https://hub.arcgis.com/datasets/COHBG::street-trees-3/about',
-    download: 'https://services5.arcgis.com/9n3LUAMi3B692MBL/arcgis/rest/services/Corrected_2018_Tree_Layer/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/9n3LUAMi3B692MBL/arcgis/rest/services/Corrected_2018_Tree_Layer/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11760,8 +12320,9 @@ module.exports = [
     city: 'Harrisburg',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=197acffdce134d5aa9109e2283005edf',
-    download: 'https://services5.arcgis.com/9n3LUAMi3B692MBL/arcgis/rest/services/Park_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/9n3LUAMi3B692MBL/arcgis/rest/services/Park_Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11769,8 +12330,9 @@ module.exports = [
     city: 'Mount Lebanon',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=bdc05017c91d45e3b729979bf0a8b231',
-    download: 'https://services8.arcgis.com/4sXEsxQJTWBlSKA1/arcgis/rest/services/TreesFeatureService_ReadOnly/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services8.arcgis.com/4sXEsxQJTWBlSKA1/arcgis/rest/services/TreesFeatureService_ReadOnly/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11778,8 +12340,9 @@ module.exports = [
     city: 'Mount Lebanon',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=bdc05017c91d45e3b729979bf0a8b231',
-    download: 'https://services8.arcgis.com/4sXEsxQJTWBlSKA1/arcgis/rest/services/TreesFeatureService_ReadOnly/FeatureServer/3',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services8.arcgis.com/4sXEsxQJTWBlSKA1/arcgis/rest/services/TreesFeatureService_ReadOnly/FeatureServer/3'
+    }
   },
   {
     country: 'United States',
@@ -11787,8 +12350,9 @@ module.exports = [
     city: 'Mount Lebanon',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=111f82cc9d5c4fe1a3ca7a55659096b8',
-    download: 'https://services8.arcgis.com/4sXEsxQJTWBlSKA1/arcgis/rest/services/ParkTrees_ReadOnly/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services8.arcgis.com/4sXEsxQJTWBlSKA1/arcgis/rest/services/ParkTrees_ReadOnly/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11797,8 +12361,9 @@ module.exports = [
     designation: 'Temple University',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=56557a4b640d4d33ae96e066fe3782bd',
-    download: 'https://services.arcgis.com/6fiE7QkLWSPMd0N5/arcgis/rest/services/Tree_Inventory_on_Main_Campus/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/6fiE7QkLWSPMd0N5/arcgis/rest/services/Tree_Inventory_on_Main_Campus/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11806,8 +12371,9 @@ module.exports = [
     city: 'Philadelphia',
     scope: 'Tree',
     info: 'https://opendataphilly.org/datasets/philadelphia-tree-inventory/',
-    download: 'https://services.arcgis.com/fLeGjb7u4uXqeF9q/ArcGIS/rest/services/PPR_Tree_Inventory_2022/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services.arcgis.com/fLeGjb7u4uXqeF9q/ArcGIS/rest/services/PPR_Tree_Inventory_2022/FeatureServer/0'
+    },
     opentrees_id: 'philadelphia'
   },
   {
@@ -11817,8 +12383,7 @@ module.exports = [
     scope: 'Tree',
     notes: 'superseded (for Philadelphia subset)',
     info: 'https://www.opentreemap.org/phillytreemap/map/',
-    download: 'https://www.opentreemap.org/phillytreemap/map/',
-    api: 'manual',
+    download: { manual: 'https://www.opentreemap.org/phillytreemap/map/' },
     fallingfruit_id: 92,
     opentrees_id: 'philadelphia'
   },
@@ -11828,8 +12393,9 @@ module.exports = [
     city: 'Phoenixville',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=828da60491a442c497cf073c78f27976',
-    download: 'https://services1.arcgis.com/gGHDlz6USftL5Pau/arcgis/rest/services/phxtrees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/gGHDlz6USftL5Pau/arcgis/rest/services/phxtrees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11837,8 +12403,9 @@ module.exports = [
     city: 'Pittsburgh',
     designation: 'University of Pittsburgh',
     info: 'https://www.arcgis.com/home/item.html?id=887c75d62f7b475ab845c7670e993ee8',
-    download: 'https://services7.arcgis.com/arZnhQhtvIXpgVPD/arcgis/rest/services/IMP_WFL1/FeatureServer/1',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/arZnhQhtvIXpgVPD/arcgis/rest/services/IMP_WFL1/FeatureServer/1'
+    }
   },
   {
     country: 'United States',
@@ -11867,8 +12434,9 @@ module.exports = [
     designation: 'Susquehanna University',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=d4cb38fcb89148fc980318862a49aa30',
-    download: 'https://services3.arcgis.com/QhHiDuPJvXaEOuSa/arcgis/rest/services/Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/QhHiDuPJvXaEOuSa/arcgis/rest/services/Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11876,8 +12444,9 @@ module.exports = [
     city: 'Villanova',
     designation: 'Villanova University',
     info: 'https://www.arcgis.com/home/item.html?id=e786e061f887473b9797c12ac66529b2',
-    download: 'https://services5.arcgis.com/yCVH8H4hXcgEqeRw/arcgis/rest/services/CampusTrees_Public/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/yCVH8H4hXcgEqeRw/arcgis/rest/services/CampusTrees_Public/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11886,8 +12455,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'unofficial',
     info: 'http://hub.arcgis.com/datasets/WCUPAGIS::borotrees-1/about',
-    download: 'https://services1.arcgis.com/xnOV358bj0tLwxji/arcgis/rest/services/BoroTrees/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/xnOV358bj0tLwxji/arcgis/rest/services/BoroTrees/FeatureServer/0'
+    },
     crosswalk: {
       dbh_in: 'DBH',
       ref: 'ID_1',
@@ -11904,8 +12474,9 @@ module.exports = [
     city: 'Providence',
     scope: 'Tree: street',
     info: 'https://data.providenceri.gov/Neighborhoods/Providence-Tree-Inventory/uv9w-h8i4',
-    download: 'https://data.providenceri.gov/api/views/uv9w-h8i4/rows.csv',
-    api: 'socrata',
+    download: {
+      socrata: 'https://data.providenceri.gov/api/views/uv9w-h8i4/rows.csv'
+    },
     coordsFunc: x => x['Property Address'].split('\n').reverse()[0].split(/[(), ]/).filter(Number).map(Number).reverse(),
     crosswalk: { scientific: 'Species', dbh_in: 'Diameter in Inches' },
     opentrees_id: 'providence'
@@ -11915,8 +12486,9 @@ module.exports = [
     state: 'South Carolina',
     scope: 'Tree: notable',
     info: 'https://clemson.maps.arcgis.com/home/item.html?id=26fe789e994f4c90b6670902af7d9c77',
-    download: 'https://services1.arcgis.com/x5wCko8UnSi4h0CB/arcgis/rest/services/South_Carolina_Champion_Tree/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/x5wCko8UnSi4h0CB/arcgis/rest/services/South_Carolina_Champion_Tree/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -11924,8 +12496,9 @@ module.exports = [
     city: 'AIken',
     scope: 'Tree: notable',
     info: 'https://open-data-aiken-sc.hub.arcgis.com/datasets/0df3e53a96d44b368ef7837e7fd2b042_2/about',
-    download: 'https://utility.arcgis.com/usrsvcs/servers/0df3e53a96d44b368ef7837e7fd2b042/rest/services/TempProjects/Trees_Bartlett_Survey_Conditions/MapServer/2',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://utility.arcgis.com/usrsvcs/servers/0df3e53a96d44b368ef7837e7fd2b042/rest/services/TempProjects/Trees_Bartlett_Survey_Conditions/MapServer/2'
+    }
   },
   {
     country: 'United States',
@@ -12548,8 +13121,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'geofenced (US)',
     info: 'https://dataworks.siouxfalls.org/datasets/cityofsfgis::trees/about',
-    download: 'https://gis2.siouxfalls.org/arcgis/rest/services/Data/Trees/MapServer/10',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gis2.siouxfalls.org/arcgis/rest/services/Data/Trees/MapServer/10'
+    },
     crosswalk: {
       ref: 'AssetID',
       location: 'Location',
@@ -12581,8 +13155,9 @@ module.exports = [
     city: 'Clarksville',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=27df946be9a049dba2b725c13ff67370',
-    download: 'https://services6.arcgis.com/H9ihyy27OU16MQR3/arcgis/rest/services/Trees_view/FeatureServer/304',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/H9ihyy27OU16MQR3/arcgis/rest/services/Trees_view/FeatureServer/304'
+    }
   },
   {
     country: 'United States',
@@ -12614,8 +13189,9 @@ module.exports = [
     city: 'Arlington',
     scope: 'Tree: street (main)',
     info: 'https://koordinates.com/layer/97860-arlington-tx-trees/',
-    download: 'https://gis2.arlingtontx.gov/agsext2/rest/services/Parks/ParksAccessory/MapServer/1',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://gis2.arlingtontx.gov/agsext2/rest/services/Parks/ParksAccessory/MapServer/1'
+    }
   },
   {
     country: 'United States',
@@ -12637,8 +13213,9 @@ module.exports = [
     city: 'Austin',
     scope: 'Tree',
     info: 'https://data.austintexas.gov/Locations-and-Maps/Tree-Inventory/wrik-xasw',
-    download: 'https://services.arcgis.com/0L95CJ0VTaxqcmED/ArcGIS/rest/services/Tree_Inventory/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services.arcgis.com/0L95CJ0VTaxqcmED/ArcGIS/rest/services/Tree_Inventory/FeatureServer/0'
+    },
     crosswalk: {
       scientific: 'SPECIES',
       common: 'COM_NAME',
@@ -12658,8 +13235,9 @@ module.exports = [
     designation: 'University of North Texas',
     scope: 'Tree',
     info: 'https://data-untgis.opendata.arcgis.com/datasets/untgis::tree-3/about',
-    download: 'https://services6.arcgis.com/nwPkaLXTDexHnmsW/arcgis/rest/services/Tree/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services6.arcgis.com/nwPkaLXTDexHnmsW/arcgis/rest/services/Tree/FeatureServer/0'
+    },
     crosswalk: { note: 'NOTES', common: 'NAME_COMN', ref: 'UNT_ID' },
     opentrees_id: 'unt'
   },
@@ -12670,8 +13248,9 @@ module.exports = [
     designation: 'University of Texas',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=377ae57c433142928a20a698352003fb',
-    download: 'https://services3.arcgis.com/yNYLA0jxavf9Ecrz/arcgis/rest/services/UTEP_Campus_Grounds_gdb/FeatureServer/1',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/yNYLA0jxavf9Ecrz/arcgis/rest/services/UTEP_Campus_Grounds_gdb/FeatureServer/1'
+    }
   },
   {
     country: 'United States',
@@ -12680,8 +13259,9 @@ module.exports = [
     designation: 'Houston Parks Board',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=3e3da366f3e948f79addba740e49d66b',
-    download: 'https://services6.arcgis.com/Xv3JMHA0Kl8GN3tJ/arcgis/rest/services/HPB_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/Xv3JMHA0Kl8GN3tJ/arcgis/rest/services/HPB_Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -12689,8 +13269,9 @@ module.exports = [
     city: 'Houston',
     scope: 'Tree',
     info: 'https://mycity.maps.arcgis.com/home/item.html?id=c5190fdeff1f42c586b03bfcb5e46784',
-    download: 'https://services.arcgis.com/NummVBqZSIJKUeVR/arcgis/rest/services/COH_UrbanForestry_Trees_VIEW_ONLY/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/NummVBqZSIJKUeVR/arcgis/rest/services/COH_UrbanForestry_Trees_VIEW_ONLY/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -12698,8 +13279,9 @@ module.exports = [
     city: 'Kerrville',
     scope: 'Tree: partial',
     info: 'https://koordinates.com/layer/20108-kerrville-texas-trees/',
-    download: 'https://koordinates.com/layer/20108-kerrville-texas-trees/',
-    api: 'manual',
+    download: {
+      manual: 'https://koordinates.com/layer/20108-kerrville-texas-trees/'
+    },
     vfs: '/vsizip/',
     filename: 'kerrville-texas-trees.gdb'
   },
@@ -12709,8 +13291,9 @@ module.exports = [
     city: 'Pearland',
     scope: 'Tree: park',
     info: 'https://koordinates.com/layer/31603-pearland-texas-trees/',
-    download: 'https://koordinates.com/layer/31603-pearland-texas-trees/',
-    api: 'manual',
+    download: {
+      manual: 'https://koordinates.com/layer/31603-pearland-texas-trees/'
+    },
     vfs: '/vsizip/',
     filename: 'pearland-texas-trees.gdb'
   },
@@ -12720,8 +13303,9 @@ module.exports = [
     city: 'Richardson',
     scope: 'Tree: park',
     info: 'http://opendata-richardson.opendata.arcgis.com/datasets/trees/about',
-    download: 'https://maps.cor.gov/arcgis/rest/services/OpenData/Trees/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://maps.cor.gov/arcgis/rest/services/OpenData/Trees/MapServer/0'
+    },
     crosswalk: {
       common: 'NAME',
       genus: 'GENUS',
@@ -12743,8 +13327,9 @@ module.exports = [
     city: 'Wylie',
     scope: 'Tree',
     info: 'https://gisdata-wylietx.opendata.arcgis.com/datasets/treesurvey/about',
-    download: 'https://maps.wylietexas.gov/arcgis/rest/services/ParksDept/TreeSurvey/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://maps.wylietexas.gov/arcgis/rest/services/ParksDept/TreeSurvey/FeatureServer/0'
+    },
     geometry: { x: 'X', y: 'Y' },
     crosswalk: {
       ref: 'TK_ID',
@@ -12761,16 +13346,18 @@ module.exports = [
     scope: 'Tree',
     notes: 'aggregate',
     info: 'https://utahdnr.maps.arcgis.com/home/item.html?id=cb15bada7052438aa52f965edefb4225',
-    download: 'https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/UrbanTreeInventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/UrbanTreeInventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
     state: 'Utah',
     scope: 'Tree: notable',
     info: 'https://utahdnr.maps.arcgis.com/home/item.html?id=ee8d5d4e92c344c5b6c2f76c3b7992d3',
-    download: 'https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/Big_Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/ZzrwjTRez6FJiOq4/arcgis/rest/services/Big_Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -12778,8 +13365,9 @@ module.exports = [
     city: 'Cedar City',
     designation: 'Southern Utah University',
     info: 'https://www.arcgis.com/home/item.html?id=5c726f6b383840d6a155548f4e15c174',
-    download: 'https://services1.arcgis.com/QsZ6YNp8DCrBlhlg/arcgis/rest/services/SUUTreePUB_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/QsZ6YNp8DCrBlhlg/arcgis/rest/services/SUUTreePUB_view/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -12787,8 +13375,9 @@ module.exports = [
     city: 'Centerville',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=d29135d70d3b402c8b29a57a2c599186',
-    download: 'https://services1.arcgis.com/rdQPhMjJQVUQCDzu/arcgis/rest/services/TreeInventory_WFL1/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/rdQPhMjJQVUQCDzu/arcgis/rest/services/TreeInventory_WFL1/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -12828,8 +13417,9 @@ module.exports = [
     city: 'Provo',
     scope: 'Tree',
     info: 'https://opendata.utah.gov/dataset/Trees_1K/595y-dqkb',
-    download: 'https://opendata.utah.gov/api/geospatial/595y-dqkb?method=export&format=geojson',
-    api: 'socrata'
+    download: {
+      socrata: 'https://opendata.utah.gov/api/geospatial/595y-dqkb?method=export&format=geojson'
+    }
   },
   {
     country: 'United States',
@@ -12845,16 +13435,18 @@ module.exports = [
     state: 'Vermont',
     city: 'Burlington',
     scope: 'Tree',
-    download: 'https://services1.arcgis.com/1bO0c7PxQdsGidPK/arcgis/rest/services/Tree_Sites_Public_View/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/1bO0c7PxQdsGidPK/arcgis/rest/services/Tree_Sites_Public_View/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
     state: 'Vermont',
     city: 'Essex',
     info: 'https://www.arcgis.com/home/item.html?id=4176c221002a49229a416b65e2c08b5c',
-    download: 'https://services1.arcgis.com/KVHZNprt62ZdIujN/arcgis/rest/services/EssexUrbanTrees20220407/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/KVHZNprt62ZdIujN/arcgis/rest/services/EssexUrbanTrees20220407/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13030,8 +13622,9 @@ module.exports = [
     designation: 'Arlington County',
     scope: 'Tree',
     info: 'https://arlgis.maps.arcgis.com/home/item.html?id=7d96e6e61ae348959c8ad597ce89539a',
-    download: 'https://arlgis.arlingtonva.us/arcgis/rest/services/Open_Data/od_DPR_Tree_Points/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://arlgis.arlingtonva.us/arcgis/rest/services/Open_Data/od_DPR_Tree_Points/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13039,8 +13632,9 @@ module.exports = [
     designation: 'Joint Base Langley-Eustis',
     scope: 'Tree',
     info: 'http://www.arcgis.com/home/item.html?id=12d86dc52474435dae2d9280301c8504',
-    download: 'https://services2.arcgis.com/mFyiztqNioZGXt0j/arcgis/rest/services/Hawktreenasa/FeatureServer/1',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services2.arcgis.com/mFyiztqNioZGXt0j/arcgis/rest/services/Hawktreenasa/FeatureServer/1'
+    },
     codes: {
       SPECIES: {
         '1': 'Acer rubrum',
@@ -13119,8 +13713,9 @@ module.exports = [
     designation: 'Prince William County',
     scope: 'Tree: park',
     info: 'https://koordinates.com/layer/99603-prince-william-county-virginia-trees/',
-    download: 'https://koordinates.com/layer/99603-prince-william-county-virginia-trees/',
-    api: 'manual',
+    download: {
+      manual: 'https://koordinates.com/layer/99603-prince-william-county-virginia-trees/'
+    },
     vfs: '/vsizip/',
     filename: 'prince-william-county-virginia-trees.gdb'
   },
@@ -13131,8 +13726,9 @@ module.exports = [
     designation: 'West Village of Shirlington',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=1bce5340b9ed40b8a57745f7986a79c0',
-    download: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/West_Village_of_Shirlington_2018/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/West_Village_of_Shirlington_2018/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13141,8 +13737,9 @@ module.exports = [
     designation: 'Virginia Tech',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=cc53f7c5a6d64302ba05f199be69a95e',
-    download: 'https://utility.arcgis.com/usrsvcs/servers/cc53f7c5a6d64302ba05f199be69a95e/rest/services/facilities/Campus_Trees/MapServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://utility.arcgis.com/usrsvcs/servers/cc53f7c5a6d64302ba05f199be69a95e/rest/services/facilities/Campus_Trees/MapServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13150,8 +13747,9 @@ module.exports = [
     city: 'Charlottesville',
     scope: 'Tree',
     info: 'https://opendata.charlottesville.org/datasets/tree-inventory-point/about',
-    download: 'https://gisweb.charlottesville.org/cvgisweb/rest/services/OpenData_1/MapServer/79',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gisweb.charlottesville.org/cvgisweb/rest/services/OpenData_1/MapServer/79'
+    },
     delFunc: x => x.Removal_Date,
     crosswalk: {
       planted: 'Install_Date',
@@ -13170,8 +13768,9 @@ module.exports = [
     city: 'Falls Church',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=1ea12a4063304ad38f2a3a42b6058f42',
-    download: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/Falls_Church_City_Hall_Tree_Inventory_and_Management_Plan/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/Falls_Church_City_Hall_Tree_Inventory_and_Management_Plan/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13180,8 +13779,9 @@ module.exports = [
     designation: 'University of Richmond',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=d161936f7fe44439ba8e2700fb0414da',
-    download: 'https://services.arcgis.com/ak2bo87wLfUpMrt1/arcgis/rest/services/UR_Campus_Tree_Inventory_2022/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/ak2bo87wLfUpMrt1/arcgis/rest/services/UR_Campus_Tree_Inventory_2022/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13189,8 +13789,9 @@ module.exports = [
     city: 'Richmond',
     scope: 'Tree: street',
     info: 'https://www.arcgis.com/home/item.html?id=7d747955b25a410eb8f749c320852cc2',
-    download: 'https://services1.arcgis.com/k3vhq11XkBNeeOfM/arcgis/rest/services/Natural/FeatureServer/2',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/k3vhq11XkBNeeOfM/arcgis/rest/services/Natural/FeatureServer/2'
+    }
   },
   {
     country: 'United States',
@@ -13198,8 +13799,9 @@ module.exports = [
     city: 'Richmond',
     scope: 'Tree: other',
     info: 'https://www.arcgis.com/home/item.html?id=7d747955b25a410eb8f749c320852cc2',
-    download: 'https://services1.arcgis.com/k3vhq11XkBNeeOfM/arcgis/rest/services/Natural/FeatureServer/3',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/k3vhq11XkBNeeOfM/arcgis/rest/services/Natural/FeatureServer/3'
+    }
   },
   {
     country: 'United States',
@@ -13208,8 +13810,9 @@ module.exports = [
     designation: 'Danbury Forest',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=69e02e37aec543aca60df5c83359c413',
-    download: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/2020_Danbury_Forest_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/2020_Danbury_Forest_Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13217,8 +13820,9 @@ module.exports = [
     city: 'West Village Of Shirlington',
     scope: 'Tree',
     info: 'http://www.arcgis.com/home/item.html?id=1df6203b71904c7783ec75faaa682029',
-    download: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/West_Village_of_Shirlington_tree_inventory_and_management_plan/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/VgmyyKiMPvUPgldo/arcgis/rest/services/West_Village_of_Shirlington_tree_inventory_and_management_plan/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13226,8 +13830,9 @@ module.exports = [
     designation: 'Washington State Parks',
     scope: 'Tree: notable',
     info: 'https://geo.wa.gov/datasets/wa-stateparks::historic-oldgrowth-tree-point/about',
-    download: 'https://services5.arcgis.com/4LKAHwqnBooVDUlX/arcgis/rest/services/PARKS_Historic_Old_Growth_Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/4LKAHwqnBooVDUlX/arcgis/rest/services/PARKS_Historic_Old_Growth_Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13235,8 +13840,9 @@ module.exports = [
     city: 'Beaux Arts Village',
     scope: 'Tree: street',
     info: 'https://www.arcgis.com/home/item.html?id=1f9d5f61774045e39277782739e76df1',
-    download: 'https://services6.arcgis.com/h65OdekHK2g4RWMZ/arcgis/rest/services/BAV_2022_ROW_Complete/FeatureServer/8',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/h65OdekHK2g4RWMZ/arcgis/rest/services/BAV_2022_ROW_Complete/FeatureServer/8'
+    }
   },
   {
     country: 'United States',
@@ -13245,8 +13851,9 @@ module.exports = [
     designation: 'downtown',
     scope: 'Tree: street',
     info: 'https://www.arcgis.com/home/item.html?id=df9cf5501bf549a3acd42cc080840e11',
-    download: 'https://services1.arcgis.com/mg5xPlZs10O6tWPP/arcgis/rest/services/Tree_Inventory_ViewOnly/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/mg5xPlZs10O6tWPP/arcgis/rest/services/Tree_Inventory_ViewOnly/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13254,8 +13861,9 @@ module.exports = [
     city: 'Bellingham',
     scope: 'Tree: notable',
     info: 'https://www.arcgis.com/home/item.html?id=bb963f358ae5427fb6c93fcdcbb2c1c6',
-    download: 'https://services.arcgis.com/qboYD3ru0louQq4F/arcgis/rest/services/tree_pts/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services.arcgis.com/qboYD3ru0louQq4F/arcgis/rest/services/tree_pts/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13263,16 +13871,18 @@ module.exports = [
     city: 'Camas',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=7f68472c2ab24f03871f69fffc2b5732',
-    download: 'https://services6.arcgis.com/vkqYJw02wbr9rLv8/arcgis/rest/services/Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/vkqYJw02wbr9rLv8/arcgis/rest/services/Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
     state: 'Washington',
     city: 'Covington',
     info: 'https://www.arcgis.com/home/item.html?id=22c5b86f878643e7979834ab5aaf4280',
-    download: 'https://services6.arcgis.com/yfG2KMmLkmUJvyKS/arcgis/rest/services/Tree_Inventory_04142023/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/yfG2KMmLkmUJvyKS/arcgis/rest/services/Tree_Inventory_04142023/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13281,8 +13891,9 @@ module.exports = [
     designation: 'Brooke Acre Estates',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=bac5877e30514a4eb75ad5745ef8c687',
-    download: 'https://services6.arcgis.com/h65OdekHK2g4RWMZ/arcgis/rest/services/Brookacres_TreeAssessment_2022/FeatureServer/40',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/h65OdekHK2g4RWMZ/arcgis/rest/services/Brookacres_TreeAssessment_2022/FeatureServer/40'
+    }
   },
   {
     country: 'United States',
@@ -13290,8 +13901,9 @@ module.exports = [
     city: 'Oak Harbor',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=ebd124703324478787010c325a9c0f73',
-    download: 'https://services9.arcgis.com/SVlf413Qqlzv09Uo/arcgis/rest/services/Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services9.arcgis.com/SVlf413Qqlzv09Uo/arcgis/rest/services/Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13300,8 +13912,9 @@ module.exports = [
     scope: 'Tree: street',
     notes: 'unofficial',
     info: 'https://www.arcgis.com/home/item.html?id=46643ecfd9ca4118a090f5380de80d88',
-    download: 'https://services3.arcgis.com/0IbpLwS460cn4psv/arcgis/rest/services/Street_Tree_Points/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/0IbpLwS460cn4psv/arcgis/rest/services/Street_Tree_Points/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13310,8 +13923,9 @@ module.exports = [
     designation: 'Washington State University',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=d2260e07fae34a8eba4438163ad94d2c',
-    download: 'https://services6.arcgis.com/AK42VSd2ESNY4Vkp/arcgis/rest/services/Tree_Inventory_(ViewLayer)/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/AK42VSd2ESNY4Vkp/arcgis/rest/services/Tree_Inventory_(ViewLayer)/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13319,16 +13933,18 @@ module.exports = [
     city: 'Puyallup',
     scope: 'Tree',
     info: 'https://gis-portal-puyallup.opendata.arcgis.com/datasets/puyallup::city-maintained-street-trees/about',
-    download: 'https://services8.arcgis.com/5K6vnOH0GkPyJs6A/arcgis/rest/services/City_Maintained_Street_Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services8.arcgis.com/5K6vnOH0GkPyJs6A/arcgis/rest/services/City_Maintained_Street_Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
     state: 'Washington',
     city: 'Redmond',
     info: 'https://www.arcgis.com/home/item.html?id=32f7c09444c74b9ca9521eee96bab71b',
-    download: 'https://services7.arcgis.com/9u5SMK7jcrQbBJIC/arcgis/rest/services/TreeSite/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/9u5SMK7jcrQbBJIC/arcgis/rest/services/TreeSite/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13349,8 +13965,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'partial overlap with City of Seattle',
     info: 'https://www.arcgis.com/home/item.html?id=765e3963fd6b40c1a0adae1a529e9a4b',
-    download: 'https://services6.arcgis.com/h65OdekHK2g4RWMZ/arcgis/rest/services/SPU_Campus_Tree_Inventory_05262022/FeatureServer/47',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/h65OdekHK2g4RWMZ/arcgis/rest/services/SPU_Campus_Tree_Inventory_05262022/FeatureServer/47'
+    }
   },
   {
     country: 'United States',
@@ -13358,8 +13975,9 @@ module.exports = [
     city: 'Seattle',
     scope: 'Tree',
     info: 'https://data-seattlecitygis.opendata.arcgis.com/datasets/trees/about',
-    download: 'https://gisdata.seattle.gov/server/rest/services/SDOT/SDOT_Assets/MapServer/6',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://gisdata.seattle.gov/server/rest/services/SDOT/SDOT_Assets/MapServer/6'
+    },
     crosswalk: {
       ref: 'UNITID',
       health: x => ['Very poor', 'Poor', 'Fair', 'Good', 'Excellent'][x.CONDITIO_3 - 1],
@@ -13380,8 +13998,9 @@ module.exports = [
     city: 'Shoreline',
     scope: 'Tree',
     info: 'https://shoreline.maps.arcgis.com/home/item.html?id=04f53c8bebf04d96a4ec0146eb6b595c',
-    download: 'https://smaps.shorelinewa.gov/server/rest/services/PRCS/Trees/MapServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://smaps.shorelinewa.gov/server/rest/services/PRCS/Trees/MapServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13400,8 +14019,9 @@ module.exports = [
     city: 'Tumwater',
     scope: 'Tree: street',
     info: 'https://www.arcgis.com/home/item.html?id=50c28285b3ad4063b91fd574b34978bd',
-    download: 'https://services6.arcgis.com/ovypB8ighP2NPfFE/ArcGIS/rest/services/Street_Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/ovypB8ighP2NPfFE/ArcGIS/rest/services/Street_Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13409,8 +14029,9 @@ module.exports = [
     city: 'Institute',
     designation: 'West Virginia State University',
     info: 'https://www.arcgis.com/home/item.html?id=8c2dcd81a2fa4fd49aceca21f36b35af',
-    download: 'https://services5.arcgis.com/XQuwwPae94LHONaL/arcgis/rest/services/WVSU_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/XQuwwPae94LHONaL/arcgis/rest/services/WVSU_Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13418,8 +14039,9 @@ module.exports = [
     city: 'Adams',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=02711cf7afa841ada04dd9abcf0a4bb0',
-    download: 'https://services9.arcgis.com/xvpIhHR1R7shnhSg/arcgis/rest/services/Tree_Inventory_(Public_View)/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services9.arcgis.com/xvpIhHR1R7shnhSg/arcgis/rest/services/Tree_Inventory_(Public_View)/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13428,8 +14050,9 @@ module.exports = [
     designation: 'Ashland Housing Authority',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=a264727c38684ed78b66bd927f7861d2',
-    download: 'https://services5.arcgis.com/tDXj154iVHABwGu6/arcgis/rest/services/Ashland_HOUSING_AUTHORITY_Tree_Inventory_Public/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/tDXj154iVHABwGu6/arcgis/rest/services/Ashland_HOUSING_AUTHORITY_Tree_Inventory_Public/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13447,8 +14070,9 @@ module.exports = [
     city: 'Greenville',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=2d5e76388f5e490a967d462609972c65',
-    download: 'https://arcgis.townofgreenville.com/server/rest/services/TreePublic/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://arcgis.townofgreenville.com/server/rest/services/TreePublic/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13456,8 +14080,9 @@ module.exports = [
     city: 'Hartford',
     scope: 'Tree: street',
     info: 'https://www.arcgis.com/home/item.html?id=e1c6e61ee44246828d93da93a8fbe593',
-    download: 'https://services5.arcgis.com/j0UfBSlXJiINWcjz/arcgis/rest/services/Street_Trees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/j0UfBSlXJiINWcjz/arcgis/rest/services/Street_Trees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13476,8 +14101,9 @@ module.exports = [
     designation: 'Gateway Technical College',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=5ec206cb956247cd87ed6f54e21e299c',
-    download: 'https://services3.arcgis.com/qt1iymA3IISB4iUl/arcgis/rest/services/Gateway_Tree_Inventory_2022/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services3.arcgis.com/qt1iymA3IISB4iUl/arcgis/rest/services/Gateway_Tree_Inventory_2022/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13485,8 +14111,9 @@ module.exports = [
     city: 'Kenosha',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=c7cf596d27a7455e83261a189e57ffbc',
-    download: 'https://services1.arcgis.com/dEWY7aW7h9zHrSP9/arcgis/rest/services/Tree_Inventory_PublicView/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/dEWY7aW7h9zHrSP9/arcgis/rest/services/Tree_Inventory_PublicView/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13495,8 +14122,9 @@ module.exports = [
     designation: 'Vilas Park',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=abc32ed4c1294f0e93f631f8edd314af',
-    download: 'https://services2.arcgis.com/F0eFMri3OWS05kGc/arcgis/rest/services/Vilas_Park_Tree_Inventory/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/F0eFMri3OWS05kGc/arcgis/rest/services/Vilas_Park_Tree_Inventory/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13504,8 +14132,9 @@ module.exports = [
     city: 'Madison',
     scope: 'Tree',
     info: 'https://data-cityofmadison.opendata.arcgis.com/datasets/street-trees/about',
-    download: 'https://maps.cityofmadison.com/arcgis/rest/services/Public/OPEN_DATA/MapServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://maps.cityofmadison.com/arcgis/rest/services/Public/OPEN_DATA/MapServer/0'
+    },
     crosswalk: { ref: 'OBJECTID', dbh_in: 'DIAMETER' },
     opentrees_id: 'madison'
   },
@@ -13515,8 +14144,9 @@ module.exports = [
     city: 'Mauston',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=f918d48e26ca4c46832c99b5bf49ff01',
-    download: 'https://services7.arcgis.com/bT3EoWZjN5T5Pbld/arcgis/rest/services/JuneauCo_MaustonTrees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/bT3EoWZjN5T5Pbld/arcgis/rest/services/JuneauCo_MaustonTrees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13538,8 +14168,9 @@ module.exports = [
     designation: 'San Damiano Park',
     scope: 'Tree: park',
     info: 'https://www.arcgis.com/home/item.html?id=8dd1f0405f42452fa1301d2908696af3',
-    download: 'https://services2.arcgis.com/F0eFMri3OWS05kGc/arcgis/rest/services/City_of_Monona_San_Damiano_Tree_Inventory_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services2.arcgis.com/F0eFMri3OWS05kGc/arcgis/rest/services/City_of_Monona_San_Damiano_Tree_Inventory_view/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13557,8 +14188,9 @@ module.exports = [
     city: 'Onalaska',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=9f92644efbd549058768eb5aa0d28ddb',
-    download: 'https://services1.arcgis.com/VMiHKHuCDWhb8bY8/arcgis/rest/services/TreeInventory_Public/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/VMiHKHuCDWhb8bY8/arcgis/rest/services/TreeInventory_Public/FeatureServer/0'
+    },
     terms: 'Public Use.'
   },
   {
@@ -13566,8 +14198,9 @@ module.exports = [
     state: 'Wisconsin',
     city: 'Rhinelander',
     info: 'https://www.arcgis.com/home/item.html?id=18590cff66e54ebe8e95b25aae363ef4',
-    download: 'https://services8.arcgis.com/ZlFI0h3OjcOM6gIa/arcgis/rest/services/Tree_Inventory_ViewLayer/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services8.arcgis.com/ZlFI0h3OjcOM6gIa/arcgis/rest/services/Tree_Inventory_ViewLayer/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13575,8 +14208,9 @@ module.exports = [
     city: 'Ripon',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=559f675215d1489e8f740cc8753e05ca',
-    download: 'https://services6.arcgis.com/HgNfRkflJeXTPgge/arcgis/rest/services/Tree_Inventory_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/HgNfRkflJeXTPgge/arcgis/rest/services/Tree_Inventory_view/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13584,16 +14218,18 @@ module.exports = [
     city: 'Sherwood',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=e29362f8e39f4e3bb04c90cb7a578aef',
-    download: 'https://services6.arcgis.com/WCuPctHy89ccTjFo/arcgis/rest/services/Tree_Inventory_Viewer/FeatureServer/1',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services6.arcgis.com/WCuPctHy89ccTjFo/arcgis/rest/services/Tree_Inventory_Viewer/FeatureServer/1'
+    }
   },
   {
     country: 'United States',
     state: 'Wisconsin',
     city: 'Sparta',
     info: 'https://www.arcgis.com/home/item.html?id=4e0c2a86ef964b519a71d3ce3653db5b',
-    download: 'https://services7.arcgis.com/ob3iBq0CA0JS6eE3/arcgis/rest/services/TreeInventory2021_view/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/ob3iBq0CA0JS6eE3/arcgis/rest/services/TreeInventory2021_view/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13601,8 +14237,9 @@ module.exports = [
     city: 'Stoughton',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=f7fa8d791e8f4aefbd07c01b9d57c52b',
-    download: 'https://services7.arcgis.com/iZIPdzAfqdnP9vrA/arcgis/rest/services/Tree_Inventory_(Public)/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services7.arcgis.com/iZIPdzAfqdnP9vrA/arcgis/rest/services/Tree_Inventory_(Public)/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13627,8 +14264,9 @@ module.exports = [
     scope: 'Tree',
     notes: 'Includes (2023-11-20): Ucross; Laramie County Community College, Cheyenne; Buffalo Golf Club, Buffalo',
     info: 'https://www.arcgis.com/home/item.html?id=45af0de8750c4e2698e9e14c8129591e',
-    download: 'https://services1.arcgis.com/i5xRZLABP6oUOcld/ArcGIS/rest/services/CommunityTreeInventoryDataCollection/FeatureServer/0',
-    api: 'arcgis',
+    download: {
+      arcgis: 'https://services1.arcgis.com/i5xRZLABP6oUOcld/ArcGIS/rest/services/CommunityTreeInventoryDataCollection/FeatureServer/0'
+    },
     terms: 'The authorized use of this data is limited to informational and educational purposes only, and NOT for operational or commercial purposes.'
   },
   {
@@ -13661,8 +14299,9 @@ module.exports = [
     city: 'Laramie',
     scope: 'Tree: street',
     info: 'http://www.arcgis.com/home/item.html?id=95f4c5847dae4327a56b3bae2cd53e43',
-    download: 'https://services1.arcgis.com/i5xRZLABP6oUOcld/arcgis/rest/services/Laramie_StreetTrees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/i5xRZLABP6oUOcld/arcgis/rest/services/Laramie_StreetTrees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13670,8 +14309,9 @@ module.exports = [
     city: 'Laramie',
     scope: 'Tree: other',
     info: 'http://www.arcgis.com/home/item.html?id=0efcd2ce32b44b29b6bd28e432600a9f',
-    download: 'https://services1.arcgis.com/i5xRZLABP6oUOcld/arcgis/rest/services/Laramie_OtherTrees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/i5xRZLABP6oUOcld/arcgis/rest/services/Laramie_OtherTrees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -13679,8 +14319,9 @@ module.exports = [
     city: 'Laramie',
     scope: 'Tree: park',
     info: 'http://www.arcgis.com/home/item.html?id=01cbdc6fba964b4a963155277936c049',
-    download: 'https://services1.arcgis.com/i5xRZLABP6oUOcld/arcgis/rest/services/Laramie_ParkTrees/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services1.arcgis.com/i5xRZLABP6oUOcld/arcgis/rest/services/Laramie_ParkTrees/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -14053,8 +14694,9 @@ module.exports = [
     state: 'San José',
     city: 'San José de Mayo | Rodríguez | Libertad',
     info: 'https://www.arcgis.com/home/item.html?id=10d2eb572cd245bda355d613a9f33cd6',
-    download: 'https://services5.arcgis.com/BfQRkGiClKKMSsY1/arcgis/rest/services/Censo_de_Arbolado_Publica_vista/FeatureServer/0',
-    api: 'arcgis'
+    download: {
+      arcgis: 'https://services5.arcgis.com/BfQRkGiClKKMSsY1/arcgis/rest/services/Censo_de_Arbolado_Publica_vista/FeatureServer/0'
+    }
   },
   {
     country: 'United States',
@@ -14071,7 +14713,7 @@ module.exports = [
       scientific: x => {
         // common (scientific)(<br>|/s+)Family:
         return x['Description'].match(/([^>]+) \(([^)]+)\)\s*(?:<br>)?\s*Family:/)?.[2]
-      },
+      }
     }
   },
   {
@@ -14080,7 +14722,7 @@ module.exports = [
     city: 'Oak Brook',
     designation: 'Central Park',
     info: 'https://www.google.com/maps/d/u/1/viewer?mid=1nn53o9Zu5kjdjVYFgXHZx3xRkoY-DxQJ',
-    download: 'https://www.google.com/maps/d/u/1/kml?mid=1nn53o9Zu5kjdjVYFgXHZx3xRkoY-DxQJ&lid=Jcuj0YbUaLc&forcekml=1',
+    download: 'https://www.google.com/maps/d/u/1/kml?mid=1nn53o9Zu5kjdjVYFgXHZx3xRkoY-DxQJ&lid=Jcuj0YbUaLc&forcekml=1'
   },
   {
     country: 'United States',
@@ -14088,6 +14730,6 @@ module.exports = [
     city: 'South Pasadena',
     designation: 'Library Park',
     info: 'https://www.google.com/maps/d/u/0/viewer?mid=121KIHdC3heBNHfYWLE5SL_AlYtgdvmWC',
-    download: 'https://www.google.com/maps/d/u/0/kml?mid=121KIHdC3heBNHfYWLE5SL_AlYtgdvmWC&lid=xouLB4ZLO5c&forcekml=1',
-  },
+    download: 'https://www.google.com/maps/d/u/0/kml?mid=121KIHdC3heBNHfYWLE5SL_AlYtgdvmWC&lid=xouLB4ZLO5c&forcekml=1'
+  }
 ]

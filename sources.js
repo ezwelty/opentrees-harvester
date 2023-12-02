@@ -169,9 +169,7 @@ module.exports = [
     city: 'Noosa Shire',
     scope: 'Tree',
     info: 'https://data.gov.au/data/dataset/tree-register',
-    download: {
-      wfs: 'https://data.gov.au/geoserver/tree-register/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=tree-register:TreeRegister_point19&srsName=EPSG:4326&outputFormat=application/json'
-    },
+    download: 'https://data.gov.au/geoserver/tree-register/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=tree-register:TreeRegister_point19&srsName=EPSG:4326&outputFormat=application/json',
     license: { id: 'CC-BY-2.5-AU' }
   },
   {
@@ -396,9 +394,7 @@ module.exports = [
     city: 'Ballarat',
     scope: 'Tree: notable',
     info: 'https://data.ballarat.vic.gov.au/explore/dataset/exceptional-tree-register/information/',
-    download: {
-      opendatasoft: 'https://data.ballarat.vic.gov.au/api/explore/v2.1/catalog/datasets/exceptional-tree-register/exports/geojson'
-    },
+    download: 'https://data.ballarat.vic.gov.au/api/explore/v2.1/catalog/datasets/exceptional-tree-register/exports/geojson',
     license: { id: 'CC-BY-3.0-AU' },
     opentrees_id: 'ballarat'
   },
@@ -425,9 +421,7 @@ module.exports = [
     city: 'Boroondara',
     scope: 'Tree: notable',
     info: 'https://data.gov.au/data/dataset/significant-tree',
-    download: {
-      wfs: 'https://data.gov.au/geoserver/significant-tree/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=significant-tree:Significant_Trees_201616&srsName=EPSG:4326&outputFormat=application/json'
-    },
+    download: 'https://data.gov.au/geoserver/significant-tree/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=significant-tree:Significant_Trees_201616&srsName=EPSG:4326&outputFormat=application/json',
     crosswalk: {
       species: 'botanicaln',
       common: 'commonname',
@@ -469,9 +463,7 @@ module.exports = [
     city: 'Colac Otway Shire',
     scope: 'Tree',
     info: 'https://data.gov.au/data/dataset/colac-otway-shire-trees',
-    download: {
-      wfs: 'https://data.gov.au/geoserver/colac-otway-shire-trees/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=colac-otway-shire-trees:COS_Trees_OpenData0&srsName=EPSG:4326&outputFormat=application/json'
-    },
+    download: 'https://data.gov.au/geoserver/colac-otway-shire-trees/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=colac-otway-shire-trees:COS_Trees_OpenData0&srsName=EPSG:4326&outputFormat=application/json',
     crosswalk: {
       ref: 'tree_id',
       genus: 'genus_desc',
@@ -573,9 +565,7 @@ module.exports = [
     city: 'Greater Geelong',
     scope: 'Tree',
     info: 'https://www.geelongdataexchange.com.au/explore/dataset/plaprodplacestreepoints_prod/information/',
-    download: {
-      opendatasoft: 'https://www.geelongdataexchange.com.au/api/explore/v2.1/catalog/datasets/plaprodplacestreepoints_prod/exports/geojson'
-    },
+    download: 'https://www.geelongdataexchange.com.au/api/explore/v2.1/catalog/datasets/plaprodplacestreepoints_prod/exports/geojson',
     crosswalk: {
       scientific: x => x.genus + ' ' + (x.species || '').toLowerCase(),
       common: 'common',
@@ -605,9 +595,7 @@ module.exports = [
     city: 'Greater Shepparton',
     scope: 'Tree',
     info: 'https://data.gov.au/data/dataset/greater-shepparton-city-council-street-and-park-trees',
-    download: {
-      wfs: 'https://data.gov.au/geoserver/greater-shepparton-city-council-street-and-park-trees/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=greater-shepparton-city-council-street-and-park-trees:Greater_Shepparton_City_Council_Street_and_Pa0&srsName=EPSG:4326&outputFormat=application/json'
-    },
+    download: 'https://data.gov.au/geoserver/greater-shepparton-city-council-street-and-park-trees/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=greater-shepparton-city-council-street-and-park-trees:Greater_Shepparton_City_Council_Street_and_Pa0&srsName=EPSG:4326&outputFormat=application/json',
     crosswalk: {
       scientific: 'scientific',
       common: 'common',
@@ -672,9 +660,7 @@ module.exports = [
     city: 'Melbourne',
     scope: 'Tree',
     info: 'https://data.melbourne.vic.gov.au/explore/dataset/trees-with-species-and-dimensions-urban-forest/information/',
-    download: {
-      opendatasoft: 'https://data.melbourne.vic.gov.au/api/explore/v2.1/catalog/datasets/trees-with-species-and-dimensions-urban-forest/exports/geojson'
-    },
+    download: 'https://data.melbourne.vic.gov.au/api/explore/v2.1/catalog/datasets/trees-with-species-and-dimensions-urban-forest/exports/geojson',
     geometry: { x: 'Longitude', y: 'Latitude' },
     srs: 'EPSG:4326',
     crosswalk: {
@@ -698,9 +684,7 @@ module.exports = [
     city: 'Mildura',
     scope: 'Tree: notable',
     info: 'https://data.gov.au/data/dataset/significant-trees',
-    download: {
-      wfs: 'https://data.gov.au/geoserver/significant-trees/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=significant-trees:SignificantTrees18&srsName=EPSG:4326&outputFormat=application/json'
-    },
+    download: 'https://data.gov.au/geoserver/significant-trees/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=significant-trees:SignificantTrees18&srsName=EPSG:4326&outputFormat=application/json',
     license: { id: 'CC-BY-3.0-AU' }
   },
   {
@@ -748,9 +732,7 @@ module.exports = [
     city: 'Southern Grampians',
     scope: 'Tree',
     info: 'https://data.gov.au/data/dataset/southern-grampians-street-and-park-trees',
-    download: {
-      wfs: 'https://data.gov.au/geoserver/southern-grampians-street-and-park-trees/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=southern-grampians-street-and-park-trees:Southern_Grampians_Street_and_Park_Trees49&srsName=EPSG:4326&outputFormat=application/json'
-    },
+    download: 'https://data.gov.au/geoserver/southern-grampians-street-and-park-trees/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=southern-grampians-street-and-park-trees:Southern_Grampians_Street_and_Park_Trees49&srsName=EPSG:4326&outputFormat=application/json',
     crosswalk: {
       ref: 'ref',
       scientific: 'species',
@@ -955,9 +937,7 @@ module.exports = [
     scope: 'Tree',
     notes: 'Download as CSV to allow download in single transaction',
     info: 'https://www.data.gv.at/katalog/dataset/c91a4635-8b7d-43fe-9b27-d95dec8392a7',
-    download: {
-      wfs: 'https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:BAUMKATOGD&srsName=EPSG:4326&outputFormat=csv'
-    },
+    download: 'https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:BAUMKATOGD&srsName=EPSG:4326&outputFormat=csv',
     geometry: { wkt: 'SHAPE' },
     srs: 'EPSG:4326',
     crosswalk: {
@@ -985,9 +965,7 @@ module.exports = [
     state: 'Bruxelles',
     scope: 'Tree: street',
     info: 'https://data.mobility.brussels/fr/info/trees/',
-    download: {
-      wfs: 'https://data.mobility.brussels/geoserver/bm_public_space/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=bm_public_space:trees&srsName=EPSG:4326&outputFormat=application/json'
-    },
+    download: 'https://data.mobility.brussels/geoserver/bm_public_space/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=bm_public_space:trees&srsName=EPSG:4326&outputFormat=application/json',
     license: { id: 'CC0-1.0' }
   },
   {
@@ -998,9 +976,7 @@ module.exports = [
     scope: 'Tree: notable',
     notes: 'Subset of regional inventory',
     info: 'https://opendata.bruxelles.be/explore/dataset/bruxelles_arbres_remarquables/information/',
-    download: {
-      opendatasoft: 'https://opendata.bruxelles.be/api/explore/v2.1/catalog/datasets/bruxelles_arbres_remarquables/exports/csv?delimiter=,'
-    },
+    download: 'https://opendata.bruxelles.be/api/explore/v2.1/catalog/datasets/bruxelles_arbres_remarquables/exports/csv?delimiter=,',
     license: { id: 'etalab-2.0' }
   },
   {
@@ -1009,9 +985,7 @@ module.exports = [
     city: 'Jette',
     scope: 'Tree',
     info: 'https://datastore.brussels/web/data/service/dbb199bc-fc34-4ebf-96e2-f6aad40cb1df',
-    download: {
-      wfs: 'https://geoservices-others.irisnet.be/geoserver/UrbisAasArbre/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=UrbisAasArbre:arbres_jette_vue&srsName=EPSG:4326&outputFormat=application/json'
-    },
+    download: 'https://geoservices-others.irisnet.be/geoserver/UrbisAasArbre/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=UrbisAasArbre:arbres_jette_vue&srsName=EPSG:4326&outputFormat=application/json',
     license: { id: 'CC0-1.0' }
   },
   {
@@ -1030,9 +1004,7 @@ module.exports = [
     city: 'Agentschap Wegen en Verkeer',
     scope: 'Tree',
     info: 'https://www.vlaanderen.be/datavindplaats/catalogus/bomen-langs-de-genummerde-wegen-in-beheer-van-awv',
-    download: {
-      wfs: 'https://opendata.apps.mow.vlaanderen.be/opendata-geoserver/awv/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=awv:Bomen&srsName=EPSG:4326&outputFormat=application/json'
-    }
+    download: 'https://opendata.apps.mow.vlaanderen.be/opendata-geoserver/awv/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=awv:Bomen&srsName=EPSG:4326&outputFormat=application/json'
   },
   {
     country: 'Belgium',
@@ -1052,9 +1024,7 @@ module.exports = [
     city: 'Gent',
     scope: 'Tree',
     info: 'https://data.stad.gent/explore/dataset/locaties-bomen-gent/information/',
-    download: {
-      opendatasoft: 'https://data.stad.gent/api/explore/v2.1/catalog/datasets/locaties-bomen-gent/exports/geojson'
-    },
+    download: 'https://data.stad.gent/api/explore/v2.1/catalog/datasets/locaties-bomen-gent/exports/geojson',
     srs: 'EPSG:3857',
     license: {
       name: 'Modellicentie Gratis Hergebruik 1.0',
@@ -1081,9 +1051,7 @@ module.exports = [
     city: 'Liège',
     scope: 'Tree',
     info: 'https://www.odwb.be/explore/dataset/arbustum/information/',
-    download: {
-      opendatasoft: 'https://www.odwb.be/api/explore/v2.1/catalog/datasets/arbustum/exports/geojson'
-    },
+    download: 'https://www.odwb.be/api/explore/v2.1/catalog/datasets/arbustum/exports/geojson',
     license: { id: 'CC-BY-4.0' },
     opentrees_id: 'wallonie_bruxelles_be'
   },
@@ -1155,9 +1123,7 @@ module.exports = [
     designation: 'Strathcona County',
     scope: 'Tree',
     info: 'https://data.strathcona.ca/Environment/Trees/ig6t-pdus',
-    download: {
-      socrata: 'https://data.strathcona.ca/api/geospatial/ig6t-pdus?method=export&format=geojson'
-    },
+    download: 'https://data.strathcona.ca/api/geospatial/ig6t-pdus?method=export&format=geojson',
     crosswalk: { ref: 'TreeSiteID', common: 'Name' },
     license: { id: 'OGL-Canada-2.0' },
     opentrees_id: 'strathcona'
@@ -1196,9 +1162,7 @@ module.exports = [
     scope: 'Tree',
     notes: 'GeoJSON export yields a broken file',
     info: 'https://data.edmonton.ca/Environmental-Services/Trees/eecg-fc54',
-    download: {
-      socrata: 'https://data.edmonton.ca/api/views/eecg-fc54/rows.csv'
-    },
+    download: 'https://data.edmonton.ca/api/views/eecg-fc54/rows.csv',
     driver: 'CSV',
     geometry: { x: 'LONGITUDE', y: 'LATITUDE' },
     srs: 'EPSG:4326',
@@ -1537,9 +1501,7 @@ module.exports = [
     city: 'Vancouver',
     scope: 'Tree',
     info: 'https://opendata.vancouver.ca/explore/dataset/street-trees/information/',
-    download: {
-      opendatasoft: 'https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/street-trees/exports/geojson'
-    },
+    download: 'https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/street-trees/exports/geojson',
     crosswalk: {
       ref: 'tree_id',
       genus: 'genus_name',
@@ -1620,9 +1582,7 @@ module.exports = [
     scope: 'Tree',
     notes: 'GeoJSON export yields a broken file',
     info: 'https://data.winnipeg.ca/Parks/Tree-Inventory/hfwk-jp4h',
-    download: {
-      socrata: 'https://data.winnipeg.ca/api/views/hfwk-jp4h/rows.csv'
-    },
+    download: 'https://data.winnipeg.ca/api/views/hfwk-jp4h/rows.csv',
     driver: 'CSV',
     geometry: { wkt: 'Point' },
     srs: 'EPSG:4326',
@@ -1809,9 +1769,7 @@ module.exports = [
     city: 'Calgary',
     scope: 'Tree',
     info: 'https://data.calgary.ca/Environment/Public-Trees/tfs4-3wwa',
-    download: {
-      socrata: 'https://data.calgary.ca/api/geospatial/tfs4-3wwa?method=export&format=geojson'
-    },
+    download: 'https://data.calgary.ca/api/geospatial/tfs4-3wwa?method=export&format=geojson',
     crosswalk: {
       common: 'COMMON_NAME',
       genus: 'GENUS',
@@ -1903,9 +1861,7 @@ module.exports = [
     city: 'Kingston',
     scope: 'Tree',
     info: 'https://opendatakingston.cityofkingston.ca/explore/dataset/trees-municipal/information/',
-    download: {
-      opendatasoft: 'https://opendatakingston.cityofkingston.ca/api/explore/v2.1/catalog/datasets/trees-municipal/exports/geojson'
-    },
+    download: 'https://opendatakingston.cityofkingston.ca/api/explore/v2.1/catalog/datasets/trees-municipal/exports/geojson',
     license: {
       name: 'Open Data Licence – City of Kingston 1.0',
       url: 'https://www.cityofkingston.ca/documents/10180/144997/CityofKingston_OpenDataLicense.pdf'
@@ -2376,9 +2332,7 @@ module.exports = [
     city: 'Sabaneta',
     scope: 'Tree',
     info: 'https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/Arbolado-urbano-de-Sabaneta/nwvv-nt5q',
-    download: {
-      socrata: 'https://www.datos.gov.co/api/geospatial/nwvv-nt5q?&method=export&format=geojson'
-    }
+    download: 'https://www.datos.gov.co/api/geospatial/nwvv-nt5q?&method=export&format=geojson'
   },
   {
     country: 'Colombia',
@@ -2435,9 +2389,7 @@ module.exports = [
     city: 'La Dorada',
     scope: 'Tree',
     info: 'https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/Arboles-Sembrados-Faja-Rio-Magdalena/9w8h-nex7',
-    download: {
-      socrata: 'https://www.datos.gov.co/api/views/9w8h-nex7/rows.csv'
-    },
+    download: 'https://www.datos.gov.co/api/views/9w8h-nex7/rows.csv',
     driver: 'CSV',
     geometry: { x: 'X', y: 'Y' },
     srs: 'EPSG:4326',
@@ -2468,9 +2420,7 @@ module.exports = [
     city: 'Guatavita',
     scope: 'Tree',
     info: 'https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/CATASTRO-DE-ARBOLES-DEL-MUNICIPIO-DE-GUATAVITA/r4k4-8sux',
-    download: {
-      socrata: 'https://www.datos.gov.co/api/views/r4k4-8sux/rows.csv'
-    },
+    download: 'https://www.datos.gov.co/api/views/r4k4-8sux/rows.csv',
     coordsFunc: x => {
       // LATITUD: 04° 56' 15.1", LONGITUD: 73° 50' 22.6"
       const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\.]+)"/
@@ -2496,9 +2446,7 @@ module.exports = [
     city: 'Quimbaya',
     scope: 'Tree',
     info: 'https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/Catastro-de-rboles-Quimbaya/bgqg-v25g',
-    download: {
-      socrata: 'https://www.datos.gov.co/api/views/bgqg-v25g/rows.csv'
-    },
+    download: 'https://www.datos.gov.co/api/views/bgqg-v25g/rows.csv',
     coordsFunc: x => {
       // Latitud: Latitud:4°37'47", Longitud: Longitud: 75°45'28"
       const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\.]+)"/
@@ -2554,9 +2502,7 @@ module.exports = [
     city: 'Bucaramanga',
     scope: 'Tree',
     info: 'https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/01-BASE-DE-DATOS-CENSO-ARBOREO-BUCARAMANGA-2018/3ah4-2b5a',
-    download: {
-      socrata: 'https://www.datos.gov.co/api/views/3ah4-2b5a/rows.csv'
-    },
+    download: 'https://www.datos.gov.co/api/views/3ah4-2b5a/rows.csv',
     geometry: { x: 'long_', y: 'lat' },
     srs: 'EPSG:4326',
     license: { id: 'CC-BY-SA-4.0' }
@@ -2567,9 +2513,7 @@ module.exports = [
     city: 'Piedecuesta',
     scope: 'Tree',
     info: 'https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/ARBOLES_PIEDECUESTANA_ESP/dabb-sns7',
-    download: {
-      socrata: 'https://www.datos.gov.co/api/views/dabb-sns7/rows.csv'
-    },
+    download: 'https://www.datos.gov.co/api/views/dabb-sns7/rows.csv',
     coordsFunc: x => {
       // Coordenada: 73° 3' 15.496" W, Coordena_1: 7° 0' 10.340" N
       const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\.]+)"/
@@ -2604,9 +2548,7 @@ module.exports = [
     city: 'Ibagué',
     scope: 'Tree',
     info: 'https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/Censo-de-Arbolado-urbano-en-Ibagu-Sria-Ambiente-y-/am4p-tz7w',
-    download: {
-      socrata: 'https://www.datos.gov.co/api/views/am4p-tz7w/rows.csv'
-    },
+    download: 'https://www.datos.gov.co/api/views/am4p-tz7w/rows.csv',
     coordsFunc: x => {
       // Coordinates have varying levels of decimal offset
       const X = Number(x['X'])
@@ -2671,9 +2613,7 @@ module.exports = [
     city: 'København',
     scope: 'Tree',
     info: 'https://www.opendata.dk/city-of-copenhagen/trae-basis-kommunale-traeer',
-    download: {
-      wfs: 'https://wfs-kbhkort.kk.dk/k101/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=k101:trae_basis&srsName=EPSG:4326&outputFormat=application/json'
-    },
+    download: 'https://wfs-kbhkort.kk.dk/k101/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=k101:trae_basis&srsName=EPSG:4326&outputFormat=application/json',
     crosswalk: {
       scientific: 'traeart',
       common: 'dansk_navn',
@@ -2689,9 +2629,7 @@ module.exports = [
     city: 'København',
     scope: 'Tree: street',
     info: 'https://www.opendata.dk/city-of-copenhagen/gadetraeer',
-    download: {
-      wfs: 'https://wfs-kbhkort.kk.dk/k101/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=k101:gadetraer&srsName=EPSG:4326&outputFormat=application/json'
-    },
+    download: 'https://wfs-kbhkort.kk.dk/k101/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=k101:gadetraer&srsName=EPSG:4326&outputFormat=application/json',
     license: { id: 'CC-BY-4.0' },
     opentrees_id: 'copenhagen'
   },
@@ -2736,9 +2674,7 @@ module.exports = [
     city: 'Helsinki',
     scope: 'Tree',
     info: 'https://hri.fi/data/fi/dataset/helsingin-kaupungin-puurekisteri',
-    download: {
-      wfs: 'https://kartta.hel.fi/ws/geoserver/avoindata/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=avoindata:Puurekisteri_piste&srsName=EPSG:4326&outputFormat=application/json'
-    },
+    download: 'https://kartta.hel.fi/ws/geoserver/avoindata/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=avoindata:Puurekisteri_piste&srsName=EPSG:4326&outputFormat=application/json',
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -2814,9 +2750,7 @@ module.exports = [
     city: 'Lyon',
     scope: 'Tree',
     info: 'https://data.grandlyon.com/jeux-de-donnees/arbres-alignement-metropole-lyon/',
-    download: {
-      wfs: 'https://download.data.grandlyon.com/wfs/grandlyon?service=WFS&version=2.0.0&request=GetFeature&typeNames=metropole-de-lyon:abr_arbres_alignement.abrarbre&srsName=EPSG:4326&outputFormat=application/json'
-    },
+    download: 'https://download.data.grandlyon.com/wfs/grandlyon?service=WFS&version=2.0.0&request=GetFeature&typeNames=metropole-de-lyon:abr_arbres_alignement.abrarbre&srsName=EPSG:4326&outputFormat=application/json',
     crosswalk: {
       scientific: 'essence',
       infraspecies: 'variete',
@@ -2883,9 +2817,7 @@ module.exports = [
     state: 'Bretagne',
     scope: 'Tree',
     info: 'https://data.bretagne.bzh/explore/dataset/patrimoine-arbore-ponctuel-des-voies-navigables-appartenant-a-la-region-bretagne/information/',
-    download: {
-      opendatasoft: 'https://data.bretagne.bzh/api/explore/v2.1/catalog/datasets/patrimoine-arbore-ponctuel-des-voies-navigables-appartenant-a-la-region-bretagne/exports/geojson'
-    },
+    download: 'https://data.bretagne.bzh/api/explore/v2.1/catalog/datasets/patrimoine-arbore-ponctuel-des-voies-navigables-appartenant-a-la-region-bretagne/exports/geojson',
     crosswalk: {
       ref: 'gml_id',
       common: 'essence',
@@ -2928,9 +2860,7 @@ module.exports = [
     designation: 'Rennes Métropole',
     scope: 'Tree',
     info: 'https://data.rennesmetropole.fr/explore/dataset/arbre_hors_rennes/information/',
-    download: {
-      opendatasoft: 'https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets/arbre_hors_rennes/exports/geojson'
-    },
+    download: 'https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets/arbre_hors_rennes/exports/geojson',
     license: { id: 'ODbL-1.0' }
   },
   {
@@ -2939,9 +2869,7 @@ module.exports = [
     city: 'Rennes',
     scope: 'Tree: street',
     info: 'https://data.rennesmetropole.fr/explore/dataset/arbres-d-alignement-rennes/information/',
-    download: {
-      opendatasoft: 'https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets/arbres-d-alignement-rennes/exports/geojson'
-    },
+    download: 'https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets/arbres-d-alignement-rennes/exports/geojson',
     crosswalk: {
       ref: 'numero',
       planted: 'date_plant',
@@ -2961,9 +2889,7 @@ module.exports = [
     city: 'Rennes',
     scope: 'Tree: park',
     info: 'https://data.rennesmetropole.fr/explore/dataset/arbres-dornement-rennes/information/',
-    download: {
-      opendatasoft: 'https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets/arbres-dornement-rennes/exports/geojson'
-    },
+    download: 'https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets/arbres-dornement-rennes/exports/geojson',
     crosswalk: {
       genus: 'genre',
       species: 'espece',
@@ -2999,9 +2925,7 @@ module.exports = [
     city: 'Tours',
     scope: 'Tree',
     info: 'https://data.tours-metropole.fr/explore/dataset/arbres-tours/information/',
-    download: {
-      opendatasoft: 'https://data.tours-metropole.fr/api/explore/v2.1/catalog/datasets/arbres-tours/exports/geojson'
-    },
+    download: 'https://data.tours-metropole.fr/api/explore/v2.1/catalog/datasets/arbres-tours/exports/geojson',
     license: { id: 'etalab-2.0' }
   },
   {
@@ -3010,9 +2934,7 @@ module.exports = [
     city: 'Metz',
     scope: 'Tree: street',
     info: 'https://www.data.gouv.fr/fr/datasets/arbres-dalignement/',
-    download: {
-      wfs: 'https://maps.eurometropolemetz.eu/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=public:vrd_esv_arb&srsName=EPSG:4326&outputFormat=application/json'
-    },
+    download: 'https://maps.eurometropolemetz.eu/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=public:vrd_esv_arb&srsName=EPSG:4326&outputFormat=application/json',
     crosswalk: { dbh: 'diametre', scientific: 'nom_espece', note: 'observatio' },
     license: { id: 'ODbL-1.0' },
     opentrees_id: 'metz'
@@ -3023,9 +2945,7 @@ module.exports = [
     city: 'Metz',
     scope: 'Tree: notable',
     info: 'https://www.data.gouv.fr/fr/datasets/arbres-remarquables-metz/',
-    download: {
-      wfs: 'https://maps.eurometropolemetz.eu/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=public:vrd_esv_arb_rem&srsName=EPSG:4326&outputFormat=application/json'
-    },
+    download: 'https://maps.eurometropolemetz.eu/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=public:vrd_esv_arb_rem&srsName=EPSG:4326&outputFormat=application/json',
     license: { id: 'ODbL-1.0' },
     opentrees_id: 'metz'
   },
@@ -3035,9 +2955,7 @@ module.exports = [
     city: 'Mulhouse',
     scope: 'Tree',
     info: 'https://data.mulhouse-alsace.fr/explore/dataset/68224_arbres_alignement/information/',
-    download: {
-      opendatasoft: 'https://data.mulhouse-alsace.fr/api/explore/v2.1/catalog/datasets/68224_arbres_alignement/exports/geojson'
-    },
+    download: 'https://data.mulhouse-alsace.fr/api/explore/v2.1/catalog/datasets/68224_arbres_alignement/exports/geojson',
     crosswalk: {
       scientific: 'libelle_es',
       planted: 'date_plant',
@@ -3053,9 +2971,7 @@ module.exports = [
     city: 'Strasbourg',
     scope: 'Tree',
     info: 'https://data.strasbourg.eu/explore/dataset/patrimoine_arbore/information/',
-    download: {
-      opendatasoft: 'https://data.strasbourg.eu/api/explore/v2.1/catalog/datasets/patrimoine_arbore/exports/geojson'
-    },
+    download: 'https://data.strasbourg.eu/api/explore/v2.1/catalog/datasets/patrimoine_arbore/exports/geojson',
     license: { id: 'etalab-2.0' }
   },
   {
@@ -3074,9 +2990,7 @@ module.exports = [
     city: 'Croix',
     scope: 'Tree: notable',
     info: 'https://opendata.lillemetropole.fr/explore/dataset/arbres-remarquables0/information/',
-    download: {
-      opendatasoft: 'https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/arbres-remarquables0/exports/geojson'
-    },
+    download: 'https://opendata.lillemetropole.fr/api/explore/v2.1/catalog/datasets/arbres-remarquables0/exports/geojson',
     license: { id: 'etalab-1.0' }
   },
   {
@@ -3085,9 +2999,7 @@ module.exports = [
     city: 'Dunkerque',
     scope: 'Tree: notable',
     info: 'https://data.dunkerque-agglo.fr/explore/dataset/cadastre-vert-de-la-communaute-urbaine-de-dunkerque-arbres-remarquables/information/',
-    download: {
-      opendatasoft: 'https://data.dunkerque-agglo.fr/api/explore/v2.1/catalog/datasets/cadastre-vert-de-la-communaute-urbaine-de-dunkerque-arbres-remarquables/exports/geojson'
-    },
+    download: 'https://data.dunkerque-agglo.fr/api/explore/v2.1/catalog/datasets/cadastre-vert-de-la-communaute-urbaine-de-dunkerque-arbres-remarquables/exports/geojson',
     license: { id: 'ODbL-1.0' }
   },
   {
@@ -3096,9 +3008,7 @@ module.exports = [
     city: 'Roubaix',
     scope: 'Tree: park',
     info: 'https://opendata.roubaix.fr/explore/dataset/arbres_opendata_cassel_nvmonde_barbieux/information/',
-    download: {
-      opendatasoft: 'https://opendata.roubaix.fr/api/explore/v2.1/catalog/datasets/arbres_opendata_cassel_nvmonde_barbieux/exports/geojson'
-    },
+    download: 'https://opendata.roubaix.fr/api/explore/v2.1/catalog/datasets/arbres_opendata_cassel_nvmonde_barbieux/exports/geojson',
     license: { id: 'etalab-1.0' }
   },
   {
@@ -3107,9 +3017,7 @@ module.exports = [
     city: 'Roubaix',
     scope: 'Tree: notable',
     info: 'https://opendata.roubaix.fr/explore/dataset/les-arbres-remarquables-a-roubaix/information/',
-    download: {
-      opendatasoft: 'https://opendata.roubaix.fr/api/explore/v2.1/catalog/datasets/les-arbres-remarquables-a-roubaix/exports/geojson'
-    },
+    download: 'https://opendata.roubaix.fr/api/explore/v2.1/catalog/datasets/les-arbres-remarquables-a-roubaix/exports/geojson',
     license: { id: 'etalab-1.0' }
   },
   {
@@ -3139,9 +3047,7 @@ module.exports = [
     city: 'Tourcoing',
     scope: 'Tree',
     info: 'https://opendata.tourcoing.fr/explore/dataset/tourcoing-arbres-urbains/information/',
-    download: {
-      opendatasoft: 'https://opendata.tourcoing.fr/api/explore/v2.1/catalog/datasets/tourcoing-arbres-urbains/exports/geojson'
-    },
+    download: 'https://opendata.tourcoing.fr/api/explore/v2.1/catalog/datasets/tourcoing-arbres-urbains/exports/geojson',
     license: { id: 'etalab-1.0' }
   },
   {
@@ -3150,9 +3056,7 @@ module.exports = [
     designation: 'Hauts-de-Seine',
     scope: 'Tree: street (main)',
     info: 'https://opendata.hauts-de-seine.fr/explore/dataset/arbres-dalignement-sur-la-voirie-departementale/information/',
-    download: {
-      opendatasoft: 'https://opendata.hauts-de-seine.fr/api/explore/v2.1/catalog/datasets/arbres-dalignement-sur-la-voirie-departementale/exports/geojson'
-    },
+    download: 'https://opendata.hauts-de-seine.fr/api/explore/v2.1/catalog/datasets/arbres-dalignement-sur-la-voirie-departementale/exports/geojson',
     license: { id: 'etalab-1.0' }
   },
   {
@@ -3161,9 +3065,7 @@ module.exports = [
     designation: 'Hauts-de-Seine',
     scope: 'Tree: notable',
     info: 'https://opendata.hauts-de-seine.fr/explore/dataset/fr-229200506-arbres-remarquables/information',
-    download: {
-      opendatasoft: 'https://opendata.hauts-de-seine.fr/api/explore/v2.1/catalog/datasets/fr-229200506-arbres-remarquables/exports/geojson'
-    },
+    download: 'https://opendata.hauts-de-seine.fr/api/explore/v2.1/catalog/datasets/fr-229200506-arbres-remarquables/exports/geojson',
     license: { id: 'etalab-1.0' }
   },
   {
@@ -3171,9 +3073,7 @@ module.exports = [
     state: 'Île-de-France',
     scope: 'Tree: notable',
     info: 'https://data.iledefrance.fr/explore/dataset/arbre_remarquable/information/',
-    download: {
-      opendatasoft: 'https://data.iledefrance.fr/api/explore/v2.1/catalog/datasets/arbre_remarquable/exports/geojson'
-    },
+    download: 'https://data.iledefrance.fr/api/explore/v2.1/catalog/datasets/arbre_remarquable/exports/geojson',
     license: { id: 'ODbL-1.0' }
   },
   {
@@ -3181,9 +3081,7 @@ module.exports = [
     state: 'Île-de-France',
     scope: 'Tree: notable',
     info: 'https://data.iledefrance.fr/explore/dataset/arbres-remarquables/information/',
-    download: {
-      opendatasoft: 'https://data.iledefrance.fr/api/explore/v2.1/catalog/datasets/arbres-remarquables/exports/geojson'
-    },
+    download: 'https://data.iledefrance.fr/api/explore/v2.1/catalog/datasets/arbres-remarquables/exports/geojson',
     license: { id: 'ODbL-1.0' }
   },
   {
@@ -3203,9 +3101,7 @@ module.exports = [
     city: 'Clichy',
     scope: 'Tree',
     info: 'https://opendata.hauts-de-seine.fr/explore/dataset/fr-219200243-arbres/information/',
-    download: {
-      opendatasoft: 'https://opendata.hauts-de-seine.fr/api/explore/v2.1/catalog/datasets/fr-219200243-arbres/exports/geojson'
-    },
+    download: 'https://opendata.hauts-de-seine.fr/api/explore/v2.1/catalog/datasets/fr-219200243-arbres/exports/geojson',
     license: { id: 'etalab-1.0' }
   },
   {
@@ -3214,9 +3110,7 @@ module.exports = [
     city: 'La Défense',
     scope: 'Tree',
     info: 'https://opendata.hauts-de-seine.fr/explore/dataset/fr-833718794-arbres/information/',
-    download: {
-      opendatasoft: 'https://opendata.hauts-de-seine.fr/api/explore/v2.1/catalog/datasets/fr-833718794-arbres/exports/geojson'
-    },
+    download: 'https://opendata.hauts-de-seine.fr/api/explore/v2.1/catalog/datasets/fr-833718794-arbres/exports/geojson',
     license: { id: 'etalab-1.0' }
   },
   {
@@ -3225,9 +3119,7 @@ module.exports = [
     city: 'Montreuil',
     scope: 'Tree: street',
     info: 'https://data.montreuil.fr/explore/dataset/arbres-voirie-communale/information/',
-    download: {
-      opendatasoft: 'https://data.montreuil.fr/api/explore/v2.1/catalog/datasets/arbres-voirie-communale/exports/geojson'
-    },
+    download: 'https://data.montreuil.fr/api/explore/v2.1/catalog/datasets/arbres-voirie-communale/exports/geojson',
     license: { id: 'etalab-2.0' }
   },
   {
@@ -3236,9 +3128,7 @@ module.exports = [
     city: 'Montreuil',
     scope: 'Tree: edible',
     info: 'https://data.montreuil.fr/explore/dataset/montreuil-est-notre-jardin/information/',
-    download: {
-      opendatasoft: 'https://data.montreuil.fr/api/explore/v2.1/catalog/datasets/montreuil-est-notre-jardin/exports/geojson'
-    },
+    download: 'https://data.montreuil.fr/api/explore/v2.1/catalog/datasets/montreuil-est-notre-jardin/exports/geojson',
     license: { id: 'etalab-2.0' }
   },
   {
@@ -3247,9 +3137,7 @@ module.exports = [
     city: 'Montreuil',
     scope: 'Tree: street (main)',
     info: 'https://data.montreuil.fr/explore/dataset/arbres-de-la-voirie-departementale/information/',
-    download: {
-      opendatasoft: 'https://data.montreuil.fr/api/explore/v2.1/catalog/datasets/arbres-de-la-voirie-departementale/exports/geojson'
-    },
+    download: 'https://data.montreuil.fr/api/explore/v2.1/catalog/datasets/arbres-de-la-voirie-departementale/exports/geojson',
     license: { id: 'etalab-2.0' }
   },
   {
@@ -3259,9 +3147,7 @@ module.exports = [
     designation: 'Grand Paris Seine Ouest',
     scope: 'Tree',
     info: 'https://data.seineouest.fr/explore/dataset/arbres-v2/information/',
-    download: {
-      opendatasoft: 'https://data.seineouest.fr/api/explore/v2.1/catalog/datasets/arbres-v2/exports/geojson'
-    },
+    download: 'https://data.seineouest.fr/api/explore/v2.1/catalog/datasets/arbres-v2/exports/geojson',
     crosswalk: {
       scientific: 'genespvar',
       height: 'hauteur',
@@ -3278,9 +3164,7 @@ module.exports = [
     designation: 'Grand Paris Sud',
     scope: 'Tree',
     info: 'https://data.grandparissud.fr/explore/dataset/patrimoine-arbore/information/',
-    download: {
-      opendatasoft: 'https://data.grandparissud.fr/api/explore/v2.1/catalog/datasets/patrimoine-arbore/exports/geojson'
-    },
+    download: 'https://data.grandparissud.fr/api/explore/v2.1/catalog/datasets/patrimoine-arbore/exports/geojson',
     crosswalk: {
       location: 'categorie',
       owner: 'gestionnai',
@@ -3300,9 +3184,7 @@ module.exports = [
     city: 'Paris',
     scope: 'Tree',
     info: 'https://opendata.paris.fr/explore/dataset/les-arbres/information/',
-    download: {
-      opendatasoft: 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/les-arbres/exports/geojson'
-    },
+    download: 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/les-arbres/exports/geojson',
     crosswalk: {
       ref: 'idemplacement',
       common: 'libellefrancais',
@@ -3323,9 +3205,7 @@ module.exports = [
     scope: 'Tree: notable',
     notes: 'partly overlaps https://opendata.paris.fr/explore/dataset/les-arbres/information/',
     info: 'https://opendata.paris.fr/explore/dataset/arbresremarquablesparis/information',
-    download: {
-      opendatasoft: 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/arbresremarquablesparis/exports/geojson'
-    },
+    download: 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/arbresremarquablesparis/exports/geojson',
     license: { id: 'ODbL-1.0' },
     fallingfruit_id: 236,
     opentrees_id: 'paris'
@@ -3368,9 +3248,7 @@ module.exports = [
     city: 'Vallée-aux-Loups',
     scope: 'Tree',
     info: 'https://opendata.hauts-de-seine.fr/explore/dataset/inventaire-botanique-de-larboretum-du-domaine-departemental-de-la-vallee-aux-lou/information/',
-    download: {
-      opendatasoft: 'https://opendata.hauts-de-seine.fr/api/explore/v2.1/catalog/datasets/inventaire-botanique-de-larboretum-du-domaine-departemental-de-la-vallee-aux-lou/exports/geojson'
-    },
+    download: 'https://opendata.hauts-de-seine.fr/api/explore/v2.1/catalog/datasets/inventaire-botanique-de-larboretum-du-domaine-departemental-de-la-vallee-aux-lou/exports/geojson',
     license: { id: 'etalab-1.0' }
   },
   {
@@ -3416,9 +3294,7 @@ module.exports = [
     city: 'Rouen',
     scope: 'Tree: notable',
     info: 'https://data.metropole-rouen-normandie.fr/explore/dataset/arbres-remarquables-metropole-rouen-normandie-2019/information/',
-    download: {
-      opendatasoft: 'https://data.metropole-rouen-normandie.fr/api/explore/v2.1/catalog/datasets/arbres-remarquables-metropole-rouen-normandie-2019/exports/geojson'
-    },
+    download: 'https://data.metropole-rouen-normandie.fr/api/explore/v2.1/catalog/datasets/arbres-remarquables-metropole-rouen-normandie-2019/exports/geojson',
     license: { id: 'etalab-2.0' }
   },
   {
@@ -3437,9 +3313,7 @@ module.exports = [
     city: 'Agen',
     scope: 'Tree',
     info: 'https://data.agen.fr/explore/dataset/arbres/information/',
-    download: {
-      opendatasoft: 'https://data.agen.fr/api/explore/v2.1/catalog/datasets/arbres/exports/geojson'
-    },
+    download: 'https://data.agen.fr/api/explore/v2.1/catalog/datasets/arbres/exports/geojson',
     crosswalk: {
       ref: 'id_ponctue',
       common: 'espece_arb',
@@ -3475,9 +3349,7 @@ module.exports = [
     city: 'Bordeaux',
     scope: 'Tree',
     info: 'https://scnbdx.opendatasoft.com/explore/dataset/ec_arbre_p/information/',
-    download: {
-      opendatasoft: 'https://scnbdx.opendatasoft.com/api/explore/v2.1/catalog/datasets/ec_arbre_p/exports/geojson'
-    },
+    download: 'https://scnbdx.opendatasoft.com/api/explore/v2.1/catalog/datasets/ec_arbre_p/exports/geojson',
     crosswalk: {
       scientific: 'nom',
       updated: 'mdate',
@@ -3516,9 +3388,7 @@ module.exports = [
     designation: 'Hérault',
     scope: 'Tree: street (main)',
     info: 'https://www.herault-data.fr/explore/dataset/arbres-dalignement-herault/information/',
-    download: {
-      opendatasoft: 'https://www.herault-data.fr/api/explore/v2.1/catalog/datasets/arbres-dalignement-herault/exports/geojson'
-    },
+    download: 'https://www.herault-data.fr/api/explore/v2.1/catalog/datasets/arbres-dalignement-herault/exports/geojson',
     license: { id: 'etalab-2.0' }
   },
   {
@@ -3546,9 +3416,7 @@ module.exports = [
     city: 'Toulouse',
     scope: 'Tree',
     info: 'https://data.toulouse-metropole.fr/explore/dataset/arbres-urbains/information/',
-    download: {
-      opendatasoft: 'https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets/arbres-urbains/exports/geojson'
-    },
+    download: 'https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets/arbres-urbains/exports/geojson',
     license: { id: 'etalab-2.0' }
   },
   {
@@ -3557,9 +3425,7 @@ module.exports = [
     city: 'Angers',
     scope: 'Tree: notable',
     info: 'https://data.angers.fr/explore/dataset/arbre-signal-angers/information/',
-    download: {
-      opendatasoft: 'https://data.angers.fr/api/explore/v2.1/catalog/datasets/arbre-signal-angers/exports/geojson'
-    },
+    download: 'https://data.angers.fr/api/explore/v2.1/catalog/datasets/arbre-signal-angers/exports/geojson',
     license: { id: 'ODbL-1.0' }
   },
   {
@@ -3630,9 +3496,7 @@ module.exports = [
     scope: 'Tree',
     notes: 'versioned about page',
     info: 'https://suche.transparenz.hamburg.de/dataset/strassenbaumkataster-hamburger-hafen17',
-    download: {
-      wfs: 'https://geodienste.hamburg.de/HH_WFS_Strassenbaumkataster?service=WFS&version=2.0.0&request=GetFeature&typeNames=de.hh.up:strassenbaumkataster_hpa&srsName=EPSG:4326'
-    },
+    download: 'https://geodienste.hamburg.de/HH_WFS_Strassenbaumkataster?service=WFS&version=2.0.0&request=GetFeature&typeNames=de.hh.up:strassenbaumkataster_hpa&srsName=EPSG:4326',
     crosswalk: {
       scientific: 'art_latein',
       common: 'art_deutsc',
@@ -3651,9 +3515,7 @@ module.exports = [
     scope: 'Tree: street',
     notes: 'versioned about page',
     info: 'https://suche.transparenz.hamburg.de/dataset/strassenbaumkataster-hamburg25',
-    download: {
-      wfs: 'https://geodienste.hamburg.de/HH_WFS_Strassenbaumkataster?service=WFS&version=2.0.0&request=GetFeature&typeNames=de.hh.up:strassenbaumkataster&srsName=EPSG:4326'
-    },
+    download: 'https://geodienste.hamburg.de/HH_WFS_Strassenbaumkataster?service=WFS&version=2.0.0&request=GetFeature&typeNames=de.hh.up:strassenbaumkataster&srsName=EPSG:4326',
     crosswalk: {
       ref: 'baumid',
       scientific: 'art_latein',
@@ -3732,9 +3594,7 @@ module.exports = [
     city: 'Würzburg',
     scope: 'Tree',
     info: 'https://opendata.wuerzburg.de/explore/dataset/baumkataster_stadt_wuerzburg/information/',
-    download: {
-      opendatasoft: 'https://opendata.wuerzburg.de/api/explore/v2.1/catalog/datasets/baumkataster_stadt_wuerzburg/exports/geojson'
-    },
+    download: 'https://opendata.wuerzburg.de/api/explore/v2.1/catalog/datasets/baumkataster_stadt_wuerzburg/exports/geojson',
     license: { id: 'DL-DE-BY-2.0' }
   },
   {
@@ -3743,9 +3603,7 @@ module.exports = [
     city: 'Berlin',
     scope: 'Tree: street',
     info: 'https://daten.berlin.de/datensaetze/baumbestand-berlin-stra%C3%9Fenb%C3%A4ume-wfs',
-    download: {
-      wfs: 'https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_baumbestand?service=WFS&version=2.0.0&request=GetFeature&typeNames=fis:s_baumbestand&srsName=EPSG:4326&outputFormat=application/json'
-    },
+    download: 'https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_baumbestand?service=WFS&version=2.0.0&request=GetFeature&typeNames=fis:s_baumbestand&srsName=EPSG:4326&outputFormat=application/json',
     crosswalk: {
       scientific: 'Art_Bot',
       common: 'Art_Dtsch',
@@ -3762,9 +3620,7 @@ module.exports = [
     city: 'Berlin',
     scope: 'Tree: park',
     info: 'https://daten.berlin.de/datensaetze/baumbestand-berlin-anlagenb%C3%A4ume-wfs',
-    download: {
-      wfs: 'https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_baumbestand_an?service=WFS&version=2.0.0&request=GetFeature&typeNames=fis:s_baumbestand_an&srsName=EPSG:4326&outputFormat=application/json'
-    },
+    download: 'https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_baumbestand_an?service=WFS&version=2.0.0&request=GetFeature&typeNames=fis:s_baumbestand_an&srsName=EPSG:4326&outputFormat=application/json',
     license: { id: 'DL-DE-BY-2.0' },
     opentrees_id: 'berlin'
   },
@@ -3774,9 +3630,7 @@ module.exports = [
     city: 'Kloster Lehnin',
     scope: 'Tree',
     info: 'https://data.europa.eu/data/datasets/75fe4dcb-91c5-4251-8f0e-5ac8aa3a6bde',
-    download: {
-      wfs: 'https://www.geoportal-klosterlehnin.de/isk/lehn_baumkataster?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:baeume&srsName=EPSG:4326'
-    }
+    download: 'https://www.geoportal-klosterlehnin.de/isk/lehn_baumkataster?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:baeume&srsName=EPSG:4326'
   },
   {
     country: 'Germany',
@@ -3830,9 +3684,7 @@ module.exports = [
     scope: 'Tree',
     notes: 'More coverage (includes university) and has species, but missing structural attributes from https://www.opendata-hro.de/dataset/baeume',
     info: 'https://www.govdata.de/web/guest/suchen/-/details/baume',
-    download: {
-      wfs: 'https://geo.sv.rostock.de/inspire/lcv-trees/download?service=WFS&version=2.0.0&request=GetFeature&typeNames=lcv:LandCoverUnit&srsName=EPSG:4326'
-    },
+    download: 'https://geo.sv.rostock.de/inspire/lcv-trees/download?service=WFS&version=2.0.0&request=GetFeature&typeNames=lcv:LandCoverUnit&srsName=EPSG:4326',
     license: { id: 'CC0-1.0' },
     opentrees_id: 'rostock'
   },
@@ -3853,9 +3705,7 @@ module.exports = [
     city: 'Bielefeld',
     scope: 'Tree',
     info: 'https://open-data.bielefeld.de/dataset/baumbestand-umweltbetrieb',
-    download: {
-      wfs: 'https://www.bielefeld01.de/md/WFS/baumstandorte/01?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:einzelbaeume_p&srsName=EPSG:4326&outputFormat=application/json;+subtype=geojson'
-    },
+    download: 'https://www.bielefeld01.de/md/WFS/baumstandorte/01?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:einzelbaeume_p&srsName=EPSG:4326&outputFormat=application/json;+subtype=geojson',
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -3865,9 +3715,7 @@ module.exports = [
     scope: 'Tree',
     notes: 'tree groups',
     info: 'https://open-data.bielefeld.de/dataset/baumbestand-umweltbetrieb',
-    download: {
-      wfs: 'https://www.bielefeld01.de/md/WFS/baumstandorte/01?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:baumgruppe_p&srsName=EPSG:4326&outputFormat=application/json;+subtype=geojson'
-    },
+    download: 'https://www.bielefeld01.de/md/WFS/baumstandorte/01?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:baumgruppe_p&srsName=EPSG:4326&outputFormat=application/json;+subtype=geojson',
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -3967,9 +3815,7 @@ module.exports = [
     city: 'Münster',
     scope: 'Tree',
     info: 'https://opendata.stadt-muenster.de/dataset/digitales-baumkataster-m%C3%BCnster',
-    download: {
-      wfs: 'https://www.stadt-muenster.de/ows/mapserv706/odgruenserv?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:Baeume&srsName=EPSG:4326&outputFormat=GEOJSON'
-    },
+    download: 'https://www.stadt-muenster.de/ows/mapserv706/odgruenserv?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:Baeume&srsName=EPSG:4326&outputFormat=GEOJSON',
     license: { id: 'DL-DE-BY-2.0' }
   },
   {
@@ -4061,9 +3907,7 @@ module.exports = [
     city: 'Halle',
     scope: 'Tree',
     info: 'https://www.halle.de/de/Verwaltung/Online-Angebote/Offene-Verwaltungsdaten/Mit-Kartenbezug/index.aspx?ID=fa3930b7-b3ed-b3fc-20d9-2fc8fd054b0e',
-    download: {
-      wfs: 'https://geodienste.halle.de/opendata/fa3930b7-b3ed-b3fc-20d9-2fc8fd054b0e?service=WFS&version=1.0.0&request=GetFeature&typeName=fa3930b7-b3ed-b3fc-20d9-2fc8fd054b0e&srsName=EPSG:4326'
-    },
+    download: 'https://geodienste.halle.de/opendata/fa3930b7-b3ed-b3fc-20d9-2fc8fd054b0e?service=WFS&version=1.0.0&request=GetFeature&typeName=fa3930b7-b3ed-b3fc-20d9-2fc8fd054b0e&srsName=EPSG:4326',
     crosswalk: {
       planted: 'pflanzjahr',
       crown: 'krone_m',
@@ -4329,9 +4173,7 @@ module.exports = [
     state: 'Basilicata',
     scope: 'Tree: notable',
     info: 'https://www.dati.gov.it/view-dataset/dataset?id=dd224126-b7fb-4ec1-a985-fd9923c7543c',
-    download: {
-      wfs: 'https://rsdi.regione.basilicata.it/rbgeoserver2016/siti_protetti/beni_paesaggistici_art143_alberi_monumentali/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=siti_protetti:beni_paesaggistici_art143_alberi_monumentali&srsName=EPSG:4326&outputFormat=application/json'
-    },
+    download: 'https://rsdi.regione.basilicata.it/rbgeoserver2016/siti_protetti/beni_paesaggistici_art143_alberi_monumentali/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=siti_protetti:beni_paesaggistici_art143_alberi_monumentali&srsName=EPSG:4326&outputFormat=application/json',
     license: { id: 'IODL-2.0' }
   },
   {
@@ -4433,9 +4275,7 @@ module.exports = [
     city: 'Bologna',
     scope: 'Tree',
     info: 'https://opendata.comune.bologna.it/explore/dataset/alberi-manutenzioni/information/',
-    download: {
-      opendatasoft: 'https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/alberi-manutenzioni/exports/geojson'
-    },
+    download: 'https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/alberi-manutenzioni/exports/geojson',
     crosswalk: {
       scientific: 'decodifi_4',
       circumference_cm_min: x => {
@@ -4458,9 +4298,7 @@ module.exports = [
     city: 'Ferrara',
     scope: 'Tree',
     info: 'https://dati.comune.fe.it/dataset/rilievo-alberature-ferraratua',
-    download: {
-      wfs: 'https://sit.comune.fe.it/geoserverckan/Ferrara/Rilievo_alberature_FerraraTUA_preview/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=Ferrara:Rilievo_alberature_FerraraTUA_preview&srsName=EPSG:4326&outputFormat=application/json'
-    },
+    download: 'https://sit.comune.fe.it/geoserverckan/Ferrara/Rilievo_alberature_FerraraTUA_preview/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=Ferrara:Rilievo_alberature_FerraraTUA_preview&srsName=EPSG:4326&outputFormat=application/json',
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -4496,9 +4334,7 @@ module.exports = [
     city: 'Villa Manin',
     scope: 'Tree',
     info: 'https://www.dati.friuliveneziagiulia.it/dataset/Alberi-di-Villa-Manin/uqpq-dr8x',
-    download: {
-      socrata: 'https://www.dati.friuliveneziagiulia.it/api/views/uqpq-dr8x/rows.csv'
-    },
+    download: 'https://www.dati.friuliveneziagiulia.it/api/views/uqpq-dr8x/rows.csv',
     geometry: { x: 'coord long', y: 'coord lat' },
     srs: 'EPSG:4326',
     crosswalk: {
@@ -4534,9 +4370,7 @@ module.exports = [
     state: 'Lazio',
     scope: 'Tree: notable',
     info: 'https://geoportale.regione.lazio.it/layers/geosdiownr:geonode:alberi_monumentali_20190624',
-    download: {
-      wfs: 'https://geoportale.regione.lazio.it/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=geonode:alberi_monumentali_20190624&srsName=EPSG:4326&outputFormat=application/json'
-    },
+    download: 'https://geoportale.regione.lazio.it/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=geonode:alberi_monumentali_20190624&srsName=EPSG:4326&outputFormat=application/json',
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -4869,9 +4703,7 @@ module.exports = [
     state: 'Veneto',
     scope: 'Tree: notable',
     info: 'https://geodati.gov.it/resource/id/r_veneto:c1101133_AlbMo',
-    download: {
-      wfs: 'https://idt2-geoserver.regione.veneto.it/geoserver/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=rv:c1101133_albmo&srsName=EPSG:4326&outputFormat=application/json'
-    },
+    download: 'https://idt2-geoserver.regione.veneto.it/geoserver/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=rv:c1101133_albmo&srsName=EPSG:4326&outputFormat=application/json',
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -5071,9 +4903,7 @@ module.exports = [
     city: 'Nijmegen',
     scope: 'Tree',
     info: 'https://opendata.nijmegen.nl/dataset/bomen',
-    download: {
-      wfs: 'https://services.nijmegen.nl/geoservices/extern_BOR_Groen/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=extern_BOR_Groen:GRN_BOMEN&srsName=EPSG:4326&outputFormat=application/json'
-    },
+    download: 'https://services.nijmegen.nl/geoservices/extern_BOR_Groen/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=extern_BOR_Groen:GRN_BOMEN&srsName=EPSG:4326&outputFormat=application/json',
     srs: 'EPSG:28992',
     crosswalk: {
       ref: 'ID',
@@ -5100,9 +4930,7 @@ module.exports = [
     city: 'Groningen',
     scope: 'Tree',
     info: 'https://data.groningen.nl/dataset/bomen-gemeente-groningen',
-    download: {
-      wfs: 'https://maps.groningen.nl/geoserver/geo-data/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=geo-data:Bomen+gemeente+Groningen&srsName=EPSG:4326&outputFormat=application/json'
-    },
+    download: 'https://maps.groningen.nl/geoserver/geo-data/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=geo-data:Bomen+gemeente+Groningen&srsName=EPSG:4326&outputFormat=application/json',
     srs: 'EPSG:28992',
     crosswalk: { common: 'NEDNAAM', scientific: 'LATNAAM', owner: 'OMSCHRIJVP' },
     license: { id: 'CC-BY-4.0' },
@@ -5220,9 +5048,7 @@ module.exports = [
     city: 'Haarlem',
     scope: 'Tree',
     info: 'https://haarlem.nl/open-data',
-    download: {
-      wfs: 'https://data.haarlem.nl/geoserver/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=gemeentehaarlem:bor_bomen&srsName=EPSG:4326&outputFormat=geopackage'
-    },
+    download: 'https://data.haarlem.nl/geoserver/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=gemeentehaarlem:bor_bomen&srsName=EPSG:4326&outputFormat=geopackage',
     crosswalk: {
       ref: 'boomnummer',
       scientific: 'name',
@@ -5415,9 +5241,7 @@ module.exports = [
     state: 'Zeeland',
     scope: 'Tree: street (main)',
     info: 'https://nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/07885bed-2cf7-4399-9ae6-548e8c1d3dd7',
-    download: {
-      wfs: 'https://opengeodata.zeeland.nl/geoserver/chs/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=geocmd_chsgbmvpn&srsName=EPSG:4326&outputFormat=json'
-    },
+    download: 'https://opengeodata.zeeland.nl/geoserver/chs/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=geocmd_chsgbmvpn&srsName=EPSG:4326&outputFormat=json',
     license: { id: 'CC-BY-SA-3.0' }
   },
   {
@@ -5547,9 +5371,7 @@ module.exports = [
     state: 'Zuid-Holland',
     city: 'Gouda',
     scope: 'Tree',
-    download: {
-      wfs: 'https://gis.gouda.nl/geoserver/BOR/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=BOR:V_BOMEN_ALLES&srsName=EPSG:4326&outputFormat=application/json'
-    }
+    download: 'https://gis.gouda.nl/geoserver/BOR/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=BOR:V_BOMEN_ALLES&srsName=EPSG:4326&outputFormat=application/json'
   },
   {
     country: 'Netherlands',
@@ -5966,9 +5788,7 @@ module.exports = [
     city: 'Gijón / Xixón',
     scope: 'Tree: park',
     info: 'https://observa.gijon.es/explore/dataset/arbolado-municipal-parques-y-jardines/information/',
-    download: {
-      opendatasoft: 'https://observa.gijon.es/api/explore/v2.1/catalog/datasets/arbolado-municipal-parques-y-jardines/exports/geojson'
-    },
+    download: 'https://observa.gijon.es/api/explore/v2.1/catalog/datasets/arbolado-municipal-parques-y-jardines/exports/geojson',
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -6168,9 +5988,7 @@ module.exports = [
     city: 'Valencia',
     scope: 'Tree',
     info: 'https://valencia.opendatasoft.com/explore/dataset/arbratge-arbolado/information/',
-    download: {
-      opendatasoft: 'https://valencia.opendatasoft.com/api/explore/v2.1/catalog/datasets/arbratge-arbolado/exports/geojson'
-    },
+    download: 'https://valencia.opendatasoft.com/api/explore/v2.1/catalog/datasets/arbratge-arbolado/exports/geojson',
     crosswalk: { scientific: 'planta', common: 'castellano' },
     license: { id: 'CC-BY-4.0' },
     terms: 'https://valencia.opendatasoft.com/terms/terms-and-conditions/',
@@ -6182,9 +6000,7 @@ module.exports = [
     city: 'Valencia',
     scope: 'Tree: notable',
     info: 'https://valencia.opendatasoft.com/explore/dataset/arbratge-protegit-municipal-arbolado-protegido-municipal/information/',
-    download: {
-      opendatasoft: 'https://valencia.opendatasoft.com/api/explore/v2.1/catalog/datasets/arbratge-protegit-municipal-arbolado-protegido-municipal/exports/geojson'
-    },
+    download: 'https://valencia.opendatasoft.com/api/explore/v2.1/catalog/datasets/arbratge-protegit-municipal-arbolado-protegido-municipal/exports/geojson',
     license: { id: 'CC-BY-4.0' },
     terms: 'https://valencia.opendatasoft.com/terms/terms-and-conditions/',
     opentrees_id: 'valencia_es'
@@ -6235,9 +6051,7 @@ module.exports = [
     state: 'Illes Balears',
     scope: 'Tree: notable',
     info: 'https://catalegdades.caib.cat/Medi-ambient/Arbres-Singulars-Illes-Balears/f2hg-sgdb',
-    download: {
-      socrata: 'https://catalegdades.caib.cat/api/geospatial/f2hg-sgdb?method=export&format=geojson'
-    },
+    download: 'https://catalegdades.caib.cat/api/geospatial/f2hg-sgdb?method=export&format=geojson',
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -6319,9 +6133,7 @@ module.exports = [
     city: 'Umeå',
     scope: 'Tree',
     info: 'https://opendata.umea.se/explore/dataset/trad-som-forvaltas-av-gator-och-parker/information/',
-    download: {
-      opendatasoft: 'https://opendata.umea.se/api/explore/v2.1/catalog/datasets/trad-som-forvaltas-av-gator-och-parker/exports/geojson'
-    },
+    download: 'https://opendata.umea.se/api/explore/v2.1/catalog/datasets/trad-som-forvaltas-av-gator-och-parker/exports/geojson',
     crosswalk: {
       scientific: 'tradart_vet',
       common: 'tradart_sve',
@@ -6347,9 +6159,7 @@ module.exports = [
     city: 'Basel',
     scope: 'Tree',
     info: 'https://data.bs.ch/explore/dataset/100052/information/',
-    download: {
-      opendatasoft: 'https://data.bs.ch/api/explore/v2.1/catalog/datasets/100052/exports/geojson'
-    },
+    download: 'https://data.bs.ch/api/explore/v2.1/catalog/datasets/100052/exports/geojson',
     crosswalk: {
       scientific: x => String(x.art).replace(/ \(.*/, ''),
       common: x => (String(x.art).match(/\((.*)\)/) || ['', ''])[1],
@@ -6365,9 +6175,7 @@ module.exports = [
     city: 'Bern',
     scope: 'Tree',
     info: 'https://map.bern.ch/geoportal/#/produkt/Baumkataster',
-    download: {
-      wfs: 'https://map.bern.ch/arcgis/services/Geoportal/Baumkataster/MapServer/WFSServer?service=WFS&version=2.0.0&request=GetFeature&typeNames=Geoportal_Baumkataster:Baumkataster&srsName=EPSG:4326&outputFormat=GEOJSON'
-    },
+    download: 'https://map.bern.ch/arcgis/services/Geoportal/Baumkataster/MapServer/WFSServer?service=WFS&version=2.0.0&request=GetFeature&typeNames=Geoportal_Baumkataster:Baumkataster&srsName=EPSG:4326&outputFormat=GEOJSON',
     terms: 'Freie Nutzung. Quellenangabe ist Pflicht.'
   },
   {
@@ -6479,9 +6287,7 @@ module.exports = [
     scope: 'Tree: notable',
     notes: 'WFS server refuses to transform coordinates (srsName param)',
     info: 'https://viageo.ch/catalogue/donnee/201093',
-    download: {
-      wfs: 'https://www.sigip.ch/mapserv_proxy?ogcserver=ows&service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:pully_pp_arbres_classes'
-    },
+    download: 'https://www.sigip.ch/mapserv_proxy?ogcserver=ows&service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:pully_pp_arbres_classes',
     terms: "Le responsable s’engage à utiliser les données commandées exclusivement pour le projet désigné. Il s'engage à ne pas commercialiser les données. La source doit être indiquée sur chaque reproduction (Copyrights géodonnées Ville de Pully). La rediffusion, sans autorisation préalable, des données est interdite (y compris sur internet)."
   },
   {
@@ -6491,9 +6297,7 @@ module.exports = [
     scope: 'Tree',
     notes: 'WFS server refuses to transform coordinates (srsName param)',
     info: 'https://viageo.ch/catalogue/donnee/300053',
-    download: {
-      wfs: 'https://www.sigip.ch/mapserv_proxy?ogcserver=ows&service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:pully_arbres'
-    },
+    download: 'https://www.sigip.ch/mapserv_proxy?ogcserver=ows&service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:pully_arbres',
     terms: "Le responsable s’engage à utiliser les données commandées exclusivement pour le projet désigné. Il s'engage à ne pas commercialiser les données. La source doit être indiquée sur chaque reproduction (Copyrights géodonnées Ville de Pully). La rediffusion, sans autorisation préalable, des données est interdite (y compris sur internet)."
   },
   {
@@ -6502,9 +6306,7 @@ module.exports = [
     city: 'Winterthur',
     scope: 'Tree',
     info: 'https://stadt.winterthur.ch/themen/leben-in-winterthur/planen-und-bauen/wir-beraten-sie/geoinformation-und-vermessung/2d-stadtplan/2d-stadtplan-datenbeschreibung#baumkastaster',
-    download: {
-      wfs: 'https://stadtplan.winterthur.ch/wms/Baumkataster?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:Stadtbaum&srsName=EPSG:4326'
-    },
+    download: 'https://stadtplan.winterthur.ch/wms/Baumkataster?service=WFS&version=2.0.0&request=GetFeature&typeNames=ms:Stadtbaum&srsName=EPSG:4326',
     openFunc: file => {
       const txt = fs.readFileSync(file, 'utf8')
       // Fix <!-- WARNING: The value '*' is not valid in a XML tag context. -->
@@ -6519,9 +6321,7 @@ module.exports = [
     city: 'Zürich',
     scope: 'Tree',
     info: 'https://data.stadt-zuerich.ch/dataset/geo_baumkataster',
-    download: {
-      wfs: 'https://www.ogd.stadt-zuerich.ch/wfs/geoportal/Baumkataster?service=WFS&version=1.1.0&request=GetFeature&outputFormat=GeoJSON&typename=baumkataster_baumstandorte'
-    },
+    download: 'https://www.ogd.stadt-zuerich.ch/wfs/geoportal/Baumkataster?service=WFS&version=1.1.0&request=GetFeature&outputFormat=GeoJSON&typename=baumkataster_baumstandorte',
     srs: 'EPSG:2056',
     crosswalk: {
       ref: 'baumnummer',
@@ -6612,9 +6412,7 @@ module.exports = [
     city: 'Norwich',
     scope: 'Tree: notable',
     info: 'https://data.gov.uk/dataset/d4779659-8981-4d5a-89bf-3058e7f6d21b/tree-preservation-orders-trees',
-    download: {
-      wfs: 'http://inspire.misoportal.com/geoserver/norwich_city_council_tpo_trees_trees/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=norwich_city_council_tpo_trees_trees:tpo_trees_trees&srsName=EPSG:4326'
-    }
+    download: 'http://inspire.misoportal.com/geoserver/norwich_city_council_tpo_trees_trees/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=norwich_city_council_tpo_trees_trees:tpo_trees_trees&srsName=EPSG:4326'
   },
   {
     country: 'United Kingdom',
@@ -6623,9 +6421,7 @@ module.exports = [
     scope: 'Tree',
     notes: 'Replaces Camden subset of London',
     info: 'https://opendata.camden.gov.uk/Environment/Trees-In-Camden/csqp-kdss',
-    download: {
-      socrata: 'https://opendata.camden.gov.uk/api/views/csqp-kdss/rows.csv'
-    },
+    download: 'https://opendata.camden.gov.uk/api/views/csqp-kdss/rows.csv',
     driver: 'CSV',
     geometry: { x: 'Longitude', y: 'Latitude' },
     delFunc: x => x['Number Of Trees'] == 0 || x['Scientific Name'].match(/^vacant /i),
@@ -6789,9 +6585,7 @@ module.exports = [
     city: 'Milton Keynes',
     scope: 'Tree: notable',
     info: 'https://www.data.gov.uk/dataset/4e83ed56-f357-4974-8850-824dcbdea554/tree-preservation-orders-trees',
-    download: {
-      wfs: 'https://mapping.milton-keynes.gov.uk/GetOWS.ashx?MAPSOURCE=MiltonKeynes/inspire&version=1.1.0&request=GetFeature&service=WFS&typeName=tpo_points'
-    }
+    download: 'https://mapping.milton-keynes.gov.uk/GetOWS.ashx?MAPSOURCE=MiltonKeynes/inspire&version=1.1.0&request=GetFeature&service=WFS&typeName=tpo_points'
   },
   {
     country: 'United Kingdom',
@@ -6810,9 +6604,7 @@ module.exports = [
     designation: 'Dartmoor National Park',
     scope: 'Tree: notable',
     info: 'https://www.data.gov.uk/dataset/fe56528a-c607-4dcd-845d-631f32fd92b9/dnpa-veteran-trees',
-    download: {
-      wfs: 'https://maps.dartmoor.gov.uk/geoserver/inspire/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=inspire:dnpa_veteran_trees&srsName=EPSG:4326'
-    },
+    download: 'https://maps.dartmoor.gov.uk/geoserver/inspire/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=inspire:dnpa_veteran_trees&srsName=EPSG:4326',
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -6823,9 +6615,7 @@ module.exports = [
     inactive: true,
     notes: 'Tree preservation orders | Originally downloaded as a zipped shapefile',
     info: 'https://www.data.gov.uk/dataset/3169df15-9549-4fcf-8907-2fd3d96d0728/enpa-tree-preservation-orders',
-    download: {
-      wfs: 'http://inspire.nationalparks.gov.uk:80/geoserver/enpa_inspire/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=enpa_inspire:enpa_tpo_tree&maxFeatures=50&outputFormat=SHAPE-ZIP'
-    },
+    download: 'http://inspire.nationalparks.gov.uk:80/geoserver/enpa_inspire/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=enpa_inspire:enpa_tpo_tree&maxFeatures=50&outputFormat=SHAPE-ZIP',
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -6836,9 +6626,7 @@ module.exports = [
     inactive: true,
     notes: 'Veteran trees | Originally downloaded as a zipped shapefile',
     info: 'https://www.data.gov.uk/dataset/0d414ed8-6424-4c8a-aebb-a156b17695bb/enpa-veteran-tree',
-    download: {
-      wfs: 'http://inspire.nationalparks.gov.uk:80/geoserver/enpa_inspire/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=enpa_inspire:enpa_vettree&maxFeatures=50&outputFormat=SHAPE-ZIP'
-    },
+    download: 'http://inspire.nationalparks.gov.uk:80/geoserver/enpa_inspire/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=enpa_inspire:enpa_vettree&maxFeatures=50&outputFormat=SHAPE-ZIP',
     license: {
       name: 'Ordnance Survey INSPIRE End User Licence',
       url: 'https://www.ordnancesurvey.co.uk/documents/licensing/inspire-end-user-licence.pdf'
@@ -7008,9 +6796,7 @@ module.exports = [
     city: 'Mesa',
     scope: 'Tree',
     info: 'https://data.mesaaz.gov/Environmental-Management-and-Sustainability/Tree-Inventory/jcys-68y7',
-    download: {
-      socrata: 'https://data.mesaaz.gov/api/geospatial/jcys-68y7?method=export&format=geojson'
-    }
+    download: 'https://data.mesaaz.gov/api/geospatial/jcys-68y7?method=export&format=geojson'
   },
   {
     country: 'United States',
@@ -7754,9 +7540,7 @@ module.exports = [
     scope: 'Tree',
     notes: 'Geofenced (US)',
     info: 'https://data.cityofberkeley.info/Natural-Resources/City-Trees/9t35-jmin',
-    download: {
-      socrata: 'https://data.cityofberkeley.info/api/geospatial/9t35-jmin?method=export&format=geojson'
-    },
+    download: 'https://data.cityofberkeley.info/api/geospatial/9t35-jmin?method=export&format=geojson',
     crosswalk: {
       scientific: 'SPECIES',
       common: 'Common_Nam',
@@ -7950,9 +7734,7 @@ module.exports = [
     city: 'Long Beach',
     scope: 'Tree',
     info: 'https://data.longbeach.gov/explore/dataset/tree-inventory/information/',
-    download: {
-      opendatasoft: 'https://data.longbeach.gov/api/explore/v2.1/catalog/datasets/tree-inventory/exports/geojson'
-    },
+    download: 'https://data.longbeach.gov/api/explore/v2.1/catalog/datasets/tree-inventory/exports/geojson',
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -7961,7 +7743,7 @@ module.exports = [
     city: 'Los Angeles',
     scope: 'Tree',
     info: 'https://data.lacity.org/A-Livable-and-Sustainable-City/Street-Tree-Inventory-1990s/vt5t-mscf',
-    download: { socrata: 'https://data.lacity.org/api/views/vt5t-mscf/rows.csv' },
+    download: 'https://data.lacity.org/api/views/vt5t-mscf/rows.csv',
     geometry: { x: 'X', y: 'Y' },
     srs: 'EPSG:4326',
     license: { id: 'CC0-1.0' }
@@ -8045,9 +7827,7 @@ module.exports = [
     city: 'Oakland',
     scope: 'Tree',
     info: 'https://data.oaklandca.gov/dataset/Street-Trees/9e7e-63pp',
-    download: {
-      socrata: 'https://data.oaklandca.gov/api/geospatial/9e7e-63pp?method=export&format=geojson'
-    },
+    download: 'https://data.oaklandca.gov/api/geospatial/9e7e-63pp?method=export&format=geojson',
     fallingfruit_id: 81
   },
   {
@@ -8209,9 +7989,7 @@ module.exports = [
     city: 'Richmond',
     scope: 'Tree',
     info: 'https://www.transparentrichmond.org/Environmental-and-Health-Initiatives/Richmond-Urban-Forestry-Inventory/pev4-ymun',
-    download: {
-      socrata: 'https://www.transparentrichmond.org/api/geospatial/pev4-ymun?method=export&format=geojson'
-    }
+    download: 'https://www.transparentrichmond.org/api/geospatial/pev4-ymun?method=export&format=geojson'
   },
   {
     country: 'United States',
@@ -8252,9 +8030,7 @@ module.exports = [
     city: 'Salinas',
     scope: 'Tree',
     info: 'https://cityofsalinas.opendatasoft.com/explore/dataset/tree-inventory/information/',
-    download: {
-      opendatasoft: 'https://cityofsalinas.opendatasoft.com/api/explore/v2.1/catalog/datasets/tree-inventory/exports/geojson'
-    },
+    download: 'https://cityofsalinas.opendatasoft.com/api/explore/v2.1/catalog/datasets/tree-inventory/exports/geojson',
     license: { id: 'ODbL-1.0' }
   },
   {
@@ -8307,7 +8083,7 @@ module.exports = [
     city: 'San Francisco',
     scope: 'Tree',
     info: 'https://data.sfgov.org/City-Infrastructure/Street-Tree-List/tkzw-k3nq',
-    download: { socrata: 'https://data.sfgov.org/api/views/tkzw-k3nq/rows.csv' },
+    download: 'https://data.sfgov.org/api/views/tkzw-k3nq/rows.csv',
     geometry: { x: 'Longitude', y: 'Latitude' },
     crosswalk: {
       ref: 'TreeID',
@@ -8516,7 +8292,7 @@ module.exports = [
     scope: 'Tree',
     notes: 'Likely georeferenced from address',
     info: 'https://data.weho.org/Infrastructure/City-Tree-Inventory/qqwt-wx9z',
-    download: { socrata: 'https://data.weho.org/api/views/qqwt-wx9z/rows.csv' },
+    download: 'https://data.weho.org/api/views/qqwt-wx9z/rows.csv',
     coordsFunc: x => {
       // 1250 FAIRFAX AV\nWest Hollywood, CA\n(34.093341, -118.361436)
       const match = x['Location'].match(/\(([0-9\.\-]+),\s*([0-9\.\-]+)\)$/)
@@ -8616,9 +8392,7 @@ module.exports = [
     city: 'Colorado Springs',
     scope: 'Tree',
     info: 'https://data.coloradosprings.gov/dataset/City-of-Colorado-Springs-Trees/e6wv-b629',
-    download: {
-      socrata: 'https://data.coloradosprings.gov/api/geospatial/e6wv-b629?method=export&format=geojson'
-    },
+    download: 'https://data.coloradosprings.gov/api/geospatial/e6wv-b629?method=export&format=geojson',
     crosswalk: { ref: 'OBJECTID', common: 'Common_Name', dbh_in: 'DBH' },
     opentrees_id: 'colorado_springs-co'
   },
@@ -9221,9 +8995,7 @@ module.exports = [
     designation: 'Honolulu County',
     scope: 'Tree: notable',
     info: 'https://data.honolulu.gov/Recreation/Exceptional-Trees-On-Oahu/84fd-3fzf',
-    download: {
-      socrata: 'https://data.honolulu.gov/api/views/84fd-3fzf/rows.csv'
-    },
+    download: 'https://data.honolulu.gov/api/views/84fd-3fzf/rows.csv',
     geometry: { x: 'Longitude', y: 'Latitude' },
     srs: 'EPSG:4326',
     license: { id: 'CC0-1.0' }
@@ -9352,9 +9124,7 @@ module.exports = [
     city: 'Evanston',
     scope: 'Tree',
     info: 'https://data.cityofevanston.org/Information-Technology-includes-maps-geospatial-da/Trees/5xaw-wg36',
-    download: {
-      socrata: 'https://data.cityofevanston.org/api/geospatial/5xaw-wg36?method=export&format=geojson'
-    }
+    download: 'https://data.cityofevanston.org/api/geospatial/5xaw-wg36?method=export&format=geojson'
   },
   {
     country: 'United States',
@@ -9836,9 +9606,7 @@ module.exports = [
     designation: 'Montgomery County',
     scope: 'Tree: planted',
     info: 'https://data.montgomerycountymd.gov/Environment/Tree-Planting-Locations/2gfx-khvb',
-    download: {
-      socrata: 'https://data.montgomerycountymd.gov/api/geospatial/2gfx-khvb?method=export&format=geojson'
-    }
+    download: 'https://data.montgomerycountymd.gov/api/geospatial/2gfx-khvb?method=export&format=geojson'
   },
   {
     country: 'United States',
@@ -11008,9 +10776,7 @@ module.exports = [
     city: 'Jersey City',
     scope: 'Tree',
     info: 'https://data.jerseycitynj.gov/explore/dataset/2021-tree-inventory/information/',
-    download: {
-      opendatasoft: 'https://data.jerseycitynj.gov/api/explore/v2.1/catalog/datasets/2021-tree-inventory/exports/geojson'
-    }
+    download: 'https://data.jerseycitynj.gov/api/explore/v2.1/catalog/datasets/2021-tree-inventory/exports/geojson'
   },
   {
     country: 'United States',
@@ -11119,9 +10885,7 @@ module.exports = [
     scope: 'Tree: street',
     notes: 'GeoJSON export yields a broken file',
     info: 'https://data.buffalony.gov/Quality-of-Life/Tree-Inventory/n4ni-uuec',
-    download: {
-      socrata: 'https://data.buffalony.gov/api/views/n4ni-uuec/rows.csv'
-    },
+    download: 'https://data.buffalony.gov/api/views/n4ni-uuec/rows.csv',
     driver: 'CSV',
     geometry: { x: 'Longitude', y: 'Latitude' },
     srs: 'EPSG:4326',
@@ -11254,9 +11018,7 @@ module.exports = [
     city: 'New York',
     scope: 'Tree: street',
     info: 'https://data.cityofnewyork.us/Environment/2015-Street-Tree-Census-Tree-Data/uvpi-gqnh',
-    download: {
-      socrata: 'https://data.cityofnewyork.us/api/views/uvpi-gqnh/rows.csv'
-    },
+    download: 'https://data.cityofnewyork.us/api/views/uvpi-gqnh/rows.csv',
     geometry: { x: 'longitude', y: 'latitude' },
     srs: 'EPSG:4326',
     delFunc: x => x['status'] === 'Stump',
@@ -11276,9 +11038,7 @@ module.exports = [
     city: 'New York',
     scope: 'Tree',
     info: 'https://data.cityofnewyork.us/Environment/Forestry-Tree-Points/hn5i-inap',
-    download: {
-      socrata: 'https://data.cityofnewyork.us/api/views/hn5i-inap/rows.csv'
-    },
+    download: 'https://data.cityofnewyork.us/api/views/hn5i-inap/rows.csv',
     geometry: { wkt: 'Geometry' },
     srs: 'EPSG:4326',
     opentrees_id: 'nyc'
@@ -11473,9 +11233,7 @@ module.exports = [
     city: 'Cary',
     scope: 'Tree',
     info: 'https://data.townofcary.org/explore/dataset/cary-trees/information/',
-    download: {
-      opendatasoft: 'https://data.townofcary.org/api/explore/v2.1/catalog/datasets/cary-trees/exports/geojson'
-    },
+    download: 'https://data.townofcary.org/api/explore/v2.1/catalog/datasets/cary-trees/exports/geojson',
     crosswalk: { updated: 'editdate', common: 'name', description: 'description' },
     license: { id: 'ODbL-1.0' },
     opentrees_id: 'cary'
@@ -12474,9 +12232,7 @@ module.exports = [
     city: 'Providence',
     scope: 'Tree: street',
     info: 'https://data.providenceri.gov/Neighborhoods/Providence-Tree-Inventory/uv9w-h8i4',
-    download: {
-      socrata: 'https://data.providenceri.gov/api/views/uv9w-h8i4/rows.csv'
-    },
+    download: 'https://data.providenceri.gov/api/views/uv9w-h8i4/rows.csv',
     coordsFunc: x => x['Property Address'].split('\n').reverse()[0].split(/[(), ]/).filter(Number).map(Number).reverse(),
     crosswalk: { scientific: 'Species', dbh_in: 'Diameter in Inches' },
     opentrees_id: 'providence'
@@ -13417,9 +13173,7 @@ module.exports = [
     city: 'Provo',
     scope: 'Tree',
     info: 'https://opendata.utah.gov/dataset/Trees_1K/595y-dqkb',
-    download: {
-      socrata: 'https://opendata.utah.gov/api/geospatial/595y-dqkb?method=export&format=geojson'
-    }
+    download: 'https://opendata.utah.gov/api/geospatial/595y-dqkb?method=export&format=geojson'
   },
   {
     country: 'United States',

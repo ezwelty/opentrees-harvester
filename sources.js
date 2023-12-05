@@ -876,7 +876,7 @@ module.exports = [
     scope: 'Tree',
     info: [
       'https://www.data.gv.at/katalog/dataset/baumkataster-der-gemeinde-engerwitzdorf',
-      'https://www.data.gv.at/katalog/dataset/b40038b4-b4ca-45cf-b587-a063efff109f/resource/c7cdd771-3654-4f14-ab3d-27df980a4227/download/baumkataster-standorte-engerwitzdorf-2019.pdf'
+      {file: 'https://www.data.gv.at/katalog/dataset/b40038b4-b4ca-45cf-b587-a063efff109f/resource/c7cdd771-3654-4f14-ab3d-27df980a4227/download/baumkataster-standorte-engerwitzdorf-2019.pdf'}
     ],
     download: 'https://www.data.gv.at/katalog/dataset/b40038b4-b4ca-45cf-b587-a063efff109f/resource/bed4f301-a8be-4262-98e2-bc3b94463679/download/baumkataster.rar',
     openFunc: async file => {
@@ -1063,7 +1063,7 @@ module.exports = [
     scope: 'Tree',
     info: [
       'https://github.com/Playzinho/osm_projects/blob/c952ec6e35a1144e7c5540e3eebb289859c91330/Brazil%20Data/MG/Prefeitura%20de%20Governador%20Valadares/Original%20Files/trees.zip',
-      'https://github.com/Playzinho/osm_projects/raw/c952ec6e35a1144e7c5540e3eebb289859c91330/Brazil%20Data/MG/Prefeitura%20de%20Governador%20Valadares/BR-MG-GovernadorValadares-license-2020-11-20.pdf'
+      {file: 'https://github.com/Playzinho/osm_projects/raw/c952ec6e35a1144e7c5540e3eebb289859c91330/Brazil%20Data/MG/Prefeitura%20de%20Governador%20Valadares/BR-MG-GovernadorValadares-license-2020-11-20.pdf'}
     ],
     download: 'https://github.com/Playzinho/osm_projects/raw/c952ec6e35a1144e7c5540e3eebb289859c91330/Brazil%20Data/MG/Prefeitura%20de%20Governador%20Valadares/Original%20Files/trees.zip',
     vfs: '/vsizip/',
@@ -1075,7 +1075,7 @@ module.exports = [
     state: 'Minas Gerais',
     city: 'Governador Valadares',
     scope: 'Tree',
-    info: 'https://github.com/Playzinho/osm_projects/raw/c952ec6e35a1144e7c5540e3eebb289859c91330/Brazil%20Data/MG/Prefeitura%20de%20Governador%20Valadares/BR-MG-GovernadorValadares-license-2020-11-20.pdf',
+    info: {file: 'https://github.com/Playzinho/osm_projects/raw/c952ec6e35a1144e7c5540e3eebb289859c91330/Brazil%20Data/MG/Prefeitura%20de%20Governador%20Valadares/BR-MG-GovernadorValadares-license-2020-11-20.pdf'},
     download: 'http://intranet.valadares.mg.gov.br:85/geoserver/gm_governador_valadares/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=gm_governador_valadares:st_vegetacao&srsName=EPSG:4326&outputFormat=application/json',
     license: { id: 'CC0-1.0' }
   },
@@ -5346,7 +5346,7 @@ module.exports = [
     scope: 'Tree',
     info: [
       'https://ckan.dataplatform.nl/dataset/bomen-dordrecht',
-      'https://ckan.dataplatform.nl/dataset/4c1cd59b-1057-4d47-bd84-f67a9cfd0f27/resource/b46681f1-e9b6-47b8-bfa5-80ede63299b5/download/definitie-bomen-dordrecht.txt'
+      {file: 'https://ckan.dataplatform.nl/dataset/88e31108-d6ae-4307-a331-2069894b4b62/resource/b46681f1-e9b6-47b8-bfa5-80ede63299b5/download/definitie-bomen-dordrecht.txt'}
     ],
     download: 'https://ckan.dataplatform.nl/datastore/dump/684ee3f2-333c-4b07-bbb5-d08a393d6ed1?bom=True',
     coordsFunc: x => [
@@ -5797,7 +5797,7 @@ module.exports = [
     scope: 'Tree: notable',
     info: [
       'https://datosabiertos.jcyl.es/web/jcyl/set/es/medio-ambiente/arboles_singulares/1284378127197',
-      'https://datosabiertos.jcyl.es/web/jcyl/binarios/806/840/Diccionario%20de%20entidades.pdf'
+      {file: 'https://datosabiertos.jcyl.es/web/jcyl/binarios/806/840/Diccionario%20de%20entidades.pdf'}
     ],
     download: 'https://datosabiertos.jcyl.es/web/jcyl/risp/es/medio-ambiente/arboles_singulares/1284378127197.gml32',
     license: { id: 'CC-BY-4.0' }
@@ -14110,8 +14110,8 @@ module.exports = [
     scope: 'Tree',
     info: [
       'https://catalogodatos.gub.uy/dataset/intendencia-montevideo-censo-de-arbolado-2008',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt'},
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'}
     ],
     download: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/3572ea34-9dc4-4fd6-b3d4-c1d5ba8cd3bb/download/archivo_comunal1.csv',
     driver: 'CSV',
@@ -14129,8 +14129,8 @@ module.exports = [
     scope: 'Tree',
     info: [
       'https://catalogodatos.gub.uy/dataset/intendencia-montevideo-censo-de-arbolado-2008',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt'},
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'}
     ],
     download: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/57bd8340-955f-467d-bcb8-b6abf86413a5/download/archivo_comunal10.csv',
     driver: 'CSV',
@@ -14148,8 +14148,8 @@ module.exports = [
     scope: 'Tree',
     info: [
       'https://catalogodatos.gub.uy/dataset/intendencia-montevideo-censo-de-arbolado-2008',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt'},
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'}
     ],
     download: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/1da9f485-abcf-495f-8fb4-3502579c863a/download/archivo_comunal11.csv',
     driver: 'CSV',
@@ -14167,8 +14167,8 @@ module.exports = [
     scope: 'Tree',
     info: [
       'https://catalogodatos.gub.uy/dataset/intendencia-montevideo-censo-de-arbolado-2008',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt'},
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'}
     ],
     download: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/7c6edc37-4c96-425c-a429-9f2e2fb877e7/download/archivo_comunal12.csv',
     driver: 'CSV',
@@ -14186,8 +14186,8 @@ module.exports = [
     scope: 'Tree',
     info: [
       'https://catalogodatos.gub.uy/dataset/intendencia-montevideo-censo-de-arbolado-2008',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt'},
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'}
     ],
     download: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/50626e2c-2150-4ffa-9578-54f10d2dbd0b/download/archivo_comunal13.csv',
     driver: 'CSV',
@@ -14205,8 +14205,8 @@ module.exports = [
     scope: 'Tree',
     info: [
       'https://catalogodatos.gub.uy/dataset/intendencia-montevideo-censo-de-arbolado-2008',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt'},
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'}
     ],
     download: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/992b16cb-f560-42f1-b453-6e2303be9ca6/download/archivo_comunal14.csv',
     driver: 'CSV',
@@ -14224,8 +14224,8 @@ module.exports = [
     scope: 'Tree',
     info: [
       'https://catalogodatos.gub.uy/dataset/intendencia-montevideo-censo-de-arbolado-2008',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt'},
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'}
     ],
     download: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/43342c19-da4a-469d-959f-bde826edb10c/download/archivo_comunal15.csv',
     driver: 'CSV',
@@ -14243,8 +14243,8 @@ module.exports = [
     scope: 'Tree',
     info: [
       'https://catalogodatos.gub.uy/dataset/intendencia-montevideo-censo-de-arbolado-2008',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt'},
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'}
     ],
     download: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5e48dc93-bf10-4d51-9862-865465b4d4ec/download/archivo_comunal16.csv',
     driver: 'CSV',
@@ -14262,8 +14262,8 @@ module.exports = [
     scope: 'Tree',
     info: [
       'https://catalogodatos.gub.uy/dataset/intendencia-montevideo-censo-de-arbolado-2008',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt'},
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'}
     ],
     download: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/4dda84c6-45b0-459e-a51d-2e9dc0a4b332/download/archivo_comunal17.csv',
     driver: 'CSV',
@@ -14281,8 +14281,8 @@ module.exports = [
     scope: 'Tree',
     info: [
       'https://catalogodatos.gub.uy/dataset/intendencia-montevideo-censo-de-arbolado-2008',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt'},
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'}
     ],
     download: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/6e1919b6-8208-4562-9a50-0880ad302d40/download/archivo_comunal18.csv',
     driver: 'CSV',
@@ -14300,8 +14300,8 @@ module.exports = [
     scope: 'Tree',
     info: [
       'https://catalogodatos.gub.uy/dataset/intendencia-montevideo-censo-de-arbolado-2008',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt'},
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'}
     ],
     download: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/8493b5a7-f319-4e36-93dd-d5c8e7015ff9/download/archivo_comunal2.csv',
     driver: 'CSV',
@@ -14319,8 +14319,8 @@ module.exports = [
     scope: 'Tree',
     info: [
       'https://catalogodatos.gub.uy/dataset/intendencia-montevideo-censo-de-arbolado-2008',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt'},
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'}
     ],
     download: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/828792ea-051f-46a8-9c9e-d88e1d4d6ef3/download/archivo_comunal3.csv',
     driver: 'CSV',
@@ -14338,8 +14338,8 @@ module.exports = [
     scope: 'Tree',
     info: [
       'https://catalogodatos.gub.uy/dataset/intendencia-montevideo-censo-de-arbolado-2008',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt'},
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'}
     ],
     download: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/f70d1224-fc4a-4c1a-a291-bb33a517e9b6/download/archivo_comunal4.csv',
     driver: 'CSV',
@@ -14357,8 +14357,8 @@ module.exports = [
     scope: 'Tree',
     info: [
       'https://catalogodatos.gub.uy/dataset/intendencia-montevideo-censo-de-arbolado-2008',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt'},
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'}
     ],
     download: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/14d525ae-0c13-4738-af0c-cfcf87072e7f/download/archivo_comunal5.csv',
     driver: 'CSV',
@@ -14376,8 +14376,8 @@ module.exports = [
     scope: 'Tree',
     info: [
       'https://catalogodatos.gub.uy/dataset/intendencia-montevideo-censo-de-arbolado-2008',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt'},
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'}
     ],
     download: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/871491ff-f1a1-468e-b7b7-c1308a6b238d/download/archivo_comunal6.csv',
     driver: 'CSV',
@@ -14395,8 +14395,8 @@ module.exports = [
     scope: 'Tree',
     info: [
       'https://catalogodatos.gub.uy/dataset/intendencia-montevideo-censo-de-arbolado-2008',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt'},
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'}
     ],
     download: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/93b58a46-616b-4c1a-b4f3-6b0b17dcd98f/download/archivo_comunal7.csv',
     driver: 'CSV',
@@ -14414,8 +14414,8 @@ module.exports = [
     scope: 'Tree',
     info: [
       'https://catalogodatos.gub.uy/dataset/intendencia-montevideo-censo-de-arbolado-2008',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt'},
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'}
     ],
     download: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/283ace9a-f8f8-476b-87bf-a17611675007/download/archivo_comunal8.csv',
     driver: 'CSV',
@@ -14433,8 +14433,8 @@ module.exports = [
     scope: 'Tree',
     info: [
       'https://catalogodatos.gub.uy/dataset/intendencia-montevideo-censo-de-arbolado-2008',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt',
-      'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/c799548d-e9bb-492b-9179-53de2b748d43/download/referencias.txt'},
+      {file: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5416308f-256f-4d7a-afaf-336a8e872a70/download/codigos-de-especie.csv'}
     ],
     download: 'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/5dcb4d2d-87a7-433b-9ce3-8187f505c908/download/archivo_comunal9.csv',
     driver: 'CSV',

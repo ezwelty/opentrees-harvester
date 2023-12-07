@@ -1112,7 +1112,7 @@ module.exports = [
     city: 'Campinas',
     designation: 'Universidade Estadual de Campinas',
     scope: 'Tree',
-    info: 'https://atlas.unicamp.br/apps/unicamp-arcgis::censo-das-%C3%A1rvores/about',
+    info: 'https://services5.arcgis.com/dFCi4j751Fk5jtHP/ArcGIS/rest/services/%c3%81rvores/FeatureServer',
     download: {
       arcgis: 'https://services5.arcgis.com/dFCi4j751Fk5jtHP/ArcGIS/rest/services/%c3%81rvores/FeatureServer/0'
     }
@@ -1122,10 +1122,18 @@ module.exports = [
     state: 'Alberta',
     designation: 'Strathcona County',
     scope: 'Tree',
-    info: 'https://data.strathcona.ca/Environment/Trees/ig6t-pdus',
-    download: 'https://data.strathcona.ca/api/geospatial/ig6t-pdus?method=export&format=geojson',
-    crosswalk: { ref: 'TreeSiteID', common: 'Name' },
-    license: { id: 'OGL-Canada-2.0' },
+    info: 'https://opendata-strathconacounty.hub.arcgis.com/datasets/StrathconaCounty::trees/about',
+    download: 'https://services.arcgis.com/B7ZrK1Hv4P1dsm9R/arcgis/rest/services/Trees1/FeatureServer/0',
+    crosswalk: {
+      ref: 'SiteID',
+      common: 'Species',
+      dbh_cm: 'Diam_cm',
+      height_ft: 'Height_ft'
+    },
+    license: {
+      name: 'Open Government License – Strathcona County 1.0',
+      url: 'https://opendata-strathconacounty.hub.arcgis.com/pages/licence'
+    },
     opentrees_id: 'strathcona'
   },
   {
@@ -1285,7 +1293,7 @@ module.exports = [
     },
     license: {
       name: 'Open Government Licence – City of Kelowna 2.0',
-      url: 'https://apps.kelowna.ca/images/opendata/opengovernmentlicence.pdf'
+      url: {file: 'https://apps.kelowna.ca/images/opendata/opengovernmentlicence.pdf'}
     },
     opentrees_id: 'kelowna'
   },
@@ -1423,7 +1431,7 @@ module.exports = [
     },
     license: {
       name: 'Open Government Licence – City of Penticton 2.0',
-      url: 'https://www.penticton.ca/sites/default/files/docs/our-community/maps-gis/2020-07-02-PDF-Open%20Data%20Government%20Licence.pdf'
+      url: {file: 'https://www.penticton.ca/sites/default/files/docs/our-community/maps-gis/2020-07-02-PDF-Open%20Data%20Government%20Licence.pdf'}
     }
   },
   {
@@ -1450,7 +1458,7 @@ module.exports = [
     },
     license: {
       name: 'Open Government License – City of Prince George 2.0',
-      url: 'https://pgmapinfo.princegeorge.ca/opendata/CityofPrinceGeorge_Open_Government_License_Open_Data.pdf'
+      url: {file: 'https://pgmapinfo.princegeorge.ca/opendata/CityofPrinceGeorge_Open_Government_License_Open_Data.pdf'}
     },
     opentrees_id: 'prince_george'
   },
@@ -1636,7 +1644,7 @@ module.exports = [
     },
     license: {
       name: 'Moncton Open Data Terms of Use',
-      url: 'https://www5.moncton.ca/docs/Open_Data_Terms_of_Use.pdf'
+      url: {file: 'https://www5.moncton.ca/docs/Open_Data_Terms_of_Use.pdf'}
     },
     opentrees_id: 'moncton'
   },
@@ -1708,7 +1716,7 @@ module.exports = [
     },
     license: {
       name: 'Open Data Licence – York Region 1.0',
-      url: 'https://www.arcgis.com/sharing/rest/content/items/78cc02388af248c0b7a30eda6adfade0/data'
+      url: {file: 'https://www.arcgis.com/sharing/rest/content/items/78cc02388af248c0b7a30eda6adfade0/data'}
     },
     opentrees_id: 'york_ca'
   },
@@ -1730,7 +1738,7 @@ module.exports = [
     },
     license: {
       name: 'Open Data License – Town of Ajax 2.0',
-      url: 'http://townofajax.maps.arcgis.com/sharing/rest/content/items/22e2d8e248724d7cb0310dc2db675abd/data'
+      url: {file: 'http://townofajax.maps.arcgis.com/sharing/rest/content/items/22e2d8e248724d7cb0310dc2db675abd/data'}
     },
     opentrees_id: 'ajax'
   },
@@ -1760,7 +1768,7 @@ module.exports = [
     },
     license: {
       name: 'Terms of Use for Open Data Burlington 2011.09.19',
-      url: 'https://opendata.burlington.ca/opendata-terms-of-use/City%20of%20Burlington%20-%20Open%20Data%20Terms%20of%20Use.pdf'
+      url: {file: 'https://opendata.burlington.ca/opendata-terms-of-use/City%20of%20Burlington%20-%20Open%20Data%20Terms%20of%20Use.pdf'}
     }
   },
   {
@@ -1801,7 +1809,7 @@ module.exports = [
     },
     license: {
       name: 'Open Government Licence – City of Cambridge 2.0',
-      url: 'https://maps.cambridge.ca/images/opendata/Open%20data%20licence.pdf'
+      url: {file: 'https://maps.cambridge.ca/images/opendata/Open%20data%20licence.pdf'}
     }
   },
   {
@@ -1864,7 +1872,7 @@ module.exports = [
     download: 'https://opendatakingston.cityofkingston.ca/api/explore/v2.1/catalog/datasets/trees-municipal/exports/geojson',
     license: {
       name: 'Open Data Licence – City of Kingston 1.0',
-      url: 'https://www.cityofkingston.ca/documents/10180/144997/CityofKingston_OpenDataLicense.pdf'
+      url: {file: 'https://www.cityofkingston.ca/documents/10180/144997/CityofKingston_OpenDataLicense.pdf'}
     }
   },
   {
@@ -1936,7 +1944,7 @@ module.exports = [
     },
     license: {
       name: 'City of Mississauga – Terms of Use ',
-      url: 'http://www5.mississauga.ca/research_catalogue/CityofMississauga_TermsofUse.pdf'
+      url: {file: 'http://www5.mississauga.ca/research_catalogue/CityofMississauga_TermsofUse.pdf'}
     },
     opentrees_id: 'mississauga_ca'
   },
@@ -2097,7 +2105,7 @@ module.exports = [
     },
     license: {
       name: 'Open Government License – Town of Whitby 1.0',
-      url: 'https://whitby.maps.arcgis.com/sharing/rest/content/items/223810efc31c40b3aff99dd74f809a97/data'
+      url: {file: 'https://whitby.maps.arcgis.com/sharing/rest/content/items/223810efc31c40b3aff99dd74f809a97/data'}
     }
   },
   {
@@ -2717,11 +2725,13 @@ module.exports = [
   {
     country: 'France',
     state: 'Auvergne-Rhône-Alpes',
-    city: 'Grenoble',
-    designation: 'Grenoble Region',
+    designation: 'Grenoble-Alpes Métropole',
     scope: 'Tree: street (main)',
-    info: 'https://data.metropolegrenoble.fr/ckan/dataset/espnat_pat_arbore_tous',
-    download: 'https://entrepot.metropolegrenoble.fr/opendata/200040715-MET/ESPNAT_PAT_ARBORE_TOUS/json/PATRIMOINE_ARBORE_EPSG4326.json',
+    info: [
+      'https://data.metropolegrenoble.fr/visualisation/information/?id=patrimoine_arbore_du_territoire_metropolitain',
+      'https://data.metropolegrenoble.fr/visualisation/export/?id=patrimoine_arbore_du_territoire_metropolitain'
+    ],
+    download: 'https://data.metropolegrenoble.fr/d4c/api/records/2.0/downloadfile/format=geojson&resource_id=05566402-cd0d-4c9b-90b6-4a90e4629e03',
     license: { id: 'ODbL-1.0' }
   },
   {
@@ -2729,8 +2739,11 @@ module.exports = [
     state: 'Auvergne-Rhône-Alpes',
     city: 'Grenoble',
     scope: 'Tree',
-    info: 'http://data.metropolegrenoble.fr/ckan/dataset/les-arbres-de-grenoble',
-    download: 'https://entrepot.metropolegrenoble.fr/opendata/38185-GRE/EspacePublic/json/ARBRES_TERRITOIRE_VDG_EPSG4326.json',
+    info: [
+      'https://data.metropolegrenoble.fr/visualisation/information/?id=arbres-grenoble',
+      'https://data.metropolegrenoble.fr/visualisation/export/?id=arbres-grenoble'
+    ],
+    download: 'https://data.metropolegrenoble.fr/d4c/api/records/2.0/downloadfile/format=geojson&resource_id=fe91221c-48cd-468e-9adf-0548ab5c5674',
     crosswalk: {
       ref: 'BIEN_REFERENCE',
       genus: 'GENRE_BOTA',
@@ -2769,8 +2782,11 @@ module.exports = [
     state: 'Auvergne-Rhône-Alpes',
     city: 'Meylan',
     scope: 'Tree',
-    info: 'https://data.metropolegrenoble.fr/ckan/dataset/environnement',
-    download: 'https://entrepot.metropolegrenoble.fr/opendata/38229-MEY/environnement/json/arbre.geojson',
+    info: [
+      'https://data.metropolegrenoble.fr/visualisation/information/?id=environnement',
+      'https://data.metropolegrenoble.fr/visualisation/export/?id=environnement'
+    ],
+    download: 'https://data.metropolegrenoble.fr/d4c/api/records/2.0/downloadfile/format=geojson&resource_id=d47e904a-00c6-4a68-b7ac-44b5f117555c',
     license: { id: 'ODbL-1.0' }
   },
   {
@@ -2778,8 +2794,11 @@ module.exports = [
     state: 'Auvergne-Rhône-Alpes',
     city: 'Saint-Égrève',
     scope: 'Tree',
-    info: 'http://data.metropolegrenoble.fr/ckan/dataset/les-arbres-de-saint-egreve',
-    download: 'https://entrepot.metropolegrenoble.fr/opendata/38382-STE/Arbres_Saint_Egreve/json/Arbres_Saint_Egreve.json',
+    info: [
+      'https://data.metropolegrenoble.fr/visualisation/information/?id=les-arbres-de-saint-egreve',
+      'https://data.metropolegrenoble.fr/visualisation/export/?id=les-arbres-de-saint-egreve'
+    ],
+    download: 'https://data.metropolegrenoble.fr/d4c/api/records/2.0/downloadfile/format=geojson&resource_id=72f33c18-c4d7-42d8-b0cf-b179e9db7ca3',
     crosswalk: {
       genus: 'genre',
       species: 'espece',
@@ -3889,8 +3908,11 @@ module.exports = [
     state: 'Sachsen',
     city: 'Leipzig',
     scope: 'Tree',
-    info: 'https://opendata.leipzig.de/dataset/strassenbaumkataster',
-    download: 'https://opendata.leipzig.de/dataset/8024d039-9b75-4154-a4ad-05968094f4eb/resource/bed9cbfb-2b3e-416c-a071-11422861fd5f/download/strassenbaumkatasterleipzig12032020.zip',
+    info: [
+      'https://opendata.leipzig.de/dataset/baumkataster-stadt-leipzig1',
+      'https://opendata.leipzig.de/pages/usage'
+    ],
+    download: 'https://geodienste.leipzig.de/l3/OpenData/wfs?VERSION=1.3.0&REQUEST=getFeature&typeName=OpenData%3ABaeume&format_options=filename:Baumkataster_Stadt_Leipzig&outputFormat=gpkg',
     vfs: '/vsizip/',
     crosswalk: {
       scientific: 'Baumart_wi',
@@ -3906,7 +3928,10 @@ module.exports = [
     state: 'Sachsen-Anhalt',
     city: 'Halle',
     scope: 'Tree',
-    info: 'https://www.halle.de/de/Verwaltung/Online-Angebote/Offene-Verwaltungsdaten/Mit-Kartenbezug/index.aspx?ID=fa3930b7-b3ed-b3fc-20d9-2fc8fd054b0e',
+    info: [
+      'https://webapp.halle.de/komgis30.hal.opendata/fa3930b7-b3ed-b3fc-20d9-2fc8fd054b0e.html',
+      'https://halle.de/verwaltung-stadtrat/stadtverwaltung/online-angebote/open-data-portal/nutzungsbedingungen-und-lizenzen'
+    ],
     download: 'https://geodienste.halle.de/opendata/fa3930b7-b3ed-b3fc-20d9-2fc8fd054b0e?service=WFS&version=1.0.0&request=GetFeature&typeName=fa3930b7-b3ed-b3fc-20d9-2fc8fd054b0e&srsName=EPSG:4326',
     crosswalk: {
       planted: 'pflanzjahr',
@@ -3916,6 +3941,7 @@ module.exports = [
       scientific: 'art_botan',
       common: 'art_deut'
     },
+    license: { id: 'CC-BY-3.0-DE' },
     opentrees_id: 'halle'
   },
   {
@@ -4088,7 +4114,7 @@ module.exports = [
     country: 'Israel',
     designation: 'Israel Oak Association',
     scope: 'Tree: notable',
-    info: 'https://open.data.org.il/dataset/oaks-in-israel',
+    info: 'https://www.arcgis.com/home/item.html?id=d2cd75c9ac4f40748cd3bea0719730ef',
     download: {
       arcgis: 'https://services8.arcgis.com/zQk64pz1ixL4yBfJ/ArcGIS/rest/services/OakSurvey/FeatureServer/0'
     }
@@ -4369,8 +4395,8 @@ module.exports = [
     country: 'Italy',
     state: 'Lazio',
     scope: 'Tree: notable',
-    info: 'https://geoportale.regione.lazio.it/layers/geosdiownr:geonode:alberi_monumentali_20190624',
-    download: 'https://geoportale.regione.lazio.it/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=geonode:alberi_monumentali_20190624&srsName=EPSG:4326&outputFormat=application/json',
+    info: 'https://geoportale.regione.lazio.it/layers/geosdiownr:geonode:alberi_monumentali',
+    download: 'https://geoportale.regione.lazio.it/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=geonode:alberi_monumentali&srsName=EPSG:4326&outputFormat=application/json',
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -4744,8 +4770,8 @@ module.exports = [
   {
     country: 'Luxembourg',
     scope: 'Tree: notable',
-    info: 'https://data.public.lu/en/datasets/remarkable-trees/',
-    download: 'https://data.public.lu/fr/datasets/r/d92870e1-2f42-4940-9a9e-d34fe3caf8b2',
+    info: 'https://data.public.lu/en/datasets/inspire-annex-i-theme-protected-sites-remarkable-trees/',
+    download: 'https://data.public.lu/fr/datasets/r/15e30f27-794b-4eb4-baeb-2dadc1e1067a',
     crosswalk: {
       ref: 'localId',
       scientific: x => String(x.text).split(' - ')[0],
@@ -4854,10 +4880,9 @@ module.exports = [
     state: 'Flevoland',
     city: 'Lelystad',
     scope: 'Tree',
-    inactive: true,
-    info: 'https://data.overheid.nl/dataset/bomen-lelystad',
-    download: 'https://ckan.dataplatform.nl/dataset/a510615b-165d-442a-8956-1df78feb321e/resource/c6950c16-dff5-40b4-b1b5-0b2a2dffb382/download/bomen.csv',
-    geometry: { x: 'longitude', y: 'latitude' },
+    info: 'https://ckan.dataplatform.nl/dataset/lelystad-bomen',
+    download: 'https://ckan.dataplatform.nl/datastore/dump/0e07e166-652b-49e0-9a18-e093a3febd88',
+    geometry: { x: 'lon', y: 'lat' },
     srs: 'EPSG:4326',
     crosswalk: {
       common: 'SOORT_NED',
@@ -4873,10 +4898,11 @@ module.exports = [
     country: 'Netherlands',
     state: 'Gelderland',
     scope: 'Tree: notable',
-    info: 'https://hub.arcgis.com/datasets/gelderland::bomen-individueel/about',
+    info: 'https://nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/15607c11-d064-4c2a-bb0c-2a9d9a658645?tab=general',
     download: {
-      arcgis: 'https://geoportaal.gelderland.nl/gisserver/rest/services/Infra/Infra/MapServer/41'
-    }
+      arcgis: 'https://geoserver.gelderland.nl/geoserver/ngr_bow/wfs?request=GetFeature&service=WFS&version=1.1.0&outputFormat=application%2Fjson&typeName=arcgis_all_boom_punt'
+    },
+    license: { id: 'CC0-1.0' },
   },
   {
     country: 'Netherlands',
@@ -4952,10 +4978,8 @@ module.exports = [
     state: 'Noord-Brabant',
     city: 'Eindhoven',
     scope: 'Tree',
-    info: 'https://ckan.dataplatform.nl/dataset/bomen-eindhoven',
-    download: 'https://ckan.dataplatform.nl/datastore/dump/0c8e87ba-0fde-48e4-a997-7abd04c7c692?bom=True',
-    geometry: { x: 'longitude', y: 'latitude' },
-    srs: 'EPSG:4326',
+    info: 'https://data.eindhoven.nl/explore/dataset/bomen/information/',
+    download: 'https://data.eindhoven.nl/api/explore/v2.1/catalog/datasets/bomen/exports/geojson',
     crosswalk: {
       scientific: 'LATIJNSENA',
       common: 'BOOMSOORT',
@@ -5116,7 +5140,10 @@ module.exports = [
     state: 'Overijssel',
     city: 'Zwartewaterland',
     scope: 'Tree',
-    info: 'https://www.arcgis.com/home/item.html?id=d29812886105409face02f00534311c0',
+    info: [
+      'https://data.overheid.nl/dataset/bomen-zwartewaterland',
+      'https://data.overheid.nl/dataset/bomen-zwartewaterland#panel-resources'
+    ],
     download: {
       arcgis: 'https://services-eu1.arcgis.com/1AeFYBQaTUAzKcJu/arcgis/rest/services/Bomen/FeatureServer/0'
     },
@@ -5133,7 +5160,10 @@ module.exports = [
     state: 'Overijssel',
     city: 'Zwartewaterland',
     scope: 'Tree: notable',
-    info: 'https://www.arcgis.com/home/item.html?id=e4b27d0db4014b1780ea787e15729b69',
+    info: [
+      'https://data.overheid.nl/dataset/bijzondere-bomen-zwartewaterland',
+      'https://data.overheid.nl/dataset/bijzondere-bomen-zwartewaterland#panel-resources'
+    ],
     download: {
       arcgis: 'https://services-eu1.arcgis.com/1AeFYBQaTUAzKcJu/arcgis/rest/services/Bijzondere_bomen/FeatureServer/0'
     },
@@ -5156,8 +5186,8 @@ module.exports = [
     state: 'Utrecht',
     city: 'Amersfoort',
     scope: 'Tree',
-    info: 'https://amersfoort.dataplatform.nl/#/data/a6054acf-3e41-4142-9b1a-52d73ff022f3',
-    download: 'https://ckan.dataplatform.nl/dataset/a6054acf-3e41-4142-9b1a-52d73ff022f3/resource/7794f7e2-8bb9-45ba-9a9f-df910b09c40f/download/amersfoort-gemeentelijke_bomen.csv',
+    info: 'https://ckan.dataplatform.nl/dataset/amersfoort-gemeentelijke_bomen',
+    download: 'https://ckan.dataplatform.nl/dataset/7832e2c3-8365-4c03-820b-d0b0ec5c9718/resource/7794f7e2-8bb9-45ba-9a9f-df910b09c40f/download/amersfoort-gemeentelijke_bomen.csv',
     geometry: { x: 'LONGITUDE', y: 'LATITUDE' },
     srs: 'EPSG:4326',
     crosswalk: {
@@ -5172,6 +5202,7 @@ module.exports = [
       planted: 'PLANTJAAR',
       ule: 'LEVENSVERW'
     },
+
     opentrees_id: 'amersfoot_nl'
   },
   {
@@ -6237,7 +6268,7 @@ module.exports = [
     },
     license: {
       name: "Conditions Générales d'Utilisation des géodonnées et produits du SITG en libre accès 2020.09",
-      url: 'https://ge.ch/sitg/media/sitg/files/documents/conditions_generales_dutilisation_des_donnees_et_produits_du_sitg_en_libre_acces_-_revision_09.2020.pdf'
+      url: {file: 'https://ge.ch/sitg/media/sitg/files/documents/conditions_generales_dutilisation_des_donnees_et_produits_du_sitg_en_libre_acces_-_revision_09.2020.pdf'}
     },
     opentrees_id: 'geneva'
   },
@@ -6629,7 +6660,7 @@ module.exports = [
     download: 'http://inspire.nationalparks.gov.uk:80/geoserver/enpa_inspire/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=enpa_inspire:enpa_vettree&maxFeatures=50&outputFormat=SHAPE-ZIP',
     license: {
       name: 'Ordnance Survey INSPIRE End User Licence',
-      url: 'https://www.ordnancesurvey.co.uk/documents/licensing/inspire-end-user-licence.pdf'
+      url: {file: 'https://www.ordnancesurvey.co.uk/documents/licensing/inspire-end-user-licence.pdf'}
     }
   },
   {
@@ -7539,7 +7570,10 @@ module.exports = [
     city: 'Berkeley',
     scope: 'Tree',
     notes: 'Geofenced (US)',
-    info: 'https://data.cityofberkeley.info/Natural-Resources/City-Trees/9t35-jmin',
+    info: [
+      'https://data.cityofberkeley.info/Natural-Resources/City-Trees/9t35-jmin',
+      {file: 'https://data.cityofberkeley.info/api/views/9t35-jmin/files/bIawvzlczwtJhkEj-XEHZE2kCWpmyIN02KZsQBNJBlM?download=true&filename=1_Page_Narrative_City_Trees.pdf'}
+    ],
     download: 'https://data.cityofberkeley.info/api/geospatial/9t35-jmin?method=export&format=geojson',
     crosswalk: {
       scientific: 'SPECIES',
@@ -8049,7 +8083,9 @@ module.exports = [
     city: 'San Diego',
     scope: 'Tree',
     notes: 'login required',
-    info: 'https://rdw.sandag.org/Account/GetFSFile.aspx?dir=Miscellaneous&Name=Trees_SD.pdf',
+    info: {
+      manual: 'https://rdw.sandag.org/Account/GetFSFile.aspx?dir=Miscellaneous&Name=Trees_SD.pdf'
+    },
     download: {
       manual: 'https://rdw.sandag.org/Account/GetFSFile.aspx?dir=Miscellaneous&Name=Trees_SD.ZIP'
     },
@@ -9822,7 +9858,7 @@ module.exports = [
     city: 'Brookline',
     scope: 'Tree',
     notes: 'geofenced (US)',
-    info: 'https://hub.arcgis.com/maps/4500c14f85d846d6924c7f8cb532763f_14/about',
+    info: 'https://hub.arcgis.com/datasets/4500c14f85d846d6924c7f8cb532763f_14/about',
     download: {
       arcgis: 'https://gisweb.brooklinema.gov/arcgis/rest/services/OpenDataPortal/OpenDataPortal/MapServer/14'
     }
@@ -12140,6 +12176,7 @@ module.exports = [
     city: 'Philadelphia',
     scope: 'Tree',
     notes: 'superseded (for Philadelphia subset)',
+    inactive: true,
     info: 'https://www.opentreemap.org/phillytreemap/map/',
     download: { manual: 'https://www.opentreemap.org/phillytreemap/map/' },
     fallingfruit_id: 92,
@@ -14117,7 +14154,7 @@ module.exports = [
     driver: 'CSV',
     license: {
       name: 'Licencia de Datos Abiertos – Uruguay 0.1',
-      url: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'
+      url: {file: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'}
     }
   },
   {
@@ -14136,7 +14173,7 @@ module.exports = [
     driver: 'CSV',
     license: {
       name: 'Licencia de Datos Abiertos – Uruguay 0.1',
-      url: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'
+      url: {file: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'}
     }
   },
   {
@@ -14155,7 +14192,7 @@ module.exports = [
     driver: 'CSV',
     license: {
       name: 'Licencia de Datos Abiertos – Uruguay 0.1',
-      url: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'
+      url: {file: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'}
     }
   },
   {
@@ -14174,7 +14211,7 @@ module.exports = [
     driver: 'CSV',
     license: {
       name: 'Licencia de Datos Abiertos – Uruguay 0.1',
-      url: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'
+      url: {file: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'}
     }
   },
   {
@@ -14193,7 +14230,7 @@ module.exports = [
     driver: 'CSV',
     license: {
       name: 'Licencia de Datos Abiertos – Uruguay 0.1',
-      url: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'
+      url: {file: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'}
     }
   },
   {
@@ -14212,7 +14249,7 @@ module.exports = [
     driver: 'CSV',
     license: {
       name: 'Licencia de Datos Abiertos – Uruguay 0.1',
-      url: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'
+      url: {file: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'}
     }
   },
   {
@@ -14231,7 +14268,7 @@ module.exports = [
     driver: 'CSV',
     license: {
       name: 'Licencia de Datos Abiertos – Uruguay 0.1',
-      url: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'
+      url: {file: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'}
     }
   },
   {
@@ -14250,7 +14287,7 @@ module.exports = [
     driver: 'CSV',
     license: {
       name: 'Licencia de Datos Abiertos – Uruguay 0.1',
-      url: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'
+      url: {file: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'}
     }
   },
   {
@@ -14269,7 +14306,7 @@ module.exports = [
     driver: 'CSV',
     license: {
       name: 'Licencia de Datos Abiertos – Uruguay 0.1',
-      url: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'
+      url: {file: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'}
     }
   },
   {
@@ -14288,7 +14325,7 @@ module.exports = [
     driver: 'CSV',
     license: {
       name: 'Licencia de Datos Abiertos – Uruguay 0.1',
-      url: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'
+      url: {file: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'}
     }
   },
   {
@@ -14307,7 +14344,7 @@ module.exports = [
     driver: 'CSV',
     license: {
       name: 'Licencia de Datos Abiertos – Uruguay 0.1',
-      url: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'
+      url: {file: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'}
     }
   },
   {
@@ -14326,7 +14363,7 @@ module.exports = [
     driver: 'CSV',
     license: {
       name: 'Licencia de Datos Abiertos – Uruguay 0.1',
-      url: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'
+      url: {file: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'}
     }
   },
   {
@@ -14345,7 +14382,7 @@ module.exports = [
     driver: 'CSV',
     license: {
       name: 'Licencia de Datos Abiertos – Uruguay 0.1',
-      url: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'
+      url: {file: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'}
     }
   },
   {
@@ -14364,7 +14401,7 @@ module.exports = [
     driver: 'CSV',
     license: {
       name: 'Licencia de Datos Abiertos – Uruguay 0.1',
-      url: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'
+      url: {file: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'}
     }
   },
   {
@@ -14383,7 +14420,7 @@ module.exports = [
     driver: 'CSV',
     license: {
       name: 'Licencia de Datos Abiertos – Uruguay 0.1',
-      url: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'
+      url: {file: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'}
     }
   },
   {
@@ -14402,7 +14439,7 @@ module.exports = [
     driver: 'CSV',
     license: {
       name: 'Licencia de Datos Abiertos – Uruguay 0.1',
-      url: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'
+      url: {file: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'}
     }
   },
   {
@@ -14421,7 +14458,7 @@ module.exports = [
     driver: 'CSV',
     license: {
       name: 'Licencia de Datos Abiertos – Uruguay 0.1',
-      url: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'
+      url: {file: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'}
     }
   },
   {
@@ -14440,7 +14477,7 @@ module.exports = [
     driver: 'CSV',
     license: {
       name: 'Licencia de Datos Abiertos – Uruguay 0.1',
-      url: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'
+      url: {file: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'}
     }
   },
   {

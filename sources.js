@@ -14522,5 +14522,13 @@ module.exports = [
     designation: 'Library Park',
     info: 'https://www.google.com/maps/d/u/0/viewer?mid=121KIHdC3heBNHfYWLE5SL_AlYtgdvmWC',
     download: 'https://www.google.com/maps/d/u/0/kml?mid=121KIHdC3heBNHfYWLE5SL_AlYtgdvmWC&lid=xouLB4ZLO5c&forcekml=1'
+  },
+  {
+    pending: 'Multiple layers',
+    designation: 'OpenStreetMap',
+    notes: 'All trees (natural: tree) on OpenStreetMap with a common or scientific name (genus, species, or taxon tag): `(node["natural"="tree"][~"^genus:?"~"."];node["natural"="tree"][~"^taxon:?"~"."];node["natural"="tree"][~"^species:?"~"."];);out geom;` | Superseded where it overlaps other more authoritative sources',
+    info: 'https://wiki.openstreetmap.org/wiki/Tag:natural%3Dtree',
+    download: 'https://overpass-api.de/api/interpreter?data=(node%5B%22natural%22%3D%22tree%22%5D%5B~%22%5Egenus%3A%3F%22~%22.%22%5D%3Bnode%5B%22natural%22%3D%22tree%22%5D%5B~%22%5Etaxon%3A%3F%22~%22.%22%5D%3Bnode%5B%22natural%22%3D%22tree%22%5D%5B~%22%5Especies%3A%3F%22~%22.%22%5D%3B)%3Bout%20geom%3B',
+    license: { id: 'ODbL-1.0' }
   }
 ]

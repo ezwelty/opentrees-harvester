@@ -114,7 +114,7 @@ module.exports = [
     }
   },
   {
-    pending: 'multiple files',
+    omit: 'No species',
     country: 'Australia',
     state: 'New South Wales',
     city: 'Ryde',
@@ -126,6 +126,20 @@ module.exports = [
       'https://data.nsw.gov.au/data/dataset/f7cd2071-642e-4cac-9d28-d7ddf5635c39/resource/00e339ad-e411-48b2-8cfa-ed3dfa8209ca/download/public-trees-2013.shp',
       'https://data.nsw.gov.au/data/dataset/f7cd2071-642e-4cac-9d28-d7ddf5635c39/resource/3f4f3346-52d5-4084-94fc-877bf70c0a76/download/public-trees-2013.shx'
     ],
+    openFunc: files => {
+      const prefix = crypto.randomBytes(6).toString('hex')
+      // Place all files into /vsimem
+      const vsimemFiles = files.map(file => {
+        const buffer = fs.readFileSync(file)
+        const filename = path.basename(file)
+        const filepath = path.join('/vsimem/', prefix, filename)
+        gdal.vsimem.set(buffer, filepath)
+        return filepath
+      })
+      // Open shp file with gdal.open
+      const shapefile = vsimemFiles.find(x => x.endsWith('.shp'))
+      return gdal.open(shapefile)
+    },
     crosswalk: { height: 'Height' },
     license: { id: 'CC-BY-4.0' },
     opentrees_id: 'ryde'

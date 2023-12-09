@@ -9418,8 +9418,8 @@ module.exports = [
     state: 'Indiana',
     city: 'Westfield',
     scope: 'Tree: park',
-    notes: 'Downloaded from the ArcGIS Open Data portal',
-    download: { checksum: '9dfa4eb55324a49e03e9cf356047da30' },
+    about: 'https://maps.westfield.in.gov/arcgis/rest/services/Parks/TreeInventory/MapServer',
+    download: 'https://maps.westfield.in.gov/arcgis/rest/services/Parks/TreeInventory/MapServer/0',
     geometry: { x: 'x', y: 'y' },
     srs: 'EPSG:4326'
   },

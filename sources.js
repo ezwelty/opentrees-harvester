@@ -1319,7 +1319,6 @@ module.exports = [
     inactive: true,
     info: 'https://hub.arcgis.com/datasets/1971f19fc28c489b908eab199a5d2e72_85/about',
     download: 'https://opendata.arcgis.com/datasets/1971f19fc28c489b908eab199a5d2e72_85.geojson',
-    api: 'arcgis-opendata',
     crosswalk: {
       ref: 'TreeID',
       updated: 'last_edited_date',
@@ -1983,7 +1982,6 @@ module.exports = [
     scope: 'Tree',
     info: 'https://portal-exploreoakville.opendata.arcgis.com/datasets/trees/about',
     download: 'https://opendata.arcgis.com/api/v3/datasets/64fabcdb4feb40139ad20d728bfef2d4_0/downloads/data?format=geojson&spatialRefId=4326&where=1%3D1',
-    api: 'arcgis-opendata',
     crosswalk: {
       scientific: x => String(x.SPECIES).split(' - ')[1],
       common: x => String(x.SPECIES).split(' - ')[0],
@@ -2098,7 +2096,6 @@ module.exports = [
     inactive: true,
     info: 'https://hub.arcgis.com/datasets/welland::welland-trees/about',
     download: 'https://opendata.arcgis.com/datasets/4357fb7835fe49b39197a9440b2e868b_0.zip',
-    api: 'arcgis-opendata',
     vfs: '/vsizip/',
     crosswalk: {
       description: 'Genus',
@@ -2487,7 +2484,6 @@ module.exports = [
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=85a0ed2a968c43f5972654076351319f',
     download: 'https://www.arcgis.com/sharing/rest/content/items/85a0ed2a968c43f5972654076351319f/data',
-    api: 'arcgis-sharing',
     openFunc: file => helpers.openEsriFeatureCollectionWithGdal(file)
   },
   {
@@ -2685,7 +2681,6 @@ module.exports = [
     scope: 'Tree: notable',
     info: 'https://www.arcgis.com/home/item.html?id=f5cbbafa0a264e54b9b9c48669e63b74',
     download: 'https://www.arcgis.com/sharing/rest/content/items/f5cbbafa0a264e54b9b9c48669e63b74/data',
-    api: 'arcgis-sharing',
     openFunc: file => helpers.openEsriFeatureCollectionWithGdal(
       file, {layerName: 'arboles_patrimoniales_6164'}
     )
@@ -6640,7 +6635,6 @@ module.exports = [
     scope: 'Tree: notable',
     info: 'https://www.arcgis.com/home/item.html?id=03cd83eda1e2490cac1f2ae2ec099c9c',
     download: 'https://www.arcgis.com/sharing/rest/content/items/03cd83eda1e2490cac1f2ae2ec099c9c/data',
-    api: 'arcgis-sharing',
     openFunc: file => helpers.openEsriFeatureCollectionWithGdal(file)
   },
   {
@@ -6763,7 +6757,6 @@ module.exports = [
     notes: 'Also available from https://www.arcgis.com/home/item.html?id=80019297f50a489599184a8279f513ea',
     info: 'https://data.gov.uk/dataset/12dcc527-a7e2-4b23-a3c5-1501053ff0f5/council-owned-trees',
     download: 'https://opendata.arcgis.com/datasets/30f38f358843467daa2d93074a03b8d5_3.geojson',
-    api: 'arcgis-opendata',
     crosswalk: { ref: 'TREEID', scientific: 'BOTANICAL', common: 'SPECIES' },
     opentrees_id: 'york'
   },
@@ -6775,7 +6768,6 @@ module.exports = [
     notes: 'Also available from https://www.arcgis.com/home/item.html?id=80019297f50a489599184a8279f513ea',
     info: 'https://data.gov.uk/dataset/c166b067-5a9d-487b-a37d-4d350f8cff51/private-trees',
     download: 'https://opendata.arcgis.com/datasets/a602aca10afb49659720b435d3f54023_18.geojson',
-    api: 'arcgis-opendata',
     geometry: { x: 'X', y: 'Y' },
     crosswalk: { owner: 'OWNER', common: 'SPECIES', scientific: 'BOTANICAL' },
     opentrees_id: 'york-private'
@@ -6788,7 +6780,6 @@ module.exports = [
     notes: 'Also available from https://www.arcgis.com/home/item.html?id=80019297f50a489599184a8279f513ea',
     info: 'https://data.gov.uk/dataset/7866ce4e-7b72-4a4c-b59f-869697d91029/tree-preservations',
     download: 'https://opendata.arcgis.com/datasets/b573b077c8534b9cbdc5e0ce5534b30d_10.geojson',
-    api: 'arcgis-opendata',
     license: { id: 'OGL-UK-3.0' }
   },
   {
@@ -7562,7 +7553,6 @@ module.exports = [
     inactive: true,
     info: 'http://hub.arcgis.com/datasets/cob::city-trees',
     download: 'https://opendata.arcgis.com/datasets/b7a17f7ecb564be4b26ced85016ed1da_0.csv',
-    api: 'arcgis-opendata',
     geometry: { x: 'X', y: 'Y' },
     srs: 'EPSG:4326',
     crosswalk: {
@@ -8047,7 +8037,6 @@ module.exports = [
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=a44aec6ffa674c73a0d15f7c83c611bf',
     download: 'https://www.arcgis.com/sharing/rest/content/items/a44aec6ffa674c73a0d15f7c83c611bf/data',
-    api: 'arcgis-sharing',
     openFunc: file => helpers.openEsriFeatureCollectionWithGdal(
       file, {layerName: 'Tree Inventory_10-20-12_9500'}
     )
@@ -8539,7 +8528,6 @@ module.exports = [
     scope: 'Tree',
     info: 'http://www.arcgis.com/home/item.html?id=15ffe63b9b804fe5a32522b42190c6d8',
     download: 'https://www.arcgis.com/sharing/rest/content/items/15ffe63b9b804fe5a32522b42190c6d8/data',
-    api: 'arcgis-sharing',
     openFunc: file => helpers.openEsriFeatureCollectionWithGdal(file)
   },
   {
@@ -9616,7 +9604,6 @@ module.exports = [
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=9070805b76ed4636b340e8deffed9714',
     download: 'https://www.arcgis.com/sharing/rest/content/items/9070805b76ed4636b340e8deffed9714/data',
-    api: 'arcgis-sharing',
     openFunc: file => helpers.openEsriFeatureCollectionWithGdal(file)
   },
   {
@@ -9637,7 +9624,6 @@ module.exports = [
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=11ce16fa03e940879e411517f477cccb',
     download: 'https://www.arcgis.com/sharing/rest/content/items/11ce16fa03e940879e411517f477cccb/data',
-    api: 'arcgis-sharing',
     openFunc: file => helpers.openEsriFeatureCollectionWithGdal(file)
   },
   {
@@ -10207,7 +10193,6 @@ module.exports = [
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=ab795a832412417288dd0925e7caf950',
     download: 'https://www.arcgis.com/sharing/rest/content/items/ab795a832412417288dd0925e7caf950/data',
-    api: 'arcgis-sharing',
     vfs: '/vsizip/',
     fallingfruit_id: 84
   },
@@ -10279,7 +10264,6 @@ module.exports = [
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=2c0a2d3e3ae64a37b1eb3ef8148feb20',
     download: 'https://www.arcgis.com/sharing/rest/content/items/2c0a2d3e3ae64a37b1eb3ef8148feb20/data',
-    api: 'arcgis-sharing',
     vfs: '/vsizip/',
     fallingfruit_id: 82
   },
@@ -10301,7 +10285,6 @@ module.exports = [
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=c3da562461d8455dbe60c664aa5e7528',
     download: 'https://www.arcgis.com/sharing/rest/content/items/c3da562461d8455dbe60c664aa5e7528/data',
-    api: 'arcgis-sharing',
     openFunc: file => helpers.openEsriFeatureCollectionWithGdal(file)
   },
   {
@@ -10432,7 +10415,6 @@ module.exports = [
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=f69af871fd3445298fdefead75c5e698',
     download: 'https://www.arcgis.com/sharing/rest/content/items/f69af871fd3445298fdefead75c5e698/data',
-    api: 'arcgis-sharing',
     openFunc: file => helpers.openEsriFeatureCollectionWithGdal(file)
   },
   {
@@ -10486,7 +10468,6 @@ module.exports = [
     scope: 'Tree: park',
     info: 'http://www.arcgis.com/home/item.html?id=584a4dd55a2a47ca812ad015cdc46ee8',
     download: 'https://www.arcgis.com/sharing/rest/content/items/584a4dd55a2a47ca812ad015cdc46ee8/data',
-    api: 'arcgis-sharing',
     openFunc: file => helpers.openEsriFeatureCollectionWithGdal(file)
   },
   {
@@ -10497,7 +10478,6 @@ module.exports = [
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=439da5b131684fcaaacf16344f53a654',
     download: 'https://www.arcgis.com/sharing/rest/content/items/439da5b131684fcaaacf16344f53a654/data',
-    api: 'arcgis-sharing',
     openFunc: file => {
       const layerNames = [
         'Non-Native_4135',
@@ -10661,7 +10641,6 @@ module.exports = [
     scope: 'Tree',
     info: 'http://www.arcgis.com/home/item.html?id=0d417a228ec14edb92c345800b24a213',
     download: 'https://www.arcgis.com/sharing/rest/content/items/0d417a228ec14edb92c345800b24a213/data',
-    api: 'arcgis-sharing',
     openFunc: file => helpers.openEsriFeatureCollectionWithGdal(
       // title: Cut Bank, MT Urban Trees
       file, {layerName: 'cfe505fd-5ff9-4355-882d-4c2025936066'}
@@ -10674,7 +10653,6 @@ module.exports = [
     scope: 'Tree',
     info: 'http://www.arcgis.com/home/item.html?id=b0714e69cb28482f8c1dc8ecc933f0bb',
     download: 'https://www.arcgis.com/sharing/rest/content/items/b0714e69cb28482f8c1dc8ecc933f0bb/data',
-    api: 'arcgis-sharing',
     openFunc: file => {
       const layerNames = [
         // title: Trees 1 of 3
@@ -10847,7 +10825,6 @@ module.exports = [
     scope: 'Tree: park',
     info: 'http://www.arcgis.com/home/item.html?id=e73e07ceb45c4d399e7793d44e1b8d34',
     download: 'https://www.arcgis.com/sharing/rest/content/items/e73e07ceb45c4d399e7793d44e1b8d34/data',
-    api: 'arcgis-sharing',
     openFunc: file => helpers.openEsriFeatureCollectionWithGdal(
       // title: Marquand Inventory
       file, {layerName: 'Marquand Park 5_30_9033'}
@@ -11036,7 +11013,6 @@ module.exports = [
     inactive: true,
     info: 'https://hub.arcgis.com/datasets/SustainableMSU::tree/about',
     download: 'https://opendata.arcgis.com/datasets/51b5e5da030f4331af48cb052f2d2d5e_1.csv',
-    api: 'arcgis-opendata',
     geometry: { x: 'X', y: 'Y' },
     srs: 'EPSG:4326',
     crosswalk: {
@@ -11241,7 +11217,6 @@ module.exports = [
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=ca3b9384a0844c3b99cda76f89536897',
     download: 'https://www.arcgis.com/sharing/rest/content/items/ca3b9384a0844c3b99cda76f89536897/data',
-    api: 'arcgis-sharing',
     vfs: '/vsizip/',
     filename: '74ed1c47-ae63-475b-8dd4-76bc682d1449.gdb'
   },
@@ -13209,7 +13184,6 @@ module.exports = [
     scope: 'Tree',
     info: 'http://www.arcgis.com/home/item.html?id=12df9a6b669c492e8c0df0b4a029c49b',
     download: 'https://www.arcgis.com/sharing/rest/content/items/12df9a6b669c492e8c0df0b4a029c49b/data',
-    api: 'arcgis-sharing',
     openFunc: file => {
       // title for both: Trees
       const layerNames = ['first_half_7932', 'second_half_6963']
@@ -13234,7 +13208,6 @@ module.exports = [
     notes: 'download: https://anrmaps.vermont.gov/arcgis/rest/services/Open_Data/OPENDATA_ANR_ECOLOGIC_SP_NOCACHE_v1/MapServer/40',
     info: 'https://anropendata-vtanr.opendata.arcgis.com/datasets/VTANR::municipal-tree-inventory-1/about',
     download: 'https://opendata.arcgis.com/api/v3/datasets/2d0401a0ac9d449784ed9b31daabed60_40/downloads/data?format=geojson&spatialRefId=4326&where=1%3D1',
-    api: 'arcgis-opendata'
   },
   {
     country: 'United States',
@@ -14083,7 +14056,6 @@ module.exports = [
     scope: 'Tree',
     info: 'http://www.arcgis.com/home/item.html?id=3e138f53f3ca4eb896aa8a28c1aa94e5',
     download: 'https://www.arcgis.com/sharing/rest/content/items/3e138f53f3ca4eb896aa8a28c1aa94e5/data',
-    api: 'arcgis-sharing',
     openFunc: file => helpers.openEsriFeatureCollectionWithGdal(
       file, {layerName: 'FINAL_TREES_7991'}
     )
@@ -14096,7 +14068,6 @@ module.exports = [
     scope: 'Tree',
     info: 'http://www.arcgis.com/home/item.html?id=31565a4a71064b81a3f4896fc9b2c6a1',
     download: 'https://www.arcgis.com/sharing/rest/content/items/31565a4a71064b81a3f4896fc9b2c6a1/data',
-    api: 'arcgis-sharing',
     openFunc: file => helpers.openEsriFeatureCollectionWithGdal(file)
   },
   {
@@ -14137,7 +14108,6 @@ module.exports = [
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=d7a352437cc2486dbf66dabcb2c3b885',
     download: 'https://www.arcgis.com/sharing/rest/content/items/d7a352437cc2486dbf66dabcb2c3b885/data',
-    api: 'arcgis-sharing',
     openFunc: file => helpers.openEsriFeatureCollectionWithGdal(file)
   },
   {
@@ -14148,7 +14118,6 @@ module.exports = [
     scope: 'Tree: park',
     info: 'http://www.arcgis.com/home/item.html?id=3ef60cc5ecad4b0aadac4496ffe3acb0',
     download: 'https://www.arcgis.com/sharing/rest/content/items/3ef60cc5ecad4b0aadac4496ffe3acb0/data',
-    api: 'arcgis-sharing',
     openFunc: file => helpers.openEsriFeatureCollectionWithGdal(
       file, {layerName: 'Whitney_Commons_Final_Inventory_2935'}
     )

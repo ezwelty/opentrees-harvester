@@ -6301,7 +6301,6 @@ module.exports = [
     }
   },
   {
-    pending: 'layer (1): env.env_03_13_arbres_remarquables_points',
     country: 'Switzerland',
     state: 'Jura',
     scope: 'Tree: notable',
@@ -6310,6 +6309,7 @@ module.exports = [
     download: 'https://geo.jura.ch/geodonnees/donnees/ENV_3_13_Arbres_remarquables.zip',
     vfs: '/vsizip/',
     filename: 'ENV_3_13_Arbres_remarquables/donnees.gpkg',
+    layer: 'env.env_03_13_arbres_remarquables_points',
     license: {
       name: 'opendata.swiss Attribution',
       url: 'https://opendata.swiss/en/terms-of-use/#terms_by'
@@ -11233,7 +11233,8 @@ module.exports = [
     license: { id: 'CC0-1.0' }
   },
   {
-    pending: 'many different layers',
+    omit: 'Coded species with unknown meaning',
+    pending: 'Multiple layers with tree data',
     country: 'United States',
     state: 'New York',
     city: 'Westfield',
@@ -14538,11 +14539,11 @@ module.exports = [
     download: 'https://www.google.com/maps/d/u/0/kml?mid=121KIHdC3heBNHfYWLE5SL_AlYtgdvmWC&lid=xouLB4ZLO5c&forcekml=1'
   },
   {
-    pending: 'Multiple layers',
     designation: 'OpenStreetMap',
     notes: 'All trees (natural: tree) on OpenStreetMap with a common or scientific name (genus, species, or taxon tag): `(node["natural"="tree"][~"^genus:?"~"."];node["natural"="tree"][~"^taxon:?"~"."];node["natural"="tree"][~"^species:?"~"."];);out geom;` | Superseded where it overlaps other more authoritative sources',
     info: 'https://wiki.openstreetmap.org/wiki/Tag:natural%3Dtree',
     download: 'https://overpass-api.de/api/interpreter?data=(node%5B%22natural%22%3D%22tree%22%5D%5B~%22%5Egenus%3A%3F%22~%22.%22%5D%3Bnode%5B%22natural%22%3D%22tree%22%5D%5B~%22%5Etaxon%3A%3F%22~%22.%22%5D%3Bnode%5B%22natural%22%3D%22tree%22%5D%5B~%22%5Especies%3A%3F%22~%22.%22%5D%3B)%3Bout%20geom%3B',
+    layer: 'points',
     license: { id: 'ODbL-1.0' }
   }
 ]

@@ -13733,7 +13733,6 @@ module.exports = [
     country: 'Uruguay',
     state: 'Montevideo',
     city: 'Montevideo',
-    designation: 'Centro Comunal Zonal 1',
     scope: 'Tree',
     info: [
       'https://catalogodatos.gub.uy/dataset/intendencia-montevideo-censo-de-arbolado-2008',

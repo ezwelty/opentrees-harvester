@@ -6530,7 +6530,7 @@ module.exports = [
     designation: 'San Diego County',
     scope: 'Tree',
     inactive: true,
-    notes: 'overlaps San Diego tree inventory | Overlaps the City of San Diego tree inventory. Also includes user data and data from the following cities: Carlsbad, Chula Vista, Coronado, El Cajon, Imperial Beach, La Mesa, Oceanside, Poway, Santee, Solano Beach, and Vista. Many entries have incomplete (or truncated) species names.',
+    notes: 'Overlaps the City of San Diego tree inventory. Also includes user data and data from the following cities: Carlsbad, Chula Vista, Coronado, El Cajon, Imperial Beach, La Mesa, Oceanside, Poway, Santee, Solano Beach, and Vista. Many entries have incomplete (or truncated) species names.',
     info: 'https://sandiegotreemap.org',
     download: { manual: 'https://sandiegotreemap.org/sdtrees' },
     fallingfruit_id: 357

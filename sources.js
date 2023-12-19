@@ -4125,31 +4125,40 @@ module.exports = [
   },
   {
     country: 'Italy',
-    state: 'Abruzzo',
     scope: 'Tree: notable',
-    notes: 'May replace all other regional notable tree lists',
     info: 'https://www.politicheagricole.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/11260#id-bed7384af14fdba2da436d64155c62b1',
-    download: 'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252Ff%252F0%252FD.de8c0df992b975a06b0c/P/BLOB%3AID%3D11260/E/xls?mode=download',
-    openFunc: file => helpers.openExcelWithGdal(file, {type: 'file'}),
-    coordsFunc: x => {
-      // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS': 42° 05' 14,02''
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\,]+)''/
-      return [
-        helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'], pattern),
-        helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'], pattern)
-      ]
+    download: [
+      'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252Ff%252F0%252FD.de8c0df992b975a06b0c/P/BLOB%3AID%3D11260/E/xls?mode=download',
+      'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F9%252Fe%252FD.ba0b582ebb6525a4746d/P/BLOB%3AID%3D11260/E/xls?mode=download',
+      'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F4%252F7%252FD.dbb7d663851165b2c3c6/P/BLOB%3AID%3D11260/E/xls?mode=download',
+      'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F9%252F0%252FD.041225522ae7e3df696b/P/BLOB%3AID%3D11260/E/xls?mode=download',
+      'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252Fc%252Ff%252FD.6805e2b3c602f883f604/P/BLOB%3AID%3D11260/E/xls?mode=download',
+      'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F2%252F6%252FD.21dda2031bb316631710/P/BLOB%3AID%3D11260/E/xls?mode=download',
+      'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F6%252F3%252FD.c2dbeae84478a7d2130b/P/BLOB%3AID%3D11260/E/xls?mode=download',
+      'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252Fd%252F2%252FD.ef535a231096a0e02690/P/BLOB%3AID%3D11260/E/xls?mode=download',
+      'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252Fd%252F5%252FD.17f739bdd7fa7cefda63/P/BLOB%3AID%3D11260/E/xls?mode=download',
+      'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F9%252F6%252FD.f96284c9231ed6959e6d/P/BLOB%3AID%3D11260/E/xls?mode=download',
+      'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F4%252Fa%252FD.94c99216e0b679faa676/P/BLOB%3AID%3D11260/E/xls?mode=download',
+      'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F5%252F3%252FD.3edfbba6eba67946411f/P/BLOB%3AID%3D11260/E/xls?mode=download',
+      'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F5%252Fe%252FD.e4afb39347883690d4c6/P/BLOB%3AID%3D11260/E/xls?mode=download',
+      'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F8%252F2%252FD.e0e924c1fb3cdbbdad56/P/BLOB%3AID%3D11260/E/xls?mode=download',
+      'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F4%252F7%252FD.f5f31ef63c3bfe4c4014/P/BLOB%3AID%3D11260/E/xls?mode=download',
+      'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252Fe%252Fb%252FD.42be802d3ccd795d5e8e/P/BLOB%3AID%3D11260/E/xls?mode=download',
+      'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F3%252Fe%252FD.569f127592dced56007a/P/BLOB%3AID%3D11260/E/xls?mode=download',
+      'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F4%252Fa%252FD.1f8cf6f797b24f4651dc/P/BLOB%3AID%3D11260/E/xls?mode=download',
+      'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252Fd%252F5%252FD.b4ef4e51643c76aa2abe/P/BLOB%3AID%3D11260/E/xls?mode=download',
+      'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F9%252F9%252FD.00655ba7b78d5d6a7a53/P/BLOB%3AID%3D11260/E/xls?mode=download',
+      'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F5%252Fb%252FD.8136fdc2af834cb940ba/P/BLOB%3AID%3D11260/E/xls?mode=download'
+    ],
+    openFunc: files => {
+      const vsimemFiles = []
+      for (const file of files) {
+        ds = helpers.openExcelWithGdal(file, {type: 'file'})
+        vsimemFiles.push(ds.description)
+        ds.close()
+      }
+      return helpers.openFileUnionWithGdal(vsimemFiles)
     },
-    srs: 'EPSG:4326',
-    license: { id: 'CC-BY-4.0' }
-  },
-  {
-    country: 'Italy',
-    state: 'Basilicata',
-    scope: 'Tree: notable',
-    notes: 'May replace all other regional notable tree lists',
-    info: 'https://www.politicheagricole.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/11260#id-bed7384af14fdba2da436d64155c62b1',
-    download: 'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F9%252Fe%252FD.ba0b582ebb6525a4746d/P/BLOB%3AID%3D11260/E/xls?mode=download',
-    openFunc: file => helpers.openExcelWithGdal(file, {type: 'file'}),
     coordsFunc: x => {
       // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS': 42° 05' 14,02''
       const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\,]+)''/
@@ -4180,86 +4189,10 @@ module.exports = [
   },
   {
     country: 'Italy',
-    state: 'Bolzano',
-    scope: 'Tree: notable',
-    notes: 'May replace all other regional notable tree lists',
-    info: 'https://www.politicheagricole.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/11260#id-bed7384af14fdba2da436d64155c62b1',
-    download: 'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F4%252F7%252FD.dbb7d663851165b2c3c6/P/BLOB%3AID%3D11260/E/xls?mode=download',
-    openFunc: file => helpers.openExcelWithGdal(file, {type: 'file'}),
-    coordsFunc: x => {
-      // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS': 42° 05' 14,02''
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\,]+)''/
-      return [
-        helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'], pattern),
-        helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'], pattern)
-      ]
-    },
-    srs: 'EPSG:4326',
-    license: { id: 'CC-BY-4.0' }
-  },
-  {
-    country: 'Italy',
-    state: 'Calabria',
-    scope: 'Tree: notable',
-    notes: 'May replace all other regional notable tree lists',
-    info: 'https://www.politicheagricole.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/11260#id-bed7384af14fdba2da436d64155c62b1',
-    download: 'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F9%252F0%252FD.041225522ae7e3df696b/P/BLOB%3AID%3D11260/E/xls?mode=download',
-    openFunc: file => helpers.openExcelWithGdal(file, {type: 'file'}),
-    coordsFunc: x => {
-      // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS': 42° 05' 14,02''
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\,]+)''/
-      return [
-        helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'], pattern),
-        helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'], pattern)
-      ]
-    },
-    srs: 'EPSG:4326',
-    license: { id: 'CC-BY-4.0' }
-  },
-  {
-    country: 'Italy',
-    state: 'Campania',
-    scope: 'Tree: notable',
-    notes: 'May replace all other regional notable tree lists',
-    info: 'https://www.politicheagricole.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/11260#id-bed7384af14fdba2da436d64155c62b1',
-    download: 'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252Fc%252Ff%252FD.6805e2b3c602f883f604/P/BLOB%3AID%3D11260/E/xls?mode=download',
-    openFunc: file => helpers.openExcelWithGdal(file, {type: 'file'}),
-    coordsFunc: x => {
-      // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS': 42° 05' 14,02''
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\,]+)''/
-      return [
-        helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'], pattern),
-        helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'], pattern)
-      ]
-    },
-    srs: 'EPSG:4326',
-    license: { id: 'CC-BY-4.0' }
-  },
-  {
-    country: 'Italy',
     state: 'Campania',
     scope: 'Tree: notable',
     info: 'https://dati.regione.campania.it/catalogo/datasetdetail/9302d9c8-a00b-42a8-be5e-f6f83114803d',
     download: 'https://dati.regione.campania.it/catalogo/resources/Alberi-Monumentali-Della-Campania.geojson',
-    license: { id: 'CC-BY-4.0' }
-  },
-  {
-    country: 'Italy',
-    state: 'Emilia Romagna',
-    scope: 'Tree: notable',
-    notes: 'May replace all other regional notable tree lists',
-    info: 'https://www.politicheagricole.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/11260#id-bed7384af14fdba2da436d64155c62b1',
-    download: 'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F2%252F6%252FD.21dda2031bb316631710/P/BLOB%3AID%3D11260/E/xls?mode=download',
-    openFunc: file => helpers.openExcelWithGdal(file, {type: 'file'}),
-    coordsFunc: x => {
-      // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS': 42° 05' 14,02''
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\,]+)''/
-      return [
-        helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'], pattern),
-        helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'], pattern)
-      ]
-    },
-    srs: 'EPSG:4326',
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -4298,25 +4231,6 @@ module.exports = [
     country: 'Italy',
     state: 'Friuli Venezia Giulia',
     scope: 'Tree: notable',
-    notes: 'May replace all other regional notable tree lists',
-    info: 'https://www.politicheagricole.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/11260#id-bed7384af14fdba2da436d64155c62b1',
-    download: 'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F6%252F3%252FD.c2dbeae84478a7d2130b/P/BLOB%3AID%3D11260/E/xls?mode=download',
-    openFunc: file => helpers.openExcelWithGdal(file, {type: 'file'}),
-    coordsFunc: x => {
-      // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS': 42° 05' 14,02''
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\,]+)''/
-      return [
-        helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'], pattern),
-        helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'], pattern)
-      ]
-    },
-    srs: 'EPSG:4326',
-    license: { id: 'CC-BY-4.0' }
-  },
-  {
-    country: 'Italy',
-    state: 'Friuli Venezia Giulia',
-    scope: 'Tree: notable',
     info: 'https://geodati.gov.it/resource/id/r_friuve:m10728-cc-i11037',
     download: 'https://irdat.regione.fvg.it/Distributore/download?idDset=11037&idFmt=383&type=wfs&path=PPR:v_alberi_monumentali_e_notevoli',
     vfs: '/vsizip/'
@@ -4343,141 +4257,8 @@ module.exports = [
     country: 'Italy',
     state: 'Lazio',
     scope: 'Tree: notable',
-    notes: 'May replace all other regional notable tree lists',
-    info: 'https://www.politicheagricole.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/11260#id-bed7384af14fdba2da436d64155c62b1',
-    download: 'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252Fd%252F2%252FD.ef535a231096a0e02690/P/BLOB%3AID%3D11260/E/xls?mode=download',
-    openFunc: file => helpers.openExcelWithGdal(file, {type: 'file'}),
-    coordsFunc: x => {
-      // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS': 42° 05' 14,02''
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\,]+)''/
-      return [
-        helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'], pattern),
-        helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'], pattern)
-      ]
-    },
-    srs: 'EPSG:4326',
-    license: { id: 'CC-BY-4.0' }
-  },
-  {
-    country: 'Italy',
-    state: 'Lazio',
-    scope: 'Tree: notable',
     info: 'https://geoportale.regione.lazio.it/layers/geosdiownr:geonode:alberi_monumentali',
     download: 'https://geoportale.regione.lazio.it/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=geonode:alberi_monumentali&srsName=EPSG:4326&outputFormat=application/json',
-    license: { id: 'CC-BY-4.0' }
-  },
-  {
-    country: 'Italy',
-    state: 'Liguria',
-    scope: 'Tree: notable',
-    notes: 'May replace all other regional notable tree lists',
-    info: 'https://www.politicheagricole.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/11260#id-bed7384af14fdba2da436d64155c62b1',
-    download: 'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252Fd%252F5%252FD.17f739bdd7fa7cefda63/P/BLOB%3AID%3D11260/E/xls?mode=download',
-    openFunc: file => helpers.openExcelWithGdal(file, {type: 'file'}),
-    coordsFunc: x => {
-      // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS': 42° 05' 14,02''
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\,]+)''/
-      return [
-        helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'], pattern),
-        helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'], pattern)
-      ]
-    },
-    srs: 'EPSG:4326',
-    license: { id: 'CC-BY-4.0' }
-  },
-  {
-    country: 'Italy',
-    state: 'Lombardia',
-    scope: 'Tree: notable',
-    notes: 'May replace all other regional notable tree lists',
-    info: 'https://www.politicheagricole.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/11260#id-bed7384af14fdba2da436d64155c62b1',
-    download: 'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F9%252F6%252FD.f96284c9231ed6959e6d/P/BLOB%3AID%3D11260/E/xls?mode=download',
-    openFunc: file => helpers.openExcelWithGdal(file, {type: 'file'}),
-    coordsFunc: x => {
-      // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS': 42° 05' 14,02''
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\,]+)''/
-      return [
-        helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'], pattern),
-        helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'], pattern)
-      ]
-    },
-    srs: 'EPSG:4326',
-    license: { id: 'CC-BY-4.0' }
-  },
-  {
-    country: 'Italy',
-    state: 'Marche',
-    scope: 'Tree: notable',
-    notes: 'May replace all other regional notable tree lists',
-    info: 'https://www.politicheagricole.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/11260#id-bed7384af14fdba2da436d64155c62b1',
-    download: 'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F4%252Fa%252FD.94c99216e0b679faa676/P/BLOB%3AID%3D11260/E/xls?mode=download',
-    openFunc: file => helpers.openExcelWithGdal(file, {type: 'file'}),
-    coordsFunc: x => {
-      // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS': 42° 05' 14,02''
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\,]+)''/
-      return [
-        helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'], pattern),
-        helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'], pattern)
-      ]
-    },
-    srs: 'EPSG:4326',
-    license: { id: 'CC-BY-4.0' }
-  },
-  {
-    country: 'Italy',
-    state: 'Molise',
-    scope: 'Tree: notable',
-    notes: 'May replace all other regional notable tree lists',
-    info: 'https://www.politicheagricole.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/11260#id-bed7384af14fdba2da436d64155c62b1',
-    download: 'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F5%252F3%252FD.3edfbba6eba67946411f/P/BLOB%3AID%3D11260/E/xls?mode=download',
-    openFunc: file => helpers.openExcelWithGdal(file, {type: 'file'}),
-    coordsFunc: x => {
-      // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS': 42° 05' 14,02''
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\,]+)''/
-      return [
-        helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'], pattern),
-        helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'], pattern)
-      ]
-    },
-    srs: 'EPSG:4326',
-    license: { id: 'CC-BY-4.0' }
-  },
-  {
-    country: 'Italy',
-    state: 'Piemonte',
-    scope: 'Tree: notable',
-    notes: 'May replace all other regional notable tree lists',
-    info: 'https://www.politicheagricole.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/11260#id-bed7384af14fdba2da436d64155c62b1',
-    download: 'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F5%252Fe%252FD.e4afb39347883690d4c6/P/BLOB%3AID%3D11260/E/xls?mode=download',
-    openFunc: file => helpers.openExcelWithGdal(file, {type: 'file'}),
-    coordsFunc: x => {
-      // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS': 42° 05' 14,02''
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\,]+)''/
-      return [
-        helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'], pattern),
-        helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'], pattern)
-      ]
-    },
-    srs: 'EPSG:4326',
-    license: { id: 'CC-BY-4.0' }
-  },
-  {
-    country: 'Italy',
-    state: 'Puglia',
-    scope: 'Tree: notable',
-    notes: 'May replace all other regional notable tree lists',
-    info: 'https://www.politicheagricole.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/11260#id-bed7384af14fdba2da436d64155c62b1',
-    download: 'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F8%252F2%252FD.e0e924c1fb3cdbbdad56/P/BLOB%3AID%3D11260/E/xls?mode=download',
-    openFunc: file => helpers.openExcelWithGdal(file, {type: 'file'}),
-    coordsFunc: x => {
-      // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS': 42° 05' 14,02''
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\,]+)''/
-      return [
-        helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'], pattern),
-        helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'], pattern)
-      ]
-    },
-    srs: 'EPSG:4326',
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -4493,25 +4274,6 @@ module.exports = [
   },
   {
     country: 'Italy',
-    state: 'Sardegna',
-    scope: 'Tree: notable',
-    notes: 'May replace all other regional notable tree lists',
-    info: 'https://www.politicheagricole.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/11260#id-bed7384af14fdba2da436d64155c62b1',
-    download: 'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F4%252F7%252FD.f5f31ef63c3bfe4c4014/P/BLOB%3AID%3D11260/E/xls?mode=download',
-    openFunc: file => helpers.openExcelWithGdal(file, {type: 'file'}),
-    coordsFunc: x => {
-      // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS': 42° 05' 14,02''
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\,]+)''/
-      return [
-        helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'], pattern),
-        helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'], pattern)
-      ]
-    },
-    srs: 'EPSG:4326',
-    license: { id: 'CC-BY-4.0' }
-  },
-  {
-    country: 'Italy',
     state: 'Sardinia',
     scope: 'Tree: notable',
     info: 'https://geodati.gov.it/resource/id/R_SARDEG:TJVKU',
@@ -4522,48 +4284,10 @@ module.exports = [
   {
     country: 'Italy',
     state: 'Sicilia',
-    scope: 'Tree: notable',
-    notes: 'May replace all other regional notable tree lists',
-    info: 'https://www.politicheagricole.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/11260#id-bed7384af14fdba2da436d64155c62b1',
-    download: 'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252Fe%252Fb%252FD.42be802d3ccd795d5e8e/P/BLOB%3AID%3D11260/E/xls?mode=download',
-    openFunc: file => helpers.openExcelWithGdal(file, {type: 'file'}),
-    coordsFunc: x => {
-      // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS': 42° 05' 14,02''
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\,]+)''/
-      return [
-        helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'], pattern),
-        helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'], pattern)
-      ]
-    },
-    srs: 'EPSG:4326',
-    license: { id: 'CC-BY-4.0' }
-  },
-  {
-    country: 'Italy',
-    state: 'Sicilia',
     city: 'Messina',
     scope: 'Tree',
     info: 'http://opendata.comune.messina.it/dataset/0a81090b-0a91-488b-b82a-ccd041a0b26b',
     download: 'https://cloud.comune.messina.it/nextcloud/s/8cxsfND6boa7GFw/download',
-    license: { id: 'CC-BY-4.0' }
-  },
-  {
-    country: 'Italy',
-    state: 'Toscana',
-    scope: 'Tree: notable',
-    notes: 'May replace all other regional notable tree lists',
-    info: 'https://www.politicheagricole.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/11260#id-bed7384af14fdba2da436d64155c62b1',
-    download: 'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F3%252Fe%252FD.569f127592dced56007a/P/BLOB%3AID%3D11260/E/xls?mode=download',
-    openFunc: file => helpers.openExcelWithGdal(file, {type: 'file'}),
-    coordsFunc: x => {
-      // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS': 42° 05' 14,02''
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\,]+)''/
-      return [
-        helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'], pattern),
-        helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'], pattern)
-      ]
-    },
-    srs: 'EPSG:4326',
     license: { id: 'CC-BY-4.0' }
   },
   {
@@ -4614,82 +4338,6 @@ module.exports = [
     geometry: { x: 'X', y: 'Y' },
     srs: 'EPSG:4326',
     license: { id: 'CC-BY-SA-4.0' }
-  },
-  {
-    country: 'Italy',
-    state: 'Trento',
-    scope: 'Tree: notable',
-    notes: 'May replace all other regional notable tree lists',
-    info: 'https://www.politicheagricole.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/11260#id-bed7384af14fdba2da436d64155c62b1',
-    download: 'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F4%252Fa%252FD.1f8cf6f797b24f4651dc/P/BLOB%3AID%3D11260/E/xls?mode=download',
-    openFunc: file => helpers.openExcelWithGdal(file, {type: 'file'}),
-    coordsFunc: x => {
-      // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS': 42° 05' 14,02''
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\,]+)''/
-      return [
-        helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'], pattern),
-        helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'], pattern)
-      ]
-    },
-    srs: 'EPSG:4326',
-    license: { id: 'CC-BY-4.0' }
-  },
-  {
-    country: 'Italy',
-    state: 'Umbria',
-    scope: 'Tree: notable',
-    notes: 'May replace all other regional notable tree lists',
-    info: 'https://www.politicheagricole.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/11260#id-bed7384af14fdba2da436d64155c62b1',
-    download: 'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252Fd%252F5%252FD.b4ef4e51643c76aa2abe/P/BLOB%3AID%3D11260/E/xls?mode=download',
-    openFunc: file => helpers.openExcelWithGdal(file, {type: 'file'}),
-    coordsFunc: x => {
-      // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS': 42° 05' 14,02''
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\,]+)''/
-      return [
-        helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'], pattern),
-        helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'], pattern)
-      ]
-    },
-    srs: 'EPSG:4326',
-    license: { id: 'CC-BY-4.0' }
-  },
-  {
-    country: 'Italy',
-    state: "Valle d'Aosta",
-    scope: 'Tree: notable',
-    notes: 'May replace all other regional notable tree lists',
-    info: 'https://www.politicheagricole.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/11260#id-bed7384af14fdba2da436d64155c62b1',
-    download: 'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F9%252F9%252FD.00655ba7b78d5d6a7a53/P/BLOB%3AID%3D11260/E/xls?mode=download',
-    openFunc: file => helpers.openExcelWithGdal(file, {type: 'file'}),
-    coordsFunc: x => {
-      // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS': 42° 05' 14,02''
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\,]+)''/
-      return [
-        helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'], pattern),
-        helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'], pattern)
-      ]
-    },
-    srs: 'EPSG:4326',
-    license: { id: 'CC-BY-4.0' }
-  },
-  {
-    country: 'Italy',
-    state: 'Veneto',
-    scope: 'Tree: notable',
-    notes: 'May replace all other regional notable tree lists',
-    info: 'https://www.politicheagricole.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/11260#id-bed7384af14fdba2da436d64155c62b1',
-    download: 'https://www.politicheagricole.it/flex/cm/pages/ServeAttachment.php/L/IT/D/1%252F5%252Fb%252FD.8136fdc2af834cb940ba/P/BLOB%3AID%3D11260/E/xls?mode=download',
-    openFunc: file => helpers.openExcelWithGdal(file, {type: 'file'}),
-    coordsFunc: x => {
-      // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS': 42° 05' 14,02''
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\,]+)''/
-      return [
-        helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'], pattern),
-        helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'], pattern)
-      ]
-    },
-    srs: 'EPSG:4326',
-    license: { id: 'CC-BY-4.0' }
   },
   {
     country: 'Italy',

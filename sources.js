@@ -1956,7 +1956,7 @@ module.exports = [
       updated: 'MODDTTM'
     },
     license: {
-      name: 'City of Mississauga – Terms of Use ',
+      name: 'City of Mississauga – Terms of Use',
       url: {file: 'http://www5.mississauga.ca/research_catalogue/CityofMississauga_TermsofUse.pdf'}
     },
     opentrees_id: 'mississauga_ca'

@@ -4416,7 +4416,6 @@ module.exports = [
     }
   },
   {
-    pending: 'address only',
     country: 'Mexico',
     state: 'Nuevo León',
     city: 'Monterrey',
@@ -6442,7 +6441,6 @@ module.exports = [
     terms: 'McCoy, D., Goulet-Scott, B., Meng, W., Atahan, B., Kiros, H., Nishino, M., & Kartesz, J. (2022). A dataset of 5 million city trees from 63 US cities: species, location, nativity status, health, and more. [Data set]. Zenodo. https://doi.org/10.5061/dryad.2jm63xsrf'
   },
   {
-    pending: 'address only',
     country: 'United States',
     scope: 'Tree',
     notes: 'Selection from 17 cities | Superseded (2023-11-19): Albuquerque, New Mexico; Indianapolis, Indiana; Minneapolis, Minnesota; Charlotte, North Carolina; Sacramento, California; Santa Monica, California; Honolulu, Hawaii; Boise, Idaho; Claremont, California | Adds (2024-02-21): Orlando, Florida; Charleston, South Carolina; Modesto, California; Fort Collins, Colorado; Queens, New York; Longview, Oregon; Glendale, Arizona',
@@ -6591,7 +6589,6 @@ module.exports = [
     }
   },
   {
-    pending: 'address only',
     country: 'United States',
     state: 'California',
     scope: 'Tree: street',
@@ -8091,7 +8088,6 @@ module.exports = [
     }
   },
   {
-    pending: 'address only',
     country: 'United States',
     state: 'California',
     city: 'Menlo Park',
@@ -9768,7 +9764,6 @@ module.exports = [
     opentrees_id: 'auburn_me'
   },
   {
-    pending: 'address only (mostly)',
     country: 'United States',
     state: 'Maine',
     city: 'Bath',
@@ -11246,7 +11241,6 @@ module.exports = [
     opentrees_id: 'nyc'
   },
   {
-    pending: 'address only',
     country: 'United States',
     state: 'New York',
     city: 'Newburgh',
@@ -13148,7 +13142,6 @@ module.exports = [
     }
   },
   {
-    pending: 'address only',
     country: 'United States',
     state: 'Tennessee',
     city: 'Nashville',
@@ -14313,7 +14306,6 @@ module.exports = [
     )
   },
   {
-    pending: 'address only',
     country: 'Uruguay',
     state: 'Montevideo',
     city: 'Montevideo',

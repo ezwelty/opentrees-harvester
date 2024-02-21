@@ -11399,19 +11399,103 @@ module.exports = [
     license: { id: 'CC0-1.0' }
   },
   {
-    omit: 'Coded species with unknown meaning',
-    pending: 'Multiple layers with tree data',
     country: 'United States',
     state: 'New York',
     city: 'Westfield',
     scope: 'Tree',
     info: 'https://www.arcgis.com/home/item.html?id=ca3b9384a0844c3b99cda76f89536897',
     download: 'https://www.arcgis.com/sharing/rest/content/items/ca3b9384a0844c3b99cda76f89536897/data',
-    vfs: '/vsizip/',
-    filename: '74ed1c47-ae63-475b-8dd4-76bc682d1449.gdb'
+    openFunc: file => {
+      // Open all layers as a virtual union
+      let vrt = '<OGRVRTDataSource><OGRVRTUnionLayer name="union">'
+      const openPath = `/vsizip/${file}/74ed1c47-ae63-475b-8dd4-76bc682d1449.gdb`
+      const ds = gdal.open(openPath)
+      for (const layer of ds.layers) {
+        vrt += `<OGRVRTLayer name="${layer.name}">
+          <SrcDataSource>${openPath}</SrcDataSource>
+          <SrcLayer>${layer.name}</SrcLayer>
+        </OGRVRTLayer>`
+      }
+      vrt += '</OGRVRTUnionLayer></OGRVRTDataSource>'
+      const name = crypto.randomBytes(6).toString('hex')
+      gdal.vsimem.set(Buffer.from(vrt, 'utf8'), `/vsimem/${name}.vrt`)
+      return gdal.open(`/vsimem/${name}.vrt`)
+    },
+    crosswalk: {
+      ref: 'UniqueID',
+      // Code labels taken from file a00000004.gdbtable
+      common: x => {
+        return {
+          '1': 'Sugar Maple',
+          '2': 'Norway Maple',
+          '3': 'Red Maple',
+          '4': 'Silver Maple',
+          '5': 'Callery Pear',
+          '6': 'Green Ash',
+          '7': 'Linden',
+          '8': 'Tulip',
+          '9': 'Crabapple sp.',
+          '10': 'Norway Spruce',
+          '11': 'Pin Oak',
+          '12': 'Black Locust',
+          '13': 'White Ash',
+          '14': 'Horse Chestnut',
+          '15': 'Red Oak',
+          '16': 'Sycamore',
+          '17': "Cherry 'Kwanzan'",
+          '18': 'Dogwood',
+          '19': 'Honey Locust',
+          '20': 'White Burch',
+          '21': 'Bitternut Hickory',
+          '22': 'Black Walnut',
+          '23': 'Catalpa',
+          '24': 'Japanese Tree Lilac',
+          '25': 'Serviceberry',
+          '26': 'Shrub',
+          '27': 'Austrian Pine',
+          '28': 'Blue spruce',
+          '29': 'European Hornbeam',
+          '30': 'Europe White Birch',
+          '31': 'Hackberry',
+          '32': 'Japanese Lilac',
+          '33': 'River Birch',
+          '34': 'Ailanthis',
+          '35': 'Box Elder',
+          '36': 'Butternut',
+          '37': 'Elm',
+          '38': 'European Chestnut',
+          '39': 'Shagbark Hickory',
+          '40': 'Tartarian Maple',
+          '41': 'White Pine',
+          '42': 'Alder',
+          '43': 'Bald Cypress',
+          '44': 'Basswood',
+          '45': 'Crack Willow',
+          '46': 'Domestic Cherry',
+          '47': 'Douglas-Fir',
+          '48': 'False Cypress',
+          '49': 'Hibiscus',
+          '50': 'Mountain Ash',
+          '51': 'Mulberry',
+          '52': 'Paulowina',
+          '53': 'Sassafras',
+          '54': 'Siberian Elm',
+          '55': 'White Oak',
+          '56': 'Freeman Maple'
+        }[x['Species']]
+      },
+      dbh_in_range: x => {
+        return {
+          '1': '0.1"-5.9"',
+          '2': '6.0"-11.9"',
+          '3': '12.0"-17.9"',
+          '4': '18.0"-23.9"',
+          '5': '24"+'
+        }[x['Diameter']]
+      }
+    }
   },
   {
-    pending: 'address only',
     country: 'United States',
     state: 'New York',
     city: 'Williamsville',

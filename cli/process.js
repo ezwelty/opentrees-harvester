@@ -84,7 +84,7 @@ const processOptions = {
   keepFields: options.keepFields,
   prefix: options.prefix,
   bounds: options.bounds,
-  delFunc: deleteFeature
+  deleteFunc: deleteFeature
 }
 sources.forEach(source => {
   const file = interpolateString(options.out, source.props)

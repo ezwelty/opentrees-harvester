@@ -1742,7 +1742,7 @@ module.exports = [
     download: {
       arcgis: 'https://ajaxmaps.ajax.ca/gisernie/rest/services/Public/Ajax_Open_Data/MapServer/8'
     },
-    delFunc: x => x.STATUS === 'REMOVED',
+    deleteFunc: x => x.STATUS === 'REMOVED',
     crosswalk: {
       dbh: 'DBH',
       common: 'TYPE',
@@ -2660,7 +2660,7 @@ module.exports = [
     download: {
       arcgis: 'https://kortservice.vejle.dk/gis/rest/services/OPENDATA/Vejle/MapServer/12'
     },
-    delFunc: x => !Boolean(x.ELTTYPE.match(/(træer|træ|buske)/i)),
+    deleteFunc: x => !Boolean(x.ELTTYPE.match(/(træer|træ|buske)/i)),
     crosswalk: {
       ref: 'OBJECTID',
       scientific: 'PLANTENAVN',
@@ -3509,7 +3509,7 @@ module.exports = [
       const buffer = helpers.readFileInZip(file, 'Kissb_Export_Aug2022.xml')
       return helpers.openKissbXmlWithGdal(buffer, {type: 'buffer'})
     },
-    delFunc: x => {
+    deleteFunc: x => {
       // Delete trees with wrong coordinates (east and outside of Germany)
       Number(x['Rechtswert']) > 5e6
     },
@@ -5329,7 +5329,7 @@ module.exports = [
       buffer = new Buffer.from(txt)
       return gdal.open(buffer)
     },
-    delFunc: x => x['Geometry name'] === 'Localização Abate',
+    deleteFunc: x => x['Geometry name'] === 'Localização Abate',
     crosswalk: {
       ref: 'Número de Registo',
       common: 'Espécie',
@@ -5570,7 +5570,7 @@ module.exports = [
     info: 'https://datosabiertos.ayto-arganda.es/dataset/bc20e1e3-0c6c-4f0e-817b-c95f052e3783',
     download: 'https://datosabiertos.ayto-arganda.es/dataset/bc20e1e3-0c6c-4f0e-817b-c95f052e3783/resource/c09a7d05-8d9a-4ca9-92a5-f1be247a8493/download/arbolado-2.geojson',
     srs: 'EPSG:32630',
-    delFunc: x => x['ESTADO'] === 'ALCORQUE VACIO',
+    deleteFunc: x => x['ESTADO'] === 'ALCORQUE VACIO',
     crosswalk: {
       ref: 'REFERENCIA',
       scientific: 'EMPLAZAMIENTO',
@@ -6070,7 +6070,7 @@ module.exports = [
     download: 'https://opendata.camden.gov.uk/api/views/csqp-kdss/rows.csv',
     driver: 'CSV',
     geometry: { x: 'Longitude', y: 'Latitude' },
-    delFunc: x => x['Number Of Trees'] == 0 || x['Scientific Name'].match(/^vacant /i),
+    deleteFunc: x => x['Number Of Trees'] == 0 || x['Scientific Name'].match(/^vacant /i),
     crosswalk: {
       count: 'Number Of Trees',
       location: x => ({
@@ -6125,7 +6125,7 @@ module.exports = [
     },
     geometry: { x: 'X', y: 'Y' },
     srs: 'EPSG:4326',
-    delFunc: x => x.COMMONNAME === "'Vacant tree pit'" ||
+    deleteFunc: x => x.COMMONNAME === "'Vacant tree pit'" ||
       x.SPECIES.match(/tree removed|^\[/i),
     crosswalk: {
       ref: 'OBJECTID',
@@ -6145,7 +6145,7 @@ module.exports = [
     download: 'https://data.london.gov.uk/download/local-authority-maintained-trees/61bd9591-ba63-4f0c-ab77-81db6347e856/Borough_tree_list_2021.csv',
     geometry: { x: 'lon', y: 'lat' },
     srs: 'EPSG:4326',
-    delFunc: x => ['Camden', 'Lambeth'].includes(x.borough),
+    deleteFunc: x => ['Camden', 'Lambeth'].includes(x.borough),
     crosswalk: {
       ref: 'gla_id',
       scientific: 'species_name',
@@ -8099,7 +8099,7 @@ module.exports = [
         return `${x['ADDRESS']} ${x['STREET']}, Menlo Park, California, USA`
       }
     },
-    delFunc: x => x['FICTITIOUS'] === 'X',
+    deleteFunc: x => x['FICTITIOUS'] === 'X',
     crosswalk: {
       ref: 'INVENTORYI',
       scientific: 'BOTANICAL',
@@ -10079,7 +10079,7 @@ module.exports = [
     info: 'https://www.cambridgema.gov/GIS/gisdatadictionary/Environmental/ENVIRONMENTAL_StreetTrees',
     download: 'https://gis.cambridgema.gov/download/gdb/ENVIRONMENTAL_StreetTrees.gdb.zip',
     vfs: '/vsizip/',
-    delFunc: x => x['SiteType'] !== 'Tree',
+    deleteFunc: x => x['SiteType'] !== 'Tree',
     crosswalk: {
       common: 'CommonName',
       scientific: 'Scientific',
@@ -11218,7 +11218,7 @@ module.exports = [
     download: 'https://data.cityofnewyork.us/api/views/uvpi-gqnh/rows.csv',
     geometry: { x: 'longitude', y: 'latitude' },
     srs: 'EPSG:4326',
-    delFunc: x => x['status'] === 'Stump',
+    deleteFunc: x => x['status'] === 'Stump',
     crosswalk: {
       ref: 'tree_id',
       dbh_in: 'tree_dbh',
@@ -12152,7 +12152,7 @@ module.exports = [
     download: {
       arcgis: 'https://services3.arcgis.com/ccRMrVzOSHBUG6X2/arcgis/rest/services/Tree_Sites_Public/FeatureServer/0'
     },
-    delFunc: x => x.status === 'Site - Vacant',
+    deleteFunc: x => x.status === 'Site - Vacant',
     crosswalk: {
       ref: 'treeid',
       common: 'common',
@@ -13809,7 +13809,7 @@ module.exports = [
     download: {
       arcgis: 'https://gisweb.charlottesville.org/cvgisweb/rest/services/OpenData_1/MapServer/79'
     },
-    delFunc: x => x.Removal_Date,
+    deleteFunc: x => x.Removal_Date,
     crosswalk: {
       planted: 'Install_Date',
       common: 'Common_Name',

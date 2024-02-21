@@ -4424,6 +4424,7 @@ module.exports = [
     info: 'http://datamx.io/dataset/arboles-registrados-en-la-zona-metropolitana-de-monterrey',
     download: 'https://datamx.io/dataset/9ad2f30b-4be9-4abe-beac-aec73ecc9cba/resource/682bc7eb-a115-4545-8257-221e66f9706f/download/bumbusqueda140821v2.csv',
     driver: 'CSV',
+    addressFunc: x => x['Direccion'],
     crosswalk: {
       ref: 'Arbol_id',
       planted: x => x.Fecha_plantado !== '0000-00-00' ? x.Fecha_plantado : null,
@@ -6444,11 +6445,34 @@ module.exports = [
     pending: 'address only',
     country: 'United States',
     scope: 'Tree',
-    notes: 'Selection from 17 cities | Superseded (2023-11-19): Albuquerque, New Mexico; Indianapolis, Indiana; Minneapolis, Minnesota; Charlotte, North Carolina; Sacramento, California; Santa Monica, California; Honolulu, Hawaii | Adds (2023-11-19): Orlando, Florida; Charleston, South Carolina; Claremont, California; Modesto, California; Fort Collins, Colorado; Queens, New York; Longview, Oregon; Glendale, Arizona; Boise, Idaho',
-    info: 'https://www.fs.usda.gov/rds/archive/catalog/RDS-2016-0005',
+    notes: 'Selection from 17 cities | Superseded (2023-11-19): Albuquerque, New Mexico; Indianapolis, Indiana; Minneapolis, Minnesota; Charlotte, North Carolina; Sacramento, California; Santa Monica, California; Honolulu, Hawaii; Boise, Idaho; Claremont, California | Adds (2024-02-21): Orlando, Florida; Charleston, South Carolina; Modesto, California; Fort Collins, Colorado; Queens, New York; Longview, Oregon; Glendale, Arizona',
+    info: [
+      'https://www.fs.usda.gov/rds/archive/catalog/RDS-2016-0005',
+      {file: 'https://www.fs.usda.gov/rds/archive/products/RDS-2016-0005/_metadata_RDS-2016-0005.html'},
+      {file: 'https://www.fs.usda.gov/rds/archive/products/RDS-2016-0005/_fileindex_RDS-2016-0005.html'}
+    ],
     download: 'https://www.fs.usda.gov/rds/archive/products/RDS-2016-0005/RDS-2016-0005.zip',
     vfs: '/vsizip/',
     filename: 'Data/TS3_Raw_tree_data.csv',
+    addressFunc: x => {
+      if (x['address'] && x['address'] !== '-1' && x['street'] && x['street'] !== '-1' && x['City']) {
+        return `${x['address']} ${x['street']}, ${x['City']}, USA`
+      }
+    },
+    deleteFunc: x => x['Park/Street'] === 'Nursery',
+    crosswalk: {
+      ref: 'DbaseID',
+      location: x => {
+        return {'PARK': 'park', 'Park': 'park', 'Street': 'street'}[x['Park/Street']]
+      },
+      notable: x => x['Park/Street'] === 'Regional Big Tree' ? 'big' : null,
+      scientific: 'ScientificName',
+      common: 'CommonName',
+      age: 'Age',
+      dbh_cm: 'DBH (cm)',
+      height_m: 'TreeHt (m)',
+      crown_m: 'AvgCdia (m)'
+    },
     terms: 'McPherson, E. Gregory; van Doorn, Natalie S.; Peper, Paula J. 2016. Urban tree database. Fort Collins, CO: Forest Service Research Data Archive. Updated 21 January 2020. https://doi.org/10.2737/RDS-2016-0005'
   },
   {
@@ -8074,6 +8098,19 @@ module.exports = [
     scope: 'Tree',
     inactive: true,
     download: { checksum: '1f24fab0ec2567cfa8ec7ecae695284d' },
+    addressFunc: x => {
+      if (x['ADDRESS'] && x['STREET']) {
+        return `${x['ADDRESS']} ${x['STREET']}, Menlo Park, California, USA`
+      }
+    },
+    delFunc: x => x['FICTITIOUS'] === 'X',
+    crosswalk: {
+      ref: 'INVENTORYI',
+      scientific: 'BOTANICAL',
+      common: 'COMMON',
+      dbh_range: 'DBH',
+      height_range: 'HEIGHT'
+    },
     fallingfruit_id: 360
   },
   {
@@ -9742,6 +9779,23 @@ module.exports = [
     },
     geometry: { x: 'Long', y: 'Lat' },
     srs: 'EPSG:4326',
+    addressFunc: x => {
+      if (x['Address'] && x['Address'] !== '0' && x['Street']) {
+        return `${x['Address']} ${x['Street']}, Bath, Maine, USA`
+      }
+    },
+    crosswalk: {
+      ref: 'Tree_ID',
+      common: 'Common_Name',
+      genus: 'Genus',
+      species: 'Species',
+      cultivar: x => x['Cultivat'].replace("'", ''),
+      dbh: 'DBH',
+      height: 'Ht',
+      location: 'Location',
+      notes: 'Comments',
+      planted: 'Year_Planted'
+    },
     license: { id: 'CC0-1.0' }
   },
   {
@@ -11201,6 +11255,26 @@ module.exports = [
     download: {
       manual: 'https://www.uvm.edu/femc/data/archive/project/Newburgh_new_york_street_tree_inventory/dataset/newburgh-new-york-street-tree-inventory'
     },
+    addressFunc: x => {
+      if (x['Address'] && x['Street']) {
+        return `${x['Address']} ${x['Street']}, Newburgh, New York, USA`
+      }
+    },
+    crosswalk: {
+      ref: 'Site_ID',
+      // common (scientific) => common
+      // b, a => a b
+      common: x => {
+        const name = x['Species'].match(/^([^(]+)(?:\s|$)/)?.[1]
+        if (name) {
+          return name.split(/, ?/).reverse().join(' ')
+        }
+      },
+      // common (scientific) => scientific
+      scientific: x => x['Species'].match(/\(([^)]+)\)/)?.[1],
+      dbh: 'DBH',
+      stems: 'Stems'
+    },
     license: { id: 'CC0-1.0' }
   },
   {
@@ -11351,6 +11425,28 @@ module.exports = [
     info: 'https://www.uvm.edu/femc/data/archive/project/williamsville_new_york_street_tree_inventory/dataset/williamsville-new-york-street-tree-inventory',
     download: {
       manual: 'https://www.uvm.edu/femc/data/archive/project/williamsville_new_york_street_tree_inventory/dataset/williamsville-new-york-street-tree-inventory'
+    },
+    addressFunc: x => {
+      if (x['ADDNUM'] && x['ADDNUM'] !== '0' && x['ADDNAME'] && x['CITYTOWN']) {
+        const street = x['ADDNAME'].split(/\s*?\(/)[0]
+        return `${x['ADDNUM']} ${street}, ${CITYTOWN}, New York, USA`
+      }
+    },
+    crosswalk: {
+      ref: 'OBJECTID',
+      common: 'SPECIES',
+      dbh: 'DBH',
+      canopy_ft_range: 'CANOPY',
+      height_ft_range: 'HEIGHT',
+      health: x => {
+        return {'Dead or Dying': 'dead', 'Fair': 'fair', 'Good': 'good'}[x['CONDITION']] || (x['Live?'] === 0 ? 'dead' : null)
+      },
+      // 8/14/15 10:23:21 AM
+      updated: x => helpers.reformatDatetime(
+        x['DATETIME_'],
+        [/^(?<month>[0-9]{1,2})\/(?<day>[0-9]{1,2})\/(?<year>[0-9]{2})/]
+      ).replace(/^00/, '20'),
+      notes: 'COMMENTS'
     },
     license: { id: 'CC0-1.0' }
   },
@@ -13060,6 +13156,17 @@ module.exports = [
     info: 'https://www.nashville.gov/departments/water/stormwater/tree-information/inventory-and-canopy-assessment',
     download: 'https://filetransfer.nashville.gov/portals/0/sitecontent/pw/docs/beautification/tree_canopy/Urban-Tree-Inventory-Data-Loc-Species-Size.xls',
     openFunc: file => helpers.openExcelWithGdal(file, {type: 'file'}),
+    addressFunc: x => {
+      if (x['Address #'] && x['Street']) {
+        return `${x['Address #']} ${x['Street']}, Nashville, Tennessee, USA`
+      }
+    },
+    crosswalk: {
+      scientific: 'Scientific Name',
+      common: 'Common Name',
+      height_range: 'Height',
+      dbh_range: 'Width'
+    },
     fallingfruit_id: 73
   },
   {
@@ -14237,6 +14344,30 @@ module.exports = [
       'https://catalogodatos.gub.uy/dataset/6d770b32-6baf-49bf-8d3c-6a1e2f626947/resource/6e1919b6-8208-4562-9a50-0880ad302d40/download/archivo_comunal18.csv'
     ],
     openFunc: files => helpers.openFileUnionWithGdal(files),
+    addressFunc: x => {
+      if (x['Calle'] && x['Numero'] && x['Numero'] !== "0") {
+        return `${x['Calle']} ${x['Numero']}, Montevideo, Uruguay`
+      }
+    },
+    crosswalk: {
+      ref: 'Arbol',
+      circumference_cm: 'CAP',
+      height: 'Altura',
+      crown_m: 'Diametro Copa',
+      // EV: 1- MUY BUENO, 2- BUENO, 3- REGULAR, 4- MALO, 5- SECO, 6- CEPA y 7- TOCON
+      health: x => {
+        return {
+          '1': 'very good',
+          '2': 'good',
+          '3': 'fair',
+          '4': 'poor',
+          '5': 'poor',
+          '6': 'poor',
+          '7': 'dead'
+        }[x['EV']]
+      },
+      scientific: 'Nombre científico'
+    },
     license: {
       name: 'Licencia de Datos Abiertos – Uruguay 0.1',
       url: {file: 'https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf'}

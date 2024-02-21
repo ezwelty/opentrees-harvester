@@ -984,15 +984,14 @@ module.exports = [
     license: { id: 'CC0-1.0' }
   },
   {
-    pending: 'address only',
     country: 'Belgium',
     state: 'Bruxelles',
     city: 'Bruxelles',
     scope: 'Tree: notable',
     notes: 'Subset of regional inventory',
     info: 'https://opendata.bruxelles.be/explore/dataset/bruxelles_arbres_remarquables/information/',
-    download: 'https://opendata.bruxelles.be/api/explore/v2.1/catalog/datasets/bruxelles_arbres_remarquables/exports/csv?delimiter=,',
-    license: { id: 'etalab-2.0' }
+    download: 'https://opendata.bruxelles.be/api/explore/v2.1/catalog/datasets/bruxelles_arbres_remarquables/exports/geojson',
+    license: { id: 'CC-BY-SA-4.0' }
   },
   {
     country: 'Belgium',

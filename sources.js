@@ -683,8 +683,9 @@ module.exports = [
       scientific: 'Scientific Name',
       dbh: 'Diameter Breast Height',
       planted: x => helpers.reformatDatetime(
-      x['Date Planted'],
-      [/(?<day>[0-9]{2})\/(?<month>[0-9]{2})\/(?<year>[0-9]{4})/]),
+        x['Date Planted'],
+        [/(?<day>[0-9]{2})\/(?<month>[0-9]{2})\/(?<year>[0-9]{4})/]
+      ),
       maturity: 'Age Description',
       ule_range: x => x['Useful Life Expectency'].replace(/\s*\(.*\)$/, ''),
       location: 'Located In'

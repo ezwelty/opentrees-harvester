@@ -6389,6 +6389,58 @@ module.exports = [
     license: { id: 'OGL-UK-3.0' }
   },
   {
+    country: 'United States',
+    scope: 'Tree',
+    notes: 'Compilation of 63 cities | Selected (2024-02-21): Garden Grove, California; Ontario, California; Santa Rosa, California; Stockton, California; Tampa, Florida; Atlanta, Georgia; Des Moines, Iowa; Overland Park, Kansas; Louisville, Kentucky; Detroit, Michigan; Albuquerque, New Mexico; Oklahoma City, Oklahoma; Knoxville, Tennessee; Milwaukee, Wisconsin',
+    info: [
+      'https://zenodo.org/records/6726506',
+      {file: 'https://zenodo.org/records/6726506/files/Column_Headers_Dryad.csv'}
+    ],
+    download: [
+      'https://zenodo.org/records/6726506/files/GardenGrove_Final_2022-06-18.csv',
+      'https://zenodo.org/records/6726506/files/Ontario_Final_2022-06-18.csv',
+      'https://zenodo.org/records/6726506/files/SantaRosa_Final_2022-06-18.csv',
+      'https://zenodo.org/records/6726506/files/Stockton_Final_2022-06-18.csv',
+      'https://zenodo.org/records/6726506/files/Tampa_Final_2022-06-18.csv',
+      'https://zenodo.org/records/6726506/files/Atlanta_Final_2022-06-18.csv',
+      'https://zenodo.org/records/6726506/files/DesMoines_Final_2022-06-18.csv',
+      'https://zenodo.org/records/6726506/files/OverlandPark_Final_2022-06-18.csv',
+      'https://zenodo.org/records/6726506/files/Louisville_Final_2022-06-18.csv',
+      'https://zenodo.org/records/6726506/files/Detroit_Final_2022-06-18.csv',
+      'https://zenodo.org/records/6726506/files/Albuquerque_Final_2022-06-18.csv',
+      'https://zenodo.org/records/6726506/files/OklahomaCity_Final_2022-06-18.csv',
+      'https://zenodo.org/records/6726506/files/Knoxville_Final_2022-06-18.csv',
+      'https://zenodo.org/records/6726506/files/Milwaukee_Final_2022-06-18.csv'
+    ],
+    geometry: { x: 'longitude_coordinate', y: 'latitude_coordinate' },
+    openFunc: files => {
+      files = files.map(file => `csv:${file}`)
+      return helpers.openFileUnionWithGdal(files)
+    },
+    crosswalk: {
+      ref: 'city_ID',
+      common: 'common_name',
+      scientific: 'scientific_name',
+      dbh_cm: 'diameter_breast_height_CM',
+      dbh_cm_range: 'diameter_breast_height_binned_CM',
+      height_m: 'height_M',
+      height_m_range: 'height_binned_M',
+      // 11/26/2019
+      planted: x => helpers.reformatDatetime(
+        x['planted_date'],
+        [/^(?<month>[0-9]{1,2})\/(?<day>[0-9]{1,2})\/(?<year>[0-9]{4})$/]
+      ),
+      updated: x => helpers.reformatDatetime(
+        x['most_recent_observation'],
+        [/^(?<month>[0-9]{1,2})\/(?<day>[0-9]{1,2})\/(?<year>[0-9]{4})$/]
+      ),
+      location: 'location_type',
+      health: 'condition'
+    },
+    license: { id: 'CC0-1.0' },
+    terms: 'McCoy, D., Goulet-Scott, B., Meng, W., Atahan, B., Kiros, H., Nishino, M., & Kartesz, J. (2022). A dataset of 5 million city trees from 63 US cities: species, location, nativity status, health, and more. [Data set]. Zenodo. https://doi.org/10.5061/dryad.2jm63xsrf'
+  },
+  {
     pending: 'address only',
     country: 'United States',
     scope: 'Tree',
@@ -7333,19 +7385,6 @@ module.exports = [
   {
     country: 'United States',
     state: 'California',
-    city: 'Garden Grove',
-    scope: 'Tree',
-    notes: 'unofficial',
-    info: 'https://zenodo.org/records/6726506',
-    download: 'https://zenodo.org/records/6726506/files/GardenGrove_Final_2022-06-18.csv',
-    driver: 'CSV',
-    geometry: { x: 'longitude_coordinate', y: 'latitude_coordinate' },
-    license: { id: 'CC0-1.0' },
-    terms: 'McCoy, D., Goulet-Scott, B., Meng, W., Atahan, B., Kiros, H., Nishino, M., & Kartesz, J. (2022). A dataset of 5 million city trees from 63 US cities: species, location, nativity status, health, and more. [Data set]. Zenodo. https://doi.org/10.5061/dryad.2jm63xsrf'
-  },
-  {
-    country: 'United States',
-    state: 'California',
     city: 'Goleta',
     designation: 'Pacific Oaks Apartments',
     info: 'https://www.arcgis.com/home/item.html?id=68ca0b278c374452ae2789b65b4d927d',
@@ -7473,19 +7512,6 @@ module.exports = [
     info: 'https://data.oaklandca.gov/dataset/Street-Trees/9e7e-63pp',
     download: 'https://data.oaklandca.gov/api/geospatial/9e7e-63pp?method=export&format=geojson',
     fallingfruit_id: 81
-  },
-  {
-    country: 'United States',
-    state: 'California',
-    city: 'Ontario',
-    scope: 'Tree',
-    notes: 'unofficial',
-    info: 'https://zenodo.org/records/6726506',
-    download: 'https://zenodo.org/records/6726506/files/Ontario_Final_2022-06-18.csv',
-    driver: 'CSV',
-    geometry: { x: 'longitude_coordinate', y: 'latitude_coordinate' },
-    license: { id: 'CC0-1.0' },
-    terms: 'McCoy, D., Goulet-Scott, B., Meng, W., Atahan, B., Kiros, H., Nishino, M., & Kartesz, J. (2022). A dataset of 5 million city trees from 63 US cities: species, location, nativity status, health, and more. [Data set]. Zenodo. https://doi.org/10.5061/dryad.2jm63xsrf'
   },
   {
     country: 'United States',
@@ -7825,19 +7851,6 @@ module.exports = [
   {
     country: 'United States',
     state: 'California',
-    city: 'Santa Rosa',
-    scope: 'Tree',
-    notes: 'unofficial',
-    info: 'https://zenodo.org/records/6726506',
-    download: 'https://zenodo.org/records/6726506/files/SantaRosa_Final_2022-06-18.csv',
-    driver: 'CSV',
-    geometry: { x: 'longitude_coordinate', y: 'latitude_coordinate' },
-    license: { id: 'CC0-1.0' },
-    terms: 'McCoy, D., Goulet-Scott, B., Meng, W., Atahan, B., Kiros, H., Nishino, M., & Kartesz, J. (2022). A dataset of 5 million city trees from 63 US cities: species, location, nativity status, health, and more. [Data set]. Zenodo. https://doi.org/10.5061/dryad.2jm63xsrf'
-  },
-  {
-    country: 'United States',
-    state: 'California',
     city: 'South Gate | Cudahy',
     info: 'https://www.arcgis.com/home/item.html?id=6e56852fecaa47ada57b42cf71544bfd',
     download: {
@@ -7886,19 +7899,6 @@ module.exports = [
     download: {
       arcgis: 'https://services.arcgis.com/7CRlmWNEbeCqEJ6a/arcgis/rest/services/Operational_Layers_Annotation/FeatureServer/14'
     }
-  },
-  {
-    country: 'United States',
-    state: 'California',
-    city: 'Stockton',
-    scope: 'Tree',
-    notes: 'unofficial | coordinates derived from addresses',
-    info: 'https://zenodo.org/records/6726506',
-    download: 'https://zenodo.org/records/6726506/files/Stockton_Final_2022-06-18.csv',
-    driver: 'CSV',
-    geometry: { x: 'longitude_coordinate', y: 'latitude_coordinate' },
-    license: { id: 'CC0-1.0' },
-    terms: 'McCoy, D., Goulet-Scott, B., Meng, W., Atahan, B., Kiros, H., Nishino, M., & Kartesz, J. (2022). A dataset of 5 million city trees from 63 US cities: species, location, nativity status, health, and more. [Data set]. Zenodo. https://doi.org/10.5061/dryad.2jm63xsrf'
   },
   {
     country: 'United States',
@@ -8480,19 +8480,6 @@ module.exports = [
   {
     country: 'United States',
     state: 'Florida',
-    city: 'Tampa',
-    scope: 'Tree',
-    notes: 'unofficial',
-    info: 'https://zenodo.org/records/6726506',
-    download: 'https://zenodo.org/records/6726506/files/Tampa_Final_2022-06-18.csv',
-    driver: 'CSV',
-    geometry: { x: 'longitude_coordinate', y: 'latitude_coordinate' },
-    license: { id: 'CC0-1.0' },
-    terms: 'McCoy, D., Goulet-Scott, B., Meng, W., Atahan, B., Kiros, H., Nishino, M., & Kartesz, J. (2022). A dataset of 5 million city trees from 63 US cities: species, location, nativity status, health, and more. [Data set]. Zenodo. https://doi.org/10.5061/dryad.2jm63xsrf'
-  },
-  {
-    country: 'United States',
-    state: 'Florida',
     city: 'Weston',
     scope: 'Tree',
     info: 'https://datahub.westonfl.org/datasets/westonfl::tree-inventory-editing/about',
@@ -8575,18 +8562,6 @@ module.exports = [
     download: {
       arcgis: 'https://services6.arcgis.com/BZn8g8tzu5WfMokL/arcgis/rest/services/TreeChampionData_2019/FeatureServer/0'
     }
-  },
-  {
-    country: 'United States',
-    state: 'Georgia',
-    city: 'Atlanta',
-    scope: 'Tree',
-    info: 'https://zenodo.org/records/6726506',
-    download: 'https://zenodo.org/records/6726506/files/Atlanta_Final_2022-06-18.csv',
-    driver: 'CSV',
-    geometry: { x: 'longitude_coordinate', y: 'latitude_coordinate' },
-    license: { id: 'CC0-1.0' },
-    terms: 'McCoy, D., Goulet-Scott, B., Meng, W., Atahan, B., Kiros, H., Nishino, M., & Kartesz, J. (2022). A dataset of 5 million city trees from 63 US cities: species, location, nativity status, health, and more. [Data set]. Zenodo. https://doi.org/10.5061/dryad.2jm63xsrf'
   },
   {
     country: 'United States',
@@ -9050,19 +9025,6 @@ module.exports = [
   {
     country: 'United States',
     state: 'Iowa',
-    city: 'Des Moines',
-    scope: 'Tree',
-    notes: 'unofficial',
-    info: 'https://zenodo.org/records/6726506',
-    download: 'https://zenodo.org/records/6726506/files/DesMoines_Final_2022-06-18.csv',
-    driver: 'CSV',
-    geometry: { x: 'longitude_coordinate', y: 'latitude_coordinate' },
-    license: { id: 'CC0-1.0' },
-    terms: 'McCoy, D., Goulet-Scott, B., Meng, W., Atahan, B., Kiros, H., Nishino, M., & Kartesz, J. (2022). A dataset of 5 million city trees from 63 US cities: species, location, nativity status, health, and more. [Data set]. Zenodo. https://doi.org/10.5061/dryad.2jm63xsrf'
-  },
-  {
-    country: 'United States',
-    state: 'Iowa',
     city: 'Iowa City',
     designation: 'Chatham Oaks',
     info: 'https://www.arcgis.com/home/item.html?id=2642cb059ebe49bf915d3716cfe042e7',
@@ -9078,19 +9040,6 @@ module.exports = [
     download: {
       arcgis: 'https://services2.arcgis.com/D5rqJ85qM97IJslY/arcgis/rest/services/Trees_view/FeatureServer/0'
     }
-  },
-  {
-    country: 'United States',
-    state: 'Kansas',
-    city: 'Overland Park',
-    scope: 'Tree',
-    notes: 'unofficial',
-    info: 'https://zenodo.org/records/6726506',
-    download: 'https://zenodo.org/records/6726506/files/OverlandPark_Final_2022-06-18.csv',
-    driver: 'CSV',
-    geometry: { x: 'longitude_coordinate', y: 'latitude_coordinate' },
-    license: { id: 'CC0-1.0' },
-    terms: 'McCoy, D., Goulet-Scott, B., Meng, W., Atahan, B., Kiros, H., Nishino, M., & Kartesz, J. (2022). A dataset of 5 million city trees from 63 US cities: species, location, nativity status, health, and more. [Data set]. Zenodo. https://doi.org/10.5061/dryad.2jm63xsrf'
   },
   {
     country: 'United States',
@@ -9120,19 +9069,6 @@ module.exports = [
     notes: '2013 inventory of downtown trees',
     download: { checksum: '915762bd8890bef1d248d0fc053be994' },
     vfs: '/vsizip/'
-  },
-  {
-    country: 'United States',
-    state: 'Kentucky',
-    city: 'Louisville',
-    scope: 'Tree',
-    notes: 'unofficial',
-    info: 'https://zenodo.org/records/6726506',
-    download: 'https://zenodo.org/records/6726506/files/Louisville_Final_2022-06-18.csv',
-    driver: 'CSV',
-    geometry: { x: 'longitude_coordinate', y: 'latitude_coordinate' },
-    license: { id: 'CC0-1.0' },
-    terms: 'McCoy, D., Goulet-Scott, B., Meng, W., Atahan, B., Kiros, H., Nishino, M., & Kartesz, J. (2022). A dataset of 5 million city trees from 63 US cities: species, location, nativity status, health, and more. [Data set]. Zenodo. https://doi.org/10.5061/dryad.2jm63xsrf'
   },
   {
     country: 'United States',
@@ -9650,19 +9586,6 @@ module.exports = [
     download: {
       arcgis: 'https://services1.arcgis.com/xQo6zoNjmy3NNfkT/arcgis/rest/services/TreesOct2022/FeatureServer/0'
     }
-  },
-  {
-    country: 'United States',
-    state: 'Michigan',
-    city: 'Detroit',
-    scope: 'Tree',
-    notes: 'unofficial',
-    info: 'https://zenodo.org/records/6726506',
-    download: 'https://zenodo.org/records/6726506/files/Detroit_Final_2022-06-18.csv',
-    driver: 'CSV',
-    geometry: { x: 'longitude_coordinate', y: 'latitude_coordinate' },
-    license: { id: 'CC0-1.0' },
-    terms: 'McCoy, D., Goulet-Scott, B., Meng, W., Atahan, B., Kiros, H., Nishino, M., & Kartesz, J. (2022). A dataset of 5 million city trees from 63 US cities: species, location, nativity status, health, and more. [Data set]. Zenodo. https://doi.org/10.5061/dryad.2jm63xsrf'
   },
   {
     country: 'United States',
@@ -10435,19 +10358,6 @@ module.exports = [
       // title: Marquand Inventory
       file, {layerName: 'Marquand Park 5_30_9033'}
     )
-  },
-  {
-    country: 'United States',
-    state: 'New Mexico',
-    city: 'Albuquerque',
-    scope: 'Tree',
-    notes: 'unofficial',
-    info: 'https://zenodo.org/records/6726506',
-    download: 'https://zenodo.org/records/6726506/files/Albuquerque_Final_2022-06-18.csv',
-    driver: 'CSV',
-    geometry: { x: 'longitude_coordinate', y: 'latitude_coordinate' },
-    license: { id: 'CC0-1.0' },
-    terms: 'McCoy, D., Goulet-Scott, B., Meng, W., Atahan, B., Kiros, H., Nishino, M., & Kartesz, J. (2022). A dataset of 5 million city trees from 63 US cities: species, location, nativity status, health, and more. [Data set]. Zenodo. https://doi.org/10.5061/dryad.2jm63xsrf'
   },
   {
     country: 'United States',
@@ -11507,19 +11417,6 @@ module.exports = [
   },
   {
     country: 'United States',
-    state: 'Oklahoma',
-    city: 'Oklahoma City',
-    scope: 'Tree',
-    notes: 'unofficial',
-    info: 'https://zenodo.org/records/6726506',
-    download: 'https://zenodo.org/records/6726506/files/OklahomaCity_Final_2022-06-18.csv',
-    driver: 'CSV',
-    geometry: { x: 'longitude_coordinate', y: 'latitude_coordinate' },
-    license: { id: 'CC0-1.0' },
-    terms: 'McCoy, D., Goulet-Scott, B., Meng, W., Atahan, B., Kiros, H., Nishino, M., & Kartesz, J. (2022). A dataset of 5 million city trees from 63 US cities: species, location, nativity status, health, and more. [Data set]. Zenodo. https://doi.org/10.5061/dryad.2jm63xsrf'
-  },
-  {
-    country: 'United States',
     state: 'Oregon',
     city: 'Grants Pass',
     scope: 'Tree',
@@ -12549,19 +12446,6 @@ module.exports = [
     }
   },
   {
-    country: 'United States',
-    state: 'Tennessee',
-    city: 'Knoxville',
-    scope: 'Tree',
-    notes: 'unofficial',
-    info: 'https://zenodo.org/records/6726506',
-    download: 'https://zenodo.org/records/6726506/files/Knoxville_Final_2022-06-18.csv',
-    driver: 'CSV',
-    geometry: { x: 'longitude_coordinate', y: 'latitude_coordinate' },
-    license: { id: 'CC0-1.0' },
-    terms: 'McCoy, D., Goulet-Scott, B., Meng, W., Atahan, B., Kiros, H., Nishino, M., & Kartesz, J. (2022). A dataset of 5 million city trees from 63 US cities: species, location, nativity status, health, and more. [Data set]. Zenodo. https://doi.org/10.5061/dryad.2jm63xsrf'
-  },
-  {
     pending: 'address only',
     country: 'United States',
     state: 'Tennessee',
@@ -13532,19 +13416,6 @@ module.exports = [
     download: {
       arcgis: 'https://services7.arcgis.com/bT3EoWZjN5T5Pbld/arcgis/rest/services/JuneauCo_MaustonTrees/FeatureServer/0'
     }
-  },
-  {
-    country: 'United States',
-    state: 'Wisconsin',
-    city: 'Milwaukee',
-    scope: 'Tree',
-    notes: 'unofficial',
-    info: 'https://zenodo.org/records/6726506',
-    download: 'https://zenodo.org/records/6726506/files/Milwaukee_Final_2022-06-18.csv',
-    driver: 'CSV',
-    geometry: { x: 'longitude_coordinate', y: 'latitude_coordinate' },
-    license: { id: 'CC0-1.0' },
-    terms: 'McCoy, D., Goulet-Scott, B., Meng, W., Atahan, B., Kiros, H., Nishino, M., & Kartesz, J. (2022). A dataset of 5 million city trees from 63 US cities: species, location, nativity status, health, and more. [Data set]. Zenodo. https://doi.org/10.5061/dryad.2jm63xsrf'
   },
   {
     country: 'United States',

@@ -16,3 +16,5 @@
 /taxa*/
 archive
 archive.jsonl
+geocode
+.env

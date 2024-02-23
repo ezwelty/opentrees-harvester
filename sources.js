@@ -1137,7 +1137,9 @@ module.exports = [
     designation: 'Strathcona County',
     scope: 'Tree',
     metadata: 'https://opendata-strathconacounty.hub.arcgis.com/datasets/StrathconaCounty::trees/about',
-    data: 'https://services.arcgis.com/B7ZrK1Hv4P1dsm9R/arcgis/rest/services/Trees1/FeatureServer/0',
+    data: {
+      arcgis: 'https://services.arcgis.com/B7ZrK1Hv4P1dsm9R/arcgis/rest/services/Trees1/FeatureServer/0'
+    },
     crosswalk: {
       ref: 'SiteID',
       common: 'Species',
@@ -2125,9 +2127,7 @@ module.exports = [
     city: 'Windsor',
     scope: 'Tree: street',
     metadata: 'https://opendata.citywindsor.ca/details/238',
-    data: {
-      manual: 'https://opendata.citywindsor.ca/Uploads/Trees%20in%20Right%20of%20Way.csv'
-    },
+    data: 'https://opendata.citywindsor.ca/Uploads/Trees%20in%20Right%20of%20Way.csv',
     geometry: { x: 'XCoord', y: 'YCoord' },
     srs: 'EPSG:4326'
   },
@@ -2137,9 +2137,7 @@ module.exports = [
     city: 'Windsor',
     scope: 'Tree: park',
     metadata: 'https://opendata.citywindsor.ca/details/238',
-    data: {
-      manual: 'https://opendata.citywindsor.ca/Uploads/Trees%20in%20Parks_Facilities.csv'
-    },
+    data: 'https://opendata.citywindsor.ca/Uploads/Trees%20in%20Parks_Facilities.csv',
     geometry: { x: 'XCoord', y: 'YCoord' },
     srs: 'EPSG:4326'
   },
@@ -3922,7 +3920,6 @@ module.exports = [
       'https://opendata.leipzig.de/pages/usage'
     ],
     data: 'https://geodienste.leipzig.de/l3/OpenData/wfs?VERSION=1.3.0&REQUEST=getFeature&typeName=OpenData%3ABaeume&format_options=filename:Baumkataster_Stadt_Leipzig&outputFormat=gpkg',
-    vfs: '/vsizip/',
     crosswalk: {
       scientific: 'Baumart_wi',
       common: 'Baumart_de',
@@ -4120,7 +4117,9 @@ module.exports = [
     city: "Be'er Sheva",
     scope: 'Tree',
     metadata: 'https://data.gov.il/dataset/trees-br7',
-    data: 'https://data.gov.il/dataset/trees-br7/resource/d4c483d1-42b7-4540-b434-525197f3e916/download/trees.geojson',
+    data: {
+      manual: 'https://data.gov.il/dataset/trees-br7/resource/d4c483d1-42b7-4540-b434-525197f3e916/download/trees.geojson'
+    },
     terms: 'אחר (פתוח)'
   },
   {
@@ -4514,9 +4513,7 @@ module.exports = [
     state: 'Gelderland',
     scope: 'Tree: notable',
     metadata: 'https://nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/15607c11-d064-4c2a-bb0c-2a9d9a658645?tab=general',
-    data: {
-      arcgis: 'https://geoserver.gelderland.nl/geoserver/ngr_bow/wfs?request=GetFeature&service=WFS&version=1.1.0&outputFormat=application%2Fjson&typeName=arcgis_all_boom_punt'
-    },
+    data: 'https://geoserver.gelderland.nl/geoserver/ngr_bow/wfs?request=GetFeature&service=WFS&version=1.1.0&outputFormat=application%2Fjson&typeName=arcgis_all_boom_punt',
     license: { id: 'CC0-1.0' },
   },
   {
@@ -6446,10 +6443,12 @@ module.exports = [
     notes: 'Selection from 17 cities | Superseded (2023-11-19): Albuquerque, New Mexico; Indianapolis, Indiana; Minneapolis, Minnesota; Charlotte, North Carolina; Sacramento, California; Santa Monica, California; Honolulu, Hawaii; Boise, Idaho; Claremont, California | Adds (2024-02-21): Orlando, Florida; Charleston, South Carolina; Modesto, California; Fort Collins, Colorado; Queens, New York; Longview, Oregon; Glendale, Arizona',
     metadata: [
       'https://www.fs.usda.gov/rds/archive/catalog/RDS-2016-0005',
-      {file: 'https://www.fs.usda.gov/rds/archive/products/RDS-2016-0005/_metadata_RDS-2016-0005.html'},
-      {file: 'https://www.fs.usda.gov/rds/archive/products/RDS-2016-0005/_fileindex_RDS-2016-0005.html'}
+      {manual: 'https://www.fs.usda.gov/rds/archive/products/RDS-2016-0005/_metadata_RDS-2016-0005.html'},
+      {manual: 'https://www.fs.usda.gov/rds/archive/products/RDS-2016-0005/_fileindex_RDS-2016-0005.html'}
     ],
-    data: 'https://www.fs.usda.gov/rds/archive/products/RDS-2016-0005/RDS-2016-0005.zip',
+    data: {
+      manual: 'https://www.fs.usda.gov/rds/archive/products/RDS-2016-0005/RDS-2016-0005.zip'
+    },
     vfs: '/vsizip/',
     filename: 'Data/TS3_Raw_tree_data.csv',
     addressFunc: x => {
@@ -6595,10 +6594,12 @@ module.exports = [
     notes: 'Selection from 49 cities: Alhambra, Arroyo Grande, Azusa, Bellflower, Berkeley, Brentwood, Burlingame, Camarillo, Carlsbad, Carpinteria, Chino Hills, Claremont, Clovis, Costa Mesa, Culver City, Cypress, El Cajon, Encinitas, Glendora, Hayward, Highland, Irvine, La Cañada Flintridge, La Mesa, Laguna Hills, Montclair, Monterey Park, Norco, Oakley, Ontario, Palm Desert, Palo Alto, Paramount, Pomona, Poway, Redwood City, Rialto, Roseville, Sacramento, San Dimas, San Marcos, San Mateo, Santa Monica, Stockton, Temple City, Tulare, Upland, Walnut Creek, West Sacramento | Likely superseded (2024-02-21): Berkeley, Carpinteria, Ontario, Palm Desert, Palo Alto, Sacramento, Santa Monica, Stockton, Walnut Creek',
     metadata: [
       'https://www.fs.usda.gov/rds/archive/catalog/RDS-2017-0010',
-      {file: 'https://www.fs.usda.gov/rds/archive/products/RDS-2017-0010/_metadata_RDS-2017-0010.html'},
-      {file: 'https://www.fs.usda.gov/rds/archive/products/RDS-2017-0010/_fileindex_RDS-2017-0010.html'}
+      {manual: 'https://www.fs.usda.gov/rds/archive/products/RDS-2017-0010/_metadata_RDS-2017-0010.html'},
+      {manual: 'https://www.fs.usda.gov/rds/archive/products/RDS-2017-0010/_fileindex_RDS-2017-0010.html'}
     ],
-    data: 'https://www.fs.usda.gov/rds/archive/products/RDS-2017-0010/RDS-2017-0010.zip',
+    data: {
+      manual: 'https://www.fs.usda.gov/rds/archive/products/RDS-2017-0010/RDS-2017-0010.zip'
+    },
     vfs: '/vsizip/',
     openFunc: file => {
       const filenames = [
@@ -9627,7 +9628,9 @@ module.exports = [
     city: 'Westfield',
     scope: 'Tree: park',
     about: 'https://maps.westfield.in.gov/arcgis/rest/services/Parks/TreeInventory/MapServer',
-    data: 'https://maps.westfield.in.gov/arcgis/rest/services/Parks/TreeInventory/MapServer/0',
+    data: {
+      arcgis: 'https://maps.westfield.in.gov/arcgis/rest/services/Parks/TreeInventory/MapServer/0'
+    },
     geometry: { x: 'x', y: 'y' },
     srs: 'EPSG:4326'
   },

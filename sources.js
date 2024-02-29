@@ -1081,7 +1081,7 @@ module.exports = [
     ],
     data: 'https://github.com/Playzinho/osm_projects/raw/c952ec6e35a1144e7c5540e3eebb289859c91330/Brazil%20Data/MG/Prefeitura%20de%20Governador%20Valadares/Original%20Files/trees.zip',
     vfs: '/vsizip/',
-    driver: 'ESRI Shapefile',
+    filename: 'st_vegetacao',
     license: { id: 'CC0-1.0' }
   },
   {
@@ -6658,7 +6658,8 @@ module.exports = [
     },
     addressFunc: x => {
       if (x['StreetNumber'] && x['StreetName'] && x['City']) {
-        return `${x['StreetNumber']} ${x['StreetName']}, ${x['City']}, California, USA`
+        const street = x['StreetName'].replace(/^(.+) \/([NSEW])$/, '$2 $1')
+        return `${x['StreetNumber']} ${street}, ${x['City']}, California, USA`
       }
     },
     crosswalk: {
@@ -11510,7 +11511,7 @@ module.exports = [
     addressFunc: x => {
       if (x['ADDNUM'] && x['ADDNUM'] !== '0' && x['ADDNAME'] && x['CITYTOWN']) {
         const street = x['ADDNAME'].split(/\s*?\(/)[0]
-        return `${x['ADDNUM']} ${street}, ${CITYTOWN}, New York, USA`
+        return `${x['ADDNUM']} ${street}, ${x['CITYTOWN']}, New York, USA`
       }
     },
     crosswalk: {

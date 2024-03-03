@@ -5367,6 +5367,33 @@ module.exports = [
     license: { id: 'CC-BY-4.0' }
   },
   {
+    country: 'Portugal',
+    state: 'Porto',
+    city: 'Porto',
+    scope: 'Tree',
+    metadata: 'https://www.arcgis.com/home/item.html?id=f3ce8104ac814cfe9934ddae55ad5f6c',
+    data: {
+      arcgis: 'https://services6.arcgis.com/1fFyrPgHFbxi0TNm/arcgis/rest/services/ArvoresPorto/FeatureServer/0'
+    },
+    crosswalk: {
+      ref: 'arv_id',
+      scientific: 'especie',
+      common: 'esp_nomecomum',
+      age_range: 'arv_intervalo_idade',
+    }
+  },
+  {
+    omit: 'subset of https://services6.arcgis.com/1fFyrPgHFbxi0TNm/arcgis/rest/services/ArvoresPorto/FeatureServer/0',
+    country: 'Portugal',
+    state: 'Porto',
+    city: 'Porto',
+    scope: 'Tree: notable',
+    metadata: 'https://www.arcgis.com/home/item.html?id=f3ce8104ac814cfe9934ddae55ad5f6c',
+    data: {
+      arcgis: 'https://services6.arcgis.com/1fFyrPgHFbxi0TNm/arcgis/rest/services/ArvoresPorto/FeatureServer/1'
+    }
+  },
+  {
     country: 'Saudi Arabia',
     state: 'Riyadh',
     city: 'Riyadh',

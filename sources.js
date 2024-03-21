@@ -5380,7 +5380,8 @@ module.exports = [
       scientific: 'especie',
       common: 'esp_nomecomum',
       age_range: 'arv_intervalo_idade',
-    }
+    },
+    fallingfruit_id: 455,
   },
   {
     omit: 'subset of https://services6.arcgis.com/1fFyrPgHFbxi0TNm/arcgis/rest/services/ArvoresPorto/FeatureServer/0',

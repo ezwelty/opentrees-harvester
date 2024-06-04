@@ -954,7 +954,7 @@ module.exports = [
     metadata: 'https://www.data.gv.at/katalog/dataset/c91a4635-8b7d-43fe-9b27-d95dec8392a7',
     data: 'https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:BAUMKATOGD&srsName=EPSG:4326&outputFormat=csv',
     geometry: { wkt: 'SHAPE' },
-    srs: 'EPSG:4326',
+    srs: '+init=epsg:4326',
     crosswalk: {
       ref: 'BAUM_ID',
       dbh: x => x.STAMMUNGFANG / 3.14159 * 2,
@@ -1608,7 +1608,7 @@ module.exports = [
     data: 'https://data.winnipeg.ca/api/views/hfwk-jp4h/rows.csv',
     driver: 'CSV',
     geometry: { wkt: 'Point' },
-    srs: 'EPSG:4326',
+    srs: '+init=epsg:4326',
     crosswalk: {
       ref: 'tree_id',
       scientific: 'botanical',
@@ -11269,7 +11269,7 @@ module.exports = [
     metadata: 'https://data.cityofnewyork.us/Environment/Forestry-Tree-Points/hn5i-inap',
     data: 'https://data.cityofnewyork.us/api/views/hn5i-inap/rows.csv',
     geometry: { wkt: 'Geometry' },
-    srs: 'EPSG:4326',
+    srs: '+init=epsg:4326',
     opentrees_id: 'nyc'
   },
   {

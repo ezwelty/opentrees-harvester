@@ -14,10 +14,13 @@ module.exports = [
     crosswalk: {
       ref: 'id_arbol',
       height: 'altura_tot',
-      dbh: 'diametre',
+      dbh: 'diametro',
       common: 'nombre_com',
       scientific: 'nombre_cie',
-      family: 'nombre_fam'
+      family: 'nombre_fam',
+      origin: x => {
+        return { Exótico: 'introduced', 'Nativo/Autóctono': 'native' }[x['origen']]
+      }
     },
     license: { id: 'CC-BY-2.5-AR' },
     opentrees_id: 'buenos_aires'

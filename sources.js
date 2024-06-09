@@ -3856,7 +3856,10 @@ module.exports = [
     data: 'http://www.stadtplan.troisdorf.de/opengeodata/opendata/data/Troisdorf_Baumkataster.zip',
     vfs: '/vsizip/',
     filename: 'Troisdorf_Baumkataster/Troisdorf_Baumkataster_220909.csv',
-    coordsFunc: x => [Number(x['X-Koordinate'].replace(',', '.')), Number(x['Y-Koordinate'].replace(',', '.'))],
+    coordsFunc: x => [
+      Number(x['X-Koordinate'].replace(',', '.')),
+      Number(x['Y-Koordinate'].replace(',', '.'))
+    ],
     crosswalk: {
       height: 'Baumhoehe',
       scientific: x => x.Baumart.split(', ')[0],
@@ -4162,11 +4165,11 @@ module.exports = [
       return helpers.openFileUnionWithGdal(vsimemFiles)
     },
     coordsFunc: x => {
-      // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS': 42° 05' 14,02''
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\,]+)''/
+      // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS: 42° 05' 14,02''
+      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\.]+)''/
       return [
-        helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'], pattern),
-        helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'], pattern)
+        helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'].replace(',', '.'), pattern),
+        helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'].replace(',', '.'), pattern)
       ]
     },
     srs: 'EPSG:4326',
@@ -8611,9 +8614,19 @@ module.exports = [
     metadata: 'https://data.weho.org/Infrastructure/City-Tree-Inventory/qqwt-wx9z',
     data: 'https://data.weho.org/api/views/qqwt-wx9z/rows.csv',
     coordsFunc: x => {
+      // 315 HUNTLEY DR\nWest Hollywood, CA\n(0.0, 0.0)
       // 1250 FAIRFAX AV\nWest Hollywood, CA\n(34.093341, -118.361436)
       const match = x['Location'].match(/\(([0-9\.\-]+),\s*([0-9\.\-]+)\)$/)
-      return [match[2], match[1]]
+      const xy = [Number(match[2]), Number(match[1])]
+      if (xy[0] !== 0 && xy[1] !== 0) {
+        return xy
+      }
+    },
+    addressFunc: x => {
+      const lines = x['Location'].split('\n')
+      if (lines.length >= 2) {
+        return `${lines[0]}, ${lines[1]}, USA`
+      }
     },
     srs: 'EPSG:4326',
     license: { id: 'CC0-1.0' }
@@ -12578,7 +12591,15 @@ module.exports = [
     scope: 'Tree: street',
     metadata: 'https://data.providenceri.gov/Neighborhoods/Providence-Tree-Inventory/uv9w-h8i4',
     data: 'https://data.providenceri.gov/api/views/uv9w-h8i4/rows.csv',
-    coordsFunc: x => x['Property Address'].split('\n').reverse()[0].split(/[(), ]/).filter(Number).map(Number).reverse(),
+    coordsFunc: x => (
+      x['Property Address']
+      .split('\n')
+      .reverse()[0]
+      .split(/[(), ]/)
+      .filter(Number)
+      .map(Number)
+      .reverse()
+    ),
     crosswalk: { scientific: 'Species', dbh_in: 'Diameter in Inches' },
     opentrees_id: 'providence'
   },

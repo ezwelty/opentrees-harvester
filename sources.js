@@ -944,7 +944,10 @@ module.exports = [
     scope: 'Tree',
     metadata: 'https://www.data.gv.at/katalog/dataset/df4cc7ae-ead7-49aa-bcb8-b018f169162d',
     data: 'https://www.data.gv.at/katalog/dataset/df4cc7ae-ead7-49aa-bcb8-b018f169162d/resource/47f9c7ac-13c7-4d68-ab6c-97ed58cd3a65/download/staedtischer_baumkataster.csv',
-    geometry: { x: 'Lon', y: 'Lat' },
+    coordsFunc: x => [
+      Number(x.Lon.replace(',', '.')),
+      Number(x.Lat.replace(',', '.'))
+    ],
     srs: 'EPSG:4326',
     license: { id: 'CC-BY-4.0' }
   },
@@ -2443,7 +2446,8 @@ module.exports = [
     data: 'https://www.datos.gov.co/api/views/r4k4-8sux/rows.csv',
     coordsFunc: x => {
       // LATITUD: 04° 56' 15.1", LONGITUD: 73° 50' 22.6"
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\.]+)"/
+      // 73° 50' 15.55
+      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\.]+)"?/
       return [
         - helpers.parseDecimalFromDMS(x['LONGITUD'], pattern),
         helpers.parseDecimalFromDMS(x['LATITUD'], pattern),
@@ -2469,7 +2473,8 @@ module.exports = [
     data: 'https://www.datos.gov.co/api/views/bgqg-v25g/rows.csv',
     coordsFunc: x => {
       // Latitud: Latitud:4°37'47", Longitud: Longitud: 75°45'28"
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\.]+)"/
+      // 75°45 38´´, 4°37´26´´
+      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)['´ ]\s*(?<sec>[0-9\.]+)(?:"|´´|''|´|')/
       return [
         - helpers.parseDecimalFromDMS(x['Longitud'], pattern),
         helpers.parseDecimalFromDMS(x['Latitud'], pattern)
@@ -4172,7 +4177,8 @@ module.exports = [
     },
     coordsFunc: x => {
       // LONGITUDINE SU GIS: 14° 20' 34,97'' | LATITUDINE SU GIS: 42° 05' 14,02''
-      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\.]+)''/
+      //
+      const pattern = /(?<deg>[0-9]+)°\s*(?<min>[0-9]+)'\s*(?<sec>[0-9\.]+)(?:''|"|')/
       return [
         helpers.parseDecimalFromDMS(x['LONGITUDINE SU GIS'].replace(',', '.'), pattern),
         helpers.parseDecimalFromDMS(x['LATITUDINE SU GIS'].replace(',', '.'), pattern)
@@ -4983,7 +4989,7 @@ module.exports = [
     metadata: 'https://denhaag.dataplatform.nl/#/data/d604d9bb-8c2f-4e7d-a69c-ee6102890baf',
     data: 'https://ckan.dataplatform.nl/dataset/d604d9bb-8c2f-4e7d-a69c-ee6102890baf/resource/85327fde-9e76-40f3-a8d4-25970896fd8f/download/bomen-json.zip',
     vfs: '/vsizip/',
-    geometry: { x: 'LONG', y: 'LAT' },
+    geometry: { x: 'WGS84LONG', y: 'WGS84LAT' },
     crosswalk: {
       ref: 'BOOMNUMMER',
       scientific: 'BOOMSOORT_WETENSCHAPPELIJ',
@@ -5891,8 +5897,6 @@ module.exports = [
     data: {
       arcgis: 'https://ge.ch/sitgags1/rest/services/VECTOR/SITG_OPENDATA_04/MapServer/4571'
     },
-    geometry: { x: 'E', y: 'N' },
-    srs: 'EPSG:2056',
     crosswalk: {
       scientific: 'NOM_COMPLET',
       notable: x => x['REMARQUABLE'] ? 'remarquable' : null,
@@ -6160,8 +6164,6 @@ module.exports = [
     data: {
       arcgis: 'https://gis.lambeth.gov.uk/arcgis/rest/services/LambethTreesonPublicLand/MapServer/0'
     },
-    geometry: { x: 'X', y: 'Y' },
-    srs: 'EPSG:4326',
     deleteFunc: x => x.COMMONNAME === "'Vacant tree pit'" ||
       x.SPECIES.match(/tree removed|^\[/i),
     crosswalk: {
@@ -8271,6 +8273,7 @@ module.exports = [
     data: {
       arcgis: 'https://services2.arcgis.com/zNjnZafDYCAJAbN0/arcgis/rest/services/Landmark_Tree/FeatureServer/0'
     },
+    driver: 'ESRIJSON',
     terms: 'Any resale of this information is prohibited.'
   },
   {
@@ -13455,7 +13458,6 @@ module.exports = [
     data: {
       arcgis: 'https://maps.wylietexas.gov/arcgis/rest/services/ParksDept/TreeSurvey/FeatureServer/0'
     },
-    geometry: { x: 'X', y: 'Y' },
     crosswalk: {
       ref: 'TK_ID',
       common: 'COMMON',

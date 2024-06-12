@@ -678,20 +678,20 @@ module.exports = [
     scope: 'Tree',
     metadata: 'https://data.melbourne.vic.gov.au/explore/dataset/trees-with-species-and-dimensions-urban-forest/information/',
     data: 'https://data.melbourne.vic.gov.au/api/explore/v2.1/catalog/datasets/trees-with-species-and-dimensions-urban-forest/exports/geojson',
-    geometry: { x: 'Longitude', y: 'Latitude' },
+    geometry: { x: 'longitude', y: 'latitude' },
     srs: 'EPSG:4326',
     crosswalk: {
-      ref: 'CoM ID',
-      common: 'Common Name',
-      scientific: 'Scientific Name',
-      dbh: 'Diameter Breast Height',
+      ref: 'com_id',
+      common: 'common_name',
+      scientific: 'scientific_name',
+      dbh: 'diameter_breast_height',
       planted: x => helpers.reformatDatetime(
-        x['Date Planted'],
+        x['date_planted'],
         [/(?<day>[0-9]{2})\/(?<month>[0-9]{2})\/(?<year>[0-9]{4})/]
       ),
-      maturity: 'Age Description',
-      ule_range: x => x['Useful Life Expectency'].replace(/\s*\(.*\)$/, ''),
-      location: 'Located In'
+      maturity: 'age_description',
+      ule_range: x => x['useful_life_expectency'].replace(/\s*\(.*\)$/, ''),
+      location: 'located_in'
     },
     license: { id: 'CC-BY-4.0' },
     opentrees_id: 'melbourne'

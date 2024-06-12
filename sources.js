@@ -5468,7 +5468,7 @@ module.exports = [
   {
     country: 'Spain',
     state: 'Asturias',
-    city: 'Gijón / Xixón',
+    city: 'Gijón | Xixón',
     scope: 'Tree: park',
     metadata: 'https://observa.gijon.es/explore/dataset/arbolado-municipal-parques-y-jardines/information/',
     data: 'https://observa.gijon.es/api/explore/v2.1/catalog/datasets/arbolado-municipal-parques-y-jardines/exports/geojson',
@@ -5864,7 +5864,7 @@ module.exports = [
   {
     country: 'Switzerland',
     state: 'Bern',
-    city: 'Biel / Bienne',
+    city: 'Biel | Bienne',
     scope: 'Tree',
     metadata: 'https://sig.biel-bienne.ch/data/e331_baumkataster_f.html',
     data: 'https://websig.ch/datastore/E331_Baumkataster-Cadastre_des_arbres/e331_baumkataster.json.zip',

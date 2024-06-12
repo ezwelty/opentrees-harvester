@@ -3631,8 +3631,11 @@ module.exports = [
     state: 'Berlin',
     city: 'Berlin',
     scope: 'Tree: street',
-    metadata: 'https://daten.berlin.de/datensaetze/baumbestand-berlin-stra%C3%9Fenb%C3%A4ume-wfs',
-    data: 'https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_baumbestand?service=WFS&version=2.0.0&request=GetFeature&typeNames=fis:s_baumbestand&srsName=EPSG:4326&outputFormat=application/json',
+    metadata: [
+      'https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/0f682ebc-2b6c-3502-a233-97cac76d1762',
+      {file: 'https://fbinter.stadt-berlin.de/fb_daten/beschreibung/datenformatbeschreibung/Datenformatbeschreibung_Baeume.pdf'}
+    ],
+    data: 'https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_wfs_baumbestand?service=WFS&version=2.0.0&request=GetFeature&typeNames=fis:s_wfs_baumbestand&outputFormat=application/json',
     crosswalk: {
       scientific: 'Art_Bot',
       common: 'Art_Dtsch',
@@ -3648,8 +3651,11 @@ module.exports = [
     state: 'Berlin',
     city: 'Berlin',
     scope: 'Tree: park',
-    metadata: 'https://daten.berlin.de/datensaetze/baumbestand-berlin-anlagenb%C3%A4ume-wfs',
-    data: 'https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_baumbestand_an?service=WFS&version=2.0.0&request=GetFeature&typeNames=fis:s_baumbestand_an&srsName=EPSG:4326&outputFormat=application/json',
+    metadata: [
+      'https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/98ff39da-d9e7-3764-bbf8-e10ca6eefddf',
+      {file: 'https://fbinter.stadt-berlin.de/fb_daten/beschreibung/datenformatbeschreibung/Datenformatbeschreibung_Baeume.pdf'}
+    ],
+    data: 'https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_wfs_baumbestand_an?service=WFS&version=2.0.0&request=GetFeature&typeNames=fis:s_wfs_baumbestand_an&outputFormat=application/json',
     license: { id: 'DL-DE-BY-2.0' },
     opentrees_id: 'berlin'
   },

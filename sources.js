@@ -50,6 +50,7 @@ module.exports = [
     scope: 'Tree',
     metadata: 'https://datos.villamaria.gob.ar/dataset/relevamiento-de-arbolado',
     data: 'https://datos.villamaria.gob.ar/dataset/relevamiento-de-arbolado/relevamiento-arbolado-2021/download',
+    srs: '+init=epsg:4326',
     license: { id: 'ODbL-1.0' }
   },
   {

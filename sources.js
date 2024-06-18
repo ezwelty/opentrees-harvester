@@ -13297,7 +13297,7 @@ module.exports = [
   {
     country: 'United States',
     state: 'South Carolina',
-    city: 'AIken',
+    city: 'Aiken',
     scope: 'Tree: notable',
     metadata: 'https://open-data-aiken-sc.hub.arcgis.com/datasets/0df3e53a96d44b368ef7837e7fd2b042_2/about',
     data: {

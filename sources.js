@@ -13272,15 +13272,14 @@ module.exports = [
     scope: 'Tree: street',
     metadata: 'https://data.providenceri.gov/Neighborhoods/Providence-Tree-Inventory/uv9w-h8i4',
     data: 'https://data.providenceri.gov/api/views/uv9w-h8i4/rows.csv',
-    coordsFunc: x => (
-      x['Property Address']
-      .split('\n')
-      .reverse()[0]
-      .split(/[(), ]/)
-      .filter(Number)
-      .map(Number)
-      .reverse()
-    ),
+    // 11 11TH ST\nProvidence, Rhode Island\n(41.855221, -71.397057)
+    // Parse coordinates with named regex capture groups
+    coordsFunc: x => {
+      const match = x['Property Address'].match(
+        /\((?<y>-?[0-9\.]+)\s*,\s*(?<x>-?[0-9\.]+)\)/
+      )
+      return [match?.groups?.x, match?.groups?.y].map(Number)
+    },
     srs: 'EPSG:4326',
     crosswalk: { scientific: 'Species', dbh_in: 'Diameter in Inches' },
     opentrees_id: 'providence'

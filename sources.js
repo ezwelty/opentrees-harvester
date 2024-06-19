@@ -9072,10 +9072,7 @@ module.exports = [
       // 315 HUNTLEY DR\nWest Hollywood, CA\n(0.0, 0.0)
       // 1250 FAIRFAX AV\nWest Hollywood, CA\n(34.093341, -118.361436)
       const match = x['Location'].match(/\(([0-9\.\-]+),\s*([0-9\.\-]+)\)$/)
-      const xy = [Number(match[2]), Number(match[1])]
-      if (xy[0] !== 0 && xy[1] !== 0) {
-        return xy
-      }
+      return [Number(match[2]), Number(match[1])]
     },
     addressFunc: x => {
       const lines = x['Location'].split('\n')

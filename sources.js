@@ -5705,7 +5705,8 @@ module.exports = [
     metadata: 'https://www.arcgis.com/home/item.html?id=f3ce8104ac814cfe9934ddae55ad5f6c',
     data: {
       arcgis: 'https://services6.arcgis.com/1fFyrPgHFbxi0TNm/arcgis/rest/services/ArvoresPorto/FeatureServer/1'
-    }
+    },
+    srs: '+init=EPSG:4326'
   },
   {
     country: 'Saudi Arabia',

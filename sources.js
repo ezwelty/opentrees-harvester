@@ -12018,6 +12018,7 @@ module.exports = [
     srs: '+init=EPSG:4326'
   },
   {
+    omit: 'Superseded by https://services6.arcgis.com/bdPqSfflsdgFRVVM/arcgis/rest/services/Syracuse_Tree_Data/FeatureServer/0',
     country: 'United States',
     state: 'New York',
     city: 'Syracuse',
@@ -12029,6 +12030,21 @@ module.exports = [
     geometry: { x: 'Longitude', y: 'Latitude' },
     srs: 'EPSG:4326',
     license: { id: 'CC0-1.0' }
+  },
+  {
+    country: 'United States',
+    state: 'New York',
+    city: 'Syracuse',
+    scope: 'Tree',
+    metadata: 'https://data.syr.gov/datasets/7982e38ea4b545289736a1f42e413632_0/about',
+    data: {
+      arcgis: 'https://services6.arcgis.com/bdPqSfflsdgFRVVM/arcgis/rest/services/Syracuse_Tree_Data/FeatureServer/0'
+    },
+    srs: '+init=EPSG:4326',
+    license: {
+      name: 'Terms of Use',
+      url: 'https://data.syr.gov/pages/termsofuse'
+    }
   },
   {
     country: 'United States',

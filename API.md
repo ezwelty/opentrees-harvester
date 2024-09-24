@@ -1,9 +1,6 @@
 ## Modules
 
 <dl>
-<dt><a href="#module_load">load</a></dt>
-<dd><p>Load the provided source datasets.</p>
-</dd>
 <dt><a href="#module_names">names</a></dt>
 <dd><p>Parse scientific names.</p>
 </dd>
@@ -11,7 +8,7 @@
 <dd><p>Describe a source dataset.</p>
 </dd>
 <dt><a href="#module_sourceio">sourceio</a></dt>
-<dd><p>Read and write source properties.</p>
+<dd><p>Read and write sources and source properties.</p>
 </dd>
 <dt><a href="#module_taxamatch">taxamatch</a></dt>
 <dd><p>Match scientific names.</p>
@@ -80,30 +77,6 @@ binary files and same as UTF-8 for text.</p>
 <dt><a href="#search">search(params, options)</a> ⇒ <code>Array.&lt;ArchiveEntry&gt;</code></dt>
 <dd><p>Search log for matching entries.</p>
 </dd>
-<dt><a href="#geocode">geocode(address)</a> ⇒ <code>Promise.&lt;object&gt;</code></dt>
-<dd><p>Geocode address.</p>
-</dd>
-<dt><a href="#geocodeCached">geocodeCached(address)</a> ⇒ <code>Promise.&lt;object&gt;</code></dt>
-<dd><p>Geocode address with caching.</p>
-</dd>
-<dt><a href="#buildMapFromCrosswalks">buildMapFromCrosswalks(crosswalks)</a> ⇒ <code>Array.&lt;Object.&lt;string, Array.&lt;string&gt;&gt;&gt;</code></dt>
-<dd><p>Build source-target field name map from crosswalks.</p>
-</dd>
-<dt><a href="#matchFieldName">matchFieldName(name, map)</a> ⇒ <code>Array.&lt;Object&gt;</code></dt>
-<dd><p>Find potential target field names matching a source field name.</p>
-</dd>
-<dt><a href="#buildGetCapabilitiesUrl">buildGetCapabilitiesUrl(url)</a> ⇒ <code>string</code></dt>
-<dd><p>Build WFS GetCapabilities URL.</p>
-</dd>
-<dt><a href="#parseCapabilities">parseCapabilities(xml)</a> ⇒ <code>object</code></dt>
-<dd><p>Parse WFS GetCapabilities response.</p>
-</dd>
-<dt><a href="#chooseOutputFormat">chooseOutputFormat(formats)</a> ⇒ <code>string</code> | <code>null</code></dt>
-<dd><p>Choose the output format.</p>
-</dd>
-<dt><a href="#buildGetFeatureUrl">buildGetFeatureUrl(url, capabilities, paging)</a> ⇒ <code>string</code></dt>
-<dd><p>Build WFS GetFeature URL.</p>
-</dd>
 <dt><a href="#getBrowser">getBrowser()</a> ⇒ <code>Promise.&lt;puppeteer.Browser&gt;</code></dt>
 <dd><p>Get cached browser instance.</p>
 </dd>
@@ -123,33 +96,25 @@ binary files and same as UTF-8 for text.</p>
 <dd><p>Download web page as MHTML and log result.</p>
 <p>Page is rendered in a headless browser (puppeteer) and saved as MHTML.</p>
 </dd>
+<dt><a href="#geocode">geocode(address)</a> ⇒ <code>Promise.&lt;object&gt;</code></dt>
+<dd><p>Geocode address.</p>
+</dd>
+<dt><a href="#geocodeCached">geocodeCached(address)</a> ⇒ <code>Promise.&lt;object&gt;</code></dt>
+<dd><p>Geocode address with caching.</p>
+</dd>
+<dt><a href="#buildGetCapabilitiesUrl">buildGetCapabilitiesUrl(url)</a> ⇒ <code>string</code></dt>
+<dd><p>Build WFS GetCapabilities URL.</p>
+</dd>
+<dt><a href="#parseCapabilities">parseCapabilities(xml)</a> ⇒ <code>object</code></dt>
+<dd><p>Parse WFS GetCapabilities response.</p>
+</dd>
+<dt><a href="#chooseOutputFormat">chooseOutputFormat(formats)</a> ⇒ <code>string</code> | <code>null</code></dt>
+<dd><p>Choose the output format.</p>
+</dd>
+<dt><a href="#buildGetFeatureUrl">buildGetFeatureUrl(url, capabilities, paging)</a> ⇒ <code>string</code></dt>
+<dd><p>Build WFS GetFeature URL.</p>
+</dd>
 </dl>
-
-<a name="module_load"></a>
-
-## load
-Load the provided source datasets.
-
-
-* * *
-
-<a name="module_load..loadSources"></a>
-
-### load~loadSources(path, [filters], [dir]) ⇒ <code>Array.&lt;Source&gt;</code>
-Load sources from source properties.
-
-**Kind**: inner method of [<code>load</code>](#module_load)  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| path | <code>string</code> |  | Directory of JS files containing source properties. |
-| [filters] | <code>object</code> | <code>{}</code> |  |
-| filters.ids | <code>Array.&lt;string&gt;</code> |  | Return only sources with these identifiers. |
-| filters.countries | <code>Array.&lt;string&gt;</code> |  | Return only source with these countries. |
-| [dir] | <code>string</code> | <code>&quot;data/${id}/input&quot;</code> | Source input directory (template interpolated on source properties). |
-
-
-* * *
 
 <a name="module_names"></a>
 
@@ -1057,12 +1022,13 @@ Throw or print error to console (red).
 <a name="module_sourceio"></a>
 
 ## sourceio
-Read and write source properties.
+Read and write sources and source properties.
 
 
 * [sourceio](#module_sourceio)
     * [~readSourceProperties(file)](#module_sourceio..readSourceProperties) ⇒ <code>Array.&lt;SourceProperties&gt;</code>
-    * [~writeSourceProperties(sources, file, currentFile)](#module_sourceio..writeSourceProperties)
+    * [~writeSourceProperties(sourceProps, file, currentFile)](#module_sourceio..writeSourceProperties)
+    * [~loadSources(file, [filters])](#module_sourceio..loadSources) ⇒ <code>Array.&lt;Source&gt;</code>
 
 
 * * *
@@ -1084,16 +1050,40 @@ Read source properties from a file.
 
 <a name="module_sourceio..writeSourceProperties"></a>
 
-### sourceio~writeSourceProperties(sources, file, currentFile)
+### sourceio~writeSourceProperties(sourceProps, file, currentFile)
 Write source properties to a file.
 
 **Kind**: inner method of [<code>sourceio</code>](#module_sourceio)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| sources | <code>Array.&lt;SourceProperties&gt;</code> | Source properties. |
+| sourceProps | <code>Array.&lt;SourceProperties&gt;</code> | Source properties. |
 | file | <code>string</code> | Path to new source properties file. |
 | currentFile | <code>string</code> | Path to current source properties file ( defaults to `file`). Used to replicate the header (everything before `module.exports`). |
+
+
+* * *
+
+<a name="module_sourceio..loadSources"></a>
+
+### sourceio~loadSources(file, [filters]) ⇒ <code>Array.&lt;Source&gt;</code>
+Load sources from source properties.
+
+Crosswalks are modified for unit conversions and range parsing.
+
+**Kind**: inner method of [<code>sourceio</code>](#module_sourceio)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| file | <code>string</code> |  | Path to file containing source properties. |
+| [filters] | <code>object</code> | <code>{}</code> |  |
+| filters.id | <code>Array.&lt;string&gt;</code> |  | Filter by id. |
+| filters.country | <code>Array.&lt;string&gt;</code> |  | Filter by country. |
+| filters.state | <code>Array.&lt;string&gt;</code> |  | Filter by state. |
+| filters.city | <code>Array.&lt;string&gt;</code> |  | Filter by city. |
+| filters.designation | <code>Array.&lt;string&gt;</code> |  | Filter by designation. |
+| filters.scope | <code>Array.&lt;string&gt;</code> |  | Filter by scope. |
+| filters.omit | <code>boolean</code> |  | Whether to include sources flagged as `omit: true`. |
 
 
 * * *
@@ -1373,6 +1363,7 @@ Additional properties not used by [Source](Source) but used elsewhere.
 | state | <code>string</code> | Local name of first-level administrative division (see https://en.wikipedia.org/wiki/List_of_administrative_divisions_by_country) with the exception of: - Ireland: NUTS 3 Region (https://en.wikipedia.org/wiki/NUTS_statistical_regions_of_Ireland) - Japan: Region (https://en.wikipedia.org/wiki/List_of_regions_of_Japan) - Netherlands: Province (https://en.wikipedia.org/wiki/Provinces_of_the_Netherlands) - New Zealand: Region (https://en.wikipedia.org/wiki/Regions_of_New_Zealand) - United Kingdom (England): Region (https://en.wikipedia.org/wiki/Regions_of_England) - United Kingdom (other): Country |
 | city | <code>string</code> | Local name of city or municipality. |
 | designation | <code>string</code> | Local name of `city` subset, administrative unit, university, or other institution if not `country`, `state`, or `city`. |
+| scope | <code>string</code> | Scope or type of the inventory (e.g. `tree`, `tree-street`, `tree-street-main`, `tree-park`, `tree-notable`). |
 | language | <code>string</code> | Language of contents as an [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) code (e.g. `en`) and an optional [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) region code (e.g. `en-AU`). |
 | primary | <code>string</code> | `id` of the primary source (for grouping sources together). |
 | long | <code>string</code> | Full name of the government body, university, or other institution (e.g. `City of Melbourne`). |
@@ -1670,127 +1661,6 @@ descending.
 
 * * *
 
-<a name="geocode"></a>
-
-## geocode(address) ⇒ <code>Promise.&lt;object&gt;</code>
-Geocode address.
-
-**Kind**: global function  
-**Returns**: <code>Promise.&lt;object&gt;</code> - Geocode results.  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| address | <code>string</code> | Address to geocode. |
-
-
-* * *
-
-<a name="geocodeCached"></a>
-
-## geocodeCached(address) ⇒ <code>Promise.&lt;object&gt;</code>
-Geocode address with caching.
-
-**Kind**: global function  
-**Returns**: <code>Promise.&lt;object&gt;</code> - Geocode results.  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| address | <code>string</code> | Address to geocode. |
-
-
-* * *
-
-<a name="buildMapFromCrosswalks"></a>
-
-## buildMapFromCrosswalks(crosswalks) ⇒ <code>Array.&lt;Object.&lt;string, Array.&lt;string&gt;&gt;&gt;</code>
-Build source-target field name map from crosswalks.
-
-**Kind**: global function  
-**Returns**: <code>Array.&lt;Object.&lt;string, Array.&lt;string&gt;&gt;&gt;</code> - Lowercased source field names
-mapped to each target field name.  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| crosswalks | <code>Array.&lt;Object.&lt;string, (string\|function())&gt;&gt;</code> | Source crosswalks. |
-
-
-* * *
-
-<a name="matchFieldName"></a>
-
-## matchFieldName(name, map) ⇒ <code>Array.&lt;Object&gt;</code>
-Find potential target field names matching a source field name.
-
-**Kind**: global function  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| name | <code>string</code> | Source field name. |
-| map | <code>Object.&lt;string, Array.&lt;string&gt;&gt;</code> | Target-source field name map. |
-
-
-* * *
-
-<a name="buildGetCapabilitiesUrl"></a>
-
-## buildGetCapabilitiesUrl(url) ⇒ <code>string</code>
-Build WFS GetCapabilities URL.
-
-**Kind**: global function  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| url | <code>string</code> | WFS server URL |
-
-
-* * *
-
-<a name="parseCapabilities"></a>
-
-## parseCapabilities(xml) ⇒ <code>object</code>
-Parse WFS GetCapabilities response.
-
-**Kind**: global function  
-**Returns**: <code>object</code> - Parsed capabilities (version, outputFormats, typeNames,
-resultTypes, resultPaging).  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| xml | <code>string</code> | – XML string |
-
-
-* * *
-
-<a name="chooseOutputFormat"></a>
-
-## chooseOutputFormat(formats) ⇒ <code>string</code> \| <code>null</code>
-Choose the output format.
-
-**Kind**: global function  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| formats | <code>Array.&lt;string&gt;</code> | List of output formats |
-
-
-* * *
-
-<a name="buildGetFeatureUrl"></a>
-
-## buildGetFeatureUrl(url, capabilities, paging) ⇒ <code>string</code>
-Build WFS GetFeature URL.
-
-**Kind**: global function  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| url | <code>string</code> |  | WFS server URL (ideally with typeName parameter) |
-| capabilities | <code>object</code> |  | Server capabilities |
-| paging | <code>boolean</code> | <code>false</code> | Whether to set a start index and max feature count |
-
-
-* * *
-
 <a name="getBrowser"></a>
 
 ## getBrowser() ⇒ <code>Promise.&lt;puppeteer.Browser&gt;</code>
@@ -1889,6 +1759,96 @@ Page is rendered in a headless browser (puppeteer) and saved as MHTML.
 | params.format | <code>BrowserFormat</code> | Format to save page as |
 | params.maxDays | <code>number</code> | Maximum age of existing result in days that would prevent downloading again |
 | [params.props] | <code>object</code> | Additional properties to log |
+
+
+* * *
+
+<a name="geocode"></a>
+
+## geocode(address) ⇒ <code>Promise.&lt;object&gt;</code>
+Geocode address.
+
+**Kind**: global function  
+**Returns**: <code>Promise.&lt;object&gt;</code> - Geocode results.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| address | <code>string</code> | Address to geocode. |
+
+
+* * *
+
+<a name="geocodeCached"></a>
+
+## geocodeCached(address) ⇒ <code>Promise.&lt;object&gt;</code>
+Geocode address with caching.
+
+**Kind**: global function  
+**Returns**: <code>Promise.&lt;object&gt;</code> - Geocode results.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| address | <code>string</code> | Address to geocode. |
+
+
+* * *
+
+<a name="buildGetCapabilitiesUrl"></a>
+
+## buildGetCapabilitiesUrl(url) ⇒ <code>string</code>
+Build WFS GetCapabilities URL.
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| url | <code>string</code> | WFS server URL |
+
+
+* * *
+
+<a name="parseCapabilities"></a>
+
+## parseCapabilities(xml) ⇒ <code>object</code>
+Parse WFS GetCapabilities response.
+
+**Kind**: global function  
+**Returns**: <code>object</code> - Parsed capabilities (version, outputFormats, typeNames,
+resultTypes, resultPaging).  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| xml | <code>string</code> | – XML string |
+
+
+* * *
+
+<a name="chooseOutputFormat"></a>
+
+## chooseOutputFormat(formats) ⇒ <code>string</code> \| <code>null</code>
+Choose the output format.
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| formats | <code>Array.&lt;string&gt;</code> | List of output formats |
+
+
+* * *
+
+<a name="buildGetFeatureUrl"></a>
+
+## buildGetFeatureUrl(url, capabilities, paging) ⇒ <code>string</code>
+Build WFS GetFeature URL.
+
+**Kind**: global function  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| url | <code>string</code> |  | WFS server URL (ideally with typeName parameter) |
+| capabilities | <code>object</code> |  | Server capabilities |
+| paging | <code>boolean</code> | <code>false</code> | Whether to set a start index and max feature count |
 
 
 * * *

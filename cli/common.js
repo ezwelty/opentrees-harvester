@@ -1,20 +1,34 @@
 const DEFAULT_OPTIONS = [
   {
-    name: 'help', alias: 'h', type: Boolean, defaultValue: false
+    name: 'help', type: Boolean, defaultValue: false
   },
   {
-    name: 'ids', alias: 'i', type: String, multiple: true, defaultOption: true,
-    description: 'Restrict to these source identifiers.'
+    name: 'id', type: String, multiple: true,
+    description: 'Restrict by id.\nNote: These are currently assigned automatically on load based on source properties and are thus subject to change.'
   },
   {
-    name: 'countries', alias: 'c', type: String, multiple: true,
-    description: 'Restrict to these source countries (case and whitespace insensitive).'
+    name: 'country', type: String, multiple: true,
+    description: 'Restrict by country.'
   },
   {
-    name: 'dir', alias: 'd', type: String, defaultValue: 'data/${id}/input',
-    // Escape special characters for chalk. See https://github.com/Polymer/tools/pull/612
-    description: "Template for input directory, with source properties referred to by name (default: 'data/${id}/input').".
-      replace(/[{}\\]/g, '\\$&')
+    name: 'city', type: String, multiple: true,
+    description: 'Restrict by city.'
+  },
+  {
+    name: 'state', type: String, multiple: true,
+    description: 'Restrict by state.'
+  },
+  {
+    name: 'designation', type: String, multiple: true,
+    description: 'Restrict by designation.'
+  },
+  {
+    name: 'scope', type: String, multiple: true,
+    description: 'Restrict by scope.'
+  },
+  {
+    name: 'omit', type: Boolean, defaultValue: false,
+    description: 'Whether to keep sources flagged as `omit: true`.'
   }
 ]
 

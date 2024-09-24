@@ -5,8 +5,9 @@ Authors: Ethan Welty ([fallingfruit.org](https://fallingfruit.org)), Steve Benne
 Scripts that fetch and process data about inventoried trees and other plants from government and university open data sources. The result is used, among other things, to populate [opentrees.org](https://opentrees.org).
 
 - [Installation](#installation)
+- [Overview](#overview)
 - [Usage](#usage)
-- [Target Schema](#target-schema)
+- [Target schema](#target-schema)
 - [Development](#development)
 
 ## Installation
@@ -17,24 +18,49 @@ cd opentrees-harvester
 yarn
 ```
 
+Copy `.env.example` to `.env` and set the environment variables as needed.
+
+```bash
+cp .env.example .env
+```
+
+- `DATA_ARCHIVE` (default `archive/data`): Directory of the data archive. See [Caching](#caching).
+- `DATA_ARCHIVE_LOG` (default `archive/data.jsonl`): Log file of the data archive. See [Caching](#caching).
+- `GEOCODE_ARCHIVE` (default `archive/geocode`): Directory of the geocode archive. Address geocode results are stored as JSON in files with paths of the form `{address_hash}.json`.
+- `GOOGLE_MAPS_API_KEY`: Google Maps API key for geocoding addresses.
+
+## Overview
+
+### Sources ([`sources.js`](sources.js))
+
+Each source dataset is described as a Javascript object (see [`SourceProperties`](API.md#module_types..SourceProperties)) in a single giant array sorted nominally by `country`, `state`, `city`, `designation`, and `scope`. A schema `crosswalk` strives to map the source dataset to our [target schema](#target-schema).
+
+### Downloading
+
+The harvester downloads source `data`, `metadata`, and `license` from URLs using the specified [`DownloadMethod`](API.md#module_types..DownloadMethod), which includes file-based download, querying the ArcGIS Feature Layer API, or rendering the URL in a web browser.
+
+### Caching
+
+The harvester aggressively caches source data and metadata in order to avoid re-downloading files, track changes of files over time, and protect against the inevitable link rot. Files are stored in the archive (`DATA_ARCHIVE` environment variable) with paths of the form `{hash}/{timestamp}/{filename}`, where `hash` is either the checksum of the source URL (if downloaded from a URL) or the checksum of the file content (if not). Archived files are described in the log file (`DATA_ARCHIVE_LOG` environment variable), a [JSON Lines](http://jsonlines.org) file that records file path, content checksum, date, and other file properties (see [`ArchiveEntry`](API.md#module_types..ArchiveEntry)).
+
+### Processing
+
+Downloading, caching, and finally data processing are typically executed via the [`Source`](API.md#module_source..Source) class, which wraps source properties and provides methods for each step in the pipeline. Processing includes reading the source data with [GDAL](https://gdal.org), applying the schema crosswalk, and writing the result to a new file.
+
 ## Usage
-
-### Source properties ([`sources/*.js`](sources))
-
-Each source dataset is described as a Javascript `object` following the format described at [`API.md#SourceProperties`](API.md#SourceProperties). They are sorted into modules organized by country. The schema crosswalks (`crosswalk` properties) strive to map each source dataset to our [target schema](#target-schema).
 
 ### Command line interface ([`cli/*.js`](cli))
 
-The command line interface provides a quick way to process all or a subset of the source datasets. See each command's help message:
+The command line interface provides a quick way to download and process all or a subset of the source datasets. See each command's help message:
 
 ```bash
-yarn get -h
-yarn process -h
+yarn get --help
+yarn process --help
 ```
 
 ### Source class ([`lib/source.js`](lib/source.js))
 
-The `Source` class wraps source properties to facilitate data processing. All methods are documented at [`API.md`](API.md#module_source..Source).
+The [`Source`](API.md#module_source..Source) class wraps source properties to facilitate data processing.
 
 Here is a simple example using the included [`tests/simple.csv`](tests/simple.csv):
 
@@ -44,7 +70,7 @@ const Source = require('./lib/source')
 const source = new Source(
   props = { 
     id: 'test',
-    download: 'https://raw.githubusercontent.com/ezwelty/opentrees-harvester/main/tests/simple.csv',
+    data: 'https://raw.githubusercontent.com/ezwelty/opentrees-harvester/main/tests/simple.csv',
     geometry: { x: 'LON', y: 'LAT' },
     srs: 'EPSG:4326',
     crosswalk: {
@@ -52,26 +78,35 @@ const source = new Source(
       common: x => x['NAME'].toLowerCase(),
       height_cm: 'HEIGHT_CM'
     }
-  },
-  dir = 'test/input'
+  }
 )
 ```
 
-Use [`Source.get()`](API.md/#module_source..Source+get) to download remote files (`source.props.download`) to the source directory (`source.dir`) and prepare them for processing.
+Use [`Source.findFiles()`](API.md#module_source..Source+findFiles) to download the remote data file (`source.props.data`) to the archive.
 
 ```js
-source.get()
-// Promise { <pending> }
-// [test] Downloading simple.csv
-// [test] Downloaded simple.csv (0 MB)
-// [test] Ready to process
+await source.fetchFiles('data')  // 'data' (default), 'metadata', or 'license'
+// [
+//   {
+//     date: 2024-09-24T20:41:22.507Z,
+//     url: 'https://raw.githubusercontent.com/ezwelty/opentrees-harvester/main/tests/simple.csv',
+//     method: 'file',
+//     checksum: '7303b0bda0ca68c7db73922af340e4aa',
+//     path: 'archive/data/d60579b4f36793bb54f6f4790bd683a2/2024-09-24T204122.507Z/simple.csv.txt',
+//     props: { type: 'data' }
+//   }
+// ]
 ```
 
-Optionally, use [`Source.find()`](API.md/#module_source..Source+find) to check that we downloaded a file recognized by GDAL, then [`Source.getRows()`](API.md/#module_source..Source+getRows) (or `Source.getFields()`, `Source.sample()`, `Source.glimpse()`, etc) to read content from the file with GDAL.
+Optionally, use [`Source.findFiles()`](API.md#module_source..Source+findFiles) to retrieve them from the archive without downloading them. The output would be the same as above.
+
+We can now open the dataset with GDAL, then use one of the many methods to inspect it ([`Source.getRows()`](API.md#module_source..Source+getRows), [`Source.glimpse()`](API.md#module_source..Source+glimpse), etc).
 
 ```js
-source.find()
-// 'test/input/simple.csv'
+// Note: We need to set the GDAL driver exlicitly because the data was downloaded as
+// '.csv.txt' instead of '.csv'.
+source.props.driver = 'CSV'
+await source.open()
 source.getRows(1)
 // [
 //   {
@@ -84,13 +119,12 @@ source.getRows(1)
 // ]
 ```
 
-Use [`Source.process()`](API.md/#module_source..Source+process) to process the input and write the result to a new file. In this case, this includes (1) writing a [VRT file](https://gdal.org/drivers/vector/vrt.html) to tell [GDAL](https://gdal.org) which spatial reference system and geometry field names to use when reading the input and (2) applying our schema crosswalk (`source.props.crosswalk`).
+Use [`Source.process()`](API.md/#module_source..Source+process) to process the input and write the result to a new file. In this case, this includes applying our schema crosswalk (`source.props.crosswalk`).
 
 ```js
-source.process('test/output/output.csv')
-// [test] Processing test/input/simple.csv
-// [test] Writing and reading VRT file
-// [test] Wrote output: test/output/output.csv
+await source.process('output/test.csv', { overwrite: true })
+// [test] Processing CSV:archive/data/d60579b4f36793bb54f6f4790bd683a2/2024-09-24T204122.507Z/simple.csv.txt
+// [test] Wrote output: output/test.csv
 ```
 
 We can modify the crosswalk following our conventions to apply unit conversions and other cleaning steps (see [`lib/convert.js`](lib/convert.js)). In this case, `height_cm` (in centimeters) is automatically converted to standard `height` (in meters).
@@ -98,17 +132,7 @@ We can modify the crosswalk following our conventions to apply unit conversions 
 ```js
 const { modifyCrosswalk } = require('./lib/convert.js')
 source.props.crosswalk = modifyCrosswalk(source.props.crosswalk)
-source.process('test/output/output.csv', {overwrite: true})
-```
-
-Finally, the result can also be inspected using the `Source` class.
-
-```js
-const out = new Source({id: 'out'}, 'test/output')
-out.find()
-// 'test/output/output.csv'
-out.getRows(1)
-// [ { ref: '1', common: 'loquat', height: '12' } ]
+await source.process('output/test.csv', { overwrite: true })
 ```
 
 ### Scientific name matching
@@ -266,8 +290,9 @@ Numeric and date ranges use the field name suffixes `_min` and `_max`. For examp
 
 ## Development
 
-The source code is documented using inline [JSDoc 3](https://jsdoc.app/) comments. Update the API documentation ([API.md](API.md)) from the source code by running:
+The source code is documented using inline [JSDoc 3](https://jsdoc.app) comments. Update the API documentation ([API.md](API.md)) from the source code by running:
 
 ```bash
+yarn test
 yarn docs
 ```

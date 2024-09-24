@@ -6346,7 +6346,14 @@ module.exports = [
     openFunc: file => {
       const txt = fs.readFileSync(file, 'utf8')
       // Fix <!-- WARNING: The value '*' is not valid in a XML tag context. -->
-      const xml = txt.replaceAll('wissenschaftlicher Name', 'wissenschaftlicher_Name').replaceAll('deutscher Name', 'deutscher_Name').replaceAll('Aktivität', 'Aktivitaet')
+      const xml = (
+        txt
+        .replaceAll('wissenschaftlicher Name', 'wissenschaftlicherName')
+        .replaceAll('deutscher Name', 'deutscherName')
+        .replaceAll('Aktivität', 'Aktivitaet')
+        // Remove link to schema to force new column names
+        .replace('http://stadtplan.winterthur.ch/wms/Baumkataster?SERVICE=WFS&amp;VERSION=2.0.0&amp;REQUEST=DescribeFeatureType&amp;TYPENAME=ms:Stadtbaum&amp;OUTPUTFORMAT=application%2Fgml%2Bxml%3B%20version%3D3.2 ', '')
+      )
       const buffer = Buffer.from(xml)
       return gdal.open(buffer)
     },

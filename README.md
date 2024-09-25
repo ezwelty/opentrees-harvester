@@ -290,9 +290,14 @@ Numeric and date ranges use the field name suffixes `_min` and `_max`. For examp
 
 ## Development
 
-The source code is documented using inline [JSDoc 3](https://jsdoc.app) comments. Update the API documentation ([API.md](API.md)) from the source code by running:
+Run tests:
 
 ```bash
 yarn test
+```
+
+The source code is documented using inline [JSDoc 3](https://jsdoc.app) comments. Update the API documentation ([API.md](API.md)) from the source code by running:
+
+```bash
 yarn docs
 ```

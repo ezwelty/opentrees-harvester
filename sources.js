@@ -1,6 +1,7 @@
 const fs = require('fs')
 const gdal = require('gdal-async')
 const helpers = require('./lib/helpers')
+const path = require('path')
 
 module.exports = [
   {

@@ -2122,7 +2122,10 @@ module.exports = [
       crown: 'CROWN_WIDT'
     },
     srs: '+init=EPSG:4326',
-    terms: 'Internal Use Only',
+    license: {
+      name: 'Town of Oakville Open Data Licence',
+      url: 'https://www.oakville.ca/town-hall/town-studies-plans-projects/town-initiatives/open-data/open-data-licence/'
+    },
     opentrees_id: 'oakville'
   },
   {

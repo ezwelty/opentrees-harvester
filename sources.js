@@ -2054,10 +2054,819 @@ module.exports = [
     city: 'London',
     scope: 'tree',
     inactive: true,
+    omit: 'superseded by https://services.arcgis.com/rGKxabTU9mcXMw7k/ArcGIS/rest/services/Tree_Inventory_Public_CityLondon/FeatureServer/0',
     metadata: { checksum: '2c4d7cc2d2afb8908e41a3ffcc80b854' },
     data: { checksum: '814e7f95e497097f989fe423c2eee293' },
     vfs: '/vsizip/',
-    srs: 'EPSG:32617'
+    srs: 'EPSG:32617',
+    codes: {
+      SPECIES: {
+        ALGR: {
+          LATIN_NAME: "Alnus incana",
+          DISPLAY_TEXT: "Alder, Grey"
+        },
+        ALUE: {
+          LATIN_NAME: "Alnus glutinosa",
+          DISPLAY_TEXT: "Alder, European"
+        },
+        AMMA: {
+          LATIN_NAME: "Maackia amurensis",
+          DISPLAY_TEXT: "Amur Maackia"
+        },
+        APCR: {
+          LATIN_NAME: "Malus profusion",
+          DISPLAY_TEXT: "Apple, Crab profusion"
+        },
+        APMI: {
+          LATIN_NAME: "Malus spp",
+          DISPLAY_TEXT: "Apple, Miscellaneous"
+        },
+        ARMI: {
+          LATIN_NAME: "Prunus spp",
+          DISPLAY_TEXT: "Apricot, Miscellaneous"
+        },
+        ASAP: {
+          LATIN_NAME: "Fraxinus americana Autumn Purple",
+          DISPLAY_TEXT: "Ash, Autumn Purple"
+        },
+        ASBL: {
+          LATIN_NAME: "Fraxinus nigra",
+          DISPLAY_TEXT: "Ash, Black"
+        },
+        ASBU: {
+          LATIN_NAME: "Fraxinus quadrangulata",
+          DISPLAY_TEXT: "Ash, Blue"
+        },
+        ASGR: {
+          LATIN_NAME: "Fraxinus pennsylvanica",
+          DISPLAY_TEXT: "Ash, Green"
+        },
+        ASGS: {
+          LATIN_NAME: "Fraxinus pennsylvanica Marshalls Seedless",
+          DISPLAY_TEXT: "Ash, Green, Marshalls Seedless"
+        },
+        ASMO: {
+          LATIN_NAME: "Sorbus spp",
+          DISPLAY_TEXT: "Ash, Mountain- Miscellaneous"
+        },
+        ASOA: {
+          LATIN_NAME: "Sorbus thuringiaca",
+          DISPLAY_TEXT: "Ash, Mountain- Oakleaf"
+        },
+        ASWH: {
+          LATIN_NAME: "Fraxinus americana",
+          DISPLAY_TEXT: "Ash, White"
+        },
+        BACY: {
+          LATIN_NAME: "Taxodium distichum",
+          DISPLAY_TEXT: "Bald cypress"
+        },
+        BEAM: {
+          LATIN_NAME: "Fagus grandifolia",
+          DISPLAY_TEXT: "Beech, American"
+        },
+        BEBL: {
+          LATIN_NAME: "Carpinus caroliniana",
+          DISPLAY_TEXT: "Beech, Blue (Hornbeam)"
+        },
+        BECO: {
+          LATIN_NAME: "Fagus sylvatica cuprea",
+          DISPLAY_TEXT: "Beech, Copper"
+        },
+        BEEU: {
+          LATIN_NAME: "Fagus sylvatica",
+          DISPLAY_TEXT: "Beech, European"
+        },
+        BIEU: {
+          LATIN_NAME: "Betula pendula",
+          DISPLAY_TEXT: "Birch, European"
+        },
+        BISW: {
+          LATIN_NAME: "Betula lenta",
+          DISPLAY_TEXT: "Birch, Sweet"
+        },
+        BIWH: {
+          LATIN_NAME: "Betula papyrifera",
+          DISPLAY_TEXT: "Birch, White"
+        },
+        BIYE: {
+          LATIN_NAME: "Betula alleghaniensis",
+          DISPLAY_TEXT: "Birch, Yellow"
+        },
+        BUBU: {
+          LATIN_NAME: "Euonymus alata",
+          DISPLAY_TEXT: "Burning Bush"
+        },
+        BUOH: {
+          LATIN_NAME: "Aesculus glabra",
+          DISPLAY_TEXT: "Buckeye, Ohio"
+        },
+        BUTH: {
+          LATIN_NAME: "Rhamnus spp",
+          DISPLAY_TEXT: "Buckthorn"
+        },
+        CACH: {
+          LATIN_NAME: "Catalpa ovata",
+          DISPLAY_TEXT: "Catalpa, Chinese"
+        },
+        CANO: {
+          LATIN_NAME: "Catalpa speciosa",
+          DISPLAY_TEXT: "Catalpa, Northern"
+        },
+        CEEA: {
+          LATIN_NAME: "Thuja occidentalis",
+          DISPLAY_TEXT: "Cedar, Eastern white"
+        },
+        CEMI: {
+          LATIN_NAME: "Thuja spp",
+          DISPLAY_TEXT: "Cedar, Miscellaneous"
+        },
+        CHHO: {
+          LATIN_NAME: "Aesculus hippocastnum",
+          DISPLAY_TEXT: "Chestnut, Common horsechestnut"
+        },
+        CHHR: {
+          LATIN_NAME: "Aesculus x carnea",
+          DISPLAY_TEXT: "Chestnut, Red Horsechestnut"
+        },
+        CHSW: {
+          LATIN_NAME: "Castanea sativa",
+          DISPLAY_TEXT: "Chestnut, Sweet"
+        },
+        COAM: {
+          LATIN_NAME: "Phellodendron amurense",
+          DISPLAY_TEXT: "Corktree, Amur"
+        },
+        COKE: {
+          LATIN_NAME: "Gymnoocladis dioicus",
+          DISPLAY_TEXT: "Coffee tree, Kentucky"
+        },
+        CPWE: {
+          LATIN_NAME: "Microbiota decussata",
+          DISPLAY_TEXT: "Cypress, Weeping"
+        },
+        CRBE: {
+          LATIN_NAME: "Viburnum spp",
+          DISPLAY_TEXT: "Cranberry, Miscellaneous"
+        },
+        CYBL: {
+          LATIN_NAME: "Prunus serotina",
+          DISPLAY_TEXT: "Cherry, Black"
+        },
+        CYCH: {
+          LATIN_NAME: "Prunus virginiana",
+          DISPLAY_TEXT: "Cherry, Choke"
+        },
+        CYFL: {
+          LATIN_NAME: "Prunus serrulata",
+          DISPLAY_TEXT: "Cherry, Flowering"
+        },
+        CYMI: {
+          LATIN_NAME: "Cupressus spp",
+          DISPLAY_TEXT: "Cypress, Miscellaneous"
+        },
+        CYPI: {
+          LATIN_NAME: "Prunus pensylvanica",
+          DISPLAY_TEXT: "Pin Cherry"
+        },
+        DOAL: {
+          LATIN_NAME: "Cornus alternifolia",
+          DISPLAY_TEXT: "Dogwood, Alternate leaved"
+        },
+        DOFL: {
+          LATIN_NAME: "Cornus florida",
+          DISPLAY_TEXT: "Dogwood, Flowering"
+        },
+        DORE: {
+          LATIN_NAME: "Cornus sericea",
+          DISPLAY_TEXT: "Dogwood, Red osler"
+        },
+        DVTR: {
+          LATIN_NAME: "Davidia involucrata",
+          DISPLAY_TEXT: "Dove tree"
+        },
+        DVWK: {
+          LATIN_NAME: "Aralia spinosa",
+          DISPLAY_TEXT: "Devil's walking stick"
+        },
+        ELCH: {
+          LATIN_NAME: "Ulmus parvifolia",
+          DISPLAY_TEXT: "Elm, Chinese"
+        },
+        ELHO: {
+          LATIN_NAME: "Ulmus x Homestead",
+          DISPLAY_TEXT: "Elm, Homestead"
+        },
+        ELPR: {
+          LATIN_NAME: "Ulmus x Pioneer",
+          DISPLAY_TEXT: "Elm, Pioneer"
+        },
+        ELRO: {
+          LATIN_NAME: "Ulmus thomasii",
+          DISPLAY_TEXT: "Elm, Rock"
+        },
+        ELSI: {
+          LATIN_NAME: "Ulmus pumila",
+          DISPLAY_TEXT: "Elm, Siberian"
+        },
+        ELSL: {
+          LATIN_NAME: "Ulmus rubra",
+          DISPLAY_TEXT: "Elm, Slippery"
+        },
+        ELWH: {
+          LATIN_NAME: "Ulmus americana",
+          DISPLAY_TEXT: "Elm, White"
+        },
+        EVOD: {
+          LATIN_NAME: "Evodia spp",
+          DISPLAY_TEXT: "Evodia"
+        },
+        FIBA: {
+          LATIN_NAME: "Abies balsamea",
+          DISPLAY_TEXT: "Fir, Balsam"
+        },
+        FIDO: {
+          LATIN_NAME: "Pseudotsuga menziesii",
+          DISPLAY_TEXT: "Fir, Douglas"
+        },
+        FIFR: {
+          LATIN_NAME: "Abies fraseri",
+          DISPLAY_TEXT: "Fir, Fraser"
+        },
+        FIWH: {
+          LATIN_NAME: "Abies concolor",
+          DISPLAY_TEXT: "Fir, White"
+        },
+        FRTR: {
+          LATIN_NAME: "Chionanthus spp",
+          DISPLAY_TEXT: "Fringe tree"
+        },
+        GITR: {
+          LATIN_NAME: "Ginkgo biloba",
+          DISPLAY_TEXT: "Ginkgo"
+        },
+        GOTR: {
+          LATIN_NAME: "Koelreuteria paniculata",
+          DISPLAY_TEXT: "Golden rain tree"
+        },
+        GUBL: {
+          LATIN_NAME: "Nyssa sylvatica",
+          DISPLAY_TEXT: "Gum, Black"
+        },
+        GUSW: {
+          LATIN_NAME: "Liquidambar styraciflua",
+          DISPLAY_TEXT: "Gum, Sweet"
+        },
+        HABE: {
+          LATIN_NAME: "Celtis occidentalis",
+          DISPLAY_TEXT: "Hackberry, Native"
+        },
+        HASU: {
+          LATIN_NAME: "Celtis laevigata",
+          DISPLAY_TEXT: "Hackberry, Sugar"
+        },
+        HECA: {
+          LATIN_NAME: "Tsuga caroliniana",
+          DISPLAY_TEXT: "Hemlock, Carloina"
+        },
+        HEDG: {
+          LATIN_NAME: "HEDGE",
+          DISPLAY_TEXT: "Hedge"
+        },
+        HEEA: {
+          LATIN_NAME: "Tsuga canadensis",
+          DISPLAY_TEXT: "Hemlock, Eastern"
+        },
+        HIBI: {
+          LATIN_NAME: "Carya cordiformis",
+          DISPLAY_TEXT: "Hickory, Bitternut"
+        },
+        HIPI: {
+          LATIN_NAME: "Carya glabra",
+          DISPLAY_TEXT: "Hickory, Plgnut"
+        },
+        HISB: {
+          LATIN_NAME: "Carya laciniosa",
+          DISPLAY_TEXT: "Hickory, Shellbark"
+        },
+        HISH: {
+          LATIN_NAME: "Carya ovata",
+          DISPLAY_TEXT: "Hickory, Shagbark"
+        },
+        HOLL: {
+          LATIN_NAME: "Ilex spp",
+          DISPLAY_TEXT: "Holly"
+        },
+        HPTR: {
+          LATIN_NAME: "Ptelea trifoliata",
+          DISPLAY_TEXT: "Hop tree"
+        },
+        HRNE: {
+          LATIN_NAME: "Carpinus betulus",
+          DISPLAY_TEXT: "Hornbeam, European"
+        },
+        HWMI: {
+          LATIN_NAME: "Crataegus spp",
+          DISPLAY_TEXT: "Hawthorn, Miscellaneous"
+        },
+        HZEU: {
+          LATIN_NAME: "Corylus avellana",
+          DISPLAY_TEXT: "Hazel, European"
+        },
+        HZTU: {
+          LATIN_NAME: "Corylus colurna",
+          DISPLAY_TEXT: "Hazel, Turkish"
+        },
+        IRTR: {
+          LATIN_NAME: "Ostrya virginiana",
+          DISPLAY_TEXT: "Ironwood"
+        },
+        JRMI: {
+          LATIN_NAME: "Juniperus spp",
+          DISPLAY_TEXT: "Juniper, Miscellaneous"
+        },
+        JUBE: {
+          LATIN_NAME: "Amelanchier spp",
+          DISPLAY_TEXT: "Juneberry"
+        },
+        KAJA: {
+          LATIN_NAME: "Cercidiphyllum japonicum",
+          DISPLAY_TEXT: "Katsura, Japanese"
+        },
+        LAEU: {
+          LATIN_NAME: "Larix decidua",
+          DISPLAY_TEXT: "Larch, European"
+        },
+        LATA: {
+          LATIN_NAME: "Larix spp",
+          DISPLAY_TEXT: "Larch, Tamarack"
+        },
+        LBUR: {
+          LATIN_NAME: "Laburnum",
+          DISPLAY_TEXT: "Laburnum"
+        },
+        LIBA: {
+          LATIN_NAME: "Tilia americana",
+          DISPLAY_TEXT: "Linden, Basswood"
+        },
+        LICR: {
+          LATIN_NAME: "Tilia x euchlora",
+          DISPLAY_TEXT: "Linden, Crimean"
+        },
+        LIGL: {
+          LATIN_NAME: "tilia flavescens 'Glenleven'",
+          DISPLAY_TEXT: "Linden, Glenleven"
+        },
+        LIGS: {
+          LATIN_NAME: "Tilia cordata Greenspire",
+          DISPLAY_TEXT: "Linden, Greenspire"
+        },
+        LIHG: {
+          LATIN_NAME: "tilia mongolica 'harvest gold'",
+          DISPLAY_TEXT: "Linden, Harvest Gold"
+        },
+        LILL: {
+          LATIN_NAME: "Tilia cordata",
+          DISPLAY_TEXT: "Linden, Littleleaf"
+        },
+        LIRE: {
+          LATIN_NAME: "tilia Americana 'Redmond'",
+          DISPLAY_TEXT: "Linden, Redmond"
+        },
+        LISV: {
+          LATIN_NAME: "Tilia tomentosa",
+          DISPLAY_TEXT: "Linden, Silver"
+        },
+        LLMI: {
+          LATIN_NAME: "Syringa spp",
+          DISPLAY_TEXT: "Lilac (syringa), Miscellaneous"
+        },
+        LLSI: {
+          LATIN_NAME: "Syringa reticulata Ivory Silk",
+          DISPLAY_TEXT: "Lilac, Ivory Silk Tree"
+        },
+        LLTR: {
+          LATIN_NAME: "Syringa reticulata",
+          DISPLAY_TEXT: "Lilac, Japanese Tree"
+        },
+        LOBL: {
+          LATIN_NAME: "Robinia pseudoacatia",
+          DISPLAY_TEXT: "Locust, Black"
+        },
+        LOHO: {
+          LATIN_NAME: "Gleditsia triancanthos",
+          DISPLAY_TEXT: "Locust, Honey"
+        },
+        LOSK: {
+          LATIN_NAME: "gleditsia triacanthos 'Skyline'",
+          DISPLAY_TEXT: "Locust, Honey Skyline"
+        },
+        LOSM: {
+          LATIN_NAME: "Gleditsia triancanthos var. inermis ShadeMaster",
+          DISPLAY_TEXT: "Locust, Honey ShadeMaster"
+        },
+        MAAB: {
+          LATIN_NAME: "Acer rubrum x saccharinum Autumn Blaze",
+          DISPLAY_TEXT: "Maple, Autumn Blaze"
+        },
+        MAAM: {
+          LATIN_NAME: "Acer ginnala",
+          DISPLAY_TEXT: "Maple, Amure"
+        },
+        MABL: {
+          LATIN_NAME: "Acer nigrum",
+          DISPLAY_TEXT: "Maple, Black"
+        },
+        MAFA: {
+          LATIN_NAME: "Acer rubrum X saccharinum (fantasy)",
+          DISPLAY_TEXT: "Maple, Fantasy"
+        },
+        MAFR: {
+          LATIN_NAME: "Acer rubrum (Fairview)",
+          DISPLAY_TEXT: "Maple, Fairview"
+        },
+        MAGL: {
+          LATIN_NAME: "Acer platanoides globosum",
+          DISPLAY_TEXT: "Maple, Globe"
+        },
+        MAHE: {
+          LATIN_NAME: "Acer campestre",
+          DISPLAY_TEXT: "Maple, Hedge"
+        },
+        MAJA: {
+          LATIN_NAME: "Acer palmatum",
+          DISPLAY_TEXT: "Maple, Japanese"
+        },
+        MAMA: {
+          LATIN_NAME: "Acer negundo",
+          DISPLAY_TEXT: "Maple, Manitoba"
+        },
+        MAMI: {
+          LATIN_NAME: "Acer spp",
+          DISPLAY_TEXT: "Maple, Miscellaneous"
+        },
+        MANC: {
+          LATIN_NAME: "Acer platanoides columnar",
+          DISPLAY_TEXT: "Maple, Norway columner"
+        },
+        MANK: {
+          LATIN_NAME: "Acer platanoides Crimson King",
+          DISPLAY_TEXT: "Maple, Norway Crimson King"
+        },
+        MANO: {
+          LATIN_NAME: "Acer platanoides",
+          DISPLAY_TEXT: "Maple, Norway"
+        },
+        MANQ: {
+          LATIN_NAME: "Acer platanoides Emerald Queen",
+          DISPLAY_TEXT: "Maple, Norway Emerald Queen"
+        },
+        MANS: {
+          LATIN_NAME: "Acer platanoides schwedleri",
+          DISPLAY_TEXT: "Maple, Norway schwendler"
+        },
+        MARE: {
+          LATIN_NAME: "Acer rubrum",
+          DISPLAY_TEXT: "Maple, Red"
+        },
+        MASI: {
+          LATIN_NAME: "Acer saccharinum",
+          DISPLAY_TEXT: "Maple, Silver"
+        },
+        MASU: {
+          LATIN_NAME: "Acer saccharum",
+          DISPLAY_TEXT: "Maple, Sugar"
+        },
+        MASY: {
+          LATIN_NAME: "Acer pseudoplatanoides",
+          DISPLAY_TEXT: "Maple, Sycamore"
+        },
+        MATA: {
+          LATIN_NAME: "Acer tartaricum",
+          DISPLAY_TEXT: "Maple, Tartarian"
+        },
+        MATF: {
+          LATIN_NAME: "Acer triflorum",
+          DISPLAY_TEXT: "Maple, Three Flower"
+        },
+        MGMI: {
+          LATIN_NAME: "Magnolia spp",
+          DISPLAY_TEXT: "Magnolia, Miscellaneous"
+        },
+        MUMI: {
+          LATIN_NAME: "Morus spp",
+          DISPLAY_TEXT: "Mulberry, Miscellaneous"
+        },
+        MURE: {
+          LATIN_NAME: "Morus rubra",
+          DISPLAY_TEXT: "Mulberry, Red"
+        },
+        MUWE: {
+          LATIN_NAME: "Morus alba pendula",
+          DISPLAY_TEXT: "Mulberry, Weeping"
+        },
+        MUWH: {
+          LATIN_NAME: "Morus alba",
+          DISPLAY_TEXT: "Mulberry, White"
+        },
+        NABE: {
+          LATIN_NAME: "Viburnum lentago",
+          DISPLAY_TEXT: "Nannyberry"
+        },
+        OABL: {
+          LATIN_NAME: "Quercus nigra",
+          DISPLAY_TEXT: "Oak, Black"
+        },
+        OABU: {
+          LATIN_NAME: "Quercus macrocarpa",
+          DISPLAY_TEXT: "Oak, Bur"
+        },
+        OACH: {
+          LATIN_NAME: "Quercus prinus",
+          DISPLAY_TEXT: "Oak, Chestnut"
+        },
+        OAEF: {
+          LATIN_NAME: "Quercus robur 'fastigiata'",
+          DISPLAY_TEXT: "Oak, Pyramidal English"
+        },
+        OAEN: {
+          LATIN_NAME: "Quercus robor",
+          DISPLAY_TEXT: "Oak, English"
+        },
+        OAPI: {
+          LATIN_NAME: "Quercus palustris",
+          DISPLAY_TEXT: "Oak, Pin"
+        },
+        OARE: {
+          LATIN_NAME: "Quercus rubra",
+          DISPLAY_TEXT: "Oak, Red"
+        },
+        OASH: {
+          LATIN_NAME: "Quercus shumardii",
+          DISPLAY_TEXT: "Oak, Shumard"
+        },
+        OASW: {
+          LATIN_NAME: "Quercus bicolor",
+          DISPLAY_TEXT: "Oak, Swamp white"
+        },
+        OAWH: {
+          LATIN_NAME: "Quercus alba",
+          DISPLAY_TEXT: "Oak, White"
+        },
+        OLRU: {
+          LATIN_NAME: "Elaeagnus angustifolia",
+          DISPLAY_TEXT: "Olive, Russian"
+        },
+        ORMO: {
+          LATIN_NAME: "Philadelphis spp",
+          DISPLAY_TEXT: "Mock orange"
+        },
+        OSOS: {
+          LATIN_NAME: "Maclura pomifera",
+          DISPLAY_TEXT: "Osage orange"
+        },
+        PATR: {
+          LATIN_NAME: "Sophora japonica",
+          DISPLAY_TEXT: "Pagoda, Tree"
+        },
+        PCMI: {
+          LATIN_NAME: "Prunus spp",
+          DISPLAY_TEXT: "Peach, Miscellaneous"
+        },
+        PEBR: {
+          LATIN_NAME: "Pyrus calleryana bradford",
+          DISPLAY_TEXT: "Pear, Bradford"
+        },
+        PECH: {
+          LATIN_NAME: "Pyrus calleryana Chanticleer",
+          DISPLAY_TEXT: "Pear, Chanticleer"
+        },
+        PEGF: {
+          LATIN_NAME: "Pyrus calleryana 'Glen's Form'",
+          DISPLAY_TEXT: "Pear, Glen's Form"
+        },
+        PEMI: {
+          LATIN_NAME: "Pyrus spp",
+          DISPLAY_TEXT: "Pear, Miscellaneous"
+        },
+        PIAU: {
+          LATIN_NAME: "Pinus nigra",
+          DISPLAY_TEXT: "Pine, Austrian"
+        },
+        PIJA: {
+          LATIN_NAME: "Pinus banksiana",
+          DISPLAY_TEXT: "Pine, Jack"
+        },
+        PIMI: {
+          LATIN_NAME: "Pinus spp",
+          DISPLAY_TEXT: "Pine, Miscellaneous"
+        },
+        PIMU: {
+          LATIN_NAME: "Pinus mugo",
+          DISPLAY_TEXT: "Pine, Mugo"
+        },
+        PIPI: {
+          LATIN_NAME: "Pinus rigida",
+          DISPLAY_TEXT: "Pine, Pitch"
+        },
+        PIRE: {
+          LATIN_NAME: "Pinus resinosa",
+          DISPLAY_TEXT: "Pine, Red"
+        },
+        PISC: {
+          LATIN_NAME: "Pinus sylvestris",
+          DISPLAY_TEXT: "Pine, Scotch"
+        },
+        PIWH: {
+          LATIN_NAME: "Pinus strobus",
+          DISPLAY_TEXT: "Pine, White"
+        },
+        PLLO: {
+          LATIN_NAME: "Platanus x acerifolia",
+          DISPLAY_TEXT: "Plane, London"
+        },
+        PLSY: {
+          LATIN_NAME: "Platanus occidentalis",
+          DISPLAY_TEXT: "Plane, Sycamore"
+        },
+        PMMI: {
+          LATIN_NAME: "Prunus spp",
+          DISPLAY_TEXT: "Plum, Miscellaneous"
+        },
+        POBA: {
+          LATIN_NAME: "Populus balsamifera",
+          DISPLAY_TEXT: "Poplar, Balsam"
+        },
+        POCA: {
+          LATIN_NAME: "Populus canadensis",
+          DISPLAY_TEXT: "Poplar, Carolina"
+        },
+        POCO: {
+          LATIN_NAME: "Populus deltoides",
+          DISPLAY_TEXT: "Poplar, Cottonwood"
+        },
+        POLO: {
+          LATIN_NAME: "Populus nnigra",
+          DISPLAY_TEXT: "Poplar, Lombardy"
+        },
+        POLT: {
+          LATIN_NAME: "Populus deltiodes",
+          DISPLAY_TEXT: "Poplar, Largetooth aspen"
+        },
+        POMI: {
+          LATIN_NAME: "Populus spp",
+          DISPLAY_TEXT: "Poplar, Miscellaneous"
+        },
+        POSI: {
+          LATIN_NAME: "Populus alba",
+          DISPLAY_TEXT: "Poplar, Silver"
+        },
+        POTR: {
+          LATIN_NAME: "Populus tremuloides",
+          DISPLAY_TEXT: "Poplar, Trembling"
+        },
+        PPSH: {
+          LATIN_NAME: "Caragana arborescent",
+          DISPLAY_TEXT: "Pea shrub"
+        },
+        PRSI: {
+          LATIN_NAME: "Diospyros spp",
+          DISPLAY_TEXT: "Persimmion"
+        },
+        PWPW: {
+          LATIN_NAME: "Asimina triloba",
+          DISPLAY_TEXT: "Paw paw"
+        },
+        RDBU: {
+          LATIN_NAME: "Cercis canadensis",
+          DISPLAY_TEXT: "Red bud"
+        },
+        REDA: {
+          LATIN_NAME: "Metasequoia glyptostroboides",
+          DISPLAY_TEXT: "Dawn redwood, Metaseqoio"
+        },
+        RHMI: {
+          LATIN_NAME: "Rhododendron spp",
+          DISPLAY_TEXT: "Rhododendron, Miscellaneous"
+        },
+        SASS: {
+          LATIN_NAME: "Sassafras albidum",
+          DISPLAY_TEXT: "Sassafras"
+        },
+        SLCA: {
+          LATIN_NAME: "Halesia tetraptera",
+          DISPLAY_TEXT: "Silverbell, Carollina"
+        },
+        SLLI: {
+          LATIN_NAME: "Halesia parviflora",
+          DISPLAY_TEXT: "Silverbell, Little"
+        },
+        SMTR: {
+          LATIN_NAME: "Cotinus coggygria",
+          DISPLAY_TEXT: "Smoke tree"
+        },
+        SPCB: {
+          LATIN_NAME: "Picea pungens 'glauca'",
+          DISPLAY_TEXT: "Spruce, Colorado blue"
+        },
+        SPCO: {
+          LATIN_NAME: "Picea pungens",
+          DISPLAY_TEXT: "Spruce, Colorado"
+        },
+        SPNO: {
+          LATIN_NAME: "Picea abies",
+          DISPLAY_TEXT: "Spruce, Norway"
+        },
+        SPSE: {
+          LATIN_NAME: "Picea omorika",
+          DISPLAY_TEXT: "Spruce, Serbian"
+        },
+        SPWH: {
+          LATIN_NAME: "Picea glauca",
+          DISPLAY_TEXT: "Spruce, White"
+        },
+        SUST: {
+          LATIN_NAME: "Rhus typhina",
+          DISPLAY_TEXT: "Sumach, Staghorn"
+        },
+        SVBE: {
+          LATIN_NAME: "Amelanchier",
+          DISPLAY_TEXT: "Serviceberry"
+        },
+        TARA: {
+          LATIN_NAME: "Tamarix spp",
+          DISPLAY_TEXT: "Tamarix"
+        },
+        TRHE: {
+          LATIN_NAME: "Ailanthus altissima",
+          DISPLAY_TEXT: "Tree of heaven"
+        },
+        TUTR: {
+          LATIN_NAME: "Liriiodendron tulipifera",
+          DISPLAY_TEXT: "Tulip tree"
+        },
+        UNKN: {
+          LATIN_NAME: "Unknown",
+          DISPLAY_TEXT: "Unknown"
+        },
+        VIMI: {
+          LATIN_NAME: "Viburnam",
+          DISPLAY_TEXT: "Viburnam, Miscellaneous"
+        },
+        WABL: {
+          LATIN_NAME: "Juglans nigra",
+          DISPLAY_TEXT: "Walnut, Black"
+        },
+        WABU: {
+          LATIN_NAME: "Juglans cinera",
+          DISPLAY_TEXT: "Walnut, Butternut"
+        },
+        WAEN: {
+          LATIN_NAME: "Juglans regia",
+          DISPLAY_TEXT: "Walnut, English"
+        },
+        WICR: {
+          LATIN_NAME: "Salix fragilis",
+          DISPLAY_TEXT: "Willow, Crack"
+        },
+        WIMI: {
+          LATIN_NAME: "Salix spp",
+          DISPLAY_TEXT: "Willow, Miscellaneous"
+        },
+        WIPU: {
+          LATIN_NAME: "Salix discolor",
+          DISPLAY_TEXT: "Willow, Pussy"
+        },
+        WIWE: {
+          LATIN_NAME: "Salix alba",
+          DISPLAY_TEXT: "Willow, Weeping"
+        },
+        WIWH: {
+          LATIN_NAME: "Salix alba x S. fragilis",
+          DISPLAY_TEXT: "Willow, White"
+        },
+        XXXX: {
+          LATIN_NAME: "----------------",
+          DISPLAY_TEXT: "----------------"
+        },
+        YEJA: {
+          LATIN_NAME: "Taxis spp",
+          DISPLAY_TEXT: "Yew, Miscellaneous"
+        },
+        YEMI: {
+          LATIN_NAME: "Taxis cuspidata",
+          DISPLAY_TEXT: "Yew, Japenese"
+        },
+        YLWO: {
+          LATIN_NAME: "Cladastris lutea",
+          DISPLAY_TEXT: "Yellowood"
+        },
+        ZELK: {
+          LATIN_NAME: "Zelkova serrata",
+          DISPLAY_TEXT: "Zelkova"
+        }
+      }
+    }
   },
   {
     country: 'Canada',
@@ -2066,7 +2875,816 @@ module.exports = [
     data: {
       arcgis: 'https://services.arcgis.com/rGKxabTU9mcXMw7k/ArcGIS/rest/services/Tree_Inventory_Public_CityLondon/FeatureServer/0'
     },
-    srs: '+init=EPSG:4326'
+    srs: '+init=EPSG:4326',
+    codes: {
+      // Assumed based on metadata: { checksum: '2c4d7cc2d2afb8908e41a3ffcc80b854' }
+      SpeciesCod: {
+        ALGR: {
+          LATIN_NAME: "Alnus incana",
+          DISPLAY_TEXT: "Alder, Grey"
+        },
+        ALUE: {
+          LATIN_NAME: "Alnus glutinosa",
+          DISPLAY_TEXT: "Alder, European"
+        },
+        AMMA: {
+          LATIN_NAME: "Maackia amurensis",
+          DISPLAY_TEXT: "Amur Maackia"
+        },
+        APCR: {
+          LATIN_NAME: "Malus profusion",
+          DISPLAY_TEXT: "Apple, Crab profusion"
+        },
+        APMI: {
+          LATIN_NAME: "Malus spp",
+          DISPLAY_TEXT: "Apple, Miscellaneous"
+        },
+        ARMI: {
+          LATIN_NAME: "Prunus spp",
+          DISPLAY_TEXT: "Apricot, Miscellaneous"
+        },
+        ASAP: {
+          LATIN_NAME: "Fraxinus americana Autumn Purple",
+          DISPLAY_TEXT: "Ash, Autumn Purple"
+        },
+        ASBL: {
+          LATIN_NAME: "Fraxinus nigra",
+          DISPLAY_TEXT: "Ash, Black"
+        },
+        ASBU: {
+          LATIN_NAME: "Fraxinus quadrangulata",
+          DISPLAY_TEXT: "Ash, Blue"
+        },
+        ASGR: {
+          LATIN_NAME: "Fraxinus pennsylvanica",
+          DISPLAY_TEXT: "Ash, Green"
+        },
+        ASGS: {
+          LATIN_NAME: "Fraxinus pennsylvanica Marshalls Seedless",
+          DISPLAY_TEXT: "Ash, Green, Marshalls Seedless"
+        },
+        ASMO: {
+          LATIN_NAME: "Sorbus spp",
+          DISPLAY_TEXT: "Ash, Mountain- Miscellaneous"
+        },
+        ASOA: {
+          LATIN_NAME: "Sorbus thuringiaca",
+          DISPLAY_TEXT: "Ash, Mountain- Oakleaf"
+        },
+        ASWH: {
+          LATIN_NAME: "Fraxinus americana",
+          DISPLAY_TEXT: "Ash, White"
+        },
+        BACY: {
+          LATIN_NAME: "Taxodium distichum",
+          DISPLAY_TEXT: "Bald cypress"
+        },
+        BEAM: {
+          LATIN_NAME: "Fagus grandifolia",
+          DISPLAY_TEXT: "Beech, American"
+        },
+        BEBL: {
+          LATIN_NAME: "Carpinus caroliniana",
+          DISPLAY_TEXT: "Beech, Blue (Hornbeam)"
+        },
+        BECO: {
+          LATIN_NAME: "Fagus sylvatica cuprea",
+          DISPLAY_TEXT: "Beech, Copper"
+        },
+        BEEU: {
+          LATIN_NAME: "Fagus sylvatica",
+          DISPLAY_TEXT: "Beech, European"
+        },
+        BIEU: {
+          LATIN_NAME: "Betula pendula",
+          DISPLAY_TEXT: "Birch, European"
+        },
+        BISW: {
+          LATIN_NAME: "Betula lenta",
+          DISPLAY_TEXT: "Birch, Sweet"
+        },
+        BIWH: {
+          LATIN_NAME: "Betula papyrifera",
+          DISPLAY_TEXT: "Birch, White"
+        },
+        BIYE: {
+          LATIN_NAME: "Betula alleghaniensis",
+          DISPLAY_TEXT: "Birch, Yellow"
+        },
+        BUBU: {
+          LATIN_NAME: "Euonymus alata",
+          DISPLAY_TEXT: "Burning Bush"
+        },
+        BUOH: {
+          LATIN_NAME: "Aesculus glabra",
+          DISPLAY_TEXT: "Buckeye, Ohio"
+        },
+        BUTH: {
+          LATIN_NAME: "Rhamnus spp",
+          DISPLAY_TEXT: "Buckthorn"
+        },
+        CACH: {
+          LATIN_NAME: "Catalpa ovata",
+          DISPLAY_TEXT: "Catalpa, Chinese"
+        },
+        CANO: {
+          LATIN_NAME: "Catalpa speciosa",
+          DISPLAY_TEXT: "Catalpa, Northern"
+        },
+        CEEA: {
+          LATIN_NAME: "Thuja occidentalis",
+          DISPLAY_TEXT: "Cedar, Eastern white"
+        },
+        CEMI: {
+          LATIN_NAME: "Thuja spp",
+          DISPLAY_TEXT: "Cedar, Miscellaneous"
+        },
+        CHHO: {
+          LATIN_NAME: "Aesculus hippocastnum",
+          DISPLAY_TEXT: "Chestnut, Common horsechestnut"
+        },
+        CHHR: {
+          LATIN_NAME: "Aesculus x carnea",
+          DISPLAY_TEXT: "Chestnut, Red Horsechestnut"
+        },
+        CHSW: {
+          LATIN_NAME: "Castanea sativa",
+          DISPLAY_TEXT: "Chestnut, Sweet"
+        },
+        COAM: {
+          LATIN_NAME: "Phellodendron amurense",
+          DISPLAY_TEXT: "Corktree, Amur"
+        },
+        COKE: {
+          LATIN_NAME: "Gymnoocladis dioicus",
+          DISPLAY_TEXT: "Coffee tree, Kentucky"
+        },
+        CPWE: {
+          LATIN_NAME: "Microbiota decussata",
+          DISPLAY_TEXT: "Cypress, Weeping"
+        },
+        CRBE: {
+          LATIN_NAME: "Viburnum spp",
+          DISPLAY_TEXT: "Cranberry, Miscellaneous"
+        },
+        CYBL: {
+          LATIN_NAME: "Prunus serotina",
+          DISPLAY_TEXT: "Cherry, Black"
+        },
+        CYCH: {
+          LATIN_NAME: "Prunus virginiana",
+          DISPLAY_TEXT: "Cherry, Choke"
+        },
+        CYFL: {
+          LATIN_NAME: "Prunus serrulata",
+          DISPLAY_TEXT: "Cherry, Flowering"
+        },
+        CYMI: {
+          LATIN_NAME: "Cupressus spp",
+          DISPLAY_TEXT: "Cypress, Miscellaneous"
+        },
+        CYPI: {
+          LATIN_NAME: "Prunus pensylvanica",
+          DISPLAY_TEXT: "Pin Cherry"
+        },
+        DOAL: {
+          LATIN_NAME: "Cornus alternifolia",
+          DISPLAY_TEXT: "Dogwood, Alternate leaved"
+        },
+        DOFL: {
+          LATIN_NAME: "Cornus florida",
+          DISPLAY_TEXT: "Dogwood, Flowering"
+        },
+        DORE: {
+          LATIN_NAME: "Cornus sericea",
+          DISPLAY_TEXT: "Dogwood, Red osler"
+        },
+        DVTR: {
+          LATIN_NAME: "Davidia involucrata",
+          DISPLAY_TEXT: "Dove tree"
+        },
+        DVWK: {
+          LATIN_NAME: "Aralia spinosa",
+          DISPLAY_TEXT: "Devil's walking stick"
+        },
+        ELCH: {
+          LATIN_NAME: "Ulmus parvifolia",
+          DISPLAY_TEXT: "Elm, Chinese"
+        },
+        ELHO: {
+          LATIN_NAME: "Ulmus x Homestead",
+          DISPLAY_TEXT: "Elm, Homestead"
+        },
+        ELPR: {
+          LATIN_NAME: "Ulmus x Pioneer",
+          DISPLAY_TEXT: "Elm, Pioneer"
+        },
+        ELRO: {
+          LATIN_NAME: "Ulmus thomasii",
+          DISPLAY_TEXT: "Elm, Rock"
+        },
+        ELSI: {
+          LATIN_NAME: "Ulmus pumila",
+          DISPLAY_TEXT: "Elm, Siberian"
+        },
+        ELSL: {
+          LATIN_NAME: "Ulmus rubra",
+          DISPLAY_TEXT: "Elm, Slippery"
+        },
+        ELWH: {
+          LATIN_NAME: "Ulmus americana",
+          DISPLAY_TEXT: "Elm, White"
+        },
+        EVOD: {
+          LATIN_NAME: "Evodia spp",
+          DISPLAY_TEXT: "Evodia"
+        },
+        FIBA: {
+          LATIN_NAME: "Abies balsamea",
+          DISPLAY_TEXT: "Fir, Balsam"
+        },
+        FIDO: {
+          LATIN_NAME: "Pseudotsuga menziesii",
+          DISPLAY_TEXT: "Fir, Douglas"
+        },
+        FIFR: {
+          LATIN_NAME: "Abies fraseri",
+          DISPLAY_TEXT: "Fir, Fraser"
+        },
+        FIWH: {
+          LATIN_NAME: "Abies concolor",
+          DISPLAY_TEXT: "Fir, White"
+        },
+        FRTR: {
+          LATIN_NAME: "Chionanthus spp",
+          DISPLAY_TEXT: "Fringe tree"
+        },
+        GITR: {
+          LATIN_NAME: "Ginkgo biloba",
+          DISPLAY_TEXT: "Ginkgo"
+        },
+        GOTR: {
+          LATIN_NAME: "Koelreuteria paniculata",
+          DISPLAY_TEXT: "Golden rain tree"
+        },
+        GUBL: {
+          LATIN_NAME: "Nyssa sylvatica",
+          DISPLAY_TEXT: "Gum, Black"
+        },
+        GUSW: {
+          LATIN_NAME: "Liquidambar styraciflua",
+          DISPLAY_TEXT: "Gum, Sweet"
+        },
+        HABE: {
+          LATIN_NAME: "Celtis occidentalis",
+          DISPLAY_TEXT: "Hackberry, Native"
+        },
+        HASU: {
+          LATIN_NAME: "Celtis laevigata",
+          DISPLAY_TEXT: "Hackberry, Sugar"
+        },
+        HECA: {
+          LATIN_NAME: "Tsuga caroliniana",
+          DISPLAY_TEXT: "Hemlock, Carloina"
+        },
+        HEDG: {
+          LATIN_NAME: "HEDGE",
+          DISPLAY_TEXT: "Hedge"
+        },
+        HEEA: {
+          LATIN_NAME: "Tsuga canadensis",
+          DISPLAY_TEXT: "Hemlock, Eastern"
+        },
+        HIBI: {
+          LATIN_NAME: "Carya cordiformis",
+          DISPLAY_TEXT: "Hickory, Bitternut"
+        },
+        HIPI: {
+          LATIN_NAME: "Carya glabra",
+          DISPLAY_TEXT: "Hickory, Plgnut"
+        },
+        HISB: {
+          LATIN_NAME: "Carya laciniosa",
+          DISPLAY_TEXT: "Hickory, Shellbark"
+        },
+        HISH: {
+          LATIN_NAME: "Carya ovata",
+          DISPLAY_TEXT: "Hickory, Shagbark"
+        },
+        HOLL: {
+          LATIN_NAME: "Ilex spp",
+          DISPLAY_TEXT: "Holly"
+        },
+        HPTR: {
+          LATIN_NAME: "Ptelea trifoliata",
+          DISPLAY_TEXT: "Hop tree"
+        },
+        HRNE: {
+          LATIN_NAME: "Carpinus betulus",
+          DISPLAY_TEXT: "Hornbeam, European"
+        },
+        HWMI: {
+          LATIN_NAME: "Crataegus spp",
+          DISPLAY_TEXT: "Hawthorn, Miscellaneous"
+        },
+        HZEU: {
+          LATIN_NAME: "Corylus avellana",
+          DISPLAY_TEXT: "Hazel, European"
+        },
+        HZTU: {
+          LATIN_NAME: "Corylus colurna",
+          DISPLAY_TEXT: "Hazel, Turkish"
+        },
+        IRTR: {
+          LATIN_NAME: "Ostrya virginiana",
+          DISPLAY_TEXT: "Ironwood"
+        },
+        JRMI: {
+          LATIN_NAME: "Juniperus spp",
+          DISPLAY_TEXT: "Juniper, Miscellaneous"
+        },
+        JUBE: {
+          LATIN_NAME: "Amelanchier spp",
+          DISPLAY_TEXT: "Juneberry"
+        },
+        KAJA: {
+          LATIN_NAME: "Cercidiphyllum japonicum",
+          DISPLAY_TEXT: "Katsura, Japanese"
+        },
+        LAEU: {
+          LATIN_NAME: "Larix decidua",
+          DISPLAY_TEXT: "Larch, European"
+        },
+        LATA: {
+          LATIN_NAME: "Larix spp",
+          DISPLAY_TEXT: "Larch, Tamarack"
+        },
+        LBUR: {
+          LATIN_NAME: "Laburnum",
+          DISPLAY_TEXT: "Laburnum"
+        },
+        LIBA: {
+          LATIN_NAME: "Tilia americana",
+          DISPLAY_TEXT: "Linden, Basswood"
+        },
+        LICR: {
+          LATIN_NAME: "Tilia x euchlora",
+          DISPLAY_TEXT: "Linden, Crimean"
+        },
+        LIGL: {
+          LATIN_NAME: "tilia flavescens 'Glenleven'",
+          DISPLAY_TEXT: "Linden, Glenleven"
+        },
+        LIGS: {
+          LATIN_NAME: "Tilia cordata Greenspire",
+          DISPLAY_TEXT: "Linden, Greenspire"
+        },
+        LIHG: {
+          LATIN_NAME: "tilia mongolica 'harvest gold'",
+          DISPLAY_TEXT: "Linden, Harvest Gold"
+        },
+        LILL: {
+          LATIN_NAME: "Tilia cordata",
+          DISPLAY_TEXT: "Linden, Littleleaf"
+        },
+        LIRE: {
+          LATIN_NAME: "tilia Americana 'Redmond'",
+          DISPLAY_TEXT: "Linden, Redmond"
+        },
+        LISV: {
+          LATIN_NAME: "Tilia tomentosa",
+          DISPLAY_TEXT: "Linden, Silver"
+        },
+        LLMI: {
+          LATIN_NAME: "Syringa spp",
+          DISPLAY_TEXT: "Lilac (syringa), Miscellaneous"
+        },
+        LLSI: {
+          LATIN_NAME: "Syringa reticulata Ivory Silk",
+          DISPLAY_TEXT: "Lilac, Ivory Silk Tree"
+        },
+        LLTR: {
+          LATIN_NAME: "Syringa reticulata",
+          DISPLAY_TEXT: "Lilac, Japanese Tree"
+        },
+        LOBL: {
+          LATIN_NAME: "Robinia pseudoacatia",
+          DISPLAY_TEXT: "Locust, Black"
+        },
+        LOHO: {
+          LATIN_NAME: "Gleditsia triancanthos",
+          DISPLAY_TEXT: "Locust, Honey"
+        },
+        LOSK: {
+          LATIN_NAME: "gleditsia triacanthos 'Skyline'",
+          DISPLAY_TEXT: "Locust, Honey Skyline"
+        },
+        LOSM: {
+          LATIN_NAME: "Gleditsia triancanthos var. inermis ShadeMaster",
+          DISPLAY_TEXT: "Locust, Honey ShadeMaster"
+        },
+        MAAB: {
+          LATIN_NAME: "Acer rubrum x saccharinum Autumn Blaze",
+          DISPLAY_TEXT: "Maple, Autumn Blaze"
+        },
+        MAAM: {
+          LATIN_NAME: "Acer ginnala",
+          DISPLAY_TEXT: "Maple, Amure"
+        },
+        MABL: {
+          LATIN_NAME: "Acer nigrum",
+          DISPLAY_TEXT: "Maple, Black"
+        },
+        MAFA: {
+          LATIN_NAME: "Acer rubrum X saccharinum (fantasy)",
+          DISPLAY_TEXT: "Maple, Fantasy"
+        },
+        MAFR: {
+          LATIN_NAME: "Acer rubrum (Fairview)",
+          DISPLAY_TEXT: "Maple, Fairview"
+        },
+        MAGL: {
+          LATIN_NAME: "Acer platanoides globosum",
+          DISPLAY_TEXT: "Maple, Globe"
+        },
+        MAHE: {
+          LATIN_NAME: "Acer campestre",
+          DISPLAY_TEXT: "Maple, Hedge"
+        },
+        MAJA: {
+          LATIN_NAME: "Acer palmatum",
+          DISPLAY_TEXT: "Maple, Japanese"
+        },
+        MAMA: {
+          LATIN_NAME: "Acer negundo",
+          DISPLAY_TEXT: "Maple, Manitoba"
+        },
+        MAMI: {
+          LATIN_NAME: "Acer spp",
+          DISPLAY_TEXT: "Maple, Miscellaneous"
+        },
+        MANC: {
+          LATIN_NAME: "Acer platanoides columnar",
+          DISPLAY_TEXT: "Maple, Norway columner"
+        },
+        MANK: {
+          LATIN_NAME: "Acer platanoides Crimson King",
+          DISPLAY_TEXT: "Maple, Norway Crimson King"
+        },
+        MANO: {
+          LATIN_NAME: "Acer platanoides",
+          DISPLAY_TEXT: "Maple, Norway"
+        },
+        MANQ: {
+          LATIN_NAME: "Acer platanoides Emerald Queen",
+          DISPLAY_TEXT: "Maple, Norway Emerald Queen"
+        },
+        MANS: {
+          LATIN_NAME: "Acer platanoides schwedleri",
+          DISPLAY_TEXT: "Maple, Norway schwendler"
+        },
+        MARE: {
+          LATIN_NAME: "Acer rubrum",
+          DISPLAY_TEXT: "Maple, Red"
+        },
+        MASI: {
+          LATIN_NAME: "Acer saccharinum",
+          DISPLAY_TEXT: "Maple, Silver"
+        },
+        MASU: {
+          LATIN_NAME: "Acer saccharum",
+          DISPLAY_TEXT: "Maple, Sugar"
+        },
+        MASY: {
+          LATIN_NAME: "Acer pseudoplatanoides",
+          DISPLAY_TEXT: "Maple, Sycamore"
+        },
+        MATA: {
+          LATIN_NAME: "Acer tartaricum",
+          DISPLAY_TEXT: "Maple, Tartarian"
+        },
+        MATF: {
+          LATIN_NAME: "Acer triflorum",
+          DISPLAY_TEXT: "Maple, Three Flower"
+        },
+        MGMI: {
+          LATIN_NAME: "Magnolia spp",
+          DISPLAY_TEXT: "Magnolia, Miscellaneous"
+        },
+        MUMI: {
+          LATIN_NAME: "Morus spp",
+          DISPLAY_TEXT: "Mulberry, Miscellaneous"
+        },
+        MURE: {
+          LATIN_NAME: "Morus rubra",
+          DISPLAY_TEXT: "Mulberry, Red"
+        },
+        MUWE: {
+          LATIN_NAME: "Morus alba pendula",
+          DISPLAY_TEXT: "Mulberry, Weeping"
+        },
+        MUWH: {
+          LATIN_NAME: "Morus alba",
+          DISPLAY_TEXT: "Mulberry, White"
+        },
+        NABE: {
+          LATIN_NAME: "Viburnum lentago",
+          DISPLAY_TEXT: "Nannyberry"
+        },
+        OABL: {
+          LATIN_NAME: "Quercus nigra",
+          DISPLAY_TEXT: "Oak, Black"
+        },
+        OABU: {
+          LATIN_NAME: "Quercus macrocarpa",
+          DISPLAY_TEXT: "Oak, Bur"
+        },
+        OACH: {
+          LATIN_NAME: "Quercus prinus",
+          DISPLAY_TEXT: "Oak, Chestnut"
+        },
+        OAEF: {
+          LATIN_NAME: "Quercus robur 'fastigiata'",
+          DISPLAY_TEXT: "Oak, Pyramidal English"
+        },
+        OAEN: {
+          LATIN_NAME: "Quercus robor",
+          DISPLAY_TEXT: "Oak, English"
+        },
+        OAPI: {
+          LATIN_NAME: "Quercus palustris",
+          DISPLAY_TEXT: "Oak, Pin"
+        },
+        OARE: {
+          LATIN_NAME: "Quercus rubra",
+          DISPLAY_TEXT: "Oak, Red"
+        },
+        OASH: {
+          LATIN_NAME: "Quercus shumardii",
+          DISPLAY_TEXT: "Oak, Shumard"
+        },
+        OASW: {
+          LATIN_NAME: "Quercus bicolor",
+          DISPLAY_TEXT: "Oak, Swamp white"
+        },
+        OAWH: {
+          LATIN_NAME: "Quercus alba",
+          DISPLAY_TEXT: "Oak, White"
+        },
+        OLRU: {
+          LATIN_NAME: "Elaeagnus angustifolia",
+          DISPLAY_TEXT: "Olive, Russian"
+        },
+        ORMO: {
+          LATIN_NAME: "Philadelphis spp",
+          DISPLAY_TEXT: "Mock orange"
+        },
+        OSOS: {
+          LATIN_NAME: "Maclura pomifera",
+          DISPLAY_TEXT: "Osage orange"
+        },
+        PATR: {
+          LATIN_NAME: "Sophora japonica",
+          DISPLAY_TEXT: "Pagoda, Tree"
+        },
+        PCMI: {
+          LATIN_NAME: "Prunus spp",
+          DISPLAY_TEXT: "Peach, Miscellaneous"
+        },
+        PEBR: {
+          LATIN_NAME: "Pyrus calleryana bradford",
+          DISPLAY_TEXT: "Pear, Bradford"
+        },
+        PECH: {
+          LATIN_NAME: "Pyrus calleryana Chanticleer",
+          DISPLAY_TEXT: "Pear, Chanticleer"
+        },
+        PEGF: {
+          LATIN_NAME: "Pyrus calleryana 'Glen's Form'",
+          DISPLAY_TEXT: "Pear, Glen's Form"
+        },
+        PEMI: {
+          LATIN_NAME: "Pyrus spp",
+          DISPLAY_TEXT: "Pear, Miscellaneous"
+        },
+        PIAU: {
+          LATIN_NAME: "Pinus nigra",
+          DISPLAY_TEXT: "Pine, Austrian"
+        },
+        PIJA: {
+          LATIN_NAME: "Pinus banksiana",
+          DISPLAY_TEXT: "Pine, Jack"
+        },
+        PIMI: {
+          LATIN_NAME: "Pinus spp",
+          DISPLAY_TEXT: "Pine, Miscellaneous"
+        },
+        PIMU: {
+          LATIN_NAME: "Pinus mugo",
+          DISPLAY_TEXT: "Pine, Mugo"
+        },
+        PIPI: {
+          LATIN_NAME: "Pinus rigida",
+          DISPLAY_TEXT: "Pine, Pitch"
+        },
+        PIRE: {
+          LATIN_NAME: "Pinus resinosa",
+          DISPLAY_TEXT: "Pine, Red"
+        },
+        PISC: {
+          LATIN_NAME: "Pinus sylvestris",
+          DISPLAY_TEXT: "Pine, Scotch"
+        },
+        PIWH: {
+          LATIN_NAME: "Pinus strobus",
+          DISPLAY_TEXT: "Pine, White"
+        },
+        PLLO: {
+          LATIN_NAME: "Platanus x acerifolia",
+          DISPLAY_TEXT: "Plane, London"
+        },
+        PLSY: {
+          LATIN_NAME: "Platanus occidentalis",
+          DISPLAY_TEXT: "Plane, Sycamore"
+        },
+        PMMI: {
+          LATIN_NAME: "Prunus spp",
+          DISPLAY_TEXT: "Plum, Miscellaneous"
+        },
+        POBA: {
+          LATIN_NAME: "Populus balsamifera",
+          DISPLAY_TEXT: "Poplar, Balsam"
+        },
+        POCA: {
+          LATIN_NAME: "Populus canadensis",
+          DISPLAY_TEXT: "Poplar, Carolina"
+        },
+        POCO: {
+          LATIN_NAME: "Populus deltoides",
+          DISPLAY_TEXT: "Poplar, Cottonwood"
+        },
+        POLO: {
+          LATIN_NAME: "Populus nnigra",
+          DISPLAY_TEXT: "Poplar, Lombardy"
+        },
+        POLT: {
+          LATIN_NAME: "Populus deltiodes",
+          DISPLAY_TEXT: "Poplar, Largetooth aspen"
+        },
+        POMI: {
+          LATIN_NAME: "Populus spp",
+          DISPLAY_TEXT: "Poplar, Miscellaneous"
+        },
+        POSI: {
+          LATIN_NAME: "Populus alba",
+          DISPLAY_TEXT: "Poplar, Silver"
+        },
+        POTR: {
+          LATIN_NAME: "Populus tremuloides",
+          DISPLAY_TEXT: "Poplar, Trembling"
+        },
+        PPSH: {
+          LATIN_NAME: "Caragana arborescent",
+          DISPLAY_TEXT: "Pea shrub"
+        },
+        PRSI: {
+          LATIN_NAME: "Diospyros spp",
+          DISPLAY_TEXT: "Persimmion"
+        },
+        PWPW: {
+          LATIN_NAME: "Asimina triloba",
+          DISPLAY_TEXT: "Paw paw"
+        },
+        RDBU: {
+          LATIN_NAME: "Cercis canadensis",
+          DISPLAY_TEXT: "Red bud"
+        },
+        REDA: {
+          LATIN_NAME: "Metasequoia glyptostroboides",
+          DISPLAY_TEXT: "Dawn redwood, Metaseqoio"
+        },
+        RHMI: {
+          LATIN_NAME: "Rhododendron spp",
+          DISPLAY_TEXT: "Rhododendron, Miscellaneous"
+        },
+        SASS: {
+          LATIN_NAME: "Sassafras albidum",
+          DISPLAY_TEXT: "Sassafras"
+        },
+        SLCA: {
+          LATIN_NAME: "Halesia tetraptera",
+          DISPLAY_TEXT: "Silverbell, Carollina"
+        },
+        SLLI: {
+          LATIN_NAME: "Halesia parviflora",
+          DISPLAY_TEXT: "Silverbell, Little"
+        },
+        SMTR: {
+          LATIN_NAME: "Cotinus coggygria",
+          DISPLAY_TEXT: "Smoke tree"
+        },
+        SPCB: {
+          LATIN_NAME: "Picea pungens 'glauca'",
+          DISPLAY_TEXT: "Spruce, Colorado blue"
+        },
+        SPCO: {
+          LATIN_NAME: "Picea pungens",
+          DISPLAY_TEXT: "Spruce, Colorado"
+        },
+        SPNO: {
+          LATIN_NAME: "Picea abies",
+          DISPLAY_TEXT: "Spruce, Norway"
+        },
+        SPSE: {
+          LATIN_NAME: "Picea omorika",
+          DISPLAY_TEXT: "Spruce, Serbian"
+        },
+        SPWH: {
+          LATIN_NAME: "Picea glauca",
+          DISPLAY_TEXT: "Spruce, White"
+        },
+        SUST: {
+          LATIN_NAME: "Rhus typhina",
+          DISPLAY_TEXT: "Sumach, Staghorn"
+        },
+        SVBE: {
+          LATIN_NAME: "Amelanchier",
+          DISPLAY_TEXT: "Serviceberry"
+        },
+        TARA: {
+          LATIN_NAME: "Tamarix spp",
+          DISPLAY_TEXT: "Tamarix"
+        },
+        TRHE: {
+          LATIN_NAME: "Ailanthus altissima",
+          DISPLAY_TEXT: "Tree of heaven"
+        },
+        TUTR: {
+          LATIN_NAME: "Liriiodendron tulipifera",
+          DISPLAY_TEXT: "Tulip tree"
+        },
+        UNKN: {
+          LATIN_NAME: "Unknown",
+          DISPLAY_TEXT: "Unknown"
+        },
+        VIMI: {
+          LATIN_NAME: "Viburnam",
+          DISPLAY_TEXT: "Viburnam, Miscellaneous"
+        },
+        WABL: {
+          LATIN_NAME: "Juglans nigra",
+          DISPLAY_TEXT: "Walnut, Black"
+        },
+        WABU: {
+          LATIN_NAME: "Juglans cinera",
+          DISPLAY_TEXT: "Walnut, Butternut"
+        },
+        WAEN: {
+          LATIN_NAME: "Juglans regia",
+          DISPLAY_TEXT: "Walnut, English"
+        },
+        WICR: {
+          LATIN_NAME: "Salix fragilis",
+          DISPLAY_TEXT: "Willow, Crack"
+        },
+        WIMI: {
+          LATIN_NAME: "Salix spp",
+          DISPLAY_TEXT: "Willow, Miscellaneous"
+        },
+        WIPU: {
+          LATIN_NAME: "Salix discolor",
+          DISPLAY_TEXT: "Willow, Pussy"
+        },
+        WIWE: {
+          LATIN_NAME: "Salix alba",
+          DISPLAY_TEXT: "Willow, Weeping"
+        },
+        WIWH: {
+          LATIN_NAME: "Salix alba x S. fragilis",
+          DISPLAY_TEXT: "Willow, White"
+        },
+        XXXX: {
+          LATIN_NAME: "----------------",
+          DISPLAY_TEXT: "----------------"
+        },
+        YEJA: {
+          LATIN_NAME: "Taxis spp",
+          DISPLAY_TEXT: "Yew, Miscellaneous"
+        },
+        YEMI: {
+          LATIN_NAME: "Taxis cuspidata",
+          DISPLAY_TEXT: "Yew, Japenese"
+        },
+        YLWO: {
+          LATIN_NAME: "Cladastris lutea",
+          DISPLAY_TEXT: "Yellowood"
+        },
+        ZELK: {
+          LATIN_NAME: "Zelkova serrata",
+          DISPLAY_TEXT: "Zelkova"
+        }
+      }
+    }
   },
   {
     country: 'Canada',

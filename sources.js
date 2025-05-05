@@ -10833,7 +10833,7 @@ module.exports = [
     state: 'Colorado',
     city: 'Denver',
     scope: 'tree',
-    metadata: 'https://www.denvergov.org/opendata/dataset/city-and-county-of-denver-tree-inventory',
+    metadata: 'https://opendata-geospatialdenver.hub.arcgis.com/datasets/geospatialDenver::parks-medians-and-parkway-trees/about',
     data: {
       arcgis: 'https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/ArcGIS/rest/services/ODC_PARK_TREEINVENTORY_P/FeatureServer/241'
     },
@@ -10844,7 +10844,10 @@ module.exports = [
       dbh_in: 'DIAMETER',
       location: 'LOCATION_NAME'
     },
-    license: { id: 'CC-BY-3.0' },
+    license: {
+      name: 'Public Domain',
+      url: 'https://data.colorado.gov/Natural-Resources/Tree-Inventory-Denver/wz8h-dap6/about_data'
+    },
     fallingfruit_id: 421,
     opentrees_id: 'denver',
     srs: '+init=EPSG:4326'

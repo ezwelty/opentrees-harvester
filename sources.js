@@ -17492,5 +17492,123 @@ module.exports = [
     layer: 'points',
     license: { id: 'ODbL-1.0' },
     srs: '+init=EPSG:4326'
+  },
+  {
+    country: 'United States',
+    state: 'California',
+    city: 'Pomona',
+    designation: 'California State Polytechnic University',
+    scope: 'tree',
+    metadata: [
+      'https://www.arcgis.com/home/item.html?id=76c48fb3ff03492d96eb261b8823b426',
+      'https://cpp-urbanforest.wca.app/'
+    ],
+    data: {
+      arcgis: 'https://services2.arcgis.com/yrktbS5Xw87hJQvs/arcgis/rest/services/Cal_Poly_Pomona_Inv_iTree_benefits/FeatureServer/0'
+    },
+    srs: '+init=EPSG:4326'
+  },
+  {
+    country: 'United States',
+    state: 'California',
+    city: 'Los Angeles',
+    designation: 'University of Southern California',
+    scope: 'tree',
+    metadata: 'https://www.arcgis.com/home/item.html?id=1e8fa472f2da40f6ba278cc6d986f9be',
+    data: {
+      arcgis: 'https://services2.arcgis.com/yrktbS5Xw87hJQvs/arcgis/rest/services/WebMap_USC_AllLayers_WFL1/FeatureServer/0'
+    },
+    srs: '+init=EPSG:4326'
+  },
+  {
+    country: 'United States',
+    state: 'California',
+    city: 'Walnut',
+    designation: 'Mount San Antonio College',
+    scope: 'tree',
+    metadata: 'https://www.arcgis.com/home/item.html?id=25c12a50cc8a4ae19f16dede678c21d8',
+    data: {
+      arcgis: 'https://services2.arcgis.com/yrktbS5Xw87hJQvs/arcgis/rest/services/WebScene_MtSAC_WSL1/FeatureServer/1'
+    },
+    srs: '+init=EPSG:4326'
+  },
+  {
+    country: 'United States',
+    state: 'California',
+    city: 'San Luis Obispo',
+    designation: 'California Polytechnic State University',
+    scope: 'tree',
+    metadata: 'https://www.arcgis.com/home/item.html?id=60daecf72bc54255b14b7ce0223ca990',
+    data: {
+      arcgis: 'https://services1.arcgis.com/0j6vZbECadDEXdAS/arcgis/rest/services/Cal_Poly_Tree_Inventory_Points/FeatureServer/0'
+    },
+    srs: '+init=EPSG:4326'
+  },
+  {
+    country: 'United States',
+    state: 'California',
+    city: 'Yorba Linda',
+    scope: 'tree',
+    metadata: 'https://www.arcgis.com/home/item.html?id=e94d7e56dd09416b99e4ffec5aa40a5b',
+    data: {
+      arcgis: 'https://services2.arcgis.com/yrktbS5Xw87hJQvs/arcgis/rest/services/WebMap_YorbaLinda_AllLayers_WFL1/FeatureServer/0'
+    },
+    srs: '+init=EPSG:4326'
+  },
+  {
+    country: 'United States',
+    state: 'California',
+    city: 'Corona',
+    scope: 'tree',
+    metadata: 'https://www.arcgis.com/home/item.html?id=4d678459ccb74c108d1a5da01bc5b636',
+    data: {
+      arcgis: 'https://services2.arcgis.com/yrktbS5Xw87hJQvs/arcgis/rest/services/WebMap_Corona_AllLayers_WFL1/FeatureServer/0'
+    },
+    srs: '+init=EPSG:4326'
+  },
+  {
+    notes: 'Overlaps with https://www.fs.usda.gov/rds/archive/catalog/RDS-2017-0010',
+    country: 'United States',
+    state: 'California',
+    city: 'La Cañada Flintridge',
+    scope: 'tree',
+    metadata: 'https://www.arcgis.com/home/item.html?id=4df0371febb347c68e086966b1cc58dd',
+    data: {
+      arcgis: 'https://services2.arcgis.com/yrktbS5Xw87hJQvs/arcgis/rest/services/WebMap_LaCanadaFlintridge_AllLayers_WFL1/FeatureServer/0'
+    },
+    srs: '+init=EPSG:4326'
+  },
+  {
+    country: 'United States',
+    state: 'California',
+    city: 'Fontana',
+    scope: 'tree',
+    metadata: 'https://www.arcgis.com/home/item.html?id=c1d43b2c32fb4e19aee9380df47647dc',
+    data: {
+      arcgis: 'https://services2.arcgis.com/yrktbS5Xw87hJQvs/arcgis/rest/services/WebMap_Fontana_AllLayers_WFL1/FeatureServer/0'
+    },
+    srs: '+init=EPSG:4326'
+  },
+  {
+    country: 'United States',
+    state: 'California',
+    city: 'El Segundo',
+    scope: 'tree',
+    metadata: 'https://www.arcgis.com/home/item.html?id=14d9856089044abcb0239225f1909005',
+    data: {
+      arcgis: 'https://services2.arcgis.com/yrktbS5Xw87hJQvs/arcgis/rest/services/TreeInvElSegundo_Public/FeatureServer/0'
+    },
+    srs: '+init=EPSG:4326'
+  },
+  {
+    country: 'United States',
+    state: 'California',
+    city: 'Pleasanton',
+    scope: 'tree',
+    metadata: 'https://www.arcgis.com/home/item.html?id=71339b38bd7b4ae8bc778da5909f89f4',
+    data: {
+      arcgis: 'https://services2.arcgis.com/yrktbS5Xw87hJQvs/arcgis/rest/services/TreeInvPleasanton_Public/FeatureServer/0'
+    },
+    srs: '+init=EPSG:4326'
   }
 ]

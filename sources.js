@@ -15058,6 +15058,30 @@ module.exports = [
   {
     country: 'United States',
     state: 'Oregon',
+    city: 'Corvallis',
+    designation: 'Oregon State University',
+    scope: 'tree-conifer',
+    metadata: 'https://www.arcgis.com/home/item.html?id=59bc8775f64d4e7ba6bcc834efd7e090',
+    data: {
+      arcgis: 'https://services1.arcgis.com/dePSdaG71BplHMCO/arcgis/rest/services/TreeWork_Conifer/FeatureServer/0'
+    },
+    srs: '+init=EPSG:4326'
+  },
+  {
+    country: 'United States',
+    state: 'Oregon',
+    city: 'Corvallis',
+    designation: 'Oregon State University',
+    scope: 'tree-broadleaf',
+    metadata: 'https://www.arcgis.com/home/item.html?id=820876800e38462882767be12662b2b9',
+    data: {
+      arcgis: 'https://services1.arcgis.com/dePSdaG71BplHMCO/arcgis/rest/services/TreeWorks_Broadleaf/FeatureServer/1'
+    },
+    srs: '+init=EPSG:4326'
+  },
+  {
+    country: 'United States',
+    state: 'Oregon',
     city: 'Grants Pass',
     scope: 'tree',
     metadata: 'https://www.arcgis.com/home/item.html?id=885c198264304692b89fc3cc418fb6bf',

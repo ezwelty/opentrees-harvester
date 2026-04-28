@@ -10840,6 +10840,18 @@ module.exports = [
   {
     country: 'United States',
     state: 'California',
+    city: 'Pasadena',
+    designation: 'California Institute of Technology',
+    scope: 'tree',
+    metadata: 'https://arcgis.facilities.caltech.edu/portal/home/item.html?id=50f590bebbeb42618e8e3836b22a8250',
+    data: {
+      arcgis: 'https://arcgis.facilities.caltech.edu/Server/rest/services/Tree_Inventory_Map_Public/FeatureServer/0'
+    },
+    driver: 'ESRIJSON'
+  },
+  {
+    country: 'United States',
+    state: 'California',
     city: 'Placentia',
     scope: 'tree',
     metadata: 'https://placentia.maps.arcgis.com/home/item.html?id=96c75939ccb74bee91dd7c2856d5f1dc',

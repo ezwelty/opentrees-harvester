@@ -12239,12 +12239,27 @@ module.exports = [
     srs: '+init=EPSG:4326'
   },
   {
+    omit: 'Superseded by https://www.arcgis.com/home/item.html?id=becb63d5f42e4cd7a07aa8ebc8da153f',
     country: 'United States',
     state: 'Indiana',
     designation: 'Indiana University',
     scope: 'tree',
     data: {
       arcgis: 'https://services.arcgis.com/tKsJAIiLjd90D5q2/ArcGIS/rest/services/IUSystemTrees2022/FeatureServer/0'
+    },
+    srs: '+init=EPSG:4326'
+  },
+  {
+    country: 'United States',
+    state: 'Indiana',
+    designation: 'Indiana University',
+    scope: 'tree',
+    metadata: [
+      'https://www.arcgis.com/home/item.html?id=becb63d5f42e4cd7a07aa8ebc8da153f',
+      'https://storymaps.arcgis.com/stories/d54ff55fc0bf4a89bf8529ae329d9164'
+    ],
+    data: {
+      arcgis: 'https://services.arcgis.com/tKsJAIiLjd90D5q2/arcgis/rest/services/IUSystemTress_MASTER_CLEANED/FeatureServer/0'
     },
     srs: '+init=EPSG:4326'
   },
@@ -12259,6 +12274,33 @@ module.exports = [
     },
     geometry: { x: 'LONGITUDE', y: 'LATITUDE' },
     srs: 'EPSG:4326'
+  },
+  {
+    country: 'United States',
+    state: 'Indiana',
+    city: 'Bloomington',
+    scope: 'tree',
+    notes: 'Supersedes https://www.arcgis.com/home/item.html?id=6aa1bfc6716f42d0b80ffdeab06e5bbf for Bloomington only',
+    metadata: 'https://data.bloomington.in.gov/Parks-Recreation/TreeKeeper-Inventory/ndfd-h5qf/about_data',
+    data: {
+      manual: 'https://data.bloomington.in.gov/Parks-Recreation/TreeKeeper-Inventory/ndfd-h5qf/about_data'
+    },
+    geometry: { wkt: 'Geometry' },
+    srs: '+init=EPSG:4326',
+    license: { id: 'PDDL-1.0' }
+  },
+  {
+    omit: 'Included in https://www.arcgis.com/home/item.html?id=becb63d5f42e4cd7a07aa8ebc8da153f',
+    country: 'United States',
+    state: 'Indiana',
+    city: 'Bloomington',
+    designation: 'Indiana University Bloomington',
+    scope: 'tree',
+    metadata: 'https://iu-vpcpf.maps.arcgis.com/home/item.html?id=ea685c8514aa461e9b3ec83ff7467ea8',
+    data: {
+      arcgis: 'https://services6.arcgis.com/i4Ofa92MsoSleULR/arcgis/rest/services/IUB_Tree_Inventory_Public_View/FeatureServer/0'
+    },
+    srs: '+init=EPSG:4326'
   },
   {
     country: 'United States',

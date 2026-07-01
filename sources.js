@@ -4685,6 +4685,18 @@ module.exports = [
   {
     country: 'France',
     state: 'Bretagne',
+    designation: 'Rennes Métropole',
+    scope: 'tree',
+    metadata: 'https://data.rennesmetropole.fr/explore/dataset/arbre/information/',
+    data: 'https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets/arbre/exports/geojson',
+    license: { id: 'ODbL-1.0' },
+    srs: '+init=EPSG:4326',
+    fallingfruit_id: 460,
+  },
+  {
+    omit: 'Replaced by https://data.rennesmetropole.fr/explore/dataset/arbre/information/',
+    country: 'France',
+    state: 'Bretagne',
     city: 'Rennes',
     designation: 'Rennes Métropole',
     scope: 'tree',
@@ -4694,6 +4706,7 @@ module.exports = [
     srs: '+init=EPSG:4326'
   },
   {
+    omit: 'Replaced by https://data.rennesmetropole.fr/explore/dataset/arbre/information/',
     country: 'France',
     state: 'Bretagne',
     city: 'Rennes',
@@ -4715,6 +4728,7 @@ module.exports = [
     srs: '+init=EPSG:4326'
   },
   {
+    omit: 'Replaced by https://data.rennesmetropole.fr/explore/dataset/arbre/information/',
     country: 'France',
     state: 'Bretagne',
     city: 'Rennes',
@@ -10822,7 +10836,8 @@ module.exports = [
     data: {
       arcgis: 'https://services2.arcgis.com/zNjnZafDYCAJAbN0/arcgis/rest/services/Street_ROW_Trees/FeatureServer/0'
     },
-    srs: '+init=EPSG:4326'
+    srs: '+init=EPSG:4326',
+    fallingfruit_id: 463
   },
   {
     omit: 'empty',
@@ -10843,11 +10858,15 @@ module.exports = [
     city: 'Pasadena',
     designation: 'California Institute of Technology',
     scope: 'tree',
-    metadata: 'https://arcgis.facilities.caltech.edu/portal/home/item.html?id=50f590bebbeb42618e8e3836b22a8250',
+    metadata: [
+      'https://arcgis.facilities.caltech.edu/portal/home/item.html?id=50f590bebbeb42618e8e3836b22a8250',
+      'https://arcgis.facilities.caltech.edu/portal/apps/experiencebuilder/experience/?id=9f3392b6a82f4623b6fd448a1d5294ee&page=2D-View'
+    ],
     data: {
       arcgis: 'https://arcgis.facilities.caltech.edu/Server/rest/services/Tree_Inventory_Map_Public/FeatureServer/0'
     },
-    driver: 'ESRIJSON'
+    driver: 'ESRIJSON',
+    fallingfruit_id: 462
   },
   {
     country: 'United States',
@@ -11335,7 +11354,8 @@ module.exports = [
     data: 'https://data.coloradosprings.gov/api/geospatial/e6wv-b629?method=export&format=geojson',
     crosswalk: { ref: 'OBJECTID', common: 'Common_Name', dbh_in: 'DBH' },
     opentrees_id: 'colorado_springs-co',
-    srs: '+init=EPSG:4326'
+    srs: '+init=EPSG:4326',
+    fallingfruit_id: 459
   },
   {
     country: 'United States',
@@ -12661,7 +12681,8 @@ module.exports = [
       updated: x => new Date(x['INSPECT_DT']).toISOString().slice(0, 10)
     },
     opentrees_id: 'baltimore_md',
-    srs: '+init=EPSG:4326'
+    srs: '+init=EPSG:4326',
+    fallingfruit_id: 458
   },
   {
     country: 'United States',
@@ -17620,7 +17641,8 @@ module.exports = [
     data: {
       arcgis: 'https://services1.arcgis.com/0j6vZbECadDEXdAS/arcgis/rest/services/Cal_Poly_Tree_Inventory_Points/FeatureServer/0'
     },
-    srs: '+init=EPSG:4326'
+    srs: '+init=EPSG:4326',
+    fallingfruit_id: 461
   },
   {
     country: 'United States',

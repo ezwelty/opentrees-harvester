@@ -2038,15 +2038,28 @@ module.exports = [
     srs: '+init=EPSG:4326'
   },
   {
+    omit: 'superseded by https://services7.arcgis.com/KDZk9G6v3RqjrPmt/arcgis/rest/services/Campus_Trees_(authoritative)_public_view/FeatureServer/0',
     country: 'Canada',
     state: 'Ontario',
     city: 'London',
-    designation: 'Western University',
+    designation: 'University of Western Ontario',
     metadata: 'https://www.arcgis.com/home/item.html?id=07f4772f1067428cb69651a0b64cf6de',
     data: {
       arcgis: 'https://services.arcgis.com/rGKxabTU9mcXMw7k/arcgis/rest/services/campus_tree_inventory_2018_View_Layer/FeatureServer/0'
     },
     srs: '+init=EPSG:4326'
+  },
+  {
+    country: 'Canada',
+    state: 'Ontario',
+    city: 'London',
+    designation: 'University of Western Ontario',
+    metadata: 'https://www.arcgis.com/home/item.html?id=a0f08f93fd7d4d4db5059afadd60efed',
+    data: {
+      arcgis: 'https://services7.arcgis.com/KDZk9G6v3RqjrPmt/arcgis/rest/services/Campus_Trees_(authoritative)_public_view/FeatureServer/0'
+    },
+    srs: '+init=EPSG:4326',
+    fallingfruit_id: 467
   },
   {
     country: 'Canada',
@@ -2869,6 +2882,7 @@ module.exports = [
     }
   },
   {
+    omit: 'superseded by https://maps.london.ca/server/rest/services/OpenData/OpenData_Environment/MapServer/0',
     country: 'Canada',
     state: 'Ontario',
     city: 'London',
@@ -3685,6 +3699,92 @@ module.exports = [
         }
       }
     }
+  },
+  {
+    country: 'Canada',
+    state: 'Ontario',
+    city: 'London',
+    scope: 'tree',
+    data: {
+      arcgis: 'https://maps.london.ca/server/rest/services/OpenData/OpenData_Environment/MapServer/0'
+    },
+    srs: '+init=EPSG:4326',
+    license: {
+      name: 'Terms of Use – City of London Open Data',
+      url: 'https://london.maps.arcgis.com/sharing/rest/content/items/e31458fd0c7e41dd9f93144a9550781d/data'
+    }
+  },
+  {
+    notes: 'Partial overlap with https://maps.london.ca/server/rest/services/OpenData/OpenData_Environment/MapServer/0',
+    country: 'Canada',
+    state: 'Ontario',
+    city: 'London',
+    scope: 'plant-edible',
+    inactive: true,
+    data: {
+      manual: 'https://services3.arcgis.com/rKDTiailVJCsq7U6/ArcGIS/rest/services/Fruit_Tree_Map_November_2020_WFL1/FeatureServer/0'
+    },
+    srs: '+init=EPSG:4326',
+    codes: {
+      TreeSpecies: {
+        A: 'Almond Tree',
+        AC: 'American Chestnut Tree',
+        AP: 'American Persimmon Tree',
+        APP: 'Apple Tree',
+        APRT: 'Apricot Tree',
+        ARC: 'Aronia Chokecherries',
+        AUO: 'Autumn Olives',
+        B: 'Beech Tree',
+        BCT: 'Black Cherry Tree',
+        BWT: 'Black Walnut Tree',
+        BX: 'Blueberry Bushes',
+        BO: 'Borage',
+        BZ: 'Butternut Tree',
+        C: 'Camomile',
+        CC: 'Choke Cherry',
+        CH: 'Chum Tree',
+        CR: 'Crab Apple Tree',
+        CRA: 'Cranberries',
+        CUB: 'Currant Bushes',
+        EB: 'Elderberry Bush',
+        F: 'Feverfew',
+        G: 'Goji Berries',
+        GOO: 'Gooseberries',
+        HT: 'Hackberry Tree',
+        HWT: 'Hawthorne Tree',
+        HZ: 'Hazelnut Bush',
+        J: 'Jujube Tree',
+        K: 'Kiwi Fruit Bushes',
+        L: 'Linden Tree',
+        MA: 'Mountain Ash',
+        MB: 'Mulberry Bush',
+        NB: 'Nanny Berries',
+        NP: 'Northern Pecan Tree',
+        OO: 'Oak-Other',
+        P: 'Paw Paw Tree',
+        PEA: 'Peach Tree',
+        PER: 'Pear Tree',
+        PH: 'Pignut Hickory',
+        PC: 'Pin Cherry',
+        PLT: 'Plum Tree',
+        Q: 'Quince Tree',
+        RBS: 'Red Berried Sumach',
+        RC: 'Red Clover',
+        RO: 'Red Oak Tree',
+        ROS: 'Rosehips',
+        SB: 'Saskatoon Berries',
+        SEB: 'Sea Buckthorn',
+        SH: 'Shagbark Hickory',
+        SC: 'Sour Cherry',
+        SWC: 'Sweet Cherry',
+        V: 'Violets',
+        W: 'White Oak Tree',
+        WB: 'Wild Black Raspberries',
+        WG: 'Wild Grapes',
+        Z: 'Other'
+      }
+    },
+    fallingfruit_id: 466,
   },
   {
     country: 'Canada',

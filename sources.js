@@ -5589,7 +5589,14 @@ module.exports = [
     metadata: 'https://opendata.wuerzburg.de/explore/dataset/baumkataster_stadt_wuerzburg/information/',
     data: 'https://opendata.wuerzburg.de/api/explore/v2.1/catalog/datasets/baumkataster_stadt_wuerzburg/exports/geojson',
     license: { id: 'DL-DE-BY-2.0' },
-    srs: '+init=EPSG:4326'
+    srs: '+init=EPSG:4326',
+    crosswalk: {
+      scientific: 'baumart_la',
+      common: 'baumart',
+      height_m: 'baumhoehe',
+      crown_m: 'kronenbrei',
+      circumference_cm: 'stammumfang',
+    }
   },
   {
     country: 'Germany',

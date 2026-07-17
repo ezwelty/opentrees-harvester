@@ -7633,6 +7633,11 @@ module.exports = [
       Number(x['x'].replace(',', '.')),
       Number(x['y'].replace(',', '.'))
     ],
+    crosswalk: {
+      common: 'nom',
+      scientific: 'nom_cientific',
+      dbh_cm_range: 'mida_tronc'
+    },
     srs: 'EPSG:25831',
     license: {
       name: 'Ajuntament de Girona Condicions de Reproducció',

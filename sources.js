@@ -6062,6 +6062,21 @@ module.exports = [
     license: { id: 'ODbL-1.0' }
   },
   {
+    country: 'India',
+    state: 'Karnataka',
+    city: 'Bengaluru',
+    scope: 'tree',
+    notes: 'Also known as Bangalore',
+    metadata: 'https://data.opencity.in/dataset/bengaluru-tree-census-data/resource/368572d6-e3dc-4088-acd8-a243c440ebea',
+    data: 'https://data.opencity.in/dataset/9151032e-4423-4697-81a2-e29018a4facd/resource/368572d6-e3dc-4088-acd8-a243c440ebea/download/bbmp_tree_census_july_2026.zip',
+    vfs: '/vsizip/',
+    crosswalk: {
+      ref: 'KGISTreeID',
+      scientific: 'TreeName'
+    },
+    license: { id: 'CC-PDM-1.0' }
+  },
+  {
     country: 'Indonesia',
     state: 'Bali',
     city: 'Denpasar',

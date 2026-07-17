@@ -7509,18 +7509,17 @@ module.exports = [
     state: 'Porto',
     city: 'Porto',
     scope: 'tree',
-    metadata: 'https://www.arcgis.com/home/item.html?id=f3ce8104ac814cfe9934ddae55ad5f6c',
-    data: {
-      arcgis: 'https://services6.arcgis.com/1fFyrPgHFbxi0TNm/arcgis/rest/services/ArvoresPorto/FeatureServer/0'
-    },
+    metadata: 'https://opendata.porto.digital/dataset/identificacao-e-caracterizacao-do-arvoredo-do-municipio-do-porto',
+    data: 'https://opendata.porto.digital/dataset/7991ece6-0793-4702-ad23-570e76627a82/resource/ce7186b1-095f-4d06-a7c6-146618dbd45c/download/identificacao-e-caracterizacao-do-arvoredo-do-municipio-do-porto_geojson.geojson',
     crosswalk: {
-      ref: 'arv_id',
-      scientific: 'especie',
+      ref: 'objectid',
+      scientific: 'esp_nomecientifico',
       common: 'esp_nomecomum',
       age_range: 'arv_intervalo_idade'
     },
     fallingfruit_id: 455,
-    srs: '+init=EPSG:4326'
+    srs: '+init=EPSG:4326',
+    license: { id: 'CC0-1.0' }
   },
   {
     omit: 'subset of https://services6.arcgis.com/1fFyrPgHFbxi0TNm/arcgis/rest/services/ArvoresPorto/FeatureServer/0',

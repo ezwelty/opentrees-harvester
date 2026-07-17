@@ -6639,6 +6639,22 @@ module.exports = [
   {
     country: 'Netherlands',
     state: 'Gelderland',
+    city: 'Nijmegen',
+    designation: 'Radboud Universiteit',
+    scope: 'tree',
+    data: 'https://github.com/stevage/OpenTrees/files/13952174/Paspoort.Heyendaal-Nijmegen.csv',
+    geometry: { wkt: 'gps coordinaten' },
+    srs: '+init=EPSG:4326',
+    crosswalk: {
+      ref: 'nummer',
+      // naam: {scientific} ({common})
+      scientific: x => String(x.naam).split(' (')[0],
+      common: x => String(x.naam).split(' (')[1]?.replace(')', ''),
+    }
+  },
+  {
+    country: 'Netherlands',
+    state: 'Gelderland',
     city: 'Rheden',
     scope: 'tree',
     metadata: 'https://hub.arcgis.com/datasets/rheden::gb-boom/about',

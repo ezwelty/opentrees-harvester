@@ -5964,6 +5964,17 @@ module.exports = [
     metadata: 'https://www.magdeburg.de/Start/B%C3%BCrger-Stadt/Verwaltung-Service/Offene-Verwaltungsdaten/index.php?NavID=37.906&object=tx%7C37.12819.1&La=1&',
     data: 'https://www.magdeburg.de/media/custom/698_16063_1.ZIP?1684231298',
     vfs: '/vsizip/',
+    crosswalk: {
+      ref: 'Baumnummer',
+      // Hoehe: Uses ',' as decimal separator
+      height_m: x => x.Hoehe == '0' ? null : x.Hoehe.replace(',', '.'),
+      // Gattung: {scientific}, {name}
+      scientific: x => x.Gattung.split(', ')[0],
+      common: x => x.Gattung.split(', ')[1],
+      crown_m: x => x.Kronendurchm == '0' ? null : x.Kronendurchm,
+      planted: x => x.pflanzjahr == '0' ? null : x.pflanzjahr,
+      dbh_cm: x => x.Stammumfang == '0' ? null : x.Stammumfang
+    },
     license: { id: 'DL-DE-BY-2.0' }
   },
   {

@@ -5329,8 +5329,8 @@ module.exports = [
     state: 'Nouvelle-Aquitaine',
     city: 'Bordeaux',
     scope: 'tree',
-    metadata: 'https://scnbdx.opendatasoft.com/explore/dataset/ec_arbre_p/information/',
-    data: 'https://scnbdx.opendatasoft.com/api/explore/v2.1/catalog/datasets/ec_arbre_p/exports/geojson',
+    metadata: 'https://opendata.bordeaux-metropole.fr/explore/dataset/ec_arbre_p/information/',
+    data: 'https://opendata.bordeaux-metropole.fr/api/explore/v2.1/catalog/datasets/ec_arbre_p/exports/geojson',
     crosswalk: {
       scientific: 'nom',
       updated: 'mdate',
@@ -5344,7 +5344,8 @@ module.exports = [
     },
     license: { id: 'etalab-1.0' },
     opentrees_id: 'bordeaux',
-    srs: '+init=EPSG:4326'
+    srs: '+init=EPSG:4326',
+    fallingfruit_id: 468
   },
   {
     country: 'France',

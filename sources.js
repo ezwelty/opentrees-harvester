@@ -5741,7 +5741,12 @@ module.exports = [
     scope: 'tree',
     metadata: 'https://opendata.bonn.de/dataset/baumstandorte',
     data: 'https://stadtplan.bonn.de/geojson?Thema=21367',
-    crosswalk: { ref: 'baum_id', scientific: 'lateinisch', common: 'deutscher_' },
+    crosswalk: {
+      ref: 'baum_id',
+      scientific: 'lateinischer_name',
+      common: 'deutscher_name',
+      age: 'alter',
+    },
     license: { id: 'CC0-1.0' },
     opentrees_id: 'bonn',
     srs: '+init=EPSG:4326'

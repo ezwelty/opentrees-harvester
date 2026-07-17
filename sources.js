@@ -12779,6 +12779,42 @@ module.exports = [
     country: 'United States',
     state: 'Maine',
     city: 'Portland',
+    scope: 'tree',
+    data: {
+      arcgis: 'https://gis.portlandmaine.gov/maps/rest/services/ParksRec/Trees/MapServer/1'
+    },
+    crosswalk: {
+      ref: 'OBJECTID',
+      common: 'CommonName',
+      scientific: 'BotanicalName',
+      dbh_in: x => x['DBH'] > 0 ? x['DBH'] : null,
+      location: x => {
+        return {
+          Cemetery: 'cemetery',
+          Park: 'park',
+          Lawn: 'lawn',
+          TreeLawn: 'street-verge'
+        }[x['Growspace']]
+      },
+      health: x => {
+        return {
+          Good: 'good',
+          Fair: 'fair',
+          'Poor/Remove': 'poor',
+          Stump: 'dead'
+        }[x['TreeStatus']]
+      },
+      // TODO: Convert dates from Esri integer format
+      updated: 'EditDate',
+      planted: 'PlantingDate',
+      note: 'TreeNotes'
+    },
+    srs: '+init=EPSG:4326'
+  },
+  {
+    country: 'United States',
+    state: 'Maine',
+    city: 'Portland',
     designation: 'University of New England – Westbrook',
     scope: 'tree',
     metadata: 'https://www.arcgis.com/home/item.html?id=11ce16fa03e940879e411517f477cccb',

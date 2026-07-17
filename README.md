@@ -277,7 +277,7 @@ Numeric and date ranges use the field name suffixes `_min` and `_max`. For examp
 | name | description |
 | -- | -- |
 `note` | Notes.
-`location` | Geopolitical setting: [`park`, `street`, `council` (Australia), `canton` (Switzerland), `school`, `federal`, `corporate`, `residential`].
+`location` | Geopolitical setting: [`park`, `lawn`, `street`, `street-verge`, `cemetery`, `council` (Australia), `canton` (Switzerland), `school`, `federal`, `corporate`, `residential`].
 `owner` | Name or description of owner.
 `manager` | Name or description of manager or maintainer.
 `value` | Monetary value in the local currency.

@@ -15608,9 +15608,24 @@ module.exports = [
     state: 'Pennsylvania',
     city: 'Philadelphia',
     scope: 'tree',
-    metadata: 'https://opendataphilly.org/datasets/philadelphia-tree-inventory/',
+    metadata: [
+      'https://opendataphilly.org/datasets/philadelphia-tree-inventory/',
+      'https://metadata.phila.gov/#home/datasetdetails/57a0e1d5aa8882104134830e/representationdetails/690a4183ef9cba032bd11d00/'
+    ],
     data: {
-      arcgis: 'https://services.arcgis.com/fLeGjb7u4uXqeF9q/ArcGIS/rest/services/PPR_Tree_Inventory_2022/FeatureServer/0'
+      arcgis: 'https://services.arcgis.com/fLeGjb7u4uXqeF9q/arcgis/rest/services/ppr_tree_inventory_2025/FeatureServer/0'
+    },
+    crosswalk: {
+      ref: 'objectid',
+      // tree_name: {scientific} - {common}
+      scientific: x => x['tree_name'].split(' - ')[0],
+      common: x => x['tree_name'].split(' - ')[1],
+      dbh_in: 'tree_dbh',
+      updated: 'year'
+    },
+    license: {
+      name: '	City of Philadelphia License',
+      url: 'https://metadata.phila.gov/#help/help-faqs/what-are-the-terms-of-use/'
     },
     opentrees_id: 'philadelphia',
     srs: '+init=EPSG:4326'

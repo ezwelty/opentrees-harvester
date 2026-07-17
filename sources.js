@@ -1094,6 +1094,14 @@ module.exports = [
     scope: 'tree',
     metadata: 'https://data.stad.gent/explore/dataset/locaties-bomen-gent/information/',
     data: 'https://data.stad.gent/api/explore/v2.1/catalog/datasets/locaties-bomen-gent/exports/geojson',
+    crosswalk: {
+      planted: 'aanlegjaar',
+      scientific: 'sortiment',
+      hoogte_m_range: x => x.hoogte_m.replace(/ m\.$/, ''),
+      dbh_cm: 'diameter',
+      circumference_cm: 'stamomtrek',
+      ref: 'gis_id'
+    },
     srs: '+init=EPSG:4326',
     license: {
       name: 'Modellicentie Gratis Hergebruik 1.0',

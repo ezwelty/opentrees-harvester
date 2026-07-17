@@ -1097,7 +1097,7 @@ module.exports = [
     crosswalk: {
       planted: 'aanlegjaar',
       scientific: 'sortiment',
-      hoogte_m_range: x => x.hoogte_m.replace(/ m\.$/, ''),
+      hoogte_m_range: 'hoogte_m',
       dbh_cm: 'diameter',
       circumference_cm: 'stamomtrek',
       ref: 'gis_id'
@@ -4592,6 +4592,18 @@ module.exports = [
     scope: 'tree',
     metadata: 'https://hri.fi/data/fi/dataset/helsingin-kaupungin-puurekisteri',
     data: 'https://kartta.hel.fi/ws/geoserver/avoindata/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=avoindata:Puurekisteri_piste&srsName=EPSG:4326&outputFormat=application/json',
+    crosswalk: {
+      ref: 'id',
+      genus: 'suku',
+      name: 'suomenknimi',
+      location: x => ({
+        Katu: 'street',
+        Puisto: 'park'
+      })[x.paatyyppi],
+      species: x => ['sp.', 'Määrittelemättä'].includes(x.laji) ? null : x.laji,
+      dbh_cm_range: 'kokoluokka',
+      planted: x => x.istutusvuosi == '0' ? null : x.istutusvuosi,
+    },
     license: { id: 'CC-BY-4.0' },
     srs: '+init=EPSG:4326'
   },

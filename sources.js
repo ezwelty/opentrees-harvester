@@ -990,6 +990,13 @@ module.exports = [
       Number(x.Lon.replace(',', '.')),
       Number(x.Lat.replace(',', '.'))
     ],
+    crosswalk: {
+      ref: 'Baumnummer',
+      common: 'Gattung_Dt',
+      scientific: 'Gattung_Lat',
+      // Pflanzdatum: 24.04.2014
+      planted: x => helpers.reformatDatetime(x['Pflanzdatum'], [/(?<day>[0-9]{2})\.(?<month>[0-9]{2})\.(?<year>[0-9]{4})/])
+    },
     srs: 'EPSG:4326',
     license: { id: 'CC-BY-4.0' }
   },

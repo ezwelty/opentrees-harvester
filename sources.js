@@ -5567,6 +5567,15 @@ module.exports = [
     data: {
       arcgis: 'https://services-eu1.arcgis.com/cgMeYTGtzFtnxdsx/arcgis/rest/services/KN_Baumkataster_2020S/FeatureServer/87'
     },
+    crosswalk: {
+      // TODO: Or is it baumNr?
+      ref: 'baumId',
+      height_m: 'hoeheM',
+      crown_m: 'kronendurchmesserM',
+      dbh_cm: 'stammumfangCM',
+      common: 'Name_dt',
+      scientific: 'Name_lat'
+    },
     license: { id: 'CC-BY-4.0' },
     srs: '+init=EPSG:4326'
   },

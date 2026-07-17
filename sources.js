@@ -7770,6 +7770,20 @@ module.exports = [
     country: 'Spain',
     state: 'Comunidad de Madrid',
     city: 'Madrid',
+    scope: 'tree',
+    metadata: [
+      'https://datos.madrid.es/dataset/300761-0-arbolado-especies',
+      { file: 'https://datos.madrid.es/dataset/300761-0-arbolado-especies/resource/300761-2-arbolado-especies-xlsx/download/300761-2-arbolado-especies-xlsx.xlsx' }
+    ],
+    data: 'https://datos.madrid.es/dataset/300761-0-arbolado-especies/resource/300761-7-arbolado-especies/download/300761-7-arbolado-especies.zip',
+    vfs: '/vsizip/',
+    notes: 'Species codes are defined in https://datos.madrid.es/dataset/300761-0-arbolado-especies/resource/300761-2-arbolado-especies-xlsx/download/300761-2-arbolado-especies-xlsx.xlsx',
+    license: { id: 'CC-BY-4.0' },
+  },
+  {
+    country: 'Spain',
+    state: 'Comunidad de Madrid',
+    city: 'Madrid',
     designation: 'Ciudad Universitaria | Universidad Complutense de Madrid – Somosaguas',
     metadata: 'https://www.arcgis.com/home/item.html?id=e03f9083d0b94d3f911b0342f4804151',
     data: {

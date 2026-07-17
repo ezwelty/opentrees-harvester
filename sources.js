@@ -16615,6 +16615,17 @@ module.exports = [
   {
     country: 'United States',
     state: 'Washington',
+    city: 'Kenmore',
+    scope: 'tree',
+    metadata: 'https://gwa.kenmorewa.gov/arcgis/rest/services/Public_Trees/MapServer/22',
+    data: {
+      arcgis: 'https://gwa.kenmorewa.gov/arcgis/rest/services/Public_Trees/MapServer/22'
+    },
+    srs: '+init=EPSG:4326'
+  },
+  {
+    country: 'United States',
+    state: 'Washington',
     city: 'Oak Harbor',
     scope: 'tree',
     metadata: 'https://www.arcgis.com/home/item.html?id=ebd124703324478787010c325a9c0f73',

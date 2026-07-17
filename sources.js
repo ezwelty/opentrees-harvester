@@ -6375,6 +6375,20 @@ module.exports = [
   {
     country: 'Italy',
     state: 'Toscana',
+    city: 'Arezzo',
+    scope: 'tree-park',
+    metadata: [
+      'https://doi.org/10.17632/x9bxmpbk8h.5',
+      'https://doi.org/10.12899/asr-2684'
+    ],
+    data: { file: 'https://data.mendeley.com/public-api/zip/x9bxmpbk8h/download/5' },
+    vfs: '/vsizip/',
+    filename: 'Mapped tree dataset of green areas in the Municipa/shape file/dataset_en_2026-03-18.shp',
+    license: { id: 'CC-BY-4.0' },
+  },
+  {
+    country: 'Italy',
+    state: 'Toscana',
     city: 'Capannori',
     scope: 'tree-notable',
     metadata: 'https://geodati.gov.it/geoportale/visualizzazione-metadati/scheda-metadati/?uuid=c_b648:ows.qdjango.alberi-monumentali-4.11780:20220714:101001',

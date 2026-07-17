@@ -16539,6 +16539,26 @@ module.exports = [
   {
     country: 'United States',
     state: 'Washington',
+    city: 'Bellevue',
+    scope: 'tree',
+    metadata: 'https://data.bellevuewa.gov/datasets/cobgis::city-trees/about',
+    data: {
+      arcgis: 'https://services1.arcgis.com/EYzEZbDhXZjURPbP/arcgis/rest/services/City_Trees/FeatureServer/29'
+    },
+    crosswalk: {
+      ref: 'CityTreeID',
+      planted: x => x['YearPlanted'] > 0 ? x['YearPlanted'] : null,
+      // SpeciesDesc: {scientific} - {name}
+      scientific: x => x['SpeciesDesc'] ? x['SpeciesDesc'].split(/\s*-\s*/)[0] : null,
+      name: x => x['SpeciesDesc'] ? x['SpeciesDesc'].split(/\s*-\s*/)[1] : null,
+      dbh_in: 'TreeDiameter_in',
+      updated: 'EditDate'
+    },
+    srs: '+init=EPSG:4326'
+  },
+  {
+    country: 'United States',
+    state: 'Washington',
     city: 'Bellingham',
     designation: 'downtown',
     scope: 'tree-street',

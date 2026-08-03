@@ -11793,6 +11793,17 @@ module.exports = [
   {
     country: 'United States',
     state: 'Connecticut',
+    city: 'New London',
+    scope: 'tree',
+    metadata: 'https://newlondontrees.org/city-trees/',
+    data: {
+      arcgis: 'https://services7.arcgis.com/qwNHpxuS3aZU7Xmh/arcgis/rest/services/ALLTREES/FeatureServer/0'
+    },
+    srs: '+init=EPSG:4326'
+  },
+  {
+    country: 'United States',
+    state: 'Connecticut',
     city: 'Stamford',
     designation: 'River Oaks',
     scope: 'tree',

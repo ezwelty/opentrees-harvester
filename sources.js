@@ -2032,18 +2032,20 @@ module.exports = [
     state: 'Ontario',
     city: 'Kitchener',
     scope: 'tree',
-    metadata: 'https://open-kitchenergis.opendata.arcgis.com/datasets/e42a9601b87a4417b3d3d15a0f596f64_0/about',
+    metadata: [
+      'https://open-kitchenergis.opendata.arcgis.com/datasets/e42a9601b87a4417b3d3d15a0f596f64_0/about',
+      { file: 'https://app2.kitchener.ca/appdocs/GISImages/GIS_Web_External/GIS_Metadata_Open_Data/IndividualReports/Tree_Inventory.pdf' }
+    ],
     data: {
       arcgis: 'https://services1.arcgis.com/qAo1OsXi67t7XgmS/arcgis/rest/services/Tree_Inventory/FeatureServer/0'
     },
     crosswalk: {
       ref: 'TREEID',
-      common: 'SPECIES_NA',
-      scientific: 'SPECIES_LA',
-      planted: 'YEAR_PLANT',
-      updated: 'UPDATE_DAT',
-      dbh: 'DBH',
-      note: 'NOTES'
+      common: 'SPECIES_NAME',
+      scientific: 'SPECIES_LATIN',
+      planted: 'YEAR_PLANTED',
+      updated: 'UPDATE_DATE',
+      dbh_cm: 'MAP_DBH_CM'
     },
     license: {
       name: 'Open Government Licence – City of Kitchener 1.0',

@@ -56,6 +56,19 @@ module.exports = [
     license: { id: 'ODbL-1.0' }
   },
   {
+    notes: 'Overlaps with OpenStreetMap but may contain additional tree attributes',
+    country: 'Armenia',
+    state: 'Yerevan',
+    city: 'Yerevan',
+    scope: 'tree',
+    metadata: 'https://yerevan.treemaps.app/',
+    data: { manual: 'https://yerevan.treemaps.app/export' },
+    vfs: '/vsigzip/',
+    layer: 'trees',
+    geometry: { x: 'lon', y: 'lat' },
+    license: { id: 'ODbL-1.0' }
+  },
+  {
     country: 'Australia',
     state: 'Australian Capital Territory',
     city: 'Canberra',

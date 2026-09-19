@@ -1223,6 +1223,69 @@ module.exports = [
     srs: '+init=EPSG:4326'
   },
   {
+    notes: 'Cities covered elsewhere commented out. Files contain a mix of different geometry columns but selected ones are consistent',
+    country: 'Canada',
+    scope: 'tree',
+    metadata: 'https://www.cif-ifc.org/get-engaged/open-urban-forests/',
+    data: [
+      // Alberta
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Calgary',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Edmonton',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Lethbridge',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Strathcona',
+      // British Columbia
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Kelowna',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Maple Ridge',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=New Westminster',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=North Vancouver',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Surrey',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Vancouver',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Victoria',
+      // Manitoba
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Winnipeg',
+      // New Brunswick
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Fredericton',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Moncton',
+      // Nova Scotia
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Halifax',
+      // Ontario
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Ajax',
+      'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Brampton',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Burlington',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Cambridge',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Guelph',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Kingston',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Kitchener',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=London',
+      'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Markham',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Mississauga',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Niagara Falls',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Ottawa',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Peterborough',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=St. Catharines',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Toronto',
+      'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Vaughan',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Waterloo',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Welland',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Whitby',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Windsor',
+      // Quebec
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Longueuil',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Montreal',
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Quebec City',
+      // Saskatchewan
+      // 'https://7mcamsxgdxqium7gst4n64n7tm0bewvl.lambda-url.us-east-1.on.aws/download/csv?city=Regina'
+    ],
+    openFunc: files => {
+      // Prefix each file path with 'csv:'
+      return helpers.openFileUnionWithGdal(
+        files.map(file => `csv:${file}`)
+      )
+    },
+    geometry: { wkt: 'location' },
+    srs: '+init=EPSG:4326'
+  },
+  {
     country: 'Canada',
     state: 'Alberta',
     designation: 'Strathcona County',

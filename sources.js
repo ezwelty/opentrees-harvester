@@ -4225,7 +4225,10 @@ module.exports = [
     state: 'Québec',
     city: 'Saguenay',
     scope: 'tree',
-    metadata: 'https://www.donneesquebec.ca/recherche/dataset/sag_inventaire-des-arbres-repertories',
+    metadata: [
+      'https://www.donneesquebec.ca/recherche/dataset/sag_inventaire-des-arbres-repertories',
+      { file: 'https://www.donneesquebec.ca/recherche/dataset/9d688a5e-1725-4b7e-ad68-21533d6cb36d/resource/750c5217-c4ea-4d1a-a475-f03737dda0f7/download/sag_inventairearbres_meta.pdf' }
+    ],
     data: 'https://www.donneesquebec.ca/recherche/dataset/9d688a5e-1725-4b7e-ad68-21533d6cb36d/resource/70ebed94-824e-4a72-a9f0-d7d7fa55597e/download/sag_inventairearbres.json',
     license: { id: 'CC-BY-4.0' },
     srs: '+init=EPSG:4326'

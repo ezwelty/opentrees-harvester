@@ -3879,7 +3879,7 @@ module.exports = [
   {
     country: 'Canada',
     state: 'Ontario',
-    city: 'Ottowa',
+    city: 'Ottawa',
     scope: 'tree',
     metadata: 'https://open.ottawa.ca/datasets/ottawa::tree-inventory/about',
     data: {

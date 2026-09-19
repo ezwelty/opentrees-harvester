@@ -1406,6 +1406,19 @@ module.exports = [
   },
   {
     country: 'Canada',
+    state: 'Alberta',
+    city: 'Medicine Hat',
+    scope: 'tree-park',
+    metadata: 'https://opendata.medicinehat.ca/datasets/af05aa132ad24367a7d32d46af50bb38_0/about',
+    data: { arcgis: 'https://services3.arcgis.com/2gQ2Dv4Fb016qFVU/arcgis/rest/services/Park_Tree_Inventory/FeatureServer/0' },
+    license: {
+      name: 'City of Medicine Hat Disclaimer and Licence',
+      url: 'https://www.medicinehat.ca/media/icmn0zwt/cmh_open-data-license.pdf'
+    },
+    srs: '+init=EPSG:4326'
+  },
+  {
+    country: 'Canada',
     state: 'British Columbia',
     city: 'Burnaby',
     metadata: 'https://www.arcgis.com/home/item.html?id=2606c3de98244cba8f0debe09248af2c',

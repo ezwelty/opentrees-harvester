@@ -1492,6 +1492,7 @@ module.exports = [
     srs: '+init=EPSG:4326'
   },
   {
+    omit: 'Superseded by https://data-tol.opendata.arcgis.com/datasets/TOL::tree-inventory-1/about',
     country: 'Canada',
     state: 'British Columbia',
     city: 'Langley',
@@ -1524,6 +1525,19 @@ module.exports = [
     },
     opentrees_id: 'langley',
     srs: '+init=EPSG:4326'
+  },
+  {
+    country: 'Canada',
+    state: 'British Columbia',
+    city: 'Langley',
+    scope: 'tree',
+    metadata: 'https://data-tol.opendata.arcgis.com/datasets/TOL::tree-inventory-1/about',
+    data: { arcgis: 'https://services5.arcgis.com/frpHL0Fv8koQRVWY/arcgis/rest/services/Tree_Inventory/FeatureServer/0' },
+    srs: '+init=EPSG:4326',
+    license: {
+      name: 'Open Government License – Township of Langley',
+      url: 'https://www.tol.ca/en/connect/open-data-licence.aspx'
+    }
   },
   {
     country: 'Canada',

@@ -2106,6 +2106,15 @@ module.exports = [
   {
     country: 'Canada',
     state: 'Ontario',
+    city: 'Hamilton',
+    scope: 'tree',
+    metadata: 'https://open.hamilton.ca/datasets/SpatialSolutions::public-tree-inventory/about',
+    data: { arcgis: 'https://services.arcgis.com/rYz782eMbySr2srL/arcgis/rest/services/Public_Tree_Inventory/FeatureServer/0' },
+    srs: '+init=EPSG:4326'
+  },
+  {
+    country: 'Canada',
+    state: 'Ontario',
     city: 'Kawartha Lakes',
     designation: 'Lindsay',
     scope: 'tree',

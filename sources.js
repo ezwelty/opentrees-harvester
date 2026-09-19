@@ -6088,6 +6088,49 @@ module.exports = [
     license: { id: 'CC-PDM-1.0' }
   },
   {
+    country: 'India',
+    state: 'Maharashtra',
+    city: 'Pune',
+    scope: 'tree',
+    metadata: 'https://data.opencity.in/dataset/pune-tree-census-2019',
+    data: [
+      'https://data.opencity.in/dataset/f00d83b8-c70f-4fff-9ac7-9a6ab4255edf/resource/ca2a3fcf-0e9e-4c50-862a-1290155c0fb9/download/db5b5bcb-20f4-42df-89ee-85dee72446da.csv',
+      'https://data.opencity.in/dataset/f00d83b8-c70f-4fff-9ac7-9a6ab4255edf/resource/f69ee0fb-001d-459d-a87c-c8abee4bd884/download/0a20a244-1731-4f44-addc-56cd4a10d3bf.csv',
+      'https://data.opencity.in/dataset/f00d83b8-c70f-4fff-9ac7-9a6ab4255edf/resource/11266195-2ef0-413d-b953-c9a4c771aef5/download/9d4847bb-7779-4edd-95bb-127a9c90e3b6.csv',
+      'https://data.opencity.in/dataset/f00d83b8-c70f-4fff-9ac7-9a6ab4255edf/resource/c6de6d80-f319-466e-a488-aa6ed5b6fd85/download/5490ebe1-a81b-4abb-a712-3da3992754bf.csv',
+      'https://data.opencity.in/dataset/f00d83b8-c70f-4fff-9ac7-9a6ab4255edf/resource/10d84905-28a4-4dec-8e96-0bbdb543379e/download/f80bd708-7746-4e09-8f91-62dc55d31d34.csv',
+      'https://data.opencity.in/dataset/f00d83b8-c70f-4fff-9ac7-9a6ab4255edf/resource/0c574dfb-a5a7-4fe0-94bf-007eb67d16dc/download/28abdbf7-726c-475e-ad1d-b25819fbf74a.csv',
+      'https://data.opencity.in/dataset/f00d83b8-c70f-4fff-9ac7-9a6ab4255edf/resource/d3c00099-7201-464a-8f72-d5df426f9dce/download/a804de00-6e6f-41ae-aeef-769ef2db1f83.csv',
+      'https://data.opencity.in/dataset/f00d83b8-c70f-4fff-9ac7-9a6ab4255edf/resource/160e6d28-7a7f-439f-aa80-434ca02fc038/download/8052c6c0-c1a3-455e-a8d1-e7e2c5938472.csv',
+      'https://data.opencity.in/dataset/f00d83b8-c70f-4fff-9ac7-9a6ab4255edf/resource/f5902b14-6822-4c76-8cc3-40d9113bb21b/download/bf2cf429-a2cc-432d-8877-c1bd8a81ea43.csv',
+      'https://data.opencity.in/dataset/f00d83b8-c70f-4fff-9ac7-9a6ab4255edf/resource/c195db9a-d656-489c-acf7-dabf09f9460e/download/be079045-316a-4778-9bb8-3574120978c6.csv',
+      'https://data.opencity.in/dataset/f00d83b8-c70f-4fff-9ac7-9a6ab4255edf/resource/3b03de92-b7e3-4869-b9a4-224e755481c7/download/cc44fea1-9b26-434d-845b-bae31e4b3c3b.csv',
+      'https://data.opencity.in/dataset/f00d83b8-c70f-4fff-9ac7-9a6ab4255edf/resource/22c2fd96-ad3a-4f34-af89-690ad0274dda/download/3733b659-d5a0-4cba-9591-9c72dcd297c6.csv',
+      'https://data.opencity.in/dataset/f00d83b8-c70f-4fff-9ac7-9a6ab4255edf/resource/e70bd736-ccc7-4162-8e58-a38de7248aab/download/8c560da7-be95-4fc3-8ed6-a1b1d0b87512.csv',
+      'https://data.opencity.in/dataset/f00d83b8-c70f-4fff-9ac7-9a6ab4255edf/resource/fb0e135a-5ee5-4e26-b850-11901b77063d/download/d33ee2b8-b206-422c-8006-b1d99b3fe494.csv',
+      'https://data.opencity.in/dataset/f00d83b8-c70f-4fff-9ac7-9a6ab4255edf/resource/4e6c520b-0a3c-40a1-bee2-bbb2f443ea87/download/ca24d160-8b76-4215-bd66-61082476acd9.csv',
+      'https://data.opencity.in/dataset/f00d83b8-c70f-4fff-9ac7-9a6ab4255edf/resource/c32a8fb8-32c2-4899-84f6-00c29428eb0b/download/d3ab6046-986a-4aaa-8595-722089f99784.csv',
+      'https://data.opencity.in/dataset/f00d83b8-c70f-4fff-9ac7-9a6ab4255edf/resource/d1fc279c-7905-4fe0-9a55-9a797bd8710a/download/58e49c60-4e2b-4238-9a3e-173d4abccbca.csv'
+    ],
+    openFunc: files => helpers.openFileUnionWithGdal(files),
+    geometry: { wkt: 'geom' },
+    srs: '+init=EPSG:4326',
+    crosswalk: {
+      'ref': 'id',
+      'dbh_cm': 'girth_cm',
+      'height_m': 'height_m',
+      'diameter_m': 'canopy_dia_m',
+      // TODO: Map values
+      'health': 'condition',
+      'owner': 'ownership',
+      // Includes authority
+      'scientific': 'botanical_name',
+      'common': 'common_name'
+    },
+    license: { 'id': 'CC-PDM-1.0' },
+    updated: '2019-08'
+  },
+  {
     country: 'Indonesia',
     state: 'Bali',
     city: 'Denpasar',
